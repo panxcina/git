@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the bellyanna Component." permissionId="BELLYANNA_VIEW"/>
+    <SecurityPermission description="Create operations in the bellyanna Component." permissionId="BELLYANNA_CREATE"/>
+    <SecurityPermission description="Update operations in the bellyanna Component." permissionId="BELLYANNA_UPDATE"/>
+    <SecurityPermission description="Delete operations in the bellyanna Component." permissionId="BELLYANNA_DELETE"/>
+    <SecurityPermission description="ALL operations in the bellyanna Component." permissionId="BELLYANNA_ADMIN"/>
+    
+    <SecurityPermission description="ALL operations in the Refund Component." permissionId="REFUND_ADMIN"/>
+
+    <SecurityGroupPermission groupId="SUPER" permissionId="BELLYANNA_ADMIN"/>
+    <SecurityGroupPermission groupId="SUPER" permissionId="REFUND_ADMIN"/>
+    
+    <SecurityGroup groupId="CUSTOMERSERVICE" description="Bellyanna Security Group - Customer Service"/>
+    <SecurityGroup groupId="WAREHOUSEPACK" description="Bellyanna Security Group - Warehouse Packer"/>
+    <SecurityGroup groupId="EXECUTIVE" description="Bellyanna Security Group - Executive"/>
+    <SecurityGroup groupId="IMPORTORDER" description="Bellyanna Security Group - Import Order"/>
+    <SecurityGroup groupId="REFUND" description="Bellyanna Security Group - Process Refund"/>
+    <SecurityGroup groupId="DATAMINING" description="Bellyanna Security Group - Data Mining"/>
+    
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="BELLYANNA_ADMIN"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="CATALOG_CREATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="CATALOG_PURCHASE_ALLOW"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="CATALOG_UPDATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="CATALOG_VIEW"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="CATALOG_VIEW_ALLOW"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="FACILITY_VIEW"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="MANUAL_PAYMENT"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="ORDERMGR_ADMIN"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_VIEW"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_UPDATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_CME-EMAIL_CREATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_CME-EMAIL_UPDATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_CME-NOTE_CREATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_CME_CREATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_CME_UPDATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_NOTE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_PCM_CREATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_PCM_UPDATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_REL_CREATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_REL_UPDATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_ROLE_CREATE"/>
+    <SecurityGroupPermission groupId="CUSTOMERSERVICE" permissionId="PARTYMGR_SRC_CREATE"/>
+    
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="BELLYANNA_ADMIN"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="CATALOG_CREATE"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="CATALOG_PURCHASE_ALLOW"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="CATALOG_UPDATE"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="CATALOG_VIEW"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="CATALOG_VIEW_ALLOW"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="FACILITY_VIEW"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="FACILITY_CREATE"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="FACILITY_UPDATE"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="ORDERMGR_NOTE"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="ORDERMGR_RETURN"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="ORDERMGR_VIEW"/>
+    <SecurityGroupPermission groupId="WAREHOUSEPACK" permissionId="ORDERMGR_UPDATE"/>
+    
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="BELLYANNA_ADMIN"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="CATALOG_ADMIN"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="FACILITY_ADMIN"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="ORDERMGR_ADMIN"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_VIEW"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_UPDATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_CME-EMAIL_CREATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_CME-EMAIL_UPDATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_CME-NOTE_CREATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_CME_CREATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_CME_UPDATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_NOTE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_PCM_CREATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_PCM_UPDATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_REL_CREATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_REL_UPDATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_ROLE_CREATE"/>
+    <SecurityGroupPermission groupId="EXECUTIVE" permissionId="PARTYMGR_SRC_CREATE"/>
+    
+    <SecurityGroupPermission groupId="IMPORTORDER" permissionId="IMPORT_ADMIN"/>
+    <SecurityGroupPermission groupId="REFUND" permissionId="REFUND_ADMIN"/>
+    <SecurityGroupPermission groupId="DATAMINING" permissionId="WEBTOOLS_VIEW"/>
+    <SecurityGroupPermission groupId="DATAMINING" permissionId="OFBTOOLS_VIEW"/>
+    <SecurityGroupPermission groupId="DATAMINING" permissionId="ENTITY_MAINT"/>
+
+</entity-engine-xml>

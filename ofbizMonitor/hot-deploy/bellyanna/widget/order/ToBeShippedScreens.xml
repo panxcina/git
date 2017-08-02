@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="ToBeShippedList">
+        <section>
+            <actions>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="To Be Shipped List"/>
+                <set field="headerItem" value="ToBeShippedList"/>
+                <script location="component://bellyanna/webapp/order/WEB-INF/actions/order/ToBeShippedList.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="To Be Shipped List"/>
+                        </container>
+                        <screenlet title="To Be Shipped List">
+                            <include-form name="ToBeShippedList" location="component://bellyanna/widget/order/OrderForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://bellyanna/webapp/order/toBeShippedList.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+ 
+</screens>

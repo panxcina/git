@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    
+    <!-- GeoPoint for Bellyanna (in Shanghai, China) -->
+    <GeoPoint geoPointId="bellyanna_geopoint" dataSourceId="GEOPT_GOOGLE" latitude="31.258166" longitude="121.429105" elevation="6" elevationUomId="LEN_m" information="GeoPoint for bellyanna"/>
+    <!-- GeoPoint for Bellyanna Pudong Warehouse (in Shanghai, China) -->
+    <GeoPoint geoPointId="PDWarehouse_geopoint" dataSourceId="GEOPT_GOOGLE" latitude="31.1576131" longitude="121.5722916" elevation="6" elevationUomId="LEN_m" information="GeoPoint for Pudong Home Warehouse"/>
+    
+    <Facility facilityId="PDWarehouse" facilityTypeId="WAREHOUSE" facilityName="Pudong Warehouse" description="Kang Qiao Warehouse" ownerPartyId="bellyanna" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" defaultWeightUomId="WT_g" defaultDaysToShip="2" geoPointId="PDWarehouse_geopoint"/>
+    
+    <ContactMech contactMechId="PDWarehouse_addr" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="PDWarehouse_addr_CN" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="PDWarehouse_phone" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PDWarehouse_email" contactMechTypeId="EMAIL_ADDRESS" infoString="info@bellyanna.com"/>
+    
+    <PostalAddress contactMechId="PDWarehouse_addr" toName="Liu Yan" attnName="" address1="Kang Qiao Road, Lane 1558" address2="No 15, Room 101" city="Shanghai" postalCode="201315" countryGeoId="CHN" stateProvinceGeoId="CN-31" countyGeoId="CN-310115" geoPointId="PDWarehouse_geopoint"/>
+    <PostalAddress contactMechId="PDWarehouse_addr_CN" toName="刘焱" attnName="" address1="康桥路1558弄15号101室" address2="浦东康桥" city="上海市" postalCode="201315" countryGeoId="CHN" stateProvinceGeoId="CN-31" countyGeoId="CN-310115" geoPointId="PDWarehouse_geopoint"/>
+    
+    <TelecomNumber contactMechId="PDWarehouse_phone" areaCode="021" contactNumber="68931317"/>
+    
+    <FacilityContactMech facilityId="PDWarehouse" contactMechId="PDWarehouse_addr" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMech facilityId="PDWarehouse" contactMechId="PDWarehouse_phone" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMech facilityId="PDWarehouse" contactMechId="PDWarehouse_email" fromDate="2010-01-01 00:00:00.00"/>
+    
+    <ContactMechPurposeType contactMechPurposeTypeId="PICKUP_LOCATION" description="Shipment Pick Up Address"/>
+    <ContactMechPurposeType contactMechPurposeTypeId="PICKUP_PHONE" description="Shipment Pick Up Address"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_addr_CN" contactMechPurposeTypeId="PICKUP_LOCATION" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_addr_CN" contactMechPurposeTypeId="PUR_RET_LOCATION" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_addr" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_addr" contactMechPurposeTypeId="SHIP_ORIG_LOCATION" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_phone" contactMechPurposeTypeId="PICKUP_PHONE" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_phone" contactMechPurposeTypeId="PHONE_SHIPPING" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_phone" contactMechPurposeTypeId="PHONE_SHIP_ORIG" fromDate="2010-01-01 00:00:00.00"/>
+    <FacilityContactMechPurpose facilityId="PDWarehouse" contactMechId="PDWarehouse_email" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2010-01-01 00:00:00.00"/>
+    
+    
+</entity-engine-xml>

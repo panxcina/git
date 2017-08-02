@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<entity-engine-xml>
+    
+    <DataResource dataResourceId="HELP_IMPORT" localeString="en" dataResourceTypeId="OFBIZ_FILE" objectInfo="hot-deploy/import/data/helpdata/HELP_Import.xml" dataTemplateTypeId="NONE" statusId="CTNT_IN_PROGRESS" dataResourceName="The Import Help file template" mimeTypeId="text/xml" isPublic="Y" />
+    <Content contentId="HELP_IMPORT" contentTypeId="DOCUMENT" localeString="en" contentName="Import" templateDataResourceId="HELP_TEMPL" dataResourceId="HELP_IMPORT" statusId="CTNT_IN_PROGRESS" mimeTypeId="text/html"/>
+    <ContentAssoc contentId="HELP_ROOT" contentIdTo="HELP_IMPORT" contentAssocTypeId="TREE_CHILD" fromDate="2011-02-22 01:01:01" sequenceNum="020"/>
+
+    <DataResource dataResourceId="HELP_ORDERCSV" localeString="en" dataResourceTypeId="OFBIZ_FILE" objectInfo="hot-deploy/import/data/helpdata/HELP_OrderCsvImport.xml" dataTemplateTypeId="NONE" statusId="CTNT_IN_PROGRESS" dataResourceName="The Order Import Import Help file template" mimeTypeId="text/xml" isPublic="Y" />
+    <Content contentId="HELP_ORDERCSV" contentTypeId="DOCUMENT" localeString="en" contentName="eBay Order Import From CSV File" templateDataResourceId="HELP_TEMPL" dataResourceId="HELP_ORDERCSV" statusId="CTNT_IN_PROGRESS" mimeTypeId="text/html"/>
+    <ContentAssoc contentId="HELP_IMPORT" contentIdTo="HELP_ORDERCSV" contentAssocTypeId="TREE_CHILD" fromDate="2011-02-22 01:01:01" sequenceNum="020"/>
+</entity-engine-xml>
+

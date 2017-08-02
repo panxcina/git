@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="5.0" 
+    xmlns:xl="http://www.w3.org/1999/xlink" 
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xsi:schemaLocation="http://docbook.org/ns/docbook ../../../content/dtd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook">
+    <title>eBay Order Import From CSV file Overview</title>
+    <para>The Order Import Help file template.</para>
+    <section>
+        <title>eBay Order Import From CSV File</title>
+        <section>
+            <title>Requirement</title>
+                <orderedlist>
+                    <listitem><para>File Format must be CSV file.</para></listitem>
+                    <listitem><para>Should have the eBay shipment data in EbayShippingMethod entity by storing. Create it by go to Shipping Method Configurations in the eBay component. Then create eBay shipping method in "Add eBay Shipping Method" form.</para></listitem>
+                    <listitem><para>Check the data to be correct before upload it to Ofbiz.</para></listitem>
+                </orderedlist>
+        </section>
+        
+        <title>Step to Use Order Import</title>
+        <section>
+            <orderedlist>
+                <listitem><para>Select product store that you want to create the order. Please make sure what is the product store, that order is in.</para></listitem>
+                <listitem><para>Browse the CSV file and click on the "Upload" button. </para></listitem>
+                <listitem><para>Wait just a minute for service read the data from CSV file and store the data to OrderImport and OrderItemImport entity.</para></listitem>
+                <listitem><para>If the error occur, program will ignore that file and roll back all data in file that just uploaded.</para></listitem>
+                <listitem><para>After program ignore your file, It will show line number of record, which record have a problem. you will solve it and upload again.</para></listitem>
+                <listitem><para>After the upload complete, OrderImport and OrderItemImport list will show (program will list all record in that file).</para></listitem>
+                <listitem><para>You can click on "Import All Order to Ofbiz" button or select any orderImport list to import single order.</para></listitem>
+                <listitem><para>In the last column of OrderImport list is "imported" status and a action message, if that order upload complete, the status will set to "Y", otherwise it will set to "N".</para></listitem>
+            </orderedlist>
+        </section>
+    </section>
+</section>

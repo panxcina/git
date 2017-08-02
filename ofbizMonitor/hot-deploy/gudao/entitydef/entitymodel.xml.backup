@@ -1,0 +1,1731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of Gudao Component</title>
+    <description>None</description>
+    <copyright></copyright>
+    <version></version>
+    <!--
+     ProductMaster
+     ProductMasterPrice
+     ProductMasterSupplier
+     ProductMasterRival
+     ProductMasterStatus
+     ProductImportGudao
+     ProductMasterVariable
+     ProductMasterColumnTitle
+     GudaoShippingCost
+     ProductMasterResult
+     ProductListingStatus
+     ReportUpload
+     WishListing
+     WishListingVariation
+     WishTags
+     GudaoInventory
+     OwnerGroup
+     ProductGroup
+     SummaryView
+     MotherVersion
+     MotherVersionResult
+     EndedActiveListing
+     EndActiveListingRule
+     AccountListingRule
+     AccountListingRuleShipping
+     AccountListingRuleCategory
+     GudaoMotherChildrenSku
+     RivalActiveListing
+     RivalActiveListingVariation
+     RivalVariationSpecifics
+     RivalActiveListingShipping
+     GpsAlgorithm
+     FinalGpsAlgorithm
+     ProductGps
+     SupplierRank
+     SbuCategoryParent
+     SbuCategoryChildren
+     ProductGms
+     ProductGmsDetail
+     ProductGmsDetailHistory
+     GmsAlgorithm
+     GudaoCategoryMap
+     ProductGqs
+     GudaoTargetList
+     GudaoTargetAction
+     ProductLister
+     AliexpressTable
+     GudaoLimitedAccess
+     GudaoProductCategory
+     SupplierPrice
+     ProductEps
+     SalesReportImport
+     SalesReportVariable
+     ProductKeywordSeed
+     ProductDescription
+     ProductTitleRandom
+     ProductTitleList
+     ProductTitleConfig
+     PipelineHeader
+     PipelineItem
+     ProductRelationship
+    -->
+    
+    <entity entity-name="ProductMaster"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master">
+        <field name="productId" type="id-vlong-ne"><description>Product Id</description></field>
+        <field name="customSku" type="very-long"><description>Custom SKU</description></field>
+        <field name="motherSku" type="very-long"><description>Mother SKU</description></field>
+        <field name="setSku" type="very-long"><description>Set SKU</description></field>
+        <field name="skuType" type="long-varchar"><description>SKU Type</description></field>
+        <field name="chineseName" type="long-varchar"><description>Chinese Name</description></field>
+        <field name="englishName" type="long-varchar"><description>English Name</description></field>
+        <field name="weight" type="floating-point"><description>Weight</description></field>
+        <field name="actualWeight" type="floating-point"><description>Actual Weight</description></field>
+        <field name="productGroup" type="long-varchar"><description>Product Group</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="categoryId" type="long-varchar"><description>Category Id</description></field>
+        <field name="categoryIdParent" type="long-varchar"><description>Category Id Parent</description></field>
+        <field name="categoryIdChild" type="long-varchar"><description>Category Id Child</description></field>
+        <field name="productType" type="long-varchar"><description>Product Type</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>Owner Group</description></field>
+        <field name="purchaser" type="long-varchar"><description>Purchaser</description></field>
+        <field name="imageLink" type="url"><description>Image Link</description></field>
+        <field name="extraStockingDay" type="numeric"><description>Extra Stocking Day</description></field>
+        <field name="sourcingDate" type="date"><description>Sourcing Date</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <field name="listingNotes" type="very-long"><description>Purchasing Notes</description></field>
+        <field name="upc" type="very-long"><description>UPC</description></field>
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="risk" type="long-varchar"><description>risk</description></field>
+        <field name="finalGps" type="numeric"><description>Final GPS</description></field>
+        <field name="finalGms" type="numeric"><description>Final GMS</description></field>
+        <field name="finalEps" type="floating-point"><description>Final EPS</description></field>
+        <field name="declaredNameCn" type="long-varchar"><description>Declared Name CN</description></field>
+        <field name="declaredNameEn" type="long-varchar"><description>Declared Name EN</description></field>
+        <field name="qcCost" type="currency-amount"><description>Quality Check Cost</description></field>
+        <field name="packagingCost" type="currency-amount"><description>Packaging Cost</description></field>
+        <field name="pictureReady" type="long-varchar"><description>Picture Ready</description></field>
+        <field name="createdBy" type="long-varchar"><description>Created By</description></field>
+        <prim-key field="productId"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterPrice"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Price">
+        <field name="productId" type="id-vlong-ne"><description>Product Id</description></field>
+        <field name="currencyId" type="id-ne"><description>Currency Id</description></field>
+        <field name="price" type="currency-amount"><description>Product Price</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="currencyId"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterSupplier"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Supplier">
+        <field name="productId" type="id-vlong-ne"><description>Product Id</description></field>
+        <field name="supplier" type="id-vlong-ne"><description>Supplier Id</description></field>
+        <field name="supplierType" type="short-varchar"><description>Supplier Type</description></field>
+        <field name="price" type="currency-amount"><description>Product Price</description></field>
+        <field name="actualPrice" type="currency-amount"><description>Product Actual Price</description></field>
+        <field name="supplierLink" type="url"><description>Image Link</description></field>
+        <field name="discountRate" type="numeric"><description>Discount Rate</description></field>
+        <field name="eta" type="numeric"><description>ETA</description></field>
+        <field name="minOrderDays" type="numeric"><description>Min Order Days</description></field>
+        <field name="minOrderQuantity" type="numeric"><description>Min Order Quantity</description></field>
+        <field name="priceLastUpdate" type="date"><description>Price Last Updated Date</description></field>
+        <field name="rank" type="short-varchar"><description>Supplier Rank</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="supplier"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterRival"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Supplier">
+        <field name="productId" type="id-vlong"><description>Product Id</description></field>
+        <field name="rank" type="short-varchar"><description>Product Rank</description></field>
+        <field name="rivalItemId" type="id-long"><description>Rival item Id</description></field>
+        <field name="similarItemId" type="id-long"><description>Rival item Id</description></field>
+        <field name="rivalLink" type="url"><description>Rival Link</description></field>
+        <field name="soldPerDay" type="floating-point"><description>Quantity Sold Per Day</description></field>
+        <field name="samePriceProfitPercentage" type="floating-point"><description>Same Price Profit Percentage</description></field>
+        <field name="dailySales" type="floating-point"><description>Daily Sales</description></field>
+        <field name="totalPrice" type="floating-point"><description>Total Price</description></field>
+        <field name="historySold" type="floating-point"><description>Total Price</description></field>
+        <field name="currency" type="short-varchar"><description>Currency</description></field>
+        <field name="crawl" type="short-varchar"><description>Crawl or not</description></field>
+        <field name="rivalPlatform" type="id-long"><description>Platform</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="rivalPlatform"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterStatus"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Platform Status">
+        <field name="productId" type="id-vlong-ne"><description>Product Id</description></field>
+        <field name="department" type="id-ne"><description>Department</description></field>
+        <field name="platform" type="id-ne"><description>Platform</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="department"/>
+        <prim-key field="platform"/>
+    </entity>
+    
+    <entity entity-name="RivalListingResult"
+        package-name="org.ofbiz.gudao.product"
+        title="Rival Listing Monitor">
+        <field name="rivalItemId" type="id-vlong"><description>Rival Item Id</description></field>
+        <field name="rivalHistorySold" type="floating-point"><description>Rival History Sold</description></field>
+        <field name="rivalCurrentPrice" type="floating-point"><description>Rival Current Price</description></field>
+        <field name="rivalOriginalPrice" type="floating-point"><description>Rival Current Price</description></field>
+        <field name="currency" type="short-varchar"><description>Currenct</description></field>
+        <field name="snapshotWeek" type="short-varchar"><description>Snapshot Week</description></field>
+        <field name="date" type="date"><description>date</description></field>
+        <field name="variationCount" type="numeric"><description>Variation Count</description></field>
+        <prim-key field="rivalItemId"/>
+        <prim-key field="date"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterRivalBackup"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Supplier">
+        <field name="productId" type="id-vlong"><description>Product Id</description></field>
+        <field name="rank" type="short-varchar"><description>Product Rank</description></field>
+        <field name="rivalItemId" type="id-long"><description>Rival item Id</description></field>
+        <field name="rivalLink" type="url"><description>Rival Link</description></field>
+        <field name="sellerId" type="long-varchar"><description>Seller Id</description></field>
+        <field name="soldPerDay" type="floating-point"><description>Quantity Sold Per Day</description></field>
+        <field name="samePriceProfitPercentage" type="floating-point"><description>Same Price Profit Percentage</description></field>
+        <field name="dailySales" type="floating-point"><description>Daily Sales</description></field>
+        <field name="totalPrice" type="floating-point"><description>Total Price</description></field>
+        <field name="historySold" type="floating-point"><description>Total Price</description></field>
+        <field name="crawl" type="short-varchar"><description>Crawl or not</description></field>
+        <prim-key field="productId"/>
+    </entity>
+    
+    <entity entity-name="ProductImportGudao" package-name="org.ofbiz.gudao.product"
+        title="Entity for storing the product from importing">
+        <field name="productImportId" type="id-ne"></field>
+        <field name="fileName" type="long-varchar"/>
+        <field name="fileLineNumber" type="fixed-point"></field>
+        <field name="productId" type="long-varchar"></field>
+        <field name="customSku" type="very-long"><description>Custom SKU</description></field>
+        <field name="motherSku" type="very-long"><description>Mother SKU</description></field>
+        <field name="setSku" type="very-long"><description>Set SKU</description></field>
+        <field name="setSkuQty" type="numeric"><description>Set SKU Quantity</description></field>
+        <field name="setSkuType" type="long-varchar"><description>Set SKU Type</description></field>
+        <field name="skuType" type="long-varchar"><description>SKU Type</description></field>
+        <field name="chineseName" type="long-varchar"><description>Chinese Name</description></field>
+        <field name="englishName" type="long-varchar"><description>English Name</description></field>
+        <field name="declaredNameCn" type="long-varchar"><description>Declared Name CN</description></field>
+        <field name="declaredNameEn" type="long-varchar"><description>Declared Name EN</description></field>
+        <field name="weight" type="floating-point"><description>Weight</description></field>
+        <field name="actualWeight" type="floating-point"><description>Actual Weight</description></field>
+        <field name="productGroup" type="long-varchar"><description>Product Group</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="ebayStatusId" type="long-varchar"><description>eBay Status Id</description></field>
+        <field name="smtStatusId" type="long-varchar"><description>SMT Status Id</description></field>
+        <field name="wishStatusId" type="long-varchar"><description>Wish Status Id</description></field>
+        <field name="amazonStatusId" type="long-varchar"><description>Amazon Status Id</description></field>
+        <field name="lazadaStatusId" type="long-varchar"><description>Lazada Status Id</description></field>
+        <field name="cdiscountStatusId" type="long-varchar"><description>Cdiscount Status Id</description></field>
+        <field name="tophatterStatusId" type="long-varchar"><description>Cdiscount Status Id</description></field>
+        <field name="categoryId" type="long-varchar"><description>Category Id</description></field>
+        <field name="categoryIdParent" type="long-varchar"><description>Category Id Parent</description></field>
+        <field name="categoryIdChild" type="long-varchar"><description>Category Id Child</description></field>
+        <field name="productType" type="long-varchar"><description>Product Type</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>Owner Group</description></field>
+        <field name="purchaser" type="long-varchar"><description>Purchaser</description></field>
+        <field name="imageLink" type="url"><description>Image Link</description></field>
+        <field name="extraStockingDay" type="numeric"><description>Image Link</description></field>
+        <field name="sourcingDate" type="date"><description>Sourcing Date</description></field>
+        <field name="priceUsd" type="currency-amount"></field>
+        <field name="priceAud" type="currency-amount"></field>
+        <field name="priceCad" type="currency-amount"></field>
+        <field name="priceGbp" type="currency-amount"></field>
+        <field name="priceEur" type="currency-amount"></field>
+        <field name="supplier" type="long-varchar"><description>Supplier Id</description></field>
+        <field name="supplierType" type="short-varchar"><description>Supplier Type</description></field>
+        <field name="price" type="currency-amount"><description>Product Cost</description></field>
+        <field name="actualPrice" type="currency-amount"><description>Product Actual Cost</description></field>
+        <field name="supplierLink" type="url"><description>Image Link</description></field>
+        <field name="discountRate" type="numeric"><description>Discount Rate</description></field>
+        <field name="eta" type="numeric"><description>ETA</description></field>
+        <field name="minOrderDays" type="numeric"><description>Min Order Days</description></field>
+        <field name="moIdentifierA" type="long-varchar"><description>Min Order Identifier A</description></field>
+        <field name="moQtyA" type="numeric"><description>Min Order Quantity A</description></field>
+        <field name="moPriceA" type="currency-amount"><description>Min Order Price A</description></field>
+        <field name="moUnitPriceA" type="currency-amount"><description>Min Order Unit Price A</description></field>
+        <field name="moIdentifierB" type="long-varchar"><description>Min Order Identifier B</description></field>
+        <field name="moQtyB" type="numeric"><description>Min Order Quantity B</description></field>
+        <field name="moPriceB" type="currency-amount"><description>Min Order Price B</description></field>
+        <field name="moUnitPriceB" type="currency-amount"><description>Min Order Unit Price B</description></field>
+        <field name="moIdentifierC" type="long-varchar"><description>Min Order Identifier C</description></field>
+        <field name="moQtyC" type="numeric"><description>Min Order Quantity C</description></field>
+        <field name="moPriceC" type="currency-amount"><description>Min Order Price C</description></field>
+        <field name="moUnitPriceC" type="currency-amount"><description>Min Order Unit Price C</description></field>
+        <field name="backupSupplier" type="long-varchar"><description>Backup Supplier Id</description></field>
+        <field name="backupSupplierLink" type="url"><description>Backup Supplier Link</description></field>
+        <field name="backupSupplierPrice" type="currency-amount"><description>Backup Supplier Price</description></field>
+        <field name="backupSupplierEta" type="numeric"><description>Backup Supplier ETA</description></field>
+        <field name="backupMinOrderDays" type="numeric"><description>Backup Supplier Min Order Days</description></field>
+        <field name="backupMoIdentifierA" type="long-varchar"><description>Backup Min Order Identifier A</description></field>
+        <field name="backupMoQtyA" type="numeric"><description>Backup Min Order Quantity A</description></field>
+        <field name="backupMoPriceA" type="currency-amount"><description>Backup Min Order Price A</description></field>
+        <field name="backupMoUnitPriceA" type="currency-amount"><description>Backup Min Order Unit Price A</description></field>
+        <field name="backupMoIdentifierB" type="long-varchar"><description>Backup Min Order Identifier B</description></field>
+        <field name="backupMoQtyB" type="numeric"><description>Backup Min Order Quantity B</description></field>
+        <field name="backupMoPriceB" type="currency-amount"><description>Backup Min Order Price B</description></field>
+        <field name="backupMoUnitPriceB" type="currency-amount"><description>Backup Min Order Unit Price B</description></field>
+        <field name="backupMoIdentifierC" type="long-varchar"><description>Backup Min Order Identifier C</description></field>
+        <field name="backupMoQtyC" type="numeric"><description>Backup Min Order Quantity C</description></field>
+        <field name="backupMoPriceC" type="currency-amount"><description>Backup Min Order Price C</description></field>
+        <field name="backupMoUnitPriceC" type="currency-amount"><description>Backup Min Order Unit Price C</description></field>
+        <field name="rivalItemId" type="short-varchar"><description>Rival item Id</description></field>
+        <field name="similarItemId" type="short-varchar"><description>Similar item Id</description></field>
+        <field name="rivalLink" type="url"><description>Rival Link</description></field>
+        <field name="soldPerDay" type="floating-point"><description>Quantity Sold Per Day</description></field>
+        <field name="samePriceProfitPercentage" type="floating-point"><description>Same Price Profit Percentage</description></field>
+        <field name="sellerId" type="long-varchar"><description>Seller Id</description></field>
+        <field name="crawl" type="short-varchar"><description>Crawl</description></field>
+        <field name="rivalPlatform" type="long-varchar"><description>Rival Platform</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <field name="listingNotes" type="very-long"><description>Purchasing Notes</description></field>
+        <field name="upc" type="very-long"><description>UPC</description></field>
+        <field name="ebayUsListing" type="long-varchar"><description>ebayUsListing</description></field>
+        <field name="ebayUkListing" type="long-varchar"><description>ebayUkListing</description></field>
+        <field name="ebayAuListing" type="long-varchar"><description>ebayAuListing</description></field>
+        <field name="ebayCaListing" type="long-varchar"><description>ebayCaListing</description></field>
+        <field name="ebayDeListing" type="long-varchar"><description>ebayDeListing</description></field>
+        <field name="ebayFrListing" type="long-varchar"><description>ebayFrListing</description></field>
+        <field name="ebayEsListing" type="long-varchar"><description>ebayEsListing</description></field>
+        <field name="smtListing" type="long-varchar"><description>smtListing</description></field>
+        <field name="amaListing" type="long-varchar"><description>amaListing</description></field>
+        <field name="wishListing" type="long-varchar"><description>wishListing</description></field>
+        <field name="readyToList" type="long-varchar"><description>Ready To List</description></field>
+        <field name="ebayPicture" type="long-varchar"><description>ebayPicture</description></field>
+        <field name="amazonPicture" type="long-varchar"><description>amazonPicture</description></field>
+        <field name="finePicture" type="long-varchar"><description>Fine Picture</description></field>
+        <field name="pictureReady" type="long-varchar"><description>Picture Ready</description></field>
+        <field name="platform" type="long-varchar"><description>platform</description></field>
+        <field name="risk" type="long-varchar"><description>risk</description></field>
+        <field name="listingCheck" type="short-varchar"><description>Listing Check</description></field>
+        <field name="smtLink" type="very-long"><description>SMT Link</description></field>
+        <field name="wishLink" type="very-long"><description>Wish Link</description></field>
+        <field name="amazonLink" type="very-long"><description>Amazon Link</description></field>
+        <field name="referenceLink" type="very-long"><description>Reference Link</description></field>
+        <field name="ebayUsAccount" type="long-varchar"><description>eBay US Account</description></field>
+        <field name="ebayUkAccount" type="long-varchar"><description>eBay UK Account</description></field>
+        <field name="ebayAuAccount" type="long-varchar"><description>eBay AU Account</description></field>
+        <field name="ebayDeAccount" type="long-varchar"><description>eBay DE Account</description></field>
+        <field name="ebayFrAccount" type="long-varchar"><description>eBay FR Account</description></field>
+        <field name="smtAccount" type="long-varchar"><description>SMT Account</description></field>
+        <field name="wishAccount" type="long-varchar"><description>WISH Account</description></field>
+        <field name="amaUsAccount" type="long-varchar"><description>Amazon US Account</description></field>
+        <field name="amaUkAccount" type="long-varchar"><description>Amazon UK Account</description></field>
+        <field name="amaCaAccount" type="long-varchar"><description>Amazon CA Account</description></field>
+        <field name="amaDeAccount" type="long-varchar"><description>Amazon DE Account</description></field>
+        <field name="amaFollow" type="numeric"><description>Amazon Follow</description></field>
+        <field name="updateGms" type="very-short"><description>Update GMS Indicator</description></field>
+        <field name="updateProductRelationship" type="very-short"><description>Update Product Relationship Indicator</description></field>
+        <field name="relationshipType" type="long-varchar"><description>Relationship Type</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <field name="listerPlatform" type="long-varchar"><description>Lister Platform</description></field>
+        <field name="lister" type="long-varchar"><description>Lister</description></field>
+        <field name="importedStatus" type="indicator"></field>
+        <field name="importedDescription" type="very-long"></field>
+        <field name="createdBy" type="long-varchar"></field>
+        <field name="originalFilename" type="long-varchar"></field>
+        <field name="errorNotes" type="long-varchar"></field>
+        <prim-key field="productImportId"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterVariable"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Variable">
+        <field name="pmVariableId" type="id-ne"><description>Product Master Variable Id</description></field>
+        <field name="type" type="long-varchar"><description>Type</description></field>
+        <field name="priceBreakLo" type="currency-amount"><description>Price Break Low</description></field>
+        <field name="priceBreakHi" type="currency-amount"><description>Price Break High</description></field>
+        <field name="weightBreakLo" type="floating-point"><description>Weight Break Low</description></field>
+        <field name="weightBreakHi" type="floating-point"><description>Weight Break High</description></field>
+        <field name="name" type="long-varchar"><description>Name</description></field>
+        <field name="value" type="long-varchar"><description>Value</description></field>
+        <field name="notes" type="long-varchar"><description>Notes</description></field>
+        <prim-key field="pmVariableId"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterColumnTitle"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Column Title">
+        <field name="columnId" type="id-ne"><description>Column Id</description></field>
+        <field name="columnTitle" type="long-varchar"><description>Product Master Column Title</description></field>
+        <field name="sequenceId" type="very-short"><description>Sequence Id</description></field>
+        <prim-key field="columnId"/>
+    </entity>
+    
+    <entity entity-name="GudaoShippingCost"
+        package-name="org.ofbiz.gudao.shipping"
+        title="Gudao Shipping Cost">
+        <field name="carrierId" type="id-ne"><description>Product Master Variable Id</description></field>
+        <field name="shippingMethodType" type="id-ne"><description>Type</description></field>
+        <field name="discountRate" type="numeric"><description>Discount Rate</description></field>
+        <field name="pricePerGram" type="currency-amount"><description>Price per Gram</description></field>
+        <field name="additionalCost" type="currency-amount"><description>Additional Cost</description></field>
+        <field name="notes" type="long-varchar"><description>Notes</description></field>
+        <prim-key field="carrierId"/>
+        <prim-key field="shippingMethodType"/>
+    </entity>
+    
+    <entity entity-name="ProductMasterResult"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Master Result">
+        <field name="productId" type="id-vlong-ne"></field>
+        <field name="customSku" type="very-long"><description>Custom SKU</description></field>
+        <field name="motherSku" type="very-long"><description>Mother SKU</description></field>
+        <field name="motherSkuWeight" type="floating-point"><description>Mother SKU Weight</description></field>
+        <field name="setSku" type="very-long"><description>Set SKU</description></field>
+        <field name="skuType" type="long-varchar"><description>SKU Type</description></field>
+        <field name="chineseName" type="long-varchar"><description>Chinese Name</description></field>
+        <field name="englishName" type="long-varchar"><description>English Name</description></field>
+        <field name="declaredNameCn" type="long-varchar"><description>Declared Name CN</description></field>
+        <field name="declaredNameEn" type="long-varchar"><description>Declared Name EN</description></field>
+        <field name="weight" type="floating-point"><description>Weight</description></field>
+        <field name="actualWeight" type="floating-point"><description>ActualWeight</description></field>
+        <field name="productGroup" type="long-varchar"><description>Product Group</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="categoryId" type="long-varchar"><description>Category Id</description></field>
+        <field name="categoryIdParent" type="long-varchar"><description>Category Id Parent</description></field>
+        <field name="categoryIdChild" type="long-varchar"><description>Category Id Child</description></field>
+        <field name="productType" type="long-varchar"><description>Product Type</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>Owner Group</description></field>
+        <field name="purchaser" type="long-varchar"><description>Purchaser</description></field>
+        <field name="imageLink" type="url"><description>Image Link</description></field>
+        <field name="extraStockingDay" type="numeric"><description>Image Link</description></field>
+        <field name="sourcingDate" type="date"><description>Sourcing Date</description></field>
+        <field name="priceUsd" type="currency-amount"></field>
+        <field name="priceAud" type="currency-amount"></field>
+        <field name="priceCad" type="currency-amount"></field>
+        <field name="priceGbp" type="currency-amount"></field>
+        <field name="priceEur" type="currency-amount"></field>
+        <field name="cpPercentage" type="floating-point"></field>
+        <field name="gbpPercentage" type="floating-point"></field>
+        <field name="audPercentage" type="floating-point"></field>
+        <field name="eurPercentage" type="floating-point"></field>
+        <field name="cadPercentage" type="floating-point"></field>
+        <field name="smtPrice" type="currency-amount"></field>
+        <field name="smtPercentage" type="floating-point"></field>
+        <field name="smtShippingMethod" type="long-varchar"></field>
+        <field name="wishProductPrice" type="currency-amount"></field>
+        <field name="wishShippingPrice" type="currency-amount"></field>
+        <field name="wishPercentage" type="floating-point"></field>
+        <field name="amaPrice" type="currency-amount"></field>
+        <field name="amaPercentage" type="floating-point"></field>
+        <field name="supplier" type="long-varchar"><description>Supplier Id</description></field>
+        <field name="supplierType" type="short-varchar"><description>Supplier Type</description></field>
+        <field name="price" type="currency-amount"><description>Product Cost</description></field>
+        <field name="supplierLink" type="url"><description>Image Link</description></field>
+        <field name="discountRate" type="numeric"><description>Discount Rate</description></field>
+        <field name="eta" type="numeric"><description>ETA</description></field>
+        <field name="minOrderDays" type="numeric"><description>Min Order Days</description></field>
+        <field name="minOrderQuantity" type="numeric"><description>Min Order Quantity</description></field>
+        <field name="priceLastUpdate" type="date"><description>Price Last Update Date</description></field>
+        <field name="backupSupplier" type="long-varchar"><description>Backup Supplier Id</description></field>
+        <field name="backupSupplierLink" type="url"><description>Backup Supplier Link</description></field>
+        <field name="backupSupplierPrice" type="currency-amount"><description>Backup Supplier Price</description></field>
+        <field name="backupSupplierEta" type="numeric"><description>Backup Supplier ETA</description></field>
+        <field name="backupMinOrderDays" type="numeric"><description>Backup Supplier Min Order Days</description></field>
+        <field name="backupMinOrderQty" type="numeric"><description>Backup Supplier Min Order Quantity</description></field>
+        <field name="backupPriceLastUpdate" type="date"><description>Backup Price Last Update Date</description></field>
+        <field name="rivalItemId" type="short-varchar"><description>Rival item Id</description></field>
+        <field name="rivalLink" type="url"><description>Rival Link</description></field>
+        <field name="soldPerDay" type="floating-point"><description>Quantity Sold Per Day</description></field>
+        <field name="samePriceProfitPercentage" type="floating-point"><description>Same Price Profit Percentage</description></field>
+        <field name="sellerId" type="long-varchar"><description>Seller Id</description></field>
+        <field name="crawl" type="short-varchar"><description>Crawl</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <field name="listingNotes" type="very-long"><description>Purchasing Notes</description></field>
+        <field name="upc" type="very-long"><description>UPC</description></field>
+        <field name="ebayUsListing" type="long-varchar"><description>ebayUsListing</description></field>
+        <field name="ebayUkListing" type="long-varchar"><description>ebayUkListing</description></field>
+        <field name="ebayAuListing" type="long-varchar"><description>ebayAuListing</description></field>
+        <field name="ebayCaListing" type="long-varchar"><description>ebayCaListing</description></field>
+        <field name="ebayDeListing" type="long-varchar"><description>ebayDeListing</description></field>
+        <field name="ebayFrListing" type="long-varchar"><description>ebayFrListing</description></field>
+        <field name="ebayEsListing" type="long-varchar"><description>ebayEsListing</description></field>
+        <field name="smtListing" type="long-varchar"><description>smtListing</description></field>
+        <field name="amaListing" type="long-varchar"><description>amaListing</description></field>
+        <field name="wishListing" type="long-varchar"><description>wishListing</description></field>
+        <field name="ebayPicture" type="long-varchar"><description>eBay Picture</description></field>
+        <field name="amazonPicture" type="long-varchar"><description>Amazon Picture</description></field>
+        <field name="finePicture" type="long-varchar"><description>Fine Picture</description></field>
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="risk" type="long-varchar"><description>risk</description></field>
+        <field name="listingCheck" type="short-varchar"><description>Listing Check</description></field>
+        <field name="finalGps" type="numeric"><description>Final GPS</description></field>
+        <field name="finalGms" type="numeric"><description>Final GMS</description></field>
+        <field name="finalEps" type="floating-point"><description>Final EPS</description></field>
+        <field name="qcCost" type="currency-amount"><description>Quality Check Cost</description></field>
+        <field name="packagingCost" type="currency-amount"><description>Packaging Cost</description></field>
+        <field name="pictureReady" type="long-varchar"><description>Picture Ready</description></field>
+        <field name="createdBy" type="long-varchar"><description>Created By</description></field>
+        <prim-key field="productId"/>
+    </entity>
+    
+    
+    <entity entity-name="ProductListingStatus"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Listing Status">
+        <field name="productId" type="id-vlong-ne"><description>Product Id</description></field>
+        <field name="listingStatusTypeId" type="id-vlong-ne"><description>Listing Status Type</description></field>
+        <field name="value" type="long-varchar"><description>Listing Status Value</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="listingStatusTypeId"/>
+    </entity>
+    
+    <entity entity-name="ReportImport"
+        package-name="org.ofbiz.gudao.report"
+        title="Report Import">
+        <field name="reportImportId" type="id-ne"><description>Import Id</description></field>
+        <field name="fileName" type="long-varchar"/>
+        <field name="fileLineNumber" type="fixed-point"></field>
+        <field name="importedStatus" type="indicator"></field>
+        <field name="importedDescription" type="very-long"></field>
+        <field name="createdBy" type="long-varchar"></field>
+        <field name="orderId" type="long-varchar"><description>orderId</description></field>
+        <field name="orderDate" type="date"><description>orderDate</description></field>
+        <field name="currencyRate" type="floating-point"><description>currencyRate</description></field>
+        <field name="platform" type="long-varchar"><description>platform</description></field>
+        <field name="salesRmb" type="floating-point"><description>salesRmb</description></field>
+        <field name="salesOriginal" type="floating-point"><description>salesOriginal</description></field>
+        <field name="shippingRmb" type="floating-point"><description>shippingRmb</description></field>
+        <field name="shippingOriginal" type="floating-point"><description>shippingOriginal</description></field>
+        <field name="totalSales" type="floating-point"><description>totalSales</description></field>
+        <field name="productCost" type="floating-point"><description>productCost</description></field>
+        <field name="shippingCost" type="floating-point"><description>shippingCost</description></field>
+        <field name="paypalRmb" type="floating-point"><description>paypalRmb</description></field>
+        <field name="paypalOriginal" type="floating-point"><description>paypalOriginal</description></field>
+        <field name="ebayFeeRmb" type="floating-point"><description>ebayFeeRmb</description></field>
+        <field name="ebayFeeOriginal" type="floating-point"><description>ebayFeeOriginal</description></field>
+        <field name="packaging" type="floating-point"><description>packaging</description></field>
+        <field name="totalCost" type="floating-point"><description>totalCost</description></field>
+        <field name="itemQty" type="numeric"><description>itemQty</description></field>
+        <field name="orderQty" type="numeric"><description>orderQty</description></field>
+        <field name="profit" type="floating-point"><description>profit</description></field>
+        <field name="profitPct" type="floating-point"><description>profitPct</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>ownerGroup</description></field>
+        <field name="duplicate" type="numeric"><description>duplicate</description></field>
+        <field name="normalizeTotalSales" type="floating-point"><description>normalizeTotalSales</description></field>
+        <field name="normalizeProductCost" type="floating-point"><description>normalizeProductCost</description></field>
+        <field name="normalizeShippingCost" type="floating-point"><description>normalizeShippingCost</description></field>
+        <field name="normalizePaypal" type="floating-point"><description>normalizePaypal</description></field>
+        <field name="normalizeEbayFee" type="floating-point"><description>romalizeEbayFee</description></field>
+        <field name="normalizeTotalFee" type="floating-point"><description>normalizeTotalFee</description></field>
+        <field name="normalizeProfit" type="floating-point"><description>normalizeProfit</description></field>
+        <prim-key field="reportImportId"/>
+    </entity>
+    
+    <entity entity-name="ReportProfit"
+        package-name="org.ofbiz.gudao.report"
+        title="Report Profit">
+        <field name="orderId" type="id-long-ne"><description>orderId</description></field>
+        <field name="orderDate" type="date"><description>orderDate</description></field>
+        <field name="currencyRate" type="floating-point"><description>currencyRate</description></field>
+        <field name="platform" type="id-long-ne"><description>platform</description></field>
+        <field name="salesRmb" type="floating-point"><description>salesRmb</description></field>
+        <field name="salesOriginal" type="floating-point"><description>salesOriginal</description></field>
+        <field name="shippingRmb" type="floating-point"><description>shippingRmb</description></field>
+        <field name="shippingOriginal" type="floating-point"><description>shippingOriginal</description></field>
+        <field name="totalSales" type="floating-point"><description>totalSales</description></field>
+        <field name="productCost" type="floating-point"><description>productCost</description></field>
+        <field name="shippingCost" type="floating-point"><description>shippingCost</description></field>
+        <field name="paypalRmb" type="floating-point"><description>paypalRmb</description></field>
+        <field name="paypalOriginal" type="floating-point"><description>paypalOriginal</description></field>
+        <field name="ebayFeeRmb" type="floating-point"><description>ebayFeeRmb</description></field>
+        <field name="ebayFeeOriginal" type="floating-point"><description>ebayFeeOriginal</description></field>
+        <field name="packaging" type="floating-point"><description>packaging</description></field>
+        <field name="totalCost" type="floating-point"><description>totalCost</description></field>
+        <field name="itemQty" type="numeric"><description>itemQty</description></field>
+        <field name="orderQty" type="numeric"><description>orderQty</description></field>
+        <field name="profit" type="floating-point"><description>profit</description></field>
+        <field name="profitPct" type="floating-point"><description>profitPct</description></field>
+        <field name="ownerGroup" type="id-long-ne"><description>ownerGroup</description></field>
+        <field name="duplicate" type="numeric"><description>duplicate</description></field>
+        <field name="normalizeTotalSales" type="floating-point"><description>normalizeTotalSales</description></field>
+        <field name="normalizeProductCost" type="floating-point"><description>normalizeProductCost</description></field>
+        <field name="normalizeShippingCost" type="floating-point"><description>normalizeShippingCost</description></field>
+        <field name="normalizePaypal" type="floating-point"><description>normalizePaypal</description></field>
+        <field name="normalizeEbayFee" type="floating-point"><description>romalizeEbayFee</description></field>
+        <field name="normalizeTotalFee" type="floating-point"><description>normalizeTotalFee</description></field>
+        <field name="normalizeProfit" type="floating-point"><description>normalizeProfit</description></field>
+        <prim-key field="orderId"/>
+        <prim-key field="platform"/>
+        <prim-key field="ownerGroup"/>
+    </entity>
+    
+    <entity entity-name="GudaoRefund"
+        package-name="org.ofbiz.gudao.report"
+        title="Gudao Refund">
+        <field name="orderId" type="id-long-ne"><description>orderId</description></field>
+        <field name="productId" type="id-long-ne"><description>productId</description></field>
+        <field name="platform" type="long-varchar"><description>platform</description></field>
+        <field name="amount" type="floating-point"><description>amount</description></field>
+        <field name="reason" type="very-long"><description>reason</description></field>
+        <field name="date" type="date"><description>date</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>ownerGroup</description></field>
+        <prim-key field="orderId"/>
+        <prim-key field="date"/>
+        <prim-key field="ownerGroup"/>
+    </entity>
+    
+    <entity entity-name="GudaoOperationCost"
+        package-name="org.ofbiz.gudao.report"
+        title="GudaoOperationCost">
+        <field name="costSeqId" type="id-ne"><description>costSeqId</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>ownerGroup</description></field>
+        <field name="date" type="date"><description>date</description></field>
+        <field name="domesticDelivery" type="floating-point"><description>domesticDelivery</description></field>
+        <field name="totalProductCost" type="floating-point"><description>totalProductCost</description></field>
+        <prim-key field="costSeqId"/>
+    </entity>
+    
+    <entity entity-name="WishListing"
+        package-name="org.ofbiz.gudao.wish"
+        title="Wish Listing">
+        <field name="listingId" type="id"><description>Auto Listing Id</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="wishId" type="long-varchar"><description>Wish Listing Id</description></field>
+        <field name="parentSku" type="long-varchar"><description>parent SKU</description></field>
+        <field name="mainImage" type="url"><description>main Image URL</description></field>
+        <field name="name" type="long-varchar"><description>name</description></field>
+        <field name="isPromoted" type="short-varchar"><description>Is Promoted</description></field>
+        <field name="description" type="very-long"><description>Description</description></field>
+        <field name="reviewStatus" type="long-varchar"><description>Review Status</description></field>
+        <field name="upc" type="long-varchar"><description>UPC</description></field>
+        <field name="extraImages" type="very-long"><description>Extra Images</description></field>
+        <field name="numberSaves" type="numeric"><description>Number Saves</description></field>
+        <field name="numberSold" type="numeric"><description>Number Sold</description></field>
+        <field name="date" type="date"><description>date</description></field>
+        <prim-key field="listingId"/>
+    </entity>
+    
+    <entity entity-name="WishListingVariation"
+        package-name="org.ofbiz.gudao.wish"
+        title="Wish Listing Variation">
+        <field name="listingId" type="id"><description>Auto Listing Id</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="varSeqId" type="id"><description>Variation Sequence Id</description></field>
+        <field name="sku" type="long-varchar"><description>SKU</description></field>
+        <field name="normalizedSku" type="long-varchar"><description>SKU</description></field>
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="size" type="long-varchar"><description>Size</description></field>
+        <field name="color" type="long-varchar"><description>Color</description></field>
+        <field name="price" type="floating-point"><description>Price</description></field>
+        <field name="enabled" type="short-varchar"><description>Enabled</description></field>
+        <field name="shipping" type="floating-point"><description>Shipping</description></field>
+        <field name="allImages" type="very-long"><description>All Images</description></field>
+        <field name="inventory" type="numeric"><description>Inventory</description></field>
+        <field name="variationId" type="long-varchar"><description>Variation Id</description></field>
+        <field name="msrp" type="floating-point"><description>MSRP</description></field>
+        <field name="shippingTime" type="short-varchar"><description>Shipping Time</description></field>
+        <prim-key field="listingId"/>
+        <prim-key field="varSeqId"/>
+    </entity>
+    
+    <entity entity-name="WishTags"
+        package-name="org.ofbiz.gudao.wish"
+        title="Wish Tags">
+        <field name="wishId" type="id"><description>Wish Listing Id</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="tagSeqId" type="id"><description>Tag Sequence Id</description></field>
+        <field name="tagType" type="id"><description>Tag Type</description></field>
+        <field name="tagId" type="very-long"><description>Tag Id</description></field>
+        <field name="tagName" type="very-long"><description>Tag Name</description></field>
+        <prim-key field="wishId"/>
+        <prim-key field="tagSeqId"/>
+        <prim-key field="tagType"/>
+    </entity>
+    
+    <entity entity-name="GudaoInventory"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Inventory">
+        <field name="productId" type="id-vlong-ne"><description>Product Id</description></field>
+        <field name="qty" type="numeric"><description>Quantity On Hand</description></field>
+        <field name="atp" type="numeric"><description>Available To Promise</description></field>
+        <field name="averageWeeklySold" type="floating-point"><description>Average Weekly Sold</description></field>
+        <field name="date" type="date"><description>Date</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="date"/>
+    </entity>
+    
+    <entity entity-name="OwnerGroup"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Owner Group">
+        <field name="ownerGroupId" type="id-ne"><description>Owner Group Id</description></field>
+        <field name="ownerGroupName" type="long-varchar"><description>Owner Group Name</description></field>
+        <field name="statusId" type="short-varchar"><description>Status ID</description></field>
+        <field name="notes" type="long-varchar"><description>Notes</description></field>
+        <prim-key field="ownerGroupId"/>
+    </entity>
+    
+    <entity entity-name="ProductGroup"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product Group">
+        <field name="productGroupId" type="id-ne"><description>Product Group Id</description></field>
+        <field name="productGroupName" type="long-varchar"><description>Product Group Name</description></field>
+        <field name="statusId" type="short-varchar"><description>Status ID</description></field>
+        <field name="notes" type="long-varchar"><description>Notes</description></field>
+        <prim-key field="productGroupId"/>
+    </entity>
+    
+    <entity entity-name="SummaryView"
+        package-name="org.ofbiz.gudao.report"
+        title="Gudao Summary View">
+        <field name="summaryId" type="id-ne"><description>Summary Id</description></field>
+        <field name="ownerGroupId" type="id-ne"><description>Owner Group Id</description></field>
+        <field name="platform" type="id-ne"><description>Platform</description></field>
+        <field name="pending" type="numeric"><description>Pending</description></field>
+        <field name="total" type="numeric"><description>Total</description></field>
+        <field name="notes" type="long-varchar"><description>Note</description></field>
+        <prim-key field="summaryId"/>
+        <prim-key field="ownerGroupId"/>
+        <prim-key field="platform"/>
+    </entity>
+    
+    <entity entity-name="MotherVersion"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Mother Version">
+        <field name="marketplace" type="id-ne"><description>Market Place</description></field>
+        <field name="motherVersionType" type="id-ne"><description>MotherVersionType</description></field>
+        <field name="id" type="id-ne"><description>Id</description></field>
+        <field name="yunqudaoListingId" type="long-varchar"><description>YunqudaoListingId</description></field>
+        <field name="yunqudaoListingIdVar" type="long-varchar"><description>YunqudaoListingIdVariation</description></field>
+        <field name="yunqudaoFolderId" type="long-varchar"><description>YunqudaoFolderId</description></field>
+        <field name="ebayAccountName" type="long-varchar"><description>ebayAccountName</description></field>
+        <field name="sku" type="long-varchar"><description>Sku</description></field>
+        <field name="siteId" type="long-varchar"><description>SiteId</description></field>
+        <field name="format" type="long-varchar"><description>Format</description></field>
+        <field name="title" type="long-varchar"><description>Title</description></field>
+        <field name="subtitle" type="long-varchar"><description>Subtitle</description></field>
+        <field name="tags" type="very-long"><description>Tags</description></field>
+        <field name="relationship" type="long-varchar"><description>Relationship</description></field>
+        <field name="relationshipDetails" type="very-long"><description>RelationshipDetails</description></field>
+        <field name="quantity" type="long-varchar"><description>Quantity</description></field>
+        <field name="qtyRestrictionPerBuyerMax" type="long-varchar"><description>QtyRestrictionPerBuyerMax</description></field>
+        <field name="currency" type="long-varchar"><description>Currency</description></field>
+        <field name="startPrice" type="long-varchar"><description>StartPrice</description></field>
+        <field name="reservePrice" type="long-varchar"><description>ReservePrice</description></field>
+        <field name="buyItNowPrice" type="long-varchar"><description>BuyItNowPrice</description></field>
+        <field name="duration" type="long-varchar"><description>Duration</description></field>
+        <field name="privateListing" type="long-varchar"><description>PrivateListing</description></field>
+        <field name="bestOfferAutoAcceptPrice" type="long-varchar"><description>BestOfferAutoAcceptPrice</description></field>
+        <field name="minBestOfferPrice" type="long-varchar"><description>MinBestOfferPrice</description></field>
+        <field name="outOfStockControl" type="long-varchar"><description>OutOfStockControl</description></field>
+        <field name="picUrl" type="very-long"><description>PicUrl</description></field>
+        <field name="yunqudaoImageLayout" type="long-varchar"><description>YunqudaoImageLayout</description></field>
+        <field name="uploadImageEps" type="long-varchar"><description>UploadImageEps</description></field>
+        <field name="showImageInDesc" type="long-varchar"><description>ShowImageInDesc</description></field>
+        <field name="itemSpecific" type="very-long"><description>ItemSpecific</description></field>
+        <field name="condition" type="long-varchar"><description>Condition</description></field>
+        <field name="conditionDescription" type="long-varchar"><description>ConditionDescription</description></field>
+        <field name="category" type="long-varchar"><description>Category</description></field>
+        <field name="category2" type="long-varchar"><description>Category2</description></field>
+        <field name="storeCategory" type="long-varchar"><description>StoreCategory</description></field>
+        <field name="storeCategory2" type="long-varchar"><description>StoreCategory2</description></field>
+        <field name="upc" type="long-varchar"><description>Upc</description></field>
+        <field name="ean" type="long-varchar"><description>Ean</description></field>
+        <field name="isbn" type="long-varchar"><description>Isbn</description></field>
+        <field name="brandMpnBrand" type="long-varchar"><description>BrandMpnBrand</description></field>
+        <field name="brandMpnMpn" type="long-varchar"><description>BrandMpnMpn</description></field>
+        <field name="descriptionFile" type="long-varchar"><description>DescriptionFile</description></field>
+        <field name="description" type="long-varchar"><description>Description</description></field>
+        <field name="description1" type="long-varchar"><description>Description1</description></field>
+        <field name="description2" type="long-varchar"><description>Description2</description></field>
+        <field name="description3" type="long-varchar"><description>Description3</description></field>
+        <field name="yunqudaoTemplateId" type="long-varchar"><description>YunqudaoTemplateId</description></field>
+        <field name="yunqudaoSellerDetailId" type="long-varchar"><description>YunqudaoSellerDetailId</description></field>
+        <field name="yunqudaoCounter" type="long-varchar"><description>YunqudaoCounter</description></field>
+        <field name="listingEnhancement" type="long-varchar"><description>ListingEnhancement</description></field>
+        <field name="country" type="long-varchar"><description>Country</description></field>
+        <field name="location" type="long-varchar"><description>Location</description></field>
+        <field name="dispatchTimeMax" type="long-varchar"><description>DispatchTimeMax</description></field>
+        <field name="getItFast" type="long-varchar"><description>GetItFast</description></field>
+        <field name="shippingService1Option" type="long-varchar"><description>ShippingService1Option</description></field>
+        <field name="shippingService1Cost" type="long-varchar"><description>ShippingService1Cost</description></field>
+        <field name="shippingService1AddCost" type="long-varchar"><description>ShippingService1AddCost</description></field>
+        <field name="shippingService2Option" type="long-varchar"><description>ShippingService2Option</description></field>
+        <field name="shippingService2Cost" type="long-varchar"><description>ShippingService2Cost</description></field>
+        <field name="shippingService2AddCost" type="long-varchar"><description>ShippingService2AddCost</description></field>
+        <field name="shippingService3Option" type="long-varchar"><description>ShippingService3Option</description></field>
+        <field name="shippingService3Cost" type="long-varchar"><description>ShippingService3Cost</description></field>
+        <field name="shippingService3AddCost" type="long-varchar"><description>ShippingService3AddCost</description></field>
+        <field name="shippingService4Option" type="long-varchar"><description>ShippingService4Option</description></field>
+        <field name="shippingService4Cost" type="long-varchar"><description>ShippingService4Cost</description></field>
+        <field name="shippingService4AddCost" type="long-varchar"><description>ShippingService4AddCost</description></field>
+        <field name="shippingRateTable" type="long-varchar"><description>ShippingRateTable</description></field>
+        <field name="intShippingService1Option" type="long-varchar"><description>IntShippingService1Option</description></field>
+        <field name="intShippingService1Cost" type="long-varchar"><description>IntShippingService1Cost</description></field>
+        <field name="intShippingService1AddCost" type="long-varchar"><description>IntShippingService1AddCost</description></field>
+        <field name="intShippingService1Locations" type="long-varchar"><description>IntShippingService1Locations</description></field>
+        <field name="intShippingService2Option" type="long-varchar"><description>IntShippingService2Option</description></field>
+        <field name="intShippingService2Cost" type="long-varchar"><description>IntShippingService2Cost</description></field>
+        <field name="intShippingService2AddCost" type="long-varchar"><description>IntShippingService2AddCost</description></field>
+        <field name="intShippingService2Locations" type="long-varchar"><description>IntShippingService2Locations</description></field>
+        <field name="intShippingService3Option" type="long-varchar"><description>IntShippingService3Option</description></field>
+        <field name="intShippingService3Cost" type="long-varchar"><description>IntShippingService3Cost</description></field>
+        <field name="intShippingService3AddCost" type="long-varchar"><description>IntShippingService3AddCost</description></field>
+        <field name="intShippingService3Locations" type="long-varchar"><description>IntShippingService3Locations</description></field>
+        <field name="intShippingService4Option" type="long-varchar"><description>IntShippingService4Option</description></field>
+        <field name="intShippingService4Cost" type="long-varchar"><description>IntShippingService4Cost</description></field>
+        <field name="intShippingService4AddCost" type="long-varchar"><description>IntShippingService4AddCost</description></field>
+        <field name="intShippingService4Locations" type="long-varchar"><description>IntShippingService4Locations</description></field>
+        <field name="intShippingService5Option" type="long-varchar"><description>IntShippingService5Option</description></field>
+        <field name="intShippingService5Cost" type="long-varchar"><description>IntShippingService5Cost</description></field>
+        <field name="intShippingService5AddCost" type="long-varchar"><description>IntShippingService5AddCost</description></field>
+        <field name="intShippingService5Locations" type="long-varchar"><description>IntShippingService5Locations</description></field>
+        <field name="intShippingRateTable" type="long-varchar"><description>IntShippingRateTable</description></field>
+        <field name="excludeShipToLocation" type="very-long"><description>ExcludeShipToLocation</description></field>
+        <field name="payPalEmailAddress" type="long-varchar"><description>PayPalEmailAddress</description></field>
+        <field name="immediatePayRequired" type="long-varchar"><description>ImmediatePayRequired</description></field>
+        <field name="payMoneyXferAccInCheckout" type="long-varchar"><description>PayMoneyXferAccInCheckout</description></field>
+        <field name="paymentInstructions" type="very-long"><description>PaymentInstructions</description></field>
+        <field name="returnsAcceptedOption" type="long-varchar"><description>ReturnsAcceptedOption</description></field>
+        <field name="returnsWithinOption" type="long-varchar"><description>ReturnsWithinOption</description></field>
+        <field name="refundOption" type="long-varchar"><description>RefundOption</description></field>
+        <field name="shippingCostPaidByOption" type="long-varchar"><description>ShippingCostPaidByOption</description></field>
+        <field name="returnPolicyDescription" type="very-long"><description>ReturnPolicyDescription</description></field>
+        <field name="extendedHolidayReturns" type="long-varchar"><description>ExtendedHolidayReturns</description></field>
+        <field name="bRLinkedPayPalAccount" type="long-varchar"><description>BRLinkedPayPalAccount</description></field>
+        <field name="bRMaxBuyerPolicyVioCount" type="long-varchar"><description>BRMaxBuyerPolicyVioCount</description></field>
+        <field name="bRMaxBuyerPolicyVioPeriod" type="long-varchar"><description>BRMaxBuyerPolicyVioPeriod</description></field>
+        <field name="bRMaxItemReqMaxItemCount" type="long-varchar"><description>BRMaxItemReqMaxItemCount</description></field>
+        <field name="bRMaxItemReqMinFeedbackScore" type="long-varchar"><description>BRMaxItemReqMinFeedbackScore</description></field>
+        <field name="bRMaxUnpaidStrikesInfoCount" type="long-varchar"><description>BRMaxUnpaidStrikesInfoCount</description></field>
+        <field name="bRMaxUnpaidStrikesInfoPeriod" type="long-varchar"><description>BRMaxUnpaidStrikesInfoPeriod</description></field>
+        <field name="bRMinFeedbackScore" type="long-varchar"><description>BRMinFeedbackScore</description></field>
+        <field name="bRShipToRegistrationCountry" type="long-varchar"><description>BRShipToRegistrationCountry</description></field>
+        <field name="yunqudaoAutoRelistId" type="long-varchar"><description>YunqudaoAutoRelistId</description></field>
+        <field name="yunqudaoAutoReplenishId" type="long-varchar"><description>YunqudaoAutoReplenishId</description></field>
+        <field name="yunqudaoShowcaseId" type="long-varchar"><description>YunqudaoShowcaseId</description></field>
+        <prim-key field="marketplace"/>
+        <prim-key field="motherVersionType"/>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="MotherVersionResult"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Mother Version Result">
+        <field name="account" type="id-ne"><description>Account</description></field>
+        <field name="marketplace" type="id-ne"><description>marketPlace</description></field>
+        <field name="id" type="id-ne"><description>Id</description></field>
+        <field name="yunqudaoListingId" type="long-varchar"><description>YunqudaoListingId</description></field>
+        <field name="yunqudaoFolderId" type="long-varchar"><description>YunqudaoFolderId</description></field>
+        <field name="ebayAccountName" type="id-ne"><description>ebayAccountName</description></field>
+        <field name="sku" type="long-varchar"><description>Sku</description></field>
+        <field name="siteId" type="long-varchar"><description>SiteId</description></field>
+        <field name="format" type="long-varchar"><description>Format</description></field>
+        <field name="title" type="long-varchar"><description>Title</description></field>
+        <field name="subtitle" type="long-varchar"><description>Subtitle</description></field>
+        <field name="tags" type="very-long"><description>Tags</description></field>
+        <field name="relationship" type="long-varchar"><description>Relationship</description></field>
+        <field name="relationshipDetails" type="very-long"><description>RelationshipDetails</description></field>
+        <field name="quantity" type="long-varchar"><description>Quantity</description></field>
+        <field name="qtyRestrictionPerBuyerMax" type="long-varchar"><description>QtyRestrictionPerBuyerMax</description></field>
+        <field name="currency" type="long-varchar"><description>Currency</description></field>
+        <field name="startPrice" type="long-varchar"><description>StartPrice</description></field>
+        <field name="reservePrice" type="long-varchar"><description>ReservePrice</description></field>
+        <field name="buyItNowPrice" type="long-varchar"><description>BuyItNowPrice</description></field>
+        <field name="duration" type="long-varchar"><description>Duration</description></field>
+        <field name="privateListing" type="long-varchar"><description>PrivateListing</description></field>
+        <field name="bestOfferAutoAcceptPrice" type="long-varchar"><description>BestOfferAutoAcceptPrice</description></field>
+        <field name="minBestOfferPrice" type="long-varchar"><description>MinBestOfferPrice</description></field>
+        <field name="picUrl" type="very-long"><description>PicUrl</description></field>
+        <field name="yunqudaoImageLayout" type="long-varchar"><description>YunqudaoImageLayout</description></field>
+        <field name="uploadImageEps" type="long-varchar"><description>UploadImageEps</description></field>
+        <field name="showImageInDesc" type="long-varchar"><description>ShowImageInDesc</description></field>
+        <field name="itemSpecific" type="very-long"><description>ItemSpecific</description></field>
+        <field name="condition" type="long-varchar"><description>Condition</description></field>
+        <field name="conditionDescription" type="long-varchar"><description>ConditionDescription</description></field>
+        <field name="category" type="long-varchar"><description>Category</description></field>
+        <field name="category2" type="long-varchar"><description>Category2</description></field>
+        <field name="storeCategory" type="long-varchar"><description>StoreCategory</description></field>
+        <field name="storeCategory2" type="long-varchar"><description>StoreCategory2</description></field>
+        <field name="upc" type="long-varchar"><description>Upc</description></field>
+        <field name="ean" type="long-varchar"><description>Ean</description></field>
+        <field name="isbn" type="long-varchar"><description>Isbn</description></field>
+        <field name="brandMpnBrand" type="long-varchar"><description>BrandMpnBrand</description></field>
+        <field name="brandMpnMpn" type="long-varchar"><description>BrandMpnMpn</description></field>
+        <field name="descriptionFile" type="long-varchar"><description>DescriptionFile</description></field>
+        <field name="description" type="long-varchar"><description>Description</description></field>
+        <field name="description1" type="long-varchar"><description>Description1</description></field>
+        <field name="description2" type="long-varchar"><description>Description2</description></field>
+        <field name="description3" type="long-varchar"><description>Description3</description></field>
+        <field name="yunqudaoTemplateId" type="long-varchar"><description>YunqudaoTemplateId</description></field>
+        <field name="yunqudaoSellerDetailId" type="long-varchar"><description>YunqudaoSellerDetailId</description></field>
+        <field name="yunqudaoCounter" type="long-varchar"><description>YunqudaoCounter</description></field>
+        <field name="listingEnhancement" type="long-varchar"><description>ListingEnhancement</description></field>
+        <field name="country" type="long-varchar"><description>Country</description></field>
+        <field name="location" type="long-varchar"><description>Location</description></field>
+        <field name="dispatchTimeMax" type="long-varchar"><description>DispatchTimeMax</description></field>
+        <field name="getItFast" type="long-varchar"><description>GetItFast</description></field>
+        <field name="shippingService1Option" type="long-varchar"><description>ShippingService1Option</description></field>
+        <field name="shippingService1Cost" type="long-varchar"><description>ShippingService1Cost</description></field>
+        <field name="shippingService1AddCost" type="long-varchar"><description>ShippingService1AddCost</description></field>
+        <field name="shippingService2Option" type="long-varchar"><description>ShippingService2Option</description></field>
+        <field name="shippingService2Cost" type="long-varchar"><description>ShippingService2Cost</description></field>
+        <field name="shippingService2AddCost" type="long-varchar"><description>ShippingService2AddCost</description></field>
+        <field name="shippingService3Option" type="long-varchar"><description>ShippingService3Option</description></field>
+        <field name="shippingService3Cost" type="long-varchar"><description>ShippingService3Cost</description></field>
+        <field name="shippingService3AddCost" type="long-varchar"><description>ShippingService3AddCost</description></field>
+        <field name="shippingService4Option" type="long-varchar"><description>ShippingService4Option</description></field>
+        <field name="shippingService4Cost" type="long-varchar"><description>ShippingService4Cost</description></field>
+        <field name="shippingService4AddCost" type="long-varchar"><description>ShippingService4AddCost</description></field>
+        <field name="shippingRateTable" type="long-varchar"><description>ShippingRateTable</description></field>
+        <field name="intShippingService1Option" type="long-varchar"><description>IntShippingService1Option</description></field>
+        <field name="intShippingService1Cost" type="long-varchar"><description>IntShippingService1Cost</description></field>
+        <field name="intShippingService1AddCost" type="long-varchar"><description>IntShippingService1AddCost</description></field>
+        <field name="intShippingService1Locations" type="long-varchar"><description>IntShippingService1Locations</description></field>
+        <field name="intShippingService2Option" type="long-varchar"><description>IntShippingService2Option</description></field>
+        <field name="intShippingService2Cost" type="long-varchar"><description>IntShippingService2Cost</description></field>
+        <field name="intShippingService2AddCost" type="long-varchar"><description>IntShippingService2AddCost</description></field>
+        <field name="intShippingService2Locations" type="long-varchar"><description>IntShippingService2Locations</description></field>
+        <field name="intShippingService3Option" type="long-varchar"><description>IntShippingService3Option</description></field>
+        <field name="intShippingService3Cost" type="long-varchar"><description>IntShippingService3Cost</description></field>
+        <field name="intShippingService3AddCost" type="long-varchar"><description>IntShippingService3AddCost</description></field>
+        <field name="intShippingService3Locations" type="long-varchar"><description>IntShippingService3Locations</description></field>
+        <field name="intShippingService4Option" type="long-varchar"><description>IntShippingService4Option</description></field>
+        <field name="intShippingService4Cost" type="long-varchar"><description>IntShippingService4Cost</description></field>
+        <field name="intShippingService4AddCost" type="long-varchar"><description>IntShippingService4AddCost</description></field>
+        <field name="intShippingService4Locations" type="long-varchar"><description>IntShippingService4Locations</description></field>
+        <field name="intShippingService5Option" type="long-varchar"><description>IntShippingService5Option</description></field>
+        <field name="intShippingService5Cost" type="long-varchar"><description>IntShippingService5Cost</description></field>
+        <field name="intShippingService5AddCost" type="long-varchar"><description>IntShippingService5AddCost</description></field>
+        <field name="intShippingService5Locations" type="long-varchar"><description>IntShippingService5Locations</description></field>
+        <field name="intShippingRateTable" type="long-varchar"><description>IntShippingRateTable</description></field>
+        <field name="excludeShipToLocation" type="very-long"><description>ExcludeShipToLocation</description></field>
+        <field name="payPalEmailAddress" type="long-varchar"><description>PayPalEmailAddress</description></field>
+        <field name="immediatePayRequired" type="long-varchar"><description>ImmediatePayRequired</description></field>
+        <field name="payMoneyXferAccInCheckout" type="long-varchar"><description>PayMoneyXferAccInCheckout</description></field>
+        <field name="paymentInstructions" type="very-long"><description>PaymentInstructions</description></field>
+        <field name="returnsAcceptedOption" type="long-varchar"><description>ReturnsAcceptedOption</description></field>
+        <field name="returnsWithinOption" type="long-varchar"><description>ReturnsWithinOption</description></field>
+        <field name="refundOption" type="long-varchar"><description>RefundOption</description></field>
+        <field name="shippingCostPaidByOption" type="long-varchar"><description>ShippingCostPaidByOption</description></field>
+        <field name="returnPolicyDescription" type="very-long"><description>ReturnPolicyDescription</description></field>
+        <field name="extendedHolidayReturns" type="long-varchar"><description>ExtendedHolidayReturns</description></field>
+        <field name="bRLinkedPayPalAccount" type="long-varchar"><description>BRLinkedPayPalAccount</description></field>
+        <field name="bRMaxBuyerPolicyVioCount" type="long-varchar"><description>BRMaxBuyerPolicyVioCount</description></field>
+        <field name="bRMaxBuyerPolicyVioPeriod" type="long-varchar"><description>BRMaxBuyerPolicyVioPeriod</description></field>
+        <field name="bRMaxItemReqMaxItemCount" type="long-varchar"><description>BRMaxItemReqMaxItemCount</description></field>
+        <field name="bRMaxItemReqMinFeedbackScore" type="long-varchar"><description>BRMaxItemReqMinFeedbackScore</description></field>
+        <field name="bRMaxUnpaidStrikesInfoCount" type="long-varchar"><description>BRMaxUnpaidStrikesInfoCount</description></field>
+        <field name="bRMaxUnpaidStrikesInfoPeriod" type="long-varchar"><description>BRMaxUnpaidStrikesInfoPeriod</description></field>
+        <field name="bRMinFeedbackScore" type="long-varchar"><description>BRMinFeedbackScore</description></field>
+        <field name="bRShipToRegistrationCountry" type="long-varchar"><description>BRShipToRegistrationCountry</description></field>
+        <field name="yunqudaoAutoRelistId" type="long-varchar"><description>YunqudaoAutoRelistId</description></field>
+        <field name="yunqudaoAutoReplenishId" type="long-varchar"><description>YunqudaoAutoReplenishId</description></field>
+        <field name="yunqudaoShowcaseId" type="long-varchar"><description>YunqudaoShowcaseId</description></field>
+        <prim-key field="account"/>
+        <prim-key field="marketplace"/>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="EndedActiveListing"
+        package-name="org.ofbiz.gudao.product"
+        title="Ended Active Listing">
+        <field name="itemId" type="id-ne"><description>item Id</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="date" type="date-time"><description>Ended Timestamp</description></field>
+        <prim-key field="itemId"/>
+    </entity>
+    
+    <entity entity-name="EndActiveListingRule"
+        package-name="org.ofbiz.gudao.product"
+        title="End Active Listing Rule">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="unsoldDay" type="numeric"><description>Unsold Day</description></field>
+        <field name="historicalSoldLessThan" type="numeric"><description>Historical Sold Less Than</description></field>
+        <field name="startDateMoreThanXDay" type="numeric"><description>Start Date More Than X Day</description></field>
+        <prim-key field="productStoreId"/>
+    </entity>
+    
+    <entity entity-name="AccountListingRule"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Listing Rule">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="site" type="long-varchar"><description>Site</description></field>
+        <field name="folderName" type="long-varchar"><description>Folder Name</description></field>
+        <field name="skuPrefix" type="long-varchar"><description>SKU Prefix</description></field>
+        <field name="skuSuffix" type="long-varchar"><description>SKU Suffix</description></field>
+        <field name="titleSuffix" type="long-varchar"><description>Title Suffix</description></field>
+        <field name="notes" type="long-varchar"><description>Note</description></field>
+        <prim-key field="productStoreId"/>
+        <prim-key field="site"/>
+        <prim-key field="ownerGroup"/>
+        <prim-key field="folderName"/>
+    </entity>
+    
+    <entity entity-name="AccountListingRuleShipping"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Listing Rule">
+        <field name="site" type="id-ne"><description>Site</description></field>
+        <field name="shippingType" type="long-varchar"><description>Shipping Type</description></field>
+        <field name="priority" type="long-varchar"><description>Priority</description></field>
+        <field name="filter" type="long-varchar"><description>Filter</description></field>
+        <field name="shippingServiceName" type="long-varchar"><description>Shipping Service Name</description></field>
+        <field name="shippingServiceCost" type="long-varchar"><description>Shipping Service Cost</description></field>
+        <field name="additionalCost" type="long-varchar"><description>Additional Cost</description></field>
+        <field name="eta" type="long-varchar"><description>ETA</description></field>
+        <field name="destination" type="very-long"><description>Destination</description></field>
+        <prim-key field="shippingType"/>
+        <prim-key field="site"/>
+        <prim-key field="priority"/>
+        <prim-key field="filter"/>
+    </entity>
+    
+    <entity entity-name="AccountListingRuleCategory"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Listing Rule">
+        <field name="id" type="id-ne"><description>ID</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="site" type="long-varchar"><description>Site</description></field>
+        <field name="folderName" type="long-varchar"><description>Folder Name</description></field>
+        <field name="categoryId" type="long-varchar"><description>Special Requirement</description></field>
+        <field name="notes" type="long-varchar"><description>Note</description></field>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="GudaoMotherChildrenSku"
+        package-name="org.ofbiz.gudao.product"
+        title="Mother Children Sku">
+        <field name="motherSku" type="id-ne"><description>Mother SKU</description></field>
+        <field name="childrenSku" type="very-long"><description>Children SKU</description></field>
+        <prim-key field="motherSku"/>
+    </entity>
+    
+    
+    
+
+    <!-- Active Listing - START-->
+    <entity entity-name="RivalActiveListing"
+        package-name="org.ofbiz.ebay.store"
+        title="Active Listings on eBay based on eBay Trading API GetSellerList call">
+        <field name="activeListingId" type="id-ne"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="itemId" type="long-varchar"><description>eBay item number (Item Id)</description></field>
+        <field name="applicationData" type="long-varchar"><description>Application Data</description></field>
+        <field name="autoPay" type="very-short"><description>Auto Pay</description></field>
+        <field name="buyerGuaranteePrice" type="currency-amount"><description>Buyer Guarantee Price</description></field>
+        <field name="buyerGuaranteePriceCurId" type="very-short"><description>Buyer Guarantee Price Currency ID</description></field>
+        <field name="buyerProtection" type="long-varchar"><description>Buyer Protection</description></field>
+        <field name="buyItNowPrice" type="currency-amount"><description>Buy It Now price</description></field>
+        <field name="buyItNowPriceCurId" type="very-short"><description>Buy It Now Currency ID</description></field>
+        <field name="conditionId" type="long-varchar"><description>Condition ID</description></field>
+        <field name="conditionDisplayName" type="long-varchar"><description>Condition Display Name</description></field>
+        <field name="conditionDescription" type="very-long"><description>Condition Description</description></field>
+        <field name="country" type="long-varchar"><description>Country</description></field>
+        <field name="currency" type="very-short"><description>Currency</description></field>
+        <field name="description" type="very-long"><description>Description</description></field>
+        <field name="disableRequirements" type="very-short"><description>Disable Buyer Requirements</description></field>
+        <field name="eBayNowEligible" type="very-short"><description>eBay Now Eligible</description></field>
+        <field name="freeCategoryId" type="long-varchar"><description>Free Added Category Id</description></field>
+        <field name="freeCategoryName" type="long-varchar"><description>Free Added Category Name</description></field>
+        <field name="getItFast" type="very-short"><description>Get It Fast</description></field>
+        <field name="giftIcon" type="numeric"><description>Gift Icon</description></field>
+        <field name="hitCount" type="numeric"><description>Hit Count</description></field>
+        <field name="hitCounter" type="long-varchar"><description>Hit Counter</description></field>
+        <field name="creditCardEnabled" type="very-short"><description>Integrated Merchant Credit Card Enabled</description></field>
+        <field name="invTrackingMethod" type="long-varchar"><description>Inventory Tracking Method</description></field>
+        <field name="policyViolationId" type="long-varchar"><description>Item Policy Violation ID</description></field>
+        <field name="policyViolationText" type="very-long"><description>Item Policy Violation Text</description></field>
+        <field name="coRedirectStore" type="long-varchar"><description>Listing Checkout Redirect Preference ProStoresStoreName</description></field>
+        <field name="coRedirectUsername" type="long-varchar"><description>Listing Checkout Redirect Preference SellerThirdPartyUsername</description></field>
+        <field name="listDesignerLayoutId" type="long-varchar"><description>Listing Designer Layout ID</description></field>
+        <field name="listDesignerOptPicSize" type="long-varchar"><description>Listing Designer Optimal Picture Size</description></field>
+        <field name="listDesignerThemeId" type="very-short"><description>Listing Designer Theme ID</description></field>
+        <field name="listDetAdult" type="very-short"><description>Listing Details Adult</description></field>
+        <field name="listDetBestAutoAccept" type="currency-amount"><description>Listing Details Best Offer Auto Accept Price</description></field>
+        <field name="listDetBindingAuction" type="very-short"><description>Listing Details Binding Auction</description></field>
+        <field name="listDetCheckoutEnabled" type="very-short"><description>Listing Details Checkout Enabled</description></field>
+        <field name="listDetEndTime" type="long-varchar"><description>Listing Details End Time</description></field>
+        <field name="listDetHasPublicMessages" type="very-short"><description>Listing Details Has Public Messages</description></field>
+        <field name="listDetHasReservePrice" type="very-short"><description>Listing Details Has Reserve Price</description></field>
+        <field name="listDetUnansweredQuestions" type="very-short"><description>Listing Details Has Unanswered Questions</description></field>
+        <field name="listDetMinBestOfferPrice" type="currency-amount"><description>Listing Details Minimum Best Offer Price</description></field>
+        <field name="listDetRelistedItemId" type="long-varchar"><description>Listing Details Relisted Item ID</description></field>
+        <field name="listDetStartTime" type="long-varchar"><description>Listing Details Start Time</description></field>
+        <field name="listDetOriginalItemId" type="long-varchar"><description>Listing Details TCR Original Item ID</description></field>
+        <field name="listDetViewItemUrl" type="very-long"><description>Listing Details View Item URL</description></field>
+        <field name="listDetViewItemUrlNatural" type="very-long"><description>Listing Details View Item URL for Natural Search</description></field>
+        <field name="listingDuration" type="long-varchar"><description>Listing Duration</description></field>
+        <field name="listingSubtype2" type="long-varchar"><description>Listing Subtype2</description></field>
+        <field name="listingType" type="long-varchar"><description>Listing Type</description></field>
+        <field name="location" type="long-varchar"><description>Location</description></field>
+        <field name="motorsGerSearch" type="long-varchar"><description>Motors Germany Searchable</description></field>
+        <field name="outOfStockControl" type="long-varchar"><description>Out Of Stock Control</description></field>
+        <field name="pickupInStore" type="very-short"><description>Eligible For Pickup In Store</description></field>
+        <!-- <field name="pictureDetails" type="very-short"><description>Picture Details</description></field> -->
+        <field name="postCheckoutExpEnabled" type="very-short"><description>Post Checkout Experience Enabled</description></field>
+        <field name="primaryCategoryId" type="long-varchar"><description>Primary Category ID</description></field>
+        <field name="primaryCategoryName" type="long-varchar"><description>Primary Category Name</description></field>
+        <field name="privateListing" type="very-short"><description>Private Listing</description></field>
+        <field name="proxyItem" type="very-short"><description>Proxy Item</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <field name="qtyAvailableHint" type="long-varchar"><description>Quantity Available Hint</description></field>
+        <field name="qtyThreshold" type="numeric"><description>Quantity Threshold</description></field>
+        <field name="reservePrice" type="currency-amount"><description>Reserve Price</description></field>
+        <field name="reservePriceCurId" type="very-short"><description>Reserve Price Currency ID</description></field>
+        <field name="returnDescription" type="very-long"><description>Return Policy Description</description></field>
+        <field name="returnEan" type="long-varchar"><description>Return Policy EAN</description></field>
+        <field name="returnRefund" type="long-varchar"><description>Return Policy Refund</description></field>
+        <field name="returnRefundOption" type="long-varchar"><description>Return Policy Refund Option</description></field>
+        <field name="returnRestockFeeValue" type="long-varchar"><description>Return Policy Refund Option</description></field>
+        <field name="returnRestockFeeValOpt" type="long-varchar"><description>Return Policy Refund Option</description></field>
+        <field name="returnsAccepted" type="long-varchar"><description>Returns Policy Returns Accepted</description></field>
+        <field name="returnsAcceptedOption" type="long-varchar"><description>Returns Policy Returns Accepted Option</description></field>
+        <field name="returnsWithin" type="long-varchar"><description>Returns Policy Returns Within</description></field>
+        <field name="returnsWithinOption" type="long-varchar"><description>Returns Policy Returns Within Option</description></field>
+        <field name="returnsCostPaidBy" type="long-varchar"><description>Returns Policy Shipping Cost Paid By</description></field>
+        <field name="returnsCostPaidByOpt" type="long-varchar"><description>Returns Policy Shipping Cost Paid By Option</description></field>
+        <field name="warrantyDuration" type="long-varchar"><description>Returns Policy Warranty Duration</description></field>
+        <field name="warrantyDurationOption" type="long-varchar"><description>Returns Policy Warranty Duration Option</description></field>
+        <field name="warrantyOffered" type="long-varchar"><description>Returns Policy Warranty Offered</description></field>
+        <field name="warrantyOfferedOption" type="long-varchar"><description>Returns Policy Warranty Offered Option</description></field>
+        <field name="warrantyType" type="long-varchar"><description>Returns Policy Warranty Type</description></field>
+        <field name="warrantyTypeOption" type="long-varchar"><description>Returns Policy Warranty Type Option</description></field>
+        <field name="reviseStatus" type="very-short"><description>Revise Status</description></field>
+        <field name="secondaryCategoryId" type="long-varchar"><description>Secondary Category ID</description></field>
+        <field name="secondaryCategoryName" type="long-varchar"><description>Secondary Category Name</description></field>
+        <field name="sellerContactDetails" type="long-varchar"><description>seller Contact Details</description></field>
+        <field name="sellerPaymentProfileId" type="long-varchar"><description>Seller Payment Profile ID</description></field>
+        <field name="sellerPaymentProfileName" type="long-varchar"><description>Seller Payment Profile Name</description></field>
+        <field name="sellerReturnProfileId" type="long-varchar"><description>Seller Return Profile ID</description></field>
+        <field name="sellerReturnProfileName" type="long-varchar"><description>Seller Return Profile Name</description></field>
+        <field name="sellerShippingProfileId" type="long-varchar"><description>Seller Shipping Profile ID</description></field>
+        <field name="sellerShippingProfileName" type="long-varchar"><description>Seller Shipping Profile Name</description></field>
+        <field name="sellStatAdminEnded" type="very-short"><description>Selling Status Admin Ended</description></field>
+        <field name="sellStatBidCount" type="numeric"><description>Selling Status Bid Count</description></field>
+        <field name="sellStatBidIncrement" type="currency-amount"><description>Selling Status Bid Increment</description></field>
+        <field name="sellStatBidIncrCurId" type="very-short"><description>Selling Status Bid Increment Currency ID</description></field>
+        <field name="sellStatCurrentPrice" type="currency-amount"><description>Selling Status Current Price</description></field>
+        <field name="sellStatCurrentPriceCurId" type="very-short"><description>Selling Status Current Price Currency ID</description></field>
+        <field name="sellStatLeadCount" type="numeric"><description>Selling Status Lead Count</description></field>
+        <field name="sellStatListingStatus" type="long-varchar"><description>Selling Status Listing Status</description></field>
+        <field name="sellStatMinToBid" type="currency-amount"><description>Selling Status Minimum To Bid</description></field>
+        <field name="sellStatMinToBidCurId" type="very-short"><description>Selling Status Minimum To Bid Currency ID</description></field>
+        <field name="promoEndTime" type="long-varchar"><description>Selling Status Promotional End Time</description></field>
+        <field name="promoOriginalPrice" type="currency-amount"><description>Selling Status Promotional Original Price</description></field>
+        <field name="promoOriginalPriceCurId" type="very-short"><description>Selling Status Promotional Original Price Currency Id</description></field>
+        <field name="promoStartTime" type="long-varchar"><description>Selling Status Promotional Start Time</description></field>
+        <field name="sellStatQuantitySold" type="numeric"><description>Selling Status Quantity Sold</description></field>
+        <field name="sellStatReserveMet" type="very-short"><description>Selling Status Reserve Met</description></field>
+        <field name="sellStatSecChanceEligible" type="very-short"><description>Selling Status Second Chance Eligible</description></field>
+        <field name="shipDetAllowPaymentEdit" type="very-short"><description>Shipping Details Allow Payment Edit</description></field>
+        <field name="shipDetGlobalShipping" type="very-short"><description>Shipping Details Global Shipping</description></field>
+        <field name="shipDetInsuranceOption" type="long-varchar"><description>Shipping Details Insurance Option</description></field>
+        <field name="shipDetPaymentEdited" type="very-short"><description>Shipping Details Payment Edited</description></field>
+        <field name="shipDetExclShipToLoc" type="very-short"><description>Shipping Details Seller Exclude Ship To Locations Preference</description></field>
+        <field name="site" type="long-varchar"><description>Site</description></field>
+        <field name="sku" type="very-long"><description>SKU</description></field>
+        <field name="skypeEnabled" type="very-short"><description>Skype Enabled</description></field>
+        <field name="skypeId" type="long-varchar"><description>Skype Id</description></field>
+        <field name="startPrice" type="currency-amount"><description>Start Price</description></field>
+        <field name="startPriceCurId" type="very-short"><description>Start Price Currency ID</description></field>
+        <field name="storefrontCategoryId" type="long-varchar"><description>Storefront Category ID</description></field>
+        <field name="storefrontCategory2Id" type="long-varchar"><description>Storefront Category2 ID</description></field>
+        <field name="storefrontUrl" type="very-long"><description>Storefront URL</description></field>
+        <field name="timeLeft" type="long-varchar"><description>Time Left</description></field>
+        <field name="title" type="long-varchar"><description>Title</description></field>
+        <field name="totalQuestionCount" type="numeric"><description>Total Question Count</description></field>
+        <field name="watchCount" type="numeric"><description>Watch Count</description></field>
+        <field name="uuid" type="long-varchar"><description>UUID</description></field>
+        <field name="picDetGalleryType" type="long-varchar"><description>Picture Details Gallery Type</description></field>
+        <field name="picDetGalleryUrl" type="very-long"><description>Picture Details Gallery URL</description></field>
+        <field name="picDetPhotoDisplay" type="long-varchar"><description>Picture Details Photo Display</description></field>
+        <field name="picDetPictureUrl" type="very-long"><description>Picture Details Picture URL</description></field>
+        <field name="dispatchTimeMax" type="numeric"><description>Dispatch Time Max</description></field>
+        <field name="paypalEmailAddress" type="long-varchar"><description>Paypal Email Address</description></field>
+        <field name="hasVariation" type="very-short"><description>Has Variation</description></field>
+        <field name="normalizedSku" type="very-long"><description>Normalized SKU (Product Id)</description></field>
+        <field name="crawlDate" type="date"><description>Crawl Date</description></field>
+        <prim-key field="activeListingId"/>
+        <!-- <relation type="one" fk-name="PROD_STR_EBAY_LIS2" rel-entity-name="ProductStore">
+         <key-map field-name="productStoreId"/>
+         </relation> -->
+    </entity>
+    
+    <entity entity-name="RivalActiveListingVariation"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Variation based on eBay API GetSellerList call">
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="id"><description>eBay item number (Item Id)</description></field>
+        <field name="variationSeqId" type="id"><description>eBay active Listing Variation Sequence Id</description></field>
+        <field name="productId" type="very-long"><description>SKU (Product Id)</description></field>
+        <field name="startPriceCurrencyId" type="very-short"><description>Product start price currency Id</description></field>
+        <field name="startPrice" type="currency-amount"><description>Product start price</description></field>
+        <field name="originalPriceCurrencyId" type="very-short"><description>Product original price currency Id</description></field>
+        <field name="originalPrice" type="currency-amount"><description>Product original price</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <field name="quantitySold" type="numeric"><description>Quantity Sold</description></field>
+        <field name="normalizedSku" type="very-long"><description>Normalized SKU (Product Id)</description></field>
+        <field name="crawlDate" type="date"><description>Crawl Date</description></field>
+        <prim-key field="activeListingId"/>
+        <prim-key field="itemId"/>
+        <prim-key field="variationSeqId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+         <key-map field-name="itemId"/>
+         </relation> -->
+    </entity>
+    
+    <entity entity-name="RivalVariationSpecifics"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Variation based on eBay API GetSellerList call">
+        <field name="varSpecsId" type="id-ne"><description>Auto ID for eBay Active Listing Variation Specifics</description></field>
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="long-varchar"><description>eBay item number (Item Id)</description></field>
+        <field name="variationSeqId" type="id"><description>eBay active Listing Variation Sequence Id</description></field>
+        <field name="productId" type="very-long"><description>SKU (Product Id)</description></field>
+        <field name="varSpecsName" type="very-long"><description>Variation Specifics Name</description></field>
+        <field name="varSpecsValue" type="very-long"><description>Variation Specifics Value</description></field>
+        <field name="crawlDate" type="date"><description>Crawl Date</description></field>
+        <prim-key field="varSpecsId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListingVariation">
+         <key-map field-name="activeListingId"/>
+         <key-map field-name="itemId"/>
+         <key-map field-name="variationSeqId"/>
+         </relation> -->
+    </entity>
+    
+    <entity entity-name="RivalActiveListingShipping"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listing Shipping Information">
+        <field name="listingShippingId" type="id-ne"><description>Auto ID for eBay Active Listing Shipping</description></field>
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="itemId" type="id"><description>Item Id</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="domestic" type="indicator"><description>Domestic Shipping Indicator</description></field>
+        <field name="shippingServiceName" type="long-varchar"><description>Shipping Service Name</description></field>
+        <field name="shippingServiceCost" type="currency-amount"><description>Shipping Service Cost</description></field>
+        <field name="shippingServiceCurrency" type="long-varchar"><description>Shipping Service Currency</description></field>
+        <field name="additionalCost" type="currency-amount"><description>Shipping Service Additional Cost</description></field>
+        <field name="priority" type="long-varchar"><description>Shipping Service Priority</description></field>
+        <field name="expeditedService" type="long-varchar"><description>Expedited Service Indicator</description></field>
+        <field name="shippingTimeMin" type="long-varchar"><description>Shipping Service Time Minimum</description></field>
+        <field name="shippingTimeMax" type="long-varchar"><description>Shipping Service Time Maximum</description></field>
+        <field name="crawlDate" type="date"><description>Crawl Date</description></field>
+        <prim-key field="listingShippingId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+         <key-map field-name="activeListingId"/>
+         </relation> -->
+    </entity>
+    
+    <entity entity-name="GpsAlgorithm"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product Score Algorithm">
+        <field name="id" type="id-ne"><description>Auto ID</description></field>
+        <field name="gpsNumber" type="short-varchar"><description>GPS Number</description></field>
+        <field name="factor" type="long-varchar"><description>GPS Factor</description></field>
+        <field name="score" type="numeric"><description>GPS Score</description></field>
+        <field name="weight" type="numeric"><description>GPS Weight</description></field>
+        <field name="remark" type="very-long"><description>Remark</description></field>
+        <field name="comparator1" type="long-varchar"><description>Comparator 1</description></field>
+        <field name="value1" type="floating-point"><description>Value 1</description></field>
+        <field name="value1Str" type="long-varchar"><description>Value 1 String</description></field>
+        <field name="joinOperator" type="long-varchar"><description>Join Operator</description></field>
+        <field name="comparator2" type="long-varchar"><description>Comparator 2</description></field>
+        <field name="value2" type="floating-point"><description>Value 2</description></field>
+        <field name="value2Str" type="long-varchar"><description>Value 2 String</description></field>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="FinalGpsAlgorithm"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product Score Algorithm">
+        <field name="id" type="id-ne"><description>Auto ID</description></field>
+        <field name="comparator1" type="long-varchar"><description>Comparator 1</description></field>
+        <field name="value1" type="floating-point"><description>Value 1</description></field>
+        <field name="value1Str" type="long-varchar"><description>Value 1 String</description></field>
+        <field name="joinOperator" type="long-varchar"><description>Join Operator</description></field>
+        <field name="comparator2" type="long-varchar"><description>Comparator 2</description></field>
+        <field name="value2" type="floating-point"><description>Value 2</description></field>
+        <field name="value2Str" type="long-varchar"><description>Value 2 String</description></field>
+        <field name="operator" type="long-varchar"><description>Operator</description></field>
+        <field name="operatorFactor" type="floating-point"><description>Operator</description></field>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="ProductGps"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GPS">
+        <field name="productId" type="id"><description>Product ID</description></field>
+        <field name="factor" type="id-long"><description>GPS Factor</description></field>
+        <field name="value" type="long-varchar"><description>GPS Value</description></field>
+        <field name="score" type="numeric"><description>GPS Score</description></field>
+        <field name="weight" type="numeric"><description>GPS Weight</description></field>
+        <field name="gps" type="numeric"><description>GPS</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="factor"/>
+    </entity>
+    
+    <entity entity-name="SupplierRank"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Supplier Rank">
+        <field name="supplier" type="id-vlong"><description>Supplier</description></field>
+        <field name="rank" type="numeric"><description>supplier Rank</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="supplier"/>
+    </entity>
+    
+    <entity entity-name="SbuCategoryParent"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Supplier Rank">
+        <field name="sbu" type="id"><description>SBU</description></field>
+        <field name="categoryIdParent" type="id-long"><description>Parent Category ID</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="sbu"/>
+        <prim-key field="categoryIdParent"/>
+    </entity>
+    
+    <entity entity-name="SbuCategoryChildren"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Supplier Rank">
+        <field name="sbu" type="id"><description>SBU</description></field>
+        <field name="categoryIdParent" type="id-long"><description>Parent Category ID</description></field>
+        <field name="categoryIdChild" type="id-long"><description>Children Category ID</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="sbu"/>
+        <prim-key field="categoryIdParent"/>
+        <prim-key field="categoryIdChild"/>
+    </entity>
+    
+    <entity entity-name="ProductGms"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GMS">
+        <field name="productId" type="id"><description>Product ID</description></field>
+        <field name="factor" type="id-long"><description>GMS Factor</description></field>
+        <field name="value" type="long-varchar"><description>GMS Value</description></field>
+        <field name="score" type="numeric"><description>GMS Score</description></field>
+        <field name="weight" type="numeric"><description>GMS Weight</description></field>
+        <field name="gms" type="numeric"><description>GMS</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="factor"/>
+    </entity>
+    
+    <entity entity-name="ProductGmsDetail"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GMS Detail">
+        <field name="id" type="id"><description>Auto ID</description></field>
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="type" type="long-varchar"><description>Type</description></field><!-- LISTING_COUNT, FOLLOW_COUNT -->
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="site" type="long-varchar"><description>Site</description></field>
+        <field name="account" type="long-varchar"><description>Account</description></field>
+        <field name="totalCount" type="numeric"><description>Total Count</description></field>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="ProductGmsDetailHistory"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GMS Detail History">
+        <field name="id" type="id"><description>Auto ID</description></field>
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="type" type="long-varchar"><description>Type</description></field><!-- LISTING_COUNT, FOLLOW_COUNT -->
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="site" type="long-varchar"><description>Site</description></field>
+        <field name="account" type="long-varchar"><description>Account</description></field>
+        <field name="count" type="numeric"><description>Total Count</description></field>
+        <field name="createdBy" type="long-varchar"><description>Created By</description></field>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="GmsAlgorithm"
+        package-name="org.ofbiz.gudao.product"
+        title="GMS Algorithm">
+        <field name="id" type="id-ne"><description>Auto ID</description></field>
+        <field name="factor" type="long-varchar"><description>GPS Factor</description></field>
+        <field name="score" type="numeric"><description>GPS Score</description></field>
+        <field name="weight" type="numeric"><description>GPS Weight</description></field>
+        <field name="remark" type="very-long"><description>Remark</description></field>
+        <field name="comparator1" type="long-varchar"><description>Comparator 1</description></field>
+        <field name="value1" type="numeric"><description>Value 1</description></field>
+        <field name="value1Str" type="long-varchar"><description>Value 1 String</description></field>
+        <field name="joinOperator" type="long-varchar"><description>Join Operator</description></field>
+        <field name="comparator2" type="long-varchar"><description>Comparator 2</description></field>
+        <field name="value2" type="numeric"><description>Value 2</description></field>
+        <field name="value2Str" type="long-varchar"><description>Value 2 String</description></field>
+        <prim-key field="id"/>
+    </entity>
+    
+    <entity entity-name="GudaoTaskHeader"
+        package-name="org.ofbiz.gudao.operational"
+        title="Gudao Task Header">
+        <field name="taskId" type="id-ne"><description>Task Id</description></field>
+        <field name="type" type="long-varchar"><description>Task Type</description></field>
+        <field name="priority" type="long-varchar"><description>Priority</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="description" type="very-long"><description>Description</description></field>
+        <field name="remark" type="very-long"><description>Remark</description></field>
+        <field name="createdDate" type="date-time"><description>Created Date</description></field>
+        <field name="createdBy" type="long-varchar"><description>Created By</description></field>
+        <field name="receiver" type="long-varchar"><description>Receiver</description></field>
+        <field name="lastUpdatedBy" type="long-varchar"><description>Last Updated By</description></field>
+        <prim-key field="taskId"/>
+    </entity>
+    
+    <entity entity-name="GudaoCategoryMap"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Category Map">
+        <field name="productCategory" type="id-long-ne"><description>Product Category</description></field>
+        <field name="platform" type="id-long-ne"><description>Platform</description></field>
+        <field name="account" type="id-long-ne"><description>Account</description></field>
+        <field name="categoryId" type="long-varchar"><description>Category Id</description></field>
+        <field name="remark" type="very-long"><description>Remark</description></field>
+        <prim-key field="productCategory"/>
+        <prim-key field="platform"/>
+        <prim-key field="account"/>
+    </entity>
+    
+    <entity entity-name="ProductGqs"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GQS">
+        <field name="productId" type="id"><description>Product ID</description></field>
+        <field name="factor" type="id-long"><description>GQS Factor</description></field>
+        <field name="value" type="long-varchar"><description>GQS Value</description></field>
+        <field name="score" type="numeric"><description>GQS Score</description></field>
+        <field name="weight" type="numeric"><description>GQS Weight</description></field>
+        <field name="gqs" type="numeric"><description>GQS</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="factor"/>
+    </entity>
+    
+    <entity entity-name="ProductGqsDetail"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GQS Detail">
+        <field name="orderId" type="id-ne"><description>Order ID</description></field>
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="channel" type="long-varchar"><description>Channel</description></field>
+        <field name="type" type="long-varchar"><description>Type</description></field>
+        <field name="shipType" type="long-varchar"><description>Ship Type</description></field>
+        <field name="account" type="long-varchar"><description>Account</description></field>
+        <field name="customerId" type="long-varchar"><description>Customer Id</description></field>
+        <field name="description" type="very-long"><description>Description</description></field>
+        <field name="fullRefund" type="short-varchar"><description>Full Refund</description></field>
+        <field name="partialRefund" type="short-varchar"><description>Full Refund</description></field>
+        <field name="replacement" type="short-varchar"><description>Full Refund</description></field>
+        <field name="noAction" type="short-varchar"><description>Full Refund</description></field>
+        <field name="currencyId" type="short-varchar"><description>Currency Id</description></field>
+        <field name="refundAmount" type="currency-amount"><description>Refund Amount</description></field>
+        <field name="replacementProductCost" type="currency-amount"><description>Replacement Product Cost</description></field>
+        <field name="replacementShippingCost" type="currency-amount"><description>Replacement Shipping Cost</description></field>
+        <field name="countryDestination" type="long-varchar"><description>Country Destination</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>Owner Group</description></field>
+        <field name="createdBy" type="long-varchar"><description>Created By</description></field>
+        <prim-key field="orderId"/>
+    </entity>
+    
+    <entity entity-name="ProductGqsDetailProduct"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GQS Detail Product">
+        <field name="orderId" type="id"><description>Order ID</description></field>
+        <field name="seqId" type="id"><description>seq Id</description></field>
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <field name="refundAmount" type="currency-amount"><description>Refund Amount</description></field>
+        <field name="replacementProductCost" type="currency-amount"><description>Replacement Product Cost</description></field>
+        <field name="replacementShippingCost" type="currency-amount"><description>Replacement Shipping Cost</description></field>
+        <prim-key field="orderId"/>
+        <prim-key field="seqId"/>
+    </entity>
+    
+    <entity entity-name="GudaoSetSku"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Set SKU List">
+        <field name="setSku" type="id-long"><description>Set SKU</description></field>
+        <field name="productId" type="id-long"><description>Product Id</description></field>
+        <field name="type" type="long-varchar"><description>Type</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <prim-key field="setSku"/>
+        <prim-key field="productId"/>
+    </entity>
+    
+    
+    <entity entity-name="GudaoTargetList"
+        package-name="org.ofbiz.gudao.operational"
+        title="Gudao Target List">
+        <field name="targetId" type="id-ne"><description>Target ID</description></field>
+        <field name="period" type="long-varchar"><description>Period of Time</description></field>
+        <field name="department" type="long-varchar"><description>Department</description></field>
+        <field name="type" type="long-varchar"><description>Type</description></field>
+        <field name="kpi" type="long-varchar"><description>KPI</description></field>
+        <field name="targetValue" type="long-varchar"><description>Target Value</description></field>
+        <field name="obstacles" type="very-long"><description>Obstacles</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="targetId"/>
+    </entity>
+    
+    <entity entity-name="GudaoTargetAction"
+        package-name="org.ofbiz.gudao.operational"
+        title="Gudao Target List">
+        <field name="targetId" type="id-ne"><description>Target ID</description></field>
+        <field name="seqId" type="id-ne"><description>Action Sequence ID</description></field>
+        <field name="createdBy" type="long-varchar"><description>Created By</description></field>
+        <field name="actionBy" type="long-varchar"><description>Action By</description></field>
+        <field name="createdDate" type="date"><description>Created Date</description></field>
+        <field name="dueDate" type="long-varchar"><description>Due Date</description></field>
+        <field name="statusId" type="long-varchar"><description>Status ID</description></field>
+        <field name="priority" type="long-varchar"><description>Priority</description></field>
+        <field name="description" type="very-long"><description>Description</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="targetId"/>
+        <prim-key field="seqId"/>
+    </entity>
+    
+    <entity entity-name="StandardOperationalProcedure"
+        package-name="org.ofbiz.gudao.operational"
+        title="Standard Operational Procedure">
+        <field name="sopId" type="id-ne"><description>SOP ID</description></field>
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="parentId" type="long-varchar"><description>Parent ID</description></field>
+        <field name="content" type="very-long"><description>Content</description></field>
+        <prim-key field="sopId"/>
+    </entity>
+    
+    <entity entity-name="ProductLister"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Lister">
+        <field name="productId" type="id-ne"><description>Product ID</description></field>
+        <field name="listerPlatform" type="long-varchar"><description>Lister Platform</description></field>
+        <field name="lister" type="long-varchar"><description>Lister</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="listerPlatform"/>
+    </entity>
+    
+    <entity entity-name="AliexpressTable"
+        package-name="org.ofbiz.gudao.product"
+        title="Aliexpress Table">
+        <field name="sku" type="id"><description>SKU</description></field>
+        <field name="productid" type="id"><description>Product ID</description></field>
+        <field name="price" type="numeric"><description>Price</description></field>
+        <field name="storename" type="long-varchar"><description>StoreName</description></field>
+        <field name="subject" type="long-varchar"><description>Subject</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="sku"/>
+    </entity>
+    
+    <entity entity-name="GudaoLimitedAccess"
+        package-name="org.ofbiz.gudao.operational"
+        title="Gudao Limited Access">
+        <field name="userLoginId" type="id-ne"><description>User Login ID</description></field>
+        <field name="type" type="id-ne"><description>Limited Type</description></field>
+        <field name="statusId" type="long-varchar"><description>Status ID</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="userLoginId"/>
+        <prim-key field="type"/>
+    </entity>
+    
+    <entity entity-name="GudaoProductCategory"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product Category">
+        <field name="categoryId" type="id-ne"><description>Product Category ID</description></field>
+        <field name="type" type="long-varchar"><description>Category Type</description></field>
+        <field name="parentCategoryId" type="long-varchar"><description>Parent Category ID</description></field>
+        <field name="categoryName" type="long-varchar"><description>Category Name</description></field>
+        <field name="categoryNameCn" type="long-varchar"><description>Category Name</description></field>
+        <prim-key field="categoryId"/>
+    </entity>
+    
+    <entity entity-name="SupplierPrice"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Supplier Price">
+        <field name="productId" type="id-vlong"><description>Product ID</description></field>
+        <field name="supplier" type="long-varchar"><description>Supplier ID</description></field>
+        <field name="identifier" type="long-varchar"><description>Identifier</description></field>
+        <field name="type" type="long-varchar"><description>Minimum Order Type</description></field>
+        <field name="minimumOrderValue" type="currency-amount"><description>Minimum Order Value</description></field>
+        <field name="unitPrice" type="currency-amount"><description>Unit Price</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="supplier"/>
+        <prim-key field="type"/>
+        <prim-key field="minimumOrderValue"/>
+    </entity>
+    
+    <entity entity-name="ProductEps"
+        package-name="org.ofbiz.gudao.product"
+        title="Gudao Product GQS">
+        <field name="productId" type="id"><description>Product ID</description></field>
+        <field name="rivalDailySold" type="floating-point"><description>Rival Daily Sold</description></field>
+        <field name="rivalDailySales" type="floating-point"><description>Rival Daily Sales</description></field>
+        <field name="samePriceProfitPct" type="floating-point"><description>Same Price Profit Percentage</description></field>
+        <field name="eps" type="floating-point"><description>EPS Value</description></field>
+        <prim-key field="productId"/>
+    </entity>
+    
+    <entity entity-name="SalesReportImport"
+        package-name="org.ofbiz.gudao.order"
+        title="SalesReportImport Table">
+        <field name="platform" type="long-varchar"><description>平台</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>业绩归属人1</description></field>
+        <field name="title" type="very-long"><description>标题</description></field>
+        <field name="date" type="date-time"><description>日期</description></field>
+        <field name="puyuanOrderId" type="long-varchar"><description>订单编号</description></field>
+        <field name="platformOrderId" type="id-long"><description>店铺单号</description></field>
+        <field name="sellerName" type="long-varchar"><description>卖家简称</description></field>
+        <field name="productId" type="long-varchar"><description>SKU</description></field>
+        <field name="orderTotalQuantity" type="numeric"><description>总数量</description></field>
+        <field name="orderItemQuantity" type="numeric"><description>SKU数量</description></field>
+        <field name="productPrice" type="currency-amount"><description>SKU成交价￥</description></field>
+        <field name="shippingFee" type="currency-amount"><description>运费（买家付）￥</description></field>
+        <field name="ebayFee" type="currency-amount"><description>ebay成交费￥</description></field>
+        <field name="paypalFee" type="currency-amount"><description>交易费(pp手续费)￥</description></field>
+        <field name="productCost" type="currency-amount"><description>商品成本￥</description></field>
+        <field name="shippingCost" type="currency-amount"><description>运费成本￥</description></field>
+        <field name="itemProfit" type="currency-amount"><description>实收利润￥</description></field>
+        <field name="profitRate" type="currency-amount"><description>利润率%</description></field>
+        <field name="currency" type="short-varchar"><description>币种</description></field>
+        <field name="exchangeRate" type="currency-amount"><description>汇率</description></field>
+        <field name="transactionId" type="long-varchar"><description>paypal交易ID</description></field>
+        <field name="salesReportId" type="id-long-ne"><description>NID</description></field>
+        <prim-key field="salesReportId"/>
+    </entity>
+    
+    <entity entity-name="SalesReportVariable"
+        package-name="org.ofbiz.gudao.report"
+        title="SalesReportVariable Table">
+        <field name="platform" type="long-varchar"><description>平台</description></field>
+        <field name="ownerGroup" type="long-varchar"><description>事业部</description></field>
+        <field name="fromDate" type="date-time"><description>起始日期</description></field>
+        <field name="type" type="long-varchar"><description>类型</description></field>
+        <field name="value" type="currency-amount"><description>系数</description></field>
+        <field name="notes" type="long-varchar"><description>备注</description></field>
+        <prim-key field="platform"/>
+        <prim-key field="ownerGroup"/>
+        <prim-key field="fromDate"/>
+        <prim-key field="type"/>
+    </entity>
+    
+    <entity entity-name="ProductKeywordSeed"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Keyword Seed">
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="type" type="long-varchar"><description>Keyword Type</description></field>
+        <field name="language" type="short-varchar"><description>Language</description></field>
+        <field name="keyword" type="long-varchar"><description>Keyword</description></field>
+        <field name="relevancyWeight" type="numeric"><description>Relevancy Weight</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="type"/>
+        <prim-key field="language"/>
+        <prim-key field="keyword"/>
+    </entity>
+    
+    <entity entity-name="ProductDescription"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Description">
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="type" type="long-varchar"><description>Description Type</description></field>
+        <field name="language" type="short-varchar"><description>Language</description></field>
+        <field name="content" type="very-long"><description>Content</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="type"/>
+        <prim-key field="language"/>
+    </entity>
+    
+    <entity entity-name="ProductTitleRandom"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Title Random">
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="language" type="short-varchar"><description>Language</description></field>
+        <field name="title" type="long-varchar"><description>Title</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="platform"/>
+        <prim-key field="language"/>
+        <prim-key field="title"/>
+    </entity>
+    
+    <entity entity-name="ProductTitleList"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Title Random">
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <prim-key field="productId"/>
+    </entity>
+    
+    <entity entity-name="ProductTitleConfig"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Title Config">
+        <field name="type" type="long-varchar"><description>Type</description></field>
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="value" type="long-varchar"><description>Value</description></field>
+        <prim-key field="type"/>
+        <prim-key field="platform"/>
+    </entity>
+    
+    <entity entity-name="PipelineHeader"
+        package-name="org.ofbiz.gudao.product"
+        title="Pipeline Header">
+        <field name="pipelineId" type="id"><description>Pipeline Id</description></field>
+        <field name="personInCharge" type="long-varchar"><description>Person In Charge</description></field>
+        <field name="sourcer" type="long-varchar"><description>Sourcer</description></field>
+        <field name="salesman" type="long-varchar"><description>Salesman</description></field>
+        <field name="platform" type="long-varchar"><description>Platform</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <field name="targetProfit" type="floating-point"><description>Target Profit</description></field>
+        <field name="estimatedNew" type="numeric"><description>Estimated New</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <prim-key field="pipelineId"/>
+    </entity>
+    
+    <entity entity-name="PipelineItem"
+        package-name="org.ofbiz.gudao.product"
+        title="Pipeline Header">
+        <field name="pipelineId" type="id"><description>Pipeline Id</description></field>
+        <field name="weekNumber" type="numeric"><description>Week Number</description></field>
+        <field name="productSourced" type="floating-point"><description>Product Sourced</description></field>
+        <field name="pictureReady" type="floating-point"><description>Picture Done</description></field>
+        <field name="pictureDone" type="floating-point"><description>Picture Done</description></field>
+        <field name="copyDone" type="floating-point"><description>Copy Done</description></field>
+        <field name="listed" type="floating-point"><description>Listed </description></field>
+        <field name="active" type="floating-point"><description>Active</description></field>
+        <field name="group0Qty" type="floating-point"><description>G0 qty</description></field>
+        <field name="group0Stock" type="floating-point"><description>G0 Stock</description></field>
+        <field name="group4Qty" type="floating-point"><description>G0 qty</description></field>
+        <field name="sales" type="floating-point"><description>Sales</description></field>
+        <field name="grossProfit" type="floating-point"><description>Gross Profit</description></field>
+        <field name="grossProfitPct" type="floating-point"><description>Gross Profit Percentage</description></field>
+        <prim-key field="pipelineId"/>
+        <prim-key field="weekNumber"/>
+    </entity>
+    
+    <entity entity-name="PipelineWeek"
+        package-name="org.ofbiz.gudao.product"
+        title="Pipeline Week">
+        <field name="quarterName" type="long-varchar"><description>Quarter Name</description></field>
+        <field name="weekNumber" type="numeric"><description>Week Number</description></field>
+        <field name="startDate" type="date-time"><description>Start Date</description></field>
+        <field name="endDate" type="date-time"><description>End Date</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <prim-key field="quarterName"/>
+        <prim-key field="weekNumber"/>
+    </entity>
+    
+    <entity entity-name="ProductRelationship"
+        package-name="org.ofbiz.gudao.product"
+        title="Product Relationship">
+        <field name="motherSku" type="long-varchar"><description>Mother SKU</description></field>
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <field name="type" type="long-varchar"><description>Type</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="motherSku"/>
+        <prim-key field="type"/>
+    </entity>
+
+</entitymodel>

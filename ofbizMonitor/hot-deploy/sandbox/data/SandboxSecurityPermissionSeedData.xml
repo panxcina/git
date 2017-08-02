@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the Sandbox Component." permissionId="SANDBOX_VIEW"/>
+    <SecurityPermission description="Create operations in the Sandbox Component." permissionId="SANDBOX_CREATE"/>
+    <SecurityPermission description="Update operations in the Sandbox Component." permissionId="SANDBOX_UPDATE"/>
+    <SecurityPermission description="Delete operations in the Sandbox Component." permissionId="SANDBOX_DELETE"/>
+    <SecurityPermission description="ALL operations in the Sandbox Component." permissionId="SANDBOX_ADMIN"/>
+
+    <SecurityGroupPermission groupId="SUPER" permissionId="SANDBOX_ADMIN"/>
+
+</entity-engine-xml>

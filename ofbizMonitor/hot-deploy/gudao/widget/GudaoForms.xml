@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+
+
+    <!-- IMPORT PART - START -->
+    <!-- <form name="selectImportForm" type="single" header-row-style="header-row" default-table-style="basic-table">
+        <field name="importFormId" title="Bulk Import Type" event="onChange" action="javascript:
+            document.selectImportForm.action='bulkImport';
+            document.selectImportForm.submit();">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="ImportForm" description="${importFormId} - [${importFormName}]" key-field-name="importFormId">
+                    <entity-order-by field-name="importFormId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+    </form> -->
+    
+    <form name="importNewProduct" type="upload" target="doUploadProductXlsFile">
+        <!-- <field name="importFormId" title="Bulk Import Type">
+            <display-entity entity-name="ImportForm" key-field-name="importFormId" description="${importFormId} - [${importFormName}]">
+                <sub-hyperlink target="bulkImport" description="[change]" target-type="inter-app"/>
+            </display-entity>
+        </field> -->
+        <field name="importFormId"><hidden value="PRODUCT"/></field>
+        <field name="uploadedFile" title="Select XLS file"><file size="25"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+        <field name="dummy" title =" " widget-style="rednote"><display description="注意: 97-2003 XLS格式，文件名字不要有空格,不要有中文字. Save the file without any space, no chinese character in XLS format. For example: PM.xls is good, but 'P M.xls' is bad and 'PM文件.xls' is also bad"></display></field>
+        <field name="dummy1" title =" " widget-style="buttontext">
+            <hyperlink target="http://img.factory-kiss.com/template/PM.xls" description="PM Excel Template Here" also-hidden="false" target-type="plain"></hyperlink>
+        </field>
+    </form>
+    
+    <form name="listProductImport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="importNewProduct">
+        <actions>
+            <script location="component://gudao/webapp/gudao/WEB-INF/actions/ListFilesInDirectory.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name" title="Filename"><display/></field>
+        <!--<field name="path"><display/></field>-->
+        <field name="userLoginId" title="Created By"><display/></field>
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimported"><display/></field>
+        <field name="viewProductImport" title="" widget-style="buttontext">
+            <hyperlink target="viewProductImport" description="View and Import" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <!--<field name="deleteFileProductImport" title="" widget-style="buttontext">
+            <hyperlink target="deleteFileProductImport" description="Delete" also-hidden="false">
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+            </hyperlink>
+        </field>-->
+    </form>
+    
+    <form name="listProductImportAdmin" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="importNewProduct">
+        <actions>
+            <script location="component://gudao/webapp/gudao/WEB-INF/actions/ListFilesInDirectory.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name" title="Filename"><display/></field>
+        <!--<field name="path"><display/></field>-->
+        <field name="userLoginId" title="Created By"><display/></field>
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimported"><display/></field>
+        <field name="viewProductImport" title="" widget-style="buttontext">
+            <hyperlink target="viewProductImport" description="View and Import" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <field name="deleteFileProductImport" title="" widget-style="buttontext">
+         <hyperlink target="deleteFileProductImport" description="Delete" also-hidden="false">
+         <parameter param-name="importFormId"/>
+         <parameter param-name="fileName" from-field="path"/>
+         </hyperlink>
+         </field>
+    </form>
+    
+    <form name="importMultiProducts" type="single" target="importMultiProducts">
+        <field name="importFormId"><hidden value="${importFormId}"/></field>
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="submit" title="Import All Products into OFBiz"><submit></submit></field>
+    </form>
+    
+    <form name="viewProductImport" type="list" list-name="productImports" use-row-submit="true" target="importMultipleProducts"
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="50" paginate-target="viewProductImport">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="createProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(previousItem.get(&quot;productImportId&quot;).equals(productImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="importNewProductForImportAndMessage" description="Import" also-hidden="false">
+                <parameter param-name="importFormId" from-field="importFormId"/>
+                <parameter param-name="fileName" from-field="fileName"></parameter>
+                <parameter param-name="productImportId" from-field="productImportId"></parameter>
+            </hyperlink>
+        </field>
+        <field name="editProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="editTemporaryProduct" description="Edit" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productImportId"/>
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName"/>
+                <parameter param-name="imported"/>
+            </hyperlink>
+        </field>
+        <!-- ProductImport entity fields -->
+        <field name="productImportId" title="Product Import Id" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><hidden/></field>
+        <field name="fileLineNumber" title="Row Number" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="importedStatus" title="Import Status"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="importedDescription" title="Message"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;Y&quot;));}"><display/><!-- widget-style="buttontext">
+            <hyperlink target="/catalog/control/EditProduct" description="${productId}" target-type="inter-app" target-window="blank">
+                <parameter param-name="productId"/>
+            </hyperlink>-->
+        </field>
+        <field name="customSku" title="custom SKU"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="chineseName" title="chineseName"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="englishName" title="englishName"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="weight" title="weight"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productGroup" title="productGroup"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="statusId" title="statusId"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <!--<field name="categoryId" title="categoryId"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>-->
+        <field name="categoryIdParent" title="categoryIdParent"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="categoryIdChild" title="categoryIdChild"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productType" title="productType"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ownerGroup" title="ownerGroup"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="purchaser" title="purchaser"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="imageLink" title="imageLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="extraStockingDay" title="extraStockingDay"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="sourcingDate" title="sourcingDate"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceUsd" title="priceUsd"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceAud" title="priceAud"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceCad" title="priceCad"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceGbp" title="priceGbp"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceEur" title="priceEur"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="supplier" title="supplier"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="supplierType" title="supplierType"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="price" title="price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="supplierLink" title="supplierLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="discountRate" title="discountRate"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="eta" title="eta"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="minOrderDays" title="minOrderDays"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="minOrderQuantity" title="minOrderQuantity"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplier" title="backupSupplier"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplierPrice" title="backupSupplierPrice"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplierLink" title="backupSupplierLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplierEta" title="backupSupplierEta"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupMinOrderDays" title="backupMinOrderDays"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupMinOrderQty" title="backupMinOrderQty"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="rivalItemId" title="rivalItemId"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="notes" title="notes"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="upc" title="upc"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayUsListing" title="ebayUsListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayUkListing" title="ebayUkListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayAuListing" title="ebayAuListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayCaListing" title="ebayCaListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayDeListing" title="ebayDeListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayFrListing" title="ebayFrListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayEsListing" title="ebayEsListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="smtListing" title="smtListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amaListing" title="amaListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="wishListing" title="wishListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayPicture" title="ebayPicture"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amazonPicture" title="amazonPicture"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="platform" title="platform"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="risk" title="risk"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="listingCheck" title="listingCheck"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="smtLink" title="smtLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="wishLink" title="wishLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amazonLink" title="amazonLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="referenceLink" title="referenceLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <!--<sort-order>
+         <sort-field name="productId"/>
+         </sort-order>-->
+    </form>
+    
+    <form name="editTemporaryProduct" type="single" target="updateProductImport" default-entity-name="ProductImportGudao">
+        <auto-fields-entity entity-name="ProductImportGudao" map-name="productImport"/>
+        <field name="productImportId"><display/></field>
+        <field name="fileName"><display/></field>
+        <field name="fileLineNumber"><display/></field>
+        <field name="supplierType">
+            <drop-down no-current-selected-key="MAIN">
+                <option key="MAIN" description="Main Supplier"/>
+                <option key="BACKUP" description="Backup Supplier"/>
+            </drop-down>
+        </field>
+        <field name="createdBy"><display/></field>
+        <field name="originalFilename"><display/></field>
+        <field name="importedStatus"><display/></field>
+        <field name="importedDescription"><display/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    <!-- IMPORT PART - END -->
+    <!-- UPDATE PART - START -->
+    
+    <!--<form name="selectUpdateForm" type="single" header-row-style="header-row" default-table-style="basic-table">
+        <field name="updateFormId" title="Bulk Update Type" event="onChange" action="javascript:
+            document.selectUpdateForm.action='bulkUpdate';
+            document.selectUpdateForm.submit();">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="UpdateForm" description="${updateFormId} - [${updateFormName}]" key-field-name="updateFormId">
+                    <entity-order-by field-name="updateFormId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+    </form>-->
+    
+    <form name="updateBulkProductUpdate" type="upload" target="doUploadProductUpdateXlsFile">
+        <!--<field name="updateFormId" title="Bulk Update Type">
+            <display-entity entity-name="UpdateForm" key-field-name="updateFormId" description="${updateFormId} - [${updateFormName}]">
+                <sub-hyperlink target="bulkUpdate" description="[change]" target-type="inter-app">
+                </sub-hyperlink>
+            </display-entity>
+        </field>-->
+        <field name="updateFormId"><hidden value="PRODUCT"/></field>
+        <field name="uploadedFile" title="Select XLS file"><file size="25"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+        <field name="dummy" title =" " widget-style="rednote"><display description="注意: 97-2003 XLS格式，文件名字不要有空格,不要有中文字. Save the file without any space, no chinese character in XLS format. For example: PM.xls is good, but 'P M.xls' is bad and 'PM文件.xls' is also bad"></display></field>
+        <field name="dummy1" title =" " widget-style="buttontext">
+            <hyperlink target="http://img.factory-kiss.com/template/PM.xls" description="PM Excel Template Here" also-hidden="false" target-type="plain"></hyperlink>
+        </field>
+        <field name="dummy2" title =" " widget-style="buttontext">
+            <hyperlink target="http://img.factory-kiss.com/template/setSku.xls" description="SetSku Excel Template Here" also-hidden="false" target-type="plain"></hyperlink>
+        </field>
+        <field name="dummy3" title =" " widget-style="buttontext" use-when="${bsh:security.hasEntityPermission(&quot;GMS&quot;, &quot;_MANUAL_UPDATE&quot;, session);}">
+            <hyperlink target="http://img.factory-kiss.com/template/GMS.xls" description="GMS Update Template Here" also-hidden="false" target-type="plain"></hyperlink>
+        </field>
+    </form>
+    
+    <form name="listBulkProductUpdate" type="list" list-name="listUpdateForm" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="bulkUpdate">
+        <actions>
+            <script location="component://gudao/webapp/gudao/WEB-INF/actions/ListFilesInDirectory.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name" title="Filename"><display/></field>
+        <field name="userLoginId" title="Created By"><display/></field>
+        <!--<field name="path"><display/></field>-->
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimported"><display/></field>
+        <field name="viewProductUpdate" title="" widget-style="buttontext">
+            <hyperlink target="viewProductUpdate" description="View and Import" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="updateFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <!--<field name="deleteFileProductUpdate" title="" widget-style="buttontext">
+            <hyperlink target="deleteFileProductUpdate" description="Delete" also-hidden="false">
+                <parameter param-name="updateFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+            </hyperlink>
+        </field>-->
+    </form>
+    
+    <form name="listBulkProductUpdateAdmin" type="list" list-name="listUpdateForm" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="bulkUpdate">
+        <actions>
+            <script location="component://gudao/webapp/gudao/WEB-INF/actions/ListFilesInDirectory.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name" title="Filename"><display/></field>
+        <field name="userLoginId" title="Created By"><display/></field>
+        <!--<field name="path"><display/></field>-->
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimported"><display/></field>
+        <field name="viewProductUpdate" title="" widget-style="buttontext">
+            <hyperlink target="viewProductUpdate" description="View and Import" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="updateFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <field name="deleteFileProductUpdate" title="" widget-style="buttontext">
+         <hyperlink target="deleteFileProductUpdate" description="Delete" also-hidden="false">
+         <parameter param-name="updateFormId"/>
+         <parameter param-name="fileName" from-field="path"/>
+         </hyperlink>
+         </field>
+    </form>
+    
+    <form name="updateMultiProducts" type="single" target="updateMultiProducts">
+        <field name="updateFormId"><hidden value="${updateFormId}"/></field>
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="submit" title="Update All Products to OFBiz"><submit></submit></field>
+    </form>
+    
+    <form name="viewProductUpdate" type="list" list-name="bulkProductUpdates" use-row-submit="true" target="updateMultipleProducts"
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="50" paginate-target="viewProductUpdate">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="updateProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(previousItem.get(&quot;productImportId&quot;).equals(productImportId))&amp;&amp;updatedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="updateProductIntoBulkProductUpdate" description="Update" also-hidden="false">
+                <parameter param-name="updateFormId" from-field="updateFormId"/>
+                <parameter param-name="fileName" from-field="fileName"></parameter>
+                <parameter param-name="productImportId" from-field="productImportId"></parameter>
+            </hyperlink>
+        </field>
+        <field name="editProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(productImportId))&amp;&amp;updatedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="editTemporaryProductUpdate" description="Edit" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productImportId"/>
+                <parameter param-name="updateFormId"/>
+                <parameter param-name="fileName"/>
+                <parameter param-name="imported"/>
+            </hyperlink>
+        </field>
+        <!-- BulkProductUpdate entity fields -->
+        <field name="productImportId" title="Product Import Id" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><hidden/></field>
+        <field name="fileLineNumber" title="Row Number" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="importedStatus" title="Import Status"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="importedDescription" title="Message"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;Y&quot;));}"><display/><!-- widget-style="buttontext">
+         <hyperlink target="/catalog/control/EditProduct" description="${productId}" target-type="inter-app" target-window="blank">
+         <parameter param-name="productId"/>
+         </hyperlink>-->
+         </field>
+        <field name="customSku" title="custom SKU"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="chineseName" title="chineseName"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="englishName" title="englishName"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="weight" title="weight"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productGroup" title="productGroup"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="statusId" title="statusId"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <!--<field name="categoryId" title="categoryId"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>-->
+        <field name="categoryIdParent" title="categoryIdParent"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="categoryIdChild" title="categoryIdChild"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productType" title="productType"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ownerGroup" title="ownerGroup"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="purchaser" title="purchaser"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="imageLink" title="imageLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="extraStockingDay" title="extraStockingDay"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="sourcingDate" title="sourcingDate"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceUsd" title="priceUsd"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceAud" title="priceAud"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceCad" title="priceCad"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceGbp" title="priceGbp"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceEur" title="priceEur"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="supplier" title="supplier"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="supplierType" title="supplierType"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="price" title="price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="supplierLink" title="supplierLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="discountRate" title="discountRate"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="eta" title="eta"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="minOrderDays" title="minOrderDays"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="minOrderQuantity" title="minOrderQuantity"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplier" title="backupSupplier"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplierPrice" title="backupSupplierPrice"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplierLink" title="backupSupplierLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupSupplierEta" title="backupSupplierEta"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupMinOrderDays" title="backupMinOrderDays"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="backupMinOrderQty" title="backupMinOrderQty"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="rivalItemId" title="rivalItemId"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="notes" title="notes"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="upc" title="upc"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayUsListing" title="ebayUsListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayUkListing" title="ebayUkListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayAuListing" title="ebayAuListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayCaListing" title="ebayCaListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayDeListing" title="ebayDeListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayFrListing" title="ebayFrListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayEsListing" title="ebayEsListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="smtListing" title="smtListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amaListing" title="amaListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="wishListing" title="wishListing"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="ebayPicture" title="ebayPicture"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amazonPicture" title="amazonPicture"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="platform" title="platform"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="risk" title="risk"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="listingCheck" title="listingCheck"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="smtLink" title="smtLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="wishLink" title="wishLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amazonLink" title="amazonLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="referenceLink" title="referenceLink"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="smtAccount" title="smtAccount"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amaUsAccount" title="amaUsAccount"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amaUkAccount" title="amaUkAccount"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amaCaAccount" title="amaCaAccount"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amaDeAccount" title="amaDeAccount"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="amaFollow" title="amaFollow"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <!--<sort-order>
+         <sort-field name="productId"/>
+         </sort-order>-->
+    </form>
+    
+    <form name="editTemporaryProductUpdate" type="single" target="updateBulkProductUpdate" default-entity-name="ProductImportGudao">
+        <auto-fields-entity entity-name="ProductImportGudao" map-name="bulkProductUpdate"/>
+        <field name="productImportId"><display/></field>
+        <field name="fileName"><display/></field>
+        <field name="fileLineNumber"><display/></field>
+        <field name="supplierType">
+            <drop-down no-current-selected-key="MAIN">
+                <option key="MAIN" description="Main Supplier"/>
+                <option key="BACKUP" description="Backup Supplier"/>
+            </drop-down>
+        </field>
+        <field name="createdBy"><display/></field>
+        <field name="originalFilename"><display/></field>
+        <field name="importedStatus"><display/></field>
+        <field name="importedDescription"><display/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    <!-- UPDATE PART - END -->
+    
+    
+    
+    
+    <form name="importReportProfit" type="upload" target="doUploadReportProfitXlsFile">
+        <!-- <field name="importFormId" title="Bulk Import Type">
+         <display-entity entity-name="ImportForm" key-field-name="importFormId" description="${importFormId} - [${importFormName}]">
+         <sub-hyperlink target="bulkImport" description="[change]" target-type="inter-app"/>
+         </display-entity>
+         </field> -->
+        <field name="importFormId"><hidden value="PROFIT"/></field>
+        <field name="uploadedFile" title="Select XLS file"><file size="25"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+        <field name="dummy" title =" " widget-style="rednote"><display description="注意: 97-2003 XLS格式，不要有空格,不要有中文字. Save the file without any space, no chinese character in XLS format. For example: PM.xls is good, but 'P M.xls' is bad"></display></field>
+        <field name="dummy1" title =" " widget-style="buttontext">
+            <hyperlink target="http://img.factory-kiss.com/template/reportProfit.xls" description="Excel Template Here" also-hidden="false" target-type="plain"></hyperlink>
+        </field>
+    </form>
+    
+    <form name="listReportImport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="bulkImport">
+        <actions>
+            <script location="component://gudao/webapp/gudao/WEB-INF/actions/reportListFiles.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name" title="Filename"><display/></field>
+        <!--<field name="path"><display/></field>-->
+        <field name="userLoginId" title="Created By"><display/></field>
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimported"><display/></field>
+        <field name="viewReportImport" title="" widget-style="buttontext">
+            <hyperlink target="viewReportImport" description="View and Import" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <field name="deleteFileReportImport" title="" widget-style="buttontext">
+            <hyperlink target="deleteFileReportImport" description="Delete" also-hidden="false">
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+            </hyperlink>
+        </field>
+    </form>
+    
+    <form name="importMultiReports" type="single" target="importMultiReports">
+        <field name="importFormId"><hidden value="${importFormId}"/></field>
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="submit" title="Import All Data into OFBiz"><submit></submit></field>
+    </form>
+    
+    <form name="viewReportImport" type="list" list-name="reportImports" use-row-submit="true" target="importMultipleReports"
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="50" paginate-target="viewReportImport">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="createReportData" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(previousItem.get(&quot;reportImportId&quot;).equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="importNewReportForImportAndMessage" description="Import" also-hidden="false">
+                <parameter param-name="importFormId" from-field="importFormId"/>
+                <parameter param-name="fileName" from-field="fileName"></parameter>
+                <parameter param-name="reportImportId" from-field="reportImportId"></parameter>
+            </hyperlink>
+        </field>
+        <field name="editData" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="editTemporaryReport" description="Edit" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="reportImportId"/>
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName"/>
+                <parameter param-name="imported"/>
+            </hyperlink>
+        </field>
+        <!-- ProductImport entity fields -->
+        <field name="reportImportId" title="Product Import Id" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId)));}"><hidden/></field>
+        <field name="fileLineNumber" title="Row Number" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId)));}"><display/></field>
+        <field name="importedStatus" title="Import Status"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId)));}"><display/></field>
+        <field name="importedDescription" title="Message"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId)));}"><display/></field>
+        <field name="orderId" title="orderId"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="orderDate" title="orderDate"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="currencyRate" title="currencyRate"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="platform" title="platform"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="salesRmb" title="salesRmb"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="salesOriginal" title="salesOriginal"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="shippingRmb" title="shippingRmb"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="shippingOriginal" title="shippingOriginal"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="totalSales" title="totalSales"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="productCost" title="productCost"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="shippingCost" title="shippingCost"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="paypalRmb" title="paypalRmb"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="paypalOriginal" title="paypalOriginal"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="ebayFeeRmb" title="ebayFeeRmb"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="ebayFeeOriginal" title="ebayFeeOriginal"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="packaging" title="packaging"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="totalCost" title="totalCost"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="itemQty" title="itemQty"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="orderQty" title="orderQty"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="profit" title="profit"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="profitPct" title="profitPct"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="ownerGroup" title="ownerGroup"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="duplicate" title="duplicate"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;reportImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(reportImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <!--<sort-order>
+         <sort-field name="productId"/>
+         </sort-order>-->
+    </form>
+    
+    <form name="editTemporaryReport" type="single" target="updateReportImport" default-entity-name="ReportImport">
+        <auto-fields-entity entity-name="ReportImport" map-name="reportImport"/>
+        <field name="reportImportId"><display/></field>
+        <field name="fileName"><display/></field>
+        <field name="fileLineNumber"><display/></field>
+        <field name="createdBy"><display/></field>
+        <field name="importedStatus"><display/></field>
+        <field name="importedDescription"><display/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    
+    <form name="reportProfit" type="single" target="reportMain" header-row-style="header-row" default-table-style="basic-table">
+        <field name="fromDate" title="From Date"><date-time type="timestamp"/></field>
+        <field name="toDate" title="To Date"><date-time type="timestamp"/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    
+    
+    <form name="wishListingDetail" type="single" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productStoreId" title="账号名称">
+            <drop-down>
+                <option key="ALL" description="All"/>
+                <option key="" description=""/>
+                <entity-options description="${productStoreId}" key-field-name="productStoreId" entity-name="ProductStore">
+                    <entity-constraint name="primaryStoreGroupId" value="WISH"/>
+                    <entity-order-by field-name="productStoreId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="hasStock" title="是否有库存">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="YES" description="Yes"/>
+                <option key="NO" description="No"/>
+            </drop-down>
+        </field>
+        <field name="sevenDayStock" title="是否有7天库存">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="YES" description="Yes"/>
+                <option key="NO" description="No"/>
+            </drop-down>
+        </field>
+        <field name="wishInventory" title="在线数量">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="YES" description="Stock > 0"/>
+                <option key="NO" description="Stock = 0"/>
+            </drop-down>
+        </field>
+        <field name="isPromoted" title="是否黄钻">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="YES" description="Yes"/>
+                <option key="NO" description="No"/>
+            </drop-down>
+        </field>
+        <field name="reviewStatus" title="是否审核">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="APPROVED" description="Approved"/>
+                <option key="PENDING" description="Pending"/>
+                <option key="REJECTED" description="Rejected"/>
+            </drop-down>
+        </field>
+        <field name="listingStatus" title="是否在线">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="ENABLED" description="Enabled"/>
+                <option key="DISABLED" description="Disabled"/>
+            </drop-down>
+        </field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    
+    <form name="ownerGroup" type="single" header-row-style="header-row" default-table-style="basic-table" target="${url}">
+        <field name="ownerGroup" title="开发员">
+            <drop-down no-current-selected-key="ALL">
+                <option key="ALL" description="All"/>
+                <option key="" description=""/>
+                <entity-options description="${ownerGroupName}" key-field-name="ownerGroupId" entity-name="OwnerGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                    <entity-order-by field-name="ownerGroupName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="productGroup" title="产品分组">
+            <drop-down no-current-selected-key="ALL">
+                <option key="ALL" description="All"/>
+                <option key="" description=""/>
+                <entity-options description="${productGroupName}" key-field-name="productGroupId" entity-name="ProductGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                    <entity-order-by field-name="productGroupName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    
+    <form name="importMotherVersion" type="upload" target="importMotherVersion">
+        <!-- <field name="importFormId" title="Bulk Import Type">
+         <display-entity entity-name="ImportForm" key-field-name="importFormId" description="${importFormId} - [${importFormName}]">
+         <sub-hyperlink target="bulkImport" description="[change]" target-type="inter-app"/>
+         </display-entity>
+         </field> -->
+        <field name="marketplace" title="site">
+            <drop-down no-current-selected-key="US">
+                <option key="" description=""/>
+                <option key="US" description="US - 美国"/>
+                <option key="UK" description="UK － 英国"/>
+                <option key="AU" description="AU － 澳洲"/>
+                <option key="CA" description="CA － 加拿大"/>
+                <option key="DE" description="DE － 德国"/>
+                <option key="FR" description="FR － 法国"/>
+                <option key="ES" description="ES － 西班牙"/>
+                <option key="IT" description="IT － 意大利"/>
+            </drop-down>
+        </field>
+        <field name="motherVersionType" title="母版目录名">
+            <drop-down no-current-selected-key="ST1FREE">
+                <option key="" description=""/>
+                <option key="ST1FREE" description="ST1FREE"/>
+                <option key="ST1NOFREE" description="ST1NOFREE"/>
+                <option key="ST2FREE" description="ST2FREE"/>
+                <option key="ST2NOFREE" description="ST2NOFREE"/>
+            </drop-down>
+        </field>
+        <field name="deleteData" title="清老记录">
+            <drop-down no-current-selected-key="N">
+                <option key="" description=""/>
+                <option key="Y" description="YES"/>
+                <option key="N" description="NO"/>
+            </drop-down>
+        </field>
+        <field name="uploadedFile" title="Select XLS file"><file size="25"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+    </form>
+    
+    <form name="operationalTaskView" type="single" target="operationalTaskView" header-row-style="header-row" default-table-style="basic-table">
+        <field name="type" title="Type">
+            <drop-down no-current-selected-key="ALL">
+                <option key="ALL" description="ALL"/>
+                <option key="" description=""/>
+                <option key="SOURCING_PROBLEM" description="无法采购"/>
+                <option key="COST_UPDATE" description="成本更新"/>
+                <option key="MOQ_UPDATE" description="起订量更新"/>
+                <option key="WEIGHT_UPDATE" description="重量更新"/>
+                <option key="LISTING_ERROR" description="刊登错误"/>
+                <option key="EXCESSIVE_DOMESTIC_POSTAGE" description="国内运费过高"/>
+                <option key="EXCESSIVE_RETURNS" description="退包比例过高"/>
+                <option key="EXCESSIVE_QC" description="质量投诉过多"/>
+                <option key="RIVAL_REMOVED" description="对手链接失效"/>
+            </drop-down>
+        </field>
+        <field name="status" title="Status">
+            <drop-down no-current-selected-key="PENDING">
+                <option key="ALL" description="ALL"/>
+                <option key="" description=""/>
+                <option key="PENDING" description="待处理"/>
+                <option key="COMPLETED" description="已完成"/>
+                <option key="IN_PROGRESS" description="已完成"/>
+            </drop-down>
+        </field>
+        <field name="receiver" title="Receiver">
+            <drop-down no-current-selected-key="ALL">
+                <option key="ALL" description="All"/>
+                <option key="" description=""/>
+                <entity-options description="${ownerGroupName}" key-field-name="ownerGroupId" entity-name="OwnerGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                    <entity-order-by field-name="ownerGroupName"/>
+                </entity-options>
+                <option key="" description=""/>
+                <option key="DM" description="DM"/>
+                <option key="" description=""/>
+                <option key="" description=""/>
+                <option key="" description=""/>
+                <option key="" description=""/>
+            </drop-down>
+        </field>
+        <field name="priority" title="Priority">
+            <drop-down no-current-selected-key="ALL">
+                <option key="ALL" description="ALL"/>
+                <option key="" description=""/>
+                <option key="URGENT" description="紧急"/>
+                <option key="NORMAL" description="一般"/>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field name="" title="" widget-style="buttontext">
+            <hyperlink target="createOperationalTask" description="Create New Task" also-hidden="false">
+            </hyperlink>
+        </field>
+    </form>
+    
+    <form name="editOperationalTask" type="single" target="updateOperationalTask" default-entity-name="GudaoTaskHeader">
+        <field name="type" title="请求类型">
+            <drop-down no-current-selected-key="ALL">
+                <option key="ALL" description="ALL"/>
+                <option key="" description=""/>
+                <option key="SOURCING_PROBLEM" description="无法采购"/>
+                <option key="COST_UPDATE" description="成本更新"/>
+                <option key="MOQ_UPDATE" description="起订量更新"/>
+                <option key="WEIGHT_UPDATE" description="重量更新"/>
+                <option key="LISTING_ERROR" description="刊登错误"/>
+                <option key="EXCESSIVE_DOMESTIC_POSTAGE" description="国内运费过高"/>
+                <option key="EXCESSIVE_RETURNS" description="退包比例过高"/>
+                <option key="EXCESSIVE_QC" description="质量投诉过多"/>
+                <option key="RIVAL_REMOVED" description="对手链接失效"/>
+            </drop-down>
+        </field>
+        <field name="status" title="请求状态">
+            <drop-down no-current-selected-key="PENDING">
+                <option key="PENDING" description="待处理"/>
+                <option key="COMPLETED" description="已完成"/>
+                <option key="IN_PROGRESS" description="处理中"/>
+            </drop-down>
+        </field>
+        <field name="priority" title="紧急程度">
+            <drop-down no-current-selected-key="NORMAL">
+                <option key="URGENT" description="紧急"/>
+                <option key="NORMAL" description="一般"/>
+            </drop-down>
+        </field>
+        <field name="receiver" title="接收人">
+            <drop-down>
+                <entity-options description="${ownerGroupName}" key-field-name="ownerGroupId" entity-name="OwnerGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                    <entity-order-by field-name="ownerGroupName"/>
+                </entity-options>
+                <option key="" description=""/>
+                <option key="DM" description="DM"/>
+                <option key="" description=""/>
+                <option key="" description=""/>
+                <option key="" description=""/>
+                <option key="" description=""/>
+            </drop-down>
+        </field>
+        <field name="description" title="请求内容"><textarea cols="60" rows="3"/></field>
+        <field name="remark" title="处理结果"><textarea cols="60" rows="3"/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    
+    
+    <form name="UpdateGudaoTarget" type="list" target="updateGudaoTarget" title="" list-name="gudaoTargetList"
+        odd-row-style="alternate-row" default-table-style="basic-table">
+        <!--<auto-fields-service service-name="updateGudaoTarget" map-name="gudaoTargetList"/>-->
+        <field name="platform"><hidden/></field>
+        <field name="targetId"><hidden/></field>
+        <field name="type" title="type"><display-entity entity-name="Enumeration" key-field-name="enumId" description="${description}"/></field>
+        <field name="value" title="value"><text/></field>
+        
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/></field>
+        
+        
+        <field name="deleteLink" title=" " widget-style="buttontext">
+            <hyperlink target="deleteProductPrice" description="${uiLabelMap.CommonDelete}" also-hidden="false">
+                <parameter param-name="productId"/><parameter param-name="productPriceTypeId"/><parameter param-name="productPricePurposeId"/>
+                <parameter param-name="currencyUomId"/><parameter param-name="productStoreGroupId"/><parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    
+    <form name="importSalesXls" type="upload" target="doUploadSalesXls">
+        <field name="importFormId"><hidden value="PRODUCT"/></field>
+        <field name="uploadedFile" title="Select XLS file"><file size="25"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+    </form>
+    
+    <form name="updateWishBestSellingList" type="list" target="updateWishBestSellingList" title="" list-name="bestSellingList"
+        odd-row-style="alternate-row" default-table-style="basic-table">
+        <auto-fields-service service-name="updateWishBestSellingList" map-name="wishBestSellingListMap"/>
+        <field name="productStoreId"><hidden/></field>
+        <field name="wishId" title="Wish ID"><display/></field>
+        <field name="statusId" title="${uiLabelMap.CommonStatus}">
+            <drop-down>
+                <option key="ACTIVE" description="Active"/>
+                <option key="INACTIVE" description="Inactive"/>
+            </drop-down>
+        </field>
+        
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/></field>
+        
+        <!--<field name="deleteLink" title=" " widget-style="buttontext">
+            <hyperlink target="deleteProductPrice" description="${uiLabelMap.CommonDelete}" also-hidden="false">
+                <parameter param-name="productId"/><parameter param-name="productPriceTypeId"/><parameter param-name="productPricePurposeId"/>
+                <parameter param-name="currencyUomId"/><parameter param-name="productStoreGroupId"/><parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>-->
+    </form>
+    
+    <form name="createWishBestSellingList" type="single" target="createWishBestSellingList" title="" header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="createWishBestSellingList"/>
+        <field name="productStoreId"><hidden value="${productStoreId}"/></field>
+        <field name="wishId" title="Wish ID"></field>
+        <field name="statusId" title="${uiLabelMap.CommonStatus}">
+            <drop-down>
+                <option key="ACTIVE" description="Active"/>
+                <option key="INACTIVE" description="Inactive"/>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+
+    <form name="testyaya" type="multi" use-row-submit="true" list-name="all" title="" target="updatetestyaya_1"
+            odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <field name="testyayaId"><text default-value="${testyayaId}"/> </field>
+        <field name="text"><hidden/></field>
+        <field name="renderingEngine"><text default-value="${renderingEngine}"/>
+        </field>
+        <field name="browser"><text default-value="${browser}"/>
+        </field>
+        <field name="platform"><text default-value="${platform}"/>
+        </field>
+        <field name="engineVersion"><text default-value="${engineVersion}"/>
+        </field>
+        <field name="cSSGrade"><text default-value="${cSSGrade}"/>
+        </field>
+        <field name="_rowSubmit" title="${uiLabelMap.CommonSelect}"><check/></field>
+        <field name="submitButton" title="${uiLabelMap.OrderAddToOrder}" widget-style="smallSubmit">
+            <submit button-type="button"/>
+        </field>
+    </form>
+    <form name="testyaya_1" type="multi" use-row-submit="true" list-name="all" title="" target="updatetestyaya_1"
+            odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <field name="testyayaId"><text default-value="${testyayaId}"/> </field>
+        <field name="text"><hidden/></field>
+        <field name="renderingEngine"><text default-value="${renderingEngine}"/>
+        </field>
+        <field name="browser"><text default-value="${browser}"/>
+        </field>
+        <field name="platform"><text default-value="${platform}"/>
+        </field>
+        <field name="engineVersion"><text default-value="${engineVersion}"/>
+        </field>
+        <field name="cSSGrade"><text default-value="${cSSGrade}"/>
+        </field>
+        <field name="_rowSubmit" title="${uiLabelMap.CommonSelect}"><check/></field>
+        <field name="submitButton" title="${uiLabelMap.OrderAddToOrder}" widget-style="smallSubmit">
+            <submit button-type="button"/>
+        </field>
+    </form>
+</forms>

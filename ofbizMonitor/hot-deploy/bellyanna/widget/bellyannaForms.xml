@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <form name="EbayMostWatchedItem" type="single" target="refreshEbayMostWatchedItem" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productStoreId"><hidden value="queendesign"/></field>
+        <field name="ebaySiteId" title="eBay Site">
+            <drop-down no-current-selected-key="0">
+                <entity-options entity-name="EbaySiteCode" description="${ebaySiteName} (${ebayGlobalId})">
+                    <entity-order-by field-name="ebaySiteName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <!--<field name="categoryId" title="eBay Category Id">
+            <display-entity entity-name="EbayCategoryTree" description="${categoryName} (${categoryId}">
+                <sub-hyperlink target="refreshEbayMostWatchedItem" description="[change]" target-type="inter-app"/>
+            </display-entity>
+        </field>
+        <field name="categoryId" title="eBay Category Id">
+            <drop-down>
+                <entity-options entity-name="EbayCategoryTree" description="${subtitle} (${productStoreId})">
+                    <entity-constraint name="ebaySiteId" value="${ebaySiteId}"/>
+                    <entity-order-by field-name="subtitle"/>
+                </entity-options>
+                <sub-hyperlink target="refreshEbayMostWatchedItem" description="[change]" target-type="inter-app"/>
+            </drop-down>
+        </field>-->
+        <field name="categoryId" title="eBay Category ID"><text size="30" maxlength="50"/></field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="ebayActiveListingSelectProductStore" type="single" target="ebayActiveListing" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productStoreId" title="eBay Account">
+            <drop-down no-current-selected-key="All">
+                <option key="All" description="All"/>
+                <option key="" description="==============="/>
+                <entity-options entity-name="ProductStore" description="${subtitle} (${productStoreId})">
+                    <entity-constraint name="primaryStoreGroupId" value="EBAY"/>
+                    <entity-order-by field-name="subtitle"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="productId" title="SKU"><text/></field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="viewEbayActiveListingSelectProductStore" type="single" target="viewProductStoreActiveListing" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productStoreId" title="eBay Account">
+            <drop-down>
+                <option key=""/>
+                <option key="All" description="All"/>
+                <option key="" description="==============="/>
+                <entity-options entity-name="ProductStore" description="${subtitle} (${productStoreId})">
+                    <entity-constraint name="primaryStoreGroupId" value="EBAY"/>
+                    <entity-order-by field-name="subtitle"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="productId" title="SKU"><text/></field>
+        <field name="listingType">
+            <drop-down no-current-selected-key="All">
+                <option key="All"/>
+                <option key="FixedPriceItem" description="BIN - Fixed Price Item"/>
+                <option key="Chinese" description="Auction"/>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="listEbayActiveListing" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table" view-size="20" paginate-target="viewProductStoreActiveListing">
+        <actions>
+            <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/ebayActiveListing.groovy"/>
+        </actions>
+        <field name="productStoreId" title="eBay Account"><display/></field>
+        <field name="fixedPriceListing" title="BIN Listing"><display/></field>
+        <field name="auctionListing" title="Auction Listing"><display/></field>
+        <field name="totalListing"><display/></field>
+        <field name="viewProductStoreActiveListing" title="" widget-style="buttontext">
+            <hyperlink target="viewProductStoreActiveListing" description="View Active Listing" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productStoreId"/>
+                <parameter param-name="productId"/>
+            </hyperlink>
+        </field>
+    </form>
+    
+    <form name="listProductStoreActiveListing" type="list" list-name="listActiveListing" odd-row-style="alternate-row" default-table-style="basic-table" view-size="20" paginate-target="viewProductStoreActiveListing">
+        <actions>
+            <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/ebayActiveListing.groovy"/>
+        </actions>
+        <field name="productStoreId" title="eBay Account"><display/></field>
+        <field name="itemId"><display/></field>
+        <field name="listingType"><display/></field>
+        <field name="title"><display/></field>
+        <field name="currency"><display/></field>
+        <field name="title"><display/></field>
+        <!--<field name="viewProductStoreActiveListing" title="" widget-style="buttontext">
+            <hyperlink target="viewProductStoreActiveListing" description="View Active Listing" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productStoreId"/>
+                <parameter param-name="productId"/>
+            </hyperlink>
+        </field>-->
+    </form>
+    
+    <form name="productListingStatus" type="single" target="productListingStatus" header-row-style="header-row" default-table-style="basic-table">
+        <field name="listingStatus" title="Listing Status">
+            <drop-down no-current-selected-key="Listed">
+                <option key="LISTED" description="Listed"/>
+                <option key="NOT_LISTED" description="Not Listed"/>
+            </drop-down>
+        </field>
+        <field name="productStoreId" title="${uiLabelMap.ProductStoreId}">
+            <drop-down no-current-selected-key="All">
+                <option key="All" description="All"/>
+                <option key="" description="=========================="/>
+                <entity-options entity-name="ProductStore" description="${subtitle} (${productStoreId})">
+                    <entity-constraint name="primaryStoreGroupId" value="EBAY"/>
+                    <entity-order-by field-name="subtitle"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="productId"><text size="30" maxlength="50"/></field>
+        <field name="productStatus" title="Product Status">
+            <drop-down no-current-selected-key="All">
+                <option key="All" description="All"/>
+                <option key="ACTIVE" description="Active"/>
+                <option key="DISCONTINUED" description="Discontinued"/>
+            </drop-down>
+        </field>
+        <field name="inventoryStatus" title="Inventory Status">
+            <drop-down no-current-selected-key="All">
+                <option key="All" description="All"/>
+                <option key="IN_STOCK" description="In Stock"/>
+                <option key="OUT_OF_STOCK" description="Out of Stock"/>
+            </drop-down>
+        </field>
+        <field name="quantity" title="Quantity Less than or Equal to">
+            <text size="5" maxlength="10" default-value="2"/>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="selectImportForm" type="single" header-row-style="header-row" default-table-style="basic-table">
+        <field name="importFormId" title="Bulk Import Type" event="onChange" action="javascript:
+            document.selectImportForm.action='bulkImport';
+            document.selectImportForm.submit();">
+            <drop-down allow-empty="true">
+            	<!--<option key="XXXX" description="eBay - XXX"/>
+                 <option key="XXXX" description="Website XXX"/>-->
+                <entity-options entity-name="ImportForm" description="${importFormId} - [${importFormName}]" key-field-name="importFormId">
+                    <entity-order-by field-name="importFormId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+    </form>
+    
+    <form name="importProduct" type="upload" target="doUploadProductXlsFile">
+        <field name="importFormId" title="Bulk Import Type">
+            <display-entity entity-name="ImportForm" key-field-name="importFormId" description="${importFormId} - [${importFormName}]">
+                <sub-hyperlink target="bulkImport" description="[change]" target-type="inter-app"/>
+            </display-entity>
+        </field>
+        <field name="uploadedFile" title="Select XLS file"><file size="50"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+        <field name="dummy" title=" "><display description="Required: SKU, Internal Name, En Name, Cn Name"></display></field>
+        <field name="dummy2" title=" "><display description="Optional: Weight, Location, Supplier, Warehouse, Product Type, Virtual, Variant, Variant Method, Requirement Method, USD, CAD, EUR, GBP, AUD"></display></field>
+    </form>
+    
+    <form name="listProductImport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="bulkImport">
+        <actions>
+            <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/ListFilesInDirectory.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name"><display/></field>
+        <field name="path"><display/></field>
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimported"><display/></field>
+        <field name="viewProductImport" title="" widget-style="buttontext">
+            <hyperlink target="viewProductImport" description="View Products Data" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <field name="deleteFileProductImport" title="" widget-style="buttontext">
+            <hyperlink target="deleteFileProductImport" description="Clear Temporary Data and File" also-hidden="false">
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+            </hyperlink>
+        </field>
+    </form>
+    
+    <form name="importMultiProducts" type="single" target="importMultiProducts">
+        <field name="importFormId"><hidden value="${importFormId}"/></field>
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="submit" title="Import All Products to OFBiz"><submit></submit></field>
+    </form>
+    
+    <form name="viewProductImport" type="list" list-name="productImports" use-row-submit="true" target="importMultipleProducts"
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="300" paginate-target="viewProductImport">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="createProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(previousItem.get(&quot;productImportId&quot;).equals(productImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="importNewProductForImportAndMessage" description="Import" also-hidden="false">
+                <parameter param-name="importFormId" from-field="importFormId"/>
+                <parameter param-name="fileName" from-field="fileName"></parameter>
+                <parameter param-name="productImportId" from-field="productImportId"></parameter>
+            </hyperlink>
+        </field>
+        <field name="editProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="editTemporaryProduct" description="Edit" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productImportId"/>
+                <parameter param-name="importFormId"/>
+                <parameter param-name="fileName"/>
+                <parameter param-name="imported"/>
+            </hyperlink>
+        </field>
+        <!-- ProductImport entity fields -->
+        <field name="productImportId" title="Product Import Id" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="fileLineNumber" title="File Line Number" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId))&amp;&amp;importedStatus.equals(&quot;Y&quot;));}" widget-style="buttontext">
+            <hyperlink target="/catalog/control/EditProduct" description="${productId}" target-type="inter-app" target-window="blank">
+                <parameter param-name="productId"/>
+            </hyperlink>
+        </field>
+        <field name="internalName" title="Product Internal Name"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="productType" title="Product Type"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="facilityId" title="Warehouse" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="locationCode" title="Location Code"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="weight" title="Weight"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="declaredNameEn" title="English Declared Name"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="declaredNameCn" title="Chinese Declared Name"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="isVirtual" title="Is Virtual"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="isVariant" title="Is Variant"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="virtualVariantMethodEnum" title="Virtual Variant Method"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="requirementMethodEnumId" title="Requirement Method"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="supplierPartyId" title="Supplier Party ID"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceUSD" title="USD Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceGBP" title="GBP Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceAUD" title="AUD Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceEUR" title="EUR Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="priceCAD" title="CAD Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="importedStatus" title="Imported"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        <field name="importedDescription" title="Message"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productImportId)));}"><display/></field>
+        
+        <!--<sort-order>
+            <sort-field name="productId"/>
+        </sort-order>-->
+    </form>
+    
+    <form name="editTemporaryProduct" type="single" target="updateProductImport" default-entity-name="ProductImport">
+        <auto-fields-entity entity-name="ProductImport" map-name="productImport"/>
+        <field name="productImportId"><display/></field>
+        <field name="fileName"><display/></field>
+        <field name="fileLineNumber"><display/></field>
+        <field name="facilityId">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="Facility" description="${description}"> <!-- [${productTypeId}] -->
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="productTypeId">
+            <drop-down no-current-selected-key="FINISHED_GOOD">
+                <entity-options entity-name="ProductType" description="${description}"> <!-- [${productTypeId}] -->
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="isVirtual">
+            <drop-down><option key="N" description="${uiLabelMap.CommonN}"/><option key="Y" description="${uiLabelMap.CommonY}"/></drop-down>
+        </field>
+        <field name="isVariant">
+            <drop-down><option key="N" description="${uiLabelMap.CommonN}"/><option key="Y" description="${uiLabelMap.CommonY}"/></drop-down>
+        </field>
+        <field name="virtualVariantMethodEnum">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="Enumeration" key-field-name="enumId" description="${description}">
+                    <entity-constraint name="enumTypeId" value="PROD_VVMETHOD"/>
+                    <entity-order-by field-name="sequenceId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="requirementMethodEnumId">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="Enumeration" key-field-name="enumId" description="${description}">
+                    <entity-constraint name="enumTypeId" value="PROD_REQ_METHOD"/>
+                    <entity-order-by field-name="sequenceId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="importedStatus"><display/></field>
+        <field name="importedDescription"><display/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    
+    <form name="selectUpdateForm" type="single" header-row-style="header-row" default-table-style="basic-table">
+        <field name="updateFormId" title="Bulk Update Type" event="onChange" action="javascript:
+            document.selectUpdateForm.action='bulkUpdate';
+            document.selectUpdateForm.submit();">
+            <drop-down allow-empty="true">
+            	<!--<option key="XXXX" description="eBay - XXX"/>
+                 <option key="XXXX" description="Website XXX"/>-->
+                <entity-options entity-name="UpdateForm" description="${updateFormId} - [${updateFormName}]" key-field-name="updateFormId">
+                    <entity-order-by field-name="updateFormId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+    </form>
+    
+    <form name="updateBulkProductUpdate" type="upload" target="doUploadProductUpdateXlsFile">
+        <field name="updateFormId" title="Bulk Update Type">
+            <display-entity entity-name="UpdateForm" key-field-name="updateFormId" description="${updateFormId} - [${updateFormName}]">
+                <sub-hyperlink target="bulkUpdate" description="[change]" target-type="inter-app">
+                </sub-hyperlink>
+            </display-entity>
+        </field>
+        <field name="uploadedFile" title="Select XLS file"><file size="50"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+        <field name="dummy" title=" "><display description="Required: SKU"></display></field>
+        <field name="dummy2" title=" "><display description="Optional: En Name, Cn Name, Weight, Location, Supplier, Warehouse, Product Type, Virtual, Variant, Variant Method, Requirement Method, USD, CAD, EUR, GBP, AUD"></display></field>
+        <field name="dummy3" title=" "><display description="To set product discontinue, put 'set discontinue' to Y"/></field>
+        <field name="dummy4" title=" "><display description="Parent SKU supported. Put 'Parent SKU' and set to 'Y'. The SKU need to be in parent SKU form, i.e. DR-2010"/></field>
+    </form>
+    
+    <form name="listBulkProductUpdate" type="list" list-name="listUpdateForm" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="bulkUpdate">
+        <actions>
+            <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/ListFilesInDirectory.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name"><display/></field>
+        <field name="path"><display/></field>
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimported"><display/></field>
+        <field name="viewProductUpdate" title="" widget-style="buttontext">
+            <hyperlink target="viewProductUpdate" description="View Product Update Data" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="updateFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <field name="deleteFileProductUpdate" title="" widget-style="buttontext">
+            <hyperlink target="deleteFileProductUpdate" description="Clear Temporary Data and File" also-hidden="false">
+                <parameter param-name="updateFormId"/>
+                <parameter param-name="fileName" from-field="path"/>
+            </hyperlink>
+        </field>
+    </form>
+    
+    <form name="updateMultiProducts" type="single" target="updateMultiProducts">
+        <field name="updateFormId"><hidden value="${updateFormId}"/></field>
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="submit" title="Update All Products to OFBiz"><submit></submit></field>
+    </form>
+    
+    <form name="viewProductUpdate" type="list" list-name="bulkProductUpdates" use-row-submit="true" target="updateMultipleProducts"
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="300" paginate-target="viewProductUpdate">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="updateProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(previousItem.get(&quot;productUpdateId&quot;).equals(productUpdateId))&amp;&amp;updatedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="updateProductIntoBulkProductUpdate" description="Update" also-hidden="false">
+                <parameter param-name="updateFormId" from-field="updateFormId"/>
+                <parameter param-name="fileName" from-field="fileName"></parameter>
+                <parameter param-name="productUpdateId" from-field="productUpdateId"></parameter>
+            </hyperlink>
+        </field>
+        <field name="editProduct" title=" " widget-style="buttontext" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(productUpdateId))&amp;&amp;updatedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="editTemporaryProductUpdate" description="Edit" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productUpdateId"/>
+                <parameter param-name="updateFormId"/>
+                <parameter param-name="fileName"/>
+                <parameter param-name="imported"/>
+            </hyperlink>
+        </field>
+        <!-- BulkProductUpdate entity fields -->
+        <field name="productUpdateId" title="Product Update Id" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="fileLineNumber" title="File Line Number" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId))&amp;&amp;updatedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="productId" title="Product Id"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId))&amp;&amp;updatedStatus.equals(&quot;Y&quot;));}" widget-style="buttontext">
+            <hyperlink target="/catalog/control/EditProduct" description="${productId}" target-type="inter-app" target-window="blank">
+                <parameter param-name="productId"/>
+            </hyperlink>
+        </field>
+        <field name="internalName" title="Product Internal Name"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="productType" title="Product Type"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="facilityId" title="Warehouse" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="locationCode" title="Location Code" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="weight" title="Weight" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="declaredNameEn" title="English Declared Name" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="declaredNameCn" title="Chinese Declared Name" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="isVirtual" title="Is Virtual" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="isVariant" title="Is Variant" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="virtualVariantMethodEnum" title="Virtual Variant Method" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="requirementMethodEnumId" title="Requirement Method" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="supplierPartyId" title="Supplier Party ID" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="setDiscontinue" title="Set Discontinue" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="ebayUpdateQuantity" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="ebayListQuantity" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="ebayTriggerQuantity" position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="priceUSD" title="USD Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="priceGBP" title="GBP Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="priceAUD" title="AUD Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="priceEUR" title="EUR Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="priceCAD" title="CAD Price"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="updatedStatus" title="Updated"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        <field name="updatedDescription" title="Message"  position="1" use-when="${groovy:String prev=(String)previousItem.get(&quot;productUpdateId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(productUpdateId)));}"><display/></field>
+        
+        <!--<sort-order>
+         <sort-field name="productId"/>
+         </sort-order>-->
+    </form>
+    
+    <form name="editTemporaryProductUpdate" type="single" target="updateBulkProductUpdate" default-entity-name="BulkProductUpdate">
+        <auto-fields-entity entity-name="BulkProductUpdate" map-name="bulkProductUpdate"/>
+        <field name="productUpdateId"><display/></field>
+        <field name="fileName"><display/></field>
+        <field name="fileLineNumber"><display/></field>
+        <field name="facilityId">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="Facility" description="${description}"> <!-- [${productTypeId}] -->
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="productTypeId">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="ProductType" description="${description}"> <!-- [${productTypeId}] -->
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="isVirtual">
+            <drop-down allow-empty="true"><option key="N" description="${uiLabelMap.CommonN}"/><option key="Y" description="${uiLabelMap.CommonY}"/></drop-down>
+        </field>
+        <field name="isVariant">
+            <drop-down allow-empty="true"><option key="N" description="${uiLabelMap.CommonN}"/><option key="Y" description="${uiLabelMap.CommonY}"/></drop-down>
+        </field>
+        <field name="virtualVariantMethodEnum">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="Enumeration" key-field-name="enumId" description="${description}">
+                    <entity-constraint name="enumTypeId" value="PROD_VVMETHOD"/>
+                    <entity-order-by field-name="sequenceId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="requirementMethodEnumId">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="Enumeration" key-field-name="enumId" description="${description}">
+                    <entity-constraint name="enumTypeId" value="PROD_REQ_METHOD"/>
+                    <entity-order-by field-name="sequenceId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="setDiscontinue">
+            <drop-down allow-empty="true"><option key="N" description="${uiLabelMap.CommonN}"/><option key="Y" description="${uiLabelMap.CommonY}"/></drop-down>
+        </field>
+        <field name="ebayUpdateQuantity">
+            <drop-down allow-empty="true"><option key="N" description="${uiLabelMap.CommonN}"/><option key="Y" description="${uiLabelMap.CommonY}"/></drop-down>
+        </field>
+        <field name="updatedStatus"><display/></field>
+        <field name="updatedDescription"><display/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+</forms>
+

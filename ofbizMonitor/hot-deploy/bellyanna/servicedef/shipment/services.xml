@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>bellyanna Services for Shipment related</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <!-- test Java -->
+    <service name="testJava" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.common" invoke="testJava">
+        <description>Test Java</description>
+    </service>
+    
+    <!-- Common - START -->
+    <service name="getApiShipmentInfo" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.common" invoke="getApiShipmentInfo">
+        <description>get API Shipment Information</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="mapContent" type="Map" mode="OUT" optional="false"/>
+        <attribute name="mapItem" type="List" mode="OUT" optional="false"/>
+    </service>
+    
+    <service name="uploadTrackingCodeToEbay" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.common" invoke="uploadTrackingCodeToEbay">
+        <description>Common - Upload Tracking Code To eBay</description>
+        <attribute name="shipmentId" type="String" mode="IN" optional="false"/>
+    </service>
+    <!-- Common - END -->
+    
+    <!-- ePacket - START-->
+    <!-- ePacket - addAPACShippingPackage -->
+    <service name="addAPACShippingPackage" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="addAPACShippingPackage">
+        <description>ePacket - Add APAC Shipping Package</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="trackingNumber" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <!-- ePacket - getAPACShippingLabel -->
+    <service name="getAPACShippingLabel" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="getAPACShippingLabel">
+        <description>ePacket - Get APAC Shipping Label</description>
+        <attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
+        <attribute name="shippingLabelByte" type="java.io.ByteArrayInputStream" mode="OUT" optional="false"/>
+    </service>
+    
+    <!-- ePacket - confirmAPACShippingPackage -->
+    <service name="confirmAPACShippingPackage" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="confirmAPACShippingPackage">
+        <description>ePacket - Confirm APAC Shipping Package</description>
+        <attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- ePacket - getAPACShippingPackageStatus -->
+    <service name="getAPACShippingPackageStatus" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="getAPACShippingPackageStatus">
+        <description>ePacket - Get APAC Shipping Package Status</description>
+        <attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
+        <attribute name="status" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <!-- ePacket - recreateAPACShippingPackage -->
+    <service name="recreateAPACShippingPackage" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="recreateAPACShippingPackage">
+        <description>ePacket - Recreate APAC Shipping Package for replacement</description>
+        <attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
+        <attribute name="trackingNumber" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <!-- ePacket - cancelAPACShippingPackage -->
+    <service name="cancelAPACShippingPackage" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="cancelAPACShippingPackage">
+        <description>ePacket - Cancel APAC Shipping Package</description>
+        <attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- ePacket - getAPACShippingTrackCode -->
+    <service name="getAPACShippingTrackCode" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="getAPACShippingTrackCode">
+        <description>ePacket - Get APAC Shipping Track Code</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="trackingNumber" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <!-- ePacket - completePackEpacket -->
+    <service name="completePackEpacket" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="completePackEpacket">
+        <description>ePacket - Complete Pack ePacket</description>
+        <attribute name="shipmentId" type="String" mode="IN" optional="false"/>
+        <attribute name="shipmentId" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <!-- ePacket - saveTrackingNumber -->
+    <service name="saveTrackingNumber" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.ePacket" invoke="saveTrackingNumber">
+        <description>ePacket - Save Tracking Number</description>
+        <attribute name="orderId" type="String" mode="IN" optional="true"/>
+        <attribute name="shipmentId" type="String" mode="IN" optional="true"/>
+        <attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- ePacket - updateEpacketTrackingNumberToEbay -->
+    <service name="updateEpacketTrackingNumberToEbay" auth="true" engine="java" transaction-timeout="6000"
+        location="com.bellyanna.shipment.ePacket" invoke="updateEpacketTrackingNumberToEbay">
+        <description>Update early ePacket tracking number to eBay</description>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    <!-- ePacket - END -->
+    
+    <!-- bpost - START -->
+    <service name="createLvsParcel" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.shipment.bpost" invoke="createLvsParcel">
+        <description>Belgium Post - Create LVS Parcel</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+    </service>
+    <!-- bpost - END -->
+
+</services>

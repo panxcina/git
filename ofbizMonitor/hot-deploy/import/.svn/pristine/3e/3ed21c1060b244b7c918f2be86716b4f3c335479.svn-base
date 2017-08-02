@@ -1,0 +1,638 @@
+/*******************************************************************************
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ *******************************************************************************/
+
+package org.ofbiz.orderimport;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.math.BigDecimal;
+import java.nio.ByteBuffer;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import javolution.util.FastList;
+import javolution.util.FastMap;
+
+import org.ofbiz.base.util.Debug;
+import org.ofbiz.base.util.UtilDateTime;
+import org.ofbiz.base.util.UtilMisc;
+import org.ofbiz.base.util.UtilProperties;
+import org.ofbiz.base.util.UtilValidate;
+import org.ofbiz.base.util.string.FlexibleStringExpander;
+import org.ofbiz.entity.Delegator;
+import org.ofbiz.entity.GenericEntityException;
+import org.ofbiz.entity.GenericValue;
+import org.ofbiz.entity.condition.EntityCondition;
+import org.ofbiz.entity.util.EntityUtil;
+import org.ofbiz.service.DispatchContext;
+import org.ofbiz.service.LocalDispatcher;
+import org.ofbiz.service.ServiceUtil;
+
+import com.csvreader.CsvReader;
+
+public class OrderImportServices {
+    public static final String module = OrderImportServices.class.getName();
+    public static Map<String, Object> uploadOrderCsvFile(DispatchContext dctx, Map<String, ? extends Object> context) {
+        LocalDispatcher dispatcher = dctx.getDispatcher();
+        Delegator delegator = dctx.getDelegator();
+        GenericValue userLogin = (GenericValue) context.get("userLogin");
+        ByteBuffer imageData = (ByteBuffer) context.get("uploadedFile");
+        String uploadFileName = (String) context.get("_uploadedFile_fileName");
+        String productStoreId = (String) context.get("productStoreId");
+        if (UtilValidate.isNotEmpty(uploadFileName) && UtilValidate.isNotEmpty(imageData)) {
+            try {
+                String fileServerPath = FlexibleStringExpander.expandString(UtilProperties.getPropertyValue("orderImport", "orderimport.server.path"), context);
+                File rootTargetDir = new File(fileServerPath);
+                if (!rootTargetDir.exists()) {
+                    boolean created = rootTargetDir.mkdirs();
+                    if (!created) {
+                        String errMsg = "Not create target directory";
+                        Debug.logFatal(errMsg, module);
+                        return ServiceUtil.returnError(errMsg);
+                    }
+                }
+                String fileName = uploadFileName.substring(0, uploadFileName.indexOf(".")) + "_" +UtilDateTime.nowDateString() + ".csv";
+                String filePath = fileServerPath + "/" + fileName;
+                File file = new File(filePath);
+                try {
+                    RandomAccessFile out = new RandomAccessFile(file, "rw");
+                    out.write(imageData.array());
+                    out.close();
+                } catch (FileNotFoundException e) {
+                    Debug.logError(e, module);
+                    return ServiceUtil.returnError("");
+                } catch (IOException e) {
+                    Debug.logError(e, module);
+                    return ServiceUtil.returnError("");
+                }
+                if (file.exists()) {
+                    readDataFromCsv(dispatcher, delegator, userLogin, productStoreId, filePath);
+                }
+            } catch (Exception e) {
+                return ServiceUtil.returnError(e.getMessage());
+            }
+        }
+        return ServiceUtil.returnSuccess();
+    }
+    
+    private static Map<String, Object> readDataFromCsv(LocalDispatcher dispatcher, Delegator delegator, GenericValue userLogin, String productStoreId, String filePath) {
+        Map<String, Object> result = ServiceUtil.returnSuccess();
+        List<String> errorList = FastList.newInstance();
+        try {
+            String orderNumberProfix = null;
+            GenericValue productStore = delegator.findByPrimaryKey("ProductStore", UtilMisc.toMap("productStoreId", productStoreId));
+            if (UtilValidate.isNotEmpty(productStore.get("orderNumberPrefix"))) {
+                orderNumberProfix = productStore.getString("orderNumberPrefix");
+            }
+            CsvReader csv = new CsvReader(filePath);
+            if (UtilValidate.isNotEmpty(csv)) {
+                csv.readHeaders();
+                while (csv.readRecord()) {
+                    List<GenericValue> orderImports = delegator.findByAnd("OrderImport", UtilMisc.toMap("orderId", orderNumberProfix + csv.get(0), "fileName", filePath));
+                    if (orderImports.size() > 0) {
+                        GenericValue orderImport = EntityUtil.getFirst(orderImports); 
+                        Map<String, Object> orderItemImport = FastMap.newInstance();
+                        orderItemImport.put("orderImportId", orderImport.getString("orderImportId"));
+                        orderItemImport.put("fileLineNumber", new BigDecimal(csv.getCurrentRecord() + 3));
+                        orderItemImport.put("userLogin", userLogin);
+                        for (int columnCount = 0; columnCount < csv.getHeaderCount(); columnCount++) {
+                            String data = csv.get(columnCount);
+                            String header = csv.getHeader(columnCount);
+                            if ("Item Number".equals(header)) {
+                                orderItemImport.put("orderItemNumber", data);
+                            } else if ("Item Title".equals(header)) {
+                                orderItemImport.put("productName", data);
+                            } else if ("Custom Label".equals(header)) {
+                                orderItemImport.put("productId", data);
+                            } else if ("Quantity".equals(header)) {
+                                orderItemImport.put("quantity", (UtilValidate.isNotEmpty(data)) ? new BigDecimal(data) : BigDecimal.ZERO);
+                            } else if ("Transaction ID".equals(header)) {
+                                orderItemImport.put("transactionId", data);
+                            } else if ("Sale Price".equals(header)) {
+                                orderItemImport.put("unitPrice", getPrice(data));
+                            } else if ("Sale Date".equals(header)) {
+                                orderItemImport.put("saleDate", getTimestamp(data));
+                            }
+                        }
+                        result = dispatcher.runSync("createOrderItemImport", orderItemImport);
+                    } else {
+                        Map<String, Object> orderImportCtx = FastMap.newInstance();
+                        Map<String, Object> orderItemImport = FastMap.newInstance();
+                        String newOrderImportId = delegator.getNextSeqId("OrderImport");
+                        orderImportCtx.put("orderImportId", newOrderImportId);
+                        orderImportCtx.put("productStoreId", productStoreId);
+                        orderImportCtx.put("fileName", filePath);
+                        orderImportCtx.put("fileLineNumber", new BigDecimal(csv.getCurrentRecord() + 3));
+                        orderImportCtx.put("importedStatus", "N");
+                        orderImportCtx.put("userLogin", userLogin);
+                        for (int columnCount = 0; columnCount < csv.getHeaderCount(); columnCount++) {
+                            String data = csv.get(columnCount);
+                            String header = csv.getHeader(columnCount);
+                            
+                            if ("Sales Record Number".equals(header)) {
+                                orderImportCtx.put("orderId", orderNumberProfix + data);
+                            } else if ("User Id".equals(header)) {
+                                orderImportCtx.put("userId", data);
+                            } else if ("Buyer Fullname".equals(header)) {
+                                Map<String, Object> nameMap = FastMap.newInstance();
+                                if (UtilValidate.isNotEmpty(data)) {
+                                    nameMap = splitBuyerFullName(data);
+                                }
+                                orderImportCtx.put("toName", data);
+                                orderImportCtx.put("firstName", (nameMap.get("firstName") != null) ? nameMap.get("firstName").toString() : null);
+                                orderImportCtx.put("middleName", (nameMap.get("middleName") != null) ? nameMap.get("middleName").toString() : null);
+                                orderImportCtx.put("lastName", (nameMap.get("lastName") != null) ? nameMap.get("lastName").toString() : null);
+                            } else if ("Buyer Phone Number".equals(header)) {
+                                Map<String, Object> telecomNumber = splitPhoneNumber(data);
+                                orderImportCtx.put("countryCode", (telecomNumber.get("countryCode") != null) ? telecomNumber.get("countryCode") : null);
+                                orderImportCtx.put("areaCode", (telecomNumber.get("areaCode") != null) ? telecomNumber.get("areaCode").toString() : null);
+                                orderImportCtx.put("contactNumber", (telecomNumber.get("contactNumber") != null) ? telecomNumber.get("contactNumber").toString() : null);
+                            } else if ("Buyer Email".equals(header)) {
+                                orderImportCtx.put("emailAddress", data);
+                            } else if ("Buyer Address 1".equals(header)) {
+                                orderImportCtx.put("address1", data);
+                            } else if ("Buyer Address 2".equals(header)) {
+                                orderImportCtx.put("address2", data);
+                            } else if ("Buyer City".equals(header)) {
+                                orderImportCtx.put("city", data);
+                            } else if ("Buyer State".equals(header)) {
+                                String stateOrProvince = checkStateProvinceGeoId(delegator, data);
+                                if (UtilValidate.isNotEmpty(stateOrProvince)) {
+                                    orderImportCtx.put("stateProvinceGeoId", stateOrProvince);
+                                } else {
+                                    orderImportCtx.put("city", (String) orderImportCtx.get("city") + " " + data);
+                                }
+                                
+                            } else if ("Buyer Zip".equals(header) || "Buyer Postcode".equals(header)) {
+                                orderImportCtx.put("postalCode", data);
+                            } else if ("Buyer Country".equals(header)) {
+                                orderImportCtx.put("countryGeoId", getGeoId(delegator, data, "COUNTRY"));
+                            } else if ("Sale Price".equals(header)) {
+                                orderImportCtx.put("currencyUom", getCurrencyUom(delegator, data));
+                                orderImportCtx.put("remainingSubTotal", getPrice(data));
+                                orderItemImport.put("unitPrice", getPrice(data));
+                            } else if ("Shipping and Handling".equals(header) || "Postage and Handling".equals(header)) {
+                                orderImportCtx.put("shippingAmount", getPrice(data));
+                            } else if ("US Tax".equals(header)) {
+                                orderImportCtx.put("taxAmount", getPrice(data));
+                            } else if ("Insurance".equals(header)) {
+                                orderImportCtx.put("warrantyAmount", getPrice(data));
+                            } else if ("Cash on delivery fee".equals(header)) {
+                                orderImportCtx.put("taxAdjustmentAmount", getPrice(data));
+                            } else if ("Total Price".equals(header)) {
+                                orderImportCtx.put("grandTotalAmount", getPrice(data));
+                            } else if ("Payment Method".equals(header)) {
+                                orderImportCtx.put("paymentMethodTypeId", getPaymentMethodTypeId(delegator, data));
+                            } else if ("Sale Date".equals(header)) {
+                                orderImportCtx.put("createDate", getTimestamp(data));
+                                orderItemImport.put("saleDate", getTimestamp(data));
+                            } else if ("Checkout Date".equals(header)) {
+                                orderImportCtx.put("checkoutDate", getTimestamp(data));
+                            } else if ("Paid on Date".equals(header)) {
+                                orderImportCtx.put("paidOnDate", getTimestamp(data));
+                            } else if ("Shipped on Date".equals(header)) {
+                                orderImportCtx.put("shippedOnDate", getTimestamp(data));
+                            } else if ("Notes to yourself".equals(header)) {
+                                orderImportCtx.put("noteInfo", data);
+                            } else if ("PayPal Transaction ID".equals(header)) {
+                                orderImportCtx.put("paypalTransactionId", data);
+                            } else if ("Shipping Service".equals(header) || "Postage Service".equals(header)) {
+                                orderImportCtx.put("productStoreShipMethId", getShipmentMethodId(delegator, data, productStoreId));
+                            } else if ("Cash on delivery option".equals(header)) {
+                                orderImportCtx.put("cashOnDeliveryOption", data);
+                            } else if ("Order ID".equals(header)) {
+                                orderImportCtx.put("externalOrderId", data);
+                            } else if ("Variation Details".equals(header)) {
+                                orderImportCtx.put("variationDetails", data);
+                            } else if ("Item Number".equals(header)) {
+                                orderItemImport.put("orderItemNumber", data);
+                            } else if ("Item Title".equals(header)) {
+                                orderItemImport.put("productName", data);
+                            } else if ("Custom Label".equals(header)) {
+                                orderItemImport.put("productId", data);
+                            } else if ("Quantity".equals(header)) {
+                                orderItemImport.put("quantity", (UtilValidate.isNotEmpty(data)) ? new BigDecimal(data) : BigDecimal.ZERO);
+                            } else if ("Transaction ID".equals(header)) {
+                                orderItemImport.put("transactionId", data);
+                            }
+                        }
+                        try {
+                            String checkNoOrderValue = csv.get(0);
+                            if (UtilValidate.isNotEmpty(checkNoOrderValue) && !"record(s) downloaded".equals(csv.get(1).trim()) && !checkNoOrderValue.startsWith("Seller ID") && UtilValidate.isNotEmpty(csv.get(0).trim())) {
+                                result = dispatcher.runSync("createOrderImport", orderImportCtx);
+                                if(ServiceUtil.isError(result)) {
+                                    errorList.add(ServiceUtil.getErrorMessage(result));
+                                }
+                                if (UtilValidate.isNotEmpty(orderItemImport.get("productId"))) {
+                                    orderItemImport.put("orderImportId", newOrderImportId);
+                                    orderItemImport.put("fileLineNumber", new BigDecimal(csv.getCurrentRecord() + 3));
+                                    orderItemImport.put("userLogin", userLogin);
+                                    Map<String, Object> orderItemResult = dispatcher.runSync("createOrderItemImport", orderItemImport);
+                                    if(ServiceUtil.isError(result)) {
+                                        errorList.add(ServiceUtil.getErrorMessage(orderItemResult));
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            return ServiceUtil.returnError(e.getMessage());
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            return ServiceUtil.returnError(e.getMessage());
+        }
+        return ServiceUtil.returnSuccess();
+    }
+
+    private static Map<String, Object> splitBuyerFullName(String buyerFullName){
+        String[] name = buyerFullName.split(" ");
+        Map<String, Object> nameMap =  FastMap.newInstance();
+        if (name.length == 2) {
+            nameMap.put("firstName", name[0].trim());
+            nameMap.put("middleName", null);
+            nameMap.put("lastName", name[1].trim());
+        } else if (name.length == 3) {
+            nameMap.put("firstName", name[0].trim());
+            nameMap.put("middleName", name[1].trim());
+            nameMap.put("lastName", name[2].trim());
+        } else {
+            nameMap.put("firstName", buyerFullName);
+            nameMap.put("middleName", null);
+            nameMap.put("lastName", null);
+        }
+        return nameMap;
+    }
+
+    private static Timestamp getTimestamp(String dateStr) {
+        if (UtilValidate.isEmpty(dateStr)) {
+            return null;
+        }
+        String datePattern = "MMM-dd-yy";
+        if (dateStr.contains("/")) {
+            dateStr = dateStr.replace("/", "-");
+            datePattern = "MM-dd-yy";
+        }
+        Timestamp result = null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
+            Date toDate = dateFormat.parse(dateStr);
+            result = new Timestamp(toDate.getTime());
+        } catch (Exception e) {
+            return null;
+        }
+        return result; 
+    }
+
+    private static String getShipmentMethodId(Delegator delegator, String shipmentName, String productStoreId) {
+        
+        String productStoreShipMethId = shipmentName;
+        String enumTypeId = null;
+        try {
+            List<GenericValue> enumerationTypes= delegator.findByAnd("EnumerationType", UtilMisc.toMap("description", productStoreId, "parentTypeId", "PROSTORE_EXSHIP"));
+            if (enumerationTypes.size() > 0) {
+                GenericValue enumerationType = EntityUtil.getFirst(enumerationTypes);
+                enumTypeId = enumerationType.getString("enumTypeId");
+            }
+            List<GenericValue> enumerations = delegator.findByAnd("Enumeration", UtilMisc.toMap("description", shipmentName, "enumTypeId", enumTypeId));
+            if (enumerations.size() > 0 && UtilValidate.isNotEmpty(enumTypeId)) {
+                GenericValue enumeration = EntityUtil.getFirst(enumerations);
+                String enumCode = enumeration.getString("enumCode");
+                if (UtilValidate.isNotEmpty(enumCode)) {
+                    productStoreShipMethId = enumCode;
+                }
+            }
+        } catch (Exception e) {
+            return productStoreShipMethId;
+        }
+        return productStoreShipMethId;
+    }
+
+    private static String getPaymentMethodTypeId(Delegator delegator, String paymentMethodStr) throws GenericEntityException {
+        String paymentMethodTypeId = paymentMethodStr;
+        try {
+            List<GenericValue> enumerations = delegator.findByAnd("Enumeration", UtilMisc.toMap("enumCode", paymentMethodStr, "enumTypeId", "PAYMENT_MAP"));
+            if (enumerations.size() > 0) {
+                GenericValue enumeration = EntityUtil.getFirst(enumerations);
+                paymentMethodTypeId = enumeration.getString("enumId");
+            }
+        } catch (Exception e) {
+            return "error";
+        }
+        return paymentMethodTypeId;
+    }
+
+    private static String getCurrencyUom(Delegator delegator, String priceStr) throws GenericEntityException {
+        String currency = null;
+        if (priceStr.startsWith("$")) {
+            currency = "USD";
+        } else if (!priceStr.startsWith("$") && priceStr.contains("$")) {
+            String[] arr = priceStr.split(" ");
+            String geoCode = arr[0];
+            GenericValue enumeration = delegator.findByPrimaryKey("Enumeration", UtilMisc.toMap("enumId", geoCode));
+            if (UtilValidate.isNotEmpty(enumeration)) {
+                currency = enumeration.getString("enumCode");
+            }
+        } else if (priceStr.contains(" ") && !priceStr.contains("$")) {
+            String[] arr = priceStr.split(" ");
+            currency = arr[0];
+        } else {
+            currency = null;
+        }
+        return currency;
+    }
+
+    private static BigDecimal getPrice(String price) {
+        BigDecimal result = BigDecimal.ZERO;
+        if (price.startsWith("$")) {
+            result = new BigDecimal(price.substring(1));
+        } else if (price.contains("$") && !price.startsWith("$")) {
+            price = price.substring(price.indexOf("$") + 1);
+            result = new BigDecimal(price);
+        } else if (price.contains(" ") && !price.contains("$")) {
+            String[] arr = price.split(" ");
+            result = new BigDecimal(arr[1]);
+        } else {
+            result = BigDecimal.ZERO;
+        }
+        return result;
+    }
+
+    private static String getGeoId(Delegator delegator, String countryName, String geoType) {
+        String countryGeoId = countryName;
+        try {
+            List<GenericValue> countryGeoList = delegator.findByAnd("Geo", UtilMisc.toMap("geoName", countryName.trim(), "geoTypeId", geoType));
+            if (countryGeoList.size() > 0) {
+                GenericValue geo = EntityUtil.getFirst(countryGeoList);
+                countryGeoId = geo.getString("geoId");
+            }
+        } catch (Exception e) {
+            return countryGeoId;
+        }
+        return countryGeoId;
+    }
+
+    private static Map<String, Object> splitPhoneNumber(String phoneNumber) {
+        Map<String, Object> phoneMap =  FastMap.newInstance();
+        String countryCode = null;
+        String areaCode = null;
+        String contactNumber = null;
+        if (phoneNumber.startsWith("+") && phoneNumber.contains("(") && phoneNumber.contains(")")) {
+            countryCode = phoneNumber.substring(0, phoneNumber.indexOf("(")).trim();
+            areaCode = phoneNumber.substring(phoneNumber.indexOf("("), phoneNumber.indexOf(")") + 1).trim();
+            contactNumber = phoneNumber.substring(phoneNumber.lastIndexOf(")") + 1).trim();
+        } else if (!phoneNumber.contains("+") && phoneNumber.startsWith("(") && phoneNumber.contains(")")) {
+            areaCode = phoneNumber.substring(0, phoneNumber.indexOf(")") + 1).trim();
+            contactNumber = phoneNumber.substring(phoneNumber.lastIndexOf(")") +1).trim();
+        } else {
+            contactNumber = phoneNumber.trim();
+        }
+        phoneMap.put("countryCode", countryCode);
+        phoneMap.put("areaCode", areaCode);
+        phoneMap.put("contactNumber", contactNumber);
+        return phoneMap;
+    }
+
+    private static String checkStateProvinceGeoId(Delegator delegator, String IdStr) {
+        String geoId = null;
+        try {
+            GenericValue geo = delegator.findByPrimaryKey("Geo", UtilMisc.toMap("geoId", IdStr.toUpperCase()));
+            if (UtilValidate.isNotEmpty(geo)) {
+                geoId = geo.getString("geoId");
+            } else {
+                List<GenericValue> nextGeos = delegator.findByAnd("Geo", UtilMisc.toMap("geoName", IdStr));
+                if (UtilValidate.isNotEmpty(nextGeos)) {
+                    GenericValue nextGeo = EntityUtil.getFirst(nextGeos);
+                    geoId = nextGeo.getString("geoId");
+                }
+            }
+        } catch (Exception e) {
+            return geoId;
+        }
+        return geoId;
+    }
+    
+    public static Map<String, Object> deleteFileOrderImport(DispatchContext dctx, Map<String, ? extends Object> context) {
+        Map<String, Object> result = FastMap.newInstance();
+        Delegator delegator = dctx.getDelegator();
+        LocalDispatcher dispatcher = dctx.getDispatcher();
+        GenericValue userLogin = (GenericValue) context.get("userLogin");
+        if (UtilValidate.isEmpty(context.get("fileName"))) {
+            result = ServiceUtil.returnError("Required fileName parameter.");
+            result.put("productStoreId", (String) context.get("productStoreId"));
+            return result;
+        }
+        try {
+            List<GenericValue> orderImportList = delegator.findByAnd("OrderImport", UtilMisc.toMap("fileName", (String) context.get("fileName")));
+            if (orderImportList.size() > 0) {
+                for (GenericValue orderImport : orderImportList) {
+                    dispatcher.runSync("deleteOrderImport", UtilMisc.toMap("orderImportId", orderImport.getString("orderImportId"), "userLogin", userLogin));
+                }
+                long orderImportCount = delegator.findCountByCondition("OrderImport", EntityCondition.makeCondition(UtilMisc.toMap("fileName", (String) context.get("fileName"))), null, null);
+                if (orderImportCount == 0) {
+                    File file = new File((String) context.get("fileName"));
+                    if (!file.exists()) {
+                        result = ServiceUtil.returnError("This file doesn't exist.");
+                        result.put("productStoreId", (String) context.get("productStoreId"));
+                        return result;
+                    }
+                    file.delete();
+                }
+            }
+        } catch (Exception e) {
+            result = ServiceUtil.returnError(e.getMessage());
+            result.put("productStoreId", (String) context.get("productStoreId"));
+            return result;
+        }
+        result = ServiceUtil.returnSuccess("Delete OrderImport and file successful.");
+        result.put("productStoreId", (String)context.get("productStoreId"));
+        return result;
+    }
+    
+    public static Map<String, Object> doUploadInternalOrderCsvFile(DispatchContext dctx, Map<String, ? extends Object> context) {
+        Map<String, Object> result = FastMap.newInstance();
+        LocalDispatcher dispatcher = dctx.getDispatcher();
+        Delegator delegator = dctx.getDelegator();
+        GenericValue userLogin = (GenericValue) context.get("userLogin");
+        ByteBuffer imageData = (ByteBuffer) context.get("uploadedFile");
+        String uploadFileName = (String) context.get("_uploadedFile_fileName");
+        String fileType = (String) context.get("_uploadedFile_contentType");
+        if (!"text/csv".equals(fileType)) {
+            return ServiceUtil.returnError("Incorrect file format .. CSV needed");
+        }
+        try {
+            String fileServerPath = FlexibleStringExpander.expandString(UtilProperties.getPropertyValue("orderImport", "orderimport.server.path"), context);
+            File rootTargetDir = new File(fileServerPath + "/Internal Order");
+            if (!rootTargetDir.exists()) {
+                boolean created = rootTargetDir.mkdirs();
+                if (!created) {
+                    String errMsg = "Not create target directory";
+                    Debug.logFatal(errMsg, module);
+                    return ServiceUtil.returnError(errMsg);
+                }
+            }
+            String fileName = uploadFileName.substring(0, uploadFileName.indexOf(".")) + "_" +UtilDateTime.nowDateString() + ".csv";
+            String filePath = rootTargetDir + "/" + fileName;
+            File file = new File(filePath);
+            try {
+                RandomAccessFile out = new RandomAccessFile(file, "rw");
+                out.write(imageData.array());
+                out.close();
+            } catch (FileNotFoundException e) {
+                Debug.logError(e, module);
+                return ServiceUtil.returnError(e.getMessage());
+            } catch (IOException e) {
+                Debug.logError(e, module);
+                return ServiceUtil.returnError(e.getMessage());
+            }
+            if (file.exists()) {
+                readDataFromCsvAndImport(dispatcher, delegator, userLogin, filePath);
+            }
+        } catch (Exception e) {
+        	return ServiceUtil.returnError(e.getMessage());
+        }
+        return result;
+    }
+    private static Map<String, Object> readDataFromCsvAndImport(LocalDispatcher dispatcher, Delegator delegator, GenericValue userLogin, String filePath) {
+        Map<String, Object> result = FastMap.newInstance();
+        try {
+            if (UtilValidate.isEmpty(filePath)) {
+                return ServiceUtil.returnError("This file is not exist.");
+            }
+            CsvReader csv = new CsvReader(filePath);
+            if (UtilValidate.isNotEmpty(csv)) {
+                csv.readHeaders();
+                while (csv.readRecord()) {
+                    List<GenericValue> orderImports = delegator.findByAnd("OrderImport", UtilMisc.toMap("orderId", csv.get("orderId"), "fileName", filePath));
+                    if (orderImports.size() > 0) {
+                        GenericValue orderImport = EntityUtil.getFirst(orderImports);
+                        setOrderItemImport(dispatcher, userLogin, csv, orderImport.getString("orderImportId"));
+                    }else {
+                        Map<String, Object> orderImportCtx = FastMap.newInstance();
+                        String newOrderImportId = delegator.getNextSeqId("OrderImport");
+                        for (int columnCount = 0; columnCount < csv.getHeaderCount(); columnCount++) {
+                            String header = csv.getHeader(columnCount);
+                            String data = csv.get(columnCount);
+                            if ("shipmentMethodTypeId".equals(header)) {
+                                String partyId = csv.get("carrierPartyId");
+                                List<GenericValue> productStoreShipmentMethes = delegator.findByAnd("ProductStoreShipmentMeth", UtilMisc.toMap("shipmentMethodTypeId", csv.get("shipmentMethodTypeId"), "partyId", partyId));
+                                if (productStoreShipmentMethes.size() > 0) {
+                                    GenericValue productStoreShipmentMeth = EntityUtil.getFirst(productStoreShipmentMethes);
+                                    data = productStoreShipmentMeth.getString("productStoreShipMethId");
+                                    orderImportCtx.put("productStoreShipMethId", data);
+                                }
+                            } else if ("carrierPartyId".equals(header)) {
+                                continue;
+                            } else if ("createDate".equals(header) || "checkoutDate".equals(header) || "paidOnDate".equals(header) || "shippedOnDate".equals(header)) {
+                                orderImportCtx.put(header, toTimestamp(data));
+                            } else if ("orderItemNumber".equals(header) || "productId".equals(header) || "productName".equals(header) || "quantity".equals(header) ||  "transactionId".equals(header) || "unitPrice".equals(header) || "saleDate".equals(header)) {
+                                continue;
+                            } else if ("remainingSubTotal".equals(header) || "shippingAmount".equals(header) || "taxAdjustmentAmount".equals(header) || "warrantyAmount".equals(header) || "grandTotalAmount".equals(header) || "quantity".equals(header) || "taxAmount".equals(header)) {
+                                orderImportCtx.put(header, (UtilValidate.isNotEmpty(data)) ? new BigDecimal(data) : BigDecimal.ZERO);
+                            } else {
+                                orderImportCtx.put(header, data);
+                            }
+                        }
+                        orderImportCtx.put("orderImportId", newOrderImportId);
+                        orderImportCtx.put("productStoreId", csv.get("productStoreId"));
+                        orderImportCtx.put("fileName", filePath);
+                        orderImportCtx.put("fileLineNumber", new BigDecimal(csv.getCurrentRecord() + 1));
+                        orderImportCtx.put("importedStatus", "N");
+                        orderImportCtx.put("userLogin", userLogin);
+                        result = dispatcher.runSync("createOrderImport", orderImportCtx);
+                        if (UtilValidate.isNotEmpty(csv.get("productId"))) {
+                            setOrderItemImport(dispatcher, userLogin, csv, newOrderImportId);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            result = ServiceUtil.returnError(e.getMessage());
+        }
+        return result;
+    }
+    
+    private static Timestamp toTimestamp (String dateStr) {
+        Timestamp result = null;
+        if (UtilValidate.isEmail(dateStr)) {
+            return null;
+        }
+        if (dateStr.contains("/")) {
+            dateStr = dateStr.replace("/", "-");
+        }
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date toDate = dateFormat.parse(dateStr);
+            result = new Timestamp(toDate.getTime());
+        } catch (Exception e) {
+            return null;
+        }
+        return result; 
+    }
+    private static Map<String, Object> setOrderItemImport(LocalDispatcher dispatcher, GenericValue userLogin, CsvReader csv, String orderImportId) {
+        Map<String, Object> result = FastMap.newInstance();
+        try {
+            Map<String, Object> orderItemImport = FastMap.newInstance();
+            orderItemImport.put("orderItemNumber", csv.get("orderItemNumber"));
+            orderItemImport.put("productName", csv.get("productName"));
+            orderItemImport.put("productId", csv.get("productId"));
+            orderItemImport.put("quantity", (UtilValidate.isNotEmpty(csv.get("quantity"))) ? new BigDecimal(csv.get("quantity")) : BigDecimal.ZERO);
+            orderItemImport.put("transactionId", csv.get("transactionId"));
+            orderItemImport.put("unitPrice", (UtilValidate.isNotEmpty(csv.get("unitPrice"))) ? new BigDecimal(csv.get("unitPrice")) : BigDecimal.ZERO);
+            orderItemImport.put("saleDate", toTimestamp(csv.get("saleDate")));
+            orderItemImport.put("orderImportId", orderImportId);
+            orderItemImport.put("fileLineNumber", new BigDecimal(csv.getCurrentRecord() + 1));
+            orderItemImport.put("userLogin", userLogin);
+            result = dispatcher.runSync("createOrderItemImport", orderItemImport);
+        } catch (Exception e) {
+            result = ServiceUtil.returnError(e.getMessage());
+        }
+        return result;
+    }
+    
+    public static Map<String, Object> doDeleteOrderImportAndFile(DispatchContext dctx, Map<String, ? extends Object> context) {
+        Delegator delegator = dctx.getDelegator();
+        GenericValue userLogin = (GenericValue) context.get("userLogin");
+        LocalDispatcher dispatcher = dctx.getDispatcher();
+        try {
+            List<GenericValue> orderImportList = delegator.findByAnd("OrderImport", UtilMisc.toMap("fileName", (String) context.get("filePath")));
+            if (orderImportList.size() > 0) {
+                for (GenericValue orderImport : orderImportList) {
+                    dispatcher.runSync("deleteOrderImport", UtilMisc.toMap("orderImportId", orderImport.getString("orderImportId"), "userLogin", userLogin));
+                }
+                long orderImportCount = delegator.findCountByCondition("OrderImport", EntityCondition.makeCondition(UtilMisc.toMap("fileName", (String) context.get("filePath"))), null, null);
+                if (orderImportCount == 0) {
+                    File file = new File((String) context.get("filePath"));
+                    if (!file.exists()) {
+                        return ServiceUtil.returnError("This file doesn't exist.");
+                    }
+                    file.delete();
+                }
+            }
+        } catch (Exception e) {
+            return ServiceUtil.returnError(e.getMessage());
+        }
+        return ServiceUtil.returnSuccess("Delete OrderImport and file successful.");
+    }
+}

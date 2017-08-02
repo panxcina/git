@@ -1,0 +1,1354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    <EnumerationType enumTypeId="PM_STATUS" description="Product Master Status"/>
+    <Enumeration enumId="PM_ACTIVE" enumTypeId="PM_STATUS" enumCode="ACTIVE" sequenceId="1" description="ACTIVE"/>
+    <Enumeration enumId="PM_DISCONTINUED" enumTypeId="PM_STATUS" enumCode="DISCONTINUED" sequenceId="3" description="DISCONTINUED"/>
+    <Enumeration enumId="PM_SET_SKU" enumTypeId="PM_STATUS" enumCode="SETSKU" sequenceId="6" description="SETSKU"/>
+    
+    <EnumerationType enumTypeId="PLATFORM_STATUS" description="Product Master Status"/>
+    <Enumeration enumId="PLATFORM_NEW" enumTypeId="PLATFORM_STATUS" enumCode="新品待上" sequenceId="1" description="新品待上"/>
+    <Enumeration enumId="PLATFORM_ACTIVE" enumTypeId="PLATFORM_STATUS" enumCode="正常在售" sequenceId="2" description="正常在售"/>
+    <Enumeration enumId="PLATFORM_VERO_KILL" enumTypeId="PLATFORM_STATUS" enumCode="侵权下架" sequenceId="3" description="侵权下架"/>
+    <Enumeration enumId="PLATFORM_DISCONTINUED" enumTypeId="PLATFORM_STATUS" enumCode="断货下架" sequenceId="4" description="断货下架"/>
+    <Enumeration enumId="PLATFORM_BAD_SALES" enumTypeId="PLATFORM_STATUS" enumCode="滞销下架" sequenceId="5" description="滞销下架"/>
+    <Enumeration enumId="PLATFORM_PROBLEM" enumTypeId="PLATFORM_STATUS" enumCode="问题下架" sequenceId="6" description="问题下架"/>
+    <Enumeration enumId="PLATFORM_RISKY" enumTypeId="PLATFORM_STATUS" enumCode="风险下架" sequenceId="7" description="风险下架"/>
+    <Enumeration enumId="PLATFORM_IMPORTANT" enumTypeId="PLATFORM_STATUS" enumCode="重点维护" sequenceId="8" description="重点维护"/>
+    <Enumeration enumId="PLATFORM_NO_AU_LISTING" enumTypeId="PLATFORM_STATUS" enumCode="AU不上" sequenceId="9" description="AU不上"/>
+    <Enumeration enumId="PLATFORM_NO_UK_LISTING" enumTypeId="PLATFORM_STATUS" enumCode="UK不上" sequenceId="10" description="UK不上"/>
+    <Enumeration enumId="PLATFORM_NO_US_LISTING" enumTypeId="PLATFORM_STATUS" enumCode="US不上" sequenceId="11" description="US不上"/>
+    <Enumeration enumId="PLATFORM_NO_KA_LISTING" enumTypeId="PLATFORM_STATUS" enumCode="KA不上" sequenceId="12" description="KA不上"/>
+    <Enumeration enumId="PLATFORM_NO_EN_LISTING" enumTypeId="PLATFORM_STATUS" enumCode="EN不上" sequenceId="13" description="EN不上"/>
+    <Enumeration enumId="PLATFORM_NO_EU_LISTING" enumTypeId="PLATFORM_STATUS" enumCode="EU不上" sequenceId="14" description="EU不上"/>
+    
+    <EnumerationType enumTypeId="GQS_TYPE" description="GQS Type"/>
+    <Enumeration enumId="LG_WRONG_PRODUCT_SENT" enumTypeId="GQS_TYPE" sequenceId="1" description="仓库：发错产品/颜色/尺寸/型号/功能等"/>
+    <Enumeration enumId="LG_PRODUCT_DIRTY" enumTypeId="GQS_TYPE" sequenceId="2" description="仓库：产品脏"/>
+    <Enumeration enumId="LG_BAD_PACKAGING" enumTypeId="GQS_TYPE" sequenceId="3" description="仓库：包装差（包装材质不行等）"/>
+    <Enumeration enumId="LG_GENERAL_ISSUE" enumTypeId="GQS_TYPE" sequenceId="4" description="仓库：重量称错-运费算错-运输方式选错"/>
+    <Enumeration enumId="LG_WRONG_PRODUCT_TYPE" enumTypeId="GQS_TYPE" sequenceId="5" description="仓库：产品性质定义的仓库弄错（比如：危险品放在了浦江仓库）"/>
+    <Enumeration enumId="LG_SHIPPED_LESS" enumTypeId="GQS_TYPE" sequenceId="6" description="仓库: 少发产品/少发配件"/>
+    <Enumeration enumId="SLOW_SHIPMENT" enumTypeId="GQS_TYPE" sequenceId="7" description="物流：物流慢"/>
+    <Enumeration enumId="NOT_RECEIVED" enumTypeId="GQS_TYPE" sequenceId="8" description="物流：未收到"/>
+    <Enumeration enumId="NOT_SHIPPABLE" enumTypeId="GQS_TYPE" sequenceId="9" description="物流：物流退包"/>
+    <Enumeration enumId="DISCONTINUED" enumTypeId="GQS_TYPE" sequenceId="10" description="事业部: 断货"/>
+    <Enumeration enumId="BAD_OVERALL" enumTypeId="GQS_TYPE" sequenceId="11" description="事业部：总体感觉差"/>
+    <Enumeration enumId="FRAGILE" enumTypeId="GQS_TYPE" sequenceId="12" description="事业部：东西易碎/供应商发来就有破损/有刮痕"/>
+    <Enumeration enumId="COLOR_DIFF" enumTypeId="GQS_TYPE" sequenceId="13" description="事业部：色差"/>
+    <Enumeration enumId="MATERIAL_DIFF" enumTypeId="GQS_TYPE" sequenceId="14" description="事业部：材质差"/>
+    <Enumeration enumId="WRONG_SIZE" enumTypeId="GQS_TYPE" sequenceId="15" description="事业部：尺寸大/小/长/短"/>
+    <Enumeration enumId="PRODUCT_MISMATCH" enumTypeId="GQS_TYPE" sequenceId="16" description="事业部：产品不匹配"/>
+    <Enumeration enumId="NOT_WORKING" enumTypeId="GQS_TYPE" sequenceId="17" description="事业部：不能用/不工作"/>
+    <Enumeration enumId="WRONG_WEIGHT" enumTypeId="GQS_TYPE" sequenceId="18" description="事业部：重量报错"/>
+    <Enumeration enumId="WRONG_COST" enumTypeId="GQS_TYPE" sequenceId="19" description="事业部：成本报错"/>
+    <Enumeration enumId="MARKETING_ERROR" enumTypeId="GQS_TYPE" sequenceId="20" description="事业部：店铺活动做错（停产产品还在打折拍卖等）"/>
+    <Enumeration enumId="PRICE_ERROR" enumTypeId="GQS_TYPE" sequenceId="21" description="文编部：listing价格错误，数量错误"/>
+    <Enumeration enumId="DESCRIPTION_ERROR" enumTypeId="GQS_TYPE" sequenceId="22" description="文编部：实物与描述不符（图片+描述）"/>
+    <Enumeration enumId="SETSKU_ERROR" enumTypeId="GQS_TYPE" sequenceId="23" description="文编部(Tomson): 产品对应的sku错误,set sku绑定错误"/>
+    <Enumeration enumId="LATE_DISCONTINUE" enumTypeId="GQS_TYPE" sequenceId="24" description="文编部:停产产品未及时下架"/>
+    <Enumeration enumId="LATE_LISTING_AMEND" enumTypeId="GQS_TYPE" sequenceId="25" description="文编部：listing上的错误信息，未及时修改"/>
+    <Enumeration enumId="VERO" enumTypeId="GQS_TYPE" sequenceId="26" description="侵权(商标,设计,图片,专利等)"/>
+    <Enumeration enumId="PRODUCT_RECALL" enumTypeId="GQS_TYPE" sequenceId="27" description="产品被召回"/>
+    
+    <EnumerationType enumTypeId="GUDAO_SHIP_TYPE" description="Gudao Ship Type"/>
+    <Enumeration enumId="HZ_STANDARD" enumTypeId="GUDAO_SHIP_TYPE" enumCode="HZ_STANDARD" sequenceId="1" description="杭州平邮"/>
+    <Enumeration enumId="HZ_REGISTERED" enumTypeId="GUDAO_SHIP_TYPE" enumCode="HZ_REGISTERED" sequenceId="2" description="杭州挂号"/>
+    <Enumeration enumId="DE_OTHERS" enumTypeId="GUDAO_SHIP_TYPE" enumCode="DE_OTHERS" sequenceId="3" description="德邮（其他地区）"/>
+    <Enumeration enumId="DE_DE" enumTypeId="GUDAO_SHIP_TYPE" enumCode="DE_DE" sequenceId="4" description="德邮（德国"/>
+    <Enumeration enumId="DE_IT" enumTypeId="GUDAO_SHIP_TYPE" enumCode="DE_IT" sequenceId="5" description="德邮（意大利）"/>
+    <Enumeration enumId="EUB_OFFLINE" enumTypeId="GUDAO_SHIP_TYPE" enumCode="EUB_OFFLINE" sequenceId="6" description="线下EUB"/>
+    <Enumeration enumId="SWE_STANDARD" enumTypeId="GUDAO_SHIP_TYPE" enumCode="SWE_STANDARD" sequenceId="7" description="瑞士小包平邮"/>
+    <Enumeration enumId="NLD_STANDARD" enumTypeId="GUDAO_SHIP_TYPE" enumCode="NLD_STANDARD" sequenceId="8" description="荷兰邮政平邮"/>
+    <Enumeration enumId="NLD_REGISTERED" enumTypeId="GUDAO_SHIP_TYPE" enumCode="NLD_REGISTERED" sequenceId="9" description="荷兰邮政挂号"/>
+    <Enumeration enumId="BJ_STANDARD" enumTypeId="GUDAO_SHIP_TYPE" enumCode="BJ_STANDARD" sequenceId="10" description="北京平邮"/>
+    <Enumeration enumId="BJ_REGISTERED" enumTypeId="GUDAO_SHIP_TYPE" enumCode="BJ_REGISTERED" sequenceId="11" description="北京挂号"/>
+    <Enumeration enumId="SF_RUSSIAN" enumTypeId="GUDAO_SHIP_TYPE" enumCode="SF_RUSSIAN" sequenceId="12" description="顺丰俄罗斯"/>
+    <Enumeration enumId="EUB" enumTypeId="GUDAO_SHIP_TYPE" enumCode="EUB" sequenceId="13" description="EUB"/>
+    <Enumeration enumId="EMS" enumTypeId="GUDAO_SHIP_TYPE" enumCode="EMS" sequenceId="14" description="EMS"/>
+    <Enumeration enumId="DHL" enumTypeId="GUDAO_SHIP_TYPE" enumCode="DHL" sequenceId="15" description="DHL"/>
+    <Enumeration enumId="SAL" enumTypeId="GUDAO_SHIP_TYPE" enumCode="SAL" sequenceId="16" description="SAL"/>
+    
+    
+    <EnumerationType enumTypeId="GUDAO_TARGET_TYPE" description="Gudao Target Type"/>
+    <Enumeration enumId="DAILY_GROSS_PROFIT" enumTypeId="GUDAO_TARGET_TYPE" enumCode="DAILY_GROSS_PROFIT" sequenceId="2" description="日毛利"/>
+    <Enumeration enumId="DAILY_GROSS_PROFIT_PER_ACCOUNT" enumTypeId="GUDAO_TARGET_TYPE" enumCode="DAILY_GROSS_PROFIT_PER_ACCOUNT" sequenceId="5" description="单账号日毛利"/>
+    <Enumeration enumId="DAILY_GROSS_PROFIT_PER_PRODUCT" enumTypeId="GUDAO_TARGET_TYPE" enumCode="DAILY_GROSS_PROFIT_PER_PRODUCT" sequenceId="8" description="单款日毛利"/>
+    <Enumeration enumId="DAILY_SALES" enumTypeId="GUDAO_TARGET_TYPE" enumCode="DAILY_SALES" sequenceId="1" description="日销售"/>
+    <Enumeration enumId="NUMBER_OF_ACCOUNT" enumTypeId="GUDAO_TARGET_TYPE" enumCode="NUMBER_OF_ACCOUNT" sequenceId="3" description="账号数"/>
+    <Enumeration enumId="NUMBER_OF_GOOD_ACCOUNT" enumTypeId="GUDAO_TARGET_TYPE" enumCode="NUMBER_OF_GOOD_ACCOUNT" sequenceId="4" description="优秀账号数"/>
+    <Enumeration enumId="NUMBER_OF_GOOD_PRODUCT" enumTypeId="GUDAO_TARGET_TYPE" enumCode="NUMBER_OF_GOOD_PRODUCT" sequenceId="" description="优秀产品数"/>
+    <Enumeration enumId="NUMBER_OF_GOOD_PRODUCT_LIVE" enumTypeId="GUDAO_TARGET_TYPE" enumCode="NUMBER_OF_GOOD_PRODUCT_LIVE" sequenceId="7" description="在售优秀产品数"/>
+    <Enumeration enumId="NUMBER_OF_PRODUCT" enumTypeId="GUDAO_TARGET_TYPE" enumCode="NUMBER_OF_PRODUCT" sequenceId="" description="产品数"/>
+    <Enumeration enumId="NUMBER_OF_PRODUCT_LIVE" enumTypeId="GUDAO_TARGET_TYPE" enumCode="NUMBER_OF_PRODUCT_LIVE" sequenceId="6" description="在售产品数"/>
+    
+    <EnumerationType enumTypeId="PERIOD" description="Period of Time"/>
+    <Enumeration enumId="JANUARY" enumTypeId="PERIOD" enumCode="0" sequenceId="1" description="January"/>
+    <Enumeration enumId="FEBRUARY" enumTypeId="PERIOD" enumCode="1" sequenceId="10" description="February"/>
+    <Enumeration enumId="MARCH" enumTypeId="PERIOD" enumCode="2" sequenceId="11" description="March"/>
+    <Enumeration enumId="APRIL" enumTypeId="PERIOD" enumCode="3" sequenceId="12" description="April"/>
+    <Enumeration enumId="MAY" enumTypeId="PERIOD" enumCode="4" sequenceId="2" description="May"/>
+    <Enumeration enumId="JUNE" enumTypeId="PERIOD" enumCode="5" sequenceId="3" description="June"/>
+    <Enumeration enumId="JULY" enumTypeId="PERIOD" enumCode="6" sequenceId="4" description="July"/>
+    <Enumeration enumId="AUGUST" enumTypeId="PERIOD" enumCode="7" sequenceId="5" description="August"/>
+    <Enumeration enumId="SEPTEMBER" enumTypeId="PERIOD" enumCode="8" sequenceId="6" description="September"/>
+    <Enumeration enumId="OCTOBER" enumTypeId="PERIOD" enumCode="9" sequenceId="7" description="October"/>
+    <Enumeration enumId="NOVEMBER" enumTypeId="PERIOD" enumCode="10" sequenceId="8" description="November"/>
+    <Enumeration enumId="DECEMBER" enumTypeId="PERIOD" enumCode="11" sequenceId="9" description="December"/>
+
+
+    <EnumerationType enumTypeId="TARGET_TYPE" description="Gudao Target Type"/>
+    <Enumeration enumId="ACCOUNTS" enumTypeId="TARGET_TYPE" enumCode="ACCOUNTS" sequenceId="01" description="Accounts"/>
+    <Enumeration enumId="PRODUCTS" enumTypeId="TARGET_TYPE" enumCode="PRODUCTS" sequenceId="02" description="Products"/>
+    <Enumeration enumId="LISTINGS" enumTypeId="TARGET_TYPE" enumCode="LISTINGS" sequenceId="03" description="Listings"/>
+    <Enumeration enumId="SUPPLIERS" enumTypeId="TARGET_TYPE" enumCode="SUPPLIERS" sequenceId="04" description="Suppliers"/>
+    <Enumeration enumId="MEMBERS" enumTypeId="TARGET_TYPE" enumCode="MEMBERS" sequenceId="05" description="Members"/>
+    <Enumeration enumId="OTHERS" enumTypeId="TARGET_TYPE" enumCode="OTHERS" sequenceId="99" description="Others"/>
+    
+    <EnumerationType enumTypeId="ACCOUNTS_KPI" description="Gudao Accounts KPI"/>
+    <EnumerationType enumTypeId="PRODUCTS_KPI" description="Gudao Products KPI"/>
+    <EnumerationType enumTypeId="LISTINGS_KPI" description="Gudao Listings KPI"/>
+    <EnumerationType enumTypeId="SUPPLIERS_KPI" description="Gudao Suppliers KPI"/>
+    <EnumerationType enumTypeId="MEMBERS_KPI" description="Gudao Members KPI"/>
+    <EnumerationType enumTypeId="OTHERS_KPI" description="Gudao Others KPI"/>
+    <Enumeration enumId="ACCOUNTS_TOP" enumTypeId="ACCOUNTS_KPI" enumCode="ACCOUNTS" sequenceId="01" description="No. of Top Accounts"/>
+    <Enumeration enumId="ACCOUNTS_PROBLEM" enumTypeId="ACCOUNTS_KPI" enumCode="ACCOUNTS" sequenceId="02" description="No. of Problematic Accounts"/>
+    <Enumeration enumId="ACCOUNTS_NEW" enumTypeId="ACCOUNTS_KPI" enumCode="ACCOUNTS" sequenceId="03" description="No. of New Accounts"/>
+    <Enumeration enumId="PRODUCTS_TOP" enumTypeId="PRODUCTS_KPI" enumCode="PRODUCTS" sequenceId="01" description="No. of Top Products"/>
+    <Enumeration enumId="PRODUCTS_PROBLEM" enumTypeId="PRODUCTS_KPI" enumCode="PRODUCTS" sequenceId="02" description="No. of Problematic Products"/>
+    <Enumeration enumId="PRODUCTS_NEW" enumTypeId="PRODUCTS_KPI" enumCode="PRODUCTS" sequenceId="03" description="No. of New Products"/>
+    <Enumeration enumId="LISTINGS_TOP" enumTypeId="LISTINGS_KPI" enumCode="LISTINGS" sequenceId="01" description="No. of Top Listings"/>
+    <Enumeration enumId="LISTINGS_PROBLEM" enumTypeId="LISTINGS_KPI" enumCode="LISTINGS" sequenceId="02" description="No. of Problematic Listings"/>
+    <Enumeration enumId="LISTINGS_NEW" enumTypeId="LISTINGS_KPI" enumCode="LISTINGS" sequenceId="03" description="No. of New Listings"/>
+    <Enumeration enumId="SUPPLIERS_TOP" enumTypeId="SUPPLIERS_KPI" enumCode="SUPPLIERS" sequenceId="01" description="No. of Top Suppliers"/>
+    <Enumeration enumId="SUPPLIERS_PROBLEM" enumTypeId="SUPPLIERS_KPI" enumCode="SUPPLIERS" sequenceId="02" description="No. of Problematic Suppliers"/>
+    <Enumeration enumId="SUPPLIERS_NEW" enumTypeId="SUPPLIERS_KPI" enumCode="SUPPLIERS" sequenceId="03" description="No. of New Suppliers"/>
+    <Enumeration enumId="MEMBERS_TOP" enumTypeId="MEMBERS_KPI" enumCode="MEMBERS" sequenceId="01" description="No. of Top Members"/>
+    <Enumeration enumId="MEMBERS_PROBLEM" enumTypeId="MEMBERS_KPI" enumCode="MEMBERS" sequenceId="02" description="No. of Problematic Members"/>
+    <Enumeration enumId="MEMBERS_NEW" enumTypeId="MEMBERS_KPI" enumCode="MEMBERS" sequenceId="03" description="No. of New Members"/>
+    <Enumeration enumId="OTHERS_SYSTEM" enumTypeId="OTHERS_KPI" enumCode="OTHERS" sequenceId="01" description="Systems"/>
+    <Enumeration enumId="OTHERS_ADMINISTRATION" enumTypeId="OTHERS_KPI" enumCode="OTHERS" sequenceId="02" description="Administrations"/>
+    <Enumeration enumId="OTHERS_OTHERS" enumTypeId="OTHERS_KPI" enumCode="OTHERS" sequenceId="03" description="Others"/>
+    
+    
+    <EnumerationType enumTypeId="GUDAO_PRODUCT_GROUP" description="Gudao Product Group"/>
+    <Enumeration enumId="G0" enumTypeId="GUDAO_PRODUCT_GROUP" enumCode="G0" sequenceId="01" description="G0"/>
+    <Enumeration enumId="G1" enumTypeId="GUDAO_PRODUCT_GROUP" enumCode="G1" sequenceId="02" description="G1"/>
+    <Enumeration enumId="G2" enumTypeId="GUDAO_PRODUCT_GROUP" enumCode="G2" sequenceId="03" description="G2"/>
+    <Enumeration enumId="G3" enumTypeId="GUDAO_PRODUCT_GROUP" enumCode="G3" sequenceId="04" description="G3"/>
+    <Enumeration enumId="G4" enumTypeId="GUDAO_PRODUCT_GROUP" enumCode="G4" sequenceId="05" description="G4"/>
+    <Enumeration enumId="GS" enumTypeId="GUDAO_PRODUCT_GROUP" enumCode="GS" sequenceId="06" description="GS"/>
+    
+    <EnumerationType enumTypeId="GUDAO_PRODUCT_TYPE" description="Gudao Product Type"/>
+    <Enumeration enumId="COMMON" enumTypeId="GUDAO_PRODUCT_TYPE" enumCode="常规" sequenceId="01" description="常规"/>
+    <Enumeration enumId="UNCOMMON" enumTypeId="GUDAO_PRODUCT_TYPE" enumCode="违禁品" sequenceId="02" description="违禁品"/>
+    <Enumeration enumId="HOLLAND" enumTypeId="GUDAO_PRODUCT_TYPE" enumCode="荷兰仓库" sequenceId="03" description="荷兰仓库"/>
+    <Enumeration enumId="SWEDEN" enumTypeId="GUDAO_PRODUCT_TYPE" enumCode="瑞典仓库" sequenceId="04" description="瑞典仓库"/>
+    
+    
+    <GudaoProductCategory categoryId="1" type="PARENT" categoryName="Women Wears" categoryNameCn="女装"/>
+    <GudaoProductCategory categoryId="2" type="PARENT" categoryName="Men Wears" categoryNameCn="男装"/>
+    <GudaoProductCategory categoryId="3" type="PARENT" categoryName="Baby &amp; Pregnancy" categoryNameCn="母婴"/>
+    <GudaoProductCategory categoryId="4" type="PARENT" categoryName="Fashion Accessories" categoryNameCn="配饰"/>
+    <GudaoProductCategory categoryId="5" type="PARENT" categoryName="Consumer Electronics" categoryNameCn="数码"/>
+    <GudaoProductCategory categoryId="6" type="PARENT" categoryName="Business &amp; Industrial" categoryNameCn="工业"/>
+    <GudaoProductCategory categoryId="7" type="PARENT" categoryName="Car &amp; Motorcycle" categoryNameCn="汽配"/>
+    <GudaoProductCategory categoryId="8" type="PARENT" categoryName="Home &amp; Garden" categoryNameCn="家居"/>
+    <GudaoProductCategory categoryId="9" type="PARENT" categoryName="Health &amp; Beauty" categoryNameCn="美容"/>
+    <GudaoProductCategory categoryId="10" type="PARENT" categoryName="Pets &amp; Toys" categoryNameCn="宠玩"/>
+    <GudaoProductCategory categoryId="11" type="PARENT" categoryName="Sports &amp; Outdoors" categoryNameCn="运动"/>
+    
+    <GudaoProductCategory categoryId="1.01" type="CHILDREN" parentCategoryId="1" categoryName="Athletic Apparel" categoryNameCn="运动衫"/>
+    <GudaoProductCategory categoryId="1.02" type="CHILDREN" parentCategoryId="1" categoryName="Coats &amp; Jackets" categoryNameCn="外套"/>
+    <GudaoProductCategory categoryId="1.03" type="CHILDREN" parentCategoryId="1" categoryName="Dresses" categoryNameCn="裙子"/>
+    <GudaoProductCategory categoryId="1.04" type="CHILDREN" parentCategoryId="1" categoryName="Hosiery &amp; Socks" categoryNameCn="袜子"/>
+    <GudaoProductCategory categoryId="1.05" type="CHILDREN" parentCategoryId="1" categoryName="Intimates &amp; Sleep" categoryNameCn="内衣"/>
+    <GudaoProductCategory categoryId="1.06" type="CHILDREN" parentCategoryId="1" categoryName="Jeans" categoryNameCn="牛仔服"/>
+    <GudaoProductCategory categoryId="1.07" type="CHILDREN" parentCategoryId="1" categoryName="Jumpsuits &amp; Rompers" categoryNameCn="连体衫"/>
+    <GudaoProductCategory categoryId="1.08" type="CHILDREN" parentCategoryId="1" categoryName="Leggings" categoryNameCn="打底裤"/>
+    <GudaoProductCategory categoryId="1.09" type="CHILDREN" parentCategoryId="1" categoryName="Pants" categoryNameCn="长裤"/>
+    <GudaoProductCategory categoryId="1.1" type="CHILDREN" parentCategoryId="1" categoryName="Shorts" categoryNameCn="短裤"/>
+    <GudaoProductCategory categoryId="1.11" type="CHILDREN" parentCategoryId="1" categoryName="Skirts" categoryNameCn="短裙"/>
+    <GudaoProductCategory categoryId="1.12" type="CHILDREN" parentCategoryId="1" categoryName="Suits &amp; Blazers" categoryNameCn="西服"/>
+    <GudaoProductCategory categoryId="1.13" type="CHILDREN" parentCategoryId="1" categoryName="Sweaters" categoryNameCn="毛衣"/>
+    <GudaoProductCategory categoryId="1.14" type="CHILDREN" parentCategoryId="1" categoryName="Sweats &amp; Hoodies" categoryNameCn="卫衣"/>
+    <GudaoProductCategory categoryId="1.15" type="CHILDREN" parentCategoryId="1" categoryName="Swimwear" categoryNameCn="泳衣"/>
+    <GudaoProductCategory categoryId="1.16" type="CHILDREN" parentCategoryId="1" categoryName="Tops &amp; Blouses" categoryNameCn="上衣"/>
+    <GudaoProductCategory categoryId="1.17" type="CHILDREN" parentCategoryId="1" categoryName="T-Shirts" categoryNameCn="汗衫"/>
+    <GudaoProductCategory categoryId="1.18" type="CHILDREN" parentCategoryId="1" categoryName="Vests" categoryNameCn="背心"/>
+    <GudaoProductCategory categoryId="2.01" type="CHILDREN" parentCategoryId="2" categoryName="Athletic Apparel" categoryNameCn="运动衫"/>
+    <GudaoProductCategory categoryId="2.02" type="CHILDREN" parentCategoryId="2" categoryName="Shirts" categoryNameCn="衬衫"/>
+    <GudaoProductCategory categoryId="2.03" type="CHILDREN" parentCategoryId="2" categoryName="Coats &amp; Jackets" categoryNameCn="外套"/>
+    <GudaoProductCategory categoryId="2.05" type="CHILDREN" parentCategoryId="2" categoryName="Pants" categoryNameCn="长裤"/>
+    <GudaoProductCategory categoryId="2.06" type="CHILDREN" parentCategoryId="2" categoryName="Shorts" categoryNameCn="短裤"/>
+    <GudaoProductCategory categoryId="2.07" type="CHILDREN" parentCategoryId="2" categoryName="Socks" categoryNameCn="袜子"/>
+    <GudaoProductCategory categoryId="2.08" type="CHILDREN" parentCategoryId="2" categoryName="Suits" categoryNameCn="西服"/>
+    <GudaoProductCategory categoryId="2.09" type="CHILDREN" parentCategoryId="2" categoryName="Sweaters" categoryNameCn="毛衣"/>
+    <GudaoProductCategory categoryId="2.1" type="CHILDREN" parentCategoryId="2" categoryName="Sweats &amp; Hoodies" categoryNameCn="卫衣"/>
+    <GudaoProductCategory categoryId="2.11" type="CHILDREN" parentCategoryId="2" categoryName="Swimwear" categoryNameCn="泳衣"/>
+    <GudaoProductCategory categoryId="2.12" type="CHILDREN" parentCategoryId="2" categoryName="T-Shirts" categoryNameCn="汗衫"/>
+    <GudaoProductCategory categoryId="2.13" type="CHILDREN" parentCategoryId="2" categoryName="Underwear" categoryNameCn="内衣"/>
+    <GudaoProductCategory categoryId="2.14" type="CHILDREN" parentCategoryId="2" categoryName="Vests" categoryNameCn="背心"/>
+    <GudaoProductCategory categoryId="3.01" type="CHILDREN" parentCategoryId="3" categoryName="Baby Accessories" categoryNameCn="婴儿配件"/>
+    <GudaoProductCategory categoryId="3.02" type="CHILDREN" parentCategoryId="3" categoryName="Baby Bathing &amp; Grooming" categoryNameCn="婴儿洗浴"/>
+    <GudaoProductCategory categoryId="3.03" type="CHILDREN" parentCategoryId="3" categoryName="Baby Carriers &amp; Strollers" categoryNameCn="婴儿摇篮"/>
+    <GudaoProductCategory categoryId="3.04" type="CHILDREN" parentCategoryId="3" categoryName="Baby Clothing" categoryNameCn="婴儿服装"/>
+    <GudaoProductCategory categoryId="3.05" type="CHILDREN" parentCategoryId="3" categoryName="Baby Feeding &amp; Nursery" categoryNameCn="婴儿喂护"/>
+    <GudaoProductCategory categoryId="3.06" type="CHILDREN" parentCategoryId="3" categoryName="Baby Safety &amp; Health" categoryNameCn="婴儿安全"/>
+    <GudaoProductCategory categoryId="3.07" type="CHILDREN" parentCategoryId="3" categoryName="Baby Toys" categoryNameCn="婴儿玩具"/>
+    <GudaoProductCategory categoryId="3.08" type="CHILDREN" parentCategoryId="3" categoryName="Maternity Dresses" categoryNameCn="孕妇裙子"/>
+    <GudaoProductCategory categoryId="3.09" type="CHILDREN" parentCategoryId="3" categoryName="Maternity Leggings" categoryNameCn="孕妇底裤"/>
+    <GudaoProductCategory categoryId="3.1" type="CHILDREN" parentCategoryId="3" categoryName="Maternity Bras" categoryNameCn="孕妇胸罩"/>
+    <GudaoProductCategory categoryId="3.11" type="CHILDREN" parentCategoryId="3" categoryName="Maternity Panties" categoryNameCn="孕妇衬裤"/>
+    <GudaoProductCategory categoryId="3.12" type="CHILDREN" parentCategoryId="3" categoryName="Maternity Pants" categoryNameCn="孕妇长裤"/>
+    <GudaoProductCategory categoryId="3.13" type="CHILDREN" parentCategoryId="3" categoryName="Maternity Shorts" categoryNameCn="孕妇短裤"/>
+    <GudaoProductCategory categoryId="3.14" type="CHILDREN" parentCategoryId="3" categoryName="Maternity Tops &amp; Blouses" categoryNameCn="孕妇上衣"/>
+    <GudaoProductCategory categoryId="4.01" type="CHILDREN" parentCategoryId="4" categoryName="Belly Dancing" categoryNameCn="肚皮舞"/>
+    <GudaoProductCategory categoryId="4.02" type="CHILDREN" parentCategoryId="4" categoryName="Belts" categoryNameCn="腰带"/>
+    <GudaoProductCategory categoryId="4.03" type="CHILDREN" parentCategoryId="4" categoryName="Earmuffs" categoryNameCn="耳罩"/>
+    <GudaoProductCategory categoryId="4.04" type="CHILDREN" parentCategoryId="4" categoryName="Eyewears" categoryNameCn="眼镜"/>
+    <GudaoProductCategory categoryId="4.05" type="CHILDREN" parentCategoryId="4" categoryName="Gloves &amp; Mittens" categoryNameCn="手套"/>
+    <GudaoProductCategory categoryId="4.06" type="CHILDREN" parentCategoryId="4" categoryName="Hair Accessories" categoryNameCn="发饰"/>
+    <GudaoProductCategory categoryId="4.07" type="CHILDREN" parentCategoryId="4" categoryName="Handbags &amp; Bags" categoryNameCn="手提包"/>
+    <GudaoProductCategory categoryId="4.08" type="CHILDREN" parentCategoryId="4" categoryName="Hats" categoryNameCn="帽子"/>
+    <GudaoProductCategory categoryId="4.09" type="CHILDREN" parentCategoryId="4" categoryName="ID &amp; Document Holders" categoryNameCn="储物"/>
+    <GudaoProductCategory categoryId="4.1" type="CHILDREN" parentCategoryId="4" categoryName="Key Chains, Rings &amp; Finders" categoryNameCn="钥匙环"/>
+    <GudaoProductCategory categoryId="4.11" type="CHILDREN" parentCategoryId="4" categoryName="Organizers &amp; Day Planners" categoryNameCn="备忘"/>
+    <GudaoProductCategory categoryId="4.12" type="CHILDREN" parentCategoryId="4" categoryName="Other Fashion Accessories" categoryNameCn="其他"/>
+    <GudaoProductCategory categoryId="4.13" type="CHILDREN" parentCategoryId="4" categoryName="Masks" categoryNameCn="面具"/>
+    <GudaoProductCategory categoryId="4.14" type="CHILDREN" parentCategoryId="4" categoryName="Scarves &amp; Wraps" categoryNameCn="围巾"/>
+    <GudaoProductCategory categoryId="4.15" type="CHILDREN" parentCategoryId="4" categoryName="Shoes" categoryNameCn="鞋子"/>
+    <GudaoProductCategory categoryId="4.16" type="CHILDREN" parentCategoryId="4" categoryName="Socks" categoryNameCn="袜子"/>
+    <GudaoProductCategory categoryId="4.17" type="CHILDREN" parentCategoryId="4" categoryName="Ties" categoryNameCn="领带"/>
+    <GudaoProductCategory categoryId="4.18" type="CHILDREN" parentCategoryId="4" categoryName="Umbrellas" categoryNameCn="雨伞"/>
+    <GudaoProductCategory categoryId="4.19" type="CHILDREN" parentCategoryId="4" categoryName="Wallets" categoryNameCn="钱包"/>
+    <GudaoProductCategory categoryId="4.2" type="CHILDREN" parentCategoryId="4" categoryName="Wigs &amp; Extensions" categoryNameCn="假发"/>
+    <GudaoProductCategory categoryId="4.21" type="CHILDREN" parentCategoryId="4" categoryName="Wristbands" categoryNameCn="袖口"/>
+    <GudaoProductCategory categoryId="4.22" type="CHILDREN" parentCategoryId="4" categoryName="Beads &amp; Jewelries" categoryNameCn="珠宝"/>
+    <GudaoProductCategory categoryId="4.23" type="CHILDREN" parentCategoryId="4" categoryName="Watches" categoryNameCn="手表"/>
+    <GudaoProductCategory categoryId="5.01" type="CHILDREN" parentCategoryId="5" categoryName="Cameras &amp; Photo" categoryNameCn="摄影配件"/>
+    <GudaoProductCategory categoryId="5.02" type="CHILDREN" parentCategoryId="5" categoryName="Cell Phones &amp; Accessories" categoryNameCn="手机配件"/>
+    <GudaoProductCategory categoryId="5.03" type="CHILDREN" parentCategoryId="5" categoryName="Computers &amp; Networking" categoryNameCn="电脑配件"/>
+    <GudaoProductCategory categoryId="5.04" type="CHILDREN" parentCategoryId="5" categoryName="Consumer Electronics" categoryNameCn="电器配件"/>
+    <GudaoProductCategory categoryId="6.01" type="CHILDREN" parentCategoryId="6" categoryName="Agriculture &amp; Forestry" categoryNameCn="农业用品"/>
+    <GudaoProductCategory categoryId="6.02" type="CHILDREN" parentCategoryId="6" categoryName="Industrial Equipment" categoryNameCn="设备用品"/>
+    <GudaoProductCategory categoryId="6.03" type="CHILDREN" parentCategoryId="6" categoryName="Medical Equipment" categoryNameCn="安保用品"/>
+    <GudaoProductCategory categoryId="6.04" type="CHILDREN" parentCategoryId="6" categoryName="Office Supplies" categoryNameCn="办公用品"/>
+    <GudaoProductCategory categoryId="6.05" type="CHILDREN" parentCategoryId="6" categoryName="Other Gadgets" categoryNameCn="其他用品"/>
+    <GudaoProductCategory categoryId="6.06" type="CHILDREN" parentCategoryId="6" categoryName="Test Equipment" categoryNameCn="测量用品"/>
+    <GudaoProductCategory categoryId="7.01" type="CHILDREN" parentCategoryId="7" categoryName="ATV Parts &amp; Accessories" categoryNameCn="地形车配件"/>
+    <GudaoProductCategory categoryId="7.02" type="CHILDREN" parentCategoryId="7" categoryName="Bike Parts &amp; Accessories" categoryNameCn="自行车配件"/>
+    <GudaoProductCategory categoryId="7.03" type="CHILDREN" parentCategoryId="7" categoryName="Car Parts &amp; Accessories" categoryNameCn="汽车配件"/>
+    <GudaoProductCategory categoryId="7.04" type="CHILDREN" parentCategoryId="7" categoryName="Motorcycle Parts &amp; Accessories" categoryNameCn="摩托车配件"/>
+    <GudaoProductCategory categoryId="8.01" type="CHILDREN" parentCategoryId="8" categoryName="Bathing Accessories" categoryNameCn="洗浴用品"/>
+    <GudaoProductCategory categoryId="8.02" type="CHILDREN" parentCategoryId="8" categoryName="Building &amp; Decorating" categoryNameCn="装饰用品"/>
+    <GudaoProductCategory categoryId="8.03" type="CHILDREN" parentCategoryId="8" categoryName="Clearning &amp; Organizing" categoryNameCn="清理用品"/>
+    <GudaoProductCategory categoryId="8.04" type="CHILDREN" parentCategoryId="8" categoryName="Garden Supplies" categoryNameCn="园艺用品"/>
+    <GudaoProductCategory categoryId="8.05" type="CHILDREN" parentCategoryId="8" categoryName="Kitchen Accessories" categoryNameCn="厨具用品"/>
+    <GudaoProductCategory categoryId="8.06" type="CHILDREN" parentCategoryId="8" categoryName="Party Supplies" categoryNameCn="聚会用品"/>
+    <GudaoProductCategory categoryId="8.07" type="CHILDREN" parentCategoryId="8" categoryName="Wedding Supplies" categoryNameCn="婚礼用品"/>
+    <GudaoProductCategory categoryId="8.08" type="CHILDREN" parentCategoryId="8" categoryName="Knitting &amp; Sewing" categoryNameCn="编织用品"/>
+    <GudaoProductCategory categoryId="8.09" type="CHILDREN" parentCategoryId="8" categoryName="Lights &amp; Bulbs" categoryNameCn="照明用品"/>
+    <GudaoProductCategory categoryId="9.01" type="CHILDREN" parentCategoryId="9" categoryName="Bath &amp; Body" categoryNameCn="洗浴用品"/>
+    <GudaoProductCategory categoryId="9.02" type="CHILDREN" parentCategoryId="9" categoryName="Hair Care &amp; Styling" categoryNameCn="护发用品"/>
+    <GudaoProductCategory categoryId="9.03" type="CHILDREN" parentCategoryId="9" categoryName="Health Care" categoryNameCn="健康用品"/>
+    <GudaoProductCategory categoryId="9.04" type="CHILDREN" parentCategoryId="9" categoryName="Makeup" categoryNameCn="化妆用品"/>
+    <GudaoProductCategory categoryId="9.05" type="CHILDREN" parentCategoryId="9" categoryName="Massage" categoryNameCn="按摩用品"/>
+    <GudaoProductCategory categoryId="9.06" type="CHILDREN" parentCategoryId="9" categoryName="Nail Care" categoryNameCn="美甲用品"/>
+    <GudaoProductCategory categoryId="9.07" type="CHILDREN" parentCategoryId="9" categoryName="Other Health Accessories" categoryNameCn="其他用品"/>
+    <GudaoProductCategory categoryId="9.08" type="CHILDREN" parentCategoryId="9" categoryName="Skin Care" categoryNameCn="护肤用品"/>
+    <GudaoProductCategory categoryId="9.09" type="CHILDREN" parentCategoryId="9" categoryName="Vision Care" categoryNameCn="护眼用品"/>
+    <GudaoProductCategory categoryId="10.01" type="CHILDREN" parentCategoryId="10" categoryName="Cat Supplies" categoryNameCn="猫类用品"/>
+    <GudaoProductCategory categoryId="10.02" type="CHILDREN" parentCategoryId="10" categoryName="Collectibles" categoryNameCn="收藏品"/>
+    <GudaoProductCategory categoryId="10.03" type="CHILDREN" parentCategoryId="10" categoryName="Dog Supplies" categoryNameCn="狗类用品"/>
+    <GudaoProductCategory categoryId="10.04" type="CHILDREN" parentCategoryId="10" categoryName="Dolls &amp; Bears" categoryNameCn="玩具用品"/>
+    <GudaoProductCategory categoryId="10.05" type="CHILDREN" parentCategoryId="10" categoryName="Educational Toys" categoryNameCn="教育玩具"/>
+    <GudaoProductCategory categoryId="10.06" type="CHILDREN" parentCategoryId="10" categoryName="Fish &amp; Aquariums" categoryNameCn="鱼类用品"/>
+    <GudaoProductCategory categoryId="10.07" type="CHILDREN" parentCategoryId="10" categoryName="Knitting &amp; Sewing" categoryNameCn="编织用品"/>
+    <GudaoProductCategory categoryId="10.08" type="CHILDREN" parentCategoryId="10" categoryName="Model Toys" categoryNameCn="模型玩具"/>
+    <GudaoProductCategory categoryId="10.09" type="CHILDREN" parentCategoryId="10" categoryName="Other Pet Supplies" categoryNameCn="其他用品"/>
+    <GudaoProductCategory categoryId="10.1" type="CHILDREN" parentCategoryId="10" categoryName="Other Toys" categoryNameCn="其他玩具"/>
+    <GudaoProductCategory categoryId="10.11" type="CHILDREN" parentCategoryId="10" categoryName="Outdoor Toys" categoryNameCn="户外玩具"/>
+    <GudaoProductCategory categoryId="10.12" type="CHILDREN" parentCategoryId="10" categoryName="Puzzle Toys" categoryNameCn="益智玩具"/>
+    <GudaoProductCategory categoryId="11.01" type="CHILDREN" parentCategoryId="11" categoryName="Camping &amp; Hiking" categoryNameCn="露营配件"/>
+    <GudaoProductCategory categoryId="11.02" type="CHILDREN" parentCategoryId="11" categoryName="Cycling Accessories" categoryNameCn="骑行配件"/>
+    <GudaoProductCategory categoryId="11.03" type="CHILDREN" parentCategoryId="11" categoryName="Fishing Accessories" categoryNameCn="钓鱼配件"/>
+    <GudaoProductCategory categoryId="11.04" type="CHILDREN" parentCategoryId="11" categoryName="Fitness Accessories" categoryNameCn="健身配件"/>
+    <GudaoProductCategory categoryId="11.05" type="CHILDREN" parentCategoryId="11" categoryName="Hunting Accessories" categoryNameCn="打猎配件"/>
+    <GudaoProductCategory categoryId="11.06" type="CHILDREN" parentCategoryId="11" categoryName="Musical Accessories" categoryNameCn="乐器配件"/>
+    <GudaoProductCategory categoryId="11.07" type="CHILDREN" parentCategoryId="11" categoryName="Other Sports Accessories" categoryNameCn="其他配件"/>
+    <GudaoProductCategory categoryId="11.08" type="CHILDREN" parentCategoryId="11" categoryName="Team Sports Accessories" categoryNameCn="团队运动配件"/>
+    <GudaoProductCategory categoryId="11.09" type="CHILDREN" parentCategoryId="11" categoryName="Water Sports Accessories" categoryNameCn="水上运动配件"/>
+    
+    <RoleType roleTypeId="PLATFORM" hasTable="N" description="Platform"/>
+    <RoleType roleTypeId="EBAY" parentTypeId="PLATFORM" hasTable="N" description="eBay Platform"/>
+    <RoleType roleTypeId="SMT" parentTypeId="PLATFORM" hasTable="N" description="SMT Platform"/>
+    <RoleType roleTypeId="WISH" parentTypeId="PLATFORM" hasTable="N" description="WISH Platform"/>
+    <RoleType roleTypeId="AMAZON" parentTypeId="PLATFORM" hasTable="N" description="Amazon Platform"/>
+    <RoleType roleTypeId="LAZADA" parentTypeId="PLATFORM" hasTable="N" description="Lazada Platform"/>
+    <RoleType roleTypeId="CDISCOUNT" parentTypeId="PLATFORM" hasTable="N" description="Cdiscount Platform"/>
+    <RoleType roleTypeId="TOPHATTER" parentTypeId="PLATFORM" hasTable="N" description="Tophatter Platform"/>
+    <RoleType roleTypeId="OTHER" parentTypeId="PLATFORM" hasTable="N" description="Other Platform"/>
+    
+    <RoleType roleTypeId="SBU" parentTypeId="" hasTable="N" description="事业部 (SBU)"/>
+    
+    <Party partyId="DM_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="DM_GROUP" groupName="DM" groupNameLocal="GUDAO"/>
+    <Party partyId="CUSTOMER_SERVICE_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="CUSTOMER_SERVICE_GROUP" groupName="Customer Service" groupNameLocal="GUDAO"/>
+    <Party partyId="PURCHASING_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="PURCHASING_GROUP" groupName="Purchasing" groupNameLocal="GUDAO"/>
+    <Party partyId="GOODS_RECEIVING_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="GOODS_RECEIVING_GROUP" groupName="Goods Receiving" groupNameLocal="GUDAO"/>
+    <Party partyId="PACKING_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="PACKING_GROUP" groupName="Packing" groupNameLocal="GUDAO"/>
+    <Party partyId="DESIGN_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="DESIGN_GROUP" groupName="Design" groupNameLocal="GUDAO"/>
+    <Party partyId="MARKETING_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="MARKETING_GROUP" groupName="Marketing" groupNameLocal="GUDAO"/>
+    <Party partyId="DEVELOPER" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="DEVELOPER" groupName="IT Developer" groupNameLocal="GUDAO"/>
+    <Party partyId="INTERNAL_CONTROL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="INTERNAL_CONTROL" groupName="Internal Control" groupNameLocal="GUDAO"/>
+    <Party partyId="HR_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="HR_GROUP" groupName="HR-人事" groupNameLocal="GUDAO"/>
+    
+    <Party partyId="CHENWEI_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="CHENWEI_GROUP" groupName="Chenwei 部" groupNameLocal="GUDAO" officeSiteName="CHENWEI"/>
+    <PartyRole partyId="CHENWEI_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="CHRISTINE_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>   <PartyGroup partyId="CHRISTINE_GROUP" groupName="Christine 部" groupNameLocal="GUDAO" officeSiteName="CHRISTINE"/>
+    <PartyRole partyId="CHRISTINE_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="DADA_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>    <PartyGroup partyId="DADA_GROUP" groupName="Dada 部" groupNameLocal="GUDAO" officeSiteName="DADA"/>
+    <PartyRole partyId="DADA_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="GARY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="GARY_GROUP" groupName="Gary 部" groupNameLocal="GUDAO" officeSiteName="GARY"/>
+    <PartyRole partyId="GARY_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="MATTY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="MATTY_GROUP" groupName="Matty 部" groupNameLocal="GUDAO" officeSiteName="MATTY"/>
+    <PartyRole partyId="MATTY_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="NICK_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="NICK_GROUP" groupName="Nick 部" groupNameLocal="GUDAO" officeSiteName="NICK"/>
+    <PartyRole partyId="NICK_GROUP" roleTypeId="SBU"/><PartyRole partyId="NICK_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="NICK_GROUP" roleTypeId="SMT"/>
+    
+    <Party partyId="NIKI_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="NIKI_GROUP" groupName="Niki 部" groupNameLocal="GUDAO" officeSiteName="NIKI"/>
+    <PartyRole partyId="NIKI_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="RAYMOND_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="RAYMOND_GROUP" groupName="Raymond 部" groupNameLocal="GUDAO" officeSiteName="RAYMOND"/>
+    <PartyRole partyId="RAYMOND_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="BECKY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="BECKY_GROUP" groupName="Becky 部" groupNameLocal="GUDAO" officeSiteName="BECKY"/>
+    <PartyRole partyId="BECKY_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="WILL_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="WILL_GROUP" groupName="Will 部" groupNameLocal="GUDAO" officeSiteName="WILL"/>
+    <PartyRole partyId="WILL_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="JIMMY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="JIMMY_GROUP" groupName="Jimmy 部" groupNameLocal="GUDAO" officeSiteName="JIMMY"/>
+    <PartyRole partyId="JIMMY_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="DAWENXI_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="DAWENXI_GROUP" groupName="Dawenxi 部" groupNameLocal="GUDAO" officeSiteName="DAWENXI"/>
+    <PartyRole partyId="DAWENXI_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="CINDY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="CINDY_GROUP" groupName="Cindy 部" groupNameLocal="GUDAO" officeSiteName="CINDY"/>
+    <PartyRole partyId="CINDY_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="LEMON_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="LEMON_GROUP" groupName="Lemon 部" groupNameLocal="GUDAO" officeSiteName="LEMON"/>
+    <PartyRole partyId="LEMON_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="SISSI_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>	<PartyGroup partyId="SISSI_GROUP" groupName="Sissi 部" groupNameLocal="GUDAO" officeSiteName="SISSI"/>
+    <PartyRole partyId="SISSI_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="AMY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="AMY_GROUP" groupName="Amy 部" groupNameLocal="GUDAO" officeSiteName="AMY" comments="ACTIVE"/>
+    <PartyRole partyId="AMY_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="LUCY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="LUCY_GROUP" groupName="Lucy 部" groupNameLocal="GUDAO" officeSiteName="LUCY" comments="ACTIVE"/>
+    <PartyRole partyId="LUCY_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="YANGYANG_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="YANGYANG_GROUP" groupName="Yangyang 部" groupNameLocal="GUDAO" officeSiteName="YANGYANG" comments="ACTIVE"/>
+    <PartyRole partyId="YANGYANG_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="YUAN_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="YUAN_GROUP" groupName="Yuan 部" groupNameLocal="GUDAO" officeSiteName="SELINA" comments="ACTIVE"/>
+    <PartyRole partyId="YUAN_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="JANE_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="JANE_GROUP" groupName="Jane 部" groupNameLocal="GUDAO" officeSiteName="JANE" comments="ACTIVE"/>
+    <PartyRole partyId="JANE_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="CLOVER_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="CLOVER_GROUP" groupName="Clover 部" groupNameLocal="GUDAO" officeSiteName="CLOVER" comments="ACTIVE"/>
+    <PartyRole partyId="CLOVER_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="JUDITH_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="JUDITH_GROUP" groupName="Judith 部" groupNameLocal="GUDAO" officeSiteName="JUDITH" comments="ACTIVE"/>
+    <PartyRole partyId="JUDITH_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="DNA_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="DNA_GROUP" groupName="DNA 部" groupNameLocal="GUDAO" officeSiteName="DNA" comments="ACTIVE"/>
+    <PartyRole partyId="DNA_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="FANNING_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="FANNING_GROUP" groupName="FANNING 部" groupNameLocal="GUDAO" officeSiteName="FANNING" comments="ACTIVE"/>
+    <PartyRole partyId="FANNING_GROUP" roleTypeId="SBU"/>
+    
+    <Party partyId="GUDAO_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="GUDAO_GROUP" groupName="Gudao 部" groupNameLocal="GUDAO" officeSiteName="GUDAO" comments="INACTIVE"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="SBU"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="PLATFORM"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="EBAY"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="SMT"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="LAZADA"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="WISH"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="AMAZON"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="CDISCOUNT"/>
+    <PartyRole partyId="GUDAO_GROUP" roleTypeId="TOPHATTER"/>
+    
+    <Party partyId="HEADQUARTER" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="HEADQUARTER" groupName="Headquarter" groupNameLocal="GUDAO" comments="ACTIVE"/>
+    
+    <Party partyId="ANNE_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="ANNE_GROUP" groupName="Anne 部" groupNameLocal="GUDAO" comments="ACTIVE"/>
+    <PartyRole partyId="ANNE_GROUP" roleTypeId="PLATFORM"/>
+    <PartyRole partyId="ANNE_GROUP" roleTypeId="EBAY"/>
+    
+    <Party partyId="MICHAEL_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="MICHAEL_GROUP" groupName="Michael 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="MICHAEL_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="MICHAEL_GROUP" roleTypeId="EBAY"/>
+    
+    <Party partyId="LILY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="LILY_GROUP" groupName="Lily 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="LILY_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="LILY_GROUP" roleTypeId="EBAY"/>
+    
+    <Party partyId="SUNNY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="SUNNY_GROUP" groupName="Sunny 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="SUNNY_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="SUNNY_GROUP" roleTypeId="SMT"/><PartyRole partyId="SUNNY_GROUP" roleTypeId="TOPHATTER"/>
+    
+    <Party partyId="AARON_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="AARON_GROUP" groupName="Aaron 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="AARON_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="AARON_GROUP" roleTypeId="SMT"/><PartyRole partyId="AARON_GROUP" roleTypeId="TOPHATTER"/>
+    
+    <Party partyId="HEQIAN_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="HEQIAN_GROUP" groupName="何倩 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="HEQIAN_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="HEQIAN_GROUP" roleTypeId="SMT"/><PartyRole partyId="HEQIAN_GROUP" roleTypeId="TOPHATTER"/>
+    
+    <Party partyId="SUSAN_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="SUSAN_GROUP" groupName="Susan 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="SUSAN_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="SUSAN_GROUP" roleTypeId="AMAZON"/>
+    
+    <Party partyId="SELINA_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="SELINA_GROUP" groupName="Selina 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="SELINA_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="SELINA_GROUP" roleTypeId="AMAZON"/>
+    
+    <Party partyId="TOMSON_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="TOMSON_GROUP" groupName="Tomson 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="TOMSON_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="TOMSON_GROUP" roleTypeId="WISH"/>
+    
+    <Party partyId="JOANNA_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="JOANNA_GROUP" groupName="Joanna 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="JOANNA_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="JOANNA_GROUP" roleTypeId="LAZADA"/><PartyRole partyId="JOANNA_GROUP" roleTypeId="CDISCOUNT"/>
+    
+    <Party partyId="RACHEL_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="RACHEL_GROUP" groupName="Rachel 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="RACHEL_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="RACHEL_GROUP" roleTypeId="EBAY"/>
+    
+    <Party partyId="KIMMY_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="KIMMY_GROUP" groupName="Kimmy 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="KIMMY_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="KIMMY_GROUP" roleTypeId="EBAY"/>
+    
+    <Party partyId="INDO_EBAY" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="INDO_EBAY" groupName="INDO TEST 部" groupNameLocal="GUDAO"/>
+    <PartyRole partyId="INDO_EBAY" roleTypeId="PLATFORM"/><PartyRole partyId="INDO_EBAY" roleTypeId="EBAY"/>
+    
+    
+    
+    <Party partyId="CINDYCAO_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="CINDYCAO_GROUP" groupName="Cindy Cao 部" groupNameLocal="GUDAO" comments="ACTIVE"/>
+    <PartyRole partyId="CINDYCAO_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="CINDYCAO_GROUP" roleTypeId="EBAY"/>
+    
+    
+    <Party partyId="MONSTAR_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="MONSTAR_GROUP" groupName="Monstar 部" groupNameLocal="GUDAO" comments="ACTIVE"/>
+    <PartyRole partyId="MONSTAR_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="MONSTAR_GROUP" roleTypeId="EBAY"/>
+    
+    <Party partyId="MINA_GROUP" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/> <PartyGroup partyId="MINA_GROUP" groupName="Mina 部" groupNameLocal="GUDAO" comments="ACTIVE"/>
+    <PartyRole partyId="MINA_GROUP" roleTypeId="PLATFORM"/><PartyRole partyId="MINA_GROUP" roleTypeId="WISH"/>
+    
+    
+    
+    
+    <SecurityPermission permissionId="EBAY_VIEW" description="View Ebay in Gudao Component"/>
+    <SecurityGroup groupId="EBAY_MEMBER" description="Ebay Group Member"/>
+    <SecurityGroupPermission groupId="EBAY_MEMBER" permissionId="GUDAO_CREATE"/>
+    <SecurityGroupPermission groupId="EBAY_MEMBER" permissionId="GUDAO_UPDATE"/>
+    <SecurityGroupPermission groupId="EBAY_MEMBER" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="EBAY_MEMBER" permissionId="OFBTOOLS_VIEW"/>
+    <SecurityGroupPermission groupId="EBAY_MEMBER" permissionId="EBAY_VIEW"/>
+    
+    <SecurityGroup groupId="EBAY_ADMIN" description="Ebay Group Admin"/>
+    <SecurityGroupPermission groupId="EBAY_ADMIN" permissionId="GUDAO_CREATE"/>
+    <SecurityGroupPermission groupId="EBAY_ADMIN" permissionId="GUDAO_UPDATE"/>
+    <SecurityGroupPermission groupId="EBAY_ADMIN" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="EBAY_ADMIN" permissionId="OFBTOOLS_VIEW"/>
+    <SecurityGroupPermission groupId="EBAY_ADMIN" permissionId="EBAY_VIEW"/>
+    
+    <SecurityPermission permissionId="WISH_VIEW" description="View Wish in Gudao Component"/>
+    <SecurityGroup groupId="WISH_MEMBER" description="Wish Group Member"/>
+    <SecurityGroupPermission groupId="WISH_MEMBER" permissionId="GUDAO_CREATE"/>
+    <SecurityGroupPermission groupId="WISH_MEMBER" permissionId="GUDAO_UPDATE"/>
+    <SecurityGroupPermission groupId="WISH_MEMBER" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="WISH_MEMBER" permissionId="OFBTOOLS_VIEW"/>
+    <SecurityGroupPermission groupId="WISH_MEMBER" permissionId="WISH_VIEW"/>
+    
+    <SecurityPermission permissionId="SMT_VIEW" description="View SMT in Gudao Component"/>
+    <SecurityGroup groupId="SMT_MEMBER" description="SMT Group Member"/>
+    <SecurityGroupPermission groupId="SMT_MEMBER" permissionId="GUDAO_CREATE"/>
+    <SecurityGroupPermission groupId="SMT_MEMBER" permissionId="GUDAO_UPDATE"/>
+    <SecurityGroupPermission groupId="SMT_MEMBER" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="SMT_MEMBER" permissionId="OFBTOOLS_VIEW"/>
+    <SecurityGroupPermission groupId="SMT_MEMBER" permissionId="SMT_VIEW"/>
+    <SecurityPermission permissionId="SMT_VIEW" description="View SMT in Gudao Component"/>
+    
+    <SecurityPermission permissionId="AMA_VIEW" description="View Amazon in Gudao Component"/>
+    <SecurityGroup groupId="AMA_MEMBER" description="Amazon Group Member"/>
+    <SecurityGroupPermission groupId="AMA_MEMBER" permissionId="GUDAO_CREATE"/>
+    <SecurityGroupPermission groupId="AMA_MEMBER" permissionId="GUDAO_UPDATE"/>
+    <SecurityGroupPermission groupId="AMA_MEMBER" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="AMA_MEMBER" permissionId="OFBTOOLS_VIEW"/>
+    <SecurityGroupPermission groupId="AMA_MEMBER" permissionId="AMA_VIEW"/>
+    <SecurityPermission permissionId="AMA_VIEW" description="View Amazon in Gudao Component"/>
+    
+    <UserLogin userLoginId="gary.song" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DM_GROUP"/>	<UserLoginSecurityGroup userLoginId="gary.song" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="matty.chen" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="MATTY_GROUP"/>	<UserLoginSecurityGroup userLoginId="matty.chen" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="nanami.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="MATTY_GROUP"/>	<UserLoginSecurityGroup userLoginId="nanami.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="jerry.chen" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="JERRY_GROUP"/>	<UserLoginSecurityGroup userLoginId="jerry.chen" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="niki.cao" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="NIKI_GROUP"/>	<UserLoginSecurityGroup userLoginId="niki.cao" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="xi.fang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="FANGXI_GROUP"/>	<UserLoginSecurityGroup userLoginId="xi.fang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="wei.chen" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CHENWEI_GROUP"/>	<UserLoginSecurityGroup userLoginId="wei.chen" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="gary.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="GARY_GROUP"/>	<UserLoginSecurityGroup userLoginId="gary.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="dada.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DADA_GROUP"/>	<UserLoginSecurityGroup userLoginId="dada.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="nick.ni" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="NICK_GROUP"/>	<UserLoginSecurityGroup userLoginId="nick.ni" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="raymond.liu" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="RAYMOND_GROUP"/>	<UserLoginSecurityGroup userLoginId="raymond.liu" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="lie.li" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DM_GROUP"/>	<UserLoginSecurityGroup userLoginId="lie.li" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="bictor.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DM_GROUP"/>	<UserLoginSecurityGroup userLoginId="bictor.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="tomson.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DM_GROUP"/>	<UserLoginSecurityGroup userLoginId="tomson.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="carl.xia" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DM_GROUP"/>	<UserLoginSecurityGroup userLoginId="carl.xia" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="kai.li" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DESIGN_GROUP"/>	<UserLoginSecurityGroup userLoginId="kai.li" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="sheng.su" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="DESIGN_GROUP"/>	<UserLoginSecurityGroup userLoginId="sheng.su" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="anne.wang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CUSTOMER_SERVICE_GROUP"/>	<UserLoginSecurityGroup userLoginId="anne.wang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="kimmy.jin" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CUSTOMER_SERVICE_GROUP"/>	<UserLoginSecurityGroup userLoginId="kimmy.jin" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="cherry.deng" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CUSTOMER_SERVICE_GROUP"/>	<UserLoginSecurityGroup userLoginId="cherry.deng" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="nancy.ren" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CUSTOMER_SERVICE_GROUP"/>	<UserLoginSecurityGroup userLoginId="nancy.ren" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="tracy.xia" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CUSTOMER_SERVICE_GROUP"/>	<UserLoginSecurityGroup userLoginId="tracy.xia" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="elena.wang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CUSTOMER_SERVICE_GROUP"/>	<UserLoginSecurityGroup userLoginId="elena.wang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="mina.gu" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="mina.gu" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="vini.wu" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="vini.wu" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="sarah.mao" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="sarah.mao" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="wendy.yu" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="wendy.yu" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="barbara.jin" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="barbara.jin" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="aaron.lee" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="aaron.lee" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="zhuzhu.zhu" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="zhuzhu.zhu" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="joanna.wang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="joanna.wang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="anna.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="anna.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="eva.li" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="eva.li" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="cecilia.cheng" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="EBAY_GROUP"/>	<UserLoginSecurityGroup userLoginId="cecilia.cheng" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="simon.shen" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WISH_GROUP"/>	<UserLoginSecurityGroup userLoginId="simon.shen" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="nicky.xue" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WISH_GROUP"/>	<UserLoginSecurityGroup userLoginId="nicky.xue" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="amazon" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WISH_GROUP"/>	<UserLoginSecurityGroup userLoginId="amazon" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="monstar.chen" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WISH_GROUP"/>	<UserLoginSecurityGroup userLoginId="monstar.chen" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="susan.ge" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WISH_GROUP"/>	<UserLoginSecurityGroup userLoginId="susan.ge" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="sunny.wang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="SMT_GROUP"/>	<UserLoginSecurityGroup userLoginId="sunny.wang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="aaron.huang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="SMT_GROUP"/>	<UserLoginSecurityGroup userLoginId="aaron.huang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="ling.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="SMT_GROUP"/>	<UserLoginSecurityGroup userLoginId="ling.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="is.xu" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WEBSITE_GROUP"/>	<UserLoginSecurityGroup userLoginId="is.xu" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="christine.ye" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CHRISTINE_GROUP"/>	<UserLoginSecurityGroup userLoginId="christine.ye" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="becky.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="BECKY_GROUP"/>	<UserLoginSecurityGroup userLoginId="becky.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="key.tong" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="KEY_GROUP"/>	<UserLoginSecurityGroup userLoginId="key.tong" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="george.shao" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="GEORGE_GROUP"/>	<UserLoginSecurityGroup userLoginId="george.shao" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="wesley.chen" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WESLEY_GROUP"/>	<UserLoginSecurityGroup userLoginId="wesley.chen" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    
+    <UserLogin userLoginId="congcong.xue" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="PURCHASING_GROUP"/>	<UserLoginSecurityGroup userLoginId="congcong.xue" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="jiqing.zhang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="PURCHASING_GROUP"/>	<UserLoginSecurityGroup userLoginId="jiqing.zhang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="shuyin.sheng" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="PURCHASING_GROUP"/>	<UserLoginSecurityGroup userLoginId="shuyin.sheng" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="lei.xiang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="PURCHASING_GROUP"/>	<UserLoginSecurityGroup userLoginId="lei.xiang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="pan.zhao" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="PURCHASING_GROUP"/>	<UserLoginSecurityGroup userLoginId="pan.zhao" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    
+    <UserLogin userLoginId="pin.chen" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="GOODS_RECEIVING_GROUP"/>	<UserLoginSecurityGroup userLoginId="pin.chen" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    
+    <UserLogin userLoginId="qingtang.huang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="PACKING_GROUP"/>	<UserLoginSecurityGroup userLoginId="qingtang.huang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="jiang.ye" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="PACKING_GROUP"/>	<UserLoginSecurityGroup userLoginId="jiang.ye" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="will.lin" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="WILL_GROUP"/>	<UserLoginSecurityGroup userLoginId="will.lin" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="jimmy.shang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="JIMMY_GROUP"/>	<UserLoginSecurityGroup userLoginId="jimmy.shang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="cindy.wang" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="CINDY_GROUP"/>	<UserLoginSecurityGroup userLoginId="cindy.wang" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+    <UserLogin userLoginId="lemon.tao" currentPassword="$SHA$h/Oe$sVNPwNpwt8VcuW_dprDdYx_AoGM" enabled="Y"  requirePasswordChange="Y"  partyId="LEMON_GROUP"/>	<UserLoginSecurityGroup userLoginId="lemon.tao" groupId="GUDAO-MEMBER" fromDate="2015-09-01 00:00:00.0"/>
+
+
+    <ProductMasterVariable pmVariableId="10000" type="ebayFeeBreak" priceBreakLo="0" priceBreakHi="5" weightBreakLo="" weightBreakHi="" name="" value="20" notes="price is in local currency, value in percent"/>
+    <ProductMasterVariable pmVariableId="10001" type="ebayFeeBreak" priceBreakLo="5" priceBreakHi="8" weightBreakLo="" weightBreakHi="" name="" value="18" notes="price is in local currency, value in percent"/>
+    <ProductMasterVariable pmVariableId="10002" type="ebayFeeBreak" priceBreakLo="8" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="" value="15" notes="price is in local currency, value in percent"/>
+    <ProductMasterVariable pmVariableId="10003" type="productTypeShippingMethod" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="违禁品" value="YANWEN" notes=""/>
+    <ProductMasterVariable pmVariableId="10004" type="productTypeShippingMethod" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="常规" value="CHINAPOST" notes=""/>
+    <ProductMasterVariable pmVariableId="10005" type="productTypeShippingMethod" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="荷兰仓库" value="CHINAPOST" notes=""/>
+    <ProductMasterVariable pmVariableId="10006" type="priceBreakShipping" priceBreakLo="0" priceBreakHi="186" weightBreakLo="" weightBreakHi="" name="CHINAPOST" value="STANDARD" notes="price is in RMB"/>
+    <ProductMasterVariable pmVariableId="10007" type="priceBreakShipping" priceBreakLo="186" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="CHINAPOST" value="REGISTERED" notes="price is in RMB"/>
+    <ProductMasterVariable pmVariableId="10008" type="priceBreakShipping" priceBreakLo="0" priceBreakHi="186" weightBreakLo="" weightBreakHi="" name="YANWEN" value="STANDARD" notes="price is in RMB"/>
+    <ProductMasterVariable pmVariableId="10009" type="priceBreakShipping" priceBreakLo="186" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="YANWEN" value="REGISTERED" notes="price is in RMB"/>
+    <ProductMasterVariable pmVariableId="10010" type="priceBreakShipping" priceBreakLo="0" priceBreakHi="186" weightBreakLo="" weightBreakHi="" name="AMA" value="STANDARD" notes="price is in RMB"/>
+    <ProductMasterVariable pmVariableId="10011" type="priceBreakShipping" priceBreakLo="186" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="AMA" value="REGISTERED" notes="price is in RMB"/>
+    <ProductMasterVariable pmVariableId="10012" type="priceBreakShipping" priceBreakLo="0" priceBreakHi="7" weightBreakLo="" weightBreakHi="" name="SMT" value="STANDARD" notes="price is in USD"/>
+    <ProductMasterVariable pmVariableId="10013" type="priceBreakShipping" priceBreakLo="7" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="SMT" value="REGISTERED" notes="price is in USD"/>
+    <ProductMasterVariable pmVariableId="10014" type="weightBreakShipping" priceBreakLo="" priceBreakHi="" weightBreakLo="2000" weightBreakHi="1000000" name="CHINAPOST" value="EMS" notes=""/>
+    <ProductMasterVariable pmVariableId="10015" type="packagingCost" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="" value="1" notes="Cost is in RMB"/>
+    <ProductMasterVariable pmVariableId="10016" type="marketplaceProfit" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="UK" value="3" notes="in percent compared to US price"/>
+    <ProductMasterVariable pmVariableId="10017" type="marketplaceProfit" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="AU" value="3" notes="in percent compared to US price"/>
+    <ProductMasterVariable pmVariableId="10018" type="marketplaceProfit" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="CA" value="3" notes="in percent compared to US price"/>
+    <ProductMasterVariable pmVariableId="10019" type="marketplaceProfit" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="LT" value="20" notes="Profit Percentage"/>
+    <ProductMasterVariable pmVariableId="10020" type="marketplaceProfit" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="SMT" value="15" notes="Profit Percentage"/>
+    <ProductMasterVariable pmVariableId="10021" type="marketplaceProfit" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="WISH" value="20" notes="Profit Percentage"/>
+    <ProductMasterVariable pmVariableId="10022" type="marketplaceProfit" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="AMA" value="20" notes="Profit Percentage"/>
+    <ProductMasterVariable pmVariableId="10023" type="lowestPrice" priceBreakLo="15" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="UK" value="0.99" notes="value in local currency, priceBreakLo is the profit percentage border"/>
+    <ProductMasterVariable pmVariableId="10024" type="lowestPrice" priceBreakLo="15" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="AU" value="1" notes="value in local currency, priceBreakLo is the profit percentage border"/>
+    <ProductMasterVariable pmVariableId="10025" type="lowestPrice" priceBreakLo="15" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="CA" value="0.99" notes="value in local currency, priceBreakLo is the profit percentage border"/>
+    <ProductMasterVariable pmVariableId="10026" type="lowestPrice" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="LT" value="1" notes="in local currency"/>
+    <ProductMasterVariable pmVariableId="10027" type="productShippingRatio" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="WISH" value="80" notes="Product vs Shipping in Percentage"/>
+    <ProductMasterVariable pmVariableId="10028" type="smtFeeBreak" priceBreakLo="0" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="" value="5" notes="price is in local currency, value in percent"/>
+    <ProductMasterVariable pmVariableId="10029" type="wishFeeBreak" priceBreakLo="0" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="" value="20" notes="price is in local currency, value in percent"/>
+    <ProductMasterVariable pmVariableId="10030" type="amaFeeBreak" priceBreakLo="0" priceBreakHi="1000000" weightBreakLo="" weightBreakHi="" name="" value="17" notes="price is in local currency, value in percent"/>
+    <ProductMasterVariable pmVariableId="10031" type="overPriceCorrection" priceBreakLo="20" priceBreakHi="30" weightBreakLo="" weightBreakHi="" name="WISH" value="1" notes="price over priceBreakHi percentage will be deducted by value"/>
+    <ProductMasterVariable pmVariableId="10032" type="priceBreakRange" priceBreakLo="0" priceBreakHi="0" weightBreakLo="" weightBreakHi="" name="SMT" value="3" notes="range is in local currency"/>
+    <ProductMasterVariable pmVariableId="10033" type="priceBreakRange" priceBreakLo="0" priceBreakHi="0" weightBreakLo="" weightBreakHi="" name="AMA" value="7" notes="range is in local currency"/>
+    <ProductMasterVariable pmVariableId="10034" type="ebayFeeBreakUS" priceBreakLo="0" priceBreakHi="5" value="18" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10035" type="ebayFeeBreakUS" priceBreakLo="5" priceBreakHi="100000000" value="15" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10036" type="ebayFeeBreakUK" priceBreakLo="0" priceBreakHi="4" value="18" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10037" type="ebayFeeBreakUK" priceBreakLo="4" priceBreakHi="100000000" value="15" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10038" type="ebayFeeBreakAU" priceBreakLo="0" priceBreakHi="6" value="18" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10039" type="ebayFeeBreakAU" priceBreakLo="6" priceBreakHi="100000000" value="15" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10040" type="ebayFeeBreakCA" priceBreakLo="0" priceBreakHi="6" value="18" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10041" type="ebayFeeBreakCA" priceBreakLo="6" priceBreakHi="100000000" value="15" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10042" type="ebayFeeBreakEU" priceBreakLo="0" priceBreakHi="7" value="18" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10043" type="ebayFeeBreakEU" priceBreakLo="7" priceBreakHi="100000000" value="15" notes="Value is in percentage"/>
+    <ProductMasterVariable pmVariableId="10044" type="productTypeShippingMethod" priceBreakLo="" priceBreakHi="" weightBreakLo="" weightBreakHi="" name="瑞典仓库" value="SWEDENPOST" notes=""/>
+    <ProductMasterVariable pmVariableId="10048" type="weightBreakShipping" priceBreakLo="" priceBreakHi="" weightBreakLo="0" weightBreakHi="35" name="CHINAPOST" value="SWISSPOST" notes=""/>
+    
+    
+    
+    <GudaoShippingCost carrierId="YANWEN" shippingMethodType="STANDARD" discountRate="5" pricePerGram="0.09" additionalCost="" notes="Price is in RMB"/>
+    <GudaoShippingCost carrierId="YANWEN" shippingMethodType="REGISTERED" discountRate="5" pricePerGram="0.09" additionalCost="8" notes="Price is in RMB"/>
+    <GudaoShippingCost carrierId="CHINAPOST" shippingMethodType="STANDARD" discountRate="15" pricePerGram="0.09" additionalCost="" notes="Price is in RMB"/>
+    <GudaoShippingCost carrierId="CHINAPOST" shippingMethodType="REGISTERED" discountRate="15"  pricePerGram="0.09" additionalCost="8" notes="Price is in RMB"/>
+    <GudaoShippingCost carrierId="SMT" shippingMethodType="STANDARD" discountRate="0" pricePerGram="0.1" additionalCost="" notes="Price is in RMB"/>
+    <GudaoShippingCost carrierId="SMT" shippingMethodType="REGISTERED" discountRate="15" pricePerGram="0.1" additionalCost="8" notes="Price is in RMB"/>
+    <GudaoShippingCost carrierId="DEUTSCHEPOST" shippingMethodType="STANDARD" discountRate="0" pricePerGram="0.11" additionalCost="5.6" notes="Price is in HKD"/>
+    <GudaoShippingCost carrierId="SWEDENPOST" shippingMethodType="STANDARD" discountRate="0" pricePerGram="0.09" additionalCost="4.5" notes="Price is in RMB"/>
+    <GudaoShippingCost carrierId="SWISSPOST" shippingMethodType="STANDARD" discountRate="0" pricePerGram="0.1" additionalCost="" notes="Price is in RMB"/>
+    
+    
+    <ProductMasterColumnTitle columnId="productId" columnTitle="SKU" sequenceId="1"/>
+    <ProductMasterColumnTitle columnId="chineseName" columnTitle="品名" sequenceId="2"/>
+    <ProductMasterColumnTitle columnId="englishName" columnTitle="英文品名" sequenceId="3"/>
+    <ProductMasterColumnTitle columnId="weight" columnTitle="重量" sequenceId="6"/>
+    <ProductMasterColumnTitle columnId="productGroup" columnTitle="分组" sequenceId="7"/>
+    <ProductMasterColumnTitle columnId="statusId" columnTitle="状态" sequenceId="8"/>
+    <ProductMasterColumnTitle columnId="categoryId" columnTitle="目录" sequenceId="9"/>
+    <ProductMasterColumnTitle columnId="productType" columnTitle="产品类型" sequenceId="10"/>
+    <ProductMasterColumnTitle columnId="ownerGroup" columnTitle="开发员" sequenceId="39"/>
+    <ProductMasterColumnTitle columnId="purchaser" columnTitle="采购员" sequenceId="40"/>
+    <ProductMasterColumnTitle columnId="imageLink" columnTitle="截图链接" sequenceId="38"/>
+    <ProductMasterColumnTitle columnId="extraStockingDay" columnTitle="备货天数" sequenceId="42"/>
+    <ProductMasterColumnTitle columnId="sourcingDate" columnTitle="开发日期" sequenceId="45"/>
+    <ProductMasterColumnTitle columnId="supplier" columnTitle="供应商" sequenceId="35"/>
+    <ProductMasterColumnTitle columnId="supplierType" columnTitle="供应商类型" sequenceId="36"/>
+    <ProductMasterColumnTitle columnId="price" columnTitle="成本" sequenceId="4"/>
+    <ProductMasterColumnTitle columnId="priceLastUpdate" columnTitle="成本更新日期" sequenceId="5"/>
+    <ProductMasterColumnTitle columnId="supplierLink" columnTitle="国内" sequenceId="34"/>
+    <ProductMasterColumnTitle columnId="discountRate" columnTitle="折扣" sequenceId="37"/>
+    <ProductMasterColumnTitle columnId="eta" columnTitle="ETA" sequenceId="41"/>
+    <ProductMasterColumnTitle columnId="minOrderDays" columnTitle="采购天数" sequenceId="43"/>
+    <ProductMasterColumnTitle columnId="minOrderQuantity" columnTitle="MOQ" sequenceId="44"/>
+    <ProductMasterColumnTitle columnId="rivalItemId" columnTitle="对手item Id" sequenceId="29"/>
+    <ProductMasterColumnTitle columnId="rivalLink" columnTitle="对手链接" sequenceId="30"/>
+    <ProductMasterColumnTitle columnId="soldPerDay" columnTitle="对手日销" sequenceId="31"/>
+    <ProductMasterColumnTitle columnId="samePriceProfitPercentage" columnTitle="同价毛利%" sequenceId="32"/>
+    <ProductMasterColumnTitle columnId="usd" columnTitle="CP" sequenceId="11"/>
+    <ProductMasterColumnTitle columnId="gbp" columnTitle="UK" sequenceId="13"/>
+    <ProductMasterColumnTitle columnId="aud" columnTitle="AU" sequenceId="15"/>
+    <ProductMasterColumnTitle columnId="eur" columnTitle="LT" sequenceId="17"/>
+    <ProductMasterColumnTitle columnId="cad" columnTitle="CA" sequenceId="19"/>
+    <ProductMasterColumnTitle columnId="cpPercentage" columnTitle="CP%" sequenceId="12"/>
+    <ProductMasterColumnTitle columnId="gbpPercentage" columnTitle="UK%" sequenceId="14"/>
+    <ProductMasterColumnTitle columnId="audPercentage" columnTitle="AU%" sequenceId="16"/>
+    <ProductMasterColumnTitle columnId="eurPercentage" columnTitle="LT%" sequenceId="18"/>
+    <ProductMasterColumnTitle columnId="cadPercentage" columnTitle="CA%" sequenceId="20"/>
+    <ProductMasterColumnTitle columnId="smtPrice" columnTitle="SMT定价" sequenceId="21"/>
+    <ProductMasterColumnTitle columnId="smtPercentage" columnTitle="SMT利%" sequenceId="22"/>
+    <ProductMasterColumnTitle columnId="smtShippingMethod" columnTitle="运输方式" sequenceId="23"/>
+    <ProductMasterColumnTitle columnId="wishProductPrice" columnTitle="Wish定价" sequenceId="24"/>
+    <ProductMasterColumnTitle columnId="wishShippingPrice" columnTitle="Wish运费" sequenceId="25"/>
+    <ProductMasterColumnTitle columnId="wishPercentage" columnTitle="Wish利%" sequenceId="26"/>
+    <ProductMasterColumnTitle columnId="amaPrice" columnTitle="AMA定价" sequenceId="27"/>
+    <ProductMasterColumnTitle columnId="amaPercentage" columnTitle="AMA利%" sequenceId="28"/>
+    <ProductMasterColumnTitle columnId="productRivalRank" columnTitle="综合评分" sequenceId="33"/>
+    <ProductMasterColumnTitle columnId="backupSupplier" columnTitle="备用供应商" sequenceId="61"/>
+    <ProductMasterColumnTitle columnId="backupSupplierType" columnTitle="备用供应商类型" sequenceId="62"/>
+    <ProductMasterColumnTitle columnId="backupSupplierPrice" columnTitle="备用成本" sequenceId="63"/>
+    <ProductMasterColumnTitle columnId="backupSupplierLink" columnTitle="备用国内" sequenceId="64"/>
+    <ProductMasterColumnTitle columnId="backupSupplierEta" columnTitle="备用ETA" sequenceId="65"/>
+    <ProductMasterColumnTitle columnId="backupMinOrderDays" columnTitle="备用采购天数" sequenceId="66"/>
+    <ProductMasterColumnTitle columnId="backupMinOrderQuantity" columnTitle="备用MOQ" sequenceId="67"/>
+    <ProductMasterColumnTitle columnId="backupPriceLastUpdate" columnTitle="备用成本更新日期" sequenceId="68"/>
+    <ProductMasterColumnTitle columnId="notes" columnTitle="开发备注" sequenceId="46"/>
+    <ProductMasterColumnTitle columnId="upc" columnTitle="UPC" sequenceId="47"/>
+    <ProductMasterColumnTitle columnId="ebayUsListing" columnTitle="eBay US Listing" sequenceId="48"/>
+    <ProductMasterColumnTitle columnId="ebayUkListing" columnTitle="eBay UK Listing" sequenceId="49"/>
+    <ProductMasterColumnTitle columnId="ebayAuListing" columnTitle="eBay AU Listing" sequenceId="50"/>
+    <ProductMasterColumnTitle columnId="ebayCaListing" columnTitle="eBay CA Listing" sequenceId="51"/>
+    <ProductMasterColumnTitle columnId="ebayDeListing" columnTitle="eBay DE Listing" sequenceId="52"/>
+    <ProductMasterColumnTitle columnId="ebayFrListing" columnTitle="eBay FR Listing" sequenceId="53"/>
+    <ProductMasterColumnTitle columnId="ebayEsListing" columnTitle="eBay ES Listing" sequenceId="54"/>
+    <ProductMasterColumnTitle columnId="smtListing" columnTitle="SMT Listing" sequenceId="55"/>
+    <ProductMasterColumnTitle columnId="amaListing" columnTitle="Amazon Listing" sequenceId="56"/>
+    <ProductMasterColumnTitle columnId="wishListing" columnTitle="Wish Listing" sequenceId="57"/>
+    <ProductMasterColumnTitle columnId="ebayPicture" columnTitle="eBay Picture" sequenceId="58"/>
+    <ProductMasterColumnTitle columnId="amazonPicture" columnTitle="Amazon Picture" sequenceId="59"/>
+    <ProductMasterColumnTitle columnId="platform" columnTitle="Platform" sequenceId="60"/>
+    
+    
+    <UomConversionDated uomId="CNY" uomIdTo="USD" fromDate="2015-01-01 00:00:00.000" conversionFactor="0.16129032"/>
+    <UomConversionDated uomId="USD" uomIdTo="CNY" fromDate="2015-01-01 00:00:00.000" conversionFactor="6.2"/>
+    <UomConversionDated uomId="USD" uomIdTo="GBP" fromDate="2015-01-01 00:00:00.000" conversionFactor="0.65608466"/>
+    <UomConversionDated uomId="USD" uomIdTo="AUD" fromDate="2015-01-01 00:00:00.000" conversionFactor="1.27835052"/>
+    <UomConversionDated uomId="USD" uomIdTo="CAD" fromDate="2015-01-01 00:00:00.000" conversionFactor="1.2525252525"/>
+    <UomConversionDated uomId="USD" uomIdTo="EUR" fromDate="2015-01-01 00:00:00.000" conversionFactor="0.87943262"/>
+    <UomConversionDated uomId="HKD" uomIdTo="CNY" fromDate="2015-01-01 00:00:00.000" conversionFactor="0.8"/>
+    
+    <OwnerGroup ownerGroupId="DADA" ownerGroupName="Dada" statusId="ACTIVE"/>
+    <OwnerGroup ownerGroupId="FANGXI" ownerGroupName="Fangxi" statusId="ACTIVE"/>
+    <OwnerGroup ownerGroupId="G6" ownerGroupName="G6" statusId="ACTIVE"/>
+    <OwnerGroup ownerGroupId="GARY" ownerGroupName="Gary" statusId="ACTIVE"/>
+    <OwnerGroup ownerGroupId="JERRY" ownerGroupName="Jerry" statusId="ACTIVE"/>
+    <OwnerGroup ownerGroupId="MATTY" ownerGroupName="Matty" statusId="ACTIVE"/>
+    <OwnerGroup ownerGroupId="NICK" ownerGroupName="Nick" statusId="ACTIVE"/>
+    <OwnerGroup ownerGroupId="NIKI" ownerGroupName="Niki" statusId="ACTIVE"/>
+    
+    <ProductGroup productGroupId="G0" productGroupName="G0" statusId="ACTIVE"/>
+    <ProductGroup productGroupId="G1" productGroupName="G1" statusId="ACTIVE"/>
+    <ProductGroup productGroupId="G2" productGroupName="G2" statusId="ACTIVE"/>
+    <ProductGroup productGroupId="G3" productGroupName="G3" statusId="ACTIVE"/>
+    <ProductGroup productGroupId="G4" productGroupName="G4" statusId="ACTIVE"/>
+    <ProductGroup productGroupId="G5" productGroupName="G5" statusId="ACTIVE"/>
+    
+    <AccountListingRule productStoreId="09lijun" statusId="ACTIVE" site="US" folderName="ST1FREE" skuPrefix="" titleSuffix="LJN" />
+    <AccountListingRule productStoreId="09lijun" statusId="ACTIVE" site="US" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="LJN" />
+    <AccountListingRule productStoreId="144mph" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="MPH" />
+    <AccountListingRule productStoreId="baiwan77" statusId="ACTIVE" site="AU" folderName="ST1FREE" skuPrefix="" titleSuffix="BWN" />
+    <AccountListingRule productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="DAU" />
+    <AccountListingRule productStoreId="digizone-uk" statusId="ACTIVE" site="UK" folderName="ST1FREE" skuPrefix="" titleSuffix="DUK" />
+    <AccountListingRule productStoreId="digizone-us" statusId="ACTIVE" site="US" folderName="ST1FREE" skuPrefix="" titleSuffix="DUS" />
+    <AccountListingRule productStoreId="factorykiss-de" statusId="ACTIVE" site="AU" folderName="ST1FREE" skuPrefix="" titleSuffix="FDE" />
+    <AccountListingRule productStoreId="factorykiss-eu" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" skuPrefix="" titleSuffix="FEU" />
+    <AccountListingRule productStoreId="factorykiss-gbp" statusId="ACTIVE" site="US" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="FGP" />
+    <AccountListingRule productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" skuPrefix="BB" titleSuffix="FOZ" />
+    <AccountListingRule productStoreId="factorykiss-uk2012" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="FUK" />
+    <AccountListingRule productStoreId="factorykiss-us" statusId="ACTIVE" site="UK" folderName="ST1FREE" skuPrefix="" titleSuffix="FUS" />
+    <AccountListingRule productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="FKS" />
+    <AccountListingRule productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="FKS" />
+    <AccountListingRule productStoreId="fashionthings2011" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="FST" />
+    <AccountListingRule productStoreId="fastars" statusId="ACTIVE" site="UK" folderName="ST1FREE" skuPrefix="" titleSuffix="FAS" />
+    <AccountListingRule productStoreId="grape-au" statusId="ACTIVE" site="US" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="GAU" />
+    <AccountListingRule productStoreId="grape-uk" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="GUK" />
+    <AccountListingRule productStoreId="grape-us" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="GUS" />
+    <AccountListingRule productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST1FREE" skuPrefix="" titleSuffix="GBW" />
+    <AccountListingRule productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="GBW" />
+    <AccountListingRule productStoreId="greenselling" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="GRS" />
+    <AccountListingRule productStoreId="guaranteed-service" statusId="ACTIVE" site="US" folderName="ST1FREE" skuPrefix="" titleSuffix="GSE" />
+    <AccountListingRule productStoreId="guaranteed-service" statusId="ACTIVE" site="US" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="GSE" />
+    <AccountListingRule productStoreId="happykiss12" statusId="ACTIVE" site="FR" folderName="ST1FREE" skuPrefix="" titleSuffix="HKS" />
+    <AccountListingRule productStoreId="happytogether009" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="HPT" />
+    <AccountListingRule productStoreId="hnb-uk" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" skuPrefix="" titleSuffix="HUK" />
+    <AccountListingRule productStoreId="homemaster-uk" statusId="ACTIVE" site="US" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="HUK" />
+    <AccountListingRule productStoreId="homemaster-us" statusId="ACTIVE" site="UK" folderName="ST1FREE" skuPrefix="" titleSuffix="HUS" />
+    <AccountListingRule productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" skuPrefix="BB" titleSuffix="IDE" />
+    <AccountListingRule productStoreId="industryland-oz" statusId="ACTIVE" site="US" folderName="ST1FREE" skuPrefix="" titleSuffix="IOZ" />
+    <AccountListingRule productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="IUK" />
+    <AccountListingRule productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="IUK" />
+    <AccountListingRule productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="IND" />
+    <AccountListingRule productStoreId="masterpiece-fr" statusId="ACTIVE" site="UK" folderName="ST1FREE" skuPrefix="" titleSuffix="MFR" />
+    <AccountListingRule productStoreId="masterpiece-oz" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" skuPrefix="" titleSuffix="MOZ" />
+    <AccountListingRule productStoreId="masterpiece-uk" statusId="ACTIVE" site="US" folderName="ST1FREE" skuPrefix="" titleSuffix="MUK" />
+    <AccountListingRule productStoreId="masterpiece-uk" statusId="ACTIVE" site="US" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="MUK" />
+    <AccountListingRule productStoreId="masterpiece-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="MUS" />
+    <AccountListingRule productStoreId="qianqian-uk" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="QUK" />
+    <AccountListingRule productStoreId="shopno.7" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="SHO" />
+    <AccountListingRule productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="SDE" />
+    <AccountListingRule productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="SDE" />
+    <AccountListingRule productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" skuPrefix="" titleSuffix="SFR" />
+    <AccountListingRule productStoreId="smitten-gbp" statusId="ACTIVE" site="AU" folderName="ST1FREE" skuPrefix="" titleSuffix="SGP" />
+    <AccountListingRule productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="SOZ" />
+    <AccountListingRule productStoreId="smitten-us" statusId="ACTIVE" site="AU" folderName="ST1FREE" skuPrefix="" titleSuffix="SUS" />
+    <AccountListingRule productStoreId="whatwears-de" statusId="ACTIVE" site="FR" folderName="ST1FREE" skuPrefix="" titleSuffix="WDE" />
+    <AccountListingRule productStoreId="whatwears-eu" statusId="ACTIVE" site="US" folderName="ST2FREE" skuPrefix="BB" titleSuffix="WEU" />
+    <AccountListingRule productStoreId="whatwears-fr" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="WFR" />
+    <AccountListingRule productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" skuPrefix="" titleSuffix="WOG" />
+    <AccountListingRule productStoreId="whatwears-uk" statusId="ACTIVE" site="AU" folderName="ST1FREE" skuPrefix="" titleSuffix="WUK" />
+    <AccountListingRule productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST1FREE" skuPrefix="" titleSuffix="WUS" />
+    <AccountListingRule productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" skuPrefix="CC" titleSuffix="WUS" />
+    <AccountListingRule productStoreId="whatwears-us2011" statusId="ACTIVE" site="US" folderName="ST1FREE" skuPrefix="" titleSuffix="WWS" />
+    <AccountListingRule productStoreId="whatwears-us2011" statusId="ACTIVE" site="US" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="WWS" />
+    <AccountListingRule productStoreId="whatwears-zeta" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" skuPrefix="AA" titleSuffix="WZA" />
+    
+    
+    <AccountListingRuleShipping site="US" shippingType="DOMESTIC" priority="1" filter="LESS5GREAT20" shippingServiceName="EconomyShippingFromOutsideUS" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="US" shippingType="DOMESTIC" priority="1" filter="5AND20" shippingServiceName="EconomyShippingFromOutsideUS" shippingServiceCost="1.99" additionalCost="0.99" eta="2" destination=""/>
+    <AccountListingRuleShipping site="US" shippingType="INTERNATIONAL" priority="1" filter="ALL" shippingServiceName="OtherInternational" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="UK" shippingType="DOMESTIC" priority="1" filter="ALL" shippingServiceName="UK_EconomyShippingFromOutside" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="UK" shippingType="INTERNATIONAL" priority="1" filter="ALL" shippingServiceName="UK_OtherCourierOrDeliveryInternational" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="IT" shippingType="DOMESTIC" priority="1" filter="ALL" shippingServiceName="AU_EconomyDeliveryFromOutsideAU" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="IT" shippingType="INTERNATIONAL" priority="1" filter="ALL" shippingServiceName="AU_StandardInternational" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="CA" shippingType="DOMESTIC" priority="1" filter="ALL" shippingServiceName="CA_EconomyShippingfromoutsideCanada" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="CA" shippingType="INTERNATIONAL" priority="1" filter="LESS6GREAT25" shippingServiceName="Standard Int'l Shipping" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="CA" shippingType="INTERNATIONAL" priority="1" filter="6AND25" shippingServiceName="CA_StandardInternational" shippingServiceCost="1.99" additionalCost="0.99" eta="2" destination="Americas,US"/>
+    <AccountListingRuleShipping site="CA" shippingType="INTERNATIONAL" priority="2" filter="6AND25" shippingServiceName="CA_StandardInternational" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="DE" shippingType="DOMESTIC" priority="1" filter="ALL" shippingServiceName="DE_SparversandAusDemAusland" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="DE" shippingType="INTERNATIONAL" priority="1" filter="ALL" shippingServiceName="DE_SonstigeInternational" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="FR" shippingType="DOMESTIC" priority="1" filter="ALL" shippingServiceName="FR_EconomyDeliveryFromAbroad" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    <AccountListingRuleShipping site="FR" shippingType="INTERNATIONAL" priority="1" filter="ALL" shippingServiceName="FR_StandardInternational" shippingServiceCost="0" additionalCost="0" eta="2" destination=""/>
+    
+    <AccountListingRuleCategory id="10000" productStoreId="industryland-oz" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10001" productStoreId="homemaster-uk" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10002" productStoreId="homemaster-uk" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10003" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10004" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10005" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10006" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10007" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10008" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10009" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10010" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10011" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10012" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10013" productStoreId="smitten-fr" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10014" productStoreId="hnb-uk" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10015" productStoreId="hnb-uk" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10016" productStoreId="hnb-uk" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10017" productStoreId="factorykiss-eu" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10018" productStoreId="factorykiss-eu" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10019" productStoreId="factorykiss-eu" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10020" productStoreId="factorykiss-eu" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10021" productStoreId="factorykiss-eu" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10022" productStoreId="masterpiece-oz" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10023" productStoreId="masterpiece-oz" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10024" productStoreId="masterpiece-oz" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10025" productStoreId="masterpiece-oz" statusId="ACTIVE" site="DE" folderName="ST1NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10026" productStoreId="happykiss12" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10027" productStoreId="happykiss12" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10028" productStoreId="happykiss12" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10029" productStoreId="whatwears-de" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10030" productStoreId="whatwears-de" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10031" productStoreId="whatwears-de" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10032" productStoreId="whatwears-de" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10033" productStoreId="whatwears-de" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10034" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10035" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10036" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10037" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10038" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10039" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10040" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10041" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10042" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10043" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10044" productStoreId="whatwears-omega" statusId="ACTIVE" site="FR" folderName="ST1FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10045" productStoreId="masterpiece-uk" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10046" productStoreId="guaranteed-service" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10047" productStoreId="whatwears-eu" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10048" productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10049" productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10050" productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10051" productStoreId="masterpiece-fr" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10052" productStoreId="whatwears-fr" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10053" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10054" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10055" productStoreId="smitten-gbp" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10056" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10057" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10058" productStoreId="masterpiece-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Home &amp; Garden"/>
+    <AccountListingRuleCategory id="10059" productStoreId="guaranteed-service" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10060" productStoreId="guaranteed-service" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10061" productStoreId="masterpiece-uk" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10062" productStoreId="masterpiece-uk" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10063" productStoreId="144mph" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10064" productStoreId="144mph" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10065" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10066" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10067" productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10068" productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10069" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10070" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10071" productStoreId="fastars" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10072" productStoreId="fastars" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10073" productStoreId="whatwears-zeta" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10074" productStoreId="whatwears-zeta" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10075" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10076" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10077" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10078" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10079" productStoreId="factorykiss-de" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10080" productStoreId="factorykiss-de" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10081" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10082" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10083" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10084" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10085" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Pets &amp; Toys"/>
+    <AccountListingRuleCategory id="10086" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Baby &amp; Pregnancy"/>
+    <AccountListingRuleCategory id="10087" productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10088" productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10089" productStoreId="grape-au" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10090" productStoreId="grape-au" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10091" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10092" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10093" productStoreId="fashionthings2011" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10094" productStoreId="fashionthings2011" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10095" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10096" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10097" productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10098" productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10099" productStoreId="digizone-uk" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10100" productStoreId="digizone-uk" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10101" productStoreId="grape-uk" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10102" productStoreId="grape-uk" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10103" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10104" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10105" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10106" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10107" productStoreId="smitten-us" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10108" productStoreId="smitten-us" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10109" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10110" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10111" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10112" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10113" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Health &amp; Beauty"/>
+    <AccountListingRuleCategory id="10114" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Fashion Accessories"/>
+    <AccountListingRuleCategory id="10115" productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10116" productStoreId="grapebaiwan-us" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10117" productStoreId="factorykiss-gbp" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10118" productStoreId="factorykiss-gbp" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10119" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10120" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10121" productStoreId="greenselling" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10122" productStoreId="greenselling" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10123" productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10124" productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10125" productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10126" productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10127" productStoreId="factorykiss-us" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10128" productStoreId="factorykiss-us" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10129" productStoreId="qianqian-uk" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10130" productStoreId="qianqian-uk" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10131" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10132" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10133" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10134" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10135" productStoreId="baiwan77" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10136" productStoreId="baiwan77" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10137" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10138" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10139" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10140" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10141" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Women Wears"/>
+    <AccountListingRuleCategory id="10142" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Men Wears"/>
+    <AccountListingRuleCategory id="10143" productStoreId="09lijun" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10144" productStoreId="09lijun" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10145" productStoreId="whatwears-us2011" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10146" productStoreId="whatwears-us2011" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10147" productStoreId="factorykiss-uk2012" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10148" productStoreId="factorykiss-uk2012" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10149" productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10150" productStoreId="industryland-uk" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10151" productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10152" productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10153" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10154" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10155" productStoreId="homemaster-us" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10156" productStoreId="homemaster-us" statusId="ACTIVE" site="UK" folderName="ST1FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10157" productStoreId="grape-us" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10158" productStoreId="grape-us" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10159" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10160" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10161" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10162" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10163" productStoreId="whatwears-uk" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10164" productStoreId="whatwears-uk" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10165" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10166" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10167" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10168" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10169" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Consumer Electronics"/>
+    <AccountListingRuleCategory id="10170" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Car &amp; Motorcycle"/>
+    <AccountListingRuleCategory id="10171" productStoreId="whatwears-us2011" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10172" productStoreId="whatwears-us2011" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10173" productStoreId="09lijun" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10174" productStoreId="09lijun" statusId="ACTIVE" site="US" folderName="ST1NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10175" productStoreId="happytogether009" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10176" productStoreId="happytogether009" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10177" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10178" productStoreId="factorykiss" statusId="ACTIVE" site="US" folderName="ST2FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10179" productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10180" productStoreId="industryland" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10181" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10182" productStoreId="smitten-de" statusId="ACTIVE" site="US" folderName="ST2NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10183" productStoreId="digizone-us" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10184" productStoreId="digizone-us" statusId="ACTIVE" site="US" folderName="ST1FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10185" productStoreId="shopno.7" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10186" productStoreId="shopno.7" statusId="ACTIVE" site="UK" folderName="ST1NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10187" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10188" productStoreId="industryland-de" statusId="ACTIVE" site="UK" folderName="ST2FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10189" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10190" productStoreId="digizone-au" statusId="ACTIVE" site="UK" folderName="ST2NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10191" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10192" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST1FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10193" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10194" productStoreId="smitten-oz" statusId="ACTIVE" site="AU" folderName="ST1NOFREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10195" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Business &amp; Industrial"/>
+    <AccountListingRuleCategory id="10196" productStoreId="factorykiss-oz" statusId="ACTIVE" site="AU" folderName="ST2FREE" categoryId="Sports &amp; Outdoors"/>
+    <AccountListingRuleCategory id="10197" productStoreId="whatwears-us" statusId="ACTIVE" site="AU" folderName="ST2NOFREE" categoryId="Business &amp; Industrial"/>
+    
+    
+    <EndActiveListingRule productStoreId="09lijun" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="144mph" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="baiwan77" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="digizone-au" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="digizone-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="digizone-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss-de" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss-eu" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss-france" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss-gbp" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss-oz" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss-uk2012" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="factorykiss-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="fashionthings2011" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="fastars" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="grape-au" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="grapebaiwan-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="grape-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="grape-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="greenselling" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="guaranteed-service" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="happykiss12" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="happytogether009" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="hnb-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="homemaster-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="homemaster-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="industryland" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="industryland-de" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="industryland-oz" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="industryland-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="masterpiece-fr" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="masterpiece-oz" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="masterpiece-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="masterpiece-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="qianqian-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="shopno.7" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="smitten-de" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="smitten-fr" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="smitten-gbp" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="smitten-oz" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="smitten-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-de" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-eu" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-fr" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-omega" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-uk" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-us" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-us2011" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    <EndActiveListingRule productStoreId="whatwears-zeta" statusId="ACTIVE"  unsoldDay="28" historicalSoldLessThan="100" startDateMoreThanXDay="28"/>
+    
+    <GpsAlgorithm id="1001" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="100" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="5" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1002" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="90" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="3" joinOperator="AND" comparator2="LESS_THAN" value2="5"/>
+    <GpsAlgorithm id="1003" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="80" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="1" joinOperator="AND" comparator2="LESS_THAN" value2="3"/>
+    <GpsAlgorithm id="1004" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="70" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="0.5" joinOperator="AND" comparator2="LESS_THAN" value2="1"/>
+    <GpsAlgorithm id="1005" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="60" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="0.3" joinOperator="AND" comparator2="LESS_THAN" value2="0.5"/>
+    <GpsAlgorithm id="1006" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="50" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="0.2" joinOperator="AND" comparator2="LESS_THAN" value2="0.3"/>
+    <GpsAlgorithm id="1007" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="40" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="0.1" joinOperator="AND" comparator2="LESS_THAN" value2="0.2"/>
+    <GpsAlgorithm id="1008" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="20" weight="30" remark="daily quantity sold" comparator1="GREATER_THAN_EQUAL_TO" value1="0.05" joinOperator="AND" comparator2="LESS_THAN" value2="0.1"/>
+    <GpsAlgorithm id="1009" gpsNumber="1" factor="RIVAL_DAILY_SOLD" score="0" weight="30" remark="daily quantity sold" comparator1="LESS_THAN" value1="0.05" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1010" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="100" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="25" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1011" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="90" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="15" joinOperator="AND" comparator2="LESS_THAN" value2="25"/>
+    <GpsAlgorithm id="1012" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="80" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="5" joinOperator="AND" comparator2="LESS_THAN" value2="15"/>
+    <GpsAlgorithm id="1013" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="70" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="2.5" joinOperator="AND" comparator2="LESS_THAN" value2="5"/>
+    <GpsAlgorithm id="1014" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="60" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="1.5" joinOperator="AND" comparator2="LESS_THAN" value2="2.5"/>
+    <GpsAlgorithm id="1015" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="50" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="1" joinOperator="AND" comparator2="LESS_THAN" value2="1.5"/>
+    <GpsAlgorithm id="1016" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="40" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="0.5" joinOperator="AND" comparator2="LESS_THAN" value2="1"/>
+    <GpsAlgorithm id="1017" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="20" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="GREATER_THAN_EQUAL_TO" value1="0.25" joinOperator="AND" comparator2="LESS_THAN" value2="0.5"/>
+    <GpsAlgorithm id="1018" gpsNumber="2" factor="RIVAL_DAILY_SALES" score="0" weight="15" remark="daily quantity sold x unit price (local currency)" comparator1="LESS_THAN" value1="0.25" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1019" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="100" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0.24" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1020" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="90" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0.21" joinOperator="AND" comparator2="LESS_THAN" value2="0.24"/>
+    <GpsAlgorithm id="1021" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="80" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0.18" joinOperator="AND" comparator2="LESS_THAN" value2="0.21"/>
+    <GpsAlgorithm id="1022" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="70" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0.15" joinOperator="AND" comparator2="LESS_THAN" value2="0.18"/>
+    <GpsAlgorithm id="1023" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="60" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0.12" joinOperator="AND" comparator2="LESS_THAN" value2="0.15"/>
+    <GpsAlgorithm id="1024" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="50" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0.09" joinOperator="AND" comparator2="LESS_THAN" value2="0.12"/>
+    <GpsAlgorithm id="1025" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="40" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0.06" joinOperator="AND" comparator2="LESS_THAN" value2="0.09"/>
+    <GpsAlgorithm id="1026" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="20" weight="25" remark="use PM profit%" comparator1="GREATER_THAN_EQUAL_TO" value1="0" joinOperator="AND" comparator2="LESS_THAN" value2="0.06"/>
+    <GpsAlgorithm id="1027" gpsNumber="3" factor="SAME_PRICE_PROFIT_PCT" score="0" weight="25" remark="use PM profit%" comparator1="LESS_THAN" value1="0" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1028" gpsNumber="4" factor="SUPPLIER_RANK" score="100" weight="10" remark="supplier rank by sales" comparator1="LESS_THAN_EQUAL_TO" value1="100" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1029" gpsNumber="4" factor="SUPPLIER_RANK" score="90" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="100" joinOperator="AND" comparator2="LESS_THAN_EQUAL_TO" value2="200"/>
+    <GpsAlgorithm id="1030" gpsNumber="4" factor="SUPPLIER_RANK" score="80" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="200" joinOperator="AND" comparator2="LESS_THAN_EQUAL_TO" value2="300"/>
+    <GpsAlgorithm id="1031" gpsNumber="4" factor="SUPPLIER_RANK" score="70" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="300" joinOperator="AND" comparator2="LESS_THAN_EQUAL_TO" value2="400"/>
+    <GpsAlgorithm id="1032" gpsNumber="4" factor="SUPPLIER_RANK" score="60" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="400" joinOperator="AND" comparator2="LESS_THAN_EQUAL_TO" value2="500"/>
+    <GpsAlgorithm id="1033" gpsNumber="4" factor="SUPPLIER_RANK" score="50" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="500" joinOperator="AND" comparator2="LESS_THAN_EQUAL_TO" value2="600"/>
+    <GpsAlgorithm id="1034" gpsNumber="4" factor="SUPPLIER_RANK" score="40" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="600" joinOperator="AND" comparator2="LESS_THAN_EQUAL_TO" value2="800"/>
+    <GpsAlgorithm id="1035" gpsNumber="4" factor="SUPPLIER_RANK" score="20" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="800" joinOperator="AND" comparator2="LESS_THAN_EQUAL_TO" value2="1000"/>
+    <GpsAlgorithm id="1036" gpsNumber="4" factor="SUPPLIER_RANK" score="0" weight="10" remark="supplier rank by sales" comparator1="GREATER_THAN" value1="1000" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1037" gpsNumber="5" factor="SBU_PARENT_CATEGORY" score="100" weight="5" remark="1 pre-determined parent category for each SBU" comparator1="EQUALS" value1Str="Y" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1038" gpsNumber="5" factor="SBU_PARENT_CATEGORY" score="0" weight="5" remark="1 pre-determined parent category for each SBU" comparator1="EQUALS" value1Str="N" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1039" gpsNumber="6" factor="SBU_CHILDREN_CATEGORY" score="100" weight="5" remark="3 pre-determined children category for each SBU" comparator1="EQUALS" value1Str="Y" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1040" gpsNumber="6" factor="SBU_CHILDREN_CATEGORY" score="0" weight="5" remark="3 pre-determined children category for each SBU" comparator1="EQUALS" value1Str="N" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1041" gpsNumber="7" factor="AMAZON_PICTURE" score="100" weight="5" remark="whether pictures meet Amazon's high standard" comparator1="EQUALS" value1Str="Y" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1042" gpsNumber="7" factor="AMAZON_PICTURE" score="0" weight="5" remark="whether pictures meet Amazon's high standard" comparator1="EQUALS" value1Str="N" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1043" gpsNumber="8" factor="MULTI_PLATFORM_RIVAL" score="100" weight="5" remark="whether SMT/Amazon/Wish link is provided besides eBay link" comparator1="EQUALS" value1Str="Y" joinOperator="" comparator2="" value2=""/>
+    <GpsAlgorithm id="1044" gpsNumber="8" factor="MULTI_PLATFORM_RIVAL" score="0" weight="5" remark="whether SMT/Amazon/Wish link is provided besides eBay link" comparator1="EQUALS" value1Str="N" joinOperator="" comparator2="" value2=""/>
+    
+    
+    <SbuCategoryParent sbu="CHENWEI" categoryIdParent="Home &amp; Garden"/>
+    <SbuCategoryParent sbu="DADA" categoryIdParent="Home &amp; Garden"/>
+    <SbuCategoryParent sbu="FANGXI" categoryIdParent="Women Wears"/>
+    <SbuCategoryParent sbu="GARY" categoryIdParent="Business &amp; Industrial"/>
+    <SbuCategoryParent sbu="JERRY" categoryIdParent="Car &amp; Motorcycle"/>
+    <SbuCategoryParent sbu="MATTY" categoryIdParent="Home &amp; Garden"/>
+    <SbuCategoryParent sbu="NICK" categoryIdParent="Pets &amp; Toys"/>
+    <SbuCategoryParent sbu="NIKI" categoryIdParent="Fashion Accessories"/>
+    <SbuCategoryParent sbu="RAYMOND" categoryIdParent="Men Wears"/>
+    
+    <SbuCategoryChildren sbu="CHENWEI" categoryIdParent="Home &amp; Garden" categoryIdChild="Dog Supplies"/>
+    <SbuCategoryChildren sbu="CHENWEI" categoryIdParent="Home &amp; Garden" categoryIdChild="Party Supplies"/>
+    <SbuCategoryChildren sbu="CHENWEI" categoryIdParent="Home &amp; Garden" categoryIdChild="Makeup"/>
+    <SbuCategoryChildren sbu="DADA" categoryIdParent="Home &amp; Garden" categoryIdChild="Knitting &amp; Sewing"/>
+    <SbuCategoryChildren sbu="DADA" categoryIdParent="Home &amp; Garden" categoryIdChild="Cell Phones &amp; Accessories"/>
+    <SbuCategoryChildren sbu="DADA" categoryIdParent="Home &amp; Garden" categoryIdChild="Building &amp; Decorating"/>
+    <SbuCategoryChildren sbu="FANGXI" categoryIdParent="Women Wears" categoryIdChild="Coats &amp; Jackets"/>
+    <SbuCategoryChildren sbu="FANGXI" categoryIdParent="Women Wears" categoryIdChild="Tops &amp; Blouses"/>
+    <SbuCategoryChildren sbu="FANGXI" categoryIdParent="Women Wears" categoryIdChild="Collectibles"/>
+    <SbuCategoryChildren sbu="GARY" categoryIdParent="Business &amp; Industrial" categoryIdChild="Test Equipment"/>
+    <SbuCategoryChildren sbu="GARY" categoryIdParent="Business &amp; Industrial" categoryIdChild="Office Supplies"/>
+    <SbuCategoryChildren sbu="GARY" categoryIdParent="Business &amp; Industrial" categoryIdChild="Other Gadgets"/>
+    <SbuCategoryChildren sbu="JERRY" categoryIdParent="Car &amp; Motorcycle" categoryIdChild="Computers &amp; Networking"/>
+    <SbuCategoryChildren sbu="JERRY" categoryIdParent="Car &amp; Motorcycle" categoryIdChild="Cell Phones &amp; Accessories"/>
+    <SbuCategoryChildren sbu="JERRY" categoryIdParent="Car &amp; Motorcycle" categoryIdChild="Watches"/>
+    <SbuCategoryChildren sbu="MATTY" categoryIdParent="Home &amp; Garden" categoryIdChild="Baby Feeding &amp; Nursery"/>
+    <SbuCategoryChildren sbu="MATTY" categoryIdParent="Home &amp; Garden" categoryIdChild="Collectibles"/>
+    <SbuCategoryChildren sbu="MATTY" categoryIdParent="Home &amp; Garden" categoryIdChild="Building &amp; Decorating"/>
+    <SbuCategoryChildren sbu="NICK" categoryIdParent="Pets &amp; Toys" categoryIdChild="Model Toys"/>
+    <SbuCategoryChildren sbu="NICK" categoryIdParent="Pets &amp; Toys" categoryIdChild="Other Toys"/>
+    <SbuCategoryChildren sbu="NICK" categoryIdParent="Pets &amp; Toys" categoryIdChild="Kitchen Accessories"/>
+    <SbuCategoryChildren sbu="NIKI" categoryIdParent="Fashion Accessories" categoryIdChild="Beads &amp; Jewelries"/>
+    <SbuCategoryChildren sbu="NIKI" categoryIdParent="Fashion Accessories" categoryIdChild="Hats"/>
+    <SbuCategoryChildren sbu="NIKI" categoryIdParent="Fashion Accessories" categoryIdChild="Coats &amp; Jackets"/>
+    <SbuCategoryChildren sbu="RAYMOND" categoryIdParent="Men Wears" categoryIdChild="Underwear"/>
+    <SbuCategoryChildren sbu="RAYMOND" categoryIdParent="Men Wears" categoryIdChild="Shirts"/>
+    <SbuCategoryChildren sbu="RAYMOND" categoryIdParent="Men Wears" categoryIdChild="Intimates &amp; Sleep"/>
+    
+    <FinalGpsAlgorithm id="10000" comparator1="GREATER_THAN_EQUAL_TO" value1="0" joinOperator="AND" comparator2="LESS_THAN" value2="1" operator="DIVIDE" operatorFactor="6"/>
+    <FinalGpsAlgorithm id="10001" comparator1="GREATER_THAN_EQUAL_TO" value1="1" joinOperator="AND" comparator2="LESS_THAN" value2="2" operator="DIVIDE" operatorFactor="5.9"/>
+    <FinalGpsAlgorithm id="10002" comparator1="GREATER_THAN_EQUAL_TO" value1="2" joinOperator="AND" comparator2="LESS_THAN" value2="3" operator="DIVIDE" operatorFactor="5.8"/>
+    <FinalGpsAlgorithm id="10003" comparator1="GREATER_THAN_EQUAL_TO" value1="3" joinOperator="AND" comparator2="LESS_THAN" value2="4" operator="DIVIDE" operatorFactor="5.7"/>
+    <FinalGpsAlgorithm id="10004" comparator1="GREATER_THAN_EQUAL_TO" value1="4" joinOperator="AND" comparator2="LESS_THAN" value2="5" operator="DIVIDE" operatorFactor="5.6"/>
+    <FinalGpsAlgorithm id="10005" comparator1="GREATER_THAN_EQUAL_TO" value1="5" joinOperator="AND" comparator2="LESS_THAN" value2="6" operator="DIVIDE" operatorFactor="5.5"/>
+    <FinalGpsAlgorithm id="10006" comparator1="GREATER_THAN_EQUAL_TO" value1="6" joinOperator="AND" comparator2="LESS_THAN" value2="7" operator="DIVIDE" operatorFactor="5.4"/>
+    <FinalGpsAlgorithm id="10007" comparator1="GREATER_THAN_EQUAL_TO" value1="7" joinOperator="AND" comparator2="LESS_THAN" value2="8" operator="DIVIDE" operatorFactor="5.3"/>
+    <FinalGpsAlgorithm id="10008" comparator1="GREATER_THAN_EQUAL_TO" value1="8" joinOperator="AND" comparator2="LESS_THAN" value2="9" operator="DIVIDE" operatorFactor="5.2"/>
+    <FinalGpsAlgorithm id="10009" comparator1="GREATER_THAN_EQUAL_TO" value1="9" joinOperator="AND" comparator2="LESS_THAN" value2="10" operator="DIVIDE" operatorFactor="5.1"/>
+    <FinalGpsAlgorithm id="10010" comparator1="GREATER_THAN_EQUAL_TO" value1="10" joinOperator="AND" comparator2="LESS_THAN" value2="11" operator="DIVIDE" operatorFactor="5"/>
+    <FinalGpsAlgorithm id="10011" comparator1="GREATER_THAN_EQUAL_TO" value1="11" joinOperator="AND" comparator2="LESS_THAN" value2="12" operator="DIVIDE" operatorFactor="4.9"/>
+    <FinalGpsAlgorithm id="10012" comparator1="GREATER_THAN_EQUAL_TO" value1="12" joinOperator="AND" comparator2="LESS_THAN" value2="13" operator="DIVIDE" operatorFactor="4.8"/>
+    <FinalGpsAlgorithm id="10013" comparator1="GREATER_THAN_EQUAL_TO" value1="13" joinOperator="AND" comparator2="LESS_THAN" value2="14" operator="DIVIDE" operatorFactor="4.7"/>
+    <FinalGpsAlgorithm id="10014" comparator1="GREATER_THAN_EQUAL_TO" value1="14" joinOperator="AND" comparator2="LESS_THAN" value2="15" operator="DIVIDE" operatorFactor="4.6"/>
+    <FinalGpsAlgorithm id="10015" comparator1="GREATER_THAN_EQUAL_TO" value1="15" joinOperator="AND" comparator2="LESS_THAN" value2="16" operator="DIVIDE" operatorFactor="4.5"/>
+    <FinalGpsAlgorithm id="10016" comparator1="GREATER_THAN_EQUAL_TO" value1="16" joinOperator="AND" comparator2="LESS_THAN" value2="17" operator="DIVIDE" operatorFactor="4.4"/>
+    <FinalGpsAlgorithm id="10017" comparator1="GREATER_THAN_EQUAL_TO" value1="17" joinOperator="AND" comparator2="LESS_THAN" value2="18" operator="DIVIDE" operatorFactor="4.3"/>
+    <FinalGpsAlgorithm id="10018" comparator1="GREATER_THAN_EQUAL_TO" value1="18" joinOperator="AND" comparator2="LESS_THAN" value2="19" operator="DIVIDE" operatorFactor="4.2"/>
+    <FinalGpsAlgorithm id="10019" comparator1="GREATER_THAN_EQUAL_TO" value1="19" joinOperator="AND" comparator2="LESS_THAN" value2="20" operator="DIVIDE" operatorFactor="4.1"/>
+    <FinalGpsAlgorithm id="10020" comparator1="GREATER_THAN_EQUAL_TO" value1="20" joinOperator="AND" comparator2="LESS_THAN" value2="21" operator="DIVIDE" operatorFactor="4"/>
+    <FinalGpsAlgorithm id="10021" comparator1="GREATER_THAN_EQUAL_TO" value1="21" joinOperator="AND" comparator2="LESS_THAN" value2="22" operator="DIVIDE" operatorFactor="3.9"/>
+    <FinalGpsAlgorithm id="10022" comparator1="GREATER_THAN_EQUAL_TO" value1="22" joinOperator="AND" comparator2="LESS_THAN" value2="23" operator="DIVIDE" operatorFactor="3.8"/>
+    <FinalGpsAlgorithm id="10023" comparator1="GREATER_THAN_EQUAL_TO" value1="23" joinOperator="AND" comparator2="LESS_THAN" value2="24" operator="DIVIDE" operatorFactor="3.7"/>
+    <FinalGpsAlgorithm id="10024" comparator1="GREATER_THAN_EQUAL_TO" value1="24" joinOperator="AND" comparator2="LESS_THAN" value2="25" operator="DIVIDE" operatorFactor="3.6"/>
+    <FinalGpsAlgorithm id="10025" comparator1="GREATER_THAN_EQUAL_TO" value1="25" joinOperator="AND" comparator2="LESS_THAN" value2="26" operator="DIVIDE" operatorFactor="3.5"/>
+    <FinalGpsAlgorithm id="10026" comparator1="GREATER_THAN_EQUAL_TO" value1="26" joinOperator="AND" comparator2="LESS_THAN" value2="27" operator="DIVIDE" operatorFactor="3.4"/>
+    <FinalGpsAlgorithm id="10027" comparator1="GREATER_THAN_EQUAL_TO" value1="27" joinOperator="AND" comparator2="LESS_THAN" value2="28" operator="DIVIDE" operatorFactor="3.3"/>
+    <FinalGpsAlgorithm id="10028" comparator1="GREATER_THAN_EQUAL_TO" value1="28" joinOperator="AND" comparator2="LESS_THAN" value2="29" operator="DIVIDE" operatorFactor="3.2"/>
+    <FinalGpsAlgorithm id="10029" comparator1="GREATER_THAN_EQUAL_TO" value1="29" joinOperator="AND" comparator2="LESS_THAN" value2="30" operator="DIVIDE" operatorFactor="3.1"/>
+    <FinalGpsAlgorithm id="10030" comparator1="GREATER_THAN_EQUAL_TO" value1="30" joinOperator="AND" comparator2="LESS_THAN" value2="31" operator="DIVIDE" operatorFactor="3"/>
+    <FinalGpsAlgorithm id="10031" comparator1="GREATER_THAN_EQUAL_TO" value1="31" joinOperator="AND" comparator2="LESS_THAN" value2="32" operator="DIVIDE" operatorFactor="2.9"/>
+    <FinalGpsAlgorithm id="10032" comparator1="GREATER_THAN_EQUAL_TO" value1="32" joinOperator="AND" comparator2="LESS_THAN" value2="33" operator="DIVIDE" operatorFactor="2.8"/>
+    <FinalGpsAlgorithm id="10033" comparator1="GREATER_THAN_EQUAL_TO" value1="33" joinOperator="AND" comparator2="LESS_THAN" value2="34" operator="DIVIDE" operatorFactor="2.7"/>
+    <FinalGpsAlgorithm id="10034" comparator1="GREATER_THAN_EQUAL_TO" value1="34" joinOperator="AND" comparator2="LESS_THAN" value2="35" operator="DIVIDE" operatorFactor="2.6"/>
+    <FinalGpsAlgorithm id="10035" comparator1="GREATER_THAN_EQUAL_TO" value1="35" joinOperator="AND" comparator2="LESS_THAN" value2="36" operator="DIVIDE" operatorFactor="2.5"/>
+    <FinalGpsAlgorithm id="10036" comparator1="GREATER_THAN_EQUAL_TO" value1="36" joinOperator="AND" comparator2="LESS_THAN" value2="37" operator="DIVIDE" operatorFactor="2.4"/>
+    <FinalGpsAlgorithm id="10037" comparator1="GREATER_THAN_EQUAL_TO" value1="37" joinOperator="AND" comparator2="LESS_THAN" value2="38" operator="DIVIDE" operatorFactor="2.3"/>
+    <FinalGpsAlgorithm id="10038" comparator1="GREATER_THAN_EQUAL_TO" value1="38" joinOperator="AND" comparator2="LESS_THAN" value2="39" operator="DIVIDE" operatorFactor="2.2"/>
+    <FinalGpsAlgorithm id="10039" comparator1="GREATER_THAN_EQUAL_TO" value1="39" joinOperator="AND" comparator2="LESS_THAN" value2="40" operator="DIVIDE" operatorFactor="2.1"/>
+    <FinalGpsAlgorithm id="10040" comparator1="GREATER_THAN_EQUAL_TO" value1="40" joinOperator="AND" comparator2="LESS_THAN" value2="41" operator="DIVIDE" operatorFactor="2"/>
+    <FinalGpsAlgorithm id="10041" comparator1="GREATER_THAN_EQUAL_TO" value1="41" joinOperator="AND" comparator2="LESS_THAN" value2="42" operator="DIVIDE" operatorFactor="1.9"/>
+    <FinalGpsAlgorithm id="10042" comparator1="GREATER_THAN_EQUAL_TO" value1="42" joinOperator="AND" comparator2="LESS_THAN" value2="43" operator="DIVIDE" operatorFactor="1.8"/>
+    <FinalGpsAlgorithm id="10043" comparator1="GREATER_THAN_EQUAL_TO" value1="43" joinOperator="AND" comparator2="LESS_THAN" value2="44" operator="DIVIDE" operatorFactor="1.7"/>
+    <FinalGpsAlgorithm id="10044" comparator1="GREATER_THAN_EQUAL_TO" value1="44" joinOperator="AND" comparator2="LESS_THAN" value2="45" operator="DIVIDE" operatorFactor="1.6"/>
+    <FinalGpsAlgorithm id="10045" comparator1="GREATER_THAN_EQUAL_TO" value1="45" joinOperator="AND" comparator2="LESS_THAN" value2="46" operator="DIVIDE" operatorFactor="1.5"/>
+    <FinalGpsAlgorithm id="10046" comparator1="GREATER_THAN_EQUAL_TO" value1="46" joinOperator="AND" comparator2="LESS_THAN" value2="47" operator="DIVIDE" operatorFactor="1.4"/>
+    <FinalGpsAlgorithm id="10047" comparator1="GREATER_THAN_EQUAL_TO" value1="47" joinOperator="AND" comparator2="LESS_THAN" value2="48" operator="DIVIDE" operatorFactor="1.3"/>
+    <FinalGpsAlgorithm id="10048" comparator1="GREATER_THAN_EQUAL_TO" value1="48" joinOperator="AND" comparator2="LESS_THAN" value2="49" operator="DIVIDE" operatorFactor="1.2"/>
+    <FinalGpsAlgorithm id="10049" comparator1="GREATER_THAN_EQUAL_TO" value1="49" joinOperator="AND" comparator2="LESS_THAN" value2="50" operator="DIVIDE" operatorFactor="1.1"/>
+    <FinalGpsAlgorithm id="10050" comparator1="GREATER_THAN_EQUAL_TO" value1="50" joinOperator="AND" comparator2="LESS_THAN" value2="51" operator="MULTIPLY" operatorFactor="1"/>
+    <FinalGpsAlgorithm id="10051" comparator1="GREATER_THAN_EQUAL_TO" value1="51" joinOperator="AND" comparator2="LESS_THAN" value2="52" operator="MULTIPLY" operatorFactor="1.1"/>
+    <FinalGpsAlgorithm id="10052" comparator1="GREATER_THAN_EQUAL_TO" value1="52" joinOperator="AND" comparator2="LESS_THAN" value2="53" operator="MULTIPLY" operatorFactor="1.2"/>
+    <FinalGpsAlgorithm id="10053" comparator1="GREATER_THAN_EQUAL_TO" value1="53" joinOperator="AND" comparator2="LESS_THAN" value2="54" operator="MULTIPLY" operatorFactor="1.3"/>
+    <FinalGpsAlgorithm id="10054" comparator1="GREATER_THAN_EQUAL_TO" value1="54" joinOperator="AND" comparator2="LESS_THAN" value2="55" operator="MULTIPLY" operatorFactor="1.4"/>
+    <FinalGpsAlgorithm id="10055" comparator1="GREATER_THAN_EQUAL_TO" value1="55" joinOperator="AND" comparator2="LESS_THAN" value2="56" operator="MULTIPLY" operatorFactor="1.5"/>
+    <FinalGpsAlgorithm id="10056" comparator1="GREATER_THAN_EQUAL_TO" value1="56" joinOperator="AND" comparator2="LESS_THAN" value2="57" operator="MULTIPLY" operatorFactor="1.6"/>
+    <FinalGpsAlgorithm id="10057" comparator1="GREATER_THAN_EQUAL_TO" value1="57" joinOperator="AND" comparator2="LESS_THAN" value2="58" operator="MULTIPLY" operatorFactor="1.7"/>
+    <FinalGpsAlgorithm id="10058" comparator1="GREATER_THAN_EQUAL_TO" value1="58" joinOperator="AND" comparator2="LESS_THAN" value2="59" operator="MULTIPLY" operatorFactor="1.8"/>
+    <FinalGpsAlgorithm id="10059" comparator1="GREATER_THAN_EQUAL_TO" value1="59" joinOperator="AND" comparator2="LESS_THAN" value2="60" operator="MULTIPLY" operatorFactor="1.9"/>
+    <FinalGpsAlgorithm id="10060" comparator1="GREATER_THAN_EQUAL_TO" value1="60" joinOperator="AND" comparator2="LESS_THAN" value2="61" operator="MULTIPLY" operatorFactor="2"/>
+    <FinalGpsAlgorithm id="10061" comparator1="GREATER_THAN_EQUAL_TO" value1="61" joinOperator="AND" comparator2="LESS_THAN" value2="62" operator="MULTIPLY" operatorFactor="2.1"/>
+    <FinalGpsAlgorithm id="10062" comparator1="GREATER_THAN_EQUAL_TO" value1="62" joinOperator="AND" comparator2="LESS_THAN" value2="63" operator="MULTIPLY" operatorFactor="2.2"/>
+    <FinalGpsAlgorithm id="10063" comparator1="GREATER_THAN_EQUAL_TO" value1="63" joinOperator="AND" comparator2="LESS_THAN" value2="64" operator="MULTIPLY" operatorFactor="2.3"/>
+    <FinalGpsAlgorithm id="10064" comparator1="GREATER_THAN_EQUAL_TO" value1="64" joinOperator="AND" comparator2="LESS_THAN" value2="65" operator="MULTIPLY" operatorFactor="2.4"/>
+    <FinalGpsAlgorithm id="10065" comparator1="GREATER_THAN_EQUAL_TO" value1="65" joinOperator="AND" comparator2="LESS_THAN" value2="66" operator="MULTIPLY" operatorFactor="2.5"/>
+    <FinalGpsAlgorithm id="10066" comparator1="GREATER_THAN_EQUAL_TO" value1="66" joinOperator="AND" comparator2="LESS_THAN" value2="67" operator="MULTIPLY" operatorFactor="2.6"/>
+    <FinalGpsAlgorithm id="10067" comparator1="GREATER_THAN_EQUAL_TO" value1="67" joinOperator="AND" comparator2="LESS_THAN" value2="68" operator="MULTIPLY" operatorFactor="2.7"/>
+    <FinalGpsAlgorithm id="10068" comparator1="GREATER_THAN_EQUAL_TO" value1="68" joinOperator="AND" comparator2="LESS_THAN" value2="69" operator="MULTIPLY" operatorFactor="2.8"/>
+    <FinalGpsAlgorithm id="10069" comparator1="GREATER_THAN_EQUAL_TO" value1="69" joinOperator="AND" comparator2="LESS_THAN" value2="70" operator="MULTIPLY" operatorFactor="2.9"/>
+    <FinalGpsAlgorithm id="10070" comparator1="GREATER_THAN_EQUAL_TO" value1="70" joinOperator="AND" comparator2="LESS_THAN" value2="71" operator="MULTIPLY" operatorFactor="3"/>
+    <FinalGpsAlgorithm id="10071" comparator1="GREATER_THAN_EQUAL_TO" value1="71" joinOperator="AND" comparator2="LESS_THAN" value2="72" operator="MULTIPLY" operatorFactor="3.1"/>
+    <FinalGpsAlgorithm id="10072" comparator1="GREATER_THAN_EQUAL_TO" value1="72" joinOperator="AND" comparator2="LESS_THAN" value2="73" operator="MULTIPLY" operatorFactor="3.2"/>
+    <FinalGpsAlgorithm id="10073" comparator1="GREATER_THAN_EQUAL_TO" value1="73" joinOperator="AND" comparator2="LESS_THAN" value2="74" operator="MULTIPLY" operatorFactor="3.3"/>
+    <FinalGpsAlgorithm id="10074" comparator1="GREATER_THAN_EQUAL_TO" value1="74" joinOperator="AND" comparator2="LESS_THAN" value2="75" operator="MULTIPLY" operatorFactor="3.4"/>
+    <FinalGpsAlgorithm id="10075" comparator1="GREATER_THAN_EQUAL_TO" value1="75" joinOperator="AND" comparator2="LESS_THAN" value2="76" operator="MULTIPLY" operatorFactor="3.5"/>
+    <FinalGpsAlgorithm id="10076" comparator1="GREATER_THAN_EQUAL_TO" value1="76" joinOperator="AND" comparator2="LESS_THAN" value2="77" operator="MULTIPLY" operatorFactor="3.6"/>
+    <FinalGpsAlgorithm id="10077" comparator1="GREATER_THAN_EQUAL_TO" value1="77" joinOperator="AND" comparator2="LESS_THAN" value2="78" operator="MULTIPLY" operatorFactor="3.7"/>
+    <FinalGpsAlgorithm id="10078" comparator1="GREATER_THAN_EQUAL_TO" value1="78" joinOperator="AND" comparator2="LESS_THAN" value2="79" operator="MULTIPLY" operatorFactor="3.8"/>
+    <FinalGpsAlgorithm id="10079" comparator1="GREATER_THAN_EQUAL_TO" value1="79" joinOperator="AND" comparator2="LESS_THAN" value2="80" operator="MULTIPLY" operatorFactor="3.9"/>
+    <FinalGpsAlgorithm id="10080" comparator1="GREATER_THAN_EQUAL_TO" value1="80" joinOperator="AND" comparator2="LESS_THAN" value2="81" operator="MULTIPLY" operatorFactor="4"/>
+    <FinalGpsAlgorithm id="10081" comparator1="GREATER_THAN_EQUAL_TO" value1="81" joinOperator="AND" comparator2="LESS_THAN" value2="82" operator="MULTIPLY" operatorFactor="4.1"/>
+    <FinalGpsAlgorithm id="10082" comparator1="GREATER_THAN_EQUAL_TO" value1="82" joinOperator="AND" comparator2="LESS_THAN" value2="83" operator="MULTIPLY" operatorFactor="4.2"/>
+    <FinalGpsAlgorithm id="10083" comparator1="GREATER_THAN_EQUAL_TO" value1="83" joinOperator="AND" comparator2="LESS_THAN" value2="84" operator="MULTIPLY" operatorFactor="4.3"/>
+    <FinalGpsAlgorithm id="10084" comparator1="GREATER_THAN_EQUAL_TO" value1="84" joinOperator="AND" comparator2="LESS_THAN" value2="85" operator="MULTIPLY" operatorFactor="4.4"/>
+    <FinalGpsAlgorithm id="10085" comparator1="GREATER_THAN_EQUAL_TO" value1="85" joinOperator="AND" comparator2="LESS_THAN" value2="86" operator="MULTIPLY" operatorFactor="4.5"/>
+    <FinalGpsAlgorithm id="10086" comparator1="GREATER_THAN_EQUAL_TO" value1="86" joinOperator="AND" comparator2="LESS_THAN" value2="87" operator="MULTIPLY" operatorFactor="4.6"/>
+    <FinalGpsAlgorithm id="10087" comparator1="GREATER_THAN_EQUAL_TO" value1="87" joinOperator="AND" comparator2="LESS_THAN" value2="88" operator="MULTIPLY" operatorFactor="4.7"/>
+    <FinalGpsAlgorithm id="10088" comparator1="GREATER_THAN_EQUAL_TO" value1="88" joinOperator="AND" comparator2="LESS_THAN" value2="89" operator="MULTIPLY" operatorFactor="4.8"/>
+    <FinalGpsAlgorithm id="10089" comparator1="GREATER_THAN_EQUAL_TO" value1="89" joinOperator="AND" comparator2="LESS_THAN" value2="90" operator="MULTIPLY" operatorFactor="4.9"/>
+    <FinalGpsAlgorithm id="10090" comparator1="GREATER_THAN_EQUAL_TO" value1="90" joinOperator="AND" comparator2="LESS_THAN" value2="91" operator="MULTIPLY" operatorFactor="5"/>
+    <FinalGpsAlgorithm id="10091" comparator1="GREATER_THAN_EQUAL_TO" value1="91" joinOperator="AND" comparator2="LESS_THAN" value2="92" operator="MULTIPLY" operatorFactor="5.1"/>
+    <FinalGpsAlgorithm id="10092" comparator1="GREATER_THAN_EQUAL_TO" value1="92" joinOperator="AND" comparator2="LESS_THAN" value2="93" operator="MULTIPLY" operatorFactor="5.2"/>
+    <FinalGpsAlgorithm id="10093" comparator1="GREATER_THAN_EQUAL_TO" value1="93" joinOperator="AND" comparator2="LESS_THAN" value2="94" operator="MULTIPLY" operatorFactor="5.3"/>
+    <FinalGpsAlgorithm id="10094" comparator1="GREATER_THAN_EQUAL_TO" value1="94" joinOperator="AND" comparator2="LESS_THAN" value2="95" operator="MULTIPLY" operatorFactor="5.4"/>
+    <FinalGpsAlgorithm id="10095" comparator1="GREATER_THAN_EQUAL_TO" value1="95" joinOperator="AND" comparator2="LESS_THAN" value2="96" operator="MULTIPLY" operatorFactor="5.5"/>
+    <FinalGpsAlgorithm id="10096" comparator1="GREATER_THAN_EQUAL_TO" value1="96" joinOperator="AND" comparator2="LESS_THAN" value2="97" operator="MULTIPLY" operatorFactor="5.6"/>
+    <FinalGpsAlgorithm id="10097" comparator1="GREATER_THAN_EQUAL_TO" value1="97" joinOperator="AND" comparator2="LESS_THAN" value2="98" operator="MULTIPLY" operatorFactor="5.7"/>
+    <FinalGpsAlgorithm id="10098" comparator1="GREATER_THAN_EQUAL_TO" value1="98" joinOperator="AND" comparator2="LESS_THAN" value2="99" operator="MULTIPLY" operatorFactor="5.8"/>
+    <FinalGpsAlgorithm id="10099" comparator1="GREATER_THAN_EQUAL_TO" value1="99" joinOperator="AND" comparator2="LESS_THAN" value2="100" operator="MULTIPLY" operatorFactor="5.9"/>
+    <FinalGpsAlgorithm id="10100" comparator1="GREATER_THAN_EQUAL_TO" value1="100" joinOperator="AND" comparator2="LESS_THAN" value2="101" operator="MULTIPLY" operatorFactor="6"/>
+    
+    
+    <GmsAlgorithm id="10000" factor="EBAY_US_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10001" factor="EBAY_US_LISTING_COUNT" score="20" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10002" factor="EBAY_UK_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10003" factor="EBAY_UK_LISTING_COUNT" score="1" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10004" factor="EBAY_AU_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10005" factor="EBAY_AU_LISTING_COUNT" score="1" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10006" factor="EBAY_DE_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10007" factor="EBAY_DE_LISTING_COUNT" score="10" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10008" factor="EBAY_FR_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10009" factor="EBAY_FR_LISTING_COUNT" score="10" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10010" factor="SMT_US_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10011" factor="SMT_US_LISTING_COUNT" score="20" weight="100" comparator1="EQUALS" value1="1"/>
+    <GmsAlgorithm id="10012" factor="SMT_US_LISTING_COUNT" score="22" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="2"/>
+    <GmsAlgorithm id="10013" factor="WISH_US_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10014" factor="WISH_US_LISTING_COUNT" score="5" weight="100" comparator1="EQUALS" value1="1"/>
+    <GmsAlgorithm id="10015" factor="WISH_US_LISTING_COUNT" score="7" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="2"/>
+    <GmsAlgorithm id="10016" factor="AMA_US_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10017" factor="AMA_US_LISTING_COUNT" score="20" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10018" factor="AMA_UK_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10019" factor="AMA_UK_LISTING_COUNT" score="4" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10020" factor="AMA_CA_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10021" factor="AMA_CA_LISTING_COUNT" score="4" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10022" factor="AMA_DE_LISTING_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10023" factor="AMA_DE_LISTING_COUNT" score="4" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    <GmsAlgorithm id="10024" factor="AMA_US_FOLLOW_COUNT" score="0" weight="100" comparator1="LESS_THAN" value1="1"/>
+    <GmsAlgorithm id="10025" factor="AMA_US_FOLLOW_COUNT" score="5" weight="100" comparator1="GREATER_THAN_EQUAL_TO" value1="1"/>
+    
+    
+    <ProductTitleConfig type="SUFFIX" platform="EBAY" value="3"/>
+    <ProductTitleConfig type="SUFFIX" platform="SMT" value="3"/>
+    <ProductTitleConfig type="SUFFIX" platform="WISH" value="3"/>
+    <ProductTitleConfig type="SUFFIX" platform="AMAZON" value="3"/>
+    <ProductTitleConfig type="SUFFIX" platform="LAZADA" value="3"/>
+    <ProductTitleConfig type="SUFFIX" platform="CDISCOUNT" value="3"/>
+    <ProductTitleConfig type="LENGTH" platform="EBAY" value="80"/>
+    <ProductTitleConfig type="LENGTH" platform="SMT" value="128"/>
+    <ProductTitleConfig type="LENGTH" platform="WISH" value="250"/>
+    <ProductTitleConfig type="LENGTH" platform="AMAZON" value="80"/>
+    <ProductTitleConfig type="LENGTH" platform="LAZADA" value="80"/>
+    <ProductTitleConfig type="LENGTH" platform="CDISCOUNT" value="80"/>
+    <ProductTitleConfig type="QUANTITY" platform="NONE" value="50"/>
+    <ProductTitleConfig type="PLATFORM" platform="EBAY" value="EBAY"/>
+    <ProductTitleConfig type="PLATFORM" platform="SMT" value="SMT"/>
+    <ProductTitleConfig type="PLATFORM" platform="WISH" value="WISH"/>
+    
+    
+    <PuyuanSbuMap puyuanName="DADA-1" ownerGroup="DADA" createdBy="molly.li" />
+    <PuyuanSbuMap puyuanName="DADA-3" ownerGroup="DADA" createdBy="tina.zou" />
+    <PuyuanSbuMap puyuanName="章宇达" ownerGroup="DADA" createdBy="dada.zhang"/>
+    <PuyuanSbuMap puyuanName="陈伟1" ownerGroup="CHENWEI" createdBy="yao.yao"/>
+    <PuyuanSbuMap puyuanName="陈伟" ownerGroup="CHENWEI" createdBy="wei.chen"/>
+    <PuyuanSbuMap puyuanName="张国伟" ownerGroup="GARY" createdBy="gary.zhang"/>
+    <PuyuanSbuMap puyuanName="BECKY" ownerGroup="BECKY" createdBy="becky.zhang"/>
+    <PuyuanSbuMap puyuanName="AMY" ownerGroup="AMY" createdBy="amy.liu"/>
+    <PuyuanSbuMap puyuanName="曹仁娜" ownerGroup="NIKI" createdBy="niki.cao"/>
+    <PuyuanSbuMap puyuanName="陈言清" ownerGroup="MATTY" createdBy="matty.chen"/>
+    <PuyuanSbuMap puyuanName="DAWENXI" ownerGroup="DAWENXI" createdBy="wenxi.da"/>
+    <PuyuanSbuMap puyuanName="WILL" ownerGroup="WILL" createdBy="will.lin"/>
+    <PuyuanSbuMap puyuanName="倪杰" ownerGroup="NICK" createdBy="nick.ni"/>
+    <PuyuanSbuMap puyuanName="LEMON" ownerGroup="LEMON" createdBy="lemon.tao"/>
+    <PuyuanSbuMap puyuanName="SISSI" ownerGroup="SISSI" createdBy="sissi.zhu"/>
+    <PuyuanSbuMap puyuanName="CINDY" ownerGroup="CINDY" createdBy="cindy.wang"/>
+    <PuyuanSbuMap puyuanName="夏凉" ownerGroup="OTHER" createdBy=""/>
+    
+    
+    <WishHtmlRequestHeader sequence="1" userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:48.0) Gecko/20100101 Firefox/48.0"/>
+    <WishHtmlRequestHeader sequence="2" userAgent="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0"/>
+    <WishHtmlRequestHeader sequence="3" userAgent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0"/>
+    <WishHtmlRequestHeader sequence="4" userAgent="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:44.0) Gecko/20100101 Firefox/44.0"/>
+    <WishHtmlRequestHeader sequence="5" userAgent="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"/>
+    <WishHtmlRequestHeader sequence="6" userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:46.0) Gecko/20100101 Firefox/46.0"/>
+    <WishHtmlRequestHeader sequence="7" userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:46.0) Gecko/20100101 Firefox/46.0"/>
+    <WishHtmlRequestHeader sequence="8" userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:48.0) Gecko/20100101 Firefox/48.0"/>
+    <WishHtmlRequestHeader sequence="9" userAgent="Mozilla/5.0 (Windows NT 5.1; rv:42.0) Gecko/20100101 Firefox/42.0"/>
+    
+    <BusinessTree businessTreeId="10000" type="DEPARTMENT" parentId="" title="人事行政部"/>
+    <BusinessTree businessTreeId="11000" type="DEPARTMENT" parentId="10000" title="招商部"/>
+    <BusinessTree businessTreeId="12000" type="DEPARTMENT" parentId="10000" title="人事部"/>
+    <BusinessTree businessTreeId="13000" type="DEPARTMENT" parentId="10000" title="行政部"/>
+    <BusinessTree businessTreeId="20000" type="DEPARTMENT" parentId="" title="客户服务部"/>
+    <BusinessTree businessTreeId="21000" type="DEPARTMENT" parentId="20000" title="青铜部"/>
+    <BusinessTree businessTreeId="22000" type="DEPARTMENT" parentId="20000" title="白银部"/>
+    <BusinessTree businessTreeId="23000" type="DEPARTMENT" parentId="20000" title="黄金部"/>
+    <BusinessTree businessTreeId="30000" type="DEPARTMENT" parentId="" title="系统数据部"/>
+    <BusinessTree businessTreeId="31000" type="DEPARTMENT" parentId="30000" title="技术部"/>
+    <BusinessTree businessTreeId="32000" type="DEPARTMENT" parentId="30000" title="数据部"/>
+    <BusinessTree businessTreeId="33000" type="DEPARTMENT" parentId="30000" title="财务部"/>
+    <BusinessTree businessTreeId="40000" type="DEPARTMENT" parentId="" title="业务支持部"/>
+    <BusinessTree businessTreeId="41000" type="DEPARTMENT" parentId="40000" title="开发部"/>
+    <BusinessTree businessTreeId="42000" type="DEPARTMENT" parentId="40000" title="销售部"/>
+    
+    <BusinessTree businessTreeId="10000" type="PROFILE" parentId="" title="账号 - Account" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="11000" type="PROFILE" parentId="10000" title="数量 - Qty" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="12000" type="PROFILE" parentId="10000" title="站点 - Site" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="13000" type="PROFILE" parentId="10000" title="评级 - Rank" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="20000" type="PROFILE" parentId="" title="产品 - Product" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="21000" type="PROFILE" parentId="20000" title="数量 - Qty" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="22000" type="PROFILE" parentId="20000" title="分类 - Category" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="23000" type="PROFILE" parentId="20000" title="选品 - Criteria" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="24000" type="PROFILE" parentId="20000" title="淘汰 - Clearing" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="30000" type="PROFILE" parentId="" title="营销 - Marketing" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="31000" type="PROFILE" parentId="30000" title="刊登 - Listing" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="32000" type="PROFILE" parentId="30000" title="刷单 - Fake Purchase" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="33000" type="PROFILE" parentId="30000" title="打折 - Discount" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="34000" type="PROFILE" parentId="30000" title="广告 - Advertisement" shortDescription="" longDescription="" notes=""/>
+    <BusinessTree businessTreeId="35000" type="PROFILE" parentId="30000" title="品牌 - Brand" shortDescription="" longDescription="" notes=""/>
+    
+    
+    
+    
+    
+</entity-engine-xml>

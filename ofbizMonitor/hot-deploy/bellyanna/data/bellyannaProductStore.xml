@@ -1,0 +1,2327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<!--
+ Party
+ PartyGroup
+ PartyRole
+ PartyIdentification
+ ProductStore
+ EbayConfig
+ ProductStoreEbaySetting
+ ProductStoreFacility
+ ProductStoreRole
+ ProductStorePaymentSetting
+ ProductStoreShipmentMeth
+ ProductStoreContentTemplate
+ 
+ -->
+
+<entity-engine-xml>
+    <Party partyId="belly_design" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="AUD" statusId="PARTY_ENABLED"/>
+    <Party partyId="bellyanna-acc" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="GBP" statusId="PARTY_ENABLED"/>
+    <Party partyId="bellyanna-de" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED"/>
+    <Party partyId="bellyanna-uk" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="GBP" statusId="PARTY_ENABLED"/>
+    <!--<Party partyId="factoryport" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>-->
+    <Party partyId="i-tattoo" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="i.macho" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="queendesign" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <!--<Party partyId="tattoohits" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>-->
+    <Party partyId="tattootalks-us" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="you_young" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="bellyanna-store-us" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="kraken-bag" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="uk-needle" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="GBP" statusId="PARTY_ENABLED"/>
+    
+    <Party partyId="ali-bellyanna" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="ali-tattoo" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <Party partyId="ali-deepan" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    
+    <PartyGroup partyId="belly_design" groupName="belly_design"/>
+    <PartyGroup partyId="bellyanna-acc" groupName="bellyanna-acc"/>
+    <PartyGroup partyId="bellyanna-de" groupName="bellyanna-de"/>
+    <PartyGroup partyId="bellyanna-uk" groupName="bellyanna-uk"/>
+    <!--<PartyGroup partyId="factoryport" groupName="factoryport"/>-->
+    <PartyGroup partyId="i-tattoo" groupName="i-tattoo"/>
+    <PartyGroup partyId="i.macho" groupName="i.macho"/>
+    <PartyGroup partyId="queendesign" groupName="queendesign"/>
+    <!--<PartyGroup partyId="tattoohits" groupName="tattoohits"/>-->
+    <PartyGroup partyId="tattootalks-us" groupName="tattootalks-us"/>
+    <PartyGroup partyId="you_young" groupName="you_young"/>
+    <PartyGroup partyId="bellyanna-store-us" groupName="bellyanna-store-us"/>
+    <PartyGroup partyId="kraken-bag" groupName="kraken-bag"/>
+    <PartyGroup partyId="uk-needle" groupName="uk-needle"/>
+    <PartyGroup partyId="ali-bellyanna" groupName="info@bellyanna.com"/>
+    <PartyGroup partyId="ali-tattoo" groupName="infobellydesign@gmail.com"/>
+    <PartyGroup partyId="ali-deepan" groupName="dee.pan@163.com"/>
+    
+    <RoleType roleTypeId="ALI_ACCOUNT" hasTable="N" description="Ali Express Account"/>
+    <PartyRole partyId="belly_design" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="bellyanna-acc" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="bellyanna-de" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="bellyanna-uk" roleTypeId="EBAY_ACCOUNT"/>
+    <!--<PartyRole partyId="factoryport" roleTypeId="EBAY_ACCOUNT"/>-->
+    <PartyRole partyId="i-tattoo" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="i.macho" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="queendesign" roleTypeId="EBAY_ACCOUNT"/>
+    <!--<PartyRole partyId="tattoohits" roleTypeId="EBAY_ACCOUNT"/>-->
+    <PartyRole partyId="tattootalks-us" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="you_young" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="bellyanna-store-us" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="kraken-bag" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="uk-needle" roleTypeId="EBAY_ACCOUNT"/>
+    <PartyRole partyId="ali-bellyanna" roleTypeId="ALI_ACCOUNT"/>
+    <PartyRole partyId="ali-tattoo" roleTypeId="ALI_ACCOUNT"/>
+    <PartyRole partyId="ali-deepan" roleTypeId="ALI_ACCOUNT"/>
+    
+    <PartyIdentification partyId="belly_design" partyIdentificationTypeId="EUB_ACCOUNT" idValue="belly_design"/>
+    <PartyIdentification partyId="belly_design" partyIdentificationTypeId="EUB_DEV_ID" idValue="belly_design"/>
+    <PartyIdentification partyId="belly_design" partyIdentificationTypeId="EUB_API_CODE" idValue="50480064DE6A40DD9D88127251AC73A303C3FC76CCE64A53A129262AD0D8488B"/>
+    <PartyIdentification partyId="bellyanna-acc" partyIdentificationTypeId="EUB_ACCOUNT" idValue="bellyanna"/>
+    <PartyIdentification partyId="bellyanna-acc" partyIdentificationTypeId="EUB_DEV_ID" idValue="miss.qq"/>
+    <PartyIdentification partyId="bellyanna-acc" partyIdentificationTypeId="EUB_API_CODE" idValue="0B6B8A01EDEB45A79D40101C55CB1757ABA2DEC2B4164D5CBF4E26CB0961056C"/>
+    <PartyIdentification partyId="bellyanna-de" partyIdentificationTypeId="EUB_ACCOUNT" idValue="bellyanna-de"/>
+    <PartyIdentification partyId="bellyanna-de" partyIdentificationTypeId="EUB_DEV_ID" idValue="bellyanna-de"/>
+    <PartyIdentification partyId="bellyanna-de" partyIdentificationTypeId="EUB_API_CODE" idValue="379828I4OBZ80PWL0PGI6P21461UY23UJW2KS2J5DE241ULGTXOFT8201112279"/>
+    <PartyIdentification partyId="bellyanna-uk" partyIdentificationTypeId="EUB_ACCOUNT" idValue="bellyanna-uk"/>
+    <PartyIdentification partyId="bellyanna-uk" partyIdentificationTypeId="EUB_DEV_ID" idValue="belly-design"/>
+    <PartyIdentification partyId="bellyanna-uk" partyIdentificationTypeId="EUB_API_CODE" idValue="3D02AA6A835D4361BDC1A8EF824731529BC00CEDEE9E49DFB852A1DADE5EE5BB"/>
+    <!--<PartyIdentification partyId="factoryport" partyIdentificationTypeId="EUB_ACCOUNT" idValue="factoryport"/>
+    <PartyIdentification partyId="factoryport" partyIdentificationTypeId="EUB_DEV_ID" idValue="factoryport"/>
+    <PartyIdentification partyId="factoryport" partyIdentificationTypeId="EUB_API_CODE" idValue=""/>-->
+    <PartyIdentification partyId="i-tattoo" partyIdentificationTypeId="EUB_ACCOUNT" idValue="i-tattoo"/>
+    <PartyIdentification partyId="i-tattoo" partyIdentificationTypeId="EUB_DEV_ID" idValue="kraken-bag"/>
+    <PartyIdentification partyId="i-tattoo" partyIdentificationTypeId="EUB_API_CODE" idValue="286824JKOG6IDQ13IPMUM1QK717SUIBZGBNI0PULZBRHDBCWAD1J7S2012101654"/>
+    <PartyIdentification partyId="i.macho" partyIdentificationTypeId="EUB_ACCOUNT" idValue="i.macho"/>
+    <PartyIdentification partyId="i.macho" partyIdentificationTypeId="EUB_DEV_ID" idValue="queendesign"/>
+    <PartyIdentification partyId="i.macho" partyIdentificationTypeId="EUB_API_CODE" idValue="81C078781C6F410FA2C1BD4DE1FC45F3D439678D8DA84A8AA0B02A9A26004E80"/>
+    <PartyIdentification partyId="queendesign" partyIdentificationTypeId="EUB_ACCOUNT" idValue="queendesign"/>
+    <PartyIdentification partyId="queendesign" partyIdentificationTypeId="EUB_DEV_ID" idValue="boutiquespace"/>
+    <PartyIdentification partyId="queendesign" partyIdentificationTypeId="EUB_API_CODE" idValue="5915186GTNKUJ3NBDKM2CJUKD9JT3U194M0POHPAH2GIRXHQAWA5LX2011235711"/>
+    <!--<PartyIdentification partyId="tattoohits" partyIdentificationTypeId="EUB_ACCOUNT" idValue="tattoohits"/>
+    <PartyIdentification partyId="tattoohits" partyIdentificationTypeId="EUB_DEV_ID" idValue="tattoohits"/>
+    <PartyIdentification partyId="tattoohits" partyIdentificationTypeId="EUB_API_CODE" idValue=""/>-->
+    <PartyIdentification partyId="tattootalks-us" partyIdentificationTypeId="EUB_ACCOUNT" idValue="tattootalks-us"/>
+    <PartyIdentification partyId="tattootalks-us" partyIdentificationTypeId="EUB_DEV_ID" idValue="tattootalks-us"/>
+    <PartyIdentification partyId="tattootalks-us" partyIdentificationTypeId="EUB_API_CODE" idValue="46522W0PTXCPZGQZ8QP7DC69SJ7CASPM435IMLFTPG7P3QKINMPCD2012224726"/>
+    <PartyIdentification partyId="you_young" partyIdentificationTypeId="EUB_ACCOUNT" idValue="you_young"/>
+    <PartyIdentification partyId="you_young" partyIdentificationTypeId="EUB_DEV_ID" idValue="you_young"/>
+    <PartyIdentification partyId="you_young" partyIdentificationTypeId="EUB_API_CODE" idValue="2178121XWDAOTG2CSI2HGU15NDKG492OWTU8U68NLAYSAHB7OQ9HLO2011105838"/>
+    <PartyIdentification partyId="uk-needle" partyIdentificationTypeId="EUB_ACCOUNT" idValue="uk-needle"/>
+    <PartyIdentification partyId="uk-needle" partyIdentificationTypeId="EUB_DEV_ID" idValue="uk-needle"/>
+    <PartyIdentification partyId="uk-needle" partyIdentificationTypeId="EUB_API_CODE" idValue="939317GQLR97Q7C9OQL0PNG69BE1JX7K7XYE5DWGCQ57BLR2B0P93T2014154443"/>
+    
+    <ProductStore productStoreId="belly_design"
+	storeName="belly_design (AU)"
+	title="belly_design"
+	subtitle="belly_design"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="BD-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="AUD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="bellyanna-acc"
+	storeName="bellyanna (UK-2)"
+	title="bellyanna"
+	subtitle="bellyanna"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="BA-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="GBP"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="bellyanna-de"
+	storeName="bellyanna-de (DE)"
+	title="bellyanna-de"
+	subtitle="bellyanna-de"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="BADE-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="EUR"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="bellyanna-uk"
+	storeName="bellyanna-uk (UK)"
+	title="bellyanna-uk"
+	subtitle="bellyanna-uk"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="BAUK-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="GBP"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="i-tattoo"
+	storeName="i-tattoo (US-3)"
+	title="i-tattoo"
+	subtitle="i-tattoo"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="IT-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="i.macho"
+	storeName="i.macho (US-4)"
+	title="i.macho"
+	subtitle="i.macho"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="IM-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="queendesign"
+	storeName="queendesign (US-2)"
+	title="queendesign"
+	subtitle="queendesign"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="QD-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="tattootalks-us"
+	storeName="tattootalks-us (US-3)"
+	title="tattootalks-us"
+	subtitle="tattootalks-us"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="TTUS-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="you_young"
+	storeName="you_young (AU-2)"
+	title="you_young"
+	subtitle="you_young"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="YY-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="AUD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="bellyanna-store-us"
+	storeName="bellyanna-store-us (US)"
+	title="bellyanna-store-us"
+	subtitle="bellyanna-store-us"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="BAUS-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="kraken-bag"
+	storeName="kraken-bag (US-5)"
+	title="kraken-bag"
+	subtitle="kraken-bag"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="KB-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="uk-needle"
+	storeName="uk-needle (UK-3)"
+	title="uk-needle"
+	subtitle="uk-needle"
+	companyName="Bellyanna"
+	primaryStoreGroupId="EBAY"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_NONE"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="UKN-"
+	defaultSalesChannelEnumId="EBAY_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="GBP"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+
+
+    
+    <ProductStore productStoreId="ali-bellyanna"
+	storeName="Ali Express (Bellyanna)"
+	title="Ali Express Bellyanna"
+	subtitle="Ali Express Bellyanna"
+	companyName="Bellyanna"
+	primaryStoreGroupId="ALIEXPRESS"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="A-"
+	defaultSalesChannelEnumId="ALI_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="ali-tattoo"
+	storeName="Ali Express (Tattoo)"
+	title="Ali Express Tattoo"
+	subtitle="Ali Express Tattoo"
+	companyName="Bellyanna"
+	primaryStoreGroupId="ALIEXPRESS"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="ATT-"
+	defaultSalesChannelEnumId="ALI_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="ali-deepan"
+	storeName="Ali Express (Deepan)"
+	title="Ali Express Deepan"
+	subtitle="Ali Express Deepan"
+	companyName="Bellyanna"
+	primaryStoreGroupId="ALIEXPRESS"
+	isDemoStore="N"
+	visualThemeId="EC_DEFAULT"
+	InventoryFacilityId="PDWarehouse"
+	oneInventoryFacility="Y"
+	isImmediatelyFulfilled="N"
+	checkInventory="Y"
+	requireInventory="N"
+	requirementMethodEnumId="PRODRQM_ATP"
+	reserveInventory="Y"
+	reserveOrderEnumId="INVRO_FIFO_REC"
+ 	balanceResOnOrderCreation="Y"
+	showOutOfStockProducts="Y"
+	viewCartOnAdd="N"
+	autoSaveCart="N"
+	addToCartReplaceUpsell="Y"
+	addToCartRemoveIncompat="Y"
+	showCheckoutGiftOptions="Y"
+	prodSearchExcludeVariants="N"
+	orderDecimalQuantity="N"
+	prorateShipping="Y"
+	reqShipAddrForDigItems="Y"
+	selectPaymentTypePerItem="N"
+	shipIfCaptureFails="Y"
+	splitPayPrefPerShpGrp="Y"
+	payToPartyId="bellyanna"
+	storeCreditAccountEnumId="FIN_ACCOUNT"
+	manualAuthIsCapture="Y"
+	retryFailedAuths="Y"
+	daysToCancelNonPay="15"
+	autoOrderCcTryExp="Y"
+	autoOrderCcTryOtherCards="Y"
+	autoOrderCcTryLaterNsf="Y"
+	storeCreditValidDays="30"
+	orderNumberPrefix="ADP-"
+	defaultSalesChannelEnumId="ALI_SALES_CHANNEL"
+	explodeOrderItems="N"
+	checkGcBalance="N"
+	autoInvoiceDigitalItems="Y"
+	autoApproveInvoice="Y"
+	autoApproveOrder="N"
+	reqReturnInventoryReceive="N"
+	defaultLocaleString="en_US"
+	defaultCurrencyUomId="USD"
+	headerApprovedStatus="ORDER_APPROVED"
+	itemApprovedStatus="ITEM_APPROVED"
+	digitalItemApprovedStatus="ITEM_APPROVED"
+	headerDeclinedStatus="ORDER_REJECTED"
+	itemDeclinedStatus="ITEM_REJECTED"
+	headerCancelStatus="ORDER_CANCELLED"
+	itemCancelStatus="ITEM_CANCELLED"
+	authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+	authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+	authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+	prorateTaxes="N"
+	showPricesWithVatTax="N"
+	showTaxIsExempt="N"
+	autoApproveReviews="N"
+	allowPassword="Y"
+	usePrimaryEmailUsername="N"
+	requireCustomerRole="Y"
+	enableAutoSuggestionList="N"
+	enableDigProdUpload="N"
+    />
+    
+    <ProductStore productStoreId="belly_design" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="bellyanna-acc" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="bellyanna-de" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="bellyanna-uk" inventoryFacilityId="PDWarehouse"/>
+    <!--<ProductStore productStoreId="factoryport" inventoryFacilityId="PDWarehouse"/>-->
+    <ProductStore productStoreId="i-tattoo" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="i.macho" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="queendesign" inventoryFacilityId="PDWarehouse"/>
+    <!--<ProductStore productStoreId="tattoohits" inventoryFacilityId="PDWarehouse"/>-->
+    <ProductStore productStoreId="tattootalks-us" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="you_young" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="bellyanna-store-us" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="kraken-bag" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="uk-needle" inventoryFacilityId="PDWarehouse"/>
+    
+    <ProductStore productStoreId="ali-bellyanna" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="ali-tattoo" inventoryFacilityId="PDWarehouse"/>
+    <ProductStore productStoreId="ali-deepan" inventoryFacilityId="PDWarehouse"/>
+    
+    <EbayConfig productStoreId="belly_design"
+	devId="18e0ef61-7404-444a-a312-980a959c9ce1"
+	appId="virtualv-f4e4-40b4-961c-19895d7c141e"
+	certId="f6b36e3b-4ffa-4680-b0df-e4ec4264a7dc"
+	compatibilityLevel="843"
+	siteId="15"
+    globalId="EBAY-AU"
+	apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+	token="AgAAAA**AQAAAA**aAAAAA**k18iUQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wNmYWiDJiBowWdj6x9nY+seQ**DoUAAA**AAMAAA**/bVqVK52ew0dp0aGBDNw+F4AQeiJgagO7sPW1AN67OtOqF1henwb0MUmCFhyew38ADrEhb+0hqGzGbmFYAPohcDvTIiWkjOzNxP7JgP8a03H6yfdQv9Sg5h7lF8a0N+V1iM+SN/4kxwLxeYBzwPSdLCcCyPH2TURNjv5JoIAGjvrPu7R/zBXeBK6t9mViY7oQt31kuZnrcprHVNXOLiYvH8/jtbL12tEsjUnyDzBwKR+JfHOVM/L00WTDozWQzNxwKVSmGH/tyWM1V5phjP5fPrkssfKD1yTNACnCG0mnF6uD0JeOjhp0L0Z3gYk3DpJgtO4p1Me4+YIKa1/74hzxpr9kOIpy01AbI5ND39bgoCFFdSKwFSbuqNF3DmBgub1FrN9ARPTA26BExl/KjnZjNxLR5Lb7j/l6F8/wAcqc2rLlbNnvunCs0baYyUMpLaFvfxMm8ccDSluXVI7U8yzWw3vMSyWEAXVisIL0h4a+11j7Wf+qvx5sEsT3/W+v8mvCQeAM3yXrj9fCx6FONTkAgiVz7Npuiqa9hMWnqalbRtk49+NDR1N+P0AwKA6r9fkNKrHUghDGz77Ah05J1cJmD8nTfxDYLIJkny9vxW7Tnlks5Y+vZffo9hGQm9HVIQY+3+88FKQKjYdktZYMLbqxKA7j8Fp9LCfTp/W/zCHVaMWC0Oc2RMpGbBsqYGu9w5Yc7EqtGNg3QNOS6c2W5V6gqCta55WmaXsh/H4xKHX+X1EtEu4T8S960himNJWdWnA"
+    />
+    
+    <EbayConfig productStoreId="bellyanna-acc"
+	devId="69e14a2f-e8b4-4dad-a234-883ebd55ee65"
+	appId="bellyann-106c-4431-bda4-eeb61005f334"
+	certId="fcfacfa5-f06a-4f2e-b0e9-877c26ef76ee"
+	compatibilityLevel="843"
+	siteId="3"
+    globalId="EBAY-GB"
+	apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+	token="AgAAAA**AQAAAA**aAAAAA**B13OTg**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AEkoSkAZOGpgqdj6x9nY+seQ**BFIBAA**AAMAAA**yVt0UIpGAAHvmLbXn1OdMssRs55Ed92DFZ9IhyjMaaqlIJYBt8/kp+ffAQoM7sAuiNrvvjlrupHSRKyNtJ0VPVzJVY0atV4BdlbC02LuVhtd8+XsVUsOt8wEqmv7j/tM76uqaBF+tGgZv+1nzqbIcwNrrLqZ08HU5XIRgwuRKwGUFu9lOvBr30ParX/jtkoJNKwjFdFOpeRQf2nInieBZDiEO6cQ/5Xrd0Q1juWq+QgaPb2u6QBXJF4vLOnAAr6AJsxE8Ex8EU9C21UucR0cFb7vzbv637OXRR2TIPbVBZMGj0g2ydTeGgZVCEQLfMxeT0EFezjfUO0JC95cxSohaRvjYpi0gLMc6ljIMqqNnz+9nZaro8eOsBWsd2eL53IQF9OoXvZNyc1qg4E+xz0zV9fXoDZM+/7g1TbzBId4UG3LPXbanTq4lRDHGl3i8ZBAu8EKo2ZOV8nUnfudFXDosuZYg1UaRlvQyrssKTyKtssSbVyIH67FBbZh+2mTb4v+9CPx/bIlhmSHYN7nilneAkEDc4+YQ4KRxYZQFJWiuPj6ovORxoptECgOmwZTVpFz45NyHkOiB7ja/rINKiULXq/dyd+PxxnxaYNUQU1mxAfInOgDVDLEbIvGmaM5ABOaXrwjdDYXICde9ZMFqlG/T3yD+BEfvxCSlT/dEs2dNJ4leWKjgwKOHHhrYFtsyQ4WOp2JU37nSG8kVBK8SrQsvbHocqCJ+Pl4V/9q4uwO4CThZXyXLL9No47gSZEXF8dk"
+    />
+    
+    <EbayConfig productStoreId="bellyanna-de"
+	devId="0d0df3ff-5d2c-40c2-9ba1-a24cf0ce4f64"
+	appId="Bellyann-cd34-4ba2-858c-701ce8d7a8fd"
+	certId="3f9e4ea1-879f-4e0c-90bf-21ffb961811a"
+	compatibilityLevel="843"
+	siteId="77"
+	globalId="EBAY-DE"
+	apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate="2014-08-14 00:00:00.000"
+	token="AgAAAA**AQAAAA**aAAAAA**Be1xTg**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wJlICmD5mFpQ+dj6x9nY+seQ**DEIBAA**AAMAAA**LDUdvKqQa+wieqFv+kuEFOLegv/wtazvxjPUIA5unaA/JdMjHjLhTZ/rfguTnBU9ss9ykiDuOt6j+rKeByl9PtNflBJjNixamUGFdqfr53dKKd7LGG02dcbcsz+xsrjGzfaXPro69uKqGatZtFwVG2p1znv40PdWj0OqcG/PJsjwZMmslRxkp5ypv97zwIEBqL+4/iYOZH4RmBDnng1f0EKe/aucOT1DX/8rKdBQdJPS5OmGwyp3UbCRY2zEQIGcAxCaN7+F1BgrPbq+DAsuwA5UDdfIroxwhoVMl4t/ac0WiOkKKbuWSbXy/oEIGS/tHNXCvSTwAkw4kbPfV294FKTWWwrEYH8uYoOhcHKG3Eqzv3wzfy0WlOmpcsKFLyC1lMA3cx6aV3C8cXdk9XVX1Vvk9toncXofnVsNvc9DmasFx3CRv6I+Wu5Knc8hQ+8Z1u1+MyNSEMkI69vFq6hzJBeqpRZe1EXkC56hS35q2iHjXzidkic+DX6wndFein2S73x8cSzWp0qvwHQzybl7XACTo3WUswk89/Vmf7rYat3u6CM9XR2so3ZPbig+LO8yTk7Xcju+Jb7O/AS/wNp9wU5A49zeIIXA78jy61lIqq/+UQEPV18hYGXlerWowHOFzFd+OrT7ab0FZ+vwPgVRccgZc0KmaiC6h9Hbu5ChR19zbNyF7F/OYt0vegW14oWfMVMQGxy6KwxR6Igpg1P4zx/RSxz+w/a+YFRNiVBeEi+C+FHgYYM0ayYZM+HQaplb"
+    />
+    
+    <EbayConfig productStoreId="bellyanna-uk"
+    devId="1088ad4a-795b-4812-bd6d-31455edd9716"
+    appId="Bellyann-86bf-4bec-af0c-871bb762cddd"
+    certId="21cba1b6-5ef3-4049-a07c-4d0d9f80b2c3"
+    compatibilityLevel="843"
+    siteId="3"
+    globalId="EBAY-GB"
+    apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+    token="AgAAAA**AQAAAA**aAAAAA**8S1yTg**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AEkYOpCpCDoQmdj6x9nY+seQ**J0IBAA**AAMAAA**nvV+Xt0TDq2R9AvOwWPPeRe3skX/52yjfu8ztMRYdhKwUQZ/15qPa3hC7RsPPRExQxlZR6eDxItsYGNZbmqoWE/keqkIj8acaY0nd+9qRU7wLQ7gkNMeJ2ziJ/OoZKIbi3yxBvNVnaj5TToOGcfeWTBfd7DizvaI+Ciydn9cEjWARpX9g9mm+sywkEadIncwWI8V4teuQ9FzhS6vQu8GJ67poJe+axKMzeZ4RwU0OpMv3t5alt4mjqDl+66EsSYgux8gfgNoz8tvkHM9B4FB6xYSHdcKaDJAweErBp4ZK4bcq2Bj5FSF9m9B0d7LAGOO9Rb5CG6PxfvDC4DTKK1wGw9uItApPj1Q9hreStIqKIgtFB9udDxdXA4Niszfvc3rYMKdfZ3DTn2RnmL6bhrO9f9x3vl/CKh7c4blU+IbGSIHBkl0qofi6gZW68v/RmvbgTl6ov9NGNomoolJvTlZGduRqQ9eQ9LHT2InrrkLU08kQ/mRWYCj+h7sqo98qqVqmButqTtZ+/2bhdpynEsy7WsDWvQUD//weSAKTVIji4pV0rdUf2FIDRWy/ZrXRpFmGTBqwFLC5mjabZTfdowltYDEqeKBozzhO/R/R0gkSNJAoJfS4XUkT3zpnM+0FOle4PEJgVZqtRz7y31L7f1OtFkxuI8VeeNIlCir9dKlqHk51tzoJbiKF3FDot1EPP05YzMfQ1aCdQyI0XRXXkFVPkr4f2z+7MyV58z6jJylqnFRBzWWUuabCMUhv6GR/WRO"
+    />
+    
+    <EbayConfig productStoreId="i-tattoo"
+    devId="3dcbb701-a436-44fb-841a-0ff556bda7e4"
+    appId="Kraken69b-29c3-4275-9dd0-c352c4bf40b"
+    certId="b48b30e6-1e2d-4574-a6b8-d053f02d20bb"
+    compatibilityLevel="843"
+    siteId="0"
+    globalId="EBAY-US"
+    apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate=""
+    token="AgAAAA**AQAAAA**aAAAAA**ZFIjUQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AFkIamAZmEogmdj6x9nY+seQ**tpQBAA**AAMAAA**8HLDijutE32XgXPVpnUXTPI0AgIe0Pmi9PmNk8q369/kma73hWhuftjoxPkqxf6PKYUTBsiBsmUqJM+Yo1/a7d9TfP9acslwxurTTIAgb5BZYPRwFG+zwbWNMbJmUTsUAAFrWGYyvrt6IKhm8+DavhLxgSwHPimCr4OwsyIAiwiX/we4PHLwhO/lq7tHe9qrhv1wqcBnnmHRwZiSBvw7DwXTSQRSmlyXNlyG46c1TWR6VgXUwKFDybIU3nbZm+KGxLb2HdkWBTidEzBV8wQ2xRKyZ4jRQ65Gb2aIu13MHasmZiRnT825KWQ7Eux7YWHbusYOe129FpnoVubNFCEQlekKph6bzUjIIrxxLJm1TJvwnp62y/aCigDOIuqk1djZ0USPjga40dzpmE63qmMKFVFSgpx8TQn3nFIo9/Ba9Uoz06aNkcOaLeoAekkNiCZEucAebjjQXNzGHKC5fD/nFirnUaMFBJ3arF7GNMQLSJd73IdsbRJEiGfiA+yYE6yH0C2BjUU7uVpKX4E/ceflAxc4lpq699GHJLatiKv7u6UQ+t5mlvNJxG8ePwglIAYYqyhBmDPBzQ2GPPq38ECG4DeiqWh2OKMGoiW6T05yL3sn2Rn+VrlpOaQG7TN/Ph/hwT0p8tiU6yvBN5ZB2rezPPYagwEOp0wIyXP0gfiMcAMMvYXg94P1JqQvllBtkbCb/a49ZSnSaVjuxBPUdvFeX08rx8JopdBS6rqt8XWR6Of0l065UhHbKXiq1mOfVJiW"
+    />
+    
+    <EbayConfig productStoreId="i.macho"
+    devId="b3eb8597-0f27-4c04-8654-676b1c8e8957"
+    appId="Bellyann-f5df-4a85-8613-fc6f1d918ea9"
+    certId="7896cda2-51de-4df0-b2d5-579b1d438633"
+    compatibilityLevel="843"
+    siteId="0"
+    globalId="EBAY-US"
+    apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+    token="AgAAAA**AQAAAA**aAAAAA**TkcjUQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AEkIepC5aKoA2dj6x9nY+seQ**JEIBAA**AAMAAA**HMrxOel1GkQKyL43tifHQvxdckuTp+L6JprUt0L/p7l3z14prhiODx/84qRKN1lyPE3dqnDqUOiKt4hAf2uVLOw230QLAsnQCZcF8SHdOYySNUjtBaAE3p3/NU9RdirKHTvlKhoUDJZyKOMfkJDcreljHBdtyLGIPZ0BLipbNd5LjHRmmJ/jOGk1w8H5tB2fCadcQiEGDgplbgNfDVIYjhtMGJhwFu6RgsgjB0aVGrp9ImMxHyIPuSd7mdVONAMbuSTx5ypKe2BOjxNN5HbvPt0aMyjMNR+6kqCKjUy8NZv49kunnFQ4IFEuZAZd2+GCYifkIZSnq56BCsadFrMe12I2nMvnCELOtgGYs039b3sxuTk/sMfx0du1tdnCQ605NsF6QG40dxpDo8wx9XD71TPL2aIRavFAM39n1NwAuSGBE5Z4LhiRriDASN3kV+S6oJAJScqLPx5ho6ejkcXZVx7cqCWQYfPD2pYb7+j26CablREZQPAUMOdGoZThihPC3fEOQCJ5EalfAfsBkFAEsf7008UacOd70ik3k9BGQGIoOo13xFcODJZltbNF5rjDSjzKKCEB/dk0lQTAvn/ujuGaysvJVCfS8+fYeQJ6ly/8E/zf0XFDAc45rL0d3zMGDkCrqtsAGYbZ15q5l6UfNbiXYH7yCnitI9aUr4u3CNqzDwfpU5B0Nhy7kT0+UfCUbSsrcnRyH+X+p1UUSj2kwq450PU5KFJ5pOd6+zlgqNXuUupG5WA45UdI3x5a9gXZ"
+    />
+    
+    <EbayConfig productStoreId="queendesign"
+    devId="96df5fe3-d258-42ef-8cf2-de52017a5953"
+    appId="Bellyann-c3cf-4058-bba7-e1d07e95f203"
+    certId="5b05f255-7817-430b-9e60-20b069ed974b"
+    compatibilityLevel="843"
+    siteId="0"
+    globalId="EBAY-US"
+    apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+    token="AgAAAA**AQAAAA**aAAAAA**fdEmTw**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AEkIanDJiKqASdj6x9nY+seQ**814BAA**AAMAAA**i7N269vaDpBWSOoQe0BsrQz1xp0gYoSlhkzr4BVkBSvJ4nCQAVTHJHAu5DRLxiap8Eoyxy7JGy7zUogcXFimc0tEsyGGhnpzN41x78SEnqIPzkKZvXGN0ytLmrUfd/WOgxyoh/0Gg0COik8top7O14MkKDVJ5lSANs4d2qc0ot7TEXg8l2lW6ZiQA1S2mtDgDKXRV9rXlJg0On1CYYjFxrjQ7RyI2mwHcfotUMCIoejY7lMl88iVMRz2cU7GPoUqWuYCzc4Si9dIzZ9b36I6FL4PzlFdvtklHWfVzc7WExPj+RjoMuTFwQoChkrlAnd2ZafUtzBaab4MNS7TGSweAQCoA9qjh/MPQbzP9LLCgwy2zncOInQ9SbBppCXLA9fQ6lnALn/8f1SQ5O6L0mqq8snCHdzaFXnqIgbUPCCQYwHmeIsGTMruh0lSMnB6Pzh9XOJEkuVBDt3hm9E9XqAVpJ8XXlhwjM56BFR74Ub54+4nsBDmbgUAlgbxsR4LQVyeHIzfBbwiDgNNxLjebZL5GrXEYoVXVW766aqiMkPFi6bJIg+xySSfLnTm86MmvyppaOVXcw5n1x5hgfRDQ0JXsW+ZoVTONU4AFi4L1x9DqomMS2U8dmKqu0bnQ59wlpLqGO/Bf00CDAyuh8lmh8pIf2KPYFAZ6Cs0RqLpW5VdiI6RFRdIK/D/Qcesmx2KG453qY3z5QJ10ejWl4woPP082niok7flVSgUjhNxcpPsl/FyKtmO9wOe7D71UdOHKIWn"
+    />
+    
+    <EbayConfig productStoreId="tattootalks-us"
+	devId="df39b49b-41e6-49e0-8559-57b0f66c314c"
+	appId="Bellyann-a27a-4e91-843a-7cd6cfd33dd3"
+	certId="57f92464-3e8c-48c8-bf96-bf22c4bd0cc9"
+	compatibilityLevel="843"
+	siteId="0"
+	globalId="EBAY-US"
+	apiServerUrl="https://api.ebay.com/ws/api.dll"
+	xmlGatewayUri="2014-08-13 00:00:00.000"
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+	token="AgAAAA**AQAAAA**aAAAAA**1FEjUQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AFkIWjC5mEoAqdj6x9nY+seQ**A3sBAA**AAMAAA**BMo1GH9PEVwlXbHWOAiP4kZLrDDS+tasKibn+Cf76cV1uPwvOgWWkon6X9BgPcV/npVete6D29iwzak9l2mRX4YDgOIxjHlyHhLRBrYWFRC6dfjwXlyypwv/TrIv6ADL97UbRjZKMufuovSOyv4PSfBGrN7vRaIEXViuATQU6PC+8oGhEXaGeZOfQh16yuNQY8ieqGa6IWV2MM44WHOtxYIQr6DyCiBMNh7OZReMLo0FYUsdpMFZLIrpp1+rsfBOCz2QmO9Oj11U0Df7ftbbOuSUydxh4qL7d+hO+ppM/ASFvb3qJ4uMCjcBGROAVqejLZ37/kMxD4YQaCrnQDNRgrAUiLERIJD2Yu4ElB6QXFKjX4RV9cmVzRcEEUxOlxc3BdFq+0fTdMoxlAc7LvVW2A8xLy492IimXH+RFRqhwlZ8MDO+XAF+gDqZEYoBW8TOfxyo+WEUvKd03YDYM8d6/6T0S7yvXfBbyhLHzLzpVDke+KWxOkbuOnhg3gklA3wCXcj6P4dy5qQ6jWUfxdCwmofBjiiZAF5gNXxIhWZ1NDdutwMmyL3cA7faFLxF/Ql/hjsiVjaSGr+XRyTBhGH9b9O5BUoO8snn09rAM0VNYpTkMg2hq4Ozgk98HeWDci2FLTtMDr3qV7UrT+5siyw0Hbp8snZCszX/+l1h0APwO61YqHUyWWrvCRqZMSb92tw9Moe9oxiM72GEMMsfw1dEhWmf/K94tTIfSKyD6z5PbW3RdQu+9ci8ckkvkg+m9RtI"
+    />
+    
+    <EbayConfig productStoreId="you_young"
+	devId="1709d810-6fb5-44fb-b241-7635855a6c8d"
+	appId="Bellyann-dfb0-482f-a1d5-571e82bfa197"
+	certId="523c6e24-1260-4857-a5c2-a7f573686c3c"
+	compatibilityLevel="843"
+	siteId="15"
+	globalId="EBAY-AU"
+	apiServerUrl="https://api.ebay.com/ws/api.dll"
+	xmlGatewayUri=""
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+	token="AgAAAA**AQAAAA**aAAAAA**YdMmTw**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AEkoeiAJeDpgmdj6x9nY+seQ**SVQBAA**AAMAAA**NS9D8xF56B/Uk95+IEDtTvHy4LdlcgH7kTZRvDRFEg0/qFTqcUheazjh1+MJiOAXZJkZVQ/zC2+XU5Df/zvFC+vKyKUFYkek6S941Sx+qUSUp5Q+Ebujl66W94YwgHpwboW+ZRU6k8Do/QoQHhmUOp5M/uLrfEJJTSHHSfnECvzBwxyDKvPLAFykUrDxbxivnZ0SCYoP8TNmN7ENgVYp+kJh4JlCAIaAXzfuU863vu1YtTERSPplEfc2OpyT6K7RjT1wf0rGJ7AB+pkv8FaCKvGfK1KEVIHuO9gX11ibJzfhC7POTjWyHFLAUU86/sa+irCVnwCRC197hV/avkNp53MM/Sf0McaXABADgcDkUdpcRp7hS5gVpN1cjsewLfx8Is1vymrDvwNLu1YF0W9oW8FckTUHAOwhOdGl/YWFPDgNwDAz9bSXLJCm6Dx9+gmTBkXhQ/VimPaX5lGnQB8nw4WXSSKeeGWdumhZcqCZpwvtd3V+uBbt+aqekjJGXtF0aYQAzOGE0KJJyhlHm/guSc/ay96fBPOCmWdzXgtHtTwXRsm4paP0oyIqZT+rUL4/pYnqjcllgaMVN8gndBMbkijVmi0lGXRMWxLw6zVPJYk9LA/yVdXBCk1BKVANiIEi6ynfemPfRDbOvH/wd3egov2Fk9IStXNJPem8HEhcZWtrOqhide/5zU6B1loauwpg6C4Baws86YaiWSakECs4COKKmAOPStNAHujt2urNty2sq73sKLl5Zhd3pA01qaQ5"
+    />
+    
+    <EbayConfig productStoreId="uk-needle"
+	devId="1796af5d-609e-4b89-aedf-6b24a5b61a17"
+	appId="Bellyann-54c3-4dbf-8581-7d9b3a0e2ace"
+	certId="e5fec46c-e895-4833-afbf-dfee76a7b770"
+	compatibilityLevel="863"
+	siteId="15"
+    globalId="EBAY-GB"
+	apiServerUrl="https://api.ebay.com/ws/api.dll"
+    tokenExpirationDate="2014-08-13 00:00:00.000"
+	token="AgAAAA**AQAAAA**aAAAAA**5qEmUw**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AFlICmDZKHpgudj6x9nY+seQ**2igCAA**AAMAAA**EMpWyU4C+aRmZcRrk5UWXvU0GMD3ccpLDd7DRpsTuyqyP/VBaKTtWFpNd99Sb+9Yxiw+ruaAy4AMz7CdOlJmBAcE36wgYgx1wtujx/4HH9jzH6cPHgbQ6cdJkwK+HSUElzanAywNalryuR+yYcDFc3jNrdxReDQBPQm4cLUxgLAaS3WJwLe+c0JOiULXxlfeyKATay0UbuM4Bgq4d3lezzsAGqTiokIoiccBzaqFC3qbmARPgiwBMU3F4pFF6ULZ2mo4D9G57qDZmnOcfOBCljnYgmH7mZ+At/+HuxyZ+roa404vvQuyhJ7wi3YAWzlPICuBavAuC2yOGGPmik5KHe9os8KrrqdwYOR6V9jjGVn4SAyluN4lDVtRx92ry7G32dZDNpU1yuCkcBBu4nsMj+dJyeJ/KbQvy7fO6/9SXA3aX5GmEF9vMaZvkwv/7ddLG+PKoZtgqKGNmaMec9WQxKoaDjeTn2aK+0LDE11t7tyA+81AoY+os6xpT0sAq+KWr7IIR0RpIiBr3r3gfCyCA8luEDZ9MV5hbvrrpEbEafD+ykeANHSpnUFiqyUukPuu1RbMlatTg4JJea+2BjGlNlfjpNEebe4xlsFBZmOUWUUIixfVbSIhbsgl7IeNxIwFznwqXiYqeiy/D+fL72MUMFvucagzKqHNw/4i+4x7f5YRDNR3i/5wkVPwGyj+/BW+pK/POJBy412ihAYy/C92LSAFXmzHsuDqmC5rmBGvaQ0P3HX6u+P2g6HYzQ/f5gZs"
+    />
+    
+    
+    <ProductStoreEbaySetting productStoreId="belly_design" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="bellyanna-acc" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="bellyanna-de" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="bellyanna-uk" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <!--<ProductStoreEbaySetting productStoreId="factoryport" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>-->
+    <ProductStoreEbaySetting productStoreId="i-tattoo" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="i.macho" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="queendesign" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <!--<ProductStoreEbaySetting productStoreId="tattoohits" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>-->
+    <ProductStoreEbaySetting productStoreId="tattootalks-us" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="you_young" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="uk-needle" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5"lowPriceTreshold="5" />
+    
+    <ProductStoreEbaySetting productStoreId="ali-bellyanna" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="2" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="ali-tattoo" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="3" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    <ProductStoreEbaySetting productStoreId="ali-deepan" autoImportEbayApi="N" importUpdateShipmentStatus="N" packUpdateShipmentStatus="N" askFeedback="N" daysAskFeedback="4" daysUpdateEpacket="3" askFeedbackMaxAttempt="1" sendOutOfStockEmail="N" daysSendOutOfStockEmail="4" earlyEpacketTrackNum="N" autoPullEbayActiveListing="N" autoUpdateEbayQuantity="N" defaultEbayMinQty="2" defaultEbayListQty="5" lowPriceTreshold="5"/>
+    
+    <ProductStoreFacility productStoreId="belly_design" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="bellyanna-acc" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="bellyanna-de" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="bellyanna-uk" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <!--<ProductStoreFacility productStoreId="factoryport" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>-->
+    <ProductStoreFacility productStoreId="i-tattoo" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="i.macho" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="queendesign" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <!--<ProductStoreFacility productStoreId="tattoohits" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>-->
+    <ProductStoreFacility productStoreId="tattootalks-us" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="you_young" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="bellyanna-store-us" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="kraken-bag" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="uk-needle" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="ali-bellyanna" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="ali-tattoo" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreFacility productStoreId="ali-deepan" facilityId="PDWarehouse" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    <ProductStoreRole partyId="belly_design" roleTypeId="EBAY_ACCOUNT" productStoreId="belly_design" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="bellyanna-acc" roleTypeId="EBAY_ACCOUNT" productStoreId="bellyanna-acc" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="bellyanna-de" roleTypeId="EBAY_ACCOUNT" productStoreId="bellyanna-de" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="bellyanna-uk" roleTypeId="EBAY_ACCOUNT" productStoreId="bellyanna-uk" fromDate="2010-01-01 00:00:00.0"/>
+    <!--<ProductStoreRole partyId="factoryport" roleTypeId="EBAY_ACCOUNT" productStoreId="factoryport" fromDate="2010-01-01 00:00:00.0"/>-->
+    <ProductStoreRole partyId="i-tattoo" roleTypeId="EBAY_ACCOUNT" productStoreId="i-tattoo" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="i.macho" roleTypeId="EBAY_ACCOUNT" productStoreId="i.macho" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="queendesign" roleTypeId="EBAY_ACCOUNT" productStoreId="queendesign" fromDate="2010-01-01 00:00:00.0"/>
+    <!--<ProductStoreRole partyId="tattoohits" roleTypeId="EBAY_ACCOUNT" productStoreId="tattoohits" fromDate="2010-01-01 00:00:00.0"/>-->
+    <ProductStoreRole partyId="tattootalks-us" roleTypeId="EBAY_ACCOUNT" productStoreId="tattootalks-us" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="you_young" roleTypeId="EBAY_ACCOUNT" productStoreId="you_young" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="bellyanna-store-us" roleTypeId="EBAY_ACCOUNT" productStoreId="bellyanna-store-us" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="kraken-bag" roleTypeId="EBAY_ACCOUNT" productStoreId="kraken-bag" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="uk-needle" roleTypeId="EBAY_ACCOUNT" productStoreId="uk-needle" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="ali-bellyanna" roleTypeId="ALI_ACCOUNT" productStoreId="ali-bellyanna" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="ali-tattoo" roleTypeId="ALI_ACCOUNT" productStoreId="ali-tattoo" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="ali-deepan" roleTypeId="ALI_ACCOUNT" productStoreId="ali-deepan" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    <ProductStorePaymentSetting productStoreId="belly_design" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="bellyanna-acc" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="bellyanna-de" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="bellyanna-uk" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <!--<ProductStorePaymentSetting productStoreId="factoryport" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>-->
+    <ProductStorePaymentSetting productStoreId="i-tattoo" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="i.macho" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="queendesign" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <!--<ProductStorePaymentSetting productStoreId="tattoohits" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>-->
+    <ProductStorePaymentSetting productStoreId="tattootalks-us" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="you_young" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="bellyanna-store-us" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="kraken-bag" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="ali-bellyanna" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="ali-bellyanna" paymentMethodTypeId="EXT_COD" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="ali-tattoo" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="ali-tattoo" paymentMethodTypeId="EXT_COD" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="ali-deepan" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    <ProductStorePaymentSetting productStoreId="ali-deepan" paymentMethodTypeId="EXT_COD" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentService="" paymentCustomMethodId="" paymentGatewayConfigId=""/>
+    
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9001" productStoreId="belly_design" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9002" productStoreId="belly_design" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9003" productStoreId="belly_design" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9004" productStoreId="belly_design" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9005" productStoreId="belly_design" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9006" productStoreId="belly_design" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9007" productStoreId="belly_design" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9008" productStoreId="belly_design" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9009" productStoreId="belly_design" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9010" productStoreId="belly_design" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9011" productStoreId="belly_design" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9012" productStoreId="belly_design" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9013" productStoreId="belly_design" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9014" productStoreId="belly_design" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9015" productStoreId="belly_design" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9016" productStoreId="belly_design" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9017" productStoreId="belly_design" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9018" productStoreId="belly_design" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9019" productStoreId="belly_design" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9020" productStoreId="belly_design" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9021" productStoreId="belly_design" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9022" productStoreId="belly_design" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9023" productStoreId="belly_design" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9024" productStoreId="belly_design" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9361" productStoreId="belly_design" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9362" productStoreId="belly_design" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9025" productStoreId="bellyanna-acc" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9026" productStoreId="bellyanna-acc" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9027" productStoreId="bellyanna-acc" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9028" productStoreId="bellyanna-acc" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9029" productStoreId="bellyanna-acc" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9030" productStoreId="bellyanna-acc" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9031" productStoreId="bellyanna-acc" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9032" productStoreId="bellyanna-acc" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9033" productStoreId="bellyanna-acc" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9034" productStoreId="bellyanna-acc" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9035" productStoreId="bellyanna-acc" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9036" productStoreId="bellyanna-acc" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9037" productStoreId="bellyanna-acc" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9038" productStoreId="bellyanna-acc" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9039" productStoreId="bellyanna-acc" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9040" productStoreId="bellyanna-acc" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9041" productStoreId="bellyanna-acc" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9042" productStoreId="bellyanna-acc" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9043" productStoreId="bellyanna-acc" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9044" productStoreId="bellyanna-acc" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9045" productStoreId="bellyanna-acc" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9046" productStoreId="bellyanna-acc" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9047" productStoreId="bellyanna-acc" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9048" productStoreId="bellyanna-acc" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9363" productStoreId="bellyanna-acc" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9364" productStoreId="bellyanna-acc" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9049" productStoreId="bellyanna-de" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9050" productStoreId="bellyanna-de" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9051" productStoreId="bellyanna-de" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9052" productStoreId="bellyanna-de" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9053" productStoreId="bellyanna-de" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9054" productStoreId="bellyanna-de" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9055" productStoreId="bellyanna-de" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9056" productStoreId="bellyanna-de" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9057" productStoreId="bellyanna-de" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9058" productStoreId="bellyanna-de" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9059" productStoreId="bellyanna-de" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9060" productStoreId="bellyanna-de" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9061" productStoreId="bellyanna-de" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9062" productStoreId="bellyanna-de" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9063" productStoreId="bellyanna-de" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9064" productStoreId="bellyanna-de" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9065" productStoreId="bellyanna-de" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9066" productStoreId="bellyanna-de" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9067" productStoreId="bellyanna-de" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9068" productStoreId="bellyanna-de" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9069" productStoreId="bellyanna-de" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9070" productStoreId="bellyanna-de" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9071" productStoreId="bellyanna-de" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9072" productStoreId="bellyanna-de" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9365" productStoreId="bellyanna-de" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9366" productStoreId="bellyanna-de" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9073" productStoreId="bellyanna-uk" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9074" productStoreId="bellyanna-uk" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9075" productStoreId="bellyanna-uk" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9076" productStoreId="bellyanna-uk" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9077" productStoreId="bellyanna-uk" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9078" productStoreId="bellyanna-uk" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9079" productStoreId="bellyanna-uk" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9080" productStoreId="bellyanna-uk" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9081" productStoreId="bellyanna-uk" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9082" productStoreId="bellyanna-uk" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9083" productStoreId="bellyanna-uk" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9084" productStoreId="bellyanna-uk" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9085" productStoreId="bellyanna-uk" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9086" productStoreId="bellyanna-uk" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9087" productStoreId="bellyanna-uk" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9088" productStoreId="bellyanna-uk" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9089" productStoreId="bellyanna-uk" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9090" productStoreId="bellyanna-uk" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9091" productStoreId="bellyanna-uk" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9092" productStoreId="bellyanna-uk" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9093" productStoreId="bellyanna-uk" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9094" productStoreId="bellyanna-uk" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9095" productStoreId="bellyanna-uk" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9096" productStoreId="bellyanna-uk" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9367" productStoreId="bellyanna-uk" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9368" productStoreId="bellyanna-uk" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9097" productStoreId="i-tattoo" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9098" productStoreId="i-tattoo" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9099" productStoreId="i-tattoo" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9100" productStoreId="i-tattoo" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9101" productStoreId="i-tattoo" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9102" productStoreId="i-tattoo" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9103" productStoreId="i-tattoo" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9104" productStoreId="i-tattoo" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9105" productStoreId="i-tattoo" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9106" productStoreId="i-tattoo" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9107" productStoreId="i-tattoo" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9108" productStoreId="i-tattoo" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9109" productStoreId="i-tattoo" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9110" productStoreId="i-tattoo" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9111" productStoreId="i-tattoo" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9112" productStoreId="i-tattoo" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9113" productStoreId="i-tattoo" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9114" productStoreId="i-tattoo" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9115" productStoreId="i-tattoo" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9116" productStoreId="i-tattoo" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9117" productStoreId="i-tattoo" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9118" productStoreId="i-tattoo" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9119" productStoreId="i-tattoo" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9120" productStoreId="i-tattoo" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9369" productStoreId="i-tattoo" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9370" productStoreId="i-tattoo" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9121" productStoreId="i.macho" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9122" productStoreId="i.macho" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9123" productStoreId="i.macho" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9124" productStoreId="i.macho" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9125" productStoreId="i.macho" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9126" productStoreId="i.macho" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9127" productStoreId="i.macho" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9128" productStoreId="i.macho" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9129" productStoreId="i.macho" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9130" productStoreId="i.macho" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9131" productStoreId="i.macho" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9132" productStoreId="i.macho" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9133" productStoreId="i.macho" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9134" productStoreId="i.macho" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9135" productStoreId="i.macho" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9136" productStoreId="i.macho" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9137" productStoreId="i.macho" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9138" productStoreId="i.macho" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9139" productStoreId="i.macho" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9140" productStoreId="i.macho" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9141" productStoreId="i.macho" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9142" productStoreId="i.macho" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9143" productStoreId="i.macho" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9144" productStoreId="i.macho" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9371" productStoreId="i.macho" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9372" productStoreId="i.macho" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9145" productStoreId="queendesign" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9146" productStoreId="queendesign" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9147" productStoreId="queendesign" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9148" productStoreId="queendesign" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9149" productStoreId="queendesign" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9150" productStoreId="queendesign" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9151" productStoreId="queendesign" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9152" productStoreId="queendesign" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9153" productStoreId="queendesign" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9154" productStoreId="queendesign" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9155" productStoreId="queendesign" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9156" productStoreId="queendesign" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9157" productStoreId="queendesign" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9158" productStoreId="queendesign" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9159" productStoreId="queendesign" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9160" productStoreId="queendesign" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9161" productStoreId="queendesign" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9162" productStoreId="queendesign" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9163" productStoreId="queendesign" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9164" productStoreId="queendesign" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9165" productStoreId="queendesign" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9166" productStoreId="queendesign" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9167" productStoreId="queendesign" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9168" productStoreId="queendesign" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9373" productStoreId="queendesign" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9374" productStoreId="queendesign" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9169" productStoreId="tattootalks-us" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9170" productStoreId="tattootalks-us" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9171" productStoreId="tattootalks-us" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9172" productStoreId="tattootalks-us" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9173" productStoreId="tattootalks-us" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9174" productStoreId="tattootalks-us" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9175" productStoreId="tattootalks-us" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9176" productStoreId="tattootalks-us" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9177" productStoreId="tattootalks-us" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9178" productStoreId="tattootalks-us" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9179" productStoreId="tattootalks-us" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9180" productStoreId="tattootalks-us" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9181" productStoreId="tattootalks-us" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9182" productStoreId="tattootalks-us" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9183" productStoreId="tattootalks-us" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9184" productStoreId="tattootalks-us" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9185" productStoreId="tattootalks-us" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9186" productStoreId="tattootalks-us" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9187" productStoreId="tattootalks-us" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9188" productStoreId="tattootalks-us" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9189" productStoreId="tattootalks-us" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9190" productStoreId="tattootalks-us" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9191" productStoreId="tattootalks-us" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9192" productStoreId="tattootalks-us" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9375" productStoreId="tattootalks-us" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9376" productStoreId="tattootalks-us" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9193" productStoreId="you_young" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9194" productStoreId="you_young" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9195" productStoreId="you_young" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9196" productStoreId="you_young" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9197" productStoreId="you_young" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9198" productStoreId="you_young" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9199" productStoreId="you_young" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9200" productStoreId="you_young" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9201" productStoreId="you_young" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9202" productStoreId="you_young" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9203" productStoreId="you_young" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9204" productStoreId="you_young" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9205" productStoreId="you_young" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9206" productStoreId="you_young" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9207" productStoreId="you_young" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9208" productStoreId="you_young" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9209" productStoreId="you_young" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9210" productStoreId="you_young" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9211" productStoreId="you_young" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9212" productStoreId="you_young" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9213" productStoreId="you_young" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9214" productStoreId="you_young" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9215" productStoreId="you_young" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9216" productStoreId="you_young" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9377" productStoreId="you_young" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9378" productStoreId="you_young" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9217" productStoreId="ali-bellyanna" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9218" productStoreId="ali-bellyanna" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9219" productStoreId="ali-bellyanna" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9220" productStoreId="ali-bellyanna" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9221" productStoreId="ali-bellyanna" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9222" productStoreId="ali-bellyanna" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9223" productStoreId="ali-bellyanna" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9224" productStoreId="ali-bellyanna" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9225" productStoreId="ali-bellyanna" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9226" productStoreId="ali-bellyanna" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9227" productStoreId="ali-bellyanna" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9228" productStoreId="ali-bellyanna" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9229" productStoreId="ali-bellyanna" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9230" productStoreId="ali-bellyanna" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9231" productStoreId="ali-bellyanna" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9232" productStoreId="ali-bellyanna" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9233" productStoreId="ali-bellyanna" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9234" productStoreId="ali-bellyanna" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9235" productStoreId="ali-bellyanna" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9236" productStoreId="ali-bellyanna" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9237" productStoreId="ali-bellyanna" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9238" productStoreId="ali-bellyanna" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9239" productStoreId="ali-bellyanna" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9240" productStoreId="ali-bellyanna" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9379" productStoreId="ali-bellyanna" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9380" productStoreId="ali-bellyanna" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9241" productStoreId="ali-tattoo" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9242" productStoreId="ali-tattoo" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9243" productStoreId="ali-tattoo" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9244" productStoreId="ali-tattoo" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9245" productStoreId="ali-tattoo" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9246" productStoreId="ali-tattoo" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9247" productStoreId="ali-tattoo" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9248" productStoreId="ali-tattoo" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9249" productStoreId="ali-tattoo" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9250" productStoreId="ali-tattoo" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9251" productStoreId="ali-tattoo" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9252" productStoreId="ali-tattoo" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9253" productStoreId="ali-tattoo" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9254" productStoreId="ali-tattoo" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9255" productStoreId="ali-tattoo" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9256" productStoreId="ali-tattoo" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9257" productStoreId="ali-tattoo" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9258" productStoreId="ali-tattoo" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9259" productStoreId="ali-tattoo" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9260" productStoreId="ali-tattoo" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9261" productStoreId="ali-tattoo" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9262" productStoreId="ali-tattoo" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9263" productStoreId="ali-tattoo" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9264" productStoreId="ali-tattoo" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9381" productStoreId="ali-tattoo" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9382" productStoreId="ali-tattoo" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9265" productStoreId="ali-deepan" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9266" productStoreId="ali-deepan" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9267" productStoreId="ali-deepan" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9268" productStoreId="ali-deepan" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9269" productStoreId="ali-deepan" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9270" productStoreId="ali-deepan" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9271" productStoreId="ali-deepan" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9272" productStoreId="ali-deepan" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9273" productStoreId="ali-deepan" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9274" productStoreId="ali-deepan" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9275" productStoreId="ali-deepan" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9276" productStoreId="ali-deepan" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9277" productStoreId="ali-deepan" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9278" productStoreId="ali-deepan" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9279" productStoreId="ali-deepan" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9280" productStoreId="ali-deepan" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9281" productStoreId="ali-deepan" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9282" productStoreId="ali-deepan" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9283" productStoreId="ali-deepan" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9284" productStoreId="ali-deepan" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9285" productStoreId="ali-deepan" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9286" productStoreId="ali-deepan" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9287" productStoreId="ali-deepan" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9288" productStoreId="ali-deepan" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9383" productStoreId="ali-deepan" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9384" productStoreId="ali-deepan" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9289" productStoreId="bellyanna-store-us" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9290" productStoreId="bellyanna-store-us" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9291" productStoreId="bellyanna-store-us" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9292" productStoreId="bellyanna-store-us" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9293" productStoreId="bellyanna-store-us" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9294" productStoreId="bellyanna-store-us" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9295" productStoreId="bellyanna-store-us" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9296" productStoreId="bellyanna-store-us" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9297" productStoreId="bellyanna-store-us" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9298" productStoreId="bellyanna-store-us" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9299" productStoreId="bellyanna-store-us" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9300" productStoreId="bellyanna-store-us" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9301" productStoreId="bellyanna-store-us" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9302" productStoreId="bellyanna-store-us" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9303" productStoreId="bellyanna-store-us" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9304" productStoreId="bellyanna-store-us" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9305" productStoreId="bellyanna-store-us" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9306" productStoreId="bellyanna-store-us" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9307" productStoreId="bellyanna-store-us" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9308" productStoreId="bellyanna-store-us" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9309" productStoreId="bellyanna-store-us" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9310" productStoreId="bellyanna-store-us" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9311" productStoreId="bellyanna-store-us" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9312" productStoreId="bellyanna-store-us" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9385" productStoreId="bellyanna-store-us" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9386" productStoreId="bellyanna-store-us" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9313" productStoreId="kraken-bag" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9314" productStoreId="kraken-bag" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9315" productStoreId="kraken-bag" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9316" productStoreId="kraken-bag" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9317" productStoreId="kraken-bag" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9318" productStoreId="kraken-bag" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9319" productStoreId="kraken-bag" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9320" productStoreId="kraken-bag" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9321" productStoreId="kraken-bag" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9322" productStoreId="kraken-bag" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9323" productStoreId="kraken-bag" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9324" productStoreId="kraken-bag" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9325" productStoreId="kraken-bag" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9326" productStoreId="kraken-bag" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9327" productStoreId="kraken-bag" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9328" productStoreId="kraken-bag" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9329" productStoreId="kraken-bag" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9330" productStoreId="kraken-bag" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9331" productStoreId="kraken-bag" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9332" productStoreId="kraken-bag" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9333" productStoreId="kraken-bag" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9334" productStoreId="kraken-bag" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9335" productStoreId="kraken-bag" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9336" productStoreId="kraken-bag" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9387" productStoreId="kraken-bag" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9388" productStoreId="kraken-bag" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="9337" productStoreId="uk-needle" shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9338" productStoreId="uk-needle" shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9339" productStoreId="uk-needle" shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9340" productStoreId="uk-needle" shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9341" productStoreId="uk-needle" shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9342" productStoreId="uk-needle" shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9343" productStoreId="uk-needle" shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9344" productStoreId="uk-needle" shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9345" productStoreId="uk-needle" shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9346" productStoreId="uk-needle" shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9347" productStoreId="uk-needle" shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9348" productStoreId="uk-needle" shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9349" productStoreId="uk-needle" shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9350" productStoreId="uk-needle" shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9351" productStoreId="uk-needle" shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9352" productStoreId="uk-needle" shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9353" productStoreId="uk-needle" shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9354" productStoreId="uk-needle" shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="18"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9355" productStoreId="uk-needle" shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="19"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9356" productStoreId="uk-needle" shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="20"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9357" productStoreId="uk-needle" shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="21"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9358" productStoreId="uk-needle" shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="22"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9359" productStoreId="uk-needle" shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="23"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9360" productStoreId="uk-needle" shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="24"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9389" productStoreId="uk-needle" shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9390" productStoreId="uk-needle" shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="3"/>
+    
+    <!--eBay Listing Template -- START -->
+    <!-- queendesign -->
+    <ProductStoreContentTemplate productStoreId="queendesign" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    
+    <!-- you_young -->
+    <ProductStoreContentTemplate productStoreId="you_young" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    
+    <!-- i.macho -->
+    <ProductStoreContentTemplate productStoreId="i.macho" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    
+    <!-- bellyanna-uk -->
+    <ProductStoreContentTemplate productStoreId="bellyanna-uk" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    
+    <!-- bellyanna -->
+    <ProductStoreContentTemplate productStoreId="bellyanna-acc" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    
+    <!-- belly_design -->
+    <ProductStoreContentTemplate productStoreId="belly_design" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    
+    <!-- i-tattoo -->
+    <ProductStoreContentTemplate productStoreId="i-tattoo" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    
+    <!-- bellyanna-de -->
+    <ProductStoreContentTemplate productStoreId="bellyanna-de" productStoreContentTypeId="EBAY_LISTING_TEMPLATE" description="eBay Listing Template" textData="<div id='main' style='text-align: center;'>
+    <div id='PromoTop' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoTop.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='HowToPurchase' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Howtopurchase.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Description' style='text-align: center;'>
+    <div id='DescriptionHeader' style='text-align: center;'>
+    <h1>Description</h1>
+    </div>
+    <div id='Desc' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureDesc' />
+    </div>
+    <div id='Size' style='text-align: center;'>
+    <img border='0' src='$imageLink/$pictureSize' />
+    </div>
+    <div id='SizeChart' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/SizeChart.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>
+    <div id='Pictures' style='text-align: center;'>
+    <div id='PicturesHeader' style='text-align: center;'>
+    <h1>Pictures</h1>
+    </div>
+    <div id='PromoMid' style='text-align: center;'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoMid.jpg' alt='Bellyanna' />
+    </div>
+    <div id='PicturesContent' style='text-align: center;'>
+    $pictureTemplate
+    </div>
+    </div>
+    <div id='PromoBottom' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/PromoBottom.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Payment' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Payment.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Shipping' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Shipping.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    <div id='Return' style='text-align: center;'>
+    <a href='$ebayStoreLink' target='_blank'>
+    <img border='0' src='$imageLink/template/$ebaySite/Return.jpg' alt='Bellyanna' />
+    </a>
+    </div>
+    </div>"/>
+    <!--eBay Listing Template -- END -->
+    
+    <!-- eBay Picture Template -- START -->
+    <ProductStoreContentTemplate productStoreId="queendesign" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <ProductStoreContentTemplate productStoreId="you_young" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <ProductStoreContentTemplate productStoreId="i.macho" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <ProductStoreContentTemplate productStoreId="bellyanna-uk" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <ProductStoreContentTemplate productStoreId="bellyanna-acc" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <ProductStoreContentTemplate productStoreId="belly_design" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <ProductStoreContentTemplate productStoreId="i-tattoo" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <ProductStoreContentTemplate productStoreId="bellyanna-de" productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" description="eBay Picture Template" textData="<img src='$imageLink/$pictureUrl' /><p />"/>
+    <!-- eBay Picture Template -- END -->
+</entity-engine-xml>
+<!--Email Settings **bellyanna-de** -->
+<!--<ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_ODR_CONFIRM" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderConfirmNotice" xslfoAttachScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderConfirmNoticePdf" subject="Bellyanna Order Confirmation #${orderId}" bccAddress="info.de@bellyanna.com" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_ODR_COMPLETE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderCompleteNotice" subject="Bellyanna - Your Order #${orderId} has been completed" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_ODR_BACKORDER" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#BackorderNotice" subject="Bellyanna - Backorder Notification #${orderId}" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_ODR_CHANGE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderChangeNotice" subject="Bellyanna - Order Change Notification #${orderId}" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_ODR_PAYRETRY" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#PaymentRetryNotice" subject="Bellyanna - Order Payment Notification #${orderId}" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_ODR_SHIP_COMPLT" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#ShipmentCompleteNotice" subject="Bellyanna - Shipment Complete Notification #${orderId}" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_RTN_ACCEPT" bodyScreenLocation="component://ecommerce/widget/EmailReturnScreens.xml#ReturnAccept" subject="Bellyanna - Return Accepted #${returnHeader.returnId}" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_RTN_COMPLETE" bodyScreenLocation="component://ecommerce/widget/EmailReturnScreens.xml#ReturnComplete" subject="Bellyanna - Return Completed #${returnHeader.returnId}" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_RTN_CANCEL" bodyScreenLocation="component://ecommerce/widget/EmailReturnScreens.xml#ReturnCancel" subject="Bellyanna - Return Cancelled #${returnHeader.returnId}" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_GC_PURCHASE" bodyScreenLocation="component://ecommerce/widget/EmailGiftCardScreens.xml#GiftCardPurchase" fromAddress="info.de@bellyanna.com" subject="A Gift From ${senderName}!"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_GC_RELOAD" bodyScreenLocation="component://ecommerce/widget/EmailGiftCardScreens.xml#GiftCardReload" fromAddress="info.de@bellyanna.com" subject="Bellyanna - Gift Card Reload Results"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_TELL_FRIEND" bodyScreenLocation="component://ecommerce/widget/EmailProductScreens.xml#TellFriend" subject="${sendFrom} has sent you a link!" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_PWD_RETRIEVE" bodyScreenLocation="component://securityext/widget/EmailSecurityScreens.xml#PasswordEmail" subject="Bellyanna - Password Reminder (${userLogin.userLoginId})" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_QUO_CONFIRM" bodyScreenLocation="component://order/widget/ordermgr/QuoteScreens.xml#ViewQuoteSimple" xslfoAttachScreenLocation="component://order/widget/ordermgr/QuoteScreens.xml#QuoteReport" subject="Bellyanna - Quote Confirmation #${quoteId}" bccAddress="info.de@bellyanna.com" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PARTY_REGIS_CONFIRM" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#CreatePartyNotification" subject="Bellyanna - New Account Created" bccAddress="info.de@bellyanna.com" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_CUST_REGISTER" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#CreatePartyNotification" subject="Bellyanna - New Account Created" bccAddress="info.de@bellyanna.com" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="UPD_PRSNL_INF_CNFRM" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#ChangePersonalInfoNotification" subject="Bellyanna - Personal Information Updated" bccAddress="info.de@bellyanna.com" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="PRDS_EMAIL_VERIFY" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#VerifyEmailAddressNotification" subject="Bellyanna - Email Address Verification" bccAddress="info.de@bellyanna.com" fromAddress="info.de@bellyanna.com"/>
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="CONT_NOTI_EMAIL" bodyScreenLocation="component://ecommerce/widget/EmailContactListScreens.xml#ContactUsEmailNotification" subject="Bellyanna - Contact-us Information Notification" fromAddress="info.de@bellyanna.com" />
+ <ProductStoreEmailSetting productStoreId="bellyanna-de" emailType="UNSUB_CONT_LIST_NOTI" bodyScreenLocation="component://ecommerce/widget/EmailContactListScreens.xml#ContactListUnsubscribeEmail" subject="Bellyanna - Unsubscribe Contact List" fromAddress="info.de@bellyanna.com"/>-->

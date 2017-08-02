@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the Gudao Component." permissionId="GUDAO_VIEW"/>
+    <SecurityPermission description="Create operations in the Gudao Component." permissionId="GUDAO_CREATE"/>
+    <SecurityPermission description="Update operations in the Gudao Component." permissionId="GUDAO_UPDATE"/>
+    <SecurityPermission description="Delete operations in the Gudao Component." permissionId="GUDAO_DELETE"/>
+    <SecurityPermission description="ALL operations in the Gudao Component." permissionId="GUDAO_ADMIN"/>
+
+    <SecurityGroupPermission groupId="SUPER" permissionId="GUDAO_ADMIN"/>
+    
+    <SecurityPermission description="Update Product GMS" permissionId="GMS_MANUAL_UPDATE"/>
+    <SecurityGroup groupId="UPDATE-GMS" description="Permissions to update GMS manually"/>
+    <SecurityGroupPermission groupId="UPDATE-GMS" permissionId="GMS_MANUAL_UPDATE"/>
+    <SecurityGroupPermission groupId="GUDAO-ADMIN" permissionId="GMS_MANUAL_UPDATE"/>
+    
+    <SecurityPermission description="View Wish in Gudao Component" permissionId="WISH_VIEW"/>
+    <SecurityGroupPermission groupId="WISH_MEMBER" permissionId="WISH_VIEW"/>
+    
+    <SecurityPermission description="View PM in Gudao Component" permissionId="PM_VIEW"/>
+    <SecurityPermission description="View EPS in Gudao Component" permissionId="EPS_VIEW"/>
+    <SecurityPermission description="View PM update in Gudao Component" permissionId="PM_UPDATE"/>
+    <SecurityGroupPermission groupId="GUDAO-MEMBER" permissionId="PM_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-MEMBER" permissionId="EPS_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-MEMBER" permissionId="PM_UPDATE"/>
+    
+    <SecurityGroup groupId="GUDAO-PM-BASIC" description="Permissions to update GMS manually"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-BASIC" permissionId="PM_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-BASIC" permissionId="EPS_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-BASIC" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-BASIC" permissionId="OFBTOOLS_VIEW"/>
+    
+    <SecurityGroup groupId="GUDAO-PM-UPDATE" description="Permissions to update GMS manually"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-UPDATE" permissionId="PM_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-UPDATE" permissionId="EPS_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-UPDATE" permissionId="PM_UPDATE"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-UPDATE" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="GUDAO-PM-UPDATE" permissionId="OFBTOOLS_VIEW"/>
+
+</entity-engine-xml>

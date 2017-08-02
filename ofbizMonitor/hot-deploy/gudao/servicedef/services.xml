@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>Gudao Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+    
+    <!-- Permission -->
+    <service name="gudaoPermissionCheck" engine="simple"
+        location="component://gudao/script/org/gudao/permissions/PermissionServices.xml" invoke="gudaoPermissionCheck">
+        <description>Gudao Permission Checking Logic</description>
+        <implements service="permissionInterface"/>
+    </service>
+    <!-- Permission -->
+    
+    <service name="uploadProductXlsFileGudao" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="uploadProductXlsFile" auth="true" transaction-timeout="720000">
+        <implements service="uploadFileInterface"/>
+        <attribute name="importFormId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="updateFormId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="createProductImportGudao" default-entity-name="ProductImportGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createProductImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="deleteFileBulkModuleGudao" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="deleteFileBulkModule" auth="true" transaction-timeout="720000">
+        <attribute name="importFormId" mode="INOUT" optional="true" type="String"></attribute>
+        <attribute name="updateFormId" mode="INOUT" optional="true" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="deleteProductImportGudao" default-entity-name="ProductImportGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="deleteProductImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="importNewProductFromCsvGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="importNewProductFromCsv" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="importFormId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="importMultiProducts" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="importMultiProducts" auth="true" transaction-timeout="720000">
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <!--<service name="importNewProductFromCsvGudao" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="importNewProductFromCsvService" auth="true" transaction-timeout="720000">
+        <attribute name="productImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="successCount" mode="OUT" optional="true" type="String"></attribute>
+    </service>-->
+    
+    <service name="createProductGudao" default-entity-name="ProductMaster" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createProductGudao" auth="true">
+        <description>Create a Product - Gudao</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="createProductPriceGudao" default-entity-name="ProductMasterPrice" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createProductPriceGudao" auth="true">
+        <description>Create an ProductPrice for Gudao</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="createProductSupplierGudao" default-entity-name="ProductMasterSupplier" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createProductSupplierGudao" auth="true">
+        <description>Create an ProductMaster Supplier for Gudao</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="createProductRivalGudao" default-entity-name="ProductMasterRival" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createProductRivalGudao" auth="true">
+        <description>Create an ProductMaster Rival for Gudao</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateProductImportGudao" default-entity-name="ProductImportGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateProductImportGudao" auth="true">
+        <auto-attributes include="pk" mode="INOUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="importFormId" mode="INOUT" optional="true" type="String"/>
+    </service>
+    
+    <service name="createBulkProductUpdateGudao" default-entity-name="ProductImportGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createBulkProductUpdate" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="deleteBulkProductUpdateGudao" default-entity-name="ProductImportGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="deleteBulkProductUpdate" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="importProductUpdateFromCsvGudao" default-entity-name="Product" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="importProductUpdateFromCsv" auth="true" use-transaction="false">
+        <implements service="interfaceProduct"/>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <attribute name="productId" mode="INOUT" optional="false" type="String"></attribute>
+        <attribute name="productImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="updateFormId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <!--<service name="importProductUpdateFromCsvGudao" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="importProductUpdateFromCsvService" auth="true" transaction-timeout="720000">
+        <implements service="interfaceProduct"/>
+        <attribute name="productImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="successCount" mode="OUT" optional="true" type="String"></attribute>
+    </service>-->
+    
+    <service name="updateBulkProductUpdateGudao" default-entity-name="ProductImportGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateBulkProductUpdate" auth="true">
+        <auto-attributes include="pk" mode="INOUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="updateFormId" mode="INOUT" optional="true" type="String"/>
+    </service>
+    
+    <service name="updateProductPriceGudao" default-entity-name="ProductMasterPrice" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateProductPriceGudao" auth="true">
+        <description>Update an ProductPrice for Gudao</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateBulkProductUpdateGudao" default-entity-name="ProductImportGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateBulkProductUpdate" auth="true">
+        <auto-attributes include="pk" mode="INOUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="updateFormId" mode="INOUT" optional="true" type="String"/>
+    </service>
+    
+    
+    <service name="gudaoGenerateProductMaster" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="gudaoGenerateProductMaster" auth="true" transaction-timeout="720000" use-transaction="false">
+    </service>
+    
+    <service name="gudaoRefreshProductMaster" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="gudaoRefreshProductMaster" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productGroup" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productIdList" mode="IN" optional="true" type="List"></attribute>
+        <attribute name="productGroupList" mode="IN" optional="true" type="List"></attribute>
+    </service>
+    
+    <service name="gudaoGenerateProductMasterSpreadsheet" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="gudaoGenerateProductMasterSpreadsheet" auth="true" transaction-timeout="720000" use-transaction="false">
+    </service>
+    
+    <service name="uploadReportXlsFileGudao" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="uploadReportXlsFile" auth="true" transaction-timeout="720000">
+        <implements service="uploadFileInterface"/>
+        <attribute name="importFormId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="createReportImportGudao" default-entity-name="ReportImport" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createReportImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateReportImportGudao" default-entity-name="ReportImport" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateReportImportGudao" auth="true">
+        <auto-attributes include="pk" mode="INOUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="importFormId" mode="INOUT" optional="true" type="String"/>
+    </service>
+    
+    <service name="importNewReportFromCsvGudao" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="importNewReportFromCsv" auth="true" transaction-timeout="720000">
+        <attribute name="reportImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="importFormId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="createReportGudao" default-entity-name="ReportProfit" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createReportGudao" auth="true">
+        <description>Create a Report - Gudao</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="deleteReportImportGudao" default-entity-name="ReportImport" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="deleteReportImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+
+
+    <!-- wish -->
+    <service name="wishTest" engine="java"
+        location="com.gudao.wish.wish" invoke="sendHttpRequest" auth="true" transaction-timeout="720000" use-transaction="false">
+        
+    </service>
+    
+    <service name="wishGetAllProducts" engine="java"
+        location="com.gudao.wish.wish" invoke="getAllProducts" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="wishCrawlAllAccount" engine="java"
+        location="com.gudao.wish.wish" invoke="crawlAllAccount" auth="true" transaction-timeout="720000" use-transaction="false">
+    </service>
+    
+    <service name="wishRemoveListing" engine="java"
+        location="com.gudao.wish.wish" invoke="removeListing" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="wishGetRefreshCode" engine="java"
+        location="com.gudao.wish.wish" invoke="wishGetRefreshCode" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="getAccessCode" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="wishCreateNewAccount" engine="java"
+        location="com.gudao.wish.wish" invoke="createNewAccount" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="accountName" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="clientId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="clientSecret" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="authorizationCode" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="redirectUri" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="wishCrawlPageSingle" engine="java"
+        location="com.gudao.wish.wish" invoke="crawlPageSingle" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="wishId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="xml" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="wishCrawlPageSingleMap" engine="java"
+        location="com.gudao.wish.wish" invoke="crawlPageSingleMap" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="wishId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="xmlMapResult" mode="OUT" optional="false" type="Map"></attribute>
+    </service>
+    
+    <service name="wishGetAccountStatistic" engine="java"
+        location="com.gudao.wish.wish" invoke="getAccountStatistic" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="accountName" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="wishUpdateBestSellingSingle" engine="java"
+        location="com.gudao.wish.wish" invoke="updateBestSellingSingle" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="wishId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="wishUpdateBestSellingAuto" engine="java"
+        location="com.gudao.wish.wish" invoke="updateBestSellingAuto" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productStoreId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="updateWishBestSellingList" default-entity-name="WishBestSellingList" engine="simple"
+        location="component://gudao/script/org/gudao/wish/wishServices.xml" invoke="updateWishBestSellingList" auth="true">
+        <description>Update Wish Best Selling List</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="createWishBestSellingList" default-entity-name="WishBestSellingList" engine="simple"
+        location="component://gudao/script/org/gudao/wish/wishServices.xml" invoke="createWishBestSellingList" auth="true">
+        <description>Create Wish Best Selling List</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateActiveListingStatus" default-entity-name="ActiveListingStatus" engine="simple"
+        location="component://gudao/script/org/gudao/wish/wishServices.xml" invoke="updateActiveListingStatus" auth="true">
+        <description>Update Active Listing Status</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateWishListingInventory" engine="java"
+        location="com.gudao.wish.wish" invoke="updateWishListingInventory" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productStoreId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="disableWishListingVariation" engine="java"
+        location="com.gudao.wish.wish" invoke="disableWishListingVariation" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="sku" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    <!-- wish -->
+    
+    <!-- amazon -->
+    <service name="amazonTest" engine="java"
+        location="com.gudao.amazon.amazon" invoke="amazonTest" auth="true" transaction-timeout="720000" use-transaction="false">
+    </service>
+    
+    <service name="amazonCreateNewAccount" engine="java"
+        location="com.gudao.amazon.amazon" invoke="createNewAccount" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="accountName" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="accessKeyId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="secretAccessKey" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="merchantId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="appName" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="appVersion" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="serviceURL" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="marketplaceId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="sellerDevAuthToken" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="getAmazonApiInfo" engine="java"
+        location="com.gudao.amazon.amazon" invoke="getAmazonApiInfo" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="accountName" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="apiKeyMap" mode="OUT" optional="false" type="Map"></attribute>
+    </service>
+    
+    <service name="amazonRequestReport" engine="java"
+        location="com.gudao.amazon.Report" invoke="requestReport" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="accountName" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="amazonGetReportRequestList" engine="java"
+        location="com.gudao.amazon.Report" invoke="getReportRequestList" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="accountName" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="amazonGetReport" engine="java"
+        location="com.gudao.amazon.Report" invoke="getReport" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="accountName" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="reportId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <!-- amazon-->
+    
+    
+    <service name="importMotherVersion" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="importMotherVersion" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <implements service="uploadFileInterface"/>
+        <attribute name="marketplace" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="motherVersionType" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="deleteData" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="createMotherVersion" default-entity-name="MotherVersion" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createMotherVersion" transaction-timeout="1440000" auth="true" use-transaction="false">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="createMotherVersionResult" default-entity-name="MotherVersionResult" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createMotherVersionResult" transaction-timeout="1440000" auth="true" use-transaction="false">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    
+    <!-- Listing Service -->
+    <service name="gudaoAutoEndListing" engine="java"
+        location="com.gudao.listing.listingService" invoke="gudaoAutoEndListing" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <attribute name="productStoreId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoGenerateMotherVersion" engine="java"
+        location="com.gudao.listing.listingService" invoke="gudaoGenerateMotherVersion" auth="true" transaction-timeout="720000" use-transaction="false">
+        <attribute name="productStoreId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="site" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoGenerateChildrenSku" engine="java"
+        location="com.gudao.listing.listingService" invoke="gudaoGenerateChildrenSku" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <attribute name="motherSkuList" mode="IN" optional="true" type="List"></attribute>
+    </service>
+    <!-- Listing Service -->
+    
+    
+    <!-- Guudle -->
+    <service name="updateProductGps" engine="java"
+        location="com.gudao.guudle.guudle" invoke="updateProductGps" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <attribute name="productIdInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="ownerGroupInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productGroupInput" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="updateProductEps" engine="java"
+        location="com.gudao.guudle.guudle" invoke="updateProductEps" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <attribute name="productIdInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="ownerGroupInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productGroupInput" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="updateSupplierRank" engine="java"
+        location="com.gudao.guudle.guudle" invoke="updateSupplierRank" auth="true" transaction-timeout="1440000" use-transaction="false">
+    </service>
+    
+    <service name="updateProductGms" engine="java"
+        location="com.gudao.guudle.guudle" invoke="updateProductGms" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <attribute name="productIdInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="ownerGroupInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productGroupInput" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="updateProductGmsEbayDetail" engine="java"
+        location="com.gudao.guudle.guudle" invoke="updateProductGmsEbayDetail" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <attribute name="productIdInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="ownerGroupInput" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productGroupInput" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="createProductGqsDetail" default-entity-name="ProductGqsDetail" engine="java"
+        location="com.gudao.guudle.guudle" invoke="createProductGqs" auth="true" transaction-timeout="1440000" use-transaction="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="productId[1]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[2]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[3]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[4]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[5]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[6]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[7]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[8]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[9]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[10]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[11]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[12]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[13]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[14]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[15]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[16]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[17]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[18]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[19]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[20]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[21]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[22]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[23]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[24]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[25]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[26]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[27]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[28]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[29]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[30]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[31]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[32]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[33]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[34]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[35]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[36]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[37]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[38]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[39]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[40]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[41]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[42]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[43]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[44]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[45]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[46]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[47]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[48]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[49]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[50]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[51]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[52]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[53]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[54]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[55]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[56]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[57]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[58]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[59]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[60]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[61]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[62]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[63]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[64]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[65]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[66]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[67]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[68]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[69]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[70]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[71]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[72]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[73]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[74]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[75]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[76]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[77]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[78]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[79]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[80]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[81]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[82]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[83]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[84]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[85]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[86]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[87]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[88]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[89]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[90]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[91]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[92]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[93]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[94]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[95]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[96]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[97]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[98]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[99]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[100]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="qty[1]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[2]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[3]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[4]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[5]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[6]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[7]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[8]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[9]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[10]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[11]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[12]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[13]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[14]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[15]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[16]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[17]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[18]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[19]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[20]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[21]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[22]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[23]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[24]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[25]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[26]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[27]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[28]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[29]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[30]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[31]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[32]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[33]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[34]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[35]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[36]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[37]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[38]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[39]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[40]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[41]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[42]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[43]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[44]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[45]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[46]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[47]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[48]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[49]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[50]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[51]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[52]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[53]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[54]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[55]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[56]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[57]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[58]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[59]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[60]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[61]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[62]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[63]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[64]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[65]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[66]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[67]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[68]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[69]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[70]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[71]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[72]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[73]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[74]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[75]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[76]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[77]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[78]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[79]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[80]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[81]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[82]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[83]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[84]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[85]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[86]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[87]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[88]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[89]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[90]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[91]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[92]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[93]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[94]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[95]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[96]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[97]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[98]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[99]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[100]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="refundAmount[1]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[2]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[3]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[4]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[5]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[6]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[7]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[8]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[9]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[10]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[11]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[12]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[13]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[14]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[15]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[16]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[17]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[18]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[19]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[20]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[21]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[22]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[23]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[24]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[25]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[26]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[27]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[28]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[29]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[30]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[31]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[32]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[33]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[34]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[35]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[36]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[37]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[38]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[39]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[40]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[41]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[42]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[43]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[44]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[45]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[46]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[47]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[48]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[49]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[50]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[51]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[52]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[53]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[54]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[55]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[56]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[57]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[58]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[59]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[60]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[61]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[62]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[63]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[64]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[65]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[66]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[67]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[68]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[69]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[70]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[71]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[72]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[73]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[74]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[75]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[76]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[77]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[78]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[79]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[80]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[81]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[82]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[83]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[84]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[85]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[86]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[87]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[88]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[89]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[90]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[91]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[92]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[93]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[94]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[95]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[96]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[97]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[98]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[99]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[100]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[1]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[2]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[3]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[4]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[5]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[6]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[7]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[8]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[9]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[10]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[11]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[12]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[13]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[14]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[15]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[16]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[17]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[18]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[19]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[20]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[21]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[22]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[23]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[24]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[25]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[26]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[27]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[28]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[29]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[30]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[31]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[32]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[33]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[34]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[35]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[36]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[37]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[38]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[39]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[40]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[41]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[42]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[43]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[44]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[45]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[46]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[47]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[48]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[49]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[50]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[51]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[52]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[53]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[54]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[55]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[56]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[57]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[58]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[59]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[60]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[61]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[62]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[63]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[64]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[65]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[66]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[67]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[68]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[69]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[70]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[71]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[72]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[73]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[74]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[75]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[76]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[77]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[78]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[79]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[80]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[81]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[82]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[83]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[84]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[85]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[86]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[87]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[88]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[89]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[90]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[91]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[92]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[93]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[94]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[95]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[96]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[97]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[98]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[99]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[100]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[1]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[2]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[3]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[4]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[5]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[6]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[7]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[8]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[9]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[10]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[11]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[12]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[13]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[14]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[15]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[16]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[17]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[18]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[19]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[20]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[21]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[22]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[23]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[24]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[25]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[26]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[27]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[28]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[29]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[30]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[31]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[32]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[33]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[34]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[35]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[36]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[37]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[38]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[39]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[40]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[41]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[42]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[43]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[44]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[45]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[46]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[47]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[48]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[49]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[50]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[51]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[52]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[53]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[54]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[55]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[56]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[57]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[58]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[59]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[60]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[61]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[62]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[63]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[64]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[65]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[66]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[67]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[68]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[69]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[70]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[71]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[72]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[73]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[74]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[75]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[76]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[77]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[78]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[79]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[80]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[81]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[82]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[83]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[84]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[85]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[86]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[87]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[88]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[89]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[90]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[91]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[92]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[93]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[94]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[95]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[96]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[97]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[98]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[99]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[100]" mode="IN" optional="true" type="BigDecimal"></attribute>
+    </service>
+    
+    <service name="updateProductGqsDetail" default-entity-name="ProductGqsDetail" engine="java"
+        location="com.gudao.guudle.guudle" invoke="updateProductGqs" auth="true" transaction-timeout="1440000" use-transaction="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="productId[1]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[2]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[3]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[4]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[5]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[6]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[7]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[8]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[9]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[10]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[11]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[12]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[13]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[14]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[15]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[16]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[17]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[18]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[19]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[20]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[21]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[22]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[23]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[24]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[25]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[26]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[27]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[28]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[29]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[30]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[31]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[32]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[33]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[34]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[35]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[36]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[37]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[38]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[39]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[40]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[41]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[42]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[43]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[44]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[45]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[46]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[47]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[48]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[49]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[50]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[51]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[52]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[53]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[54]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[55]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[56]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[57]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[58]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[59]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[60]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[61]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[62]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[63]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[64]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[65]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[66]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[67]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[68]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[69]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[70]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[71]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[72]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[73]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[74]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[75]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[76]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[77]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[78]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[79]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[80]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[81]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[82]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[83]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[84]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[85]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[86]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[87]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[88]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[89]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[90]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[91]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[92]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[93]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[94]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[95]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[96]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[97]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[98]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[99]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="productId[100]" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="qty[1]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[2]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[3]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[4]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[5]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[6]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[7]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[8]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[9]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[10]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[11]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[12]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[13]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[14]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[15]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[16]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[17]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[18]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[19]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[20]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[21]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[22]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[23]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[24]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[25]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[26]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[27]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[28]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[29]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[30]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[31]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[32]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[33]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[34]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[35]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[36]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[37]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[38]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[39]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[40]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[41]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[42]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[43]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[44]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[45]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[46]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[47]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[48]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[49]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[50]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[51]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[52]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[53]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[54]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[55]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[56]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[57]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[58]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[59]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[60]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[61]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[62]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[63]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[64]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[65]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[66]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[67]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[68]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[69]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[70]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[71]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[72]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[73]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[74]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[75]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[76]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[77]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[78]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[79]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[80]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[81]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[82]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[83]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[84]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[85]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[86]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[87]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[88]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[89]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[90]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[91]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[92]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[93]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[94]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[95]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[96]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[97]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[98]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[99]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="qty[100]" mode="IN" optional="true" type="Integer"></attribute>
+        <attribute name="refundAmount[1]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[2]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[3]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[4]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[5]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[6]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[7]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[8]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[9]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[10]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[11]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[12]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[13]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[14]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[15]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[16]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[17]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[18]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[19]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[20]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[21]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[22]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[23]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[24]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[25]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[26]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[27]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[28]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[29]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[30]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[31]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[32]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[33]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[34]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[35]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[36]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[37]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[38]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[39]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[40]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[41]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[42]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[43]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[44]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[45]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[46]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[47]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[48]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[49]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[50]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[51]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[52]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[53]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[54]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[55]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[56]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[57]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[58]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[59]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[60]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[61]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[62]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[63]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[64]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[65]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[66]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[67]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[68]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[69]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[70]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[71]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[72]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[73]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[74]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[75]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[76]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[77]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[78]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[79]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[80]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[81]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[82]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[83]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[84]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[85]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[86]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[87]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[88]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[89]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[90]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[91]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[92]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[93]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[94]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[95]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[96]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[97]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[98]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[99]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="refundAmount[100]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[1]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[2]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[3]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[4]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[5]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[6]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[7]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[8]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[9]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[10]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[11]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[12]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[13]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[14]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[15]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[16]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[17]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[18]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[19]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[20]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[21]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[22]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[23]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[24]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[25]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[26]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[27]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[28]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[29]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[30]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[31]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[32]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[33]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[34]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[35]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[36]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[37]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[38]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[39]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[40]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[41]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[42]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[43]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[44]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[45]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[46]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[47]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[48]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[49]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[50]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[51]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[52]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[53]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[54]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[55]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[56]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[57]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[58]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[59]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[60]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[61]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[62]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[63]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[64]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[65]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[66]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[67]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[68]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[69]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[70]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[71]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[72]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[73]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[74]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[75]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[76]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[77]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[78]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[79]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[80]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[81]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[82]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[83]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[84]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[85]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[86]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[87]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[88]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[89]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[90]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[91]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[92]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[93]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[94]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[95]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[96]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[97]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[98]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[99]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementProductCost[100]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[1]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[2]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[3]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[4]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[5]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[6]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[7]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[8]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[9]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[10]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[11]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[12]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[13]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[14]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[15]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[16]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[17]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[18]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[19]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[20]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[21]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[22]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[23]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[24]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[25]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[26]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[27]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[28]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[29]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[30]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[31]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[32]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[33]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[34]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[35]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[36]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[37]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[38]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[39]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[40]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[41]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[42]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[43]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[44]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[45]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[46]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[47]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[48]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[49]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[50]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[51]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[52]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[53]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[54]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[55]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[56]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[57]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[58]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[59]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[60]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[61]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[62]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[63]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[64]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[65]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[66]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[67]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[68]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[69]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[70]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[71]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[72]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[73]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[74]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[75]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[76]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[77]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[78]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[79]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[80]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[81]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[82]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[83]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[84]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[85]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[86]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[87]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[88]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[89]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[90]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[91]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[92]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[93]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[94]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[95]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[96]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[97]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[98]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[99]" mode="IN" optional="true" type="BigDecimal"></attribute>
+        <attribute name="replacementShippingCost[100]" mode="IN" optional="true" type="BigDecimal"></attribute>
+    </service>
+    
+    <service name="epsCheatSheet" engine="java"
+        location="com.gudao.guudle.guudle" invoke="epsCheatSheet" auth="true" transaction-timeout="1440000" use-transaction="false">
+        <attribute name="itemId" mode="INOUT" optional="true" type="String"></attribute>
+        <attribute name="localSeller" mode="OUT" optional="true" type="Boolean"></attribute>
+        <attribute name="rivalDailySales" mode="OUT" optional="true" type="Double"></attribute>
+        <attribute name="soldPerDay" mode="OUT" optional="true" type="Double"></attribute>
+        <attribute name="variationCount" mode="OUT" optional="true" type="Integer"></attribute>
+        <attribute name="rivalListingLifetime" mode="OUT" optional="true" type="Double"></attribute>
+        <attribute name="eps" mode="OUT" optional="true" type="Double"></attribute>
+        <attribute name="itemId" mode="OUT" optional="true" type="String"></attribute>
+        <attribute name="countryLocation" mode="OUT" optional="true" type="String"></attribute>
+        <attribute name="rivalCurrency" mode="OUT" optional="true" type="String"></attribute>
+        <attribute name="notes" mode="OUT" optional="true" type="String"></attribute>
+        <attribute name="rivalCurrentPrice" mode="OUT" optional="true" type="Double"></attribute>
+        <attribute name="rivalHistorySold" mode="OUT" optional="true" type="Double"></attribute>
+        <attribute name="rivalListDetStartTime" mode="OUT" optional="true" type="String"></attribute>
+        <attribute name="listingType" mode="OUT" optional="true" type="String"></attribute>
+        <attribute name="sellingStatus" mode="OUT" optional="true" type="String"></attribute>
+    </service>
+    <!-- Guudle -->
+    
+    <!-- Task -->
+    <service name="createOperationalTask" default-entity-name="GudaoTaskHeader" engine="simple"
+        location="component://gudao/script/org/gudao/task/taskServices.xml" invoke="createOperationalTask" auth="true">
+        <attribute name="taskId" mode="IN" optional="true" type="String"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateOperationalTask" default-entity-name="GudaoTaskHeader" engine="simple"
+        location="component://gudao/script/org/gudao/task/taskServices.xml" invoke="updateOperationalTask" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="deleteOperationalTask" default-entity-name="GudaoTaskHeader" engine="simple"
+        location="component://gudao/script/org/gudao/task/taskServices.xml" invoke="deleteOperationalTask" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- Task -->
+    
+    
+    <!-- Target - START -->
+    <service name="createGudaoTarget" default-entity-name="GudaoTargetList" engine="simple"
+        location="component://gudao/script/org/gudao/target/target.xml" invoke="createGudaoTarget" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="true"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="targetId" mode="OUT" optional="false" type="String"/>
+    </service>
+    <service name="createGudaoAction" default-entity-name="GudaoTargetAction" engine="simple"
+        location="component://gudao/script/org/gudao/target/target.xml" invoke="createGudaoAction" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="targetId" mode="OUT" optional="false" type="String"/>
+    </service>
+    <service name="deleteGudaoAction" default-entity-name="GudaoTargetAction" engine="simple"
+        location="component://gudao/script/org/gudao/target/target.xml" invoke="deleteGudaoAction" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <!-- Target - END -->
+    
+    <service name="calculateMotherSkuWeight" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="calculateMotherSkuWeight" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productId" mode="IN" optional="true" type="String"/>
+        <attribute name="motherSku" mode="IN" optional="true" type="String"/>
+    </service>
+    
+    <service name="createSalesImportGudao" default-entity-name="SalesReportImport" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createSalesImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="uploadSalesXlsGudao" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="uploadSalesXlsGudao" auth="true" transaction-timeout="720000">
+        <implements service="uploadFileInterface"/>
+        <attribute name="importFormId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="updateFormId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="calculateSalesReportImport" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="calculateSalesReportImport" auth="true" transaction-timeout="720000" use-transaction="true">
+    </service>
+    
+    <service name="calculateSalesReportImportWeekInput" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="calculateSalesReportImportWeekInput" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="yearNumber" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="weekNumber" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="monthNumber" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="calculateSalesReportImportMonthly" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="calculateSalesReportImportMonthly" auth="true" transaction-timeout="720000" use-transaction="true">
+    </service>
+    
+    <service name="scheduledRefreshProductMaster" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="scheduledRefreshProductMaster" auth="true" transaction-timeout="720000" use-transaction="true">
+    </service>
+    
+    <service name="gudaoSetAllDiscontinue" engine="java"
+        location="com.gudao.product.productService" invoke="gudaoSetAllDiscontinue" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoTitleGenerator" engine="java"
+        location="com.gudao.product.productService" invoke="gudaoTitleGenerator" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="platform" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="language" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="title" mode="OUT" optional="false" type="String"></attribute>
+        <attribute name="titleLength" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoTitleGeneratorBulk" engine="java"
+        location="com.gudao.product.productService" invoke="gudaoTitleGeneratorBulk" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="language" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoPopulatePipeline" engine="java"
+        location="com.gudao.product.productService" invoke="populatePipeline" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="pipelineId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoPopulatePipelineAuto" engine="java"
+        location="com.gudao.product.productService" invoke="populatePipelineAuto" auth="true" transaction-timeout="720000" use-transaction="true">
+    </service>
+    
+    <service name="gudaoDeleteProduct" engine="java"
+        location="com.gudao.product.productService" invoke="gudaoDeleteProduct" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoDeleteProductAuto" engine="java"
+        location="com.gudao.product.productService" invoke="gudaoDeleteProductAuto" auth="true" transaction-timeout="720000" use-transaction="true">
+    </service>
+    
+    <service name="syncProductMaster" engine="java"
+        location="com.gudao.product.productService" invoke="syncProductMaster" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoCheckPlatformGroup" engine="java"
+        location="com.gudao.product.productService" invoke="gudaoCheckPlatformGroup" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="productId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="calculateSalesSummary" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="calculateSalesSummary" auth="true" transaction-timeout="720000" use-transaction="true">
+    </service>
+    
+    <service name="calculatePlatformProductGroup" engine="java"
+        location="com.gudao.product.productService" invoke="calculatePlatformProductGroup" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="motherSku" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="department" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="calculateProductGroup" engine="java"
+        location="com.gudao.product.productService" invoke="calculateProductGroup" auth="true" transaction-timeout="720000" use-transaction="true">
+        <attribute name="motherSku" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="department" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="lastXDays" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="rivalMonitorGetPriceAll" auth="true" engine="java"
+        transaction-timeout="720000"  location="com.gudao.bulkModule.bulkService" invoke="rivalMonitorGetPriceAll" use-transaction="false">
+        <attribute name="motherSku" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="rivalMonitorGetPriceSingle" auth="true" engine="java"
+        transaction-timeout="720000" location="com.gudao.bulkModule.bulkService" invoke="rivalMonitorGetPriceSingle" use-transaction="false">
+        <attribute name="itemId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="site" mode="OUT" optional="false" type="String"></attribute>
+        <attribute name="ack" mode="OUT" optional="false" type="String"></attribute>
+        <attribute name="shortMessage" mode="OUT" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="gudaoMonitorGetPriceAll" auth="true" engine="java"
+        transaction-timeout="720000"  location="com.gudao.bulkModule.bulkService" invoke="gudaoMonitorGetPriceAll" use-transaction="false">
+        <attribute name="motherSku" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="calculatePriceMonitorView" auth="true" engine="java"
+        transaction-timeout="720000"  location="com.gudao.bulkModule.bulkService" invoke="calculatePriceMonitorView" use-transaction="false">
+        <attribute name="group" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="motherSku" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="rivalMonitorAddRival" default-entity-name="ProductMonitoringList" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateAddRivalItemId" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="itemId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="createGudaoProject" default-entity-name="MercuryHeader" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="createGudaoProject" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="true"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="mercuryId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    <service name="createDailyTaskRecord" default-entity-name="DailyTaskRecord" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="createDailyTaskRecord" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="true"/>
+        <!-- <auto-attributes include="nonpk" mode="IN" optional="true"/> -->
+        <!-- <attribute name="completedDate" mode="OUT" optional="false" type="java.sql.Timestamp"></attribute> -->
+    </service>
+    
+    <service name="updateGudaoProject" default-entity-name="MercuryHeader" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="updateGudaoProject" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="true"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="mercuryId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="deleteGudaoProject" default-entity-name="MercuryHeader" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="deleteGudaoProject" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <attribute name="mercuryId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="addMercuryItem" default-entity-name="MercuryItem" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="addMercuryItem" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="true"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="mercuryId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="updateMercuryItemStatus" default-entity-name="MercuryItem" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="updateMercuryItemStatus" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="true"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="mercuryId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="editMercuryItem" default-entity-name="MercuryItem" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="editMercuryItem" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="filter" mode="OUT" optional="false" type="String"></attribute>
+        <attribute name="mercuryId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="deleteMercuryItem" default-entity-name="MercuryItem" engine="java"
+        location="com.gudao.bulkModule.bulkService" invoke="deleteMercuryItem" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <attribute name="mercuryId" mode="OUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="updateMercuryItem" default-entity-name="MercuryItem" engine="simple"
+        location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateMercuryItem" auth="true">
+        <description>Update Mercury Item</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="gudaoProjectStatusCheck" auth="true" engine="java"
+        transaction-timeout="720000"  location="com.gudao.bulkModule.bulkService" invoke="gudaoProjectStatusCheck" use-transaction="false">
+        <attribute name="mercuryId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="updateMercuryHeaderStatus" auth="true" engine="java"
+        transaction-timeout="720000"  location="com.gudao.bulkModule.bulkService" invoke="updateMercuryHeaderStatus" use-transaction="false">
+        <attribute name="mercuryId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="statusId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+
+    <service name="updatetestyayaa" auth="true" engine="java"
+        transaction-timeout="720000"  location="com.gudao.bulkModule.bulkService" invoke="updatetestyaya" use-transaction="false">
+        <attribute name="testyayaId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="text" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="browser" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="cSSGrade" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="engineVersion" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="platform" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="renderingEngine" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    <!-- <service name="updatetestyaya" default-entity-name="testyaya" engine="simple"
+            location="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updatetestyaya1" auth="true">
+        <description>updatetestyaya1</description>
+
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service> -->
+</services>

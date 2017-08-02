@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="GUDAO_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="GUDAO_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="GUDAO_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="GUDAO_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="GUDAO_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="GUDAO_ADMIN"/>
+</entity-engine-xml>

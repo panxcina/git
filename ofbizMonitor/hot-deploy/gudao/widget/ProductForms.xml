@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <form name="productMaster" type="single" target="productMaster" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productId" title="SKU"><text size="30" maxlength="255"/></field>
+        <field name="productName" title="品名"><text size="50" maxlength="255"/></field>
+        <field name="supplier" title="供应商"><text size="30" maxlength="255"/></field>
+        <field name="pageViewName" title="View">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="DEFAULT" description="Default"/>
+                <option key="PLATFORM" description="Platform"/>
+                <option key="SBU" description="SBU"/>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="productMasterStatus" type="single" target="productMasterStatus" header-row-style="header-row" default-table-style="none">
+        <field name="productId" title="SKU"><text size="30" maxlength="255"/></field>
+        <field name="productName" title="品名"><text size="50" maxlength="255"/></field>
+        <field name="supplier" title="供应商"><text size="30" maxlength="255"/></field>
+        <field name="platform" title="上架部">
+            <drop-down>
+                <option key="" description=""/>
+                <entity-options description="${groupName}" key-field-name="partyId" entity-name="PartyRoleDetailAndPartyDetail">
+                    <entity-constraint name="roleTypeId" value="PLATFORM"/>
+                    <entity-constraint name="statusId" value="PARTY_ENABLED"/>
+                    <entity-order-by field-name="groupName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="productListingStatus" type="single" target="productListingStatus" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productId" title="SKU"><text size="30" maxlength="255"/></field>
+        <field name="productName" title="品名"><text size="50" maxlength="255"/></field>
+        <field name="fromDate" title="From Date"><date-time type="timestamp"/></field>
+        <field name="toDate" title="To Date"><date-time type="timestamp"/></field>
+        <field name="productGroupG0" title="G0" position="1"><check/></field>
+        <field name="ownerGroupAdmin" title="ADMIN" position="2"><check/></field>
+        <field name="platformS" title="S" position="3"><check/></field>
+        <field name="productGroupG1" title="G1" position="1"><check/></field>
+        <field name="ownerGroupDada" title="DADA" position="2"><check/></field>
+        <field name="platformSe" title="SE" position="3"><check/></field>
+        <field name="productGroupG2" title="G2" position="1"><check/></field>
+        <field name="ownerGroupFangxi" title="FANGXI" position="2"><check/></field>
+        <field name="platformSew" title="SEW" position="3"><check/></field>
+        <field name="productGroupG3" title="G3" position="1"><check/></field>
+        <field name="ownerGroupGege" title="GEGE" position="2"><check/></field>
+        <field name="platformSewa" title="SEWA" position="3"><check/></field>
+        <field name="productGroupG4" title="G4" position="1"><check/></field>
+        <field name="ownerGroupJerry" title="JERRY" position="2"><check/></field>
+        <field name="platformSeok" title="SEOK" position="3"><check/></field>
+        <field name="productGroupG4a" title="准G4" position="1"><check/></field>
+        <field name="ownerGroupMatty" title="MATTY" position="2"><check/></field>
+        <field name="productGroupG5" title="G5" position="1"><check/></field>
+        <field name="ownerGroupMina" title="MINA" position="2"><check/></field>
+        <field name="productGroupG6" title="G6" position="1"><check/></field>
+        <field name="ownerGroupNick" title="NICK" position="2"><check/></field>
+        <field name="" title="" position="1"><display/></field>
+        <field name="ownerGroupNiki" title="NIKI" position="2"><check/></field>
+        
+        <field name="b" title=" " position="1"><display/></field>
+        <field name="c" title=" " position="1"><display/></field>
+        
+        <field name="ebayPicture" title="ebay图片"><check all-checked="true"/></field>
+        <field name="ebayUsListing" title="美国站点" position="2"><check/></field>
+        <field name="ebayDeListing" title="德国站点" position="3"><check/></field>
+        <field name="amazonPicture" title="amazon图片"><check/></field>
+        <field name="ebayUkListing" title="英国站点" position="2"><check/></field>
+        <field name="ebayFrListing" title="法国站点" position="3"><check/></field>
+        <field name="d" title=" " position="1"><display/></field>
+        <field name="ebayAuListing" title="澳大利亚站点" position="2"><check/></field>
+        <field name="ebayEsListing" title="西班牙站点" position="3"><check/></field>
+        <field name="e" title=" " position="1"><display/></field>
+        <field name="ebayCaListing" title="加拿大站点" position="2"><check/></field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="tbl" type="single" target="tbl" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productId" title="SKU"><text size="30" maxlength="255"/></field>
+        <field name="productName" title="品名"><text size="50" maxlength="255"/></field>
+        <field name="ownerGroupInput" title="事业部">
+            <drop-down>
+                <option key="" description=""/>
+                <entity-options description="${ownerGroupName}" key-field-name="ownerGroupId" entity-name="OwnerGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                    <entity-order-by field-name="ownerGroupName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="listerPlatform" title="平台">
+            <drop-down>
+                <option key="" description=""/>
+                <option key="EBAY_EN" description="eBay"/>
+                <option key="EBAY_DE" description="eBay DE"/>
+                <option key="AMAZON" description="Amazon"/>
+                <option key="WISH" description="Wish"/>
+                <option key="SMT" description="SMT"/>
+            </drop-down>
+        </field>
+        <field name="lister" title="上架员">
+            <drop-down>
+                <option key="" description=""/>
+                <entity-options description="${userLoginId}" key-field-name="userLoginId" entity-name="UserLogin">
+                    <entity-constraint name="externalAuthId" value="LISTER"/>
+                    <entity-order-by field-name="userLoginId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="viewSize" title="View Size">
+            <drop-down>
+                <option key="20" description="20"/>
+                <option key="50" description="50"/>
+                <option key="100" description="100"/>
+                <option key="150" description="150"/>
+                <option key="200" description="200"/>
+                <option key="250" description="250"/>
+                <option key="500" description="500"/>
+                <option key="ALL" description="ALL"/>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="veroList" type="single" target="veroList" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productId" title="SKU"><text size="30" maxlength="255"/></field>
+        <field name="productName" title="品名"><text size="30" maxlength="255"/></field>
+        <field name="ownerGroupInput" title="开发员">
+            <drop-down >
+                <option key="" description=""/>
+                <entity-options description="${ownerGroupName}" key-field-name="ownerGroupId" entity-name="OwnerGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <!--<field name="statusIdInput" title="Status">
+            <drop-down >
+                <option key="" description=""/>
+                <entity-options description="${description}" key-field-name="enumCode" entity-name="Enumeration">
+                    <entity-constraint name="enumTypeId" value="PM_STATUS"/>
+                </entity-options>
+                
+            </drop-down>
+        </field>-->
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="epsNegative" type="single" target="epsNegative" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productId" title="SKU"><text size="20" maxlength="255"/></field>
+        <field name="ownerGroupInput" title="SBU">
+            <drop-down >
+                <option key="" description=""/>
+                <entity-options description="${ownerGroupName}" key-field-name="ownerGroupId" entity-name="OwnerGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="epsPositive" type="single" target="epsPositive" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productId" title="SKU"><text size="20" maxlength="255"/></field>
+        <field name="ownerGroupInput" title="SBU">
+            <drop-down >
+                <option key="" description=""/>
+                <entity-options description="${ownerGroupName}" key-field-name="ownerGroupId" entity-name="OwnerGroup">
+                    <entity-constraint name="statusId" value="ACTIVE"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="currencySkuCount" type="single" target="currencySkuCount" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productId" title="SKU"><text size="15" maxlength="255"/></field>
+        <field name="currency" title="币种">
+            <drop-down >
+                <option key="" description=""/>
+                <option key="AUD" description="AUD"/>
+                <option key="CAD" description="CAD"/>
+                <option key="EUR" description="EUR"/>
+                <option key="GBP" description="GBP"/>
+                <option key="IDR" description="IDR"/>
+                <option key="MYR" description="MYR"/>
+                <option key="PHP" description="PHP"/>
+                <option key="SGD" description="SGD"/>
+                <option key="THB" description="THB"/>
+                <option key="USD" description="USD"/>
+            </drop-down>
+        </field>
+        
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+</forms>
+

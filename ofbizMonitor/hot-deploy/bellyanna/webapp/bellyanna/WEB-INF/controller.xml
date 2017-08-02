@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
+    <!-- The controller elements that are common to all OFBiz components
+         can be found in the following xml file. A component can override the
+         elements found in the common-controller.xml file. -->
+    <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+
+    <description>bellyanna Component Site Configuration File</description>
+
+    <!-- Events to run on every request before security (chains exempt) -->
+    <!--
+    <preprocessor>
+    </preprocessor>
+    -->
+    <!-- Events to run on every request after all other processing (chains exempt) -->
+    <!--
+    <postprocessor>
+        <event name="test" type="java" path="org.ofbiz.webapp.event.TestEvent" invoke="test"/>
+    </postprocessor>
+    -->
+
+    <!-- Request Mappings -->
+    <request-map uri="main"><security https="true" auth="true"/>
+        <response name="success" type="view" value="ebayMostWatchedItem"/>
+    </request-map>
+    <request-map uri="ebayModule">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ebayMostWatchedItem"/>
+        <response name="error" type="view" value="ebayMostWatchedItem"></response>
+    </request-map>
+    <request-map uri="ebayMostWatchedItem">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ebayMostWatchedItem"/>
+        <response name="error" type="view" value="ebayMostWatchedItem"/>
+    </request-map>
+    <request-map uri="refreshEbayMostWatchedItem">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="ebayGetMostWatchedItems"/>
+        <response name="success" type="request-redirect" value="ebayMostWatchedItem">
+            <redirect-parameter name="categoryId"/>
+        </response>
+        <response name="error" type="view" value="ebayMostWatchedItem"></response>
+    </request-map>
+    <request-map uri="ebayActiveListing">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ebayActiveListing"/>
+        <response name="error" type="view" value="ebayActiveListing"/>
+    </request-map>
+    <request-map uri="viewProductStoreActiveListing">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductStoreActiveListing"/>
+        <response name="error" type="view" value="viewProductStoreActiveListing"/>
+    </request-map>
+    <request-map uri="productListingStatus">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="productListingStatus"/>
+        <response name="error" type="view" value="productListingStatus"/>
+    </request-map>
+    <request-map uri="bulkModule">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="bulkImport"/>
+    </request-map>
+    <request-map uri="bulkImport">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="bulkImport"/>
+        <response name="error" type="view" value="bulkImport"/>
+    </request-map>
+    
+    <request-map uri="doUploadProductXlsFile">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="doUploadProductXlsFile"/>
+        <response name="success" type="request-redirect" value="bulkImport">
+            <redirect-parameter name="importFormId"/>
+        </response>
+        <response name="error" type="request-redirect" value="bulkImport">
+            <redirect-parameter name="importFormId"/>
+        </response>
+    </request-map>
+    <request-map uri="viewProductImport">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductImport"/>
+        <response name="error" type="view" value="viewProductImport"/>
+    </request-map>
+    <request-map uri="importMultiProducts">
+        <security https="true" auth="true"/>
+        <event type="simple" invoke="importMultiProducts" path="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml"/>
+        <response name="success" type="request-redirect" value="viewProductImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="request-redirect" value="viewProductImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+    </request-map>
+    <request-map uri="importNewProductForImportAndMessage">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="importNewProductForImportAndMessage"/>
+        <response name="success" type="request-redirect" value="viewProductImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="view" value="viewProductImport"/>
+    </request-map>
+    <request-map uri="editTemporaryProduct">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editTemporaryProduct"/>
+        <response name="error" type="view" value="editTemporaryProduct"/>
+    </request-map>
+    <request-map uri="updateProductImport">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateProductImport"/>
+        <response name="success" type="view" value="editTemporaryProduct"/>
+        <response name="error" type="view" value="editTemporaryProduct"/>
+    </request-map>
+    <request-map uri="deleteFileProductImport">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteFileBulkModule"/>
+        <response name="success" type="view" value="bulkImport"/>
+        <response name="error" type="view" value="bulkImport"/>
+    </request-map>
+    
+    <request-map uri="deleteFileProductUpdate">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteFileBulkModule"/>
+        <response name="success" type="view" value="bulkUpdate"/>
+        <response name="error" type="view" value="bulkUpdate"/>
+    </request-map>
+    
+    <request-map uri="bulkUpdate">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="bulkUpdate"/>
+        <response name="error" type="view" value="bulkUpdate"/>
+    </request-map>
+    
+    <request-map uri="doUploadProductUpdateXlsFile">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="doUploadProductUpdateXlsFile"/>
+        <response name="success" type="request-redirect" value="bulkUpdate">
+            <redirect-parameter name="updateFormId"/>
+        </response>
+        <response name="error" type="request-redirect" value="bulkUpdate">
+            <redirect-parameter name="updateFormId"/>
+        </response>
+    </request-map>
+    
+    <request-map uri="viewProductUpdate">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductUpdate"/>
+        <response name="error" type="view" value="viewProductUpdate"/>
+    </request-map>
+    
+    <request-map uri="updateMultiProducts">
+        <security https="true" auth="true"/>
+        <event type="simple" invoke="updateMultiProducts" path="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml"/>
+        <response name="success" type="request-redirect" value="viewProductUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="request-redirect" value="viewProductUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+    </request-map>
+    
+    <request-map uri="updateProductIntoBulkProductUpdate">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="updateProductIntoBulkProductUpdate"/>
+        <response name="success" type="request-redirect" value="viewProductUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="view" value="viewProductUpdate"/>
+    </request-map>
+    
+    <request-map uri="editTemporaryProductUpdate">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editTemporaryProductUpdate"/>
+        <response name="error" type="view" value="editTemporaryProductUpdate"/>
+    </request-map>
+    <request-map uri="updateBulkProductUpdate">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateBulkProductUpdate"/>
+        <response name="success" type="view" value="editTemporaryProductUpdate"/>
+        <response name="error" type="view" value="editTemporaryProductUpdate"/>
+    </request-map>
+    
+    <!-- View Mappings -->
+    <view-map name="main" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#main"/>
+    <!--<view-map name="ebayModule" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#ebayModule"/>-->
+    <view-map name="ebayMostWatchedItem" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#ebayMostWatchedItem"/>
+    <view-map name="ebayActiveListing" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#ebayActiveListing"/>
+    <view-map name="viewProductStoreActiveListing" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#viewProductStoreActiveListing"/>
+    <view-map name="productListingStatus" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#productListingStatus"/>
+    <view-map name="bulkImport" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#bulkImport"/>
+    <view-map name="viewProductImport" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#viewProductImport"/>
+    <view-map name="editTemporaryProduct" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#editTemporaryProduct"></view-map>
+    <view-map name="bulkUpdate" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#bulkUpdate"/>
+    <view-map name="viewProductUpdate" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#viewProductUpdate"/>
+    <view-map name="editTemporaryProductUpdate" type="screen" page="component://bellyanna/widget/bellyannaScreens.xml#editTemporaryProductUpdate"></view-map>
+</site-conf>

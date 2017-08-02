@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    <!-- Refund Enumeration -->
+    <EnumerationType enumTypeId="REFUND_REASON_CODE" hasTable="N" description="Refund Reason Code"/>
+    <Enumeration enumId="RRC_COMBINE" enumTypeId="REFUND_REASON_CODE" enumCode="COMBINE" sequenceId="1" description="Combined Shipping"/>
+    <Enumeration enumId="RRC_NOTLIKE" enumTypeId="REFUND_REASON_CODE" enumCode="NOTLIKE" sequenceId="2" description="Customer doesn't like it"/>
+    <Enumeration enumId="RRC_DESC" enumTypeId="REFUND_REASON_CODE" enumCode="DESC" sequenceId="3" description="Description Issue"/>
+    <Enumeration enumId="RRC_LOST" enumTypeId="REFUND_REASON_CODE" enumCode="LOST" sequenceId="4" description="Lost in Post"/>
+    <Enumeration enumId="RRC_NOTSHIPPED" enumTypeId="REFUND_REASON_CODE" enumCode="NOT_SHIPPED" sequenceId="5" description="Not Shipped"/>
+    <Enumeration enumId="RRC_CANCEL" enumTypeId="REFUND_REASON_CODE" enumCode="CANCEL" sequenceId="6" description="Order Cancellation"/>
+    <Enumeration enumId="RRC_OUTOFSTOCK" enumTypeId="REFUND_REASON_CODE" enumCode="OUT_OF_STOCK" sequenceId="7" description="Out of Stock"/>
+    <Enumeration enumId="RRC_IMAGE" enumTypeId="REFUND_REASON_CODE" enumCode="IMAGE" sequenceId="8" description="Picture Issue"/>
+    <Enumeration enumId="RRC_QUALITY" enumTypeId="REFUND_REASON_CODE" enumCode="QUALITY" sequenceId="9" description="Quality Issue"/>
+    <Enumeration enumId="RRC_NEGATIVE" enumTypeId="REFUND_REASON_CODE" enumCode="NEGATIVE" sequenceId="10" description="Revise Feedback"/>
+    <Enumeration enumId="RRC_DELAY" enumTypeId="REFUND_REASON_CODE" enumCode="DELAY" sequenceId="11" description="Shipment Delay"/>
+    <Enumeration enumId="RRC_SIZE" enumTypeId="REFUND_REASON_CODE" enumCode="SIZE" sequenceId="12" description="Size Issue"/>
+    <Enumeration enumId="RRC_UNDELIVER" enumTypeId="REFUND_REASON_CODE" enumCode="UNDELIVER" sequenceId="13" description="Undeliverable"/>
+    <Enumeration enumId="RRC_OTHERS" enumTypeId="REFUND_REASON_CODE" enumCode="OTHERS" sequenceId="14" description="Other Reasons"/>
+    
+    <Enumeration enumId="EXT_ALIPAY" enumTypeId="PAYMENT_MAP" enumCode="Alipay"  description="external Alipay payment method and ofbiz mapping"/>
+
+</entity-engine-xml>

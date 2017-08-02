@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<entity-engine-xml>
+    
+    <PartyIdentificationType partyIdentificationTypeId="EUB_ACCOUNT" description="E-Packet (EUB) Account Name"/>
+    <PartyIdentificationType partyIdentificationTypeId="EUB_DEV_ID" description="E-Packet (EUB) Account Developer ID"/>
+    <PartyIdentificationType partyIdentificationTypeId="EUB_API_CODE" description="E-Packet (EUB) Account API Code"/>
+    <PartyIdentificationType partyIdentificationTypeId="EUB_TOKEN" description="E-Packet (EUB) Account Token"/>
+    
+    <EnumerationType enumTypeId="PCKG_STATUS" hasTable="N" description="Package Tracking Status"/>
+    <Enumeration enumId="PCKG_PENDING" enumTypeId="PCKG_STATUS" enumCode="PENDING" sequenceId="0" description="Pending (待交运)"/>
+    <Enumeration enumId="PCKG_REFUSED" enumTypeId="PCKG_STATUS" enumCode="REFUSED" sequenceId="4" description="Pick Up Refused (揽收拒绝)"/>
+    <Enumeration enumId="PCKG_SUCCESS" enumTypeId="PCKG_STATUS" enumCode="SUCCESS" sequenceId="5" description="Delivery Successful (投递成功)"/>
+    <Enumeration enumId="PCKG_FAILED" enumTypeId="PCKG_STATUS" enumCode="FAILED" sequenceId="6" description="Delivery Failed (投递失败)"/>
+    <Enumeration enumId="PCKG_DELIVERY" enumTypeId="PCKG_STATUS" enumCode="DELIVERY" sequenceId="7" description="Seller Delivery (卖家自送)"/>
+    <Enumeration enumId="PCKG_PICKUP" enumTypeId="PCKG_STATUS" enumCode="PICKUP" sequenceId="8" description="Pick Up (上门揽收)"/>
+    <Enumeration enumId="PCKG_CANCEL" enumTypeId="PCKG_STATUS" enumCode="CANCEL" sequenceId="9" description="Delivery Cancelled (订单取消)"/>
+    <Enumeration enumId="PCKG_TRANSPORT" enumTypeId="PCKG_STATUS" enumCode="TRANSPORT" sequenceId="10" description="Transporting (运输中)"/>
+    <Enumeration enumId="PCKG_ERROR" enumTypeId="PCKG_STATUS" enumCode="ERROR" sequenceId="99" description="Error retrieving status"/>
+    
+    <Geo geoId="APO/FPO" geoTypeId="GROUP" geoName="APO/FPO/DPO US Armed Forces" geoCode="APO/FPO" abbreviation="APO/FPO"/>
+    <GeoAssoc geoId="AA" geoIdTo="APO/FPO" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="AE" geoIdTo="APO/FPO" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="AP" geoIdTo="APO/FPO" geoAssocTypeId="GROUP_MEMBER"/>
+
+    <GeoType geoTypeId="DISTRICT" parentTypeId ="CITY" hasTable="N" description="District"/>
+    <Geo geoId="CN-1101" geoTypeId="CITY" geoName="北京市" geoCode="110100" wellKnownText="Beijing"/>
+    <Geo geoId="CN-110101" geoTypeId="DISTRICT" geoName="东城区" geoCode="110101" wellKnownText="Dongcheng District"/>
+    <Geo geoId="CN-110102" geoTypeId="DISTRICT" geoName="西城区" geoCode="110102" wellKnownText="Xicheng District"/>
+    <Geo geoId="CN-110103" geoTypeId="DISTRICT" geoName="崇文区" geoCode="110103" wellKnownText="Chongwen District"/>
+    <Geo geoId="CN-110104" geoTypeId="DISTRICT" geoName="宣武区" geoCode="110104" wellKnownText="Xuanwu District"/>
+    <Geo geoId="CN-110105" geoTypeId="DISTRICT" geoName="朝阳区" geoCode="110105" wellKnownText="Chaoyang District"/>
+    <Geo geoId="CN-110106" geoTypeId="DISTRICT" geoName="丰台区" geoCode="110106" wellKnownText="Fengtai District"/>
+    <Geo geoId="CN-110107" geoTypeId="DISTRICT" geoName="石景山区" geoCode="110107" wellKnownText="Shijingshan District"/>
+    <Geo geoId="CN-110108" geoTypeId="DISTRICT" geoName="海淀区" geoCode="110108" wellKnownText="Haidian District"/>
+    <Geo geoId="CN-110109" geoTypeId="DISTRICT" geoName="门头沟区" geoCode="110109" wellKnownText="Mentougou"/>
+    <Geo geoId="CN-110111" geoTypeId="DISTRICT" geoName="房山区" geoCode="110111" wellKnownText="Fangshan"/>
+    <Geo geoId="CN-110112" geoTypeId="DISTRICT" geoName="通州区" geoCode="110112" wellKnownText="Tongzhou District"/>
+    <Geo geoId="CN-110113" geoTypeId="DISTRICT" geoName="顺义区" geoCode="110113" wellKnownText="Shunyi District"/>
+    <Geo geoId="CN-110114" geoTypeId="DISTRICT" geoName="昌平区" geoCode="110114" wellKnownText="Changping District"/>
+    <Geo geoId="CN-110115" geoTypeId="DISTRICT" geoName="大兴区" geoCode="110115" wellKnownText="Daxing District"/>
+    <Geo geoId="CN-110116" geoTypeId="DISTRICT" geoName="怀柔区" geoCode="110116" wellKnownText="Huairou District"/>
+    <Geo geoId="CN-110117" geoTypeId="DISTRICT" geoName="平谷区" geoCode="110117" wellKnownText="Pinggu"/>
+    <Geo geoId="CN-110228" geoTypeId="DISTRICT" geoName="密云县" geoCode="110228" wellKnownText="Miyun County"/>
+    <Geo geoId="CN-110229" geoTypeId="DISTRICT" geoName="延庆县" geoCode="110229" wellKnownText="Yanqing County"/>
+    <Geo geoId="CN-110230" geoTypeId="DISTRICT" geoName="其它区" geoCode="110230" wellKnownText="Other areas"/>
+    <Geo geoId="CN-1201" geoTypeId="CITY" geoName="天津市" geoCode="120100" wellKnownText="Tianjin"/>
+    <Geo geoId="CN-120101" geoTypeId="DISTRICT" geoName="和平区" geoCode="120101" wellKnownText="Heping District"/>
+    <Geo geoId="CN-120102" geoTypeId="DISTRICT" geoName="河东区" geoCode="120102" wellKnownText="Hedong District"/>
+    <Geo geoId="CN-120103" geoTypeId="DISTRICT" geoName="河西区" geoCode="120103" wellKnownText="Hexi District"/>
+    <Geo geoId="CN-120104" geoTypeId="DISTRICT" geoName="南开区" geoCode="120104" wellKnownText="Nankai District"/>
+    <Geo geoId="CN-120105" geoTypeId="DISTRICT" geoName="河北区" geoCode="120105" wellKnownText="Hebei District"/>
+    <Geo geoId="CN-120106" geoTypeId="DISTRICT" geoName="红桥区" geoCode="120106" wellKnownText="Hongqiao District"/>
+    <Geo geoId="CN-120107" geoTypeId="DISTRICT" geoName="塘沽区" geoCode="120107" wellKnownText="Tanggu District"/>
+    <Geo geoId="CN-120108" geoTypeId="DISTRICT" geoName="汉沽区" geoCode="120108" wellKnownText="Hangu District"/>
+    <Geo geoId="CN-120109" geoTypeId="DISTRICT" geoName="大港区" geoCode="120109" wellKnownText="Dagang"/>
+    <Geo geoId="CN-120110" geoTypeId="DISTRICT" geoName="东丽区" geoCode="120110" wellKnownText="Dongli District"/>
+    <Geo geoId="CN-120111" geoTypeId="DISTRICT" geoName="西青区" geoCode="120111" wellKnownText="West Green area"/>
+    <Geo geoId="CN-120112" geoTypeId="DISTRICT" geoName="津南区" geoCode="120112" wellKnownText="Jinnan District"/>
+    <Geo geoId="CN-120113" geoTypeId="DISTRICT" geoName="北辰区" geoCode="120113" wellKnownText="North Star District"/>
+    <Geo geoId="CN-120114" geoTypeId="DISTRICT" geoName="武清区" geoCode="120114" wellKnownText="Wuqing"/>
+    <Geo geoId="CN-120115" geoTypeId="DISTRICT" geoName="宝坻区" geoCode="120115" wellKnownText="Baodi"/>
+    <Geo geoId="CN-120221" geoTypeId="DISTRICT" geoName="宁河县" geoCode="120221" wellKnownText="Ninghe"/>
+    <Geo geoId="CN-120223" geoTypeId="DISTRICT" geoName="静海县" geoCode="120223" wellKnownText="Jinghai County"/>
+    <Geo geoId="CN-120225" geoTypeId="DISTRICT" geoName="蓟县" geoCode="120225" wellKnownText="Jixian"/>
+    <Geo geoId="CN-120226" geoTypeId="DISTRICT" geoName="其它区" geoCode="120226" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3101" geoTypeId="CITY" geoName="上海市" geoCode="310100" wellKnownText="Shanghai"/>
+    <Geo geoId="CN-310101" geoTypeId="DISTRICT" geoName="黄浦区" geoCode="310101" wellKnownText="Huangpu District"/>
+    <Geo geoId="CN-310103" geoTypeId="DISTRICT" geoName="卢湾区" geoCode="310103" wellKnownText="Luwan District"/>
+    <Geo geoId="CN-310104" geoTypeId="DISTRICT" geoName="徐汇区" geoCode="310104" wellKnownText="Xuhui District"/>
+    <Geo geoId="CN-310105" geoTypeId="DISTRICT" geoName="长宁区" geoCode="310105" wellKnownText="Changning District"/>
+    <Geo geoId="CN-310106" geoTypeId="DISTRICT" geoName="静安区" geoCode="310106" wellKnownText="Jing'an District"/>
+    <Geo geoId="CN-310107" geoTypeId="DISTRICT" geoName="普陀区" geoCode="310107" wellKnownText="Putuo District"/>
+    <Geo geoId="CN-310108" geoTypeId="DISTRICT" geoName="闸北区" geoCode="310108" wellKnownText="Zhabei District"/>
+    <Geo geoId="CN-310109" geoTypeId="DISTRICT" geoName="虹口区" geoCode="310109" wellKnownText="Hongkou District"/>
+    <Geo geoId="CN-310110" geoTypeId="DISTRICT" geoName="杨浦区" geoCode="310110" wellKnownText="Yangpu District"/>
+    <Geo geoId="CN-310112" geoTypeId="DISTRICT" geoName="闵行区" geoCode="310112" wellKnownText="Minhang District"/>
+    <Geo geoId="CN-310113" geoTypeId="DISTRICT" geoName="宝山区" geoCode="310113" wellKnownText="Baoshan District"/>
+    <Geo geoId="CN-310114" geoTypeId="DISTRICT" geoName="嘉定区" geoCode="310114" wellKnownText="Jiading District"/>
+    <Geo geoId="CN-310115" geoTypeId="DISTRICT" geoName="浦东新区" geoCode="310115" wellKnownText="Pudong New Area"/>
+    <Geo geoId="CN-310116" geoTypeId="DISTRICT" geoName="金山区" geoCode="310116" wellKnownText="Jinshan District"/>
+    <Geo geoId="CN-310117" geoTypeId="DISTRICT" geoName="松江区" geoCode="310117" wellKnownText="Songjiang District"/>
+    <Geo geoId="CN-310118" geoTypeId="DISTRICT" geoName="青浦区" geoCode="310118" wellKnownText="Qingpu District"/>
+    <Geo geoId="CN-310119" geoTypeId="DISTRICT" geoName="南汇区" geoCode="310119" wellKnownText="Nanhui District"/>
+    <Geo geoId="CN-310120" geoTypeId="DISTRICT" geoName="奉贤区" geoCode="310120" wellKnownText="Fengxian District"/>
+    <Geo geoId="CN-310152" geoTypeId="DISTRICT" geoName="川沙区" geoCode="310152" wellKnownText="Chuansha area"/>
+    <Geo geoId="CN-310230" geoTypeId="DISTRICT" geoName="崇明县" geoCode="310230" wellKnownText="Chongming County"/>
+    <Geo geoId="CN-310231" geoTypeId="DISTRICT" geoName="其它区" geoCode="310231" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3201" geoTypeId="CITY" geoName="南京市" geoCode="320100" wellKnownText="Nanjing"/>
+    <Geo geoId="CN-320102" geoTypeId="DISTRICT" geoName="玄武区" geoCode="320102" wellKnownText="Xuanwu District"/>
+    <Geo geoId="CN-320103" geoTypeId="DISTRICT" geoName="白下区" geoCode="320103" wellKnownText="Baixia"/>
+    <Geo geoId="CN-320104" geoTypeId="DISTRICT" geoName="秦淮区" geoCode="320104" wellKnownText="Qinhuai District"/>
+    <Geo geoId="CN-320105" geoTypeId="DISTRICT" geoName="建邺区" geoCode="320105" wellKnownText="Jianye District"/>
+    <Geo geoId="CN-320106" geoTypeId="DISTRICT" geoName="鼓楼区" geoCode="320106" wellKnownText="Drum Tower District"/>
+    <Geo geoId="CN-320107" geoTypeId="DISTRICT" geoName="下关区" geoCode="320107" wellKnownText="Shimonoseki area"/>
+    <Geo geoId="CN-320111" geoTypeId="DISTRICT" geoName="浦口区" geoCode="320111" wellKnownText="Pukou"/>
+    <Geo geoId="CN-320113" geoTypeId="DISTRICT" geoName="栖霞区" geoCode="320113" wellKnownText="Qixia District"/>
+    <Geo geoId="CN-320114" geoTypeId="DISTRICT" geoName="雨花台区" geoCode="320114" wellKnownText="Yuhuatai"/>
+    <Geo geoId="CN-320115" geoTypeId="DISTRICT" geoName="江宁区" geoCode="320115" wellKnownText="Jiangning District"/>
+    <Geo geoId="CN-320116" geoTypeId="DISTRICT" geoName="六合区" geoCode="320116" wellKnownText="Luhe District"/>
+    <Geo geoId="CN-320124" geoTypeId="DISTRICT" geoName="溧水县" geoCode="320124" wellKnownText="Lishui County"/>
+    <Geo geoId="CN-320125" geoTypeId="DISTRICT" geoName="高淳县" geoCode="320125" wellKnownText="Gaochun"/>
+    <Geo geoId="CN-320126" geoTypeId="DISTRICT" geoName="其它区" geoCode="320126" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3205" geoTypeId="CITY" geoName="苏州市" geoCode="320500" wellKnownText="Suzhou"/>
+    <Geo geoId="CN-320502" geoTypeId="DISTRICT" geoName="沧浪区" geoCode="320502" wellKnownText="Canglang"/>
+    <Geo geoId="CN-320503" geoTypeId="DISTRICT" geoName="平江区" geoCode="320503" wellKnownText="Pingjiang"/>
+    <Geo geoId="CN-320504" geoTypeId="DISTRICT" geoName="金阊区" geoCode="320504" wellKnownText="Jinchang"/>
+    <Geo geoId="CN-320505" geoTypeId="DISTRICT" geoName="虎丘区" geoCode="320505" wellKnownText="Suzhou New District"/>
+    <Geo geoId="CN-320506" geoTypeId="DISTRICT" geoName="吴中区" geoCode="320506" wellKnownText="Wuzhong"/>
+    <Geo geoId="CN-320507" geoTypeId="DISTRICT" geoName="相城区" geoCode="320507" wellKnownText="Xiangcheng"/>
+    <Geo geoId="CN-320581" geoTypeId="DISTRICT" geoName="常熟市" geoCode="320581" wellKnownText="Changshu"/>
+    <Geo geoId="CN-320582" geoTypeId="DISTRICT" geoName="张家港市" geoCode="320582" wellKnownText="Zhangjiagang City"/>
+    <Geo geoId="CN-320583" geoTypeId="DISTRICT" geoName="昆山市" geoCode="320583" wellKnownText="Kunshan"/>
+    <Geo geoId="CN-320584" geoTypeId="DISTRICT" geoName="吴江市" geoCode="320584" wellKnownText="Wujiang City"/>
+    <Geo geoId="CN-320585" geoTypeId="DISTRICT" geoName="太仓市" geoCode="320585" wellKnownText="Taicang City"/>
+    <Geo geoId="CN-320594" geoTypeId="DISTRICT" geoName="新区" geoCode="320594" wellKnownText="New Development Area"/>
+    <Geo geoId="CN-320595" geoTypeId="DISTRICT" geoName="园区" geoCode="320595" wellKnownText="Park"/>
+    <Geo geoId="CN-320596" geoTypeId="DISTRICT" geoName="其它区" geoCode="320596" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3212" geoTypeId="CITY" geoName="泰州市" geoCode="321200" wellKnownText="Taizhou City"/>
+    <Geo geoId="CN-321201" geoTypeId="DISTRICT" geoName="市辖区" geoCode="321201" wellKnownText="Municipal District"/>
+    <Geo geoId="CN-321202" geoTypeId="DISTRICT" geoName="海陵区" geoCode="321202" wellKnownText="Hailing"/>
+    <Geo geoId="CN-321203" geoTypeId="DISTRICT" geoName="高港区" geoCode="321203" wellKnownText="High Port"/>
+    <Geo geoId="CN-321281" geoTypeId="DISTRICT" geoName="兴化市" geoCode="321281" wellKnownText="Xinghua"/>
+    <Geo geoId="CN-321282" geoTypeId="DISTRICT" geoName="靖江市" geoCode="321282" wellKnownText="Jingjiang"/>
+    <Geo geoId="CN-321283" geoTypeId="DISTRICT" geoName="泰兴市" geoCode="321283" wellKnownText="Taixing"/>
+    <Geo geoId="CN-321284" geoTypeId="DISTRICT" geoName="姜堰市" geoCode="321284" wellKnownText="Jiangyan"/>
+    <Geo geoId="CN-3301" geoTypeId="CITY" geoName="杭州市" geoCode="330100" wellKnownText="Hangzhou"/>
+    <Geo geoId="CN-330102" geoTypeId="DISTRICT" geoName="上城区" geoCode="330102" wellKnownText="Upper City"/>
+    <Geo geoId="CN-330103" geoTypeId="DISTRICT" geoName="下城区" geoCode="330103" wellKnownText="Under City"/>
+    <Geo geoId="CN-330104" geoTypeId="DISTRICT" geoName="江干区" geoCode="330104" wellKnownText="Jianggan District"/>
+    <Geo geoId="CN-330105" geoTypeId="DISTRICT" geoName="拱墅区" geoCode="330105" wellKnownText="Gongshu"/>
+    <Geo geoId="CN-330106" geoTypeId="DISTRICT" geoName="西湖区" geoCode="330106" wellKnownText="Sihu District"/>
+    <Geo geoId="CN-330108" geoTypeId="DISTRICT" geoName="滨江区" geoCode="330108" wellKnownText="Bingjiang District"/>
+    <Geo geoId="CN-330109" geoTypeId="DISTRICT" geoName="萧山区" geoCode="330109" wellKnownText="Xiaoshan District"/>
+    <Geo geoId="CN-330110" geoTypeId="DISTRICT" geoName="余杭区" geoCode="330110" wellKnownText="Yuhang District"/>
+    <Geo geoId="CN-330122" geoTypeId="DISTRICT" geoName="桐庐县" geoCode="330122" wellKnownText="Tonglu"/>
+    <Geo geoId="CN-330127" geoTypeId="DISTRICT" geoName="淳安县" geoCode="330127" wellKnownText="Chun'an"/>
+    <Geo geoId="CN-330182" geoTypeId="DISTRICT" geoName="建德市" geoCode="330182" wellKnownText="Jiande"/>
+    <Geo geoId="CN-330183" geoTypeId="DISTRICT" geoName="富阳市" geoCode="330183" wellKnownText="Fuyang City"/>
+    <Geo geoId="CN-330185" geoTypeId="DISTRICT" geoName="临安市" geoCode="330185" wellKnownText="Lin'an City"/>
+    <Geo geoId="CN-330186" geoTypeId="DISTRICT" geoName="其它区" geoCode="330186" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3303" geoTypeId="CITY" geoName="温州市" geoCode="330300" wellKnownText="Wenzhou"/>
+    <Geo geoId="CN-330302" geoTypeId="DISTRICT" geoName="鹿城区" geoCode="330302" wellKnownText="Lucheng"/>
+    <Geo geoId="CN-330303" geoTypeId="DISTRICT" geoName="龙湾区" geoCode="330303" wellKnownText="Longwan"/>
+    <Geo geoId="CN-330304" geoTypeId="DISTRICT" geoName="瓯海区" geoCode="330304" wellKnownText="Ouhai"/>
+    <Geo geoId="CN-330322" geoTypeId="DISTRICT" geoName="洞头县" geoCode="330322" wellKnownText="Dongtou"/>
+    <Geo geoId="CN-330324" geoTypeId="DISTRICT" geoName="永嘉县" geoCode="330324" wellKnownText="Yongjia County"/>
+    <Geo geoId="CN-330326" geoTypeId="DISTRICT" geoName="平阳县" geoCode="330326" wellKnownText="Pingyang"/>
+    <Geo geoId="CN-330327" geoTypeId="DISTRICT" geoName="苍南县" geoCode="330327" wellKnownText="Cangnan"/>
+    <Geo geoId="CN-330328" geoTypeId="DISTRICT" geoName="文成县" geoCode="330328" wellKnownText="Wencheng"/>
+    <Geo geoId="CN-330329" geoTypeId="DISTRICT" geoName="泰顺县" geoCode="330329" wellKnownText="Taishun"/>
+    <Geo geoId="CN-330381" geoTypeId="DISTRICT" geoName="瑞安市" geoCode="330381" wellKnownText="Ruian City"/>
+    <Geo geoId="CN-330382" geoTypeId="DISTRICT" geoName="乐清市" geoCode="330382" wellKnownText="Yueqing"/>
+    <Geo geoId="CN-330383" geoTypeId="DISTRICT" geoName="其它区" geoCode="330383" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3302" geoTypeId="CITY" geoName="宁波市" geoCode="330200" wellKnownText="Ningbo"/>
+    <Geo geoId="CN-330203" geoTypeId="DISTRICT" geoName="海曙区" geoCode="330203" wellKnownText="Haishu District"/>
+    <Geo geoId="CN-330204" geoTypeId="DISTRICT" geoName="江东区" geoCode="330204" wellKnownText="Jiangdong District"/>
+    <Geo geoId="CN-330205" geoTypeId="DISTRICT" geoName="江北区" geoCode="330205" wellKnownText="Jiangbei District"/>
+    <Geo geoId="CN-330206" geoTypeId="DISTRICT" geoName="北仑区" geoCode="330206" wellKnownText="Beilun District"/>
+    <Geo geoId="CN-330211" geoTypeId="DISTRICT" geoName="镇海区" geoCode="330211" wellKnownText="Zhenhai District"/>
+    <Geo geoId="CN-330212" geoTypeId="DISTRICT" geoName="鄞州区" geoCode="330212" wellKnownText="Yinzhou District"/>
+    <Geo geoId="CN-330225" geoTypeId="DISTRICT" geoName="象山县" geoCode="330225" wellKnownText="Xiangshan County"/>
+    <Geo geoId="CN-330226" geoTypeId="DISTRICT" geoName="宁海县" geoCode="330226" wellKnownText="Ninghai County"/>
+    <Geo geoId="CN-330281" geoTypeId="DISTRICT" geoName="余姚市" geoCode="330281" wellKnownText="Yuyao"/>
+    <Geo geoId="CN-330282" geoTypeId="DISTRICT" geoName="慈溪市" geoCode="330282" wellKnownText="Cixi"/>
+    <Geo geoId="CN-330283" geoTypeId="DISTRICT" geoName="奉化市" geoCode="330283" wellKnownText="Fenghua"/>
+    <Geo geoId="CN-330284" geoTypeId="DISTRICT" geoName="其它区" geoCode="330284" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3307" geoTypeId="CITY" geoName="金华市" geoCode="330700" wellKnownText="Jinhua City"/>
+    <Geo geoId="CN-330701" geoTypeId="DISTRICT" geoName="市辖区" geoCode="330701" wellKnownText="Municipal District"/>
+    <Geo geoId="CN-330702" geoTypeId="DISTRICT" geoName="婺城区" geoCode="330702" wellKnownText="Wucheng"/>
+    <Geo geoId="CN-330703" geoTypeId="DISTRICT" geoName="金东区" geoCode="330703" wellKnownText="Jindong"/>
+    <Geo geoId="CN-330723" geoTypeId="DISTRICT" geoName="武义县" geoCode="330723" wellKnownText="Wuyi County"/>
+    <Geo geoId="CN-330726" geoTypeId="DISTRICT" geoName="浦江县" geoCode="330726" wellKnownText="Pujiang County"/>
+    <Geo geoId="CN-330727" geoTypeId="DISTRICT" geoName="磐安县" geoCode="330727" wellKnownText="Pan'an"/>
+    <Geo geoId="CN-330781" geoTypeId="DISTRICT" geoName="兰溪市" geoCode="330781" wellKnownText="Lanxi"/>
+    <Geo geoId="CN-330782" geoTypeId="DISTRICT" geoName="义乌市" geoCode="330782" wellKnownText="Yiwu"/>
+    <Geo geoId="CN-330783" geoTypeId="DISTRICT" geoName="东阳市" geoCode="330783" wellKnownText="Dongyang"/>
+    <Geo geoId="CN-330784" geoTypeId="DISTRICT" geoName="永康市" geoCode="330784" wellKnownText="Yongkang"/>
+    <Geo geoId="CN-3501" geoTypeId="CITY" geoName="福州市" geoCode="350100" wellKnownText="Fuzhou"/>
+    <Geo geoId="CN-350102" geoTypeId="DISTRICT" geoName="鼓楼区" geoCode="350102" wellKnownText="Drum Tower District"/>
+    <Geo geoId="CN-350103" geoTypeId="DISTRICT" geoName="台江区" geoCode="350103" wellKnownText="Taijiang"/>
+    <Geo geoId="CN-350104" geoTypeId="DISTRICT" geoName="仓山区" geoCode="350104" wellKnownText="Cangshan"/>
+    <Geo geoId="CN-350105" geoTypeId="DISTRICT" geoName="马尾区" geoCode="350105" wellKnownText="Mawei District"/>
+    <Geo geoId="CN-350111" geoTypeId="DISTRICT" geoName="晋安区" geoCode="350111" wellKnownText="Jinan District"/>
+    <Geo geoId="CN-350121" geoTypeId="DISTRICT" geoName="闽侯县" geoCode="350121" wellKnownText="Minhou County"/>
+    <Geo geoId="CN-350122" geoTypeId="DISTRICT" geoName="连江县" geoCode="350122" wellKnownText="Lienchiang"/>
+    <Geo geoId="CN-350123" geoTypeId="DISTRICT" geoName="罗源县" geoCode="350123" wellKnownText="Luoyuan"/>
+    <Geo geoId="CN-350124" geoTypeId="DISTRICT" geoName="闽清县" geoCode="350124" wellKnownText="Minqing"/>
+    <Geo geoId="CN-350125" geoTypeId="DISTRICT" geoName="永泰县" geoCode="350125" wellKnownText="Yongtai"/>
+    <Geo geoId="CN-350128" geoTypeId="DISTRICT" geoName="平潭县" geoCode="350128" wellKnownText="Pingtan County"/>
+    <Geo geoId="CN-350181" geoTypeId="DISTRICT" geoName="福清市" geoCode="350181" wellKnownText="Fuqing City"/>
+    <Geo geoId="CN-350182" geoTypeId="DISTRICT" geoName="长乐市" geoCode="350182" wellKnownText="Changle City"/>
+    <Geo geoId="CN-350183" geoTypeId="DISTRICT" geoName="其它区" geoCode="350183" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3502" geoTypeId="CITY" geoName="厦门市" geoCode="350200" wellKnownText="Xiamen"/>
+    <Geo geoId="CN-350203" geoTypeId="DISTRICT" geoName="思明区" geoCode="350203" wellKnownText="Siming District"/>
+    <Geo geoId="CN-350205" geoTypeId="DISTRICT" geoName="海沧区" geoCode="350205" wellKnownText="Haicang"/>
+    <Geo geoId="CN-350206" geoTypeId="DISTRICT" geoName="湖里区" geoCode="350206" wellKnownText="Huli District"/>
+    <Geo geoId="CN-350211" geoTypeId="DISTRICT" geoName="集美区" geoCode="350211" wellKnownText="Jimei District"/>
+    <Geo geoId="CN-350212" geoTypeId="DISTRICT" geoName="同安区" geoCode="350212" wellKnownText="Tongan"/>
+    <Geo geoId="CN-350213" geoTypeId="DISTRICT" geoName="翔安区" geoCode="350213" wellKnownText="Xiang'an"/>
+    <Geo geoId="CN-350214" geoTypeId="DISTRICT" geoName="其它区" geoCode="350214" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3503" geoTypeId="CITY" geoName="莆田" geoCode="350300" wellKnownText="Putian"/>
+    <Geo geoId="CN-350301" geoTypeId="DISTRICT" geoName="市辖区" geoCode="350301" wellKnownText="Municipal District"/>
+    <Geo geoId="CN-350302" geoTypeId="DISTRICT" geoName="城厢区" geoCode="350302" wellKnownText="Chengxiang District"/>
+    <Geo geoId="CN-350303" geoTypeId="DISTRICT" geoName="涵江区" geoCode="350303" wellKnownText="Hanjiang District"/>
+    <Geo geoId="CN-350304" geoTypeId="DISTRICT" geoName="荔城区" geoCode="350304" wellKnownText="Licheng"/>
+    <Geo geoId="CN-350305" geoTypeId="DISTRICT" geoName="秀屿区" geoCode="350305" wellKnownText="Xiuyu"/>
+    <Geo geoId="CN-350322" geoTypeId="DISTRICT" geoName="仙游县" geoCode="350322" wellKnownText="Xianyou"/>
+    <Geo geoId="CN-3506" geoTypeId="CITY" geoName="漳州市" geoCode="350600" wellKnownText="Zhangzhou City"/>
+    <Geo geoId="CN-350602" geoTypeId="DISTRICT" geoName="芗城区" geoCode="350602" wellKnownText="Xiangcheng"/>
+    <Geo geoId="CN-350603" geoTypeId="DISTRICT" geoName="龙文区" geoCode="350603" wellKnownText="Longwen District"/>
+    <Geo geoId="CN-350622" geoTypeId="DISTRICT" geoName="云霄县" geoCode="350622" wellKnownText="Yunxiao"/>
+    <Geo geoId="CN-350623" geoTypeId="DISTRICT" geoName="漳浦县" geoCode="350623" wellKnownText="Zhangpu County"/>
+    <Geo geoId="CN-350624" geoTypeId="DISTRICT" geoName="诏安县" geoCode="350624" wellKnownText="Zhaoan County"/>
+    <Geo geoId="CN-350625" geoTypeId="DISTRICT" geoName="长泰县" geoCode="350625" wellKnownText="Changtai"/>
+    <Geo geoId="CN-350626" geoTypeId="DISTRICT" geoName="东山县" geoCode="350626" wellKnownText="Dongshan County"/>
+    <Geo geoId="CN-350627" geoTypeId="DISTRICT" geoName="南靖县" geoCode="350627" wellKnownText="Nanjing County"/>
+    <Geo geoId="CN-350628" geoTypeId="DISTRICT" geoName="平和县" geoCode="350628" wellKnownText="Pinghe"/>
+    <Geo geoId="CN-350629" geoTypeId="DISTRICT" geoName="华安县" geoCode="350629" wellKnownText="Hua'an"/>
+    <Geo geoId="CN-350681" geoTypeId="DISTRICT" geoName="龙海市" geoCode="350681" wellKnownText="Longhai"/>
+    <Geo geoId="CN-350682" geoTypeId="DISTRICT" geoName="其它区" geoCode="350682" wellKnownText="Other areas"/>
+    <Geo geoId="CN-3702" geoTypeId="CITY" geoName="青岛市" geoCode="370200" wellKnownText="Qingdao"/>
+    <Geo geoId="CN-370202" geoTypeId="DISTRICT" geoName="市南区" geoCode="370202" wellKnownText="Shinan"/>
+    <Geo geoId="CN-370203" geoTypeId="DISTRICT" geoName="市北区" geoCode="370203" wellKnownText="City North"/>
+    <Geo geoId="CN-370205" geoTypeId="DISTRICT" geoName="四方区" geoCode="370205" wellKnownText="Sifang"/>
+    <Geo geoId="CN-370211" geoTypeId="DISTRICT" geoName="黄岛区" geoCode="370211" wellKnownText="Huangdao District"/>
+    <Geo geoId="CN-370212" geoTypeId="DISTRICT" geoName="崂山区" geoCode="370212" wellKnownText="Laoshan District"/>
+    <Geo geoId="CN-370213" geoTypeId="DISTRICT" geoName="李沧区" geoCode="370213" wellKnownText="Lee Chang-area"/>
+    <Geo geoId="CN-370214" geoTypeId="DISTRICT" geoName="城阳区" geoCode="370214" wellKnownText="Chengyang"/>
+    <Geo geoId="CN-370251" geoTypeId="DISTRICT" geoName="开发区" geoCode="370251" wellKnownText="Development District"/>
+    <Geo geoId="CN-370281" geoTypeId="DISTRICT" geoName="胶州市" geoCode="370281" wellKnownText="Jiaozhou"/>
+    <Geo geoId="CN-370282" geoTypeId="DISTRICT" geoName="即墨市" geoCode="370282" wellKnownText="Jimo"/>
+    <Geo geoId="CN-370283" geoTypeId="DISTRICT" geoName="平度市" geoCode="370283" wellKnownText="Pingdu"/>
+    <Geo geoId="CN-370284" geoTypeId="DISTRICT" geoName="胶南市" geoCode="370284" wellKnownText="Jiaonan"/>
+    <Geo geoId="CN-370285" geoTypeId="DISTRICT" geoName="莱西市" geoCode="370285" wellKnownText="Lacey City"/>
+    <Geo geoId="CN-370286" geoTypeId="DISTRICT" geoName="其它区" geoCode="370286" wellKnownText="Other areas"/>
+    <Geo geoId="CN-4401" geoTypeId="CITY" geoName="广州市" geoCode="440100" wellKnownText="Guangzhou"/>
+    <Geo geoId="CN-440103" geoTypeId="DISTRICT" geoName="荔湾区" geoCode="440103" wellKnownText="Liwan District"/>
+    <Geo geoId="CN-440104" geoTypeId="DISTRICT" geoName="越秀区" geoCode="440104" wellKnownText="Yuexiu District"/>
+    <Geo geoId="CN-440105" geoTypeId="DISTRICT" geoName="海珠区" geoCode="440105" wellKnownText="Haizhu District"/>
+    <Geo geoId="CN-440106" geoTypeId="DISTRICT" geoName="天河区" geoCode="440106" wellKnownText="Tianhe District"/>
+    <Geo geoId="CN-440111" geoTypeId="DISTRICT" geoName="白云区" geoCode="440111" wellKnownText="Baiyun District"/>
+    <Geo geoId="CN-440112" geoTypeId="DISTRICT" geoName="黄埔区" geoCode="440112" wellKnownText="Huangpu District"/>
+    <Geo geoId="CN-440113" geoTypeId="DISTRICT" geoName="番禺区" geoCode="440113" wellKnownText="Panyu District"/>
+    <Geo geoId="CN-440114" geoTypeId="DISTRICT" geoName="花都区" geoCode="440114" wellKnownText="Huadu District"/>
+    <Geo geoId="CN-440115" geoTypeId="DISTRICT" geoName="南沙区" geoCode="440115" wellKnownText="Nansha District"/>
+    <Geo geoId="CN-440116" geoTypeId="DISTRICT" geoName="萝岗区" geoCode="440116" wellKnownText="Luogang"/>
+    <Geo geoId="CN-440183" geoTypeId="DISTRICT" geoName="增城市" geoCode="440183" wellKnownText="Zengcheng City"/>
+    <Geo geoId="CN-440184" geoTypeId="DISTRICT" geoName="从化市" geoCode="440184" wellKnownText="Conghua"/>
+    <Geo geoId="CN-440188" geoTypeId="DISTRICT" geoName="东山区" geoCode="440188" wellKnownText="Dongshan District"/>
+    <Geo geoId="CN-440189" geoTypeId="DISTRICT" geoName="其它区" geoCode="440189" wellKnownText="Other areas"/>
+    <Geo geoId="CN-4403" geoTypeId="CITY" geoName="深圳市" geoCode="440300" wellKnownText="Shenzhen"/>
+    <Geo geoId="CN-440303" geoTypeId="DISTRICT" geoName="罗湖区" geoCode="440303" wellKnownText="Luohu District"/>
+    <Geo geoId="CN-440304" geoTypeId="DISTRICT" geoName="福田区" geoCode="440304" wellKnownText="Futian District"/>
+    <Geo geoId="CN-440305" geoTypeId="DISTRICT" geoName="南山区" geoCode="440305" wellKnownText="Nanshan District"/>
+    <Geo geoId="CN-440306" geoTypeId="DISTRICT" geoName="宝安区" geoCode="440306" wellKnownText="Bao'an District"/>
+    <Geo geoId="CN-440307" geoTypeId="DISTRICT" geoName="龙岗区" geoCode="440307" wellKnownText="Longgang District"/>
+    <Geo geoId="CN-440308" geoTypeId="DISTRICT" geoName="盐田区" geoCode="440308" wellKnownText="Yantian District"/>
+    <Geo geoId="CN-440309" geoTypeId="DISTRICT" geoName="其它区" geoCode="440309" wellKnownText="Other areas"/>
+    <Geo geoId="CN-4419" geoTypeId="CITY" geoName="东莞市" geoCode="441900" wellKnownText="Dongguan"/>
+    <Geo geoId="CN-441900" geoTypeId="DISTRICT" geoName="东莞市" geoCode="441900" wellKnownText="Dongguan"/>
+    <Geo geoId="CN-4406" geoTypeId="CITY" geoName="佛山市" geoCode="440600" wellKnownText="Foshan"/>
+    <Geo geoId="CN-440601" geoTypeId="DISTRICT" geoName="市辖区" geoCode="440601" wellKnownText="Municipal District"/>
+    <Geo geoId="CN-440604" geoTypeId="DISTRICT" geoName="禅城区" geoCode="440604" wellKnownText="Chancheng"/>
+    <Geo geoId="CN-440605" geoTypeId="DISTRICT" geoName="南海区" geoCode="440605" wellKnownText="Nanhai District"/>
+    <Geo geoId="CN-440606" geoTypeId="DISTRICT" geoName="顺德区" geoCode="440606" wellKnownText="Shunde"/>
+    <Geo geoId="CN-440607" geoTypeId="DISTRICT" geoName="三水区" geoCode="440607" wellKnownText="Sanshui District"/>
+    <Geo geoId="CN-440608" geoTypeId="DISTRICT" geoName="高明区" geoCode="440608" wellKnownText="Gaoming"/>
+    <Geo geoId="CN-4420" geoTypeId="CITY" geoName="中山市" geoCode="442000" wellKnownText="Zhongshan"/>
+    <Geo geoId="CN-442000" geoTypeId="DISTRICT" geoName="中山市" geoCode="442000" wellKnownText="Zhongshan"/>
+    
+    <Geo geoId="ABW" wellKnownText="阿鲁巴"/>
+    <Geo geoId="AFG" wellKnownText="阿富汗"/>
+    <Geo geoId="AGO" wellKnownText="安哥拉"/>
+    <Geo geoId="AIA" wellKnownText="安圭拉"/>
+    <Geo geoId="ALB" wellKnownText="阿尔巴尼亚"/>
+    <Geo geoId="AND" wellKnownText="安道​​尔"/>
+    <Geo geoId="ANT" wellKnownText="荷属安的列斯"/>
+    <Geo geoId="ARE" wellKnownText="阿拉伯联合酋长国"/>
+    <Geo geoId="ARG" wellKnownText="阿根廷"/>
+    <Geo geoId="ARM" wellKnownText="亚美尼亚"/>
+    <Geo geoId="ASM" wellKnownText="美属萨摩亚"/>
+    <Geo geoId="ATA" wellKnownText="南极洲"/>
+    <Geo geoId="ATF" wellKnownText="法国南部领土"/>
+    <Geo geoId="ATG" wellKnownText="安提瓜和巴布达"/>
+    <Geo geoId="AUS" wellKnownText="澳大利亚"/>
+    <Geo geoId="AUT" wellKnownText="奥地利"/>
+    <Geo geoId="AZE" wellKnownText="阿塞拜疆"/>
+    <Geo geoId="BDI" wellKnownText="布隆迪"/>
+    <Geo geoId="BEL" wellKnownText="比利时"/>
+    <Geo geoId="BEN" wellKnownText="贝宁"/>
+    <Geo geoId="BFA" wellKnownText="布基纳法索"/>
+    <Geo geoId="BGD" wellKnownText="孟加拉国"/>
+    <Geo geoId="BGR" wellKnownText="保加利亚"/>
+    <Geo geoId="BHR" wellKnownText="巴林"/>
+    <Geo geoId="BHS" wellKnownText="巴哈马"/>
+    <Geo geoId="BIH" wellKnownText="波士尼亚赫塞哥维纳"/>
+    <Geo geoId="BLR" wellKnownText="白俄罗斯"/>
+    <Geo geoId="BLZ" wellKnownText="伯利兹"/>
+    <Geo geoId="BMU" wellKnownText="百慕大"/>
+    <Geo geoId="BOL" wellKnownText="玻利维亚"/>
+    <Geo geoId="BRA" wellKnownText="巴西"/>
+    <Geo geoId="BRB" wellKnownText="巴巴多斯"/>
+    <Geo geoId="BRN" wellKnownText="文莱"/>
+    <Geo geoId="BTN" wellKnownText="不丹"/>
+    <Geo geoId="BVT" wellKnownText="布维岛"/>
+    <Geo geoId="BWA" wellKnownText="博茨瓦纳"/>
+    <Geo geoId="CAF" wellKnownText="中非共和国"/>
+    <Geo geoId="CAN" wellKnownText="加拿大"/>
+    <Geo geoId="CCK" wellKnownText="科科斯（基林）群岛"/>
+    <Geo geoId="CHE" wellKnownText="瑞士"/>
+    <Geo geoId="CHL" wellKnownText="智利"/>
+    <Geo geoId="CHN" wellKnownText="中国"/>
+    <Geo geoId="CIV" wellKnownText="科特迪瓦"/>
+    <Geo geoId="CMR" wellKnownText="喀麦隆"/>
+    <Geo geoId="COD" wellKnownText="刚果，刚果民主共和国"/>
+    <Geo geoId="COG" wellKnownText="刚果"/>
+    <Geo geoId="COK" wellKnownText="库克群岛"/>
+    <Geo geoId="COL" wellKnownText="哥伦比亚"/>
+    <Geo geoId="COM" wellKnownText="科摩罗"/>
+    <Geo geoId="CPV" wellKnownText="佛得角"/>
+    <Geo geoId="CRI" wellKnownText="哥斯达黎加"/>
+    <Geo geoId="CUB" wellKnownText="古巴"/>
+    <Geo geoId="CXR" wellKnownText="圣诞岛"/>
+    <Geo geoId="CYM" wellKnownText="开曼群岛"/>
+    <Geo geoId="CYP" wellKnownText="塞浦路斯"/>
+    <Geo geoId="CZE" wellKnownText="捷克"/>
+    <Geo geoId="DEU" wellKnownText="德国"/>
+    <Geo geoId="DJI" wellKnownText="吉布提"/>
+    <Geo geoId="DMA" wellKnownText="多米尼克"/>
+    <Geo geoId="DNK" wellKnownText="丹麦"/>
+    <Geo geoId="DOM" wellKnownText="多米尼加共和国"/>
+    <Geo geoId="DZA" wellKnownText="阿尔及利亚"/>
+    <Geo geoId="ECU" wellKnownText="厄瓜多尔"/>
+    <Geo geoId="EGY" wellKnownText="埃及"/>
+    <Geo geoId="ENGL" wellKnownText="英国"/>
+    <Geo geoId="ERI" wellKnownText="厄立特里亚"/>
+    <Geo geoId="ESH" wellKnownText="西撒哈拉"/>
+    <Geo geoId="ESP" wellKnownText="西班牙"/>
+    <Geo geoId="EST" wellKnownText="爱沙尼亚"/>
+    <Geo geoId="ETH" wellKnownText="埃塞俄比亚"/>
+    <Geo geoId="FIN" wellKnownText="芬兰"/>
+    <Geo geoId="FJI" wellKnownText="斐"/>
+    <Geo geoId="FLK" wellKnownText="福克兰群岛（马尔维纳斯）"/>
+    <Geo geoId="FRA" wellKnownText="法国"/>
+    <Geo geoId="FRO" wellKnownText="法罗群岛"/>
+    <Geo geoId="FSM" wellKnownText="密克罗尼西亚联邦"/>
+    <Geo geoId="FXX" wellKnownText="法国，大都会"/>
+    <Geo geoId="GAB" wellKnownText="加蓬"/>
+    <Geo geoId="GBR" wellKnownText="英国"/>
+    <Geo geoId="GEO" wellKnownText="格鲁吉亚"/>
+    <Geo geoId="GHA" wellKnownText="加纳"/>
+    <Geo geoId="GIB" wellKnownText="直布罗陀"/>
+    <Geo geoId="GIN" wellKnownText="几内亚"/>
+    <Geo geoId="GLP" wellKnownText="瓜德罗普岛"/>
+    <Geo geoId="GMB" wellKnownText="冈比亚"/>
+    <Geo geoId="GNB" wellKnownText="几内亚比绍"/>
+    <Geo geoId="GNQ" wellKnownText="赤道几内亚"/>
+    <Geo geoId="GRC" wellKnownText="希腊"/>
+    <Geo geoId="GRD" wellKnownText="格林纳达"/>
+    <Geo geoId="GRL" wellKnownText="格陵兰"/>
+    <Geo geoId="GTM" wellKnownText="危地马拉"/>
+    <Geo geoId="GUF" wellKnownText="法属圭亚那"/>
+    <Geo geoId="GUM" wellKnownText="关岛"/>
+    <Geo geoId="GUY" wellKnownText="圭亚那"/>
+    <Geo geoId="HKG" wellKnownText="香港"/>
+    <Geo geoId="HMD" wellKnownText="听取和麦当劳群岛"/>
+    <Geo geoId="HND" wellKnownText="洪都拉斯"/>
+    <Geo geoId="HRV" wellKnownText="克罗地亚（本地名称：赫尔瓦）"/>
+    <Geo geoId="HTI" wellKnownText="海地"/>
+    <Geo geoId="HUN" wellKnownText="匈牙利"/>
+    <Geo geoId="IDN" wellKnownText="印尼"/>
+    <Geo geoId="IND" wellKnownText="印度"/>
+    <Geo geoId="IOT" wellKnownText="英属印度洋领地"/>
+    <Geo geoId="IRL" wellKnownText="爱尔兰"/>
+    <Geo geoId="IRN" wellKnownText="伊朗（伊斯兰共和国）"/>
+    <Geo geoId="IRQ" wellKnownText="伊拉克"/>
+    <Geo geoId="ISL" wellKnownText="冰岛"/>
+    <Geo geoId="ISR" wellKnownText="以色列"/>
+    <Geo geoId="ITA" wellKnownText="意大利"/>
+    <Geo geoId="JAM" wellKnownText="牙买加"/>
+    <Geo geoId="JOR" wellKnownText="约旦"/>
+    <Geo geoId="JPN" wellKnownText="日本"/>
+    <Geo geoId="KAZ" wellKnownText="哈萨克斯坦"/>
+    <Geo geoId="KEN" wellKnownText="肯尼亚"/>
+    <Geo geoId="KGZ" wellKnownText="吉尔吉斯斯坦"/>
+    <Geo geoId="KHM" wellKnownText="柬埔寨"/>
+    <Geo geoId="KIR" wellKnownText="基里巴斯"/>
+    <Geo geoId="KNA" wellKnownText="圣基茨和尼维斯"/>
+    <Geo geoId="KOR" wellKnownText="大韩民国"/>
+    <Geo geoId="KWT" wellKnownText="科威特"/>
+    <Geo geoId="LAO" wellKnownText="老挝人民民主共和国"/>
+    <Geo geoId="LBN" wellKnownText="黎巴嫩"/>
+    <Geo geoId="LBR" wellKnownText="利比里亚"/>
+    <Geo geoId="LBY" wellKnownText="阿拉伯利比亚民众国"/>
+    <Geo geoId="LCA" wellKnownText="圣卢西亚"/>
+    <Geo geoId="LIE" wellKnownText="列支敦士登"/>
+    <Geo geoId="LKA" wellKnownText="斯里兰卡"/>
+    <Geo geoId="LSO" wellKnownText="莱索托"/>
+    <Geo geoId="LTU" wellKnownText="立陶宛"/>
+    <Geo geoId="LUX" wellKnownText="卢森堡"/>
+    <Geo geoId="LVA" wellKnownText="拉脱维亚"/>
+    <Geo geoId="MAC" wellKnownText="澳门"/>
+    <Geo geoId="MAR" wellKnownText="摩洛哥"/>
+    <Geo geoId="MCO" wellKnownText="摩纳哥"/>
+    <Geo geoId="MDA" wellKnownText="摩尔多瓦共和国"/>
+    <Geo geoId="MDG" wellKnownText="马达加斯加"/>
+    <Geo geoId="MDV" wellKnownText="马尔代夫"/>
+    <Geo geoId="MEX" wellKnownText="墨西哥"/>
+    <Geo geoId="MHL" wellKnownText="马绍尔群岛"/>
+    <Geo geoId="MKD" wellKnownText="马其顿，前南斯拉夫共和国"/>
+    <Geo geoId="MLI" wellKnownText="马里"/>
+    <Geo geoId="MLT" wellKnownText="马耳他"/>
+    <Geo geoId="MMR" wellKnownText="缅甸"/>
+    <Geo geoId="MNE" wellKnownText="黑山"/>
+    <Geo geoId="MNG" wellKnownText="蒙古"/>
+    <Geo geoId="MNP" wellKnownText="北马里亚纳群岛"/>
+    <Geo geoId="MOZ" wellKnownText="莫桑比克"/>
+    <Geo geoId="MRT" wellKnownText="毛里塔尼亚"/>
+    <Geo geoId="MSR" wellKnownText="蒙特塞拉特"/>
+    <Geo geoId="MTQ" wellKnownText="马提尼克"/>
+    <Geo geoId="MUS" wellKnownText="毛里求斯"/>
+    <Geo geoId="MWI" wellKnownText="马拉维"/>
+    <Geo geoId="MYS" wellKnownText="马来西亚"/>
+    <Geo geoId="MYT" wellKnownText="马约特岛"/>
+    <Geo geoId="NAM" wellKnownText="纳米比亚"/>
+    <Geo geoId="NCL" wellKnownText="新喀里多尼亚"/>
+    <Geo geoId="NER" wellKnownText="尼日尔"/>
+    <Geo geoId="NFK" wellKnownText="诺福克岛"/>
+    <Geo geoId="NGA" wellKnownText="尼日利亚"/>
+    <Geo geoId="NIC" wellKnownText="尼加拉瓜"/>
+    <Geo geoId="NIRL" wellKnownText="北爱尔兰"/>
+    <Geo geoId="NIU" wellKnownText="纽埃"/>
+    <Geo geoId="NLD" wellKnownText="荷兰"/>
+    <Geo geoId="NOR" wellKnownText="挪威"/>
+    <Geo geoId="NPL" wellKnownText="尼泊尔"/>
+    <Geo geoId="NRU" wellKnownText="瑙鲁"/>
+    <Geo geoId="NZL" wellKnownText="新西兰"/>
+    <Geo geoId="OMN" wellKnownText="阿曼"/>
+    <Geo geoId="PAK" wellKnownText="巴基斯坦"/>
+    <Geo geoId="PAN" wellKnownText="巴拿马"/>
+    <Geo geoId="PCN" wellKnownText="皮特凯恩"/>
+    <Geo geoId="PER" wellKnownText="秘鲁"/>
+    <Geo geoId="PHL" wellKnownText="菲律宾"/>
+    <Geo geoId="PLW" wellKnownText="帕劳"/>
+    <Geo geoId="PNG" wellKnownText="巴布亚新几内亚"/>
+    <Geo geoId="POL" wellKnownText="波兰"/>
+    <Geo geoId="PRI" wellKnownText="波多黎各"/>
+    <Geo geoId="PRK" wellKnownText="韩国，人民民主共和国"/>
+    <Geo geoId="PRT" wellKnownText="葡萄牙"/>
+    <Geo geoId="PRY" wellKnownText="巴拉圭"/>
+    <Geo geoId="PSE" wellKnownText="巴勒斯坦占领区"/>
+    <Geo geoId="PYF" wellKnownText="法属波利尼西亚"/>
+    <Geo geoId="QAT" wellKnownText="卡塔尔"/>
+    <Geo geoId="REU" wellKnownText="团圆"/>
+    <Geo geoId="ROU" wellKnownText="罗马尼亚"/>
+    <Geo geoId="RUS" wellKnownText="俄罗斯联邦"/>
+    <Geo geoId="RWA" wellKnownText="卢旺达"/>
+    <Geo geoId="SAU" wellKnownText="沙特阿拉伯"/>
+    <Geo geoId="SCOT" wellKnownText="苏格兰"/>
+    <Geo geoId="SDN" wellKnownText="苏丹"/>
+    <Geo geoId="SEN" wellKnownText="塞内加尔"/>
+    <Geo geoId="SGP" wellKnownText="新加坡"/>
+    <Geo geoId="SGS" wellKnownText="南乔治亚岛和南桑威奇群岛"/>
+    <Geo geoId="SHN" wellKnownText="圣赫勒拿"/>
+    <Geo geoId="SJM" wellKnownText="斯瓦尔巴岛和扬马延岛"/>
+    <Geo geoId="SLB" wellKnownText="所罗门群岛"/>
+    <Geo geoId="SLE" wellKnownText="塞拉利昂"/>
+    <Geo geoId="SLV" wellKnownText="萨尔瓦多"/>
+    <Geo geoId="SMR" wellKnownText="圣马力诺"/>
+    <Geo geoId="SOM" wellKnownText="索马里"/>
+    <Geo geoId="SPM" wellKnownText="圣皮埃尔和密克隆"/>
+    <Geo geoId="SRB" wellKnownText="塞尔维亚"/>
+    <Geo geoId="STP" wellKnownText="圣多美和普林西比"/>
+    <Geo geoId="SUR" wellKnownText="苏里南"/>
+    <Geo geoId="SVK" wellKnownText="斯洛伐克（斯洛伐克共和国）"/>
+    <Geo geoId="SVN" wellKnownText="斯洛文尼亚"/>
+    <Geo geoId="SWE" wellKnownText="瑞典"/>
+    <Geo geoId="SWZ" wellKnownText="斯威士兰"/>
+    <Geo geoId="SYC" wellKnownText="塞舌尔"/>
+    <Geo geoId="SYR" wellKnownText="阿拉伯叙利亚共和国"/>
+    <Geo geoId="TCA" wellKnownText="特克斯和凯科斯群岛"/>
+    <Geo geoId="TCD" wellKnownText="乍得"/>
+    <Geo geoId="TGO" wellKnownText="多哥"/>
+    <Geo geoId="THA" wellKnownText="泰国"/>
+    <Geo geoId="TJK" wellKnownText="塔吉克斯坦"/>
+    <Geo geoId="TKL" wellKnownText="托克劳"/>
+    <Geo geoId="TKM" wellKnownText="土库曼斯坦"/>
+    <Geo geoId="TLS" wellKnownText="东帝汶"/>
+    <Geo geoId="TON" wellKnownText="汤加"/>
+    <Geo geoId="TTO" wellKnownText="特里尼达和多巴哥"/>
+    <Geo geoId="TUN" wellKnownText="突尼斯"/>
+    <Geo geoId="TUR" wellKnownText="土耳其"/>
+    <Geo geoId="TUV" wellKnownText="图瓦卢"/>
+    <Geo geoId="TWN" wellKnownText="台湾"/>
+    <Geo geoId="TZA" wellKnownText="坦桑尼亚联合共和国"/>
+    <Geo geoId="UGA" wellKnownText="乌干达"/>
+    <Geo geoId="UKR" wellKnownText="乌克兰"/>
+    <Geo geoId="UMI" wellKnownText="美国本土外小岛屿"/>
+    <Geo geoId="URY" wellKnownText="乌拉圭"/>
+    <Geo geoId="USA" wellKnownText="美国"/>
+    <Geo geoId="UZB" wellKnownText="乌兹别克斯坦"/>
+    <Geo geoId="VAT" wellKnownText="罗马教廷（梵蒂冈城国）"/>
+    <Geo geoId="VCT" wellKnownText="圣文森特和格林纳丁斯"/>
+    <Geo geoId="VEN" wellKnownText="委内瑞拉"/>
+    <Geo geoId="VGB" wellKnownText="维尔京群岛（英国）"/>
+    <Geo geoId="VIR" wellKnownText="维尔京群岛（美国）"/>
+    <Geo geoId="VNM" wellKnownText="越南"/>
+    <Geo geoId="VUT" wellKnownText="瓦努阿图"/>
+    <Geo geoId="WALS" wellKnownText="威尔士"/>
+    <Geo geoId="WLF" wellKnownText="瓦利斯群岛和富图纳群岛"/>
+    <Geo geoId="WSM" wellKnownText="萨摩亚"/>
+    <Geo geoId="YEM" wellKnownText="也门"/>
+    <Geo geoId="YUG" wellKnownText="南斯拉夫"/>
+    <Geo geoId="ZAF" wellKnownText="南非"/>
+    <Geo geoId="ZMB" wellKnownText="赞比亚"/>
+    <Geo geoId="ZWE" wellKnownText="津巴布韦"/>
+    
+    <!-- YanWen API - START -->
+    <PartyIdentificationType partyIdentificationTypeId="YW_USERID" description="YanWen User ID"/>
+    <PartyIdentificationType partyIdentificationTypeId="YW_PASSWORD" description="YanWen Password"/>
+    <PartyIdentificationType partyIdentificationTypeId="YW_NAME" description="YanWen User Name"/>
+    <PartyIdentificationType partyIdentificationTypeId="YW_TOKEN" description="YanWen API Token"/>
+    <!-- YanWen API - END -->
+    
+</entity-engine-xml>

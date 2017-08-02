@@ -1,0 +1,2659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+    
+    <screen name="main">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <include-screen name="enumerationScreen"/>
+                        <container style="clear"/>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/bulkModule/main.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="summary">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="url" value="summary"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/summary.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="开发员">
+                            <include-form name="ownerGroup" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/summary.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- Project - START -->
+    <screen name="project">
+        <section>
+            <actions>
+                <set field="headerItem" value="project"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/project.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/project/project.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- 20170316 -->
+    <screen name="TESTproject">
+        <section>
+            <actions>
+                <set field="headerItem" value="TESTproject"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/validate/package.json" global="true" />
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/TESTproject.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project/TESTproject.ftl"/>
+                                <html-template location="component://gudao/webapp/gudao/project/test.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>    
+
+    <!-- pictureWall 20170320 -->
+    <screen name="pictureWall">
+        <section>
+            <actions>
+                <set field="headerItem" value="TESTproject"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/pictureWall/css/default.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/pictureWall/css/normalize.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/pictureWall/css/screen.css" global="true"/>
+                <!-- <set field="layoutSettings.rtlStyleSheets[+0]" value="/images/jquery/plugins/validate/bootstrap.min.css" global="true"/> -->
+
+                <set field="layoutSettings.javaScripts[+0]" value="/images/pictureWall/js/jquery-3.2.0.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/pictureWall/js/main.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/pictureWall/photo/data.js" global="true" />
+                <!-- <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/TESTproject.groovy"/> -->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/pictureWall/pictureWall.ftl"/>
+                                <!-- <html-template location="component://gudao/webapp/gudao/project/test.ftl"/> -->
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- react_pictureWall 20170327 -->
+    <screen name="react_pictureWall">
+        <section>
+            <actions>
+                <set field="headerItem" value="react_pictureWall"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/react_pictureWall/example.css" global="true"/> -->
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/react_pictureWall/main.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/react_pictureWall/rc-slider.css" global="true"/> -->
+                
+             
+                <!-- <set field="layoutSettings.rtlStyleSheets[+0]" value="/images/jquery/plugins/validate/bootstrap.min.css" global="true"/> -->
+
+                <!-- <set field="layoutSettings.javaScripts[+0]" value="/images/react_pictureWall/app.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/react_pictureWall/bundle.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/react_pictureWall/common.js" global="true" /> -->
+                <!-- <set field="layoutSettings.javaScripts[+0]" value="/images/react_pictureWall/standalone.js" global="true" /> -->
+
+                <!-- <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/TESTproject.groovy"/> -->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/react_pictureWall/pictureWall3.ftl"/>
+                               <!--  <html-template location="component://gudao/webapp/gudao/react_pictureWall/pictureWall2.ftl"/> -->
+                                <!-- <html-template location="component://gudao/webapp/gudao/project/test.ftl"/> -->
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- project_demo 20170405 -->
+    <screen name="project_demo">
+        <section>
+            <actions>
+                <set field="headerItem" value="project_demo"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/react_pictureWall/example.css" global="true"/> -->
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/react_pictureWall/main.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/react_pictureWall/rc-slider.css" global="true"/> -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/index.groovy"/>
+
+                <!-- <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/TESTproject.groovy"/> -->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/index.ftl"/>
+                                
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+
+    <screen name="testyaya_1">
+        <section>
+            <actions>
+                <set field="headerItem" value="testyaya_1"/>
+
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/testyaya_1.groovy"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/ViewGeneric.groovy"/>
+                <!-- <script location="component://webtools/webapp/webtools/WEB-INF/actions/entity/ViewGeneric.groovy"/> -->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <!-- <screenlet title="testyaya">
+                            <include-form name="testyaya_1" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet> -->
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/testyaya_1.ftl"/>
+                                <!-- <html><html-template location="component://webtools/webapp/webtools/entity/ListGeneric.ftl"/></html> -->
+                                
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+
+    <screen name="dailyTask">
+        <section>
+            <actions>
+                <set field="headerItem" value="dailyTask"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/dailyTask.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <!-- <screenlet title="dailyTask">
+                            <include-form name="testyaya_1" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet> -->
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/dailyTask.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+            <screen name="testyaya">
+        <section>
+            <actions>
+                <set field="headerItem" value="testyaya"/>
+
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/testyaya.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/testyaya.ftl"/>
+                                
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+<!-- 20170719 -->
+    <screen name="table_data_tables">
+        <section>
+            <actions>
+                <set field="headerItem" value="table_data_tables"/>
+                <!-- <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/table_data_tables.groovy"/> -->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/table_data_tables.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+<!-- 20170406 noshow -->
+    <screen name="projects">
+        <section>
+            <actions>
+                <set field="headerItem" value="projects"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/projects/projects.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="projects_Technical_Department">
+        <section>
+            <actions>
+                <set field="headerItem" value="projects_Technical_Department"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/projects_Technical_Department.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="project_detail_Technical_Department">
+        <section>
+            <actions>
+                <set field="headerItem" value="project_detail_Technical_Department"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/project_detail_Technical_Department.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- 20170410 -->
+    <screen name="projects_Technical_Department_1">
+        <section>
+            <actions>
+                <set field="headerItem" value="projects_Technical_Department_1"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/>
+                <!-- <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/getProjectListTab.groovy"/> -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/projects_Technical_Department_1.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/projects_Technical_Department_1.ftl"/>
+                                <!-- <html-template location="component://gudao/webapp/gudao/project_demo/skin-config.html"/> -->
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="project_detail_Technical_Department_1">
+        <section>
+            <actions>
+                <set field="headerItem" value="project_detail_Technical_Department"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/project_detail_Technical_Department_1.ftl"/>
+                               
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--  -->
+    <screen name="projects_Technical_Department_2">
+        <section>
+            <actions>
+                <set field="headerItem" value="projects_Technical_Department_2"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/project_demo/js/jquery.mark.min.js" global="true" />
+                <!-- <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/getProjectListTab.groovy"/> -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/projects_Technical_Department_2.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/projects_Technical_Department_2.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="project_detail_Technical_Department_2">
+        <section>
+            <actions>
+                <set field="headerItem" value="project_detail_Technical_Department"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/project_detail_Technical_Department_2.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/project_detail_Technical_Department_2.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- 20170424 -->
+<!--     <screen name="edit_project_form_basic_1">
+        <section>
+            <actions>
+                <set field="headerItem" value="edit_project_form_basic_1"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/edit_project_form_basic_1.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://gudao/webapp/gudao/project_demo/edit_project_form_basic_1.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen> -->
+
+    <screen name="edit_project_form_basic_1">
+        <section>
+            <actions>
+                <set field="headerItem" value="project"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_project_demo.css" global="true"/> -->
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/style_1.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/bootstrap.min.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/font-awesome.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/custom.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/animate.css" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" global="true"/> -->
+
+                <!-- FooTable -->
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/plugins/footable/footable.core.csss" global="true"/> -->
+
+                <!-- datetimepicker -->
+                <!-- <set field="layoutSettings.styleSheets[+0]" value="/images/project_demo/css/jquery.datetimepicker.css" global="true"/> -->
+                
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project_demo/edit_project_form_basic_1.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/project_demo/edit_project_form_basic_1.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+
+
+    <screen name="projectTask">
+        <section>
+            <actions>
+                <set field="headerItem" value="project"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/projectTask.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/project/projectTask.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="getProjectListByCategory">
+        <section>
+            <actions>
+                <property-map resource="GudaoUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/getProjectListByCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/project/getProjectListByCategory.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="getProjectListTab">
+        <section>
+            <actions>
+                <property-map resource="GudaoUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/getProjectListTab.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/project/getProjectListTab.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="getProjectTaskList">
+        <section>
+            <actions>
+                <property-map resource="GudaoUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/getProjectTaskList.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/project/getProjectTaskList.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editProject">
+        <section>
+            <actions>
+                <set field="headerItem" value="project"/>
+                <set field="filterInput" from-field="parameters.filterInput"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/project/editProject.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/project/editProject.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- Project - END -->
+    
+    <screen name="importNewProduct">
+        <section>
+            <actions>
+                <set field="headerItem" value="importNewProduct"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="tabButtonItem" value="importNewProduct"/>
+                <set field="viewSize" value="10"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <include-screen name="enumerationScreen"/>
+                        <container style="clear"/>
+                        <section>
+                            <widgets>
+                                <screenlet title="Import New Product" collapsible="true" initially-collapsed="false" id="import_product">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="importNewProduct"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                                <screenlet title="View data from uploaded Product file which will import the data from temp table into ofbiz" collapsible="true" id="fileList" initially-collapsed="false">
+                                    <section>
+                                        <condition>
+                                            <if-has-permission permission="GUDAO" action="_ADMIN"/>
+                                        </condition>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="listProductImportAdmin"/>
+                                        </widgets>
+                                        <fail-widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="listProductImport"/>
+                                        </fail-widgets>
+                                    </section>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewProductImport">
+        <section>
+            <actions>
+                <set field="headerItem" value="importProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+                <set field="tabButtonItem" value="importProduct"/>
+                <entity-and list="productImports" entity-name="ProductImportGudao">
+                    <field-map field-name="fileName" from-field="fileName"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container>
+                                    <link style="buttontext" text="Back to Upload File" target="importNewProduct" link-type="hidden-form">
+                                        <parameter param-name="importFormId" from-field="importFormId"/>
+                                    </link>
+                                </container>
+                                <screenlet title="View Product Importation - File name: ${fileName}">
+                                    <include-form location="component://gudao/widget/GudaoForms.xml" name="importMultiProducts"/>
+                                    <include-form location="component://gudao/widget/GudaoForms.xml" name="viewProductImport"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editTemporaryProduct">
+        <section>
+            <actions>
+                <set field="headerItem" value="importProduct"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+                <set field="tabButtonItem" value="importProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <entity-one value-field="productImport" entity-name="ProductImportGudao">
+                    <field-map field-name="productImportId" from-field="parameters.productImportId"/>
+                </entity-one>
+                <!--<entity-and list="orderItemImports" entity-name="OrderItemImport">
+                 <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+                 </entity-and>-->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-compare operator="equals" value="N" field="productImport.importedStatus"/>
+                            </condition>
+                            <widgets>
+                                <container>
+                                    <link text="Back" target="viewProductImport" style="buttontext" link-type="hidden-form">
+                                        <parameter param-name="importFormId" from-field="importFormId"/>
+                                        <parameter param-name="fileName"/>
+                                    </link>
+                                </container>
+                                <container><!--<container style="lefthalf">-->
+                                    <screenlet title="Edit Temporary Product Importation">
+                                        <include-form location="component://gudao/widget/GudaoForms.xml" name="editTemporaryProduct"/>
+                                    </screenlet>
+                                </container>
+                                <!--<container style="righthalf">
+                                 <screenlet title="Edit Temporary Order Item Importation">
+                                 <include-form location="component://import/widget/ImportForms.xml" name="editTemporaryOrderItem"/>
+                                 </screenlet>
+                                 </container>-->
+                                <container style="clear"/>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="Edit Temporary Product Importation">
+                                    <label text="Cannot edit the imported product"/>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="bulkUpdate">
+        <section>
+            <actions>
+                <set field="headerItem" value="bulkUpdate"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="viewSize" value="50"/>
+                <set field="updateFormId" from-field="parameters.updateFormId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <include-screen name="enumerationScreen"/>
+                        <container style="clear"/>
+                        <section>
+                            <widgets>
+                                <screenlet title="Update Bulk Product Update" collapsible="true" initially-collapsed="false" id="update_product">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="updateBulkProductUpdate"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                                <screenlet title="View data from uploaded Product file which will import the data from temp table into ofbiz" collapsible="true" id="fileList" initially-collapsed="false">
+                                    <section>
+                                        <condition>
+                                            <if-has-permission permission="GUDAO" action="_ADMIN"/>
+                                        </condition>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="listBulkProductUpdateAdmin"/>
+                                        </widgets>
+                                        <fail-widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="listBulkProductUpdate"/>
+                                        </fail-widgets>
+                                    </section>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewProductUpdate">
+        <section>
+            <actions>
+                <set field="headerItem" value="updateProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <set field="updateFormId" from-field="parameters.updateFormId"/>
+                <set field="tabButtonItem" value="updateProduct"/>
+                <entity-and list="bulkProductUpdates" entity-name="ProductImportGudao">
+                    <field-map field-name="fileName" from-field="fileName"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container>
+                                    <link style="buttontext" text="Back to Upload File" target="bulkUpdate" link-type="hidden-form">
+                                        <parameter param-name="updateFormId" from-field="updateFormId"/>
+                                    </link>
+                                </container>
+                                <screenlet title="View Product Update - File name: ${fileName}">
+                                    <include-form location="component://gudao/widget/GudaoForms.xml" name="updateMultiProducts"/>
+                                    <include-form location="component://gudao/widget/GudaoForms.xml" name="viewProductUpdate"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editTemporaryProductUpdate">
+        <section>
+            <actions>
+                <set field="headerItem" value="updateProduct"/>
+                <set field="updateFormId" from-field="parameters.updateFormId"/>
+                <set field="tabButtonItem" value="updateProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <entity-one value-field="bulkProductUpdate" entity-name="ProductImportGudao">
+                    <field-map field-name="productImportId" from-field="parameters.productImportId"/>
+                </entity-one>
+                <!--<entity-and list="orderItemImports" entity-name="OrderItemImport">
+                 <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+                 </entity-and>-->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-compare operator="equals" value="N" field="bulkProductUpdate.importedStatus"/>
+                            </condition>
+                            <widgets>
+                                <container>
+                                    <link text="Back" target="viewProductUpdate" style="buttontext" link-type="hidden-form">
+                                        <parameter param-name="updateFormId" from-field="updateFormId"/>
+                                        <parameter param-name="fileName"/>
+                                    </link>
+                                </container>
+                                <container><!--<container style="lefthalf">-->
+                                    <screenlet title="Edit Temporary Product Update">
+                                        <include-form location="component://gudao/widget/GudaoForms.xml" name="editTemporaryProductUpdate"/>
+                                    </screenlet>
+                                </container>
+                                <!--<container style="righthalf">
+                                 <screenlet title="Edit Temporary Order Item Importation">
+                                 <include-form location="component://import/widget/ImportForms.xml" name="editTemporaryOrderItem"/>
+                                 </screenlet>
+                                 </container>-->
+                                <container style="clear"/>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="Edit Temporary Product Update">
+                                    <label text="Cannot edit the temporary product update"/>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productMaster">
+        <section>
+            <actions>
+                <property-map resource="GudaoUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="productMaster"/>
+                <set field="pageViewName" value="${parameters.pageViewName}"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/ProductMasterSearchList.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="Product Master">
+                            <include-form name="productMaster" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <section>
+                            <condition>
+                                <not><if-compare operator="equals" value="DEFAULT" field="pageViewName"/></not>
+                            </condition>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <not><if-compare operator="equals" value="PLATFORM" field="pageViewName"/></not>
+                                    </condition>
+                                    <widgets>
+                                        <section>
+                                            <condition>
+                                                <not><if-compare operator="equals" value="SBU" field="pageViewName"/></not>
+                                            </condition>
+                                            <widgets>
+                                                <platform-specific>
+                                                    <html><html-template location="component://gudao/webapp/gudao/product/ViewProductMasterSearch.ftl"/></html>
+                                                </platform-specific>
+                                            </widgets>
+                                            <fail-widgets>
+                                                <platform-specific>
+                                                    <html><html-template location="component://gudao/webapp/gudao/product/ViewProductMasterSearch-SBU.ftl"/></html>
+                                                    <!--<html><html-template location="component://gudao/webapp/gudao/product/ViewProductMasterSearch-smt.ftl"/></html>-->
+                                                </platform-specific>
+                                            </fail-widgets>
+                                        </section>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <platform-specific>
+                                            <html><html-template location="component://gudao/webapp/gudao/product/ViewProductMasterSearch-Platform.ftl"/></html>
+                                        </platform-specific>
+                                    </fail-widgets>
+                                </section>
+                            </widgets>
+                            <fail-widgets>
+                                <platform-specific>
+                                    <html><html-template location="component://gudao/webapp/gudao/product/ViewProductMasterSearch.ftl"/></html>
+                                </platform-specific>
+                            </fail-widgets>
+                        </section>
+                        <!--<section><widgets>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/ViewProductMasterSearch.ftl"/></html>
+                        </platform-specific>
+                        </widgets></section>-->
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="veroList">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/veroList.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="Vero List">
+                            <include-form name="veroList" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/veroList.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productMasterStatus">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/productMasterStatus.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="PM Status Search - Result (${productCount})">
+                            <include-form name="productMasterStatus" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/productMasterStatus.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="reportMain">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/reportProfit.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="Report Profit">
+                            <include-form name="reportProfit" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/bulkModule/reportMain.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    
+    <screen name="reportImportData">
+        <section>
+            <actions>
+                <set field="headerItem" value="importReportData"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="tabButtonItem" value="importReportData"/>
+                <set field="viewSize" value="50"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        
+                        <section>
+                            <widgets>
+                                <screenlet title="Import Profit Report Data" collapsible="true" initially-collapsed="false" id="import_report">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="importReportProfit"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                                <screenlet title="View data from uploaded Product file which will import the data from temp table into ofbiz" collapsible="true" id="fileList" initially-collapsed="false">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="listReportImport"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewReportImport">
+        <section>
+            <actions>
+                <set field="headerItem" value="importReportData"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+                <set field="tabButtonItem" value="importReportData"/>
+                <entity-and list="productImports" entity-name="ReportImport">
+                    <field-map field-name="fileName" from-field="fileName"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container>
+                                    <link style="buttontext" text="Back to Upload File" target="reportImportData" link-type="hidden-form">
+                                        <parameter param-name="importFormId" from-field="importFormId"/>
+                                    </link>
+                                </container>
+                                <screenlet title="View Product Importation - File name: ${fileName}">
+                                    <include-form location="component://gudao/widget/GudaoForms.xml" name="importMultiReports"/>
+                                    <include-form location="component://gudao/widget/GudaoForms.xml" name="viewReportImport"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editTemporaryReport">
+        <section>
+            <actions>
+                <set field="headerItem" value="importReport"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+                <set field="tabButtonItem" value="importReport"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <entity-one value-field="reportImport" entity-name="ReportImport">
+                    <field-map field-name="reportImportId" from-field="parameters.reportImportId"/>
+                </entity-one>
+                <!--<entity-and list="orderItemImports" entity-name="OrderItemImport">
+                 <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+                 </entity-and>-->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-compare operator="equals" value="N" field="reportImport.importedStatus"/>
+                            </condition>
+                            <widgets>
+                                <container>
+                                    <link text="Back" target="viewReportImport" style="buttontext" link-type="hidden-form">
+                                        <parameter param-name="importFormId" from-field="importFormId"/>
+                                        <parameter param-name="fileName"/>
+                                    </link>
+                                </container>
+                                <container><!--<container style="lefthalf">-->
+                                    <screenlet title="Edit Temporary Report Importation">
+                                        <include-form location="component://gudao/widget/GudaoForms.xml" name="editTemporaryReport"/>
+                                    </screenlet>
+                                </container>
+                                <!--<container style="righthalf">
+                                 <screenlet title="Edit Temporary Order Item Importation">
+                                 <include-form location="component://import/widget/ImportForms.xml" name="editTemporaryOrderItem"/>
+                                 </screenlet>
+                                 </container>-->
+                                <container style="clear"/>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="Edit Temporary Report Importation">
+                                    <label text="Cannot edit the imported report"/>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewProductImage">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewProductImage.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/ViewProductImage.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewProductGpsMini">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewProductGpsMini.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/product/ViewProductGpsMini.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewProductGmsMini">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewProductGmsMini.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/ViewProductGmsMini.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+                
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewProductGmsDetailMini">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewProductGmsDetailMini.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/ViewProductGmsDetailMini.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+                
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productListingStatus">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Listing Status"/>
+                <set field="headerItem" value="productListingStatus"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/productListingStatus.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="Product Listing Status - Filter">
+                            <include-form name="productListingStatus" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/productListingStatus.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editProductMaster">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/editProductMaster.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/editProductMaster.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- Wish - START -->
+    <screen name="wishListingCrawlStatus">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Wish Listing Status"/>
+                <set field="headerItem" value="wishListingStatus"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/wish/wishListingCrawlStatus.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="WishBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/wish/wishListingCrawlStatus.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="wishListingDetail">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Wish Listing Detail"/>
+                <set field="headerItem" value="wishListingStatus"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/wishListingDetail.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="Wish Listing Detail - Filter">
+                            <include-form name="wishListingDetail" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/wish/wishListingDetail.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="bestSellingMonitor">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Wish Best Selling Monitor"/>
+                <set field="headerItem" value="wishBestSelling"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/wish/wishBestSellingMonitor.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="WishBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/wish/wishBestSellingMonitor.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="bestSellingMonitorListMgr">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Wish Best Selling Monitor List Manager"/>
+                <set field="headerItem" value="bestSellingMonitorListMgr"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/wish/bestSellingMonitorListMgr.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="WishBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/wish/bestSellingMonitorListMgr.ftl"/></html>
+                        </platform-specific>
+                        <screenlet title="Best Selling List">
+                            <include-form name="updateWishBestSellingList" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                        <screenlet title="Create New Best Selling List">
+                            <include-form name="createWishBestSellingList" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="wishListingCheck">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Wish Selling Check"/>
+                <set field="headerItem" value="wishListingCheck"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/wish/wishListingCheck.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="WishBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/wish/wishListingCheck.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- Wish - END -->
+    
+    <!-- TASK - START -->
+    <screen name="operationalTaskView">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Task View"/>
+                <set field="headerItem" value="taskView"/>
+                <set field="type" from-field="parameters.type"/>
+                <set field="statusId" from-field="parameters.statusId"/>
+                <set field="priority" from-field="parameters.priority"/>
+                <set field="receiver" from-field="parameters.receiver"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/operationalTaskView.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <!--<screenlet title="Task Search Filter">
+                            <include-form name="operationalTaskView" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>-->
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/task/operationalTaskView.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editOperationalTask">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Task Edit"/>
+                <set field="headerItem" value="taskEdit"/>
+                <set field="taskId" from-field="parameters.taskId"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/editOperationalTask.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="Gudao - Task Edit"/>
+                        </container>
+                        <platform-specific><html><html-template location="component://gudao/webapp/gudao/task/editOperationalTask.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="createOperationalTaskSuccess">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Task Edit"/>
+                <set field="headerItem" value="taskEdit"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="Gudao - Task Edit"/>
+                        </container>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/task/createOperationalTaskSuccess.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="taskView">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Task View"/>
+                <set field="headerItem" value="taskView"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/taskView.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/taskView.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="taskDetailCondition1">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Task View"/>
+                <set field="url" value="taskDetailCondition1"/>
+                <set field="headerItem" value="taskView"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/taskDetailCondition1.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="开发员">
+                            <include-form name="ownerGroup" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/taskDetailCondition1.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="taskDetailCondition2">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Task View"/>
+                <set field="headerItem" value="taskView"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/taskDetailCondition2.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/taskDetailCondition2.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="taskDetailCondition3">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Task View"/>
+                <set field="headerItem" value="taskView"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/taskDetailCondition3.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/taskDetailCondition3.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="taskDetailCondition4">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Task View"/>
+                <set field="headerItem" value="taskView"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/taskDetailCondition4.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/taskDetailCondition4.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- TASK - END -->
+    
+    <!-- MOTHERVERSION - START -->
+    <screen name="motherVersion">
+        <section>
+            <actions>
+                <set field="headerItem" value="importNewProduct"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="tabButtonItem" value="importMotherVersion"/>
+                <set field="viewSize" value="10"/>
+                <set field="siteId" from-field="parameters.siteId"/>
+                <set field="motherVersionType" from-field="parameters.motherVersionType"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        
+                        <section>
+                            <widgets>
+                                <screenlet title="Import Mother Version" collapsible="true" initially-collapsed="false" id="import_motherversion">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="importMotherVersion"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                               
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- MOTHERVERSION - END -->
+    
+    
+    <!-- GQS - END -->
+    <screen name="viewProductGqs">
+        <section>
+            <actions>
+             <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewProductGqs.groovy"/>
+             <set field="platformFilter" from-field="parameters.platform"/>
+             <set field="channelFilter" from-field="parameters.channel"/>
+             <set field="typeFilter" from-field="parameters.type"/>
+             <set field="shipTypeFilter" from-field="parameters.shipType"/>
+             <set field="ownerGroupFilter" from-field="parameters.ownerGroup"/>
+             <set field="createdByFilter" from-field="parameters.createdBy"/>
+             <set field="accountFilter" from-field="parameters.account"/>
+             <set field="orderIdFilter" from-field="parameters.orderId"/>
+             <set field="customerIdFilter" from-field="parameters.customerId"/>
+             </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/ViewProductGqs.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+                
+            </widgets>
+        </section>
+    </screen>
+    <screen name="editProductGqsDetailMini">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/editProductGqsDetailMini.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/editProductGqsDetailMini.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+                
+            </widgets>
+        </section>
+    </screen>
+    <screen name="createProductGqsDetailSuccess">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Product GQS Edit"/>
+                <set field="headerItem" value="Product GQS Edit"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="Gudao - Product GQS Edit"/>
+                        </container>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/createProductGqsDetailSuccess.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- GQS - END -->
+    
+    
+    <!-- TARGET - START -->
+    <screen name="ebay">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/ebay.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/ebay.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editEbay">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/ebay.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Edit eBay Target">
+                            <include-form name="UpdateGudaoTarget" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/editEbay.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="wish">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/wish.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/wish.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="smt">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/smt.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/smt.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="amazon">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/amazon.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/amazon.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editAmazon">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/amazon.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Edit Amazon Target">
+                            <include-form name="UpdateGudaoTarget" location="component://gudao/widget/GudaoForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="target">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="userLoginIdInput" value="${userLoginIdInput}"/>
+                <set field="period" value="${period}"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/target.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/target.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- test 20170316 -->
+    <screen name="TESTtarget">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="userLoginIdInput" value="${userLoginIdInput}"/>
+                <set field="period" value="${period}"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/jquery/plugins/validate/bootstrap.min.css" global="true"/>
+                <!-- <set field="layoutSettings.rtlStyleSheets[+0]" value="/images/jquery/plugins/validate/bootstrap.min.css" global="true"/> -->
+
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/validate/bootstrap.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/validate/jquery.min.js" global="true"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/TESTtarget.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/TESTtarget.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="editTarget">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <!--<set field="targetId" value="${parameters.targetId}"/>-->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/editTarget.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/editTarget.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="controlPanel">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/controlPanel.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/target/controlPanel.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- TARGET - END -->
+    
+    <!-- TBL - START -->
+    <screen name="tbl">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="productId" from-field="parameters.productId"/>
+                <set field="productName" from-field="parameters.productName"/>
+                <set field="ownerGroupInput" from-field="parameters.ownerGroupInput"/>
+                <set field="listerPlatform" from-field="parameters.listerPlatform"/>
+                <set field="lister" from-field="parameters.lister"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/tbl.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="Filter">
+                            <include-form name="tbl" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/tbl.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="tbl-skuList">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="productId" from-field="parameters.productId"/>
+                <set field="productName" from-field="parameters.productName"/>
+                <set field="ownerGroupInput" from-field="parameters.ownerGroupInput"/>
+                <set field="listerPlatform" from-field="parameters.listerPlatform"/>
+                <set field="lister" from-field="parameters.lister"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/tbl.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/product/tbl-skuList.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!-- TBL - END -->
+    
+    <!-- Listing == START -->
+    <screen name="productBasicInfo">
+        <section>
+            <actions>
+                <set field="headerItem" value="Listing"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/productBasicInfo.groovy"/>
+            </actions>
+            <widgets>
+                
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ListingBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/productBasicInfo.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productBasicInfoMini">
+        <section>
+            <actions>
+                <set field="headerItem" value="Listing"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/productBasicInfo.groovy"/>
+            </actions>
+            <widgets>
+                
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/productBasicInfo.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- Listing == END -->
+    
+    
+    <screen name="sbuReport">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="newProduct"/>
+                <set field="period" value="parameters.period"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/sbuReport.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/report/sbuReport.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewEbayCaseRefund">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="viewEbayCaseRefund}"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewEbayCaseRefund.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/viewEbayCaseRefund.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="epsPositive">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="EPS正分停售"/>
+                <set field="headerItem" value="EPS正分停售"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/epsPositive.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="epsPositive">
+                            <include-form name="epsPositive" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/epsPositive.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="epsNegative">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="EPS负分在售"/>
+                <set field="headerItem" value="EPS负分在售"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/epsNegative.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="epsNegative">
+                            <include-form name="epsNegative" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/epsNegative.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="epsCheatSheet">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="EPS Cheat Sheet"/>
+                <set field="headerItem" value="EPS Cheat Sheet"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/epsCheatSheet.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/epsCheatSheet.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="importSalesXls">
+        <section>
+            <actions>
+                <set field="headerItem" value="importSalesXls"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="tabButtonItem" value="importSalesXls"/>
+                <set field="viewSize" value="10"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        
+                        <section>
+                            <widgets>
+                                <screenlet title="Import New Product" collapsible="true" initially-collapsed="false" id="import_product">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://gudao/widget/GudaoForms.xml" name="importSalesXls"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                                
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="platformSales">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="platformSales"/>
+                <set field="period" value="parameters.period"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/platformSales.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/report/platformSales.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="salesSkuCount">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="SalesSkuCount"/>
+                <set field="period" value="parameters.period"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/salesSkuCount.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/report/salesSkuCount.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    
+    <screen name="salesSbuPlatform">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="salesSbuPlatform"/>
+                <set field="period" value="parameters.period"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/salesSbuPlatform.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/report/salesSbuPlatform.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="salesSbuPlatformAccount">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="salesSbuPlatformAccount"/>
+                <set field="period" value="parameters.period"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/salesSbuPlatformAccount.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-compare operator="equals" value="false" field="detail"/>
+                            </condition>
+                            <widgets>
+                                <platform-specific>
+                                    <html><html-template location="component://gudao/webapp/gudao/report/salesSbuPlatformAccount-Total.ftl"/></html>
+                                </platform-specific>
+                            </widgets>
+                            <fail-widgets>
+                                <platform-specific>
+                                    <html><html-template location="component://gudao/webapp/gudao/report/salesSbuPlatformAccount-Detail.ftl"/></html>
+                                </platform-specific>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="salesSummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="salesSummary"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/salesSummary.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/report/salesSummary.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="currencySkuCount">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="currencySkuCount"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/currencySkuCount.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="ReportBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <screenlet title="currencySkuCount">
+                            <include-form name="currencySkuCount" location="component://gudao/widget/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/report/currencySkuCount.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="successClose">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Success Close"/>
+                <set field="headerItem" value="Success Close"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="Success Close"/>
+                        </container>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/successClose.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="successReload">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Success Reload"/>
+                <set field="headerItem" value="Success Reload"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="Success Reload"/>
+                        </container>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/successReload.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewSupplierPrice">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewSupplierPrice.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/viewSupplierPrice.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+                
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewEnumeration">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewEnumeration.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/bulkModule/viewEnumerationFooter.ftl"/></html>
+                        </platform-specific>
+                        <container style="clear"/>
+                        <include-screen name="viewEnumerationLeft"/>
+                        <container style="clear"/>
+                        <include-screen name="viewEnumerationRight"/>
+                        <container style="clear"/>
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/bulkModule/viewEnumerationFooter.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+                
+            </widgets>
+        </section>
+    </screen>
+    <screen name="viewEnumerationLeft">
+        <section>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/bulkModule/viewEnumerationLeft.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="viewEnumerationRight">
+        <section>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/bulkModule/viewEnumerationRight.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="enumerationScreen">
+        <section>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://gudao/webapp/gudao/bulkModule/enumerationScreen.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="pipeline">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Gudao Pipeline"/>
+                <set field="headerItem" value="Gudao Pipeline"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/pipeline.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/pipeline.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewPmRules">
+        <section>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/bulkModule/pmRules.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewGudaoWiki">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Gudao Wiki"/>
+                <set field="headerItem" value="Gudao Wiki"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/viewGudaoWiki.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/bulkModule/viewGudaoWiki.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editWikiEntry">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Edit Wiki Entry"/>
+                <set field="headerItem" value="Edit Wiki Entry"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/editWikiEntry.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/bulkModule/editWikiEntry.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- RivalListing == START -->
+    <screen name="rivalPriceMonitor">
+        <section>
+            <actions>
+                <set field="headerItem" value="Listing"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/rivalPriceMonitor.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="EbayBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/ebay/rivalPriceMonitor.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="manageRivalPriceMonitor">
+        <section>
+            <actions>
+                <set field="headerItem" value="Listing"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/manageRivalPriceMonitor.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="EbayBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/ebay/manageRivalPriceMonitor.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editRivalPriceMonitor">
+        <section>
+            <actions>
+                <set field="headerItem" value="Listing"/><!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/manageRivalPriceMonitor.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/ebay/editRivalPriceMonitor.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editEbayListingPrice">
+        <section>
+            <actions>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/editEbayListingPrice.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/ebay/editEbayListingPrice.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="addRivalItemId">
+        <section>
+            <actions>
+                <set field="motherSku" value="${parameters.motherSku}"/>
+                <set field="site" value="${parameters.site}"/>
+                <set field="userLogin" value="${parameters.userLogin}"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="mini-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/ebay/addRivalItemId.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- RivalListing == END -->
+    
+    <!-- SalesSearch == START -->
+    <screen name="salesSearch">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Sales Search"/>
+                <set field="headerItem" value="Sales Search"/>
+                <script location="component://gudao/webapp/gudao/WEB-INF/actions/salesSearch.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu location="component://gudao/widget/GudaoMenus.xml" name="MainTabBar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://gudao/webapp/gudao/product/salesSearch.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- SalesSearch == END -->
+
+    
+</screens>

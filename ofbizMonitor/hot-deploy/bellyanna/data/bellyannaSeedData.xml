@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    <!--
+     Enumeration
+     RoleType
+     PaymentMethodType
+     ProductContentType
+     ProductStoreContentType
+     ProductStoreGroupType
+     ProductStoreGroup
+     ShipmentMethodType
+     CarrierShipmentMethod
+     StatusItem
+     Enumeration
+     ShipmentGeoEstimate
+     
+     
+     -->
+    
+    <ContactMechType contactMechTypeId="EBAY_USER_ID" hasTable="N" description="eBay User ID"/>
+    <Enumeration enumId="ALI_SALES_CHANNEL" enumTypeId="ORDER_SALES_CHANNEL" enumCode="ALI_CHANNEL" sequenceId="09" description="Ali Express Channel"/>
+    <RoleType roleTypeId="EBAY_ACCOUNT" hasTable="N" description="eBay Account"/>
+    <RoleType roleTypeId="ALI_ACCOUNT" hasTable="N" description="Ali Express Account"/>
+    
+    <PaymentMethodType paymentMethodTypeId="EXT_ALIPAY" description="Alipay"/>
+    
+    <ProductContentType productContentTypeId="EBAY_TITLE" hasTable="N" description="eBay Title"/>
+    <ProductContentType productContentTypeId="EBAY_TITLE_ALT" hasTable="N" description="eBay Title - Alternative"/>
+    <ProductContentType productContentTypeId="EBAY_LISTING_TEMPLATE" hasTable="N" description="eBay Listing Template"/>
+    <ProductContentType productContentTypeId="EBAY_PICTURE_TEMPLATE" hasTable="N" description="eBay Picture Template"/>
+    <ProductContentType productContentTypeId="EBAY_LISTING_TEMPLATE_ALT" hasTable="N" description="Altenate eBay Listing Template"/>
+    <ProductContentType productContentTypeId="EBAY_PICTURE_TEMPLATE_ALT" hasTable="N" description="Altenate eBay Picture Template"/>
+    
+    <ProductStoreContentType productStoreContentTypeId="EBAY_LISTING_TEMPLATE" hasTable="N" description="eBay Listing Template"/>
+    <ProductStoreContentType productStoreContentTypeId="EBAY_PICTURE_TEMPLATE" hasTable="N" description="eBay Picture Template"/>
+    <ProductStoreContentType productStoreContentTypeId="EBAY_LISTING_TEMPLATE_ALT" hasTable="N" description="Altenate eBay Listing Template"/>
+    <ProductStoreContentType productStoreContentTypeId="EBAY_PICTURE_TEMPLATE_ALT" hasTable="N" description="Altenate eBay Picture Template"/>
+    
+    <ProductStoreGroupType productStoreGroupTypeId="EBAY_GROUP" description="eBay Group"/>
+    <ProductStoreGroupType productStoreGroupTypeId="ALIEXPRESS_GROUP" description="Ali Express Group"/>
+    <ProductStoreGroupType productStoreGroupTypeId="AMAZON_GROUP" description="Amazon Group"/>
+    <ProductStoreGroupType productStoreGroupTypeId="WEBSITE_GROUP" description="Website Group"/>
+    
+    <ProductStoreGroup productStoreGroupId="EBAY" productStoreGroupTypeId="EBAY_GROUP" productStoreGroupName="eBay Group" description="eBay Group"/>
+    <ProductStoreGroup productStoreGroupId="ALIEXPRESS" productStoreGroupTypeId="ALIEXPRESS_GROUP" productStoreGroupName="Ali Express Group" description="Ali Express Group"/>
+    
+    <ImportForm importFormId="PRODUCT" importFormName="Product - Import basic information"/>
+    <UpdateForm updateFormId="PRODUCT" updateFormName="Product - Update basic information"/>
+    
+    <ShipmentMethodType shipmentMethodTypeId="NO_SHIPPING" description="No Shipping" sequenceNum="1"/>
+    <ShipmentMethodType shipmentMethodTypeId="STANDARD" description="China Post Standard" sequenceNum="2"/>
+    <ShipmentMethodType shipmentMethodTypeId="REGISTERED" description="China Post Registered" sequenceNum="3"/>
+    <ShipmentMethodType shipmentMethodTypeId="STD_COMBINED" description="China Post Standard Combined" sequenceNum="4"/>
+    <ShipmentMethodType shipmentMethodTypeId="REG_COMBINED" description="China Post Registered Combined" sequenceNum="5"/>
+    <ShipmentMethodType shipmentMethodTypeId="EPACKET" description="ePacket EUB" sequenceNum="6"/>
+    <ShipmentMethodType shipmentMethodTypeId="EUB_MANUAL" description="EUB Manual" sequenceNum="7"/>
+    <ShipmentMethodType shipmentMethodTypeId="EMS" description="EMS Express" sequenceNum="8"/>
+    <ShipmentMethodType shipmentMethodTypeId="YW_EXPRESS" description="YanWen Express" sequenceNum="9"/>
+    <ShipmentMethodType shipmentMethodTypeId="EXPRESS" description="Express" sequenceNum="10"/>
+    <ShipmentMethodType shipmentMethodTypeId="BPOST_STANDARD" description="Belgium Post Standard" sequenceNum="11"/>
+    <ShipmentMethodType shipmentMethodTypeId="BPOST_REGISTERED" description="Belgium Post Registered" sequenceNum="12"/>
+    <ShipmentMethodType shipmentMethodTypeId="BPOST_EXPRESS" description="Belgium Post Express" sequenceNum="13"/>
+    <ShipmentMethodType shipmentMethodTypeId="EU_STANDARD" description="EURO Standard" sequenceNum="14"/>
+    <ShipmentMethodType shipmentMethodTypeId="EU_REGISTERED" description="EURO Registered" sequenceNum="15"/>
+    <ShipmentMethodType shipmentMethodTypeId="EU_EXPRESS" description="EURO Express" sequenceNum="16"/>
+    <ShipmentMethodType shipmentMethodTypeId="HK_STANDARD" description="Hongkong Post Standard" sequenceNum="17"/>
+    <ShipmentMethodType shipmentMethodTypeId="HK_REGISTERED" description="Hongkong Post Registered" sequenceNum="18"/>
+    <ShipmentMethodType shipmentMethodTypeId="HK_EXPRESS" description="Hongkong Post Express" sequenceNum="19"/>
+    <ShipmentMethodType shipmentMethodTypeId="SG_STANDARD" description="Singapore Post Standard" sequenceNum="20"/>
+    <ShipmentMethodType shipmentMethodTypeId="SG_REGISTERED" description="Singapore Post Registered" sequenceNum="21"/>
+    <ShipmentMethodType shipmentMethodTypeId="SG_EXPRESS" description="Singapore Post Express" sequenceNum="22"/>
+    <ShipmentMethodType shipmentMethodTypeId="LWE_REGISTERED" description="LWE Registered" sequenceNum="23"/>
+    <ShipmentMethodType shipmentMethodTypeId="LWE_EXPRESS" description="LWE Express" sequenceNum="24"/>
+    <ShipmentMethodType shipmentMethodTypeId="SHUNFENG" description="Shun Feng (顺丰)" sequenceNum="25"/>
+    <ShipmentMethodType shipmentMethodTypeId="DHL" description="DHL" sequenceNum="26"/>
+    
+    <CarrierShipmentMethod shipmentMethodTypeId="NO_SHIPPING" partyId="POST" roleTypeId="CARRIER" sequenceNumber="1" carrierServiceCode="No Shipping"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="STANDARD" partyId="POST" roleTypeId="CARRIER" sequenceNumber="2" carrierServiceCode="China Post Standard"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="REGISTERED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="3" carrierServiceCode="China Post Registered"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="STD_COMBINED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="4" carrierServiceCode="China Post Standard Combined"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="REG_COMBINED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="5" carrierServiceCode="China Post Registered Combined"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="EPACKET" partyId="POST" roleTypeId="CARRIER" sequenceNumber="6" carrierServiceCode="ePacket EUB"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="EUB_MANUAL" partyId="POST" roleTypeId="CARRIER" sequenceNumber="7" carrierServiceCode="EUB Manual"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="EMS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="8" carrierServiceCode="EMS Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="YW_EXPRESS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="9" carrierServiceCode="YanWen Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="EXPRESS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="10" carrierServiceCode="Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="BPOST_STANDARD" partyId="POST" roleTypeId="CARRIER" sequenceNumber="11" carrierServiceCode="Belgium Post Standard"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="BPOST_REGISTERED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="12" carrierServiceCode="Belgium Post Registered"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="BPOST_EXPRESS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="13" carrierServiceCode="Belgium Post Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="EU_STANDARD" partyId="POST" roleTypeId="CARRIER" sequenceNumber="14" carrierServiceCode="EURO Standard"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="EU_REGISTERED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="15" carrierServiceCode="EURO Registered"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="EU_EXPRESS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="16" carrierServiceCode="EURO Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="HK_STANDARD" partyId="POST" roleTypeId="CARRIER" sequenceNumber="17" carrierServiceCode="Hongkong Post Standard"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="HK_REGISTERED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="18" carrierServiceCode="Hongkong Post Registered"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="HK_EXPRESS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="19" carrierServiceCode="Hongkong Post Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="SG_STANDARD" partyId="POST" roleTypeId="CARRIER" sequenceNumber="20" carrierServiceCode="Singapore Post Standard"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="SG_REGISTERED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="21" carrierServiceCode="Singapore Post Registered"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="SG_EXPRESS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="22" carrierServiceCode="Singapore Post Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="LWE_REGISTERED" partyId="POST" roleTypeId="CARRIER" sequenceNumber="23" carrierServiceCode="LWE Registered"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="LWE_EXPRESS" partyId="POST" roleTypeId="CARRIER" sequenceNumber="24" carrierServiceCode="LWE Express"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="SHUNFENG" partyId="POST" roleTypeId="CARRIER" sequenceNumber="25" carrierServiceCode="Shun Feng (顺丰)"/>
+    <CarrierShipmentMethod shipmentMethodTypeId="DHL" partyId="POST" roleTypeId="CARRIER" sequenceNumber="26" carrierServiceCode="DHL"/>
+    
+    
+    <!-- Refund -->
+    <StatusType statusTypeId="REFUND_STATUS" hasTable="N" description="Refund Status"/>
+    <StatusItem statusId="REFUND_PENDING" statusTypeId="REFUND_STATUS" statusCode="PENDING" sequenceId="01" description="Pending"/>
+    <StatusItem statusId="REFUND_COMPLETED" statusTypeId="REFUND_STATUS" statusCode="COMPLETED" sequenceId="10" description="Completed"/>
+    <StatusItem statusId="REFUND_REJECTED" statusTypeId="REFUND_STATUS" statusCode="REJECTED" sequenceId="20" description="Rejected"/>
+    
+    
+    <!-- Shipment Geo Estimate -->
+    <ShipmentGeoEstimate geoId="AUS" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="10" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="AUS" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="25" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="USA" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="10" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="USA" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="25" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="GBR" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="10" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="GBR" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="25" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="DEU" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="10" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="DEU" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="25" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="RUS" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="15" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="RUS" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="50" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="BRA" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="15" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="BRA" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="50" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="CAN" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="15" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="CAN" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="50" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="ISR" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="15" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="ISR" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="50" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="FRA" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="10" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="FRA" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="25" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="NOR" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="15" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="NOR" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="50" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="HRV" geoTypeId="COUNTRY" shipmentMethodTypeId="EXPRESS" minDeliveryDay="7" maxDeliveryDay="15" trackingLink="http://www.17track.net/index_en.shtml"/>
+    <ShipmentGeoEstimate geoId="HRV" geoTypeId="COUNTRY" shipmentMethodTypeId="STANDARD" minDeliveryDay="14" maxDeliveryDay="50" trackingLink="http://www.17track.net/index_en.shtml"/>
+    
+</entity-engine-xml>

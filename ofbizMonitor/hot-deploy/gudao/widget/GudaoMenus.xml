@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-menu.xsd">
+    <menu name="MainAppBar" title="${uiLabelMap.GudaoApplication}" extends="CommonAppBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="main" title="Main">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="PM_UPDATE"/>
+                </or>
+            </condition>
+            <link target="main"/>
+            <!--<condition>
+                <if-has-permission permission="GUDAO_ADMIN"/>
+            </condition>
+                <link target="main"/>
+            <else>
+                <link target="rivalPriceMonitor"/>
+            </else>-->
+        </menu-item>
+        <!--<menu-item name="productMasterSearch" title="PM Search"><link target="productMaster"/></menu-item>-->
+        <menu-item name="report" title="Report">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="importSalesXls"/>
+        </menu-item>
+        <menu-item name="listing" title="Listing">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="productBasicInfo"/>
+        </menu-item>
+        <menu-item name="wish" title="Wish">
+            <condition>
+                <or>
+                    <if-has-permission permission="WISH_VIEW"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="wishListingCrawlStatus"/>
+        </menu-item>
+        <menu-item name="ebay" title="Ebay">
+            <condition>
+                <or>
+                    <if-has-permission permission="EBAY_VIEW"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="rivalPriceMonitor"/>
+        </menu-item>
+    </menu>
+    
+    <menu name="MainTabBar" title="" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <!--<menu-item name="summary" title="Summary">
+            <link target="summary"/>
+        </menu-item>-->
+        <menu-item name="project" title="${uiLabelMap.Project}">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="project"/>
+        </menu-item>
+        <menu-item name="projectTask" title="Project Task">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="projectTask"/>
+        </menu-item>
+        <menu-item name="main" title="${uiLabelMap.PmUpdate}">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="PM_UPDATE"/>
+                    <!--<if-service-permission service-name="gudaoPermissionCheck" main-action="PM_UPDATE"/>-->
+                </or>
+            </condition>
+            <link target="main"/>
+        </menu-item>
+        <menu-item name="productMasterSearch" title="PM Search">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="PM_VIEW"/>
+                </or>
+            </condition>
+            <link target="productMaster"/>
+        </menu-item>
+        <menu-item name="productMasterStatus" title="PM Status">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="PM_VIEW"/>
+                </or>
+            </condition>
+            <link target="productMasterStatus"/>
+        </menu-item>
+        <menu-item name="salesSearch" title="Sales Search">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="PM_VIEW"/>
+                </or>
+            </condition>
+            <link target="salesSearch"/>
+        </menu-item>
+        <menu-item name="epsCheatSheet" title="EPS Cheat Sheet">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="EPS_VIEW"/>
+                </or>
+            </condition>
+            <link target="epsCheatSheet"/>
+        </menu-item>
+        <!--<menu-item name="veroList" title="VERO List">
+            <link target="veroList"/>
+        </menu-item>
+        <menu-item name="tbl" title="待上架 - TBL">
+            <link target="tbl"/>
+        </menu-item>-->
+        <!--<menu-item name="productGqs" title="GQS">
+            <link target="viewProductGqs"/>
+        </menu-item>
+        <menu-item name="epsPositive" title="EPS正分停售">
+            <link target="epsPositive"/>
+        </menu-item>
+        <menu-item name="epsNegative" title="EPS负分在售">
+            <link target="epsNegative"/>
+        </menu-item>
+        <menu-item name="refundedCase" title="Refunded eBay Case">
+            <link target="viewEbayCaseRefund"/>
+        </menu-item>
+        <menu-item name="report" title="Report">
+            <link target="reportMain"/>
+        </menu-item>
+        <menu-item name="productListingStatus" title="Listing Status">
+            <link target="productListingStatus"/>
+        </menu-item>
+        <menu-item name="wishListingStatus" title="Wish - Listing">
+            <condition>
+                <or>
+                    <if-has-permission permission="WISH_VIEW"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="wishListingStatus"/>
+        </menu-item>-->
+        <menu-item name="task" title="Task">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="operationalTaskView"/>
+        </menu-item>
+        <!--<menu-item name="motherVersion" title="母版">
+            <condition>
+                <if-has-permission permission="GUDAO_ADMIN"/>
+            </condition>
+            <link target="motherVersion"/>
+        </menu-item>-->
+        <!--<menu-item name="pipeline" title="夫妻档">
+            <link target="pipeline"/>
+        </menu-item>-->
+        <!--<menu-item name="controlPanel" title="Control Panel (DEMO)">
+            <link target="controlPanel"/>
+        </menu-item>-->
+        <menu-item name="target" title="target">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="target"/>
+        </menu-item>
+
+        <!-- TEST 20170316 -->
+        <menu-item name="TESTtarget" title="TESTtarget">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="TESTtarget"/>
+        </menu-item>
+        <menu-item name="TESTproject" title="TESTproject">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="TESTproject"/>
+        </menu-item>
+        <!-- pictureWall 20170320 -->
+        <menu-item name="pictureWall" title="pictureWall">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="pictureWall"/>
+        </menu-item>
+        <!-- react_pictureWall 20170327 -->
+        <menu-item name="react_pictureWall" title="react_pictureWall">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="react_pictureWall"/>
+        </menu-item>
+        <!-- project_demo 20170405 -->
+        <menu-item name="project_demo" title="project_demo">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="project_demo"/>
+        </menu-item>
+        <menu-item name="OrderStatusTrack" title="OrderStatusTrack">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="table_data_tables"/>
+        </menu-item>
+        <!-- noshow 20170406 -->
+        <menu-item name="project" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="projects"/>
+        </menu-item>
+        <menu-item name="project" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="projects_Technical_Department"/>
+        </menu-item>
+        
+
+        <menu-item name="project" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="project_detail_Technical_Department"/>
+        </menu-item>
+        <!-- 20170410 -->
+        <menu-item name="project_demo" title="project_demo">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="projects_Technical_Department_1"/>
+        </menu-item>
+
+        <menu-item name="project_demo" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="testyaya"/>
+        </menu-item>
+
+        <menu-item name="project_demo" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="dailyTask"/>
+        </menu-item>
+
+        <menu-item name="project" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="project_detail_Technical_Department_1"/>
+        </menu-item>
+        <!--  -->
+        <menu-item name="project" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="projects_Technical_Department_2"/>
+        </menu-item>
+        <menu-item name="project" title="#">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="project_detail_Technical_Department_2"/>
+        </menu-item>
+        <!-- 20170424 -->
+        <menu-item name="project_demo" title="project_demo">
+            <condition>
+                <or>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                    <if-has-permission permission="GUDAO_VIEW"/>
+                </or>
+            </condition>
+            <link target="edit_project_form_basic_1"/>
+        </menu-item>
+        <!--<menu-item name="wiki" title="WIKI">
+            <condition>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+            </condition>
+            <link target="viewGudaoWiki"/>
+        </menu-item>-->
+        <!--<menu-item name="ebay" title="eBay">
+            <condition>
+                <or>
+                    <if-has-permission permission="EBAY_VIEW"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="ebay"/>
+        </menu-item>
+        <menu-item name="wish" title="wish">
+            <condition>
+                <or>
+                    <if-has-permission permission="WISH_VIEW"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="wish"/>
+        </menu-item>
+        <menu-item name="smt" title="SMT">
+            <condition>
+                <or>
+                    <if-has-permission permission="SMT_VIEW"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="smt"/>
+        </menu-item>
+        <menu-item name="amazon" title="amazon">
+            <condition>
+                <or>
+                    <if-has-permission permission="AMA_VIEW"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="amazon"/>
+        </menu-item>-->
+    </menu>
+    
+    <menu name="ReportBar" title="Report" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="importXls" title="倒入普源销售表">
+            <link target="importSalesXls"/>
+        </menu-item>
+        <menu-item name="sbuReport" title="SBU Report">
+            <link target="sbuReport"/>
+        </menu-item>
+        <menu-item name="salesSkuCount" title="Sales SKU Count">
+            <link target="salesSkuCount"/>
+        </menu-item>
+        <menu-item name="platformSales" title="Platform Sales">
+            <link target="platformSales"/>
+        </menu-item>
+        <menu-item name="currencySkuCount" title="Currency SKU Count">
+            <link target="currencySkuCount"/>
+        </menu-item>
+        <menu-item name="salesSbuPlatformAccount" title="每日销量表">
+            <link target="salesSbuPlatformAccount"/>
+        </menu-item>
+        <menu-item name="salesSummary" title="库存表">
+            <link target="salesSummary"/>
+        </menu-item>
+    </menu>
+    
+    <menu name="ListingBar" title="" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="productBasicInfo" title="Product Basic Info">
+            <link target="productBasicInfo"/>
+        </menu-item>
+    </menu>
+    
+    <menu name="WishBar" title="" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="bestSellingListMgr" title="Best Selling List">
+            <link target="bestSellingMonitorListMgr"/>
+        </menu-item>
+        <menu-item name="bestSelling" title="Best Selling Monitor">
+            <link target="bestSellingMonitor"/>
+        </menu-item>
+        <menu-item name="listingCheck" title="Listing Check">
+            <link target="wishListingCheck"/>
+        </menu-item>
+        <menu-item name="Allhash Status " title="Allhash Status">
+            <link target="wishListingCrawlStatus"/>
+        </menu-item>
+    </menu>
+    
+    <menu name="EbayBar" title="" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="manageRivalPriceMonitor" title="Manage Rival Price Monitor">
+            <condition>
+                <or>
+                    <if-has-permission permission="EBAY_ADMIN"/>
+                    <if-has-permission permission="GUDAO_ADMIN"/>
+                </or>
+            </condition>
+            <link target="manageRivalPriceMonitor"/>
+        </menu-item>
+        <menu-item name="rivalPriceMonitor" title="Rival Price Monitor">
+            <link target="rivalPriceMonitor"/>
+        </menu-item>
+    </menu>
+
+
+</menus>

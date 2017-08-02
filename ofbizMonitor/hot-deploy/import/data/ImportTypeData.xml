@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <EnumerationType enumTypeId="PROSTORE_EXSHIP" description="This type use be the parent type of ProductStoreShipMethId and external shipping service."/>    
+    <EnumerationType enumTypeId="PAYMENT_MAP" description="This type use for mapping between external payment method and ofbiz payment method type ID"/>
+    <Enumeration enumId="EXT_PAYPAL" enumCode="PayPal" enumTypeId="PAYMENT_MAP" description="external PayPal payment method and ofbiz mapping"/>
+    <Enumeration enumId="CREDIT_CARD" enumCode="Visa/Master Card" enumTypeId="PAYMENT_MAP" description="external credit card payment method and ofbiz mapping"/>
+    <ContactMechType contactMechTypeId="EBAY_USER_ID" description="eBay User ID" hasTable="N"/>
+    <ContactMechPurposeType contactMechPurposeTypeId="EBAY_USER_ID" description="eBay User ID"/>
+    <ContactMechTypePurpose contactMechPurposeTypeId="EBAY_USER_ID" contactMechTypeId="EBAY_USER_ID"/>
+    
+    <EnumerationType enumTypeId="EXCURRENCY_MAP" description="This type is use for map between currency and geoCode"/>
+    <Enumeration enumId="AU" enumTypeId="EXCURRENCY_MAP" enumCode="AUD"></Enumeration>
+    <Enumeration enumId="US" enumTypeId="EXCURRENCY_MAP" enumCode="USD"></Enumeration>
+    <Enumeration enumId="SG" enumTypeId="EXCURRENCY_MAP" enumCode="SGD"></Enumeration>
+    <Enumeration enumId="HK" enumTypeId="EXCURRENCY_MAP" enumCode="HKD"></Enumeration>
+    <Enumeration enumId="CA" enumTypeId="EXCURRENCY_MAP" enumCode="CAD"></Enumeration>
+    
+</entity-engine-xml>
+

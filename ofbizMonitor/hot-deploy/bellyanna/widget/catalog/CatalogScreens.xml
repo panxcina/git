@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+    <screen name="CommonProductDecorator">
+        <section>
+            <actions>
+                <set field="headerItem" value="products"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="productId" from-field="parameters.productId" global="true"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="product" from-field="product" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <section>
+                            <condition>
+                                <and>
+                                    <if-has-permission permission="CATALOG" action="_VIEW"/>
+                                    <or>
+                                        <not><if-empty field="parameters.bypassIfNoProduct"/></not>
+                                        <not><if-empty field="product"/></not>
+                                    </or>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-menu name="ProductTabBar" location="component://product/widget/catalog/CatalogMenus.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="left-column">
+                        <include-screen name="leftbar" location="component://product/widget/catalog/CommonScreens.xml"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <!-- do check for CATALOG, _VIEW permission -->
+                            <condition>
+                                <if-has-permission permission="CATALOG" action="_VIEW"/>
+                            </condition>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <or>
+                                            <not><if-empty field="parameters.bypassIfNoProduct"/></not>
+                                            <not><if-empty field="product"/></not>
+                                        </or>
+                                    </condition>
+                                    <widgets>
+                                        <container>
+                                            <label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.CommonFor}: ${product.internalName} [${uiLabelMap.CommonId}:${productId}]  ${${extraFunctionName}}</label>
+                                            <image src="${product.smallImageUrl}" height="40" width="40" url-mode="content" alt="${product.internalName}"/>
+                                        </container>
+                                        
+                                        <!-- add Create Product and View Product (in ecommerce) links -->
+                                        <container style="button-bar">
+                                            <link target="EditProduct" text="${uiLabelMap.ProductNewProduct}" style="buttontext create"/>
+                                            <link target="CreateVirtualWithVariantsForm" text="${uiLabelMap.ProductNewVirtualProduct}" style="buttontext create"/>
+                                            <link target="/ecommerce/control/product" url-mode="inter-app" text="${uiLabelMap.ProductProductPage}" style="buttontext">
+                                                <parameter param-name="product_id" from-field="productId"/>
+                                            </link>
+                                            <link target="ProductBarCode.pdf" target-window="_blank" text="${uiLabelMap.ProductBarcode}" style="buttontext">
+                                                <parameter param-name="productId"/>
+                                            </link>
+                                            
+                                            <link target="javascript:expandAll(true);"  text="${uiLabelMap.CommonExpandAll}" style="buttontext expand-all" url-mode="plain"/>
+                                            <link target="javascript:expandAll(false);" text="${uiLabelMap.CommonCollapseAll}" style="buttontext collapse-all" url-mode="plain"/>
+                                        </container>
+                                    </widgets>
+                                </section>
+                                <section>
+                                    <condition>
+                                        <or>
+                                            <not><if-empty field="product"/></not>
+                                            <not><if-empty field="parameters.bypassIfNoProduct"/></not>
+                                            <if-empty field="productId"/>
+                                        </or>
+                                    </condition>
+                                    <widgets>
+                                        <decorator-section-include name="body"/>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <label style="h3">${uiLabelMap.ProductNoExistingProductsFound}</label>
+                                    </fail-widgets>
+                                </section>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.ProductCatalogViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    
+    <screen name="productSearchList">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="productSearchList"/>
+                <script location="component://bellyanna/webapp/catalog/WEB-INF/actions/ProductSearchList.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <!--<container>
+                            <label style="h1" text="Product Search List"/>
+                        </container>-->
+                        <screenlet title="Product Search List">
+                            <include-form name="ProductSearchList" location="component://bellyanna/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://bellyanna/webapp/catalog/ViewProductSearch.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="excelImport">
+        <section>
+            <actions>
+                <set field="headerItem" value="importExcel"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="tabButtonItem" value="importExcel"/>
+                <set field="viewSize" value="10"/>
+                <set field="excelType" from-field="parameters.excelType"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-empty field="parameters.excelType"/>
+                            </condition>
+                            <widgets>
+                                <screenlet title="Select Excel Import type">
+                                    <include-form location="component://bellyanna/widget/catalog/ExcelImportForms.xml" name="selectExcelType"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="Import Excels" collapsible="true" initially-collapsed="false" id="import_excel">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://bellyanna/widget/catalog/ExcelImportForms.xml" name="importExcel"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                                <screenlet title="View data from CSV file which import into temp table and waiting convert into ofbiz entities." collapsible="true" id="fileList" initially-collapsed="false">
+                                    <section>
+                                        <widgets>
+                                            <include-form location="component://bellyanna/widget/catalog/ExcelImportForms.xml" name="listExcelImport"/>
+                                        </widgets>
+                                    </section>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editProductEbaySetting">
+        <section>
+            <actions>
+                <set field="headerItem" value="ProductEbaySetting"/>
+                <set field="titleProperty" value="Edit Product eBay Setting"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-condition entity-name="ProductEbaySetting" list="productEbaySettings">
+                    <condition-expr field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="productStoreId"/>
+                </entity-condition>
+                <script location="component://bellyanna/webapp/catalog/WEB-INF/actions/EditProductEbaySetting.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.productDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="Edit Product eBay Setting ${requestParameters.productId }"/>
+                        </container>
+                        <screenlet title="Product eBay Setting">
+                            <include-form name="UpdateProductEbaySetting" location="component://bellyanna/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="Add new Product eBay Setting">
+                            <include-form name="AddProductEbaySetting" location="component://bellyanna/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <!--<platform-specific><html><html-template location="component://bellyanna/webapp/catalog/EditProductEbaySetting.ftl"/></html></platform-specific>-->
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editProductStoreEbaySetting">
+        <section>
+            <actions>
+                <set field="headerItem" value="ProductStoreEbaySetting"/>
+                <set field="titleProperty" value="Edit Product Store eBay Setting"/>
+                <set field="productStoreId" from-field="parameters.productStoreId"/>
+                <entity-one entity-name="ProductStore" value-field="productStore"/>
+                <entity-condition entity-name="ProductStoreEbaySetting" list="productStoreEbaySettings">
+                    <condition-expr field-name="productStoreId" from-field="parameters.productStoreId"/>
+                    <order-by field-name="productStoreId"/>
+                </entity-condition>
+                <script location="component://bellyanna/webapp/catalog/WEB-INF/actions/EditProductStoreEbaySetting.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductStoreDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <label style="h1" text="Edit Product Store eBay Setting ${requestParameters.productStoreId }"/>
+                        </container>
+                        <screenlet title="Product Store eBay Setting">
+                            <include-form name="editProductStoreEbaySetting" location="component://bellyanna/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <!--<screenlet title="Add new Product eBay Setting">
+                            <condition>
+                                <if-empty field="productStoreEbaySettings.productStoreId"/>
+                            </condition>
+                            <include-form name="AddProductStoreEbaySetting" location="component://bellyanna/widget/catalog/ProductForms.xml"/>
+                        </screenlet>-->
+                        <!--<platform-specific><html><html-template location="component://bellyanna/webapp/catalog/EditProductEbaySetting.ftl"/></html></platform-specific>-->
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productEbayActiveListing">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="productEbayActiveListing"/>
+                <script location="component://bellyanna/webapp/catalog/WEB-INF/actions/ProductEbayActiveListing.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.productDecoratorLocation}">
+                    <decorator-section name="body">
+                        <!--<container>
+                         <label style="h1" text="Product Search List"/>
+                         </container>-->
+                        <screenlet title="Product eBay Active Listing">
+                            <include-form name="productEbayActiveListing" location="component://bellyanna/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://bellyanna/webapp/catalog/productEbayActiveListing.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productStoreEbayActiveListing">
+        <section>
+            <actions>
+                <set field="headerItem" value="ProductStoreEbaySetting"/>
+                <set field="titleProperty" value="Edit Product Store eBay Setting"/>
+                <set field="productStoreId" from-field="parameters.productStoreId"/>
+                <script location="component://bellyanna/webapp/catalog/WEB-INF/actions/ProductStoreEbayActiveListing.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductStoreDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Product Store eBay Active Listing">
+                            <include-form name="productStoreEbayActiveListing" location="component://bellyanna/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://bellyanna/webapp/catalog/productStoreEbayActiveListing.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+ 
+</screens>

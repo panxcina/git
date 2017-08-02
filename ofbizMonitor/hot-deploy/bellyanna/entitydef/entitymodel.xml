@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of bellyanna Component</title>
+    <description>None</description>
+    <copyright></copyright>
+    <version></version>
+    
+    <!--
+     
+     EbaySiteCode (eBayToken)
+     HitCounterCodeType (eBayToken)
+     BuyerPaymentMethodCodeType (eBayToken)
+     RefundOptionsCodeType (eBayToken)
+     ReturnsAcceptedCodeType (eBayToken)
+     ReturnsWithinCodeType (eBayToken)
+     ShipCostPaidByCodeType (eBayToken)
+     ListingDurationCodeType (eBayToken)
+     ListingTypeCodeType (eBayToken)
+     GalleryTypeCodeType (eBayToken)
+     PhotoDisplayCodeType (eBayToken)
+     EndReasonCodeType (eBayToken)
+     ShippingTypeCodeType (eBayToken)
+     ProductStoreEbaySetting (productStoreSetting)
+     ProductStoreListingSetting (productStoreSetting)
+     ProductStoreContentTemplate (productStoreSetting)
+     ProductStoreContentType (productStoreSetting)
+     ProductStoreTag (productStoreSetting)
+     ProductEbaySetting
+     EbayActiveListing (ActiveListing)
+     EbayActiveListingVariation (ActiveListing)
+     ListingVariationSpecifics (ActiveListing)
+     VariationPictureSpecific (ActiveListing)
+     VariationSpecificsSet (ActiveListing)
+     ActiveListingItemSpecific (ActiveListing)
+     Refund
+     EbayEmailTemplate
+     EbayMostWatchedItem
+     ShipmentGeoEstimate
+     ProductItemSpecific
+     ProductPictureExternal
+     ImportForm
+     UpdateForm
+     BulkProductUpdate
+     RelistHistory
+     EbayCases
+     EbayCaseRefund
+     EbayOrderItem
+     updateListingStatus
+     ProductMaster
+     ProductPromoSetting
+     RivalListing
+     RivalListingResult
+     EbayPromotionalSale
+     AutoScheduleJob
+     AutoScheduleJobHistory
+     bulkChangeStoreCategory
+     
+     -view-entity-
+     OrderShipEpacket
+     OrderHeaderFeedback
+     Order10DaysShipped
+     ToBeShipped
+     
+     -extend-entity-
+     Product
+     EbayConfig
+     ShipmentPackageRouteSeg
+     -->
+    
+    
+    
+    <entity entity-name="EbaySiteCode"
+        package-name="org.ofbiz.ebay.type"
+        title="Site Code Type - Token">
+        <field name="ebaySiteId" type="id-ne"><description>eBay Site Id</description></field>
+        <field name="ebayGlobalId" type="id-ne"><description>eBay Global Id</description></field>
+        <field name="abbreviation" type="id-ne"><description>eBay Site Name Abbreviation</description></field>
+        <field name="ebaySiteName" type="id-ne"><description>eBay Site Name</description></field>
+        <field name="ebaySite" type="id"><description>eBay Site</description></field>
+        <field name="language" type="very-short"><description>Language</description></field>
+        <field name="territory" type="very-short"><description>Territory</description></field>
+        <field name="currency" type="very-short"><description>Currency</description></field>
+        <field name="siteUrl" type="very-long"><description>eBay Site URL</description></field>
+        <prim-key field="ebaySiteId"/>
+    </entity>
+    
+    <!-- <entity entity-name="HitCounterCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="Hit Counter Code Type - Token">
+        <field name="hitCounterCode" type="id-long-ne"><description>Hit Counter Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Hit Counter Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Hit Counter Long Description</description></field>
+        <field name="note" type="very-long"><description>Hit Counter Note</description></field>
+        <prim-key field="hitCounterCode"/>
+    </entity>
+    
+    <entity entity-name="BuyerPaymentMethodCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="Buyer Payment Method Code Type - Token">
+        <field name="buyerPaymentMethodCode" type="id-long-ne"><description>Buyer Payment Method Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Buyer Payment Method Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Buyer Payment Method Long Description</description></field>
+        <field name="note" type="very-long"><description>Buyer Payment Method Note</description></field>
+        <prim-key field="buyerPaymentMethodCode"/>
+    </entity>
+    
+    <entity entity-name="RefundOptionsCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="Refund Options Code Type - Token">
+        <field name="refundOptionsCode" type="id-long-ne"><description>Refund Options Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Refund Options Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Refund Options Long Description</description></field>
+        <field name="note" type="very-long"><description>Refund Options Note</description></field>
+        <prim-key field="refundOptionsCode"/>
+    </entity>
+    
+    <entity entity-name="ReturnsAcceptedCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="Returns Accepted Options Code Type - Token">
+        <field name="returnsAcceptedCode" type="id-long-ne"><description>Returns Accepted Options Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Returns Accepted Options Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Returns Accepted Options Long Description</description></field>
+        <field name="note" type="very-long"><description>Returns Accepted Options Note</description></field>
+        <prim-key field="returnsAcceptedCode"/>
+    </entity>
+    
+    <entity entity-name="ReturnsWithinCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="Returns Within Options Code Type - Token">
+        <field name="returnsWithinCode" type="id-long-ne"><description>Returns Within Options Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Returns Within Options Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Returns Within Options Long Description</description></field>
+        <field name="note" type="very-long"><description>Returns Within Options Note</description></field>
+        <prim-key field="returnsWithinCode"/>
+    </entity>
+    
+    <entity entity-name="ShipCostPaidByCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="Shipping Cost Paid By Options Code Type - Token">
+        <field name="shipCostPaidByCode" type="id-long-ne"><description>Shipping Cost Paid By Options Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Shipping Cost Paid By Options Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Shipping Cost Paid By Options Long Description</description></field>
+        <field name="note" type="very-long"><description>Shipping Cost Paid By Options Note</description></field>
+        <prim-key field="shipCostPaidByCode"/>
+    </entity>
+    
+    <entity entity-name="ListingDurationCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="eBay Listing Duration Code Type - Token">
+        <field name="listingDurationCode" type="id-long-ne"><description>Listing Duration Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Listing Duration Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Listing Duration Long Description</description></field>
+        <field name="note" type="very-long"><description>Listing Duration Note</description></field>
+        <prim-key field="listingDurationCode"/>
+    </entity>
+    
+    <entity entity-name="ListingTypeCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="eBay Listing Type Code Type - Token">
+        <field name="listingTypeCode" type="id-long-ne"><description>Listing Type Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Listing Type Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Listing Type Long Description</description></field>
+        <field name="note" type="very-long"><description>Listing Type Note</description></field>
+        <prim-key field="listingTypeCode"/>
+    </entity>
+    
+    <entity entity-name="GalleryTypeCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="eBay Gallery Type Code Type - Token">
+        <field name="galleryTypeCode" type="id-long-ne"><description>Gallery Type Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Gallery Type Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Gallery Type Long Description</description></field>
+        <field name="note" type="very-long"><description>Gallery Type Note</description></field>
+        <prim-key field="galleryTypeCode"/>
+    </entity>
+    
+    <entity entity-name="PhotoDisplayCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="eBay Photo Display Code Type - Token">
+        <field name="photoDisplayCode" type="id-long-ne"><description>Photo Display Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Photo Display Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Photo Display Long Description</description></field>
+        <field name="note" type="very-long"><description>Photo Display Note</description></field>
+        <prim-key field="photoDisplayCode"/>
+    </entity>
+    
+    <entity entity-name="EndReasonCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="eBay End Reason Code Type - Token">
+        <field name="endReasonCode" type="id-long-ne"><description>End Reason Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>End reason Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>End Reason Long Description</description></field>
+        <field name="note" type="very-long"><description>End Reason Note</description></field>
+        <prim-key field="endReasonCode"/>
+    </entity>
+    
+    <entity entity-name="ShippingTypeCodeType"
+        package-name="org.ofbiz.ebay.type"
+        title="eBay Shipping Type Code Type - Token">
+        <field name="shippingTypeCode" type="id-long-ne"><description>Shipping Type Code</description></field>
+        <field name="shortDescription" type="short-varchar"><description>Shipping Type Short Description</description></field>
+        <field name="longDescription" type="very-long"><description>Shipping Type Long Description</description></field>
+        <field name="note" type="very-long"><description>Shipping Type Note</description></field>
+        <prim-key field="shippingTypeCode"/>
+    </entity> -->
+    
+    <entity entity-name="ProductStoreEbaySetting"
+        package-name="org.ofbiz.product.store"
+        title="Product Store settings for eBay preferences">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="smartRelist" type="indicator"><description>Set to Y to automatically smart relist eBay Listing</description></field>
+        <field name="sendXDaysShipped" type="indicator"><description>Set to Y to automatically send message via eBay for X days shipped orders</description></field>
+        <field name="autoImportEbayApi" type="indicator"><description>Set to Y to use eBay API for order importation. Schedule will be set in JobSandbox entity</description></field>
+        <field name="importUpdateShipmentStatus" type="indicator"><description>Set to Y to automatically update shipment status on eBay right after importation via API</description></field>
+        <field name="packUpdateShipmentStatus" type="indicator"><description>Set to Y to automatically update shipment status on eBay right after completing order shipment (override by importUpdateShipmentStatus)</description></field>
+        <field name="lowPriceThreshold" type="currency-amount"><description>Low Price Threshold</description></field>
+        <field name="daysUpdateEpacket" type="numeric"><description>X days to update ePacket tracking number</description></field>
+        <field name="askFeedback" type="indicator"><description>Set to Y to use eBay API to send message via eBay API to ask for feedback</description></field>
+        <field name="daysAskFeedback" type="numeric"><description>After X days to send email reminder asking for feedback</description></field>
+        <field name="askFeedbackMaxAttempt" type="numeric"><description>Maximum attempt to send message asking for feedback (lowest 1)</description></field>
+        <field name="sendOutOfStockEmail" type="indicator"><description>Set to Y to automatically send OSA email</description></field>
+        <field name="daysSendOutOfStockEmail" type="numeric"><description>X days after importation to automatically send OSA email</description></field>
+        <field name="earlyEpacketTrackNum" type="indicator"><description>Set to Y to send non-shipped ePacket tracking number to eBay</description></field>
+        <field name="autoPullEbayActiveListing" type="indicator"><description>Set to Y to auto pull eBay Active listing quantity</description></field>
+        <field name="autoUpdateEbayQuantity" type="indicator"><description>Set to Y to auto update listing quantity on eBay</description></field>
+        <field name="defaultEbayMinQty" type="numeric"><description>Default Listing minimum quantity to trigger auto adjust quantity</description></field>
+        <field name="defaultEbayListQty" type="numeric"><description>Default Listing quantity to be set on eBay active listing</description></field>
+        <field name="autoDiscount" type="indicator"><description>Promotional Sale Auto Discount Indicator</description></field>
+        <field name="maxDiscount" type="numeric"><description>Promotional Sale Maximum Discount</description></field>
+        <field name="unsoldDay" type="numeric"><description>Promotional Sale Unsold Days</description></field>
+        <field name="discountGap" type="numeric"><description>Promotional Sale Discount Gap</description></field>
+        <field name="discountDuration" type="numeric"><description>Promotional Sale Discount Duration</description></field>
+        <field name="discountEndTime" type="long-varchar"><description>Promotional Sale Discount End Time</description></field>
+        <field name="discountType" type="long-varchar"><description>Promotional Sale Discount Type</description></field>
+        <field name="promotionalSaleType" type="long-varchar"><description>Promotional Sale Type</description></field>
+        <!-- removed fields
+         <field name="daysNotShipped" type="numeric"><description>X days to manually set shipment status on eBay as shipped eventhough we have not shipped yet</description></field>
+         <field name="useEpacketApi" type="indicator"><description>Set to Y to use ePacket API feature</description></field>
+         -->
+        <prim-key field="productStoreId"/>
+        <relation type="one" fk-name="PROD_STR_EBAY_SET" rel-entity-name="ProductStore">
+            <key-map field-name="productStoreId"/>
+        </relation>
+    </entity>
+    
+    <entity entity-name="ProductStoreListingSetting"
+        package-name="org.ofbiz.product.store"
+        title="Product Store settings for eBay preferences">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="getItFast" type="indicator"><description>eBay API GetItFast</description></field>
+        <field name="giftIcon" type="short-varchar"><description>eBay API GiftIcon</description></field>
+        <field name="inclRecommendations" type="indicator"><description>eBay API IncludeRecommendations</description></field>
+        <field name="location" type="short-varchar"><description>eBay API Location</description></field>
+        <field name="postCoExpEnabled" type="indicator"><description>eBay API PostCheckoutExperienceEnabled</description></field>
+        <field name="privateListing" type="indicator"><description>eBay API PrivateListing</description></field>
+        <field name="shipTermsInDesc" type="indicator"><description>eBay API ShippingTermsInDescription</description></field>
+        <field name="country" type="short-varchar"><description>eBay API Country</description></field>
+        <field name="dispatchTimeMax" type="short-varchar"><description>eBay API DispatchTimeMax</description></field>
+        <field name="outOfStockControl" type="indicator"><description>eBay API OutOfStockControl</description></field>
+        <field name="shippingType" type="long-varchar"><description>eBay API ShippingDetails>ShippingType</description></field>
+        <field name="hitCounter" type="long-varchar"><description>eBay API HitCounter</description></field>
+        <field name="paymentMethods" type="short-varchar"><description>eBay API PaymentMethods</description></field>
+        <field name="site" type="id"><description>eBay API Site</description></field>
+        <field name="refundOption" type="short-varchar"><description>eBay API ReturnPolicy>RefundOption</description></field>
+        <field name="returnsAcceptedOption" type="short-varchar"><description>eBay API ReturnPolicy>ReturnsAcceptedOption</description></field>
+        <field name="returnsWithinOption" type="short-varchar"><description>eBay API ReturnPolicy>ReturnsWithinOption</description></field>
+        <field name="shipCostPaidBy" type="short-varchar"><description>eBay API ReturnPolicy>ShippingCostPaidByOption</description></field>
+        <field name="returnDescription" type="very-long"><description>eBay API ReturnPolicy>Description</description></field>
+        <!-- removed fields
+         <field name="conditionId" type="short-varchar"><description>eBay API ConditionID</description></field>
+         -->
+        <prim-key field="productStoreId"/>
+        <!-- <relation type="one" fk-name="PROD_STR_EBAY_LIST" rel-entity-name="ProductStore">
+            <key-map field-name="productStoreId"/>
+        </relation>
+        <relation type="one" fk-name="EBAY_SITE_CODE" rel-entity-name="EbaySiteCode">
+            <key-map field-name="site" rel-field-name="ebaySite"/>
+        </relation>
+        <relation type="one" fk-name="SHIP_TYPE_CODE" rel-entity-name="ShippingTypeCodeType">
+            <key-map field-name="shippingType" rel-field-name="shippingTypeCode"/>
+        </relation>
+        <relation type="one" fk-name="HIT_COUNT_CODE" rel-entity-name="HitCounterCodeType">
+            <key-map field-name="hitCounter" rel-field-name="hitCounterCode"/>
+        </relation>
+        <relation type="one" fk-name="PAYMENT_CODE" rel-entity-name="BuyerPaymentMethodCodeType">
+            <key-map field-name="paymentMethods" rel-field-name="buyerPaymentMethodCode"/>
+        </relation>
+        <relation type="one" fk-name="REFUND_OPT_CODE" rel-entity-name="RefundOptionsCodeType">
+            <key-map field-name="refundOption" rel-field-name="refundOptionsCode"/>
+        </relation>
+        <relation type="one" fk-name="RETURN_ACC_CODE" rel-entity-name="ReturnsAcceptedCodeType">
+            <key-map field-name="returnsAcceptedOption" rel-field-name="returnsAcceptedCode"/>
+        </relation>
+        <relation type="one" fk-name="RETURN_WITHIN_CODE" rel-entity-name="ReturnsWithinCodeType">
+            <key-map field-name="returnsWithinOption" rel-field-name="returnsWithinCode"/>
+        </relation>
+        <relation type="one" fk-name="SHIP_PAIDBY_CODE" rel-entity-name="ShipCostPaidByCodeType">
+            <key-map field-name="shipCostPaidBy" rel-field-name="shipCostPaidByCode"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ProductStoreContentTemplate"
+        package-name="org.ofbiz.product.store"
+        title="Product Store Content Template">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="productStoreContentTypeId" type="id-ne"><description>Product Store Content Type Id</description></field>
+        <field name="description" type="long-varchar"><description>Description</description></field>
+        <field name="textData" type="very-long"><description>Content Template Text Data</description></field>
+        <prim-key field="productStoreId"/>
+        <prim-key field="productStoreContentTypeId"/>
+        <relation type="one" fk-name="PROD_STR_EBAY" rel-entity-name="ProductStore">
+            <key-map field-name="productStoreId"/>
+        </relation>
+    </entity>
+    
+    <entity entity-name="ProductStoreContentType"
+        package-name="org.ofbiz.ebay.store"
+        title="Product Store Content Type">
+        <field name="productStoreContentTypeId" type="id-ne"><description>Product Store Content Type ID</description></field>
+        <field name="parentTypeId" type="id-ne"><description>Description</description></field>
+        <field name="hasTable" type="very-short"><description>Description</description></field>
+        <field name="description" type="long-varchar"><description>Text Data</description></field>
+        <prim-key field="productStoreContentTypeId"/>
+        <relation type="one" fk-name="PRDCT_STR_TYP_PARENT" title="Parent" rel-entity-name="ProductStoreContentType">
+            <key-map field-name="parentTypeId" rel-field-name="productStoreContentTypeId"/>
+        </relation>
+    </entity>
+    
+    <entity entity-name="ProductStoreTag"
+        package-name="org.ofbiz.ebay.store"
+        title="Product Store Tag">
+        <field name="productStoreId" type="id-ne"><description>Product Store ID</description></field>
+        <field name="tagName" type="id-ne"><description>Tag Name</description></field>
+        <field name="tagValue" type="very-long"><description>Tag Value</description></field>
+        <prim-key field="productStoreId"/>
+        <prim-key field="tagName"/>
+        <relation type="one" fk-name="PROD_STORE_TAG" rel-entity-name="ProductStore">
+            <key-map field-name="productStoreId"/>
+        </relation>
+    </entity>
+    
+    <entity entity-name="ProductEbaySetting"
+        package-name="org.ofbiz.ebay.store"
+        title="Product setting for each eBay store">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="productId" type="id-ne"><description>SKU (Product Id)</description></field>
+        <field name="updateQuantity" type="indicator"><description>Update Quantity Option</description></field>
+        <field name="listQuantity" type="numeric"><description>Listing Quantity</description></field>
+        <field name="minQuantity" type="numeric"><description>Minimum Quantity on eBay to trigger auto adjust quantity</description></field>
+        <prim-key field="productStoreId"/>
+        <prim-key field="productId"/>
+        <relation type="one" fk-name="PROD_EBAY_SETTING" rel-entity-name="Product">
+            <key-map field-name="productId"/>
+        </relation>
+        <relation type="one" fk-name="PROD_STR" rel-entity-name="ProductStore">
+            <key-map field-name="productStoreId"/>
+        </relation>
+    </entity>
+    
+    <entity entity-name="EbayActiveListing"
+        package-name="org.ofbiz.ebay.store"
+        title="Active Listings on eBay based on eBay Trading API GetSellerList call">
+        <field name="activeListingId" type="id-ne"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="itemId" type="long-varchar"><description>eBay item number (Item Id)</description></field>
+        <field name="applicationData" type="long-varchar"><description>Application Data</description></field>
+        <field name="autoPay" type="very-short"><description>Auto Pay</description></field>
+        <field name="buyerGuaranteePrice" type="currency-amount"><description>Buyer Guarantee Price</description></field>
+        <field name="buyerGuaranteePriceCurId" type="very-short"><description>Buyer Guarantee Price Currency ID</description></field>
+        <field name="buyerProtection" type="long-varchar"><description>Buyer Protection</description></field>
+        <field name="buyItNowPrice" type="currency-amount"><description>Buy It Now price</description></field>
+        <field name="buyItNowPriceCurId" type="very-short"><description>Buy It Now Currency ID</description></field>
+        <field name="conditionId" type="long-varchar"><description>Condition ID</description></field>
+        <field name="conditionDisplayName" type="long-varchar"><description>Condition Display Name</description></field>
+        <field name="conditionDescription" type="very-long"><description>Condition Description</description></field>
+        <field name="country" type="long-varchar"><description>Country</description></field>
+        <field name="currency" type="very-short"><description>Currency</description></field>
+        <field name="description" type="very-long"><description>Description</description></field>
+        <field name="disableRequirements" type="very-short"><description>Disable Buyer Requirements</description></field>
+        <field name="eBayNowEligible" type="very-short"><description>eBay Now Eligible</description></field>
+        <field name="freeCategoryId" type="long-varchar"><description>Free Added Category Id</description></field>
+        <field name="freeCategoryName" type="long-varchar"><description>Free Added Category Name</description></field>
+        <field name="getItFast" type="very-short"><description>Get It Fast</description></field>
+        <field name="giftIcon" type="numeric"><description>Gift Icon</description></field>
+        <field name="hitCount" type="numeric"><description>Hit Count</description></field>
+        <field name="hitCounter" type="long-varchar"><description>Hit Counter</description></field>
+        <field name="creditCardEnabled" type="very-short"><description>Integrated Merchant Credit Card Enabled</description></field>
+        <field name="invTrackingMethod" type="long-varchar"><description>Inventory Tracking Method</description></field>
+        <field name="policyViolationId" type="long-varchar"><description>Item Policy Violation ID</description></field>
+        <field name="policyViolationText" type="very-long"><description>Item Policy Violation Text</description></field>
+        <field name="coRedirectStore" type="long-varchar"><description>Listing Checkout Redirect Preference ProStoresStoreName</description></field>
+        <field name="coRedirectUsername" type="long-varchar"><description>Listing Checkout Redirect Preference SellerThirdPartyUsername</description></field>
+        <field name="listDesignerLayoutId" type="long-varchar"><description>Listing Designer Layout ID</description></field>
+        <field name="listDesignerOptPicSize" type="long-varchar"><description>Listing Designer Optimal Picture Size</description></field>
+        <field name="listDesignerThemeId" type="very-short"><description>Listing Designer Theme ID</description></field>
+        <field name="listDetAdult" type="very-short"><description>Listing Details Adult</description></field>
+        <field name="listDetBestAutoAccept" type="currency-amount"><description>Listing Details Best Offer Auto Accept Price</description></field>
+        <field name="listDetBindingAuction" type="very-short"><description>Listing Details Binding Auction</description></field>
+        <field name="listDetCheckoutEnabled" type="very-short"><description>Listing Details Checkout Enabled</description></field>
+        <field name="listDetEndTime" type="long-varchar"><description>Listing Details End Time</description></field>
+        <field name="listDetHasPublicMessages" type="very-short"><description>Listing Details Has Public Messages</description></field>
+        <field name="listDetHasReservePrice" type="very-short"><description>Listing Details Has Reserve Price</description></field>
+        <field name="listDetUnansweredQuestions" type="very-short"><description>Listing Details Has Unanswered Questions</description></field>
+        <field name="listDetMinBestOfferPrice" type="currency-amount"><description>Listing Details Minimum Best Offer Price</description></field>
+        <field name="listDetRelistedItemId" type="long-varchar"><description>Listing Details Relisted Item ID</description></field>
+        <field name="listDetStartTime" type="long-varchar"><description>Listing Details Start Time</description></field>
+        <field name="listDetOriginalItemId" type="long-varchar"><description>Listing Details TCR Original Item ID</description></field>
+        <field name="listDetViewItemUrl" type="very-long"><description>Listing Details View Item URL</description></field>
+        <field name="listDetViewItemUrlNatural" type="very-long"><description>Listing Details View Item URL for Natural Search</description></field>
+        <field name="listingDuration" type="long-varchar"><description>Listing Duration</description></field>
+        <field name="listingSubtype2" type="long-varchar"><description>Listing Subtype2</description></field>
+        <field name="listingType" type="long-varchar"><description>Listing Type</description></field>
+        <field name="location" type="long-varchar"><description>Location</description></field>
+        <field name="motorsGerSearch" type="long-varchar"><description>Motors Germany Searchable</description></field>
+        <field name="outOfStockControl" type="long-varchar"><description>Out Of Stock Control</description></field>
+        <field name="pickupInStore" type="very-short"><description>Eligible For Pickup In Store</description></field>
+        <!-- <field name="pictureDetails" type="very-short"><description>Picture Details</description></field> -->
+        <field name="postCheckoutExpEnabled" type="very-short"><description>Post Checkout Experience Enabled</description></field>
+        <field name="primaryCategoryId" type="long-varchar"><description>Primary Category ID</description></field>
+        <field name="primaryCategoryName" type="long-varchar"><description>Primary Category Name</description></field>
+        <field name="privateListing" type="very-short"><description>Private Listing</description></field>
+        <field name="proxyItem" type="very-short"><description>Proxy Item</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <field name="qtyAvailableHint" type="long-varchar"><description>Quantity Available Hint</description></field>
+        <field name="qtyThreshold" type="numeric"><description>Quantity Threshold</description></field>
+        <field name="reservePrice" type="currency-amount"><description>Reserve Price</description></field>
+        <field name="reservePriceCurId" type="very-short"><description>Reserve Price Currency ID</description></field>
+        <field name="returnDescription" type="very-long"><description>Return Policy Description</description></field>
+        <field name="returnEan" type="long-varchar"><description>Return Policy EAN</description></field>
+        <field name="returnRefund" type="long-varchar"><description>Return Policy Refund</description></field>
+        <field name="returnRefundOption" type="long-varchar"><description>Return Policy Refund Option</description></field>
+        <field name="returnRestockFeeValue" type="long-varchar"><description>Return Policy Refund Option</description></field>
+        <field name="returnRestockFeeValOpt" type="long-varchar"><description>Return Policy Refund Option</description></field>
+        <field name="returnsAccepted" type="long-varchar"><description>Returns Policy Returns Accepted</description></field>
+        <field name="returnsAcceptedOption" type="long-varchar"><description>Returns Policy Returns Accepted Option</description></field>
+        <field name="returnsWithin" type="long-varchar"><description>Returns Policy Returns Within</description></field>
+        <field name="returnsWithinOption" type="long-varchar"><description>Returns Policy Returns Within Option</description></field>
+        <field name="returnsCostPaidBy" type="long-varchar"><description>Returns Policy Shipping Cost Paid By</description></field>
+        <field name="returnsCostPaidByOpt" type="long-varchar"><description>Returns Policy Shipping Cost Paid By Option</description></field>
+        <field name="warrantyDuration" type="long-varchar"><description>Returns Policy Warranty Duration</description></field>
+        <field name="warrantyDurationOption" type="long-varchar"><description>Returns Policy Warranty Duration Option</description></field>
+        <field name="warrantyOffered" type="long-varchar"><description>Returns Policy Warranty Offered</description></field>
+        <field name="warrantyOfferedOption" type="long-varchar"><description>Returns Policy Warranty Offered Option</description></field>
+        <field name="warrantyType" type="long-varchar"><description>Returns Policy Warranty Type</description></field>
+        <field name="warrantyTypeOption" type="long-varchar"><description>Returns Policy Warranty Type Option</description></field>
+        <field name="reviseStatus" type="very-short"><description>Revise Status</description></field>
+        <field name="secondaryCategoryId" type="long-varchar"><description>Secondary Category ID</description></field>
+        <field name="secondaryCategoryName" type="long-varchar"><description>Secondary Category Name</description></field>
+        <field name="sellerContactDetails" type="long-varchar"><description>seller Contact Details</description></field>
+        <field name="sellerPaymentProfileId" type="long-varchar"><description>Seller Payment Profile ID</description></field>
+        <field name="sellerPaymentProfileName" type="long-varchar"><description>Seller Payment Profile Name</description></field>
+        <field name="sellerReturnProfileId" type="long-varchar"><description>Seller Return Profile ID</description></field>
+        <field name="sellerReturnProfileName" type="long-varchar"><description>Seller Return Profile Name</description></field>
+		<field name="sellerShippingProfileId" type="long-varchar"><description>Seller Shipping Profile ID</description></field>
+        <field name="sellerShippingProfileName" type="long-varchar"><description>Seller Shipping Profile Name</description></field>
+		<field name="sellStatAdminEnded" type="very-short"><description>Selling Status Admin Ended</description></field>
+        <field name="sellStatBidCount" type="numeric"><description>Selling Status Bid Count</description></field>
+        <field name="sellStatBidIncrement" type="currency-amount"><description>Selling Status Bid Increment</description></field>
+        <field name="sellStatBidIncrCurId" type="very-short"><description>Selling Status Bid Increment Currency ID</description></field>
+        <field name="sellStatCurrentPrice" type="currency-amount"><description>Selling Status Current Price</description></field>
+        <field name="sellStatCurrentPriceCurId" type="very-short"><description>Selling Status Current Price Currency ID</description></field>
+        <field name="sellStatLeadCount" type="numeric"><description>Selling Status Lead Count</description></field>
+        <field name="sellStatListingStatus" type="long-varchar"><description>Selling Status Listing Status</description></field>
+        <field name="sellStatMinToBid" type="currency-amount"><description>Selling Status Minimum To Bid</description></field>
+		<field name="sellStatMinToBidCurId" type="very-short"><description>Selling Status Minimum To Bid Currency ID</description></field>
+        <field name="promoEndTime" type="long-varchar"><description>Selling Status Promotional End Time</description></field>
+        <field name="promoOriginalPrice" type="currency-amount"><description>Selling Status Promotional Original Price</description></field>
+        <field name="promoOriginalPriceCurId" type="very-short"><description>Selling Status Promotional Original Price Currency Id</description></field>
+        <field name="promoStartTime" type="long-varchar"><description>Selling Status Promotional Start Time</description></field>
+        <field name="sellStatQuantitySold" type="numeric"><description>Selling Status Quantity Sold</description></field>
+        <field name="sellStatReserveMet" type="very-short"><description>Selling Status Reserve Met</description></field>
+        <field name="sellStatSecChanceEligible" type="very-short"><description>Selling Status Second Chance Eligible</description></field>
+        <field name="shipDetAllowPaymentEdit" type="very-short"><description>Shipping Details Allow Payment Edit</description></field>
+        <field name="shipDetGlobalShipping" type="very-short"><description>Shipping Details Global Shipping</description></field>
+        <field name="shipDetInsuranceOption" type="long-varchar"><description>Shipping Details Insurance Option</description></field>
+        <field name="shipDetPaymentEdited" type="very-short"><description>Shipping Details Payment Edited</description></field>
+        <field name="shipDetExclShipToLoc" type="very-short"><description>Shipping Details Seller Exclude Ship To Locations Preference</description></field>
+        <field name="site" type="long-varchar"><description>Site</description></field>
+        <field name="sku" type="very-long"><description>SKU</description></field>
+        <field name="skypeEnabled" type="very-short"><description>Skype Enabled</description></field>
+        <field name="skypeId" type="long-varchar"><description>Skype Id</description></field>
+        <field name="startPrice" type="currency-amount"><description>Start Price</description></field>
+        <field name="startPriceCurId" type="very-short"><description>Start Price Currency ID</description></field>
+        <field name="storefrontCategoryId" type="long-varchar"><description>Storefront Category ID</description></field>
+        <field name="storefrontCategory2Id" type="long-varchar"><description>Storefront Category2 ID</description></field>
+        <field name="storefrontUrl" type="very-long"><description>Storefront URL</description></field>
+        <field name="timeLeft" type="long-varchar"><description>Time Left</description></field>
+        <field name="title" type="long-varchar"><description>Title</description></field>
+        <field name="totalQuestionCount" type="numeric"><description>Total Question Count</description></field>
+        <field name="watchCount" type="numeric"><description>Watch Count</description></field>
+        <field name="uuid" type="long-varchar"><description>UUID</description></field>
+        <field name="picDetGalleryType" type="long-varchar"><description>Picture Details Gallery Type</description></field>
+        <field name="picDetGalleryUrl" type="very-long"><description>Picture Details Gallery URL</description></field>
+        <field name="picDetPhotoDisplay" type="long-varchar"><description>Picture Details Photo Display</description></field>
+        <field name="picDetPictureUrl" type="very-long"><description>Picture Details Picture URL</description></field>
+        <field name="dispatchTimeMax" type="numeric"><description>Dispatch Time Max</description></field>
+        <field name="paypalEmailAddress" type="long-varchar"><description>Paypal Email Address</description></field>
+        <field name="hasVariation" type="very-short"><description>Has Variation</description></field>
+        <field name="normalizedSku" type="very-long"><description>Normalized SKU (Product Id)</description></field>
+        <prim-key field="activeListingId"/>
+        <!-- <relation type="one" fk-name="PROD_STR_EBAY_LIS2" rel-entity-name="ProductStore">
+            <key-map field-name="productStoreId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="EbayActiveListingVariation"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Variation based on eBay API GetSellerList call">
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="id"><description>eBay item number (Item Id)</description></field>
+        <field name="variationSeqId" type="id"><description>eBay active Listing Variation Sequence Id</description></field>
+        <field name="productId" type="very-long"><description>SKU (Product Id)</description></field>
+        <field name="startPriceCurrencyId" type="very-short"><description>Product start price currency Id</description></field>
+        <field name="startPrice" type="currency-amount"><description>Product start price</description></field>
+        <field name="originalPriceCurrencyId" type="very-short"><description>Product original price currency Id</description></field>
+        <field name="originalPrice" type="currency-amount"><description>Product original price</description></field>
+        <field name="quantity" type="numeric"><description>Quantity</description></field>
+        <field name="quantitySold" type="numeric"><description>Quantity Sold</description></field>
+        <field name="normalizedSku" type="very-long"><description>Normalized SKU (Product Id)</description></field>
+        <prim-key field="activeListingId"/>
+        <prim-key field="itemId"/>
+        <prim-key field="variationSeqId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="itemId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ListingVariationSpecifics"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Variation based on eBay API GetSellerList call">
+        <field name="varSpecsId" type="id-ne"><description>Auto ID for eBay Active Listing Variation Specifics</description></field>
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+		<field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="long-varchar"><description>eBay item number (Item Id)</description></field>
+        <field name="variationSeqId" type="id"><description>eBay active Listing Variation Sequence Id</description></field>
+        <field name="productId" type="very-long"><description>SKU (Product Id)</description></field>
+        <field name="varSpecsName" type="very-long"><description>Variation Specifics Name</description></field>
+        <field name="varSpecsValue" type="very-long"><description>Variation Specifics Value</description></field>
+        <prim-key field="varSpecsId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListingVariation">
+            <key-map field-name="activeListingId"/>
+            <key-map field-name="itemId"/>
+			<key-map field-name="variationSeqId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="VariationPictureSpecific"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Variation Picture Specific based on eBay API GetItem call">
+		<field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="long-varchar"><description>eBay item number (Item Id)</description></field>
+        <field name="variationSpecificName" type="id-vlong"><description>eBay active Listing Variation Specific Name</description></field>
+        <field name="variationSpecificValue" type="very-long"><description>eBay active Listing Variation Specific Value</description></field>
+        <field name="pictureUrl" type="very-long"><description>Picture URL</description></field>
+        <field name="extPictureUrl" type="very-long"><description>External Picture URL</description></field>
+        <prim-key field="itemId"/>
+        <prim-key field="variationSpecificName"/>
+		<prim-key field="variationSpecificValue"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="itemId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="VariationSpecificsSet"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Variation Specific Set based on eBay API GetItem call">
+		<field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="long-varchar"><description>eBay item number (Item Id)</description></field>
+        <field name="name" type="id-long-ne"><description>eBay active Listing Variation Specific Set Name</description></field>
+        <field name="value" type="very-long"><description>eBay active Listing Variation Specific Set Value</description></field>
+        <prim-key field="itemId"/>
+        <prim-key field="name"/>
+		<prim-key field="value"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="itemId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ActiveListingItemSpecific"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listing Item Specific">
+        <field name="activeListingId" type="id-ne"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="id-long"><description>Item Id</description></field>
+        <field name="name" type="id-vlong"><description>Item Specific Name</description></field>
+        <field name="value" type="very-long"><description>Item Specific Value</description></field>
+        <prim-key field="activeListingId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="activeListingId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ActiveListingShipping"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listing Shipping Information">
+        <field name="listingShippingId" type="id-ne"><description>Auto ID for eBay Active Listing Shipping</description></field>
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="itemId" type="id"><description>Item Id</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="domestic" type="indicator"><description>Domestic Shipping Indicator</description></field>
+        <field name="shippingServiceName" type="long-varchar"><description>Shipping Service Name</description></field>
+        <field name="shippingServiceCost" type="currency-amount"><description>Shipping Service Cost</description></field>
+        <field name="shippingServiceCurrency" type="long-varchar"><description>Shipping Service Currency</description></field>
+        <field name="additionalCost" type="currency-amount"><description>Shipping Service Additional Cost</description></field>
+        <field name="priority" type="long-varchar"><description>Shipping Service Priority</description></field>
+        <field name="expeditedService" type="long-varchar"><description>Expedited Service Indicator</description></field>
+        <field name="shippingTimeMin" type="long-varchar"><description>Shipping Service Time Minimum</description></field>
+        <field name="shippingTimeMax" type="long-varchar"><description>Shipping Service Time Maximum</description></field>
+        <prim-key field="listingShippingId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="activeListingId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ActiveListingPicture"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Picture based on eBay API GetItem call">
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="itemId" type="id"><description>eBay item number (Item Id)</description></field>
+        <field name="pictureSeqId" type="id"><description>eBay item number (Item Id)</description></field>
+        <field name="pictureUrl" type="very-long"><description>eBay active Listing Variation Specific Set Name</description></field>
+        <prim-key field="activeListingId"/>
+        <prim-key field="pictureSeqId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="itemId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ListingCrossBorderTrade"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Listing Cross Border Trade">
+        <field name="crossBorderTradeId" type="id-ne"><description>Auto ID for eBay Cross Border Trade</description></field>
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="itemId" type="id"><description>Item Id</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="crossBorderTrade" type="long-varchar"><description>Cross Border Trade</description></field>
+        <prim-key field="crossBorderTradeId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="activeListingId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ListingEnhancement"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Listing Enhancement">
+        <field name="listingEnhancementId" type="id-ne"><description>Auto ID for eBay Active Listing Enhancement</description></field>
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="itemId" type="id"><description>Item Id</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="listingEnhancement" type="long-varchar"><description>Listing Enhancement</description></field>
+        <prim-key field="listingEnhancementId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="activeListingId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ListingPaymentMethods"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Picture based on eBay API GetItem call">
+        <field name="paymentMethodId" type="id-ne"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="activeListingId" type="id"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="itemId" type="id"><description>Item Id</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="paymentMethods" type="long-varchar"><description>Listing Payment Methods</description></field>
+        <prim-key field="paymentMethodId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="activeListingId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ListingExcludeLocations"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Picture based on eBay API GetItem call">
+        <field name="activeListingId" type="id-ne"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="itemId" type="id"><description>Item Id</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="excludeLocations" type="long-varchar"><description>Listing Exclude Ship To Location</description></field>
+        <prim-key field="activeListingId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="activeListingId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="ListingShipToLocations"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Active Listings Picture based on eBay API GetItem call">
+        <field name="activeListingId" type="id-ne"><description>Auto ID for eBay Active Listing</description></field>
+        <field name="itemId" type="id"><description>Item Id</description></field>
+        <field name="productStoreId" type="id-long"><description>Product Store Id</description></field>
+        <field name="shipToLocations" type="long-varchar"><description>Listing Ship To Location</description></field>
+        <prim-key field="activeListingId"/>
+        <!-- <relation type="one-nofk" rel-entity-name="EbayActiveListing">
+            <key-map field-name="activeListingId"/>
+        </relation> -->
+    </entity>
+    
+    <entity entity-name="Refund"
+        package-name="org.ofbiz.accounting.payment"
+        title="Refund">
+		<field name="refundId" type="id-ne"><description>Refund ID</description></field>
+        <field name="orderId" type="id-ne"><description>Order ID</description></field>
+        <field name="paypalEmailAddress" type="id-ne"><description>PayPal Email Address</description></field>
+        <field name="paypalTransactionId" type="id-ne"><description>PayPal Transaction ID</description></field>
+        <field name="refundPaypalTransId" type="id-ne"><description>Refund PayPal Transaction ID</description></field>
+        <field name="paymentMethodTypeId" type="id-ne"><description>Payment Method Type ID</description></field>
+        <field name="statusId" type="id-ne"><description>Status ID</description></field>
+		<field name="fullRefund" type="indicator"><description>Full Refund or Partial Refund</description></field>
+        <field name="amount" type="currency-amount"><description>Refund Amount</description></field>
+        <field name="currencyUomId" type="very-short"><description>Refund Currency</description></field>
+        <field name="reasonCode" type="id-ne"><description>Refund Reason Code</description></field>
+        <field name="reason" type="very-long"><description>Refund Reason</description></field>
+        <field name="createdByUserLogin" type="id-vlong"></field>
+        <prim-key field="refundId"/>
+        <!--<prim-key field="orderId"/>-->
+        <relation type="one" fk-name="ORDER_REFUND" rel-entity-name="OrderHeader">
+            <key-map field-name="orderId"/>
+        </relation>
+        <relation type="one" fk-name="REFUND_STTS" rel-entity-name="StatusItem">
+            <key-map field-name="statusId"/>
+        </relation>
+        <relation type="one" fk-name="REFUND_REASON_CODE" rel-entity-name="Enumeration">
+            <key-map field-name="reasonCode" rel-field-name="enumId"/>
+        </relation>
+    </entity>
+    
+    <entity entity-name="EbayEmailTemplate"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Email Template">
+		<field name="emailTemplateId" type="id-ne"><description>eBay Email Template ID</description></field>
+        <field name="emailTemplateName" type="long-varchar"><description>eBay Email Template Name</description></field>
+        <field name="emailTemplateTypeId" type="short-varchar"><description>eBay Email Template Type ID (based on eBay Question Type)</description></field>
+        <field name="language" type="short-varchar"><description>eBay Email Template Language</description></field>
+		<field name="subject" type="long-varchar"><description>eBay Email Template Subject</description></field>
+        <field name="content" type="very-long"><description>eBay Email Template Content</description></field>
+        <field name="trackingNumberBody" type="very-long"><description>eBay Email Template Content for Tracking Number Body</description></field>
+        <field name="shippingTimeStandard" type="very-long"><description>eBay Email Template Content for Shipping Time Frame Standard</description></field>
+        <field name="shippingTimeExpress" type="very-long"><description>eBay Email Template Content for Shipping Time Frame Express</description></field>
+        <prim-key field="emailTemplateId"/>
+        <prim-key field="emailTemplateTypeId"/>
+    </entity>
+    
+    <entity entity-name="EbayMostWatchedItem"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Most Watched Item">
+        <field name="categoryId" type="id"><description>eBay Category Id</description></field>
+        <field name="itemId" type="id-ne"><description>eBay Item Id</description></field>
+        <field name="title" type="long-varchar"><description>eBay Item Title</description></field>
+        <field name="viewItemUrl" type="very-long"><description>eBay Item View URL</description></field>
+        <field name="globalId" type="short-varchar"><description>eBay Global Id</description></field>
+        <field name="primaryCategoryId" type="short-varchar"><description>eBay Primary Category Id</description></field>
+        <field name="primaryCategoryName" type="long-varchar"><description>eBay Primary Category Name</description></field>
+        <field name="buyItNowPrice" type="currency-amount"><description>Buy It Now Price</description></field>
+        <field name="currencyId" type="short-varchar"><description>Currency Id</description></field>
+        <field name="country" type="short-varchar"><description>Country</description></field>
+        <field name="imageUrl" type="very-long"><description>Image URL</description></field>
+        <field name="shippingCost" type="currency-amount"><description>Shipping Cost</description></field>
+        <field name="shippingType" type="short-varchar"><description>Shipping Type</description></field>
+        <field name="watchCount" type="numeric"><description>Watch Count</description></field>
+        <prim-key field="categoryId"/>
+        <prim-key field="itemId"/>
+    </entity>
+    
+    <!--Shipping Delivery Time Estimation-->
+    <entity entity-name="ShipmentGeoEstimate"
+        package-name="org.ofbiz.ebay.shipping"
+        title="Shipment Geo Estimate">
+		<field name="geoId" type="id-ne"><description>Geo ID</description></field>
+        <field name="geoTypeId" type="short-varchar"><description>Geo Type ID</description></field>
+        <field name="shipmentMethodTypeId" type="long-varchar"><description>Shipment Method Type ID</description></field>
+		<field name="minDeliveryDay" type="very-short"><description>Minimum Delivery Day</description></field>
+        <field name="maxDeliveryDay" type="very-short"><description>Maximum Delivery Day</description></field>
+        <field name="trackingLink" type="long-varchar"><description>Link to Check Tracking Number</description></field>
+        <prim-key field="geoId"/>
+        <prim-key field="shipmentMethodTypeId"/>
+    </entity>
+    
+    <entity entity-name="ProductItemSpecific"
+        package-name="org.ofbiz.product.catalog"
+        title="Product Item Specific">
+        <field name="ebaySiteId" type="id"><description>Product Id</description></field>
+        <field name="productId" type="id-long"><description>Product Id</description></field>
+        <field name="name" type="id-long"><description>Item Specific Name</description></field>
+        <field name="value" type="short-varchar"><description>Item Specific Value</description></field>
+        <prim-key field="ebaySiteId"/>
+        <prim-key field="productId"/>
+        <prim-key field="name"/>
+        <!--<relation type="one" fk-name="PROD_ITEM_SPEC" rel-entity-name="Product">
+         <key-map field-name="productId"/>
+         </relation>-->
+    </entity>
+    
+    <entity entity-name="ProductPictureExternal"
+        package-name="org.ofbiz.product.catalog"
+        title="Product Picture External">
+        <field name="productId" type="id-ne"><description>Product ID</description></field>
+        <field name="site" type="short-varchar"><description>Site</description></field>
+        <field name="pictureType" type="id-ne"><description>Picture Type</description></field>
+        <field name="pictureSeqId" type="id-ne"><description>Picture Sequence ID</description></field>
+        <field name="pictureUrl" type="long-varchar"><description>Picture URL</description></field>
+        <prim-key field="productId"/>
+        <prim-key field="pictureType"/>
+        <prim-key field="pictureSeqId"/>
+        <relation type="one" fk-name="PROD_PIC_EXT" rel-entity-name="Product">
+            <key-map field-name="productId"/>
+        </relation>
+    </entity>
+    
+    <entity entity-name="ImportForm"
+        package-name="org.ofbiz.bellyanna.bulk"
+        title="Bulk Import Form">
+        <field name="importFormId" type="id-ne"><description>Import Form ID</description></field>
+        <field name="importFormName" type="short-varchar"><description>Import Form Name</description></field>
+        <prim-key field="importFormId"/>
+    </entity>
+    
+    <entity entity-name="UpdateForm"
+        package-name="org.ofbiz.bellyanna.bulk"
+        title="Bulk Update Form">
+        <field name="updateFormId" type="id-ne"><description>Update Form ID</description></field>
+        <field name="updateFormName" type="short-varchar"><description>Update Form Name</description></field>
+        <prim-key field="updateFormId"/>
+    </entity>
+    
+    <entity entity-name="BulkProductUpdate"
+        package-name="org.ofbiz.bellyanna.bulk"
+        title="Bulk Update Form">
+        <field name="productUpdateId" type="id-ne"><description>Product Update ID</description></field>
+        <field name="fileName" type="long-varchar"/>
+        <field name="fileLineNumber" type="fixed-point"></field>
+        <field name="productId" type="id-ne"></field>
+        <field name="internalName" type="long-varchar"></field>
+        <field name="productTypeId" type="long-varchar"></field>
+        <field name="facilityId" type="long-varchar"></field>
+        <field name="locationCode" type="short-varchar"></field>
+        <field name="weight" type="fixed-point"></field>
+        <field name="declaredNameCn" type="long-varchar"></field>
+        <field name="declaredNameEn" type="long-varchar"></field>
+        <field name="isVirtual" type="indicator"></field>
+        <field name="isVariant" type="indicator"></field>
+        <field name="virtualVariantMethodEnum" type="short-varchar"></field>
+        <field name="requirementMethodEnumId" type="short-varchar"></field>
+        <field name="supplierPartyId" type="id-ne"></field>
+        <field name="priceUsd" type="currency-amount"></field>
+        <field name="priceAud" type="currency-amount"></field>
+        <field name="priceCad" type="currency-amount"></field>
+        <field name="priceGbp" type="currency-amount"></field>
+        <field name="priceEur" type="currency-amount"></field>
+        <field name="setDiscontinue" type="indicator"></field>
+        <field name="ebayUpdateQuantity" type="indicator"></field>
+        <field name="ebayListQuantity" type="numeric"></field>
+        <field name="ebayTriggerQuantity" type="numeric"></field>
+        <field name="updatedStatus" type="indicator"></field>
+        <field name="updatedDescription" type="very-long"></field>
+        <prim-key field="productUpdateId"/>
+    </entity>
+    
+    <entity entity-name="RelistHistory"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Relist History">
+        <field name="relistHistoryId" type="id-ne"><description>eBay Relist HIstory Id</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="oldItemId" type="long-varchar"><description>Old eBay Item Id</description></field>
+        <field name="watchCount" type="numeric"><description>Watch Count</description></field>
+        <field name="hitCount" type="numeric"><description>Hit Count</description></field>
+        <field name="newItemId" type="long-varchar"><description>New eBay Item Id</description></field>
+        <field name="sku" type="long-varchar"><description>SKU</description></field>
+        <prim-key field="relistHistoryId"/>
+    </entity>
+    
+    <entity entity-name="EbayCases"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Cases">
+        <field name="caseId" type="id"><description>eBay Case Id</description></field>
+        <field name="productStoreId" type="id"><description>Product Store Id</description></field>
+        <field name="caseType" type="long-varchar"><description>eBay Case Type</description></field>
+        <field name="ebayUserId" type="long-varchar"><description>eBay User Id</description></field>
+        <field name="caseQuantity" type="numeric"><description>Case Quantity</description></field>
+        <field name="caseAmount" type="currency-amount"><description>Case Amount</description></field>
+        <field name="caseCurrency" type="short-varchar"><description>Case Currency</description></field>
+        <field name="creationDate" type="long-varchar"><description>Creation Date</description></field>
+        <field name="itemId" type="long-varchar"><description>Item Id</description></field>
+        <field name="itemTitle" type="long-varchar"><description>Item Title</description></field>
+        <field name="transactionId" type="long-varchar"><description>Transaction Id</description></field>
+        <field name="lastModifiedDate" type="long-varchar"><description>Last Modified Date</description></field>
+        <field name="respondByDate" type="long-varchar"><description>Respond By Date</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <prim-key field="caseId"/>
+        <prim-key field="productStoreId"/>
+    </entity>
+    
+    <entity entity-name="EbayCaseRefund"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Case Refund">
+        <field name="caseId" type="id"><description>eBay Case Id</description></field>
+        <field name="productStoreId" type="id"><description>Product Store Id</description></field>
+        <field name="refundDate" type="date-time"><description>Refund Date</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="notes" type="very-long"><description>Notes</description></field>
+        <prim-key field="caseId"/>
+        <prim-key field="productStoreId"/>
+    </entity>
+    
+    <entity entity-name="SentRecord"
+        package-name="org.ofbiz.ebay.store"
+        title="Sent Record">
+        <field name="sentId" type="id"><description>sent record Id</description></field>
+        <field name="productStoreId" type="long-varchar"><description>eBay Case Id</description></field>
+        <field name="sentCount" type="numeric"><description>Sent Count</description></field>
+        <prim-key field="sentId"/>
+    </entity>
+    
+    <entity entity-name="CountryNameMap"
+        package-name="org.ofbiz.ebay.store"
+        title="Country Name Map">
+        <field name="countryName" type="id-long-ne"><description>sent record Id</description></field>
+        <field name="geoId" type="id"><description>eBay Case Id</description></field>
+        <prim-key field="countryName"/>
+    </entity>
+
+    <entity entity-name="EbayChangeShipping"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Change Shipping">
+        <field name="ebayChangeShippingId" type="id-ne"><description>item Id</description></field>
+        <field name="itemId" type="long-varchar"><description>item Id</description></field>
+        <field name="ebayAccount" type="long-varchar"><description>eBay Account</description></field>
+        <field name="site" type="long-varchar"><description>eBay Site</description></field>
+        <field name="domesticName" type="long-varchar"><description>Domestic Name</description></field>
+        <field name="domesticPrice" type="long-varchar"><description>Domestic Price</description></field>
+        <field name="domesticAdditional" type="long-varchar"><description>Domestic Additional</description></field>
+        <field name="intName" type="long-varchar"><description>International Name</description></field>
+        <field name="intPrice" type="long-varchar"><description>International Price</description></field>
+        <field name="intAdditional" type="long-varchar"><description>International Additional</description></field>
+        <field name="handlingTime" type="long-varchar"><description>Handling Time</description></field>
+        <field name="notes" type="long-varchar"><description>status Id</description></field>
+        <field name="statusId" type="long-varchar"><description>status Id</description></field>
+        <prim-key field="ebayChangeShippingId"/>
+    </entity>
+    
+    <entity entity-name="EbayChangePrice"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Change Price">
+        <field name="ebayChangePriceId" type="id-ne"><description>eBay Change Price Auto Id</description></field>
+        <field name="itemId" type="long-varchar"><description>item Id</description></field>
+        <field name="site" type="long-varchar"><description>eBay Site</description></field>
+        <field name="parentProductId" type="long-varchar"><description>Parent Product Id</description></field>
+        <field name="parentProductPrice" type="long-varchar"><description>Parent Product Price</description></field>
+        <field name="parentQty" type="long-varchar"><description>Parent Quantity</description></field>
+        <field name="childProductId" type="long-varchar"><description>Child Product Id</description></field>
+        <field name="childProductPrice" type="long-varchar"><description>Child Product Price</description></field>
+        <field name="childQty" type="long-varchar"><description>Child Qty</description></field>
+        <field name="notes" type="very-long"><description>notes</description></field>
+        <field name="statusId" type="long-varchar"><description>status Id</description></field>
+        <prim-key field="ebayChangePriceId"/>
+    </entity>
+    
+    <entity entity-name="EbayPromotionalSale"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Change Price">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="promotionalSaleId" type="id-ne"><description>eBay Promotional Sale Id</description></field>
+        <field name="promotionalSaleName" type="long-varchar"><description>Promotional Sale Name</description></field>
+        <field name="promotionalSaleType" type="long-varchar"><description>Promotional Sale Type</description></field>
+        <field name="promotionalSaleStartTime" type="long-varchar"><description>Promotional Sale Start Time</description></field>
+        <field name="promotionalSaleEndTime" type="long-varchar"><description>Promotional Sale End Time</description></field>
+        <field name="discountType" type="long-varchar"><description>Discount Type</description></field>
+        <field name="discountValue" type="long-varchar"><description>Discount Value</description></field>
+        <field name="statusId" type="short-varchar"><description>eBay Promotional Sale Status Id</description></field>
+        <field name="notes" type="very-long"><description>notes</description></field>
+        <prim-key field="productStoreId"/>
+        <prim-key field="promotionalSaleId"/>
+    </entity>
+    
+    <entity entity-name="LastMarkdownListing"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Change Price">
+        <field name="itemId" type="id-ne"><description>Item Id</description></field>
+        <field name="lastDiscountValue" type="floating-point"><description>Last Discount Value</description></field>
+        <prim-key field="itemId"/>
+    </entity>
+    
+    <entity entity-name="WaitingForMarkdown"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Waiting for Markdown">
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="itemId" type="id-ne"><description>Item Id</description></field>
+        <field name="currentDiscount" type="floating-point"><description>Last Discount Value</description></field>
+        <prim-key field="itemId"/>
+    </entity>
+    
+    <entity entity-name="MarkdownHistory"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Markdown History">
+        <field name="markdownHistoryId" type="id"><description>Product Store Id</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="itemId" type="long-varchar"><description>Item Id</description></field>
+        <field name="discountValue" type="floating-point"><description>Last Discount Value</description></field>
+        <prim-key field="markdownHistoryId"/>
+    </entity>
+    
+    <entity entity-name="AddQtyHistory"
+        package-name ="org.ofbiz.ebay.store"
+        title="eBay Add Qty Error">
+        <field name="orderLineItemId" type="long-varchar"><description>OrderLineItemId</description></field>
+        <field name="productStoreId" type="long-varchar"><description>Product Store Id</description></field>
+        <field name="statusId" type="long-varchar"><description>Status Id</description></field>
+        <field name="itemId" type="long-varchar"><description>Item Id</description></field>
+        <field name="qty" type="numeric"><description>Qty to be added</description></field>
+        <field name="productId" type="long-varchar"><description>Product Id</description></field>
+        <field name="originalSku" type="long-varchar"><description>Original Sku</description></field>
+        <field name="notes" type="very-long"><description>Runtime Notes</description></field>
+        <prim-key field="orderLineItemId"/>
+        <prim-key field="productStoreId"/>
+    </entity>
+    
+    <entity entity-name="EbayOrderItem"
+        package-name ="org.ofbiz.ebay.store"
+        title="eBay Order Item">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="salesRecordNumber" type="id-ne"><description>eBay Sales Record Number</description></field>
+        <field name="orderItemSeqId" type="id-ne"><description>Order Item Seq Id</description></field>
+        <field name="itemId" type="long-varchar"><description>eBay Item Id</description></field>
+        <field name="transactionId" type="long-varchar"><description>eBay Transaction Id</description></field>
+        <field name="createdDate" type="long-varchar"><description>eBay Created Date</description></field>
+        <field name="createdDateSql" type="date"><description>eBay Created Date SQL</description></field>
+        <field name="createdDateStamp" type="date-time"><description>eBay Created Date Timestamp</description></field>
+        <field name="sku" type="very-long"><description>eBay SKU</description></field>
+        <field name="originalSku" type="very-long"><description>eBay Original SKU</description></field>
+        <field name="qty" type="numeric"><description>Qty Purchased</description></field>
+        <field name="unitPrice" type="currency-amount"><description>Unit Price</description></field>
+        <field name="currency" type="short-varchar"><description>Unit Price Currency</description></field>
+        <prim-key field="productStoreId"/>
+        <prim-key field="salesRecordNumber"/>
+        <prim-key field="orderItemSeqId"/>
+    </entity>
+    
+    <!-- <entity entity-name="ServiceRuntimeStatus"
+        package-name="org.ofbiz.bellyanna.bulk"
+        title="Serice Runtime Status">
+        <field name="serviceName" type="id-ne"><description>Product Update ID</description></field>
+        <field name="fileName" type="long-varchar"/>
+        <field name="fileLineNumber" type="fixed-point"></field>
+        <field name="productId" type="id-ne"></field>
+        <field name="internalName" type="long-varchar"></field>
+        <field name="productTypeId" type="long-varchar"></field>
+        <field name="facilityId" type="long-varchar"></field>
+        <field name="locationCode" type="short-varchar"></field>
+        <field name="weight" type="fixed-point"></field>
+        <field name="declaredNameCn" type="long-varchar"></field>
+        <field name="declaredNameEn" type="long-varchar"></field>
+        <field name="isVirtual" type="indicator"></field>
+        <field name="isVariant" type="indicator"></field>
+        <field name="virtualVariantMethodEnum" type="short-varchar"></field>
+        <field name="requirementMethodEnumId" type="short-varchar"></field>
+        <field name="supplierPartyId" type="id-ne"></field>
+        <field name="priceUsd" type="currency-amount"></field>
+        <field name="priceAud" type="currency-amount"></field>
+        <field name="priceCad" type="currency-amount"></field>
+        <field name="priceGbp" type="currency-amount"></field>
+        <field name="priceEur" type="currency-amount"></field>
+        <field name="setDiscontinue" type="indicator"></field>
+        <field name="ebayUpdateQuantity" type="indicator"></field>
+        <field name="ebayListQuantity" type="numeric"></field>
+        <field name="ebayTriggerQuantity" type="numeric"></field>
+        <field name="updatedStatus" type="indicator"></field>
+        <field name="updatedDescription" type="very-long"></field>
+        <prim-key field="productUpdateId"/>
+    </entity>-->
+    
+    
+    <entity entity-name="UpdateListingStatus"
+        package-name="org.ofbiz.bellyanna.bulk"
+        title="Update Listing Status">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="hasMoreItems" type="short-varchar"/>
+        <field name="lastPageNumber" type="short-varchar"></field>
+        <prim-key field="productStoreId"/>
+    </entity>
+    
+    <entity entity-name="UpdateEbayOrderItemStatus"
+        package-name="org.ofbiz.bellyanna.bulk"
+        title="Update Ebay Order Item Status">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="hasMoreOrders" type="short-varchar"/>
+        <field name="lastPageNumber" type="short-varchar"></field>
+        <field name="numberOfDays" type="short-varchar"></field>
+        <prim-key field="productStoreId"/>
+    </entity>
+    
+    
+    <entity entity-name="RivalListing"
+        package-name="org.ofbiz.bellyanna.gudao"
+        title="Rival Listing Monitor">
+        <field name="sku" type="id-vlong"><description>Product Id</description></field>
+        <field name="rivalItemId" type="long-varchar"><description>Rival Item Id</description></field>
+        <field name="price" type="floating-point"><description>Rival Item Id</description></field>
+        <prim-key field="sku"/>
+        <prim-key field="rivalItemId"/>
+    </entity>
+    
+    <entity entity-name="AutoScheduleJob"
+        package-name ="org.ofbiz.ebay.store"
+        title="Auto Schedule Job">
+        <field name="autoScheduleJobId" type="id-ne"><description>Auto Schedule Job ID</description></field>
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="serviceName" type="id-ne"><description>Service Name</description></field>
+        <field name="priority" type="very-short"><description>Service Priority</description></field>
+        <prim-key field="autoScheduleJobId"/>
+        <prim-key field="productStoreId"/>
+        <prim-key field="serviceName"/>
+    </entity>
+    
+    <entity entity-name="AutoScheduleJobDetail"
+        package-name ="org.ofbiz.ebay.store"
+        title="Auto Schedule Job Detail">
+        <field name="autoScheduleJobId" type="id"><description>Auto Schedule Job ID</description></field>
+        <field name="attrName" type="id"><description>Service Attribute Name</description></field>
+        <field name="attrValue" type="very-long"><description>Service Attribute Value</description></field>
+        <prim-key field="autoScheduleJobId"/>
+        <prim-key field="attrName"/>
+    </entity>
+    
+    <entity entity-name="AutoScheduleJobHistory"
+        package-name ="org.ofbiz.ebay.store"
+        title="Auto Schedule Job">
+        <field name="productStoreId" type="id-ne"><description>Product Store Id</description></field>
+        <field name="serviceName" type="id-ne"><description>Service Name</description></field>
+        <field name="lastRuntime" type="date-time"><description>Last Runtime</description></field>
+        <prim-key field="productStoreId"/>
+        <prim-key field="serviceName"/>
+    </entity>
+    
+    <entity entity-name="EbayChangePaypal"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Change Paypal">
+        <field name="ebayChangePaypalId" type="id-ne"><description>eBay Change PayPal Auto Id</description></field>
+        <field name="itemId" type="long-varchar"><description>item Id</description></field>
+        <field name="paypalEmailAddress" type="long-varchar"><description>PayPal Email Address</description></field>
+        <field name="notes" type="very-long"><description>notes</description></field>
+        <field name="statusId" type="long-varchar"><description>status Id</description></field>
+        <prim-key field="ebayChangePaypalId"/>
+    </entity>
+    
+    <!-- view-entity - START -->
+    <view-entity entity-name="OrderShipEpacket"
+        package-name="org.ofbiz.order.order"
+        never-cache="true"
+        title="Order List Shipped by Epacket View Entity">
+        <member-entity entity-alias="OH" entity-name="OrderHeader"/>
+        <member-entity entity-alias="OISG" entity-name="OrderItemShipGroup"/>
+		<member-entity entity-alias="PA" entity-name="PostalAddress"/>
+		<member-entity entity-alias="GA" entity-name="GeoAssoc"/>
+        <alias entity-alias="OH" name="orderId"/>
+		<alias entity-alias="OH" name="salesChannelEnumId"/>
+        <alias entity-alias="OH" name="statusId"/>
+        <alias entity-alias="OH" name="orderTypeId"/>
+		<alias entity-alias="OH" name="externalId"/>
+		<alias entity-alias="OISG" name="shipmentMethodTypeId"/>
+		<alias entity-alias="OISG" name="maySplit"/>
+		<alias entity-alias="OISG" name="trackingNumber"/>
+		<alias entity-alias="PA" name="countryGeoId"/>
+		<alias entity-alias="GA" name="geoId"/>
+		<alias entity-alias="GA" name="geoIdTo"/>
+        <view-link entity-alias="OH" rel-entity-alias="OISG">
+            <key-map field-name="orderId"/>
+        </view-link>
+		<view-link entity-alias="OISG" rel-entity-alias="PA">
+            <key-map field-name="contactMechId"/>
+        </view-link>
+        <view-link entity-alias="PA" rel-entity-alias="GA">
+            <key-map field-name="countryGeoId" rel-field-name="geoId"/>
+        </view-link>
+        <entity-condition>
+            <condition-list>
+                <condition-expr field-name="statusId" entity-alias="OH" operator="equals" value="ORDER_APPROVED"/>
+				<condition-expr field-name="salesChannelEnumId" entity-alias="OH" operator="equals" value="EBAY_SALES_CHANNEL"/>
+				<condition-expr field-name="orderTypeId" entity-alias="OH" operator="equals" value="SALES_ORDER"/>
+				<condition-expr field-name="geoIdTo" entity-alias="GA" operator="like" value="EUB%"/>
+				<condition-expr field-name="maySplit" entity-alias="OISG" operator="equals" value="N"/>
+            </condition-list>
+        </entity-condition>
+    </view-entity>
+    
+    <view-entity entity-name="OrderHeaderFeedback"
+        package-name="org.ofbiz.order.order"
+        never-cache="true"
+        title="Order Feedback and Status View Entity">
+        <member-entity entity-alias="OH" entity-name="OrderHeader"/>
+        <member-entity entity-alias="OS" entity-name="OrderStatus"/>
+		<member-entity entity-alias="OA" entity-name="OrderAttribute"/>
+        <alias entity-alias="OH" name="orderId"/>
+		<alias entity-alias="OH" name="salesChannelEnumId"/>
+        <alias entity-alias="OH" name="productStoreId"/>
+        <alias entity-alias="OS" name="statusId"/>
+        <alias entity-alias="OS" name="statusDatetime"/>
+		<alias entity-alias="OA" name="attrName"/>
+		<alias entity-alias="OA" name="attrValue"/>
+        <view-link entity-alias="OH" rel-entity-alias="OS">
+            <key-map field-name="orderId"/>
+        </view-link>
+		<view-link entity-alias="OH" rel-entity-alias="OA">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <entity-condition>
+            <condition-list>
+                <condition-expr field-name="statusId" entity-alias="OS" operator="equals" value="ORDER_COMPLETED"/>
+				<condition-expr field-name="salesChannelEnumId" entity-alias="OH" operator="equals" value="EBAY_SALES_CHANNEL"/>
+				<condition-expr field-name="attrName" entity-alias="OA" operator="equals" value="FEEDBACK_RECEIVED"/>
+				<condition-expr field-name="attrValue" entity-alias="OA" operator="equals" value="N"/>
+            </condition-list>
+        </entity-condition>
+    </view-entity>
+    
+    <view-entity entity-name="Order10DaysShipped"
+        package-name="org.ofbiz.order.order"
+        never-cache="true"
+        title="Order Eligible to be sent 10 Days shipped email View Entity">
+        <member-entity entity-alias="OH" entity-name="OrderHeader"/>
+        <member-entity entity-alias="OS" entity-name="OrderStatus"/>
+		<member-entity entity-alias="OAF" entity-name="OrderAttribute"/>
+		<member-entity entity-alias="OAS" entity-name="OrderAttribute"/>
+        <alias entity-alias="OH" name="orderId"/>
+		<alias entity-alias="OH" name="salesChannelEnumId"/>
+        <alias entity-alias="OS" name="statusId"/>
+        <alias entity-alias="OS" name="statusDatetime"/>
+		<alias entity-alias="OAF" name="attrName"/>
+		<alias entity-alias="OAF" name="attrValue"/>
+		<alias entity-alias="OAS" name="attrNameEmailSent" field="attrName"/>
+		<alias entity-alias="OAS" name="attrValueEmailSent" field="attrValue"/>
+        <view-link entity-alias="OH" rel-entity-alias="OS">
+            <key-map field-name="orderId"/>
+        </view-link>
+		<view-link entity-alias="OH" rel-entity-alias="OAF">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <view-link entity-alias="OH" rel-entity-alias="OAS">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <entity-condition>
+            <condition-list>
+                <condition-expr field-name="statusId" entity-alias="OS" operator="equals" value="ORDER_COMPLETED"/>
+				<condition-expr field-name="salesChannelEnumId" entity-alias="OH" operator="equals" value="EBAY_SALES_CHANNEL"/>
+				<condition-expr field-name="attrName" entity-alias="OAF" operator="equals" value="FEEDBACK_RECEIVED"/>
+				<condition-expr field-name="attrValue" entity-alias="OAF" operator="equals" value="N"/>
+				<condition-expr field-name="attrNameEmailSent" entity-alias="OAS" operator="equals" value="10DAYS_EMAIL_SENT"/>
+				<condition-expr field-name="attrValueEmailSent" entity-alias="OAS" operator="equals" value="N"/>
+            </condition-list>
+        </entity-condition>
+    </view-entity>
+    
+    <view-entity entity-name="OrderPaidCompleted"
+        package-name="org.ofbiz.order.order"
+        never-cache="true"
+        title="Order Eligible to be sent 10 Days shipped email View Entity">
+        <member-entity entity-alias="OH" entity-name="OrderHeader"/>
+        <member-entity entity-alias="OS" entity-name="OrderStatus"/>
+        <member-entity entity-alias="PS" entity-name="ProductStore"/>
+		<member-entity entity-alias="OAF" entity-name="OrderAttribute"/>
+		<member-entity entity-alias="OAS" entity-name="OrderAttribute"/>
+        <member-entity entity-alias="OAM" entity-name="OrderAttribute"/>
+        <member-entity entity-alias="OAC" entity-name="OrderAttribute"/>
+        <member-entity entity-alias="OAR" entity-name="OrderAttribute"/>
+        <alias entity-alias="OH" name="orderId"/>
+		<alias entity-alias="OH" name="salesChannelEnumId"/>
+        <alias entity-alias="OH" name="orderDate"/>
+        <alias entity-alias="OH" name="productStoreId"/>
+        <alias entity-alias="PS" name="subtitle"/>
+		<alias entity-alias="OAF" name="attrName"/>
+		<alias entity-alias="OAF" name="attrValue"/>
+		<alias entity-alias="OAS" name="attrNameEmailSent" field="attrName"/>
+		<alias entity-alias="OAS" name="attrValueEmailSent" field="attrValue"/>
+        <alias entity-alias="OAM" name="attrNameMessage" field="attrName"/>
+		<alias entity-alias="OAM" name="attrValueMessage" field="attrValue"/>
+        <alias entity-alias="OAC" name="attrNameCase" field="attrName"/>
+		<alias entity-alias="OAC" name="attrValueCase" field="attrValue"/>
+        <alias entity-alias="OAR" name="attrNameRefund" field="attrName"/>
+		<alias entity-alias="OAR" name="attrValueRefund" field="attrValue"/>
+        <view-link entity-alias="OH" rel-entity-alias="OS">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <view-link entity-alias="OH" rel-entity-alias="PS">
+            <key-map field-name="productStoreId"/>
+        </view-link>
+		<view-link entity-alias="OH" rel-entity-alias="OAF">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <view-link entity-alias="OH" rel-entity-alias="OAS">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <view-link entity-alias="OH" rel-entity-alias="OAM">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <view-link entity-alias="OH" rel-entity-alias="OAC">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <view-link entity-alias="OH" rel-entity-alias="OAR">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <entity-condition>
+            <condition-list>
+				<condition-expr field-name="salesChannelEnumId" entity-alias="OH" operator="equals" value="EBAY_SALES_CHANNEL"/>
+				<condition-expr field-name="attrName" entity-alias="OAF" operator="equals" value="FEEDBACK_RECEIVED"/>
+				<condition-expr field-name="attrValue" entity-alias="OAF" operator="equals" value="N"/>
+				<condition-expr field-name="attrName" entity-alias="OAS" operator="equals" value="30DAYS_EMAIL_SENT"/>
+				<condition-expr field-name="attrValue" entity-alias="OAS" operator="equals" value="N"/>
+                <condition-expr field-name="attrName" entity-alias="OAM" operator="equals" value="HAS_MESSAGE"/>
+				<condition-expr field-name="attrValue" entity-alias="OAM" operator="equals" value="N"/>
+                <condition-expr field-name="attrName" entity-alias="OAC" operator="equals" value="HAS_CASE"/>
+				<condition-expr field-name="attrValue" entity-alias="OAC" operator="equals" value="N"/>
+                <condition-expr field-name="attrName" entity-alias="OAR" operator="equals" value="HAS_REFUND"/>
+				<condition-expr field-name="attrValue" entity-alias="OAR" operator="equals" value="N"/>
+            </condition-list>
+        </entity-condition>
+    </view-entity>
+    
+    <view-entity entity-name="ToBeShipped"
+        package-name="org.ofbiz.order.order"
+        never-cache="true"
+        title="To Be Shipped - View Entity">
+        <member-entity entity-alias="OH" entity-name="OrderHeader"/>
+        <member-entity entity-alias="OISG" entity-name="OrderItemShipGroup"/>
+		<member-entity entity-alias="PA" entity-name="PostalAddress"/>
+        <alias entity-alias="OH" name="orderId"/>
+		<alias entity-alias="OH" name="productStoreId"/>
+		<alias entity-alias="OH" name="salesChannelEnumId"/>
+        <alias entity-alias="OH" name="statusId"/>
+        <alias entity-alias="OH" name="orderTypeId"/>
+		<alias entity-alias="OH" name="externalId"/>
+		<alias entity-alias="OH" name="createdStamp"/>
+		<alias entity-alias="OISG" name="shipmentMethodTypeId"/>
+		<alias entity-alias="OISG" name="maySplit"/>
+		<alias entity-alias="OISG" name="trackingNumber"/>
+		<alias entity-alias="PA" name="countryGeoId"/>
+        <view-link entity-alias="OH" rel-entity-alias="OISG">
+            <key-map field-name="orderId"/>
+        </view-link>
+		<view-link entity-alias="OISG" rel-entity-alias="PA">
+            <key-map field-name="contactMechId"/>
+        </view-link>
+        <entity-condition>
+            <condition-list>
+				<!--<condition-expr field-name="salesChannelEnumId" entity-alias="OH" operator="equals" value="EBAY_SALES_CHANNEL"/>-->
+                <condition-expr field-name="statusId" entity-alias="OH" operator="not-equals" value="ORDER_COMPLETED"/>
+                <condition-expr field-name="statusId" entity-alias="OH" operator="not-equals" value="ORDER_CANCELLED"/>
+				<condition-expr field-name="orderTypeId" entity-alias="OH" operator="equals" value="SALES_ORDER"/>
+				<condition-expr field-name="maySplit" entity-alias="OISG" operator="equals" value="N"/>
+            </condition-list>
+        </entity-condition>
+    </view-entity>
+    
+    <view-entity entity-name="RefundList"
+        package-name="org.ofbiz.order.order"
+        never-cache="true"
+        title="Refund and Order Contact Mech  View Entity">
+        <member-entity entity-alias="OH" entity-name="OrderHeader"/>
+        <member-entity entity-alias="RF" entity-name="Refund"/>
+		<member-entity entity-alias="OCM" entity-name="OrderContactMech"/>
+        <member-entity entity-alias="CM" entity-name="ContactMech"/>
+        <alias entity-alias="OH" name="orderId"/>
+		<alias entity-alias="OH" name="productStoreId"/>
+        <alias entity-alias="OH" name="grandTotal"/>
+        <alias entity-alias="RF" name="refundId"/>
+        <alias entity-alias="RF" name="orderId"/>
+        <alias entity-alias="RF" name="paypalEmailAddress"/>
+        <alias entity-alias="RF" name="paypalTransactionId"/>
+        <alias entity-alias="RF" name="refundPaypalTransId"/>
+        <alias entity-alias="RF" name="paymentMethodTypeId"/>
+        <alias entity-alias="RF" name="statusId"/>
+        <alias entity-alias="RF" name="fullRefund"/>
+        <alias entity-alias="RF" name="amount"/>
+        <alias entity-alias="RF" name="currencyUomId"/>
+        <alias entity-alias="RF" name="reasonCode"/>
+        <alias entity-alias="RF" name="reason"/>
+        <alias entity-alias="RF" name="createdByUserLogin"/>
+        <alias entity-alias="RF" name="lastUpdatedStamp"/>
+        <alias entity-alias="RF" name="createdStamp"/>
+        <alias entity-alias="OCM" name="contactMechPurposeTypeId"/>
+		<alias entity-alias="OCM" name="contactMechId"/>
+		<alias entity-alias="CM" name="infoString"/>
+        <view-link entity-alias="OH" rel-entity-alias="RF">
+            <key-map field-name="orderId"/>
+        </view-link>
+		<view-link entity-alias="OH" rel-entity-alias="OCM">
+            <key-map field-name="orderId"/>
+        </view-link>
+        <view-link entity-alias="OCM" rel-entity-alias="CM">
+            <key-map field-name="contactMechId"/>
+        </view-link>
+        <entity-condition>
+            <condition-list>
+                <condition-expr field-name="contactMechPurposeTypeId" entity-alias="OCM" operator="equals" value="EBAY_USER_ID"/>
+            </condition-list>
+        </entity-condition>
+    </view-entity>
+    <!-- view-entity - END -->
+    
+    <!-- extend-entity - END -->
+    <extend-entity entity-name="Product">
+        <field name="declaredNameCn" type="long-varchar"><description>Declared Name in Chinese</description></field>
+        <field name="declaredNameEn" type="long-varchar"><description>Declared Name in English</description></field>
+    </extend-entity>
+    
+    <extend-entity entity-name="EbayConfig">
+        <field name="tokenExpirationDate" type="date-time"><description>Token Expiration Date</description></field>
+    </extend-entity>
+    
+    <extend-entity entity-name="ShipmentPackageRouteSeg">
+        <field name="trackingStatus" type="short-varchar"><description>Parcel Tracking Status</description></field>
+    </extend-entity>
+    <!-- extend-entity - END -->
+    
+    <entity entity-name="ToBeListed"
+        package-name="org.ofbiz.ebay.store"
+        title="Temporary Relist database">
+        <field name="itemId" type="id-ne"><description>Product Store Id</description></field>
+        <prim-key field="itemId"/>
+    </entity>
+    
+    <entity entity-name="EbayChangeTemp"
+        package-name="org.ofbiz.ebay.store"
+        title="eBay Change Temp">
+        <field name="ebayChangePaypalId" type="id-ne"><description>eBay Change Temp Auto Id</description></field>
+        <field name="itemId" type="long-varchar"><description>item Id</description></field>
+        <field name="firstName" type="long-varchar"><description>First Name</description></field>
+        <field name="firstValue" type="very-long"><description>First Value</description></field>
+        <field name="secondName" type="long-varchar"><description>Second Name</description></field>
+        <field name="secondValue" type="very-long"><description>Second Value</description></field>
+        <field name="thirdName" type="long-varchar"><description>Third Name</description></field>
+        <field name="thirdValue" type="very-long"><description>Third Value</description></field>
+        <field name="fourthName" type="long-varchar"><description>Fourth Name</description></field>
+        <field name="fourthValue" type="very-long"><description>Fourth Value</description></field>
+        <field name="notes" type="very-long"><description>notes</description></field>
+        <field name="statusId" type="long-varchar"><description>status Id</description></field>
+        <prim-key field="ebayChangePaypalId"/>
+    </entity>
+
+</entitymodel>

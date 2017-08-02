@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="bellyannaCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+			
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="ebayMostWatchedItem">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="eBay Most Watched Item"/>
+                <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/MostWatchedItem.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EbayModuleCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <!--<container>
+                         <label style="h1" text="Product Search List"/>
+                         </container>-->
+                        <screenlet title="Most Watched Item">
+                            <include-form name="EbayMostWatchedItem" location="component://bellyanna/widget/bellyannaForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://bellyanna/webapp/bellyanna/eBayModule/MostWatchedItem.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="ebayActiveListing">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="Ebay Active Listing"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/ebayActiveListing.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EbayModuleCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-empty field="parameters.productStoreId"/>
+                            </condition>
+                            <widgets>
+                                <screenlet title="Select eBay Account">
+                                    <include-form name="ebayActiveListingSelectProductStore" location="component://bellyanna/widget/bellyannaForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="Select eBay Account">
+                                    <include-form name="ebayActiveListingSelectProductStore" location="component://bellyanna/widget/bellyannaForms.xml"/>
+                                </screenlet>
+                                <screenlet title="eBay Active Listing" collapsible="true" id="fileList" initially-collapsed="false">
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="listEbayActiveListing"/>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="viewProductStoreActiveListing">
+        <section>
+            <actions>
+                <set field="headerItem" value="view eBay Active Listing"/>
+                <set field="productStoreId" from-field="parameters.productStoreId"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <set field="listingType" from-field="parameters.listingType"/>
+                <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/ebayActiveListing.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EbayModuleCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <screenlet title="eBay Active Listing">
+                                    <include-form name="viewEbayActiveListingSelectProductStore" location="component://bellyanna/widget/bellyannaForms.xml"/>
+                                </screenlet>
+                                <screenlet title="eBay Active Listing for ${productStoreId}" collapsible="true" id="fileList" initially-collapsed="false">
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="listProductStoreActiveListing"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="productListingStatus">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="${uiLabelMap.PageTitleLookupProduct}"/>
+                <set field="headerItem" value="Product Listing Status"/>
+                <script location="component://bellyanna/webapp/bellyanna/WEB-INF/actions/productListingStatus.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EbayModuleCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <!--<container>
+                         <label style="h1" text="Product Search List"/>
+                         </container>-->
+                        <screenlet title="Product Listing Status">
+                            <include-form name="productListingStatus" location="component://bellyanna/widget/bellyannaForms.xml"/>
+                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://bellyanna/webapp/bellyanna/eBayModule/productListingStatus.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="bulkImport">
+		<section>
+			<actions>
+                <set field="headerItem" value="importProduct"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="tabButtonItem" value="importProduct"/>
+                <set field="viewSize" value="1000"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+			</actions>
+			<widgets>
+				<decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu name="ImportSubTabBar" location="component://bellyanna/widget/bellyannaMenus.xml"/>
+                    </decorator-section>
+					<decorator-section name="body">
+						<section>
+                            <condition>
+                                <if-empty field="parameters.importFormId"/>
+                            </condition>
+                            <widgets>
+                                <screenlet title="Select Bulk Import">
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="selectImportForm"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <section>
+                                    <condition>
+                                        <if-compare field="parameters.importFormId" operator="equals" value="PRODUCT"/>
+                                    </condition>
+                                    <widgets>
+                                        <screenlet title="Import Product" collapsible="true" initially-collapsed="false" id="import_product">
+                                            <section>
+                                                <widgets>
+                                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="importProduct"/>
+                                                </widgets>
+                                            </section>
+                                        </screenlet>
+                                        <screenlet title="View data from uploaded Product file which will import the data from temp table into ofbiz" collapsible="true" id="fileList" initially-collapsed="false">
+                                            <section>
+                                                <widgets>
+                                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="listProductImport"/>
+                                                </widgets>
+                                            </section>
+                                        </screenlet>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <screenlet title="Select Bulk Import">
+                                            <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="importProduct"/>
+                                        </screenlet>
+                                        <screenlet title="View data Test from CSV file which import into temp table and waiting convert into ofbiz entities." collapsible="true" id="fileList" initially-collapsed="false">
+                                            <section>
+                                                <widgets>
+                                                    <include-form location="component://import/widget/ImportForms.xml" name="listOrderImport"/>
+                                                </widgets>
+                                            </section>
+                                        </screenlet>
+                                    </fail-widgets>
+                                </section>
+                                
+                                
+                            </fail-widgets>
+                        </section>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+    
+    <screen name="viewProductImport">
+        <section>
+            <actions>
+                <set field="headerItem" value="importProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+                <set field="tabButtonItem" value="importProduct"/>
+                <entity-and list="productImports" entity-name="ProductImport">
+                    <field-map field-name="fileName" from-field="fileName"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container>
+                                    <link style="buttontext" text="Previous" target="bulkImport" link-type="hidden-form">
+                                        <parameter param-name="importFormId" from-field="importFormId"/>
+                                    </link>
+                                </container>
+                                <screenlet title="View Product Importation - File name: ${fileName}">
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="importMultiProducts"/>
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="viewProductImport"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+	<screen name="importProduct">
+		<section>
+			<actions>
+			</actions>
+			<widgets>
+				<decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<include-form name="ImportProduct" location="component://bellyanna/widget/bellyannaForms.xml"/>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+    <screen name="importTest">
+		<section>
+			<actions>
+			</actions>
+			<widgets>
+				<decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<include-form name="ImportTest" location="component://bellyanna/widget/bellyannaForms.xml"/>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+    
+    <screen name="editTemporaryProduct">
+        <section>
+            <actions>
+                <set field="headerItem" value="importProduct"/>
+                <set field="importFormId" from-field="parameters.importFormId"/>
+                <set field="tabButtonItem" value="importProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <entity-one value-field="productImport" entity-name="ProductImport">
+                    <field-map field-name="productImportId" from-field="parameters.productImportId"/>
+                </entity-one>
+                <!--<entity-and list="orderItemImports" entity-name="OrderItemImport">
+                    <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+                </entity-and>-->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-compare operator="equals" value="N" field="productImport.importedStatus"/>
+                            </condition>
+                            <widgets>
+                                <container>
+                                    <link text="Back" target="viewProductImport" style="buttontext" link-type="hidden-form">
+                                        <parameter param-name="importFormId" from-field="importFormId"/>
+                                        <parameter param-name="fileName"/>
+                                    </link>
+                                </container>
+                                <container><!--<container style="lefthalf">-->
+                                    <screenlet title="Edit Temporary Product Importation">
+                                        <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="editTemporaryProduct"/>
+                                    </screenlet>
+                                </container>
+                                <!--<container style="righthalf">
+                                    <screenlet title="Edit Temporary Order Item Importation">
+                                        <include-form location="component://import/widget/ImportForms.xml" name="editTemporaryOrderItem"/>
+                                    </screenlet>
+                                </container>-->
+                                <container style="clear"/>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="Edit Temporary Product Importation">
+                                    <label text="Cannot edit the imported product"/>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="bulkUpdate">
+		<section>
+			<actions>
+                <set field="headerItem" value="bulkUpdate"/>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="userTabButtonItem" value="uploadFile"/>
+                <set field="viewSize" value="1000"/>
+                <set field="updateFormId" from-field="parameters.updateFormId"/>
+			</actions>
+			<widgets>
+				<decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <include-menu name="ImportSubTabBar" location="component://bellyanna/widget/bellyannaMenus.xml"/>
+                    </decorator-section>
+					<decorator-section name="body">
+						<section>
+                            <condition>
+                                <if-empty field="parameters.updateFormId"/>
+                            </condition>
+                            <widgets>
+                                <screenlet title="Select Bulk Update">
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="selectUpdateForm"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <section>
+                                    <condition>
+                                        <if-compare field="parameters.updateFormId" operator="equals" value="PRODUCT"/>
+                                    </condition>
+                                    <widgets>
+                                        <screenlet title="Update Bulk Product Update" collapsible="true" initially-collapsed="false" id="update_product">
+                                            <section>
+                                                <widgets>
+                                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="updateBulkProductUpdate"/>
+                                                </widgets>
+                                            </section>
+                                        </screenlet>
+                                        <screenlet title="View data from uploaded Product file which will import the data from temp table into ofbiz" collapsible="true" id="fileList" initially-collapsed="false">
+                                            <section>
+                                                <widgets>
+                                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="listBulkProductUpdate"/>
+                                                </widgets>
+                                            </section>
+                                        </screenlet>
+                                    </widgets>
+                                    <fail-widgets>
+                                        
+                                    </fail-widgets>
+                                </section>
+                                
+                                
+                            </fail-widgets>
+                        </section>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+    
+    <screen name="viewProductUpdate">
+        <section>
+            <actions>
+                <set field="headerItem" value="updateProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <set field="updateFormId" from-field="parameters.updateFormId"/>
+                <set field="tabButtonItem" value="updateProduct"/>
+                <entity-and list="bulkProductUpdates" entity-name="BulkProductUpdate">
+                    <field-map field-name="fileName" from-field="fileName"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container>
+                                    <link style="buttontext" text="Previous" target="bulkUpdate" link-type="hidden-form">
+                                        <parameter param-name="updateFormId" from-field="updateFormId"/>
+                                    </link>
+                                </container>
+                                <screenlet title="View Product Update - File name: ${fileName}">
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="updateMultiProducts"/>
+                                    <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="viewProductUpdate"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editTemporaryProductUpdate">
+        <section>
+            <actions>
+                <set field="headerItem" value="updateProduct"/>
+                <set field="updateFormId" from-field="parameters.updateFormId"/>
+                <set field="tabButtonItem" value="updateProduct"/>
+                <set field="fileName" from-field="parameters.fileName"/>
+                <entity-one value-field="bulkProductUpdate" entity-name="BulkProductUpdate">
+                    <field-map field-name="productUpdateId" from-field="parameters.productUpdateId"/>
+                </entity-one>
+                <!--<entity-and list="orderItemImports" entity-name="OrderItemImport">
+                 <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+                 </entity-and>-->
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-compare operator="equals" value="N" field="bulkProductUpdate.updatedStatus"/>
+                            </condition>
+                            <widgets>
+                                <container>
+                                    <link text="Back" target="viewProductUpdate" style="buttontext" link-type="hidden-form">
+                                        <parameter param-name="updateFormId" from-field="updateFormId"/>
+                                        <parameter param-name="fileName"/>
+                                    </link>
+                                </container>
+                                <container><!--<container style="lefthalf">-->
+                                    <screenlet title="Edit Temporary Product Update">
+                                        <include-form location="component://bellyanna/widget/bellyannaForms.xml" name="editTemporaryProductUpdate"/>
+                                    </screenlet>
+                                </container>
+                                <!--<container style="righthalf">
+                                 <screenlet title="Edit Temporary Order Item Importation">
+                                 <include-form location="component://import/widget/ImportForms.xml" name="editTemporaryOrderItem"/>
+                                 </screenlet>
+                                 </container>-->
+                                <container style="clear"/>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="Edit Temporary Product Update">
+                                    <label text="Cannot edit the temporary product update"/>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+</screens>

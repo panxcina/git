@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="BELLYANNA_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BELLYANNA_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BELLYANNA_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BELLYANNA_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BELLYANNA_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="BELLYANNA_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="BELLYANNA_ADMIN"/>
+</entity-engine-xml>

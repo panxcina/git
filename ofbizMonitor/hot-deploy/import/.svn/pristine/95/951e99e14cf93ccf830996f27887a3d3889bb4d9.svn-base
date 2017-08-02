@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <EnumerationType enumTypeId="PROSTORE_EXSHIP" description="This type use be the parent type of ProductStoreShipMethId and external shipping service."/>
+    <EnumerationType enumTypeId="EXSHIP_9000" parentTypeId="PROSTORE_EXSHIP" description="9000"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_9004" parentTypeId="PROSTORE_EXSHIP" description="9004"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10000" parentTypeId="PROSTORE_EXSHIP" description="10000"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10001" parentTypeId="PROSTORE_EXSHIP" description="10001"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10002" parentTypeId="PROSTORE_EXSHIP" description="10002"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10003" parentTypeId="PROSTORE_EXSHIP" description="10003"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10004" parentTypeId="PROSTORE_EXSHIP" description="10004"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10005" parentTypeId="PROSTORE_EXSHIP" description="10005"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10006" parentTypeId="PROSTORE_EXSHIP" description="10006"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10007" parentTypeId="PROSTORE_EXSHIP" description="10007"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10008" parentTypeId="PROSTORE_EXSHIP" description="10008"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_10009" parentTypeId="PROSTORE_EXSHIP" description="10009"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_30000" parentTypeId="PROSTORE_EXSHIP" description="30000"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_9001" parentTypeId="PROSTORE_EXSHIP" description="9001"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_9002" parentTypeId="PROSTORE_EXSHIP" description="9002"></EnumerationType>
+    <EnumerationType enumTypeId="EXSHIP_9003" parentTypeId="PROSTORE_EXSHIP" description="9003"></EnumerationType>
+    
+    <EnumerationType enumTypeId="PAYMENT_MAP" description="This Type use for mapping between external payment method and ofbiz payment method type ID"/>
+    <Enumeration enumId="EXT_PAYPAL" enumCode="PayPal" enumTypeId="PAYMENT_MAP" description="external Paypal payment method and ofbiz mapping"/>
+    <Enumeration enumId="CREDIT_CARD" enumCode="Visa/Master Card" enumTypeId="PAYMENT_MAP" description="external credit card payment method and ofbiz mapping"/>
+    <ContactMechType contactMechTypeId="EBAY_USER_ID" description="eBay User ID"/>
+    
+    <EnumerationType enumTypeId="EXCURRENCY_MAP" description="This type is use for map between cerrency and geoCode"/>
+    <Enumeration enumId="AU" enumTypeId="EXCURRENCY_MAP" enumCode="AUD"></Enumeration>
+    <Enumeration enumId="US" enumTypeId="EXCURRENCY_MAP" enumCode="USD"></Enumeration>
+    <Enumeration enumId="SG" enumTypeId="EXCURRENCY_MAP" enumCode="SGD"></Enumeration>
+    <Enumeration enumId="HK" enumTypeId="EXCURRENCY_MAP" enumCode="HKD"></Enumeration>
+    <Enumeration enumId="CA" enumTypeId="EXCURRENCY_MAP" enumCode="CAD"></Enumeration>
+    
+</entity-engine-xml>
+

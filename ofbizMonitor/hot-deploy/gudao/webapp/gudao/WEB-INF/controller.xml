@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
+    <!-- The controller elements that are common to all OFBiz components
+         can be found in the following xml file. A component can override the
+         elements found in the common-controller.xml file. -->
+    <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+
+    <description>Gudao Component Site Configuration File</description>
+
+    <!-- Events to run on every request before security (chains exempt) -->
+    <!--
+    <preprocessor>
+    </preprocessor>
+    -->
+    <!-- Events to run on every request after all other processing (chains exempt) -->
+    <!--
+    <postprocessor>
+        <event name="test" type="java" path="org.ofbiz.webapp.event.TestEvent" invoke="test"/>
+    </postprocessor>
+    -->
+    
+    <handler name="service" type="request"
+    class="org.ofbiz.webapp.event.ServiceEventHandler"/>
+    <handler name="service-multi" type="request"
+    class="org.ofbiz.webapp.event.ServiceMultiEventHandler"/>
+
+    <!-- Request Mappings -->
+    <request-map uri="main">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="main"/>
+    </request-map>
+    <request-map uri="summary">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="summary"/>
+    </request-map>
+    
+    <!-- Project - START -->
+    <request-map uri="project">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="project"/>
+    </request-map>
+    <!-- 20170316 -->
+    <request-map uri="TESTproject">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="TESTproject"/>
+    </request-map>
+    <!-- pictureWall 20170320 -->
+    <request-map uri="pictureWall">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="pictureWall"/>
+    </request-map>
+    <!-- react_pictureWall 20170327 -->
+    <request-map uri="react_pictureWall">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="react_pictureWall"/>
+    </request-map>
+    <!-- project_demo 20170405 -->
+    <request-map uri="project_demo">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="project_demo"/>
+    </request-map>
+    <request-map uri="projects">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="projects"/>
+    </request-map>
+    <request-map uri="projects_Technical_Department">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="projects_Technical_Department"/>
+    </request-map>
+    <request-map uri="project_detail_Technical_Department">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="project_detail_Technical_Department"/>
+    </request-map>
+    <!-- 20170410 -->
+    <request-map uri="projects_Technical_Department_1">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="projects_Technical_Department_1"/>
+    </request-map>
+    <request-map uri="project_detail_Technical_Department_1">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="project_detail_Technical_Department_1"/>
+    </request-map>
+    <request-map uri="projects_Technical_Department_2">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="projects_Technical_Department_2"/>
+    </request-map>
+    <request-map uri="project_detail_Technical_Department_2">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="project_detail_Technical_Department_2"/>
+    </request-map>
+    <!-- 20170424 -->
+    <request-map uri="edit_project_form_basic_1">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="edit_project_form_basic_1"/>
+    </request-map>
+
+
+
+<!-- 20170425 -->
+
+        <request-map uri="createGudaoProject1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createGudaoProject"/>
+        <response name="success" type="request-redirect" value="edit_project_form_basic_1">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="updateGudaoProject1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateGudaoProject"/>
+        <response name="success" type="request-redirect" value="edit_project_form_basic_1">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="deleteGudaoProject1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteGudaoProject"/>
+        <response name="success" type="view" value="edit_project_form_basic_1">
+        </response>
+    </request-map>
+    <request-map uri="edit_project_form_basic_1">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="edit_project_form_basic_1"/>
+    </request-map>
+    <request-map uri="addMercuryItem1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="addMercuryItem"/>
+        <response name="success" type="request-redirect" value="edit_project_form_basic_1">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="updateMercuryItemStatus1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateMercuryItemStatus"/>
+        <response name="success" type="request-redirect" value="edit_project_form_basic_1">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="editMercuryItem1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="editMercuryItem"/>
+        <response name="success" type="request-redirect" value="edit_project_form_basic_1">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="editMercuryItemTask1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="editMercuryItem"/>
+        <response name="success" type="request-redirect" value="projectTask">
+            <redirect-parameter name="filter"/>
+        </response>
+    </request-map>
+    <request-map uri="deleteMercuryItem1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteMercuryItem"/>
+        <response name="success" type="request-redirect" value="edit_project_form_basic_1">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+
+
+
+<!-- 20170516 -->
+    <request-map uri="testyaya">
+        <security https="true" auth="true"/>
+        <!-- <event type="service" invoke=""/> -->
+        <response name="success" type="view" value="testyaya">
+        </response>
+    </request-map>
+
+    <!-- <request-map uri="updatetestyaya">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updatetestyaya"/>
+        <response name="success" type="view" value="testyaya">
+        </response>
+    </request-map> -->
+
+    <request-map uri="testyaya_1">
+        <security https="true" auth="true"/>
+        <!-- <event type="service" invoke=""/> -->
+        <response name="success" type="view" value="testyaya_1">
+        </response>
+    </request-map>
+
+    <request-map uri="dailyTask">
+        <security https="true" auth="true"/>
+        <!-- <event type="service" invoke=""/> -->
+        <response name="success" type="view" value="dailyTask">
+        </response>
+    </request-map>
+        <request-map uri="table_data_tables">
+        <security https="true" auth="true"/>
+        <!-- <event type="service" invoke=""/> -->
+        <response name="success" type="view" value="table_data_tables">
+        </response>
+    </request-map>
+
+    <!-- <request-map uri="updatetestyaya_1">
+        <security https="true" auth="true"/>
+        <event type="service-multi" invoke="updatetestyaya"/>
+        <response name="success" type="view" value="testyaya_1">
+        </response>
+    </request-map> -->
+
+    <request-map uri="updatetestyaya_1">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updatetestyayaa"/>
+        <response name="success" type="request" value="testyaya_1">
+        </response>
+        <response name="error" type="request" value="testyaya_1">
+        </response>
+    </request-map>
+
+    <request-map uri="UpdateGeneric">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.ofbiz.webtools.GenericWebEvent" invoke="updateGeneric"/>
+        <response name="success" type="view" value="testyaya_1"/>
+        <response name="error" type="view" value="testyaya_1"/>
+    </request-map>
+
+
+    <request-map uri="createDailyTaskRecord">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createDailyTaskRecord"/>
+        <response name="success" type="request-redirect" value="createDailyTaskRecord">
+            <redirect-parameter name="completedDate"/>
+        </response>
+    </request-map>
+
+    
+
+
+
+<!-- start -->
+
+
+    <request-map uri="projectTask">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="projectTask"/>
+    </request-map>
+    <request-map uri="createGudaoProject">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createGudaoProject"/>
+        <response name="success" type="request-redirect" value="editProject">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="updateGudaoProject">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateGudaoProject"/>
+        <response name="success" type="request-redirect" value="editProject">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="deleteGudaoProject">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteGudaoProject"/>
+        <response name="success" type="view" value="editProject">
+        </response>
+    </request-map>
+    <request-map uri="editProject">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editProject"/>
+    </request-map>
+    <request-map uri="addMercuryItem">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="addMercuryItem"/>
+        <response name="success" type="request-redirect" value="editProject">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="updateMercuryItemStatus">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateMercuryItemStatus"/>
+        <response name="success" type="request-redirect" value="editProject">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="editMercuryItem">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="editMercuryItem"/>
+        <response name="success" type="request-redirect" value="editProject">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+    <request-map uri="editMercuryItemTask">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="editMercuryItem"/>
+        <response name="success" type="request-redirect" value="projectTask">
+            <redirect-parameter name="filter"/>
+        </response>
+    </request-map>
+    <request-map uri="deleteMercuryItem">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteMercuryItem"/>
+        <response name="success" type="request-redirect" value="editProject">
+            <redirect-parameter name="mercuryId"/>
+        </response>
+    </request-map>
+
+    <!-- end -->
+    <request-map uri="updateMercuryItemMulti">
+        <security https="true" auth="true"/>
+        <event type="service-multi" path="" invoke="updateMercuryItem"/>
+        <response name="success" type="request-redirect" value="project">
+            <redirect-parameter name="filter"/>
+        </response>
+    </request-map>
+    <request-map uri="getProjectListByCategory">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="getProjectListByCategory"/>
+    </request-map>
+    <request-map uri="getProjectListTab">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="getProjectListTab"/>
+    </request-map>
+    <request-map uri="getProjectTaskList">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="getProjectTaskList"/>
+    </request-map>
+    <!-- Project - END -->
+    
+    <!-- import - START -->
+    <request-map uri="importNewProduct">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="importNewProduct">
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="view" value="importNewProduct"/>
+    </request-map>
+    <request-map uri="doUploadProductXlsFile">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="doUploadProductXlsFile"/>
+        <response name="success" type="request-redirect" value="importNewProduct">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="request-redirect" value="importNewProduct">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+    </request-map>
+    <request-map uri="viewProductImport">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductImport"/>
+        <response name="error" type="view" value="viewProductImport"/>
+    </request-map>
+    <request-map uri="deleteFileProductImport">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteFileBulkModuleGudao"/>
+        <response name="success" type="view" value="importNewProduct"/>
+        <response name="error" type="view" value="importNewProduct"/>
+    </request-map>
+    <request-map uri="importMultiProducts">
+        <security https="true" auth="true"/>
+        <event type="simple" invoke="importMultiProducts" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml"/>
+        <!--<event type="java" path="com.gudao.bulkModule.bulkService" invoke="importMultiProducts"/>-->
+        <response name="success" type="request-redirect" value="viewProductImport">
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="request-redirect" value="viewProductImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+    </request-map>
+    <request-map uri="importNewProductForImportAndMessage">
+        <security https="true" auth="true"/>
+        <!--<event type="java" path="com.gudao.bulkModule.bulkService" invoke="importNewProductFromCsv"/>-->
+        <event type="service" invoke="importNewProductFromCsvGudao"/>
+        <response name="success" type="request-redirect" value="viewProductImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="view" value="viewProductImport"/>
+    </request-map>
+    <request-map uri="editTemporaryProduct">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editTemporaryProduct"/>
+        <response name="error" type="view" value="editTemporaryProduct"/>
+    </request-map>
+    <request-map uri="updateProductImport">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateProductImportGudao"/>
+        <response name="success" type="view" value="editTemporaryProduct"/>
+        <response name="error" type="view" value="editTemporaryProduct"/>
+    </request-map>
+    <request-map uri="bulkUpdate">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="bulkUpdate">
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="view" value="bulkUpdate"/>
+    </request-map>
+    <request-map uri="doUploadProductUpdateXlsFile">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="doUploadProductUpdateXlsFile"/>
+        <response name="success" type="request-redirect" value="bulkUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="request-redirect" value="bulkUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+    </request-map>
+    <request-map uri="viewProductUpdate">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductUpdate"/>
+        <response name="error" type="view" value="viewProductUpdate"/>
+    </request-map>
+    <request-map uri="deleteFileProductUpdate">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteFileBulkModuleGudao"/>
+        <response name="success" type="view" value="bulkUpdate"/>
+        <response name="error" type="view" value="bulkUpdate"/>
+    </request-map>
+    <request-map uri="updateMultiProducts">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateMultiProducts"/>
+        <!--<event type="java" path="com.gudao.bulkModule.bulkService" invoke="updateMultiProducts"/>-->
+        <response name="success" type="request-redirect" value="viewProductUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="request-redirect" value="viewProductUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+    </request-map>
+    <request-map uri="updateProductIntoBulkProductUpdate">
+        <security https="true" auth="true"/>
+        <!--<event type="java" path="com.gudao.bulkModule.bulkService" invoke="importProductUpdateFromCsv"/>-->
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateProductIntoBulkProductUpdate"/>
+        <response name="success" type="request-redirect" value="viewProductUpdate">
+            <redirect-parameter name="updateFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="view" value="viewProductUpdate"/>
+    </request-map>
+    <request-map uri="editTemporaryProductUpdate">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editTemporaryProductUpdate"/>
+        <response name="error" type="view" value="editTemporaryProductUpdate"/>
+    </request-map>
+    <request-map uri="updateBulkProductUpdate">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateBulkProductUpdateGudao"/>
+        <response name="success" type="view" value="editTemporaryProductUpdate"/>
+        <response name="error" type="view" value="editTemporaryProductUpdate"/>
+    </request-map>
+    <request-map uri="exportProductMaster">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateBulkProductUpdateGudao"/>
+        <response name="success" type="view" value="editTemporaryProductUpdate"/>
+        <response name="error" type="view" value="editTemporaryProductUpdate"/>
+    </request-map>
+    <!-- import - END -->
+    
+    <!-- productMaster - START -->
+    <request-map uri="productMaster">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="productMaster"/>
+        <response name="error" type="view" value="productMaster"/>
+    </request-map>
+    <request-map uri="viewProductImage">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductImage"/>
+        <response name="error" type="view" value="viewProductImage"/>
+    </request-map>
+    <request-map uri="viewProductGpsMini">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductGpsMini"/>
+        <response name="error" type="view" value="viewProductGpsMini"/>
+    </request-map>
+    <request-map uri="viewProductGmsMini">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductGmsMini"/>
+        <response name="error" type="view" value="viewProductGmsMini"/>
+    </request-map>
+    <request-map uri="viewProductGmsDetailMini">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductGmsDetailMini"/>
+        <response name="error" type="view" value="viewProductGmsDetailMini"/>
+    </request-map>
+    <request-map uri="productListingStatus">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="productListingStatus"/>
+        <response name="error" type="view" value="productListingStatus"/>
+    </request-map>
+    <request-map uri="veroList">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="veroList"/>
+        <response name="error" type="view" value="veroList"/>
+    </request-map>
+    <request-map uri="viewSupplierPrice">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewSupplierPrice"/>
+        <response name="error" type="view" value="viewSupplierPrice"/>
+    </request-map>
+    <request-map uri="deleteSupplierPrice">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/product/productServices.xml" invoke="deleteSupplierPrice"/>
+        <response name="success" type="request-redirect" value="viewSupplierPrice">
+            <redirect-parameter name="productId"/>
+        </response>
+        <response name="error" type="request-redirect" value="viewSupplierPrice">
+            <redirect-parameter name="productId"/>
+        </response>
+    </request-map>
+    <request-map uri="updateSupplierPrice">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/product/productServices.xml" invoke="updateSupplierPrice"/>
+        <response name="success" type="view" value="successClose"/>
+        <!--<response name="success" type="request-redirect" value="viewSupplierPrice">
+            <redirect-parameter name="productId"/>
+        </response>-->
+        <response name="error" type="request-redirect" value="viewSupplierPrice">
+            <redirect-parameter name="productId"/>
+        </response>
+    </request-map>
+    <request-map uri="syncProductMaster">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="syncProductMaster"/>
+        <response name="success" type="request-redirect" value="productMaster">
+            <redirect-parameter name="productId"/>
+        </response>
+        <response name="error" type="request-redirect" value="productMaster">
+            <redirect-parameter name="productId"/>
+        </response>
+    </request-map>
+    <request-map uri="editProductMaster">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editProductMaster"/>
+        <response name="error" type="view" value="editProductMaster"/>
+    </request-map>
+    <request-map uri="updateProductMaster">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/product/productServices.xml" invoke="updateProductMaster"/>
+        <response name="success" type="view" value="successClose"/>
+        <response name="error" type="request-redirect" value="editProductMaster">
+            <redirect-parameter name="productId"/>
+        </response>
+    </request-map>
+    <request-map uri="productMasterStatus">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="productMasterStatus"/>
+        <response name="error" type="view" value="productMasterStatus"/>
+    </request-map>
+    <!-- productMaster - END -->
+    
+    <!-- report - START -->
+    <request-map uri="reportMain">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="reportMain"/>
+    </request-map>
+    <request-map uri="reportImportData">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="reportImportData"/>
+    </request-map>
+    <request-map uri="doUploadReportProfitXlsFile">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="doUploadReportProfitXlsFile"/>
+        <response name="success" type="request-redirect" value="reportImportData">
+            <redirect-parameter name="importFormId"/>
+        </response>
+        <response name="error" type="request-redirect" value="reportImportData">
+            <redirect-parameter name="importFormId"/>
+        </response>
+    </request-map>
+    <request-map uri="viewReportImport">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewReportImport"/>
+        <response name="error" type="view" value="viewReportImport"/>
+    </request-map>
+    <request-map uri="importMultiReports">
+        <security https="true" auth="true"/>
+        <event type="simple" invoke="importMultiReports" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml"/>
+        <response name="success" type="request-redirect" value="viewReportImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="request-redirect" value="viewReportImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+    </request-map>
+    <request-map uri="editTemporaryReport">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editTemporaryReport"/>
+        <response name="error" type="view" value="editTemporaryReport"/>
+    </request-map>
+    <request-map uri="updateReportImport">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateReportImportGudao"/>
+        <response name="success" type="view" value="editTemporaryReport"/>
+        <response name="error" type="view" value="editTemporaryReport"/>
+    </request-map>
+    <request-map uri="importNewReportForImportAndMessage">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="importNewReportForImportAndMessage"/>
+        <response name="success" type="request-redirect" value="viewReportImport">
+            <redirect-parameter name="importFormId"/>
+            <redirect-parameter name="fileName"/>
+        </response>
+        <response name="error" type="view" value="viewReportImport"/>
+    </request-map>
+    <request-map uri="deleteFileReportImport">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteFileBulkModuleGudao"/>
+        <response name="success" type="view" value="reportImportData"/>
+        <response name="error" type="view" value="reportImportData"/>
+    </request-map>
+    <!-- report - END -->
+    
+    <!-- WISH - START -->
+    <request-map uri="wishListingCrawlStatus">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="wishListingCrawlStatus"/>
+        <response name="error" type="view" value="wishListingCrawlStatus"/>
+    </request-map>
+    <request-map uri="wishListingDetail">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="wishListingDetail"/>
+        <response name="error" type="view" value="wishListingDetail"/>
+    </request-map>
+    <request-map uri="refreshWishListing">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="wishGetAllProducts"/>
+        <response name="success" type="request-redirect" value="wishListingStatus"/>
+        <response name="error" type="request-redirect" value="wishListingStatus"/>
+    </request-map>
+    <request-map uri="bestSellingMonitor">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="bestSellingMonitor"/>
+        <response name="error" type="view" value="bestSellingMonitor"/>
+    </request-map>
+    <request-map uri="bestSellingMonitorListMgr">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="bestSellingMonitorListMgr"/>
+        <response name="error" type="view" value="bestSellingMonitorListMgr"/>
+    </request-map>
+    <request-map uri="wishListingCheck">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="wishListingCheck"/>
+        <response name="error" type="view" value="wishListingCheck"/>
+    </request-map>
+    <request-map uri="updateWishBestSellingList">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updateWishBestSellingList"/>
+        <response name="success" type="view" value="bestSellingMonitorListMgr"/>
+        <response name="error" type="view" value="bestSellingMonitorListMgr"/>
+    </request-map>
+    <request-map uri="createWishBestSellingList">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="createWishBestSellingList"/>
+        <response name="success" type="view" value="bestSellingMonitorListMgr">
+            <redirect-parameter name="productStoreId"/>
+        </response>
+        <response name="error" type="view" value="bestSellingMonitorListMgr"/>
+    </request-map>
+    <request-map uri="triggerWishCrawlListing">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/wish/wishServices.xml" invoke="updateActiveListingStatus"/>
+        <response name="success" type="request-redirect" value="wishListingCrawlStatus"/>
+        <response name="error" type="request-redirect" value="wishListingCrawlStatus"/>
+    </request-map>
+    <!-- WISH - END -->
+    
+    <!-- TASK - START -->
+    <request-map uri="operationalTaskView">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="operationalTaskView">
+            <redirect-parameter name="type"/>
+            <redirect-parameter name="statusId"/>
+            <redirect-parameter name="priority"/>
+            <redirect-parameter name="receiver"/>
+        </response>
+        <response name="error" type="view" value="operationalTaskView"/>
+    </request-map>
+    <request-map uri="editOperationalTask">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editOperationalTask"/>
+        <response name="error" type="view" value="editOperationalTask"/>
+    </request-map>
+    <request-map uri="createOperationalTask">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="createOperationalTask"/>
+        <response name="success" type="view" value="createOperationalTaskSuccess"/>
+        <response name="error" type="view" value="editOperationalTask"/>
+    </request-map>
+    <request-map uri="updateOperationalTask">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updateOperationalTask"/>
+        <response name="success" type="view" value="createOperationalTaskSuccess"/>
+        <response name="error" type="view" value="editOperationalTask"/>
+    </request-map>
+    <request-map uri="deleteOperationalTask">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deleteOperationalTask"/>
+        <response name="success" type="request-redirect" value="operationalTaskView"/>
+        <response name="error" type="request-redirect" value="operationalTaskView"/>
+    </request-map>
+    
+    
+    
+    <request-map uri="taskView">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="taskView"/>
+        <response name="error" type="view" value="taskView"/>
+    </request-map>
+    <request-map uri="taskDetailCondition1">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="taskDetailCondition1"/>
+        <response name="error" type="view" value="taskDetailCondition1"/>
+    </request-map>
+    <request-map uri="taskDetailCondition2">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="taskDetailCondition2"/>
+        <response name="error" type="view" value="taskDetailCondition2"/>
+    </request-map>
+    <request-map uri="taskDetailCondition3">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="taskDetailCondition3"/>
+        <response name="error" type="view" value="taskDetailCondition3"/>
+    </request-map>
+    <request-map uri="taskDetailCondition4">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="taskDetailCondition4"/>
+        <response name="error" type="view" value="taskDetailCondition4"/>
+    </request-map>
+    <!-- TASK - END -->
+    
+    <!-- MOTHERVERSION - START -->
+    <request-map uri="motherVersion">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="motherVersion"/>
+        <response name="error" type="view" value="motherVersion"/>
+    </request-map>
+    <request-map uri="importMotherVersion">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="importMotherVersion"/>
+        <response name="success" type="request-redirect" value="motherVersion"/>
+        <response name="error" type="request-redirect" value="motherVersion"/>
+    </request-map>
+    <!-- MOTHERVERSION - END -->
+    
+    <!-- GQS - START -->
+    <request-map uri="viewProductGqs">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewProductGqs"/>
+        <response name="error" type="view" value="viewProductGqs"/>
+    </request-map>
+    <request-map uri="editProductGqsDetail">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editProductGqsDetail"/>
+        <response name="error" type="view" value="editProductGqsDetail"/>
+    </request-map>
+    <request-map uri="createProductGqsDetail">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="createProductGqsDetail"/>
+        <response name="success" type="view" value="createProductGqsDetailSuccess"/>
+        <response name="error" type="view" value="editProductGqsDetail"/>
+    </request-map>
+    <request-map uri="updateProductGqsDetail">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updateProductGqsDetail"/>
+        <response name="success" type="view" value="createProductGqsDetailSuccess"/>
+        <response name="error" type="view" value="editProductGqsDetail"/>
+    </request-map>
+    <!-- GQS - END -->
+    
+    <!-- Target - START -->
+    <request-map uri="ebay">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ebay"/>
+        <response name="error" type="view" value="ebay"/>
+    </request-map>
+    <request-map uri="editEbay">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editEbay"/>
+        <response name="error" type="view" value="editEbay"/>
+    </request-map>
+    <request-map uri="wish">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="wish"/>
+        <response name="error" type="view" value="wish"/>
+    </request-map>
+    <request-map uri="smt">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="smt"/>
+        <response name="error" type="view" value="smt"/>
+    </request-map>
+    <request-map uri="amazon">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="amazon"/>
+        <response name="error" type="view" value="amazon"/>
+    </request-map>
+    <request-map uri="editAmazon">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editAmazon"/>
+        <response name="error" type="view" value="editAmazon"/>
+    </request-map>
+    <request-map uri="target">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="target"/>
+        <response name="error" type="view" value="target"/>
+    </request-map>
+    <!-- test 20170316 -->
+    <request-map uri="TESTtarget">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="TESTtarget"/>
+        <response name="error" type="view" value="TESTtarget"/>
+    </request-map>
+    
+    <request-map uri="editTarget">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editTarget"/>
+        <response name="error" type="view" value="editTarget"/>
+    </request-map>
+    <request-map uri="createTarget">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createGudaoTarget"/>
+        <response name="success" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+        <response name="error" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+    </request-map>
+    <request-map uri="createAction">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createGudaoAction"/>
+        <response name="success" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+        <response name="error" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+    </request-map>
+    <request-map uri="updateTarget">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/target/target.xml" invoke="updateGudaoTarget"/>
+        <response name="success" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+        <response name="error" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+    </request-map>
+    <request-map uri="updateAction">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/target/target.xml" invoke="updateGudaoAction"/>
+        <response name="success" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+        <response name="error" type="request-redirect" value="editTarget">
+            <redirect-parameter name="targetId"/>
+        </response>
+    </request-map>
+    <request-map uri="deleteGudaoAction">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/target/target.xml" invoke="deleteGudaoAction"/>
+        <response name="success" type="request-redirect" value="target">
+            <redirect-parameter name="userLoginIdInput"/>
+            <redirect-parameter name="period"/>
+        </response>
+        <response name="error" type="request-redirect" value="target">
+            <redirect-parameter name="userLoginIdInput"/>
+            <redirect-parameter name="period"/>
+        </response>
+    </request-map>
+    <request-map uri="deleteGudaoTarget">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/target/target.xml" invoke="deleteGudaoTarget"/>
+        <response name="success" type="request-redirect" value="target">
+            <redirect-parameter name="userLoginIdInput"/>
+            <redirect-parameter name="period"/>
+        </response>
+        <response name="error" type="request-redirect" value="target">
+            <redirect-parameter name="userLoginIdInput"/>
+            <redirect-parameter name="period"/>
+        </response>
+    </request-map>
+    <request-map uri="controlPanel">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="controlPanel"/>
+        <response name="error" type="view" value="controlPanel"/>
+    </request-map>
+    
+    <!-- Target - END -->
+    
+    <!-- TBL - START -->
+    <request-map uri="tbl">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="tbl"/>
+        <response name="error" type="view" value="tbl"/>
+    </request-map>
+    <request-map uri="tbl-skuList">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="tbl-skuList">
+            <redirect-parameter name="productId"/>
+            <redirect-parameter name="productName"/>
+            <redirect-parameter name="ownerGroupInput"/>
+            <redirect-parameter name="lister"/>
+            <redirect-parameter name="listerPlatform"/>
+        </response>
+        <response name="error" type="view" value="tbl-skuList"/>
+    </request-map>
+    <!-- TBL - END -->
+    
+    <!-- Sales Report == START -->
+    <request-map uri="platformSales">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="platformSales"/>
+        <response name="error" type="view" value="platformSales"/>
+    </request-map>
+    <request-map uri="importSalesXls">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="importSalesXls"/>
+        <response name="error" type="view" value="importSalesXls"/>
+    </request-map>
+    <request-map uri="doUploadSalesXls">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="doUploadSalesXls"/>
+        <response name="success" type="request-redirect" value="importSalesXls">
+            <redirect-parameter name="importFormId"/>
+        </response>
+        <response name="error" type="request-redirect" value="importSalesXls">
+            <redirect-parameter name="importFormId"/>
+        </response>
+    </request-map>
+    <request-map uri="salesSkuCount">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="salesSkuCount"/>
+        <response name="error" type="view" value="salesSkuCount"/>
+    </request-map>
+    <request-map uri="salesSbuPlatform">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="salesSbuPlatform"/>
+        <response name="error" type="view" value="salesSbuPlatform"/>
+    </request-map>
+    <request-map uri="currencySkuCount">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="currencySkuCount"/>
+        <response name="error" type="view" value="currencySkuCount"/>
+    </request-map>
+    <request-map uri="salesSbuPlatformAccount">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="salesSbuPlatformAccount"/>
+        <response name="error" type="view" value="salesSbuPlatformAccount"/>
+    </request-map>
+    
+    <request-map uri="salesSummary">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="salesSummary"/>
+        <response name="error" type="view" value="salesSummary"/>
+    </request-map>
+    <!-- Sales Report == END -->
+    
+    <!-- Listing == START -->
+    <request-map uri="productBasicInfo">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="productBasicInfo"/>
+        <response name="error" type="view" value="productBasicInfo"/>
+    </request-map>
+    <request-map uri="productBasicInfoMini">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="productBasicInfoMini"/>
+        <response name="error" type="view" value="productBasicInfoMini"/>
+    </request-map>
+    <!-- Listing == END -->
+    
+    <request-map uri="sbuReport">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="sbuReport"/>
+        <response name="error" type="view" value="sbuReport"/>
+    </request-map>
+    
+    <request-map uri="epsPositive">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="epsPositive"/>
+        <response name="error" type="view" value="epsPositive"/>
+    </request-map>
+    
+    <request-map uri="epsNegative">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="epsNegative"/>
+        <response name="error" type="view" value="epsNegative"/>
+    </request-map>
+    
+    <request-map uri="viewEbayCaseRefund">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewEbayCaseRefund"/>
+        <response name="error" type="view" value="viewEbayCaseRefund"/>
+    </request-map>
+    
+    <request-map uri="viewEnumeration">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewEnumeration"/>
+        <response name="error" type="view" value="viewEnumeration"/>
+    </request-map>
+    
+    <request-map uri="viewPmRules">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewPmRules"/>
+        <response name="error" type="view" value="viewPmRules"/>
+    </request-map>
+    
+    <request-map uri="viewGudaoWiki">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewGudaoWiki"/>
+        <response name="error" type="view" value="viewGudaoWiki"/>
+    </request-map>
+    
+    <request-map uri="editWikiEntry">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editWikiEntry"/>
+        <response name="error" type="view" value="editWikiEntry"/>
+    </request-map>
+    
+    <request-map uri="createWikiEntry">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="createWikiEntry"/>
+        <response name="success" type="request-redirect" value="viewGudaoWiki"/>
+        <response name="error" type="request-redirect" value="viewGudaoWiki"/>
+    </request-map>
+    
+    <request-map uri="updateWikiEntry">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateWikiEntry"/>
+        <response name="success" type="request-redirect" value="viewGudaoWiki"/>
+        <response name="error" type="request-redirect" value="viewGudaoWiki"/>
+    </request-map>
+    
+    <request-map uri="deleteWikiEntry">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="deleteWikiEntry"/>
+        <response name="success" type="request-redirect" value="viewGudaoWiki"/>
+        <response name="error" type="request-redirect" value="viewGudaoWiki"/>
+    </request-map>
+    
+    <request-map uri="epsCheatSheet">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="epsCheatSheet"/>
+        <response name="error" type="view" value="epsCheatSheet"/>
+    </request-map>
+    
+    <!-- pipeline == START -->
+    <request-map uri="pipeline">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="pipeline"/>
+        <response name="error" type="view" value="pipeline"/>
+    </request-map>
+    <request-map uri="refreshPipeline">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="gudaoPopulatePipeline"/>
+        <response name="success" type="request-redirect" value="pipeline">
+            <redirect-parameter name="pipelineId"/>
+        </response>
+        <response name="error" type="request-redirect" value="pipeline">
+            <redirect-parameter name="pipelineId"/>
+        </response>
+    </request-map>
+    <!-- pipeline == END -->
+    
+    <!-- RivalListing == START -->
+    <request-map uri="rivalPriceMonitor">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="rivalPriceMonitor"/>
+        <response name="error" type="view" value="rivalPriceMonitor"/>
+    </request-map>
+    <request-map uri="manageRivalPriceMonitor">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="manageRivalPriceMonitor"/>
+        <response name="error" type="view" value="manageRivalPriceMonitor"/>
+    </request-map>
+    <request-map uri="editRivalPriceMonitor">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editRivalPriceMonitor"/>
+        <response name="error" type="view" value="editRivalPriceMonitor"/>
+    </request-map>
+    <request-map uri="updateRivalPriceMonitor">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateRivalPriceMonitor"/>
+        <response name="success" type="request-redirect" value="manageRivalPriceMonitor"/>
+        <response name="error" type="request-redirect" value="manageRivalPriceMonitor"/>
+    </request-map>
+    <request-map uri="deleteMotherSku">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="deleteMotherSku"/>
+        <response name="success" type="request-redirect" value="manageRivalPriceMonitor"/>
+        <response name="error" type="request-redirect" value="manageRivalPriceMonitor"/>
+    </request-map>
+    <request-map uri="editEbayListingPrice">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editEbayListingPrice"/>
+        <response name="error" type="view" value="editEbayListingPrice"/>
+    </request-map>
+    <request-map uri="updateEbayListingPrice">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="changeEbayPriceSingle"/>
+        <response name="success" type="request-redirect" value="rivalPriceMonitor"/>
+        <response name="error" type="request-redirect" value="rivalPriceMonitor"/>
+    </request-map>
+    <request-map uri="addRivalItemId">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="addRivalItemId"/>
+        <response name="error" type="view" value="addRivalItemId"/>
+    </request-map>
+    <request-map uri="updateAddRivalItemId">
+        <security https="true" auth="true"/>
+        <!--<event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="updateAddRivalItemId"/>-->
+        <event type="service" invoke="rivalMonitorAddRival"/>
+        <response name="success" type="request-redirect" value="rivalPriceMonitor"/>
+        <response name="error" type="request-redirect" value="rivalPriceMonitor"/>
+    </request-map>
+    <request-map uri="deleteRivalItemId">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://gudao/script/org/gudao/bulkModule/bulkUploadEvents.xml" invoke="deleteRivalItemId"/>
+        <response name="success" type="request-redirect" value="rivalPriceMonitor"/>
+        <response name="error" type="request-redirect" value="rivalPriceMonitor"/>
+    </request-map>
+    
+    <!-- RivalListing == END -->
+    
+    <!-- Sales Search == START -->
+    <request-map uri="salesSearch">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="salesSearch"/>
+        <response name="error" type="view" value="salesSearch"/>
+    </request-map>
+    <!-- Sales Search == END -->
+    
+    <!-- View Mappings -->
+    <view-map name="main" type="screen" page="component://gudao/widget/GudaoScreens.xml#main"/>
+    <view-map name="summary" type="screen" page="component://gudao/widget/GudaoScreens.xml#summary"/>
+    
+    <!-- Project - START -->
+    <view-map name="project" type="screen" page="component://gudao/widget/GudaoScreens.xml#project"/>
+    <!-- 20170316 -->
+    <view-map name="TESTproject" type="screen" page="component://gudao/widget/GudaoScreens.xml#TESTproject"/>
+    <!-- pictureWall 20170320 -->
+    <view-map name="pictureWall" type="screen" page="component://gudao/widget/GudaoScreens.xml#pictureWall"/>
+    <!-- react_pictureWall 20170327 -->
+    <view-map name="react_pictureWall" type="screen" page="component://gudao/widget/GudaoScreens.xml#react_pictureWall"/>
+    <!-- project_demo 20170405 -->
+    <view-map name="project_demo" type="screen" page="component://gudao/widget/GudaoScreens.xml#project_demo"/>
+    <view-map name="testyaya" type="screen" page="component://gudao/widget/GudaoScreens.xml#testyaya"/>
+
+    <view-map name="testyaya_1" type="screen" page="component://gudao/widget/GudaoScreens.xml#testyaya_1"/>
+
+    <view-map name="dailyTask" type="screen" page="component://gudao/widget/GudaoScreens.xml#dailyTask"/>
+    
+    <view-map name="table_data_tables" type="screen" page="component://gudao/widget/GudaoScreens.xml#table_data_tables"/>
+
+    <!-- <view-map name="updatetestyaya_1" type="screen" page="component://gudao/widget/GudaoScreens.xml#testyaya_1"/> -->
+
+
+    <view-map name="projects" type="screen" page="component://gudao/widget/GudaoScreens.xml#projects"/>
+    <view-map name="projects_Technical_Department" type="screen" page="component://gudao/widget/GudaoScreens.xml#projects_Technical_Department"/>
+    <view-map name="project_detail_Technical_Department" type="screen" page="component://gudao/widget/GudaoScreens.xml#project_detail_Technical_Department"/>
+    <!-- 20170410 -->
+    <view-map name="projects_Technical_Department_1" type="screen" page="component://gudao/widget/GudaoScreens.xml#projects_Technical_Department_1"/>
+    <view-map name="project_detail_Technical_Department_1" type="screen" page="component://gudao/widget/GudaoScreens.xml#project_detail_Technical_Department_1"/>
+    <view-map name="projects_Technical_Department_2" type="screen" page="component://gudao/widget/GudaoScreens.xml#projects_Technical_Department_2"/>
+    <view-map name="project_detail_Technical_Department_2" type="screen" page="component://gudao/widget/GudaoScreens.xml#project_detail_Technical_Department_2"/>
+    <!-- 20170424 -->
+    <view-map name="edit_project_form_basic_1" type="screen" page="component://gudao/widget/GudaoScreens.xml#edit_project_form_basic_1"/>
+
+    
+    <view-map name="projectTask" type="screen" page="component://gudao/widget/GudaoScreens.xml#projectTask"/>
+    <view-map name="projectTaskDetail" type="screen" page="component://gudao/widget/GudaoScreens.xml#projectTaskDetail"/>
+    <view-map name="editProject" type="screen" page="component://gudao/widget/GudaoScreens.xml#editProject"/>
+    <view-map name="getProjectListByCategory" type="screen" page="component://gudao/widget/GudaoScreens.xml#getProjectListByCategory"/>
+    
+    <view-map name="getProjectListTab" type="screen" page="component://gudao/widget/GudaoScreens.xml#getProjectListTab"/>
+    <view-map name="getProjectTaskList" type="screen" page="component://gudao/widget/GudaoScreens.xml#getProjectTaskList"/>
+
+    <!-- Project - END -->
+    
+    <!-- import - START -->
+    <view-map name="importNewProduct" type="screen" page="component://gudao/widget/GudaoScreens.xml#importNewProduct"/>
+    <view-map name="viewProductImport" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewProductImport"/>
+    <view-map name="editTemporaryProduct" type="screen" page="component://gudao/widget/GudaoScreens.xml#editTemporaryProduct"></view-map>
+    <view-map name="bulkUpdate" type="screen" page="component://gudao/widget/GudaoScreens.xml#bulkUpdate"/>
+    <view-map name="viewProductUpdate" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewProductUpdate"/>
+    <view-map name="editTemporaryProductUpdate" type="screen" page="component://gudao/widget/GudaoScreens.xml#editTemporaryProductUpdate"></view-map>
+    <!-- import - END -->
+    
+    <!-- productMaster - START -->
+    <view-map name="productMaster" type="screen" page="component://gudao/widget/GudaoScreens.xml#productMaster"/>
+    <view-map name="viewProductImage" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewProductImage"/>
+    <view-map name="productListingStatus" type="screen" page="component://gudao/widget/GudaoScreens.xml#productListingStatus"/>
+    <view-map name="viewProductGpsMini" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewProductGpsMini"/>
+    <view-map name="viewProductGmsMini" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewProductGmsMini"/>
+    <view-map name="viewProductGmsDetailMini" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewProductGmsDetailMini"/>
+    <view-map name="veroList" type="screen" page="component://gudao/widget/GudaoScreens.xml#veroList"/>
+    <view-map name="viewSupplierPrice" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewSupplierPrice"/>
+    <view-map name="editProductMaster" type="screen" page="component://gudao/widget/GudaoScreens.xml#editProductMaster"/>
+    <view-map name="productMasterStatus" type="screen" page="component://gudao/widget/GudaoScreens.xml#productMasterStatus"/>
+    <!-- productMaster - END -->
+    
+    <!-- report - START -->
+    <view-map name="reportMain" type="screen" page="component://gudao/widget/GudaoScreens.xml#reportMain"/>
+    <view-map name="reportImportData" type="screen" page="component://gudao/widget/GudaoScreens.xml#reportImportData"/>
+    <view-map name="viewReportImport" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewReportImport"/>
+    <view-map name="editTemporaryReport" type="screen" page="component://gudao/widget/GudaoScreens.xml#editTemporaryReport"></view-map>
+    <!-- report - END -->
+    
+    <!-- WISH - START -->
+    <view-map name="wishListingCrawlStatus" type="screen" page="component://gudao/widget/GudaoScreens.xml#wishListingCrawlStatus"/>
+    <view-map name="wishListingDetail" type="screen" page="component://gudao/widget/GudaoScreens.xml#wishListingDetail"/>
+    <view-map name="bestSellingMonitor" type="screen" page="component://gudao/widget/GudaoScreens.xml#bestSellingMonitor"/>
+    <view-map name="bestSellingMonitorListMgr" type="screen" page="component://gudao/widget/GudaoScreens.xml#bestSellingMonitorListMgr"/>
+    <view-map name="wishListingCheck" type="screen" page="component://gudao/widget/GudaoScreens.xml#wishListingCheck"/>
+    <!-- WISH - END -->
+    
+    <!-- TASK - START -->
+    <view-map name="operationalTaskView" type="screen" page="component://gudao/widget/GudaoScreens.xml#operationalTaskView"/>
+    <view-map name="editOperationalTask" type="screen" page="component://gudao/widget/GudaoScreens.xml#editOperationalTask"/>
+    <view-map name="createOperationalTaskSuccess" type="screen" page="component://gudao/widget/GudaoScreens.xml#createOperationalTaskSuccess"/>
+    <view-map name="taskView" type="screen" page="component://gudao/widget/GudaoScreens.xml#taskView"/>
+    <view-map name="taskDetailCondition1" type="screen" page="component://gudao/widget/GudaoScreens.xml#taskDetailCondition1"/>
+    <view-map name="taskDetailCondition2" type="screen" page="component://gudao/widget/GudaoScreens.xml#taskDetailCondition2"/>
+    <view-map name="taskDetailCondition3" type="screen" page="component://gudao/widget/GudaoScreens.xml#taskDetailCondition3"/>
+    <view-map name="taskDetailCondition4" type="screen" page="component://gudao/widget/GudaoScreens.xml#taskDetailCondition4"/>
+    <!-- TASK - END -->
+    
+    <!-- MOTHERVERSION - START -->
+    <view-map name="motherVersion" type="screen" page="component://gudao/widget/GudaoScreens.xml#motherVersion"/>
+    <!-- MOTHERVERSION - END -->
+    
+    <!-- GQS - START -->
+    <view-map name="viewProductGqs" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewProductGqs"/>
+    <view-map name="editProductGqsDetail" type="screen" page="component://gudao/widget/GudaoScreens.xml#editProductGqsDetailMini"/>
+    <view-map name="createProductGqsDetailSuccess" type="screen" page="component://gudao/widget/GudaoScreens.xml#createProductGqsDetailSuccess"/>
+    <!-- GQS - END -->
+    
+    <!-- Target - START -->
+    <view-map name="ebay" type="screen" page="component://gudao/widget/GudaoScreens.xml#ebay"/>
+    <view-map name="editEbay" type="screen" page="component://gudao/widget/GudaoScreens.xml#editEbay"/>
+    <view-map name="wish" type="screen" page="component://gudao/widget/GudaoScreens.xml#wish"/>
+    <view-map name="smt" type="screen" page="component://gudao/widget/GudaoScreens.xml#smt"/>
+    <view-map name="amazon" type="screen" page="component://gudao/widget/GudaoScreens.xml#amazon"/>
+    <view-map name="editAmazon" type="screen" page="component://gudao/widget/GudaoScreens.xml#editAmazon"/>
+    <view-map name="target" type="screen" page="component://gudao/widget/GudaoScreens.xml#target"/>
+    <!-- TEST 20170316 -->
+    <view-map name="TESTtarget" type="screen" page="component://gudao/widget/GudaoScreens.xml#TESTtarget"/>
+    
+    <view-map name="editTarget" type="screen" page="component://gudao/widget/GudaoScreens.xml#editTarget"/>
+    <view-map name="controlPanel" type="screen" page="component://gudao/widget/GudaoScreens.xml#controlPanel"/>
+    <!-- Target - END -->
+    
+    <!-- TBL - START -->
+    <view-map name="tbl" type="screen" page="component://gudao/widget/GudaoScreens.xml#tbl"/>
+    <view-map name="tbl-skuList" type="screen" page="component://gudao/widget/GudaoScreens.xml#tbl-skuList"/>
+    <!-- TBL - END -->
+    
+    <view-map name="sbuReport" type="screen" page="component://gudao/widget/GudaoScreens.xml#sbuReport"/>
+    <view-map name="epsPositive" type="screen" page="component://gudao/widget/GudaoScreens.xml#epsPositive"/>
+    <view-map name="epsNegative" type="screen" page="component://gudao/widget/GudaoScreens.xml#epsNegative"/>
+    
+    <view-map name="viewEbayCaseRefund" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewEbayCaseRefund"/>
+    
+    <!-- Sales Report == START -->
+    <view-map name="platformSales" type="screen" page="component://gudao/widget/GudaoScreens.xml#platformSales"/>
+    <view-map name="importSalesXls" type="screen" page="component://gudao/widget/GudaoScreens.xml#importSalesXls"/>
+    <view-map name="salesSkuCount" type="screen" page="component://gudao/widget/GudaoScreens.xml#salesSkuCount"/>
+    <view-map name="salesSbuPlatform" type="screen" page="component://gudao/widget/GudaoScreens.xml#salesSbuPlatform"/>
+    <view-map name="currencySkuCount" type="screen" page="component://gudao/widget/GudaoScreens.xml#currencySkuCount"/>
+    <view-map name="salesSbuPlatformAccount" type="screen" page="component://gudao/widget/GudaoScreens.xml#salesSbuPlatformAccount"/>
+    <view-map name="salesSummary" type="screen" page="component://gudao/widget/GudaoScreens.xml#salesSummary"/>
+    <!-- Sales Report == END -->
+    
+    <!-- Listing == START -->
+    <view-map name="productBasicInfo" type="screen" page="component://gudao/widget/GudaoScreens.xml#productBasicInfo"/>
+    <view-map name="productBasicInfoMini" type="screen" page="component://gudao/widget/GudaoScreens.xml#productBasicInfoMini"/>
+    <!-- Listing == END -->
+    
+    <!-- RivalListing == START -->
+    <view-map name="rivalPriceMonitor" type="screen" page="component://gudao/widget/GudaoScreens.xml#rivalPriceMonitor"/>
+    <view-map name="manageRivalPriceMonitor" type="screen" page="component://gudao/widget/GudaoScreens.xml#manageRivalPriceMonitor"/>
+    <view-map name="editRivalPriceMonitor" type="screen" page="component://gudao/widget/GudaoScreens.xml#editRivalPriceMonitor"/>
+    <view-map name="editEbayListingPrice" type="screen" page="component://gudao/widget/GudaoScreens.xml#editEbayListingPrice"/>
+    <view-map name="addRivalItemId" type="screen" page="component://gudao/widget/GudaoScreens.xml#addRivalItemId"/>
+    <!-- RivalListing == END -->
+    
+    <!-- salesSearch == START -->
+    <view-map name="salesSearch" type="screen" page="component://gudao/widget/GudaoScreens.xml#salesSearch"/>
+    <!-- salesSearch == END -->
+    
+    <view-map name="successClose" type="screen" page="component://gudao/widget/GudaoScreens.xml#successClose"/>
+    <view-map name="successReload" type="screen" page="component://gudao/widget/GudaoScreens.xml#successReload"/>
+    
+    <view-map name="viewEnumeration" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewEnumeration"/>
+    <view-map name="viewPmRules" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewPmRules"/>
+    <view-map name="viewGudaoWiki" type="screen" page="component://gudao/widget/GudaoScreens.xml#viewGudaoWiki"/>
+    <view-map name="editWikiEntry" type="screen" page="component://gudao/widget/GudaoScreens.xml#editWikiEntry"/>
+    <view-map name="epsCheatSheet" type="screen" page="component://gudao/widget/GudaoScreens.xml#epsCheatSheet"/>
+    
+    <view-map name="pipeline" type="screen" page="component://gudao/widget/GudaoScreens.xml#pipeline"/>
+</site-conf>

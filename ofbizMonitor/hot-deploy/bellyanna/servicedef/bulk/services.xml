@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>bellyanna Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+    
+    <service name="uploadProductXlsFile" engine="java"
+        location="com.bellyanna.bulk.bulkService" invoke="uploadProductXlsFile" auth="true">
+        <implements service="uploadFileInterface"/>
+        <attribute name="importFormId" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="updateFormId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="createProductImport" default-entity-name="ProductImport" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="createProductImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="importMultipleProducts" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="importMultipleProducts" auth="true" use-transaction="false">
+        <attribute name="productImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="importFormId" mode="INOUT" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="INOUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="importNewProductFromCsv" engine="simple"
+    	location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="importNewProductFromCsv" auth="true" >
+        <attribute name="productImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="importFormId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="updateProductImport" default-entity-name="ProductImport" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="updateProductImport" auth="true">
+        <auto-attributes include="pk" mode="INOUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="importFormId" mode="INOUT" optional="true" type="String"/>
+    </service>
+    
+    <service name="deleteFileBulkModule" engine="java"
+        location="com.bellyanna.bulk.bulkService" invoke="deleteFileBulkModule" auth="true">
+        <attribute name="importFormId" mode="INOUT" optional="true" type="String"></attribute>
+        <attribute name="updateFormId" mode="INOUT" optional="true" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="deleteProductImport" default-entity-name="ProductImport" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="deleteProductImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="createBulkProductUpdate" default-entity-name="BulkProductUpdate" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="createBulkProductUpdate" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateMultiProducts" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="updateMultiProducts" auth="true" use-transaction="false">
+        <attribute name="productUpdateId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="updateFormId" mode="INOUT" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="INOUT" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="importProductUpdateFromCsv" default-entity-name="Product" engine="simple"
+    	location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="importProductUpdateFromCsv" auth="true" >
+        <implements service="interfaceProduct"/>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <attribute name="productId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="productUpdateId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="updateFormId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="updateBulkProductUpdate" default-entity-name="BulkProductUpdate" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="updateBulkProductUpdate" auth="true">
+        <auto-attributes include="pk" mode="INOUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="updateFormId" mode="INOUT" optional="true" type="String"/>
+    </service>
+    
+    <service name="deleteBulkProductUpdate" default-entity-name="BulkProductUpdate" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/bulkupload/bulkUploadEvents.xml" invoke="deleteBulkProductUpdate" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+</services>

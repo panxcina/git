@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+    
+    <simple-method method-name="createOrderImport" short-description="Create Order Import">
+        <make-value value-field="newEntity" entity-name="OrderImport"/>
+        <if-empty field="parameters.orderId">
+            <add-error error-list-name="_error_message_list_">
+                <fail-message message="empty ORDER_ID, check sale number record field in csv file line number ${parameters.fileLineNumber}"/>
+            </add-error>
+        </if-empty>
+        <if-empty field="parameters.fileName">
+            <add-error error-list-name="_error_message_list_">
+                <fail-message message="empty FILE_NAME in csv file line number ${parameters.fileLineNumber}"/>
+            </add-error>
+        </if-empty>
+        <if-empty field="_error_message_list_">
+            <set-pk-fields map="parameters" value-field="newEntity"/>
+            <set-nonpk-fields map="parameters" value-field="newEntity"/>
+            <create-value value-field="newEntity"/>
+            <check-errors error-code="error"/>
+            <else>
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="ERROR: ${_error_message_list_} on ${parameters.orderId}"/>
+                </add-error>
+                <check-errors error-list-name="errorMessageList" error-code="error"/>
+            </else>
+        </if-empty>
+    </simple-method>
+
+    <simple-method method-name="updateOrderImport" short-description="Update OrderImport">
+        <entity-one entity-name="OrderImport" value-field="orderImport" auto-field-map="true"/>
+        <check-errors/>
+        <set-nonpk-fields map="parameters" value-field="orderImport" set-if-null="false"/>
+        <store-value value-field="orderImport"/>
+        <check-errors/>
+        <field-to-result field="orderImport.orderImportId" result-name="orderImportId"/>
+        <field-to-result field="orderImport.productStoreId" result-name="productStoreId"/>
+    </simple-method>
+    
+    <simple-method method-name="deleteOrderImport" short-description="Delete OrderImport">
+        <entity-and list="orderItemImports" entity-name="OrderItemImport">
+            <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+        </entity-and>
+        <check-errors/>
+        <iterate entry="orderItemImport" list="orderItemImports">
+            <remove-value value-field="orderItemImport"/>
+            <check-errors/>
+        </iterate>
+        <entity-one entity-name="OrderImport" value-field="orderImport" auto-field-map="true"/>
+        <check-errors/>
+        <remove-value value-field="orderImport"/>
+        <check-errors/>
+    </simple-method>
+
+    <!-- Store Inventory Services -->
+    <simple-method method-name="reserveInventoryApprovedOrder" short-description="Reserve Inventory when order approved">
+        <entity-one value-field="orderHeader" entity-name="OrderHeader"></entity-one>
+        <entity-and list="orderItems" entity-name="OrderItem">
+            <field-map field-name="orderId" from-field="orderHeader.orderId"/>
+        </entity-and>
+        <iterate entry="orderItem" list="orderItems">
+            <entity-and list="checkOrderItemShipGrpInvRes" entity-name="OrderItemShipGrpInvRes">
+                <field-map field-name="orderId" from-field="orderHeader.orderId"/>
+                <field-map field-name="orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+            </entity-and>
+            <if-empty field="checkOrderItemShipGrpInvRes">
+                <if>
+                    <condition>
+                        <and>
+                            <if-compare operator="not-equals" value="ITEM_COMPLETED" field="orderItem.statusId"></if-compare>
+                            <if-compare operator="not-equals" value="ITEM_CANCELLED" field="orderItem.statusId"></if-compare>
+                        </and>
+                    </condition>
+                    <then>
+                        <entity-and list="orderItemShipGroupAssocs" entity-name="OrderItemShipGroupAssoc">
+                            <field-map field-name="orderId" from-field="orderHeader.orderId"/>
+                            <field-map field-name="orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+                        </entity-and>
+                        <if-not-empty field="orderItemShipGroupAssocs">
+                            <first-from-list entry="orderItemShipGroupAssoc" list="orderItemShipGroupAssocs"/>
+                            <entity-one value-field="product" entity-name="Product">
+                                <field-map field-name="productId" from-field="orderItem.productId"/>
+                            </entity-one>
+                            <if-compare operator="equals" value="MARKETING_PKG_PICK" field="product.productTypeId">
+                                <entity-and list="productAssocs" entity-name="ProductAssoc" filter-by-date="true">
+                                    <field-map field-name="productId" from-field="product.productId"/>
+                                    <field-map field-name="productAssocTypeId" value="PRODUCT_COMPONENT"/>
+                                </entity-and>
+                                <iterate entry="productAssoc" list="productAssocs">
+                                    <set field="quantityProductSet" value="0" type="BigDecimal"/>
+                                    <calculate field="quantityProductSet">
+                                        <calcop field="orderItem.quantity" operator="multiply">
+                                            <calcop operator="get" field="productAssoc.quantity"></calcop>
+                                        </calcop>
+                                    </calculate>
+                                    <set field="callServiceMap.productStoreId" from-field="orderHeader.productStoreId"/>
+                                    <set field="callServiceMap.productId" from-field="productAssoc.productIdTo"/>
+                                    <set field="callServiceMap.quantity" from-field="quantityProductSet"/>
+                                    <set field="callServiceMap.orderId" from-field="orderHeader.orderId"/>
+                                    <set field="callServiceMap.orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+                                    <set field="callServiceMap.shipGroupSeqId" from-field="orderItemShipGroupAssoc.shipGroupSeqId"/>
+                                    <call-service service-name="reserveStoreInventoryApprovedOrder" in-map-name="callServiceMap"/>
+                                </iterate>
+                            <else>
+                                <set field="callServiceMap.productStoreId" from-field="orderHeader.productStoreId"/>
+                                <set field="callServiceMap.productId" from-field="orderItem.productId"/>
+                                <set field="callServiceMap.quantity" from-field="orderItem.quantity"/>
+                                <set field="callServiceMap.orderId" from-field="orderHeader.orderId"/>
+                                <set field="callServiceMap.orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+                                <set field="callServiceMap.shipGroupSeqId" from-field="orderItemShipGroupAssoc.shipGroupSeqId"/>
+                                <call-service service-name="reserveStoreInventoryApprovedOrder" in-map-name="callServiceMap"/>
+                            </else>
+                            </if-compare>
+                        </if-not-empty>
+                    </then>
+                </if>
+            </if-empty>
+        </iterate>
+    </simple-method>
+    
+    <simple-method method-name="reserveStoreInventoryApprovedOrder" short-description="Reserve Store Inventory when order approved">
+        <entity-one entity-name="Product" value-field="product" use-cache="true"/>
+        <entity-one entity-name="ProductStore" value-field="productStore" use-cache="true"/>
+        <if-empty field="productStore">
+            <add-error>
+                <fail-property resource="ProductUiLabels" property="ProductProductStoreNotFound"/>
+            </add-error>
+            <check-errors/>
+        </if-empty>
+
+        <!-- if prodCatalog is set to not reserve inventory -->
+        <if-compare value="N" operator="equals" field="productStore.reserveInventory">
+            <call-simple-method method-name="isStoreInventoryRequiredInline" xml-resource="component://product/script/org/ofbiz/product/store/ProductStoreServices.xml"/>
+             <if-compare value="Y" field="productStore.oneInventoryFacility" operator="equals">
+                <if-empty field="productStore.inventoryFacilityId">
+                    <add-error>
+                        <fail-property resource="ProductUiLabels" property="ProductProductStoreNoSpecifiedInventoryFacility"/>
+                    </add-error>
+                    <check-errors/>
+                </if-empty>
+                <set-service-fields map="parameters" to-map="callServiceMap" service-name="reserveProductInventoryByFacility"/>
+                <set from-field="productStore.inventoryFacilityId" field="callServiceMap.facilityId"/>
+                <set from-field="requireInventory" field="callServiceMap.requireInventory"/>
+                <set from-field="productStore.reserveOrderEnumId" field="callServiceMap.reserveOrderEnumId"/>
+                <call-service service-name="reserveProductInventoryByFacility" in-map-name="callServiceMap">
+                    <result-to-field result-name="quantityNotReserved"/>
+                </call-service>
+
+                <if-compare value="0" field="quantityNotReserved" operator="equals" type="BigDecimal">
+                    <log level="info" message="Inventory IS reserved in facility with id [${productStore.inventoryFacilityId}] for product id [${parameters.productId}]; desired quantity was ${parameters.quantity}"/>
+                <else>
+                    <log level="info" message="There is insufficient inventory available in facility with id [${productStore.inventoryFacilityId}] for product id [${parameters.productId}]; desired quantity is ${parameters.quantity}, amount could not reserve is ${quantityNotReserved}"/>
+                </else>
+                </if-compare>
+            <else>
+                <set-service-fields map="parameters" to-map="callServiceMap" service-name="reserveProductInventoryMultipleFacility"/>
+                <set from-field="productStore.productStoreId" field="callServiceMap.productStoreId"/>
+                <set from-field="requireInventory" field="callServiceMap.requireInventory"/>
+                <set from-field="productStore.reserveOrderEnumId" field="callServiceMap.reserveOrderEnumId"/>
+                <call-service service-name="reserveProductInventoryMultipleFacility" in-map-name="callServiceMap">
+                    <result-to-field result-name="quantityNotReserved"/>
+                </call-service>
+            </else>
+            </if-compare>
+            <field-to-result field="quantityNotReserved"/>
+        </if-compare>
+    </simple-method>
+   
+    <simple-method method-name="importNewOrderFromCsv" short-description="">
+        <set field="productStoreId" from-field="parameters.productStoreId"/>
+        <if-empty field="productStoreId">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Required productStoreId. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+        <entity-one value-field="orderImport" entity-name="OrderImport">
+            <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+        </entity-one>
+        
+        <if-compare operator="equals" value="Y" field="orderImport.importedStatus">
+            <return/>
+        </if-compare>
+        <entity-one value-field="orderCheck" entity-name="OrderHeader">
+            <field-map field-name="orderId" from-field="orderImport.orderId"/>
+        </entity-one>
+        <if-not-empty field="orderCheck">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="This order [${orderImport.orderId}] already exists."/>
+            </add-error>
+            <return/>
+        </if-not-empty>
+        <entity-one value-field="productStore" entity-name="ProductStore">
+            <field-map field-name="productStoreId" from-field="productStoreId"/>
+            <select-field field-name="payToPartyId"/>
+            <select-field field-name="inventoryFacilityId"/>
+            <select-field field-name="defaultSalesChannelEnumId"/>
+            <select-field field-name="payToPartyId"/>
+        </entity-one>
+        
+        <set field="facilityId" from-field="productStore.inventoryFacilityId"/>
+        <set field="payToPartyId" from-field="productStore.payToPartyId"/>
+        <set field="partyId"/>
+        <set field="contactMechId"/>
+        <set field="telecomNumContactMechId"/>
+        <set field="emailContactMechId"/>
+	<set field="userIdContactMechId"/>
+        
+        <!-- Check Exist buyer party and contachMech, If it does not exist -->
+        <entity-and list="partyAndContactMeches" entity-name="PartyAndContactMech">
+            <field-map field-name="infoString" from-field="orderImport.userId"/>
+            <field-map field-name="contactMechTypeId" value="EBAY_USER_ID"/>
+        </entity-and>
+        <if-not-empty field="partyAndContactMeches">
+            <first-from-list entry="partyAndContactMech" list="partyAndContactMeches"/>
+            <set field="partyId" from-field="partyAndContactMech.partyId"/>
+            <call-simple-method method-name="checkContactMeches"/>
+            <else>
+                <entity-and list="checkExistPartyEmails" entity-name="PartyAndContactMech">
+                    <field-map field-name="infoString" from-field="orderImport.emailAddress"/>
+                    <field-map field-name="contactMechTypeId" value="EMAIL_ADDRESS"/>
+                </entity-and>
+                <if-not-empty field="checkExistPartyEmails">
+                    <first-from-list entry="checkExistPartyEmail" list="checkExistPartyEmails"/>
+                    <set field="partyId" from-field="checkExistPartyEmail.partyId"/>
+                    <call-simple-method method-name="checkContactMeches"/>
+                    <else>
+                        <call-simple-method method-name="createPartyAndContactMech"/>
+                    </else>
+                </if-not-empty>
+            </else>
+        </if-not-empty>
+        
+        <!-- set order priority -->
+        <entity-one value-field="productStoreShipmentMeth" entity-name="ProductStoreShipmentMeth">
+            <field-map field-name="productStoreShipMethId" from-field="orderImport.productStoreShipMethId"/>
+            <select-field field-name="shipmentMethodTypeId"/>
+        </entity-one>
+        <if>
+            <condition>
+                <or>
+                    <if-compare operator="equals" value="EMS" field="productStoreShipmentMeth.shipmentMethodTypeId"/>
+                    <if-compare operator="contains" value="EXPRESS" field="productStoreShipmentMeth.shipmentMethodTypeId"/>
+                </or>
+            </condition>
+            <then>
+                <set field="orderHeaderCtx.priority" value="1"/>
+            </then>
+            <else>
+                <set field="orderHeaderCtx.priority" value="2"/>
+            </else>
+        </if>
+        
+        <!-- Create OrderHeader -->
+        <now-timestamp field="nowDate"/>
+        <set field="orderHeaderCtx.orderId" from-field="orderImport.orderId"/>
+        <set field="orderHeaderCtx.externalId" from-field="orderImport.externalOrderId"/>
+        <set field="orderHeaderCtx.currencyUom" from-field="orderImport.currencyUom"/>
+        <set field="orderHeaderCtx.orderTypeId" value="SALES_ORDER"/>
+        <set field="orderHeaderCtx.salesChannelEnumId" from-field="productStore.defaultSalesChannelEnumId"/>
+        <set field="orderHeaderCtx.originFacilityId" from-field="facilityId"/>
+        <set field="orderHeaderCtx.productStoreId" from-field="productStoreId"/>
+        <set field="orderHeaderCtx.entryDate" from-field="nowDate"/>
+        <set field="orderHeaderCtx.orderDate" from-field="orderImport.createDate"/>
+        <set field="orderHeaderCtx.statusId" value="ORDER_APPROVED"/>
+        <set field="orderHeaderCtx.originFacilityId" from-field="inventoryFacilityId"/>
+        <set field="orderHeaderCtx.remainingSubTotal" from-field="orderImport.remainingSubTotal"/>
+        <set field="orderHeaderCtx.grandTotal" from-field="orderImport.grandTotalAmount"/>
+        <set field="orderHeaderCtx.createdBy" from-field="userLogin.userLoginId"/>
+        <call-service service-name="createOrderHeader" in-map-name="orderHeaderCtx" include-user-login="true" break-on-error="false">
+            <result-to-field result-name="orderId" field="orderId"/>
+        </call-service>
+		<!-- Create orderAttribute -->
+        <if-not-empty field="orderId">
+            <if>
+                <condition>
+                    <if-compare operator="equals" value="EBAY_SALES_CHANNEL" field="productStore.defaultSalesChannelEnumId"/>
+                </condition>
+                <then>
+                    <make-value value-field="orderAttributeCtx" entity-name="OrderAttribute"/>
+                    <set field="orderAttributeCtx.orderId" from-field="orderId"/>
+                    <set field="orderAttributeCtx.attrName" value="FEEDBACK_RECEIVED"/>
+                    <set field="orderAttributeCtx.attrValue" value="N"/>
+                    <create-value value-field="orderAttributeCtx"/>
+                </then>
+            </if>
+        </if-not-empty>
+        <if-not-empty field="orderId">
+            <if>
+                <condition>
+                    <if-compare operator="equals" value="EBAY_SALES_CHANNEL" field="productStore.defaultSalesChannelEnumId"/>
+                </condition>
+                <then>
+                    <make-value value-field="orderAttributeCtx" entity-name="OrderAttribute"/>
+                    <set field="orderAttributeCtx.orderId" from-field="orderId"/>
+                    <set field="orderAttributeCtx.attrName" value="10DAYS_EMAIL_SENT"/>
+                    <set field="orderAttributeCtx.attrValue" value="N"/>
+                    <create-value value-field="orderAttributeCtx"/>
+                </then>
+            </if>
+        </if-not-empty>
+        <if-not-empty field="orderId">
+            <if>
+                <condition>
+                    <if-compare operator="equals" value="EBAY_SALES_CHANNEL" field="productStore.defaultSalesChannelEnumId"/>
+                </condition>
+                <then>
+                    <make-value value-field="orderAttributeCtx" entity-name="OrderAttribute"/>
+                    <set field="orderAttributeCtx.orderId" from-field="orderId"/>
+                    <set field="orderAttributeCtx.attrName" value="OSA_EMAIL_SENT"/>
+                    <set field="orderAttributeCtx.attrValue" value="0"/>
+                    <create-value value-field="orderAttributeCtx"/>
+                </then>
+            </if>
+        </if-not-empty>
+        <if-not-empty field="orderId">
+            <if>
+                <condition>
+                    <if-compare operator="equals" value="EBAY_SALES_CHANNEL" field="productStore.defaultSalesChannelEnumId"/>
+                </condition>
+                <then>
+                    <make-value value-field="orderAttributeCtx" entity-name="OrderAttribute"/>
+                    <set field="orderAttributeCtx.orderId" from-field="orderId"/>
+                    <set field="orderAttributeCtx.attrName" value="ASK_FEEDBACK_SENT"/>
+                    <set field="orderAttributeCtx.attrValue" value="0"/>
+                    <create-value value-field="orderAttributeCtx"/>
+                </then>
+            </if>
+        </if-not-empty>
+        <if-not-empty field="orderId">
+            <if>
+                <condition>
+                    <if-compare operator="equals" value="EBAY_SALES_CHANNEL" field="productStore.defaultSalesChannelEnumId"/>
+                </condition>
+                <then>
+                    <make-value value-field="orderAttributeCtx" entity-name="OrderAttribute"/>
+                    <set field="orderAttributeCtx.orderId" from-field="orderId"/>
+                    <set field="orderAttributeCtx.attrName" value="TRACKING_UPDATE"/>
+                    <set field="orderAttributeCtx.attrValue" value="N"/>
+                    <create-value value-field="orderAttributeCtx"/>
+                </then>
+            </if>
+        </if-not-empty>
+        <if-empty field="orderId">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create OrderHeader. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+
+        <!--Create OrderContactMech -->
+        <set field="orderContactMechCtx.orderId" from-field="orderId"/>
+        <if-not-empty field="contactMechId">
+            <set field="orderContactMechCtx.contactMechId" from-field="contactMechId"/>
+            <set field="orderContactMechCtx.contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
+            <call-service service-name="createOrderContactMech" in-map-name="orderContactMechCtx" include-user-login="true" break-on-error="false">
+                <result-to-field result-name="errorMessage" field="errorMessage"/>
+            </call-service>
+            <if-not-empty field="errorMessage">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Error occurred: When it tried to create PRIMARY_LOCATION OrderContactMech. [orderImportId : ${orderImport.orderImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-not-empty>
+        </if-not-empty>
+        <if-not-empty field="telecomNumContactMechId">
+            <set field="orderContactMechCtx.contactMechId" from-field="telecomNumContactMechId"/>
+            <set field="orderContactMechCtx.contactMechPurposeTypeId" value="PRIMARY_PHONE"/>
+            <call-service service-name="createOrderContactMech" in-map-name="orderContactMechCtx" include-user-login="true" break-on-error="false">
+                <result-to-field result-name="errorMessage" field="errorMessage"/>
+            </call-service>
+            <if-not-empty field="errorMessage">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Error occurred: When it tried to create PRIMARY_PHONE OrderContactMech. [orderImportId : ${orderImport.orderImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-not-empty>
+        </if-not-empty>
+        <if-not-empty field="emailContactMechId">
+            <set field="orderContactMechCtx.contactMechId" from-field="emailContactMechId"/>
+            <set field="orderContactMechCtx.contactMechPurposeTypeId" value="ORDER_EMAIL"/>
+            <call-service service-name="createOrderContactMech" in-map-name="orderContactMechCtx" include-user-login="true" break-on-error="false">
+                <result-to-field result-name="errorMessage" field="errorMessage"/>
+            </call-service>
+            <if-not-empty field="errorMessage">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Error occurred: When it tried to create PRIMARY_EMAIL OrderContactMech. [orderImportId : ${orderImport.orderImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-not-empty>
+        </if-not-empty>
+        <if-not-empty field="userIdContactMechId">
+            <set field="orderContactMechCtx.contactMechId" from-field="userIdContactMechId"/>
+            <set field="orderContactMechCtx.contactMechPurposeTypeId" value="EBAY_USER_ID"/>
+            <call-service service-name="createOrderContactMech" in-map-name="orderContactMechCtx" include-user-login="true" break-on-error="false">
+                <result-to-field result-name="errorMessage" field="errorMessage"/>
+            </call-service>
+            <if-not-empty field="errorMessage">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Error occurred: When it tried to create EBAY_USER_ID OrderContactMech. [orderImportId : ${orderImport.orderImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-not-empty>
+        </if-not-empty>
+        
+        <!-- Check roleTypeId for party Id -->
+        <call-simple-method method-name="checkPartyRoleType"/>
+        <!--Create OrderRole -->
+        <set field="orderRoleCtx.orderId" from-field="orderId"/>
+        <set field="orderRoleCtx.roleTypeId" value="END_USER_CUSTOMER"/>
+        <set field="orderRoleCtx.partyId" from-field="partyId"/>
+        <call-service service-name="addOrderRole" in-map-name="orderRoleCtx" include-user-login="true"/>
+        
+        <set field="orderRoleCtx.roleTypeId" value="SHIP_TO_CUSTOMER"/>
+        <call-service service-name="addOrderRole" in-map-name="orderRoleCtx" include-user-login="true"/>
+        
+        <set field="orderRoleCtx.roleTypeId" value="BILL_TO_CUSTOMER"/>
+        <call-service service-name="addOrderRole" in-map-name="orderRoleCtx" include-user-login="true"/>
+        
+        <set field="orderRoleCtx.roleTypeId" value="PLACING_CUSTOMER"/>
+        <call-service service-name="addOrderRole" in-map-name="orderRoleCtx" include-user-login="true"/>
+        
+        <set field="orderRoleCtx.roleTypeId" value="BILL_FROM_VENDOR"/>
+        <set field="orderRoleCtx.partyId" from-field="payToPartyId"/>
+        <call-service service-name="addOrderRole" in-map-name="orderRoleCtx" include-user-login="true"/>
+
+        <!-- Create Order Status ORDER_CREATED -->
+        <make-value value-field="orderStatus" entity-name="OrderStatus"/>
+        <sequenced-id sequence-name="OrderStatus" field="orderStatus.orderStatusId"/>
+        <set field="orderStatus.orderId" from-field="orderId"/>
+        <set field="orderStatus.statusId" value="ORDER_CREATED"/>
+        <set field="orderStatus.statusDatetime" from-field="orderImport.paidOnDate"/>
+        <set field="orderStatus.statusUserLogin" from-field="userLogin.userLoginId"/>
+        <create-value value-field="orderStatus"/>
+        <!-- Create Order Status set ORDER_APPROVED -->
+        <sequenced-id sequence-name="OrderStatus" field="orderStatus.orderStatusId"/>
+        <set field="orderStatus.statusId" value="ORDER_APPROVED"/>
+	<set field="orderStatus.statusDatetime" from-field="orderImport.createdStamp"/>
+	<set field="orderStatus.statusUserLogin" from-field="userLogin.userLoginId"/>
+        <create-value value-field="orderStatus"/>
+        
+        <!-- Create Order Item -->
+        <set field="shipGroupSeqId"/>
+        <entity-and list="orderItemImports" entity-name="OrderItemImport">
+            <field-map field-name="orderImportId" from-field="orderImport.orderImportId"/>
+        </entity-and>
+        <if-not-empty field="orderItemImports">
+            <iterate entry="orderItemImport" list="orderItemImports">
+                <entity-one value-field="product" entity-name="Product">
+                    <field-map field-name="productId" from-field="orderItemImport.productId"/>
+                </entity-one>
+                <if-empty field="product">
+                    <add-error error-list-name="errorMessageList">
+                        <fail-message message="Error occurred: When it tried to create OrderItem because the productId [${orderItemImport.productId}] doesn't exist in Product Entity. [orderImportId : ${orderImport.orderImportId}]"/>
+                    </add-error>
+                    <return response-code="error"/>
+                </if-empty>
+                <set field="orderItemImportSeqId" from-field="orderItemImport.orderItemImportSeqId"/>
+                <set field="productId" from-field="orderItemImport.productId"/>
+                <set field="productName" from-field="orderItemImport.productName"/>
+                <set field="orderItemNumber" from-field="orderItemImport.orderItemNumber"/>
+                <set field="quantity" from-field="orderItemImport.quantity"/>
+                <set field="unitPrice" from-field="orderItemImport.unitPrice"/>
+                <set field="saleDate" from-field="orderItemImport.saleDate"/>
+                <set field="transactionId" from-field="orderItemImport.transactionId"/>
+                <call-simple-method method-name="addItemToOrder"/>
+            </iterate>
+        </if-not-empty>
+        
+        <!-- Create OrderAdjustment  -->
+        <if>
+            <condition>
+                <and>
+                    <if-compare operator="not-equals" value="0" field="orderImport.shippingAmount"/>
+                    <not><if-empty field="orderImport.shippingAmount"></if-empty></not>
+                </and>
+            </condition>
+            <then>
+                <make-value value-field="orderShipAdjustCtx" entity-name="OrderAdjustment"/>
+                <sequenced-id sequence-name="OrderAdjustment" field="orderShipAdjustCtx.orderAdjustmentId"/>
+                <set field="orderShipAdjustCtx.orderId" from-field="orderId"/>
+                <set field="orderShipAdjustCtx.orderAdjustmentTypeId" value="SHIPPING_CHARGES"/>
+                <set field="orderShipAdjustCtx.amount" from-field="orderImport.shippingAmount"/>
+                <set field="orderShipAdjustCtx.shipGroupSeqId" value="00001"/>
+                <create-value value-field="orderShipAdjustCtx"/>
+            </then>
+        </if>
+        <if>
+            <condition>
+                <and>
+                    <if-compare operator="not-equals" value="0" field="orderImport.taxAmount"/>
+                    <not><if-empty field="orderImport.taxAmount"></if-empty></not>
+                </and>
+            </condition>
+            <then>
+                <make-value value-field="orderTaxAdjustCtx" entity-name="OrderAdjustment"/>
+                <sequenced-id sequence-name="OrderAdjustment" field="orderTaxAdjustCtx.orderAdjustmentId"/>
+                <set field="orderTaxAdjustCtx.orderId" from-field="orderId"/>
+                <set field="orderTaxAdjustCtx.orderAdjustmentTypeId" value="SALES_TAX"/>
+                <set field="orderTaxAdjustCtx.amount" from-field="orderImport.taxAmount"/>
+                <create-value value-field="orderTaxAdjustCtx"/>
+            </then>
+        </if>
+        <if>
+            <condition>
+                <and>
+                    <if-compare operator="not-equals" value="0" field="orderImport.warrantyAmount"/>
+                    <not><if-empty field="orderImport.warrantyAmount"></if-empty></not>
+                </and>
+            </condition>
+            <then>
+                <make-value value-field="orderWarrantyAdjustCtx" entity-name="OrderAdjustment"/>
+                <sequenced-id sequence-name="OrderAdjustment" field="orderWarrantyAdjustCtx.orderAdjustmentId"/>
+                <set field="orderWarrantyAdjustCtx.orderId" from-field="orderId"/>
+                <set field="orderWarrantyAdjustCtx.orderAdjustmentTypeId" value="WARRANTY_ADJUSTMENT"/>
+                <set field="orderWarrantyAdjustCtx.amount" from-field="orderImport.warrantyAmount"/>
+                <create-value value-field="orderWarrantyAdjustCtx"/>
+            </then>
+        </if>
+        
+        <!-- Create OrderPaymentPreference -->
+        <entity-one value-field="paymentMethodTypeCheck" entity-name="PaymentMethodType">
+            <field-map field-name="paymentMethodTypeId" from-field="orderImport.paymentMethodTypeId"/>
+        </entity-one>
+        <if-empty field="paymentMethodTypeCheck">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: This paymentMethodTypeId : [${orderImport.paymentMethodTypeId}] doesn't exist. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+        <set field="newPaymentMethodId"/>
+        <set field="paymentMethodTypeId" from-field="orderImport.paymentMethodTypeId"/>
+        <entity-and entity-name="PaymentMethod" list="paymentMethods">
+            <field-map field-name="partyId" from-field="partyId"/>
+            <field-map field-name="paymentMethodTypeId" from-field="paymentMethodTypeId"/>
+        </entity-and>
+        <if-empty field="paymentMethods">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create PaymentMethod. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <now-timestamp field="nowTimestamp"/>
+            <make-value entity-name="PaymentMethod" value-field="newEntity"/>
+            <sequenced-id sequence-name="PaymentMethod" field="newEntity.paymentMethodId"/>
+            <set field="newEntity.paymentMethodTypeId" from-field="paymentMethodTypeId"/>
+            <set field="newEntity.partyId" from-field="partyId"/>
+            <set field="newEntity.fromDate" from-field="nowTimestamp"/>
+            <create-value value-field="newEntity"/>
+            <set field="newPaymentMethodId" from-field="newEntity.paymentMethodId"/>
+            <clear-field field="errorMessageList"/>
+            <else>
+                <first-from-list entry="paymentMethod" list="paymentMethods"/>
+                <set field="newPaymentMethodId" from-field="paymentMethod.paymentMethodId"/>
+            </else>
+        </if-empty>
+        <add-error error-list-name="errorMessageList">
+            <fail-message message="Error occurred: When it tried to create OrderPaymentPreference. [orderImportId : ${orderImport.orderImportId}]"/>
+        </add-error>
+        <now-timestamp field="nowTimestamp"/>
+        <make-value entity-name="OrderPaymentPreference" value-field="orderPaymentPreference"/>
+        <sequenced-id sequence-name="OrderPaymentPreference" field="orderPaymentPreference.orderPaymentPreferenceId"/>
+        <set field="orderPaymentPreference.orderId" from-field="orderId"/>
+        <set field="orderPaymentPreference.shipGroupSeqId" from-field="shipGroupSeqId"/>
+        <set field="orderPaymentPreference.paymentMethodTypeId" from-field="paymentMethodTypeId"/>
+        <set field="orderPaymentPreference.paymentMethodId" from-field="newPaymentMethodId"/>
+        <set field="orderPaymentPreference.presentFlag" value="N"/>
+        <set field="orderPaymentPreference.swipedFlag" value="N"/>
+        <set field="orderPaymentPreference.overflowFlag" value="N"/>
+        <set field="orderPaymentPreference.maxAmount" from-field="orderImport.grandTotalAmount"/>
+        <set field="orderPaymentPreference.processAttempt" value="1" type="Long"/>
+        <set field="orderPaymentPreference.statusId" value="PAYMENT_SETTLED"/>
+        <set field="orderPaymentPreference.needsNsfRetry" value="N"/>
+        <if-empty field="orderImport.paidOnDate">
+            <now-timestamp field="nowTimestamp1"/>
+            <set field="orderPaymentPreference.createdDate" from-field="nowTimestamp1"/>
+            <else>
+            <set field="orderPaymentPreference.createdDate" from-field="orderImport.paidOnDate"/>
+            </else>
+        </if-empty>
+        <!-- put value Paid Date -->
+        <set field="orderPaymentPreference.createdByUserLogin" from-field="userLogin.userLoginId"/>
+        <create-value value-field="orderPaymentPreference"/>
+        <clear-field field="errorMessageList"/>
+        
+        <!-- Create Payment Gateway Response -->
+        <add-error error-list-name="errorMessageList">
+            <fail-message message="Error occurred: When it tried to create PaymentGatewayResponse. [orderImportId : ${orderImport.orderImportId}]"/>
+        </add-error>
+        <make-value value-field="paymentGatewayResponse" entity-name="PaymentGatewayResponse"/>
+        <sequenced-id sequence-name="PaymentGatewayResponse" field="paymentGatewayResponse.paymentGatewayResponseId"/>
+        <set field="paymentGatewayResponse.paymentServiceTypeEnumId" value="PRDS_PAY_CAPTURE"/>
+        <set field="paymentGatewayResponse.orderPaymentPreferenceId" from-field="orderPaymentPreference.orderPaymentPreferenceId"/>
+        <set field="paymentGatewayResponse.paymentMethodTypeId" from-field="paymentMethodTypeId"/>
+        <set field="paymentGatewayResponse.paymentMethodId" from-field="newPaymentMethodId"/>
+        <set field="paymentGatewayResponse.transCodeEnumId" value="PGT_CAPTURE"/>
+        <set field="paymentGatewayResponse.amount" from-field="orderImport.grandTotalAmount"/>
+        <set field="paymentGatewayResponse.currencyUomId" from-field="orderImport.currencyUom"/>
+        <set field="paymentGatewayResponse.referenceNum" from-field="orderImport.paypalTransactionId"/>
+        <set field="paymentGatewayResponse.gatewayFlag" value="100"/>
+        <set field="paymentGatewayResponse.gatewayMessage" value="ACCEPT"/>
+        <if-empty field="orderImport.paidOnDate">
+            <now-timestamp field="nowTimestamp1"/>
+            <set field="paymentGatewayResponse.transactionDate" from-field="nowTimestamp1"/>
+            <else>
+            <set field="paymentGatewayResponse.transactionDate" from-field="orderImport.paidOnDate"/>
+            </else>
+        </if-empty>
+        <create-value value-field="paymentGatewayResponse"/>
+        <clear-field field="errorMessageList"/>
+
+        <!-- Create Payment -->
+        <add-error error-list-name="errorMessageList">
+            <fail-message message="Error occurred: When it tried to create Payment. [orderImportId : ${orderImport.orderImportId}]"/>
+        </add-error>
+        <make-value value-field="payment" entity-name="Payment"/>
+        <sequenced-id sequence-name="Payment" field="payment.paymentId"/>
+        <set field="payment.paymentTypeId" value="CUSTOMER_PAYMENT"/>
+        <set field="payment.paymentMethodTypeId" from-field="paymentMethodTypeId"/>
+        <set field="payment.paymentMethodId" from-field="newPaymentMethodId"/>
+        <set field="payment.paymentPreferenceId" from-field="orderPaymentPreference.orderPaymentPreferenceId"/>
+        <set field="payment.partyIdFrom" from-field="partyId"/>
+        <set field="payment.partyIdTo" from-field="payToPartyId"/>
+        <set field="payment.statusId" value="PMNT_RECEIVED"/>
+        <if-empty field="orderImport.paidOnDate">
+            <now-timestamp field="nowTimestamp1"/>
+            <set field="payment.effectiveDate" from-field="nowTimestamp1"/>
+            <else>
+            <set field="payment.effectiveDate" from-field="orderImport.paidOnDate"/>
+            </else>
+        </if-empty>
+        <set field="payment.paymentRefNum" from-field="orderImport.paypalTransactionId"/>
+        <set field="payment.amount" from-field="orderImport.grandTotalAmount"/>
+        <set field="payment.currencyUomId" from-field="orderImport.currencyUom"/>
+        <create-value value-field="payment"/>
+        <clear-field field="errorMessageList"/>
+
+	<!-- Create PayPal Payment Method -->
+	<!-- Disabled
+        <add-error error-list-name="errorMessageList">
+            <fail-message message="Error occurred: When it tried to create PayPalPaymentMethod. [orderImportId : ${orderImport.orderImportId}]"/>
+        </add-error>
+        <make-value value-field="payPalPaymentMethod" entity-name="PayPalPaymentMethod"/>
+        <set field="payPalPaymentMethod.paymentMethodId" from-field="newPaymentMethodId"/>
+        <set field="payPalPaymentMethod.contactMechId" from-field="contactMechId"/>
+        <set field="payPalPaymentMethod.transactionId" from-field="orderImport.paypalTransactionId"/>
+        <create-value value-field="payPalPaymentMethod"/>
+        <clear-field field="errorMessageList"/> -->
+        
+        <!-- reserve inventory -->
+        <set field="reserveInventoryMap.orderId" from-field="orderId"/>
+        <call-service service-name="reserveInventoryApprovedOrder" in-map-name="reserveInventoryMap" include-user-login="true"/>
+        
+
+        <!-- Create OrderHeader note -->
+        <if-not-empty field="orderImport.noteInfo">
+            <set field="orderNoteCtx.orderId" from-field="orderId"/>
+            <set field="orderNoteCtx.internalNote" value="Y"/>
+            <set field="orderNoteCtx.note" from-field="orderImport.noteInfo"/>
+            <call-service service-name="createOrderNote" in-map-name="orderNoteCtx" include-user-login="true"/>
+        </if-not-empty>
+        <if-empty field="errorMessageList">
+            <set field="orderImportValue.orderImportId" from-field="orderImport.orderImportId"/>
+            <set field="orderImportValue.importedStatus" value="Y"/>
+            <call-service service-name="updateOrderImport" in-map-name="orderImportValue"/>
+            <else>
+                <set field="orderImportValue.orderImportId" from-field="orderImport.orderImportId"/>
+                <set field="orderImport.importedDescription" value="${groovy:org.ofbiz.orderimport.OrderImportServices.convertMessage(errorMessageList)}"/>
+                <call-service service-name="updateOrderImport" in-map-name="orderImportValue"/>
+           </else>
+       </if-empty>
+        
+        <!-- run orderReservationPriority -->
+        <if>
+            <condition>
+                <or>
+                    <if-compare operator="equals" value="EMS" field="productStoreShipmentMeth.shipmentMethodTypeId"/>
+                    <if-compare operator="contains" value="EXPRESS" field="productStoreShipmentMeth.shipmentMethodTypeId"/>
+                </or>
+            </condition>
+            <then>
+                <set field="orderReservationPriority.orderId" from-field="orderId"/>
+                <set field="orderReservationPriority.priority" value="1"/>
+                <call-service service-name="setOrderReservationPriority" in-map-name="orderReservationPriority"/>
+            </then>
+            <!--<else>
+                <set field="orderReservationPriority.orderId" from-field="orderId"/>
+                <set field="orderReservationPriority.priority" value="2"/>
+                <call-service service-name="setOrderReservationPriority" in-map-name="orderReservationPriority"/>
+            </else>-->
+        </if>
+        
+        <set field="completeSaleMap.orderId" from-field="orderId"/>
+        <call-service service-name="setEbayStatusShipped" in-map-name="completeSaleMap" include-user-login="true" break-on-error="true">
+            <result-to-field result-name="errorMessage" field="errorMessage"/>
+        </call-service>
+        <if-not-empty field="errorMessage">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: Failed set eBay status to shipped: [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-not-empty>
+        
+    </simple-method>
+
+    <simple-method method-name="checkContactMeches" short-description="">
+        <!-- Create email contactMech if it does not exist -->
+        <if-not-empty field="orderImport.emailAddress">
+            <entity-and list="partyAndEmailContacts" entity-name="PartyAndContactMech">
+                <field-map field-name="partyId" from-field="partyId"/>
+                <field-map field-name="infoString" from-field="orderImport.emailAddress"/>
+                <field-map field-name="contactMechTypeId" value="EMAIL_ADDRESS"/>
+            </entity-and>
+            <if-not-empty field="partyAndEmailContacts">
+                <first-from-list entry="partyAndEmailContact" list="partyAndEmailContacts"/>
+                <set field="emailContactMechId" from-field="partyAndEmailContact.contactMechId"/>
+                <else>
+                    <call-simple-method method-name="doCreateEmailContactMech"/>
+                </else>
+            </if-not-empty>
+        </if-not-empty>
+
+        <!-- Create telephone number contactMech if it does not exist -->
+        <if-not-empty field="orderImport.contactNumber">
+            <entity-and list="partyTelecomNumbers" entity-name="PartyAndTelecomNumber">
+                <field-map field-name="partyId" from-field="partyId"/>
+                <!--<field-map field-name="contactMechTypeId" value="TELECOM_NUMBER"/>-->
+                <field-map field-name="countryCode" from-field="orderImport.country"/>
+                <field-map field-name="areaCode" from-field="orderImport.areaCode"/>
+                <field-map field-name="contactNumber" from-field="orderImport.contactNumber"/>
+            </entity-and>
+            <if-not-empty field="partyTelecomNumbers">
+                <first-from-list entry="partyTelecomNumber" list="partyTelecomNumbers"/>
+                <set field="telecomNumContactMechId" from-field="partyTelecomNumber.contactMechId"/>
+                <else>
+                    <call-simple-method method-name="doCreateTelecomNumberContactMech"/>
+                </else>
+            </if-not-empty>
+        </if-not-empty>
+
+        <!-- Create postal address contactMech if it does not exist -->
+        <entity-and list="partyPostalAddressList" entity-name="PartyAndPostalAddress">
+            <field-map field-name="partyId" from-field="partyId"/>
+            <field-map field-name="contactMechTypeId" value="POSTAL_ADDRESS"/>
+            <field-map field-name="toName" from-field="orderImport.toName"/>
+            <field-map field-name="address1" from-field="orderImport.address1"/>
+            <field-map field-name="address2" from-field="orderImport.address2"/>
+            <field-map field-name="city" from-field="orderImport.city"/>
+            <field-map field-name="postalCode" from-field="orderImport.postalCode"/>
+            <field-map field-name="stateProvinceGeoId" from-field="orderImport.stateProvinceGeoId"/>
+            <field-map field-name="countryGeoId" from-field="orderImport.countryGeoId"/>
+        </entity-and>
+        <if-not-empty field="partyPostalAddressList">
+            <first-from-list entry="partyPostalAddress" list="partyPostalAddressList"/>
+            <set field="contactMechId" from-field="partyPostalAddress.contactMechId"/>
+            <else>
+                <call-simple-method method-name="doCreatePostalAddress"/>
+            </else>
+        </if-not-empty>
+
+        <!-- Create eBay User Id contactMech if it does not exist-->
+        <entity-and list="partyEbayUserList" entity-name="PartyAndPostalAddress">
+            <field-map field-name="infoString" from-field="orderImport.userId"/>
+            <field-map field-name="contactMechTypeId" value="EBAY_USER_ID"/>
+        </entity-and>
+        <if-empty field="partyEbayUserList">
+            <call-simple-method method-name="doCreateEbayUserIdContactMech"/>
+        </if-empty>
+        
+    </simple-method>
+    
+    <simple-method method-name="createPartyAndContactMech" short-description="">
+        <set field="personCtx.firstName" from-field="orderImport.firstName"/>
+        <set field="personCtx.middleName" from-field="orderImport.middleName"/>
+        <set field="personCtx.lastName" from-field="orderImport.lastName"/>
+        <call-service service-name="createPerson" in-map-name="personCtx" include-user-login="true" break-on-error="false">
+            <result-to-field result-name="partyId" field="partyId"/>
+        </call-service>
+        <if-empty field="partyId">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create Person. Please check in firstName, middleName and lastName. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+        
+        <call-simple-method method-name="doCreatePostalAddress"/>
+        <if-not-empty field="orderImport.emailAddress">
+            <call-simple-method method-name="doCreateEmailContactMech"/>
+        </if-not-empty>
+        <if-not-empty field="orderImport.contactNumber">
+            <call-simple-method method-name="doCreateTelecomNumberContactMech"/>
+        </if-not-empty>
+        <if-not-empty field="orderImport.userId">
+            <call-simple-method method-name="doCreateEbayUserIdContactMech"/>
+        </if-not-empty>
+    </simple-method>
+    
+    <simple-method method-name="doCreateEmailContactMech" short-description="">
+        <set field="emailContactMach.partyId" from-field="partyId"/>
+        <set field="emailContactMach.contactMechPurposeTypeId" value="PRIMARY_EMAIL"/>
+        <set field="emailContactMach.contactMechTypeId" value="EMAIL_ADDRESS"/>
+        <set field="emailContactMach.emailAddress" from-field="orderImport.emailAddress"/>
+        <if-empty field="emailContactMach.emailAddress">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: The email address is empty. Please check in emailAddress. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+        <call-service service-name="createPartyEmailAddress" in-map-name="emailContactMach" include-user-login="true" break-on-error="false">
+            <result-to-field result-name="contactMechId" field="emailContactMechId"/>
+        </call-service>
+        <if-empty field="emailContactMechId">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create email contactMech. Please check in emailAddress. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+    </simple-method>
+    
+    <simple-method method-name="doCreateTelecomNumberContactMech" short-description="">
+        <set field="partyTelecom.contactMechPurposeTypeId" value="PRIMARY_PHONE"/>
+        <set field="partyTelecom.partyId" from-field="partyId"/>
+        <set field="partyTelecom.contactMechTypeId" value="TELECOM_NUMBER"/>
+        <set field="partyTelecom.countryCode" from-field="orderImport.countryCode"/>
+        <set field="partyTelecom.areaCode" from-field="orderImport.areaCode"/>
+        <set field="partyTelecom.contactNumber" from-field="orderImport.contactNumber"/>
+        <call-service service-name="createPartyTelecomNumber" in-map-name="partyTelecom" include-user-login="true" break-on-error="false">
+            <result-to-field result-name="contactMechId" field="telecomNumContactMechId"/>
+        </call-service>
+        <if-empty field="telecomNumContactMechId">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create TelecomNumber. Please check in countryCode, areaCode and contactNumber. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+    </simple-method>
+    
+    <simple-method method-name="doCreatePostalAddress" short-description="">
+        <!-- Create primary location -->
+        <set field="shippingAddress.contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
+        <set field="shippingAddress.partyId" from-field="partyId"/>
+        <set field="shippingAddress.contactMechTypeId" value="POSTAL_ADDRESS"/>
+        <set field="shippingAddress.toName" from-field="orderImport.toName"/>
+        <set field="shippingAddress.address1" from-field="orderImport.address1"/>
+        <set field="shippingAddress.address2" from-field="orderImport.address2"/>
+        <set field="shippingAddress.city" from-field="orderImport.city"/>
+        <set field="shippingAddress.postalCode" from-field="orderImport.postalCode"/>
+        <set field="shippingAddress.stateProvinceGeoId" from-field="orderImport.stateProvinceGeoId"/>
+        <set field="shippingAddress.countryGeoId" from-field="orderImport.countryGeoId"/>
+        <call-service service-name="createPartyPostalAddress" in-map-name="shippingAddress" include-user-login="true" break-on-error="false">
+            <result-to-field result-name="contactMechId" field="contactMechId"/>
+        </call-service>
+        
+        <if-empty field="contactMechId">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create postal address. Please check the parameters [${shippingAddress}]. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+    </simple-method>
+    
+    <simple-method method-name="doCreateEbayUserIdContactMech" short-description="">
+        <set field="ebayUserId.partyId" from-field="partyId"/>
+        <set field="ebayUserId.contactMechTypeId" value="EBAY_USER_ID"/>
+        <set field="ebayUserId.infoString" from-field="orderImport.userId"/>
+        <call-service service-name="createPartyContactMech" in-map-name="ebayUserId" include-user-login="true">
+            <result-to-field result-name="contactMechId" field="userIdContactMechId"/>
+        </call-service>
+        <if-empty field="userIdContactMechId">
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create ebay userId contactMech. check in the data &quot;EBAY_USER_ID&quot;in ContactMechTypeId entity. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <return response-code="error"/>
+        </if-empty>
+    </simple-method>
+    
+    <simple-method method-name="checkPartyRoleType" short-description="">
+        <entity-one value-field="partyRole" entity-name="PartyRole">
+            <field-map field-name="partyId" from-field="partyId"/>
+            <field-map field-name="roleTypeId" value="END_USER_CUSTOMER"/>
+        </entity-one>
+        <if-empty field="partyRole">
+            <set field="partyRoleCtx.partyId" from-field="partyId"/>
+            <set field="partyRoleCtx.roleTypeId" value="END_USER_CUSTOMER"/>
+            <call-service service-name="createPartyRole" in-map-name="partyRoleCtx" include-user-login="true"></call-service>
+        </if-empty>
+        
+        <entity-one value-field="partyRole" entity-name="PartyRole">
+            <field-map field-name="partyId" from-field="partyId"/>
+            <field-map field-name="roleTypeId" value="SHIP_TO_CUSTOMER"/>
+        </entity-one>
+        <if-empty field="partyRole">
+            <set field="partyRoleCtx.partyId" from-field="partyId"/>
+            <set field="partyRoleCtx.roleTypeId" value="SHIP_TO_CUSTOMER"/>
+            <call-service service-name="createPartyRole" in-map-name="partyRoleCtx" include-user-login="true"></call-service>
+        </if-empty>
+        
+        <entity-one value-field="partyRole" entity-name="PartyRole">
+            <field-map field-name="partyId" from-field="partyId"/>
+            <field-map field-name="roleTypeId" value="BILL_TO_CUSTOMER"/>
+        </entity-one>
+        <if-empty field="partyRole">
+            <set field="partyRoleCtx.partyId" from-field="partyId"/>
+            <set field="partyRoleCtx.roleTypeId" value="BILL_TO_CUSTOMER"/>
+            <call-service service-name="createPartyRole" in-map-name="partyRoleCtx" include-user-login="true"></call-service>
+        </if-empty>
+        
+        <entity-one value-field="partyRole" entity-name="PartyRole">
+            <field-map field-name="partyId" from-field="partyId"/>
+            <field-map field-name="roleTypeId" value="PLACING_CUSTOMER"/>
+        </entity-one>
+        <if-empty field="partyRole">
+            <set field="partyRoleCtx.partyId" from-field="partyId"/>
+            <set field="partyRoleCtx.roleTypeId" value="PLACING_CUSTOMER"/>
+            <call-service service-name="createPartyRole" in-map-name="partyRoleCtx" include-user-login="true"></call-service>
+        </if-empty>
+    </simple-method>
+    
+    <simple-method method-name="addItemToOrder" short-description="">
+        <entity-one value-field="product" entity-name="Product">
+            <field-map field-name="productId" from-field="productId"/>
+        </entity-one>
+        <if-not-empty field="product">
+            <make-value value-field="orderItem" entity-name="OrderItem"/>
+            <set field="orderItem.orderId" from-field="orderId"/>
+            <if-empty field="orderItemImportSeqId">
+                <make-next-seq-id value-field="orderItem" seq-field-name="orderItemSeqId"/>
+                <else>
+                    <set field="orderItem.orderItemSeqId" from-field="orderItemImportSeqId"/>
+                </else>
+            </if-empty>
+            <set field="orderItem.orderId" from-field="orderId"/>
+            <set field="orderItem.productId" from-field="productId"/>
+            <set field="orderItem.quantity" from-field="quantity"/>
+            <set field="orderItem.statusId" value="ITEM_APPROVED"/>
+            <set field="orderItem.orderItemTypeId" value="PRODUCT_ORDER_ITEM"/>
+            <set field="orderItem.itemDescription" from-field="productName"/>
+            <set field="orderItem.unitPrice" from-field="unitPrice"/>
+            <create-value value-field="orderItem"/>
+            <set field="orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+            
+            <!-- Create order item status set to ITEM_CREATED-->
+            <make-value value-field="orderItemStatus" entity-name="OrderStatus"/>
+            <sequenced-id sequence-name="OrderStatus" field="orderItemStatus.orderStatusId"/>
+            <set field="orderItemStatus.orderId" from-field="orderId"/>
+            <set field="orderItemStatus.statusId" value="ITEM_CREATED"/>
+            <set field="orderItemStatus.orderItemSeqId" from-field="orderItemImportSeqId"/>
+            <set field="orderItemStatus.statusDatetime" from-field="orderImport.paidOnDate"/>
+            <set field="orderItemStatus.statusUserLogin" from-field="userLogin.userLoginId"/>
+            <create-value value-field="orderItemStatus"/>
+            <!-- Create order item status set to ITEM_APPROVED -->
+            <sequenced-id sequence-name="OrderStatus" field="orderItemStatus.orderStatusId"/>
+            <set field="orderItemStatus.statusId" value="ITEM_APPROVED"/>
+            <set field="orderItemStatus.statusDatetime" from-field="orderImport.createdStamp"/>
+            <set field="orderItemStatus.statusUserLogin" from-field="userLogin.userLoginId"/>
+            <create-value value-field="orderItemStatus"/>
+            
+            <!-- Create Order Item Ship Group -->
+            <entity-one value-field="productStoreShipmentCheck" entity-name="ProductStoreShipmentMeth">
+                <field-map field-name="productStoreShipMethId" from-field="orderImport.productStoreShipMethId"/>
+            </entity-one>
+            <if-empty field="productStoreShipmentCheck">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Error occurred: There is no productStoreShipMethId: [${orderImport.productStoreShipMethId}] for productStore ${productStoreId}. [orderImportId : ${orderImport.orderImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-empty>
+            <if-not-empty field="productStoreShipmentCheck">
+                <if-empty field="shipGroupSeqId">
+                    <set field="orderItemShipGrpCtx.orderId" from-field="orderId"/>
+                    <set field="orderItemShipGrpCtx.shipmentMethodTypeId" from-field="productStoreShipmentCheck.shipmentMethodTypeId"/>
+                    <set field="orderItemShipGrpCtx.carrierPartyId" from-field="productStoreShipmentCheck.partyId"/>
+                    <set field="orderItemShipGrpCtx.carrierRoleTypeId" value="CARRIER"/>
+                    <set field="orderItemShipGrpCtx.contactMechId" from-field="contactMechId"/>
+                    <set field="orderItemShipGrpCtx.maySplit" value="N"/>
+                    <call-service service-name="createOrderItemShipGroup" in-map-name="orderItemShipGrpCtx" include-user-login="true">
+                        <result-to-field result-name="shipGroupSeqId" field="shipGroupSeqId"/>
+                    </call-service>
+                </if-empty>
+            </if-not-empty>
+            
+            <!-- Inventory Reservation -->
+            <if-not-empty field="shipGroupSeqId">
+                <call-simple-method method-name="doInventoryReservation"/>
+            </if-not-empty>
+            
+            <!-- Create orderItemAttribute -->
+            <if-not-empty field="orderItemNumber">
+                <make-value value-field="orderItemAttributeCtx" entity-name="OrderItemAttribute"/>
+                <set field="orderItemAttributeCtx.orderId" from-field="orderId"/>
+                <set field="orderItemAttributeCtx.orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+                <set field="orderItemAttributeCtx.attrName" value="eBay Item Number"/>
+                <set field="orderItemAttributeCtx.attrValue" from-field="orderItemNumber"/>
+                <create-value value-field="orderItemAttributeCtx"/>
+            </if-not-empty>
+            
+            <!-- Create OrderItemAttribute-->
+            <if-not-empty field="transactionId">
+                <make-value value-field="orderItemAttributeCtx" entity-name="OrderItemAttribute"/>
+                <set field="orderItemAttributeCtx.orderId" from-field="orderId"/>
+                <set field="orderItemAttributeCtx.orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+                <set field="orderItemAttributeCtx.attrName" value="EBAY_TRAN_ID"/>
+                <set field="orderItemAttributeCtx.attrValue" from-field="transactionId"/>
+                <create-value value-field="orderItemAttributeCtx"/>
+            </if-not-empty>
+            
+            <!-- Add party group to OrderItemAttribute -->
+            <entity-and list="productStoreRoles" entity-name="ProductStoreRole">
+                <field-map field-name="productStoreId" from-field="productStoreId"/>
+                <field-map field-name="roleTypeId" value="EBAY_ACCOUNT"/>
+            </entity-and>
+            <if-not-empty field="productStoreRoles">
+                <first-from-list entry="productStoreRole" list="productStoreRoles"/>
+                <get-related-one relation-name="PartyGroup" to-value-field="partyGroup" value-field="productStoreRole"/>
+                <if-not-empty field="partyGroup">
+                    <make-value value-field="orderItemAttributeCtx" entity-name="OrderItemAttribute"/>
+                    <set field="orderItemAttributeCtx.orderId" from-field="orderId"/>
+                    <set field="orderItemAttributeCtx.orderItemSeqId" from-field="orderItem.orderItemSeqId"/>
+                    <set field="orderItemAttributeCtx.attrName" value="SELLER_EBAY_USERNAME"/>
+                    <set field="orderItemAttributeCtx.attrValue" from-field="partyGroup.groupName"/>
+                    <create-value value-field="orderItemAttributeCtx"/>
+                </if-not-empty>
+            </if-not-empty>
+            <else>
+               <add-error error-list-name="error_list">
+                   <fail-message message=""/>
+               </add-error>
+            </else>
+        </if-not-empty>
+    </simple-method>
+    
+    <!-- Inventory Reservation -->
+    <simple-method method-name="doInventoryReservation" short-description="Store Inventory Reservation">
+        <entity-and entity-name="ProductAssoc" list="productAssocs">
+            <field-map field-name="productId" from-field="productId"/>
+            <field-map field-name="productAssocTypeId" value="PRODUCT_COMPONENT"/>
+        </entity-and>
+        <if-empty field="productAssocs">
+            <set field="InventoryReservationMap.productStoreId" from-field="productStoreId"/>
+            <set field="InventoryReservationMap.productId" from-field="productId"/>
+            <set field="InventoryReservationMap.facilityId" from-field="facilityId"/>
+            <set field="InventoryReservationMap.quantity" from-field="quantity"/>
+            <set field="InventoryReservationMap.orderId" from-field="orderId"/>
+            <set field="InventoryReservationMap.orderItemSeqId" from-field="orderItemSeqId"/>
+            <set field="InventoryReservationMap.shipGroupSeqId" from-field="shipGroupSeqId"/>
+            <call-service service-name="reserveStoreInventory" in-map-name="InventoryReservationMap" include-user-login="true">
+                <result-to-field result-name="quantityNotReserved" field="quantityNotReserved"/>
+            </call-service>
+            <!-- Create OrderItemShipGroupAssoc  -->
+            <add-error error-list-name="errorMessageList">
+                <fail-message message="Error occurred: When it tried to create OrderItemShipGroupAssoc. [orderImportId : ${orderImport.orderImportId}]"/>
+            </add-error>
+            <make-value value-field="orderItemShipGroupAssoc" entity-name="OrderItemShipGroupAssoc"/>
+            <set field="orderItemShipGroupAssoc.orderId" from-field="orderId"/>
+            <set field="orderItemShipGroupAssoc.orderItemSeqId" from-field="orderItemSeqId"/>
+            <set field="orderItemShipGroupAssoc.shipGroupSeqId" from-field="shipGroupSeqId"/>
+            <set field="orderItemShipGroupAssoc.quantity" from-field="quantity"/>
+           <!-- <set field="orderItemShipGroupAssoc.cancelQuantity" from-field="quantityNotReserved"/>-->
+	    <log level="info" message="TTTTTTTTTTT ${orderItemShipGroupAssoc}"></log>
+            <create-value value-field="orderItemShipGroupAssoc"/>
+            <clear-field field="errorMessageList"/>
+            <else>
+                <iterate entry="productAssoc" list="productAssocs">
+                    <set field="InventoryReservationMap.productStoreId" from-field="productStoreId"/>
+                    <set field="InventoryReservationMap.productId" from-field="productAssoc.productIdTo"/>
+                    <set field="InventoryReservationMap.facilityId" from-field="facilityId"/>
+                    <set field="InventoryReservationMap.quantity" from-field="quantity"/>
+                    <set field="InventoryReservationMap.orderId" from-field="orderId"/>
+                    <set field="InventoryReservationMap.orderItemSeqId" from-field="orderItemSeqId"/>
+                    <set field="InventoryReservationMap.shipGroupSeqId" from-field="shipGroupSeqId"/>
+                    <call-service service-name="reserveStoreInventory" in-map-name="InventoryReservationMap" include-user-login="true">
+                        <result-to-field result-name="quantityNotReserved" field="quantityNotReserved"/>
+                    </call-service>
+                    <add-error error-list-name="errorMessageList">
+                        <fail-message message="Error occurred: When it tried to create OrderItemShipGroupAssoc. [orderImportId : ${orderImport.orderImportId}]"/>
+                    </add-error>
+                </iterate>
+                <make-value value-field="orderItemShipGroupAssoc" entity-name="OrderItemShipGroupAssoc"/>
+                <set field="orderItemShipGroupAssoc.orderId" from-field="orderId"/>
+                <set field="orderItemShipGroupAssoc.orderItemSeqId" from-field="orderItemSeqId"/>
+                <set field="orderItemShipGroupAssoc.shipGroupSeqId" from-field="shipGroupSeqId"/>
+                <set field="orderItemShipGroupAssoc.quantity" from-field="quantity"/>
+                <set field="orderItemShipGroupAssoc.cancelQuantity" from-field="quantityNotReserved"/>
+                <create-value value-field="orderItemShipGroupAssoc"/>
+                <clear-field field="errorMessageList"/>
+            </else>
+        </if-empty>
+    </simple-method>
+
+    <simple-method method-name="createOrderItemImport" short-description="">
+        <make-value entity-name="OrderItemImport" value-field="orderItemImport"/>
+        <if-empty field="parameters.orderImportId">
+            <add-error error-list-name="_error_message_list_">
+                <fail-message message="empty ORDER_IMPORT_ID"/>
+            </add-error>
+        </if-empty>
+        <if-empty field="_error_message_list_">
+            <set-pk-fields value-field="orderItemImport" map="parameters"/>
+            <if-empty field="parameters.orderItemImportSeqId">
+                <make-next-seq-id value-field="orderItemImport" seq-field-name="orderItemImportSeqId"/> <!-- this finds the next sub-sequence ID -->
+            </if-empty>
+            <set-nonpk-fields value-field="orderItemImport" map="parameters"/>
+            <create-value value-field="orderItemImport"/>
+            <check-errors error-code="error"/>
+            <else>
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="ERROR: ${_error_message_list_} on ${parameters.orderId}"/>
+                </add-error>
+                <check-errors error-list-name="errorMessageList" error-code="error"/>
+            </else>
+        </if-empty>
+    </simple-method>
+    
+    <simple-method method-name="updateTemporaryOrder" short-description="Update Temporary Order">
+        <if-not-empty field="parameters.orderImportId">
+            <make-value value-field="orderImport" entity-name="OrderImport"/>
+            <set-pk-fields value-field="orderImport" map="parameters"/>
+            <set-nonpk-fields value-field="orderImport" map="parameters"/>
+            <store-value value-field="orderImport"/>
+        </if-not-empty>
+    </simple-method>
+    
+    <simple-method method-name="updateOrderItemImport" short-description="Update OrderItemImport">
+        <entity-one entity-name="OrderItemImport" value-field="orderItemImport" auto-field-map="true"/>
+        <check-errors/>
+        <set-nonpk-fields map="parameters" value-field="orderItemImport" set-if-null="false"/>
+        <store-value value-field="orderItemImport"/>
+        <check-errors/>
+    </simple-method>
+
+    <simple-method method-name="updateProductStoreShippingEnum" short-description="Update ProductStoreShippingEnum">
+        <set field="description" value="${groovy: String str = parameters.description; return str.trim();}"/>
+        <entity-one value-field="enumeration" entity-name="Enumeration">
+            <field-map field-name="enumId" from-field="parameters.enumId"/>
+        </entity-one>
+        <if>
+            <condition>
+                <or>
+                    <if-compare-field operator="not-equals" field="parameters.enumCode" to-field="enumeration.enumCode"></if-compare-field>
+                    <if-compare-field operator="not-equals" field="parameters.description" to-field="enumeration.description"></if-compare-field>
+                    <if-compare-field operator="not-equals" field="parameters.sequenceId" to-field="enumeration.sequenceId"></if-compare-field>
+                </or>
+            </condition>
+            <then>
+                <if-compare-field operator="not-equals" field="parameters.description" to-field="enumeration.description">
+                	<if-compare-field operator="not-equals" field="parameters.sequenceId" to-field="enumeration.sequenceId">
+	                    <entity-and list="checkDuplicate" entity-name="Enumeration">
+	                        <field-map field-name="description" from-field="description"/>
+	                        <field-map field-name="enumTypeId" from-field="parameters.enumTypeId"/>
+	                        <field-map field-name="sequenceId" from-field="parameters.sequenceId"/>
+	                    </entity-and>
+	                    <if-not-empty field="checkDuplicate">
+	                        <set field="errorMessage" value="This external shipping method [${parameters.description}] already exists."/>
+	                        <return response-code="error"/>
+	                    </if-not-empty>
+                    </if-compare-field>
+                </if-compare-field>
+                <set field="enumCtx.enumId" from-field="parameters.enumId"/>
+                <set field="enumCtx.enumCode" from-field="parameters.enumCode"/>
+                <set field="enumCtx.description" from-field="description"/>
+                <set field="enumCtx.enumTypeId" from-field="parameters.enumTypeId"/>
+                <set field="enumCtx.sequenceId" from-field="parameters.sequenceId" set-if-empty="true" set-if-null="true"/>
+                <call-service service-name="updateEnumeration" in-map-name="enumCtx" include-user-login="true">
+                </call-service>
+            </then>
+        </if>
+    </simple-method>
+    
+    <simple-method method-name="createProductStoreShippingEnum" short-description="Create ProductStoreShippingEnum">
+        <set field="description" value="${groovy: String str = parameters.description; return str.trim();}"/>
+        <entity-and list="enumerations" entity-name="Enumeration">
+            <field-map field-name="description" from-field="description"/>
+            <field-map field-name="enumTypeId" from-field="parameters.enumTypeId"/>
+            <field-map field-name="sequenceId" from-field="parameters.sequenceId"/>
+        </entity-and>
+        <if-not-empty field="enumerations">
+            <set field="errorMessage" value="This external shipping method [${parameters.description}] already exists."/>
+            <return response-code="error"/>
+        </if-not-empty>
+        <make-value value-field="newValue" entity-name="Enumeration"/>
+        <set field="newValue.enumCode" from-field="parameters.enumCode"/>
+        <sequenced-id sequence-name="Enumeration" field="newValue.enumId"/>
+        <make-next-seq-id seq-field-name="Enumeration" value-field="newValue.sequenceId"/>
+        <set field="newValue.enumTypeId" from-field="parameters.enumTypeId"/>
+        <set field="newValue.description" from-field="description"/>
+        <set field="newValue.sequenceId" from-field="parameters.sequenceId"/>
+        <create-value value-field="newValue"/>
+        <check-errors></check-errors>
+    </simple-method>
+    <simple-method method-name="addNewPaymentMethodMapping" short-description="Create New PaymentMethodMapping">
+        <entity-one entity-name="Enumeration" value-field="enumeration">
+            <field-map field-name="enumId" from-field="parameters.paymentMethodTypeId"/>
+        </entity-one>
+        <if-empty field="enumeration">
+            <make-value value-field="newValue" entity-name="Enumeration"/>
+            <set field="newValue.enumId" from-field="parameters.paymentMethodTypeId"/>
+            <make-next-seq-id seq-field-name="Enumeration" value-field="newValue.sequenceId"/>
+            <set field="newValue.enumTypeId" from-field="parameters.enumTypeId"/>
+            <set field="newValue.enumCode" from-field="parameters.externalPaymentMethod"/>
+            <set field="newValue.description" from-field="parameters.description"/>
+            <create-value value-field="newValue"/>
+            <check-errors></check-errors>
+            <else>
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="The payment method mapping is already exis"/>
+                </add-error>
+                <return response-code="error"/>
+            </else>
+        </if-empty>
+        
+    </simple-method>
+</simple-methods>
+

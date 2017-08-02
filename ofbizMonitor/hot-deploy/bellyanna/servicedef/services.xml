@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>bellyanna Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+    
+    <service name="VlaxTest" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.common.bellyannaService" invoke="testForVlax" use-transaction="false">
+        <description>Test Java</description>
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="itemId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    <service name="VlaxTest2" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.common.bellyannaService" invoke="testForVlax" use-transaction="false">
+        <description>Test Java</description>
+        <attribute name="testInput" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    
+    <service name="YasinTestJava" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.common.bellyannaService" invoke="YasinTestJava" use-transaction="false">
+        <description>Test Java</description>
+    </service>
+    
+    <service name="YasinTestJava2" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.common.bellyannaService" invoke="YasinTestJava2">
+        <description>Test Java</description>
+        <attribute name="parameter1" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    
+    <service name="smartRelistEbay" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.common.bellyannaService" invoke="smartRelistEbay">
+        <description>Smart Relist eBay Listing</description>
+        <attribute name="productStoreId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+</services>

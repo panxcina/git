@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-menu.xsd">
+    <menu name="MainAppBar" title="${applicationTitle}&amp;nbsp;" extends="CommonAppBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="main" title="Main"><link target="main"/></menu-item>
+        <menu-item name="importOrder" title="Import Order"><link target="importOrder"></link></menu-item>
+        <menu-item name="exportOrder" title="Export Order and Import"><link target="exportOrder"></link></menu-item>
+        <menu-item name="findImportProduct" title="Import Product"><link target="findImportProduct"/></menu-item>
+    </menu>
+    <menu name="OrderImportBar" title=" " extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="importOrder" title="Upload File">
+            <condition>
+                <not><if-empty field="productStoreId"/></not>
+            </condition>
+            <link target="importOrder">
+                <parameter param-name="productStoreId"/>
+            </link>
+        </menu-item>
+        <menu-item name="configuration" title="configurations">
+            <condition>
+                <not><if-empty field="productStoreId"/></not>
+            </condition>
+            <link target="importConfiguration">
+                <parameter param-name="productStoreId"/>
+            </link>
+        </menu-item>
+    </menu>
+    <menu name="OrderExportBar" title=""  extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="exportOrder" title="Export Order"><link target="exportOrder"></link></menu-item>
+        <menu-item name="importOrder" title="Import Order"><link target="importInternalOrder"></link></menu-item>
+    </menu>
+</menus>
+

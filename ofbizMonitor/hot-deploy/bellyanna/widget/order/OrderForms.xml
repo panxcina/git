@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <form name="ToBeShippedList" type="single" target="toBeShippedList" default-map-name="toBeShippedList" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productStore" title="Product Store">
+            <drop-down no-current-selected-key="All">
+                <option key="All" description="All"/>
+                <entity-options entity-name="ProductStore" key-field-name="productStoreId" description="${storeName}">
+                    <!--<entity-constraint name="primaryStoreGroupId" value="EBAY"/>-->
+                    <entity-order-by field-name="storeName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="orderStatus" title="Order Status">
+            <drop-down no-current-selected-key="All">
+                <option key="All" description="All"/>
+                <option key="ORDER_APPROVED" description="Approved"/>
+                <option key="ORDER_HOLD" description="Held"/>
+            </drop-down>
+        </field>
+        <field name="shipToCountry" title="Ship to Country">
+            <drop-down no-current-selected-key="All">
+                <option key="All" description="All"/>
+                <option key="" description=""/>
+                <option key="USA" description="United States"/>
+                <option key="GBR" description="United Kingdom"/>
+                <option key="AUS" description="Australia"/>
+                <option key="RUS" description="Russian Federation"/>
+                <option key="" description=""/>
+                <entity-options entity-name="Geo" key-field-name="geoId" description="${geoName} (${geoId}) - ${wellKnownText}">
+                    <entity-constraint name="geoTypeId" value="COUNTRY"/>
+                    <entity-order-by field-name="geoName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="defaultEmailTemplate" title="Default email template">
+            <drop-down no-current-selected-key="10030">
+                <entity-options entity-name="EbayEmailTemplate" key-field-name="emailTemplateId" description="${emailTemplateName} [${emailTemplateTypeId}]">
+                    <entity-order-by field-name="emailTemplateName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="orderCount" title="Total Order Count">
+            <text size="5"><display description="${orderCount}"/></text>
+        </field>
+        <field name="submitButton" title="Search" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="ListRefunds" type="list">
+        <actions>
+            <entity-condition entity-name="RefundList">
+                <condition-expr field-name="statusId" value="REFUND_COMPLETED"/>
+                <order-by field-name="-lastUpdatedStamp"/>
+            </entity-condition>
+        </actions>
+        <!--<auto-fields-entity entity-name="Refund" default-field-type="display"/>-->
+        <field name="refundId" widget-style="buttontext" widget-area-style="centered">
+            <hyperlink target="editOrderRefund" description="${refundId}" target-window="_blank">
+                <parameter param-name="refundId"/>
+                <parameter param-name="orderId"/>
+            </hyperlink>
+        </field>
+        <field name="orderId" widget-style="buttontext" widget-area-style="centered">
+            <hyperlink target="orderview" description="${orderId}" target-window="_blank">
+                <parameter param-name="orderId"/>
+            </hyperlink>
+        </field>
+        <field name="createdStamp" title="Created Date" widget-area-style="centered"><display type="date"/></field>
+        <field name="createdByUserLogin" title="Created By" widget-area-style="centered"><display/></field>
+        <field name="ebayUserId" entry-name="infoString" widget-area-style="centered"><display/></field>
+        <field name="paypalEmailAddress" widget-area-style="centered"><display/></field>
+        <field name="paypalTransId" entry-name="paypalTransactionId" widget-area-style="centered"><display/></field>
+        <field name="refundPaypalTransId" widget-area-style="centered"><display/></field>
+        <field name="fullRefund" widget-area-style="centered"><display/></field>
+        <field name="amount" widget-area-style="centered"><display/></field>
+        <field name="currency" entry-name="currencyUomId" widget-area-style="centered"><display/></field>
+        <field name="reason" entry-name="reasonCode" widget-area-style="centered"><display/></field>
+        <field name="Reason Description" entry-name="reason" widget-area-style="centered"><display/></field>
+        
+    </form>
+    
+</forms>
+

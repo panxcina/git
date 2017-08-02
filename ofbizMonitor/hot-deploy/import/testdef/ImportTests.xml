@@ -1,0 +1,26 @@
+<test-suite suite-name="Importtests"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/test-suite.xsd">
+
+    <test-case case-name="import-products-from-devilwear">
+        <simple-method-test name="testImportProductsFromDevilwear" location="component://import/script/org/ofbiz/productimport/ProductImportTests.xml"/>
+    </test-case>
+    <test-case case-name="import-products-from-puckator">
+        <simple-method-test name="testImportProductsFromPuckator" location="component://import/script/org/ofbiz/productimport/ProductImportTests.xml"/>
+    </test-case>
+    <test-case case-name="import-products-from-fancy-dress-dropship">
+        <simple-method-test name="testImportProductsFromFancyDressDropship" location="component://import/script/org/ofbiz/productimport/ProductImportTests.xml"/>
+    </test-case>
+    <test-case case-name="import-products-from-pixmania-pro">
+        <simple-method-test name="testImportProductsFromPixmaniaPro" location="component://import/script/org/ofbiz/productimport/ProductImportTests.xml"/>
+    </test-case>
+    <test-case case-name="import-products-from-ingram-micro">
+        <simple-method-test name="testImportProductsFromIngramMicro" location="component://import/script/org/ofbiz/productimport/ProductImportTests.xml"/>
+    </test-case>
+    <test-case case-name="get-product-info-from-ice-cat">
+        <simple-method-test name="testGetProductInfoFromIceCat" location="component://import/script/org/ofbiz/productimport/ProductImportTests.xml"/>
+    </test-case>
+    <test-case case-name="get-product-reviews-from-ice-cat">
+        <simple-method-test name="testGetProductReviewsFromIceCat" location="component://import/script/org/ofbiz/productimport/ProductImportTests.xml"/>
+    </test-case>
+</test-suite>

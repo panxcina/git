@@ -1,0 +1,110 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #eee;
+  color: #333;
+  font-family: sans-serif;
+  padding: 0.5em 1em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+button {
+  margin: 8px auto 1.5em;
+  padding: 0 1em;
+  line-height: 2em;
+  font-size: 1em;
+  display: block;
+}
+
+label {
+  display: inline-block;
+  padding: 6px 10px 6px 0;
+}
+
+.radio-group label,
+.radio-group input,
+.checkbox,
+.checkbox input,
+button {
+  cursor: pointer;
+}
+
+.github-stars-badge {
+  min-width: 70px;
+  margin-bottom: -0.3em;
+}
+
+.slider {
+  padding: 6px 0;
+}
+
+.slider > span:first-child {
+  display: inline-block;
+  min-width: 70px;
+  text-align: left;
+}
+
+.slider-container {
+  display: inline-block;
+  width: 590px;
+  padding: 0 5px;
+}
+
+.rc-slider {
+  margin-bottom: -2px;
+}
+
+.rc-slider-disabled {
+  background-color: transparent;
+}
+
+.rc-slider-rail {
+  background-color: #ddd;
+}
+
+.rc-slider-track {
+  background-color: #999;
+}
+
+.rc-slider-handle {
+  border-color: #888;
+}
+
+.rc-slider-handle:hover {
+  border-color: #666;
+}
+
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.grid-item {
+  font-size: 0.75rem;
+  padding: 20px 15px;
+  background-color: #ccc;
+  border-radius: 3px;
+  border: 2px solid #aaa;
+}
+
+.grid-item p {
+  text-align: left;
+  margin: 0.5em 0;
+}
+
+.grid-item *:first-child {
+  margin-top: 0;
+}
+
+.grid-item *:last-child {
+  margin-bottom: 0;
+}

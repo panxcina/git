@@ -1,0 +1,1005 @@
+<orig_height>1001</orig_height>
+<is_verified>false</is_verified>
+<user_in_active_sweep>false</user_in_active_sweep>
+<commerce_product_info>
+    <total_inventory>24814</total_inventory>
+    <id>56f51df52fc9ed6ab4580ae5</id>
+    <logging_fields>
+        <log_product_id>56f51df52fc9ed6ab4580ae5</log_product_id>
+        <log_type>product</log_type>
+    </logging_fields>
+    <fbw_active>0</fbw_active>
+    <fbw_pending>0</fbw_pending>
+    <sizing_chart_data>
+        <charts>
+            <chart_tab_label>Women</chart_tab_label>
+            <image_url>https://d2qihddyw0bsc3.cloudfront.net/c45c8c61ea3f/img/msite/womens_blank_sizing_diagram_600px.png</image_url>
+            <dim_order>Bust/Chest</dim_order>
+            <dim_order>Waist</dim_order>
+            <dim_order>Hip</dim_order>
+            <chart>
+                <XS>
+                    <Waist>24.5&quot; - 25.5&quot;</Waist>
+                    <Waist>62 - 65 (cm)</Waist>
+                    <Bust/Chest>32.5&quot; - 33.5&quot;</Bust/Chest>
+                    <Bust/Chest>83 - 85 (cm)</Bust/Chest>
+                    <Hip>35&quot; - 36&quot;</Hip>
+                    <Hip>89 - 91 (cm)</Hip>
+                </XS>
+                <XXL>
+                    <Waist>36&quot; - 37.5&quot;</Waist>
+                    <Waist>91 - 95 (cm)</Waist>
+                    <Bust/Chest>43.5&quot; - 45.5&quot;</Bust/Chest>
+                    <Bust/Chest>110 - 116 (cm)</Bust/Chest>
+                    <Hip>45.5&quot; - 48.5&quot;</Hip>
+                    <Hip>116 - 123 (cm)</Hip>
+                </XXL>
+                <S>
+                    <Waist>25.5&quot; - 26.5&quot;</Waist>
+                    <Waist>65 - 67 (cm)</Waist>
+                    <Bust/Chest>33.5&quot; - 34.5&quot;</Bust/Chest>
+                    <Bust/Chest>85 - 88 (cm)</Bust/Chest>
+                    <Hip>36&quot; - 37&quot;</Hip>
+                    <Hip>91 - 94 (cm)</Hip>
+                </S>
+                <L>
+                    <Waist>30&quot; - 31.5&quot;</Waist>
+                    <Waist>76 - 80 (cm)</Waist>
+                    <Bust/Chest>38&quot; - 39.5&quot;</Bust/Chest>
+                    <Bust/Chest>97 - 100 (cm)</Bust/Chest>
+                    <Hip>40.5&quot; - 42&quot;</Hip>
+                    <Hip>103 - 107 (cm)</Hip>
+                </L>
+                <XXS>
+                    <Waist>23.5&quot; - 24.5&quot;</Waist>
+                    <Waist>60 - 62 (cm)</Waist>
+                    <Bust/Chest>31.5&quot; - 32.5&quot;</Bust/Chest>
+                    <Bust/Chest>80 - 83 (cm)</Bust/Chest>
+                    <Hip>34&quot; - 35&quot;</Hip>
+                    <Hip>86 - 89 (cm)</Hip>
+                </XXS>
+                <M>
+                    <Waist>27.5&quot; - 28.5&quot;</Waist>
+                    <Waist>70 - 72 (cm)</Waist>
+                    <Bust/Chest>35.5&quot; - 36.5&quot;</Bust/Chest>
+                    <Bust/Chest>90 - 93 (cm)</Bust/Chest>
+                    <Hip>38&quot; - 39&quot;</Hip>
+                    <Hip>97 - 99 (cm)</Hip>
+                </M>
+                <XL>
+                    <Waist>33&quot; - 34.5&quot;</Waist>
+                    <Waist>84 - 88 (cm)</Waist>
+                    <Bust/Chest>41&quot; - 43&quot;</Bust/Chest>
+                    <Bust/Chest>104 - 109 (cm)</Bust/Chest>
+                    <Hip>43.5&quot; - 45.5&quot;</Hip>
+                    <Hip>110 - 116 (cm)</Hip>
+                </XL>
+            </chart>
+            <size_order>XXS</size_order>
+            <size_order>XS</size_order>
+            <size_order>S</size_order>
+            <size_order>M</size_order>
+            <size_order>L</size_order>
+            <size_order>XL</size_order>
+            <size_order>XXL</size_order>
+            <chart_title>Women&apos;s Apparel</chart_title>
+        </charts>
+        <charts>
+            <chart_tab_label>Men</chart_tab_label>
+            <image_url>https://d2qihddyw0bsc3.cloudfront.net/c45c8c61ea3f/img/msite/mens_blank_sizing_diagram_600px.png</image_url>
+            <dim_order>Chest</dim_order>
+            <dim_order>Waist</dim_order>
+            <dim_order>Neck</dim_order>
+            <dim_order>Sleeve</dim_order>
+            <chart>
+                <XXXXXL>
+                    <Sleeve>39&quot; - 40&quot;</Sleeve>
+                    <Sleeve>99 - 102 (cm)</Sleeve>
+                    <Waist>56&quot; - 58&quot;</Waist>
+                    <Waist>142 - 147 (cm)</Waist>
+                    <Chest>62&quot; - 64&quot;</Chest>
+                    <Chest>157 - 163 (cm)</Chest>
+                    <Neck>21&quot; - 21.5&quot;</Neck>
+                    <Neck>53 - 55 (cm)</Neck>
+                </XXXXXL>
+                <XS>
+                    <Sleeve>31&quot; - 32&quot;</Sleeve>
+                    <Sleeve>79 - 81 (cm)</Sleeve>
+                    <Waist>24&quot; - 26&quot;</Waist>
+                    <Waist>61 - 66 (cm)</Waist>
+                    <Chest>30&quot; - 32&quot;</Chest>
+                    <Chest>76 - 81 (cm)</Chest>
+                    <Neck>13&quot; - 13.5&quot;</Neck>
+                    <Neck>33 - 34 (cm)</Neck>
+                </XS>
+                <XXL>
+                    <Sleeve>36&quot; - 37&quot;</Sleeve>
+                    <Sleeve>91 - 94 (cm)</Sleeve>
+                    <Waist>44&quot; - 46&quot;</Waist>
+                    <Waist>112 - 117 (cm)</Waist>
+                    <Chest>50&quot; - 52&quot;</Chest>
+                    <Chest>127 - 132 (cm)</Chest>
+                    <Neck>18&quot; - 18.5&quot;</Neck>
+                    <Neck>46 - 47 (cm)</Neck>
+                </XXL>
+                <S>
+                    <Sleeve>32&quot; - 33&quot;</Sleeve>
+                    <Sleeve>81 - 84 (cm)</Sleeve>
+                    <Waist>28&quot; - 30&quot;</Waist>
+                    <Waist>71 - 76 (cm)</Waist>
+                    <Chest>34&quot; - 36&quot;</Chest>
+                    <Chest>86 - 91 (cm)</Chest>
+                    <Neck>14&quot; - 14.5&quot;</Neck>
+                    <Neck>36 - 37 (cm)</Neck>
+                </S>
+                <L>
+                    <Sleeve>34&quot; - 35&quot;</Sleeve>
+                    <Sleeve>86 - 89 (cm)</Sleeve>
+                    <Waist>36&quot; - 38&quot;</Waist>
+                    <Waist>91 - 97 (cm)</Waist>
+                    <Chest>42&quot; - 44&quot;</Chest>
+                    <Chest>107 - 112 (cm)</Chest>
+                    <Neck>16&quot; - 16.5&quot;</Neck>
+                    <Neck>41 - 42 (cm)</Neck>
+                </L>
+                <M>
+                    <Sleeve>33&quot; - 34&quot;</Sleeve>
+                    <Sleeve>84 - 86 (cm)</Sleeve>
+                    <Waist>32&quot; - 34&quot;</Waist>
+                    <Waist>81 - 86 (cm)</Waist>
+                    <Chest>38&quot; - 40&quot;</Chest>
+                    <Chest>97 - 102 (cm)</Chest>
+                    <Neck>15&quot; - 15.5&quot;</Neck>
+                    <Neck>38 - 39 (cm)</Neck>
+                </M>
+                <XXXL>
+                    <Sleeve>37&quot; - 38&quot;</Sleeve>
+                    <Sleeve>94 - 97 (cm)</Sleeve>
+                    <Waist>48&quot; - 50&quot;</Waist>
+                    <Waist>122 - 127 (cm)</Waist>
+                    <Chest>54&quot; - 56&quot;</Chest>
+                    <Chest>137 - 142 (cm)</Chest>
+                    <Neck>19&quot; - 19.5&quot;</Neck>
+                    <Neck>48 - 50 (cm)</Neck>
+                </XXXL>
+                <XXXXL>
+                    <Sleeve>38&quot; - 39&quot;</Sleeve>
+                    <Sleeve>97 - 99 (cm)</Sleeve>
+                    <Waist>52&quot; - 54&quot;</Waist>
+                    <Waist>132 - 137 (cm)</Waist>
+                    <Chest>58&quot; - 60&quot;</Chest>
+                    <Chest>147 - 152 (cm)</Chest>
+                    <Neck>20&quot; - 20.5&quot;</Neck>
+                    <Neck>51 - 52 (cm)</Neck>
+                </XXXXL>
+                <XL>
+                    <Sleeve>35&quot; - 36&quot;</Sleeve>
+                    <Sleeve>89 - 91 (cm)</Sleeve>
+                    <Waist>40&quot; - 42&quot;</Waist>
+                    <Waist>102 - 107 (cm)</Waist>
+                    <Chest>46&quot; - 48&quot;</Chest>
+                    <Chest>117 - 122 (cm)</Chest>
+                    <Neck>17&quot; - 17.5&quot;</Neck>
+                    <Neck>43 - 44 (cm)</Neck>
+                </XL>
+            </chart>
+            <size_order>XS</size_order>
+            <size_order>S</size_order>
+            <size_order>M</size_order>
+            <size_order>L</size_order>
+            <size_order>XL</size_order>
+            <size_order>XXL</size_order>
+            <size_order>XXXL</size_order>
+            <size_order>XXXXL</size_order>
+            <size_order>XXXXXL</size_order>
+            <chart_title>Men&apos;s Apparel</chart_title>
+        </charts>
+        <default_index>0</default_index>
+        <use_inches>false</use_inches>
+        <shoe_charts>
+            <chart_body>
+                <array>4</array>
+                <array>35</array>
+                <array>8.1875&quot;</array>
+                <array>20.8 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>4.5</array>
+                <array>35</array>
+                <array>8.375&quot;</array>
+                <array>21.3 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>5</array>
+                <array>35 - 36</array>
+                <array>8.5&quot;</array>
+                <array>21.6 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>5.5</array>
+                <array>36</array>
+                <array>8.75&quot;</array>
+                <array>22.2 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>6</array>
+                <array>36 - 37</array>
+                <array>8.875&quot;</array>
+                <array>22.5 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>6.5</array>
+                <array>37</array>
+                <array>9.0625&quot;</array>
+                <array>23 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>7</array>
+                <array>37 - 38</array>
+                <array>9.25&quot;</array>
+                <array>23.5 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>7.5</array>
+                <array>38</array>
+                <array>9.375&quot;</array>
+                <array>23.8 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>8</array>
+                <array>38 - 39</array>
+                <array>9.5&quot;</array>
+                <array>24.1 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>8.5</array>
+                <array>39</array>
+                <array>9.6875&quot;</array>
+                <array>24.6 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>9</array>
+                <array>39 - 40</array>
+                <array>9.875&quot;</array>
+                <array>25.1 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>9.5</array>
+                <array>40</array>
+                <array>10&quot;</array>
+                <array>25.4 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>10</array>
+                <array>40 - 41</array>
+                <array>10.1875&quot;</array>
+                <array>25.9 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>10.5</array>
+                <array>41</array>
+                <array>10.3125&quot;</array>
+                <array>26.2 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>11</array>
+                <array>41 - 42</array>
+                <array>10.5&quot;</array>
+                <array>26.7 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>11.5</array>
+                <array>42</array>
+                <array>10.6875&quot;</array>
+                <array>27.1 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>12</array>
+                <array>42 - 43</array>
+                <array>10.875&quot;</array>
+                <array>27.6 (cm)</array>
+            </chart_body>
+            <chart_tab_label>Women&apos;s Shoe</chart_tab_label>
+            <chart_header>US</chart_header>
+            <chart_header>European</chart_header>
+            <chart_header>Inches</chart_header>
+            <chart_header>Centimeters</chart_header>
+            <chart_title>Women&apos;s Shoe Size</chart_title>
+        </shoe_charts>
+        <shoe_charts>
+            <chart_body>
+                <array>6</array>
+                <array>39</array>
+                <array>9.25&quot;</array>
+                <array>23.5 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>6.5</array>
+                <array>39</array>
+                <array>9.5&quot;</array>
+                <array>24.1 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>7</array>
+                <array>40</array>
+                <array>9.625&quot;</array>
+                <array>24.4 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>7.5</array>
+                <array>40 - 41</array>
+                <array>9.75&quot;</array>
+                <array>24.8 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>8</array>
+                <array>41</array>
+                <array>9.9375&quot;</array>
+                <array>25.4 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>8.5</array>
+                <array>41 - 42</array>
+                <array>10.125&quot;</array>
+                <array>25.7 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>9</array>
+                <array>42</array>
+                <array>10.25&quot;</array>
+                <array>26 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>9.5</array>
+                <array>42 - 43</array>
+                <array>10.4375&quot;</array>
+                <array>26.7 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>10</array>
+                <array>43</array>
+                <array>10.5625&quot;</array>
+                <array>27 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>10.5</array>
+                <array>43 - 44</array>
+                <array>10.75&quot;</array>
+                <array>27.3 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>11</array>
+                <array>44</array>
+                <array>10.9375&quot;</array>
+                <array>27.9 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>11.5</array>
+                <array>44 - 45</array>
+                <array>11.125&quot;</array>
+                <array>28.3 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>12</array>
+                <array>45</array>
+                <array>11.25&quot;</array>
+                <array>28.6 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>13</array>
+                <array>46</array>
+                <array>11.5625&quot;</array>
+                <array>29.4 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>14</array>
+                <array>47</array>
+                <array>11.875&quot;</array>
+                <array>30.2 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>15</array>
+                <array>48</array>
+                <array>12.1875&quot;</array>
+                <array>31 (cm)</array>
+            </chart_body>
+            <chart_body>
+                <array>16</array>
+                <array>49</array>
+                <array>12.5&quot;</array>
+                <array>31.8 (cm)</array>
+            </chart_body>
+            <chart_tab_label>Men&apos;s Shoe</chart_tab_label>
+            <chart_header>US</chart_header>
+            <chart_header>European</chart_header>
+            <chart_header>Inches</chart_header>
+            <chart_header>Centimeters</chart_header>
+            <chart_title>Men&apos;s Shoe Size</chart_title>
+        </shoe_charts>
+        <type>1</type>
+    </sizing_chart_data>
+    <is_active_fbw_in_us>false</is_active_fbw_in_us>
+    <removed>false</removed>
+    <sizing_chart_url>https://www.wish.com/m/sizing_chart/56f51df52fc9ed6ab4580ae5</sizing_chart_url>
+    <is_fulfill_by_wish>false</is_fulfill_by_wish>
+    <variations>
+        <max_shipping_time>28</max_shipping_time>
+        <is_c2c>false</is_c2c>
+        <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+        <shipping_before_personal_price>2.0</shipping_before_personal_price>
+        <merchant_dp>https://s3-us-west-1.amazonaws.com/sweeper-production-merchantimage/default_dp.png</merchant_dp>
+        <return_policy_long>We want you to be completely satisfied with your purchase on Wish.
+            
+            You may return all products within 30 days of delivery.
+            
+            You can initiate a return or a refund on items from your Order History page. Simply click on &apos;Contact Support&apos; next to the item you wish to request a return or a refund and Wish Support will be ready to assist.
+            
+            We aim to process all requests within 72 hours upon receiving. Refunds are issued back to the original form of payment used to purchase the order.
+            
+            In the event that a Wish gift card is applied to an order and that order is refunded for any reason, any gift cards used in that order will not be refunded.
+            
+            At this time, Wish cannot refund, reimburse, cover, or otherwise be responsible for any fees not paid to Wish. This includes any customs taxes or VAT as well as any return shipping costs you may incur in the refund process.</return_policy_long>
+        <original_price>4</original_price>
+        <merchant_name>interestingshop</merchant_name>
+        <is_self_serve_fulfill_by_wish>false</is_self_serve_fulfill_by_wish>
+        <size_ordering>2</size_ordering>
+        <sequence_id>0</sequence_id>
+        <is_fulfill_by_wish>false</is_fulfill_by_wish>
+        <shipping>2.0</shipping>
+        <min_delivery_time>1</min_delivery_time>
+        <min_time_to_door>21</min_time_to_door>
+        <return_policy_short>You may return all products within 30 days of delivery.</return_policy_short>
+        <variation_id>56f51df52fc9ed6ab4580ae7</variation_id>
+        <merchant_id>5668f569cab9f026805e6c6b</merchant_id>
+        <merchant_rating_count>236</merchant_rating_count>
+        <max_delivery_time>4</max_delivery_time>
+        <shipping_countries_string>Ships to China and 71 other countries</shipping_countries_string>
+        <enabled>true</enabled>
+        <merchant_rating>4.262931034482759</merchant_rating>
+        <max_time_to_door>28</max_time_to_door>
+        <merchant>Interesting SHOP</merchant>
+        <min_shipping_time>21</min_shipping_time>
+        <max_fulfillment_time>3</max_fulfillment_time>
+        <new_with_tags>false</new_with_tags>
+        <retail_price>64</retail_price>
+        <size>S</size>
+        <localized_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price>
+        <localized_shipping>
+            <symbol>￥</symbol>
+            <localized_value>14.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_shipping>
+        <price>5</price>
+        <localized_retail_price>
+            <symbol>￥</symbol>
+            <localized_value>426.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_retail_price>
+        <shipping_time_string>21 - 28 days</shipping_time_string>
+        <color>null</color>
+        <is_fulfill_by_wlc>false</is_fulfill_by_wlc>
+        <inventory>4913</inventory>
+        <removed>false</removed>
+        <manufacturer_id>HAP0277-STS|INT</manufacturer_id>
+        <shipping_price_country_code>CN</shipping_price_country_code>
+        <localized_price_before_personal_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price_before_personal_price>
+        <merchant_rating_class>star star-4-5</merchant_rating_class>
+        <price_before_personal_price>5</price_before_personal_price>
+        <original_shipping>3</original_shipping>
+        <min_fulfillment_time>1</min_fulfillment_time>
+    </variations>
+    <variations>
+        <max_shipping_time>28</max_shipping_time>
+        <is_c2c>false</is_c2c>
+        <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+        <shipping_before_personal_price>2.0</shipping_before_personal_price>
+        <original_price>5</original_price>
+        <is_fulfill_by_wish>false</is_fulfill_by_wish>
+        <sequence_id>0</sequence_id>
+        <size_ordering>3</size_ordering>
+        <is_self_serve_fulfill_by_wish>false</is_self_serve_fulfill_by_wish>
+        <shipping>2.0</shipping>
+        <min_delivery_time>1</min_delivery_time>
+        <min_time_to_door>21</min_time_to_door>
+        <variation_id>56f51df67fd20630e61f901a</variation_id>
+        <max_delivery_time>4</max_delivery_time>
+        <enabled>true</enabled>
+        <max_time_to_door>28</max_time_to_door>
+        <min_shipping_time>21</min_shipping_time>
+        <max_fulfillment_time>3</max_fulfillment_time>
+        <new_with_tags>false</new_with_tags>
+        <retail_price>64</retail_price>
+        <size>M</size>
+        <localized_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price>
+        <localized_shipping>
+            <symbol>￥</symbol>
+            <localized_value>14.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_shipping>
+        <price>5</price>
+        <localized_retail_price>
+            <symbol>￥</symbol>
+            <localized_value>426.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_retail_price>
+        <shipping_time_string>21 - 28 days</shipping_time_string>
+        <color>null</color>
+        <is_fulfill_by_wlc>false</is_fulfill_by_wlc>
+        <inventory>4944</inventory>
+        <removed>false</removed>
+        <manufacturer_id>HAP0277-STM|INT</manufacturer_id>
+        <shipping_price_country_code>CN</shipping_price_country_code>
+        <localized_price_before_personal_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price_before_personal_price>
+        <price_before_personal_price>5</price_before_personal_price>
+        <original_shipping>2</original_shipping>
+        <min_fulfillment_time>1</min_fulfillment_time>
+    </variations>
+    <variations>
+        <max_shipping_time>28</max_shipping_time>
+        <is_c2c>false</is_c2c>
+        <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+        <shipping_before_personal_price>2.0</shipping_before_personal_price>
+        <original_price>5</original_price>
+        <is_fulfill_by_wish>false</is_fulfill_by_wish>
+        <sequence_id>0</sequence_id>
+        <size_ordering>4</size_ordering>
+        <is_self_serve_fulfill_by_wish>false</is_self_serve_fulfill_by_wish>
+        <shipping>2.0</shipping>
+        <min_delivery_time>1</min_delivery_time>
+        <min_time_to_door>21</min_time_to_door>
+        <variation_id>56f51df7db86345e7bdf68d9</variation_id>
+        <max_delivery_time>4</max_delivery_time>
+        <enabled>true</enabled>
+        <max_time_to_door>28</max_time_to_door>
+        <min_shipping_time>21</min_shipping_time>
+        <max_fulfillment_time>3</max_fulfillment_time>
+        <new_with_tags>false</new_with_tags>
+        <retail_price>64</retail_price>
+        <size>L</size>
+        <localized_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price>
+        <localized_shipping>
+            <symbol>￥</symbol>
+            <localized_value>14.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_shipping>
+        <price>5</price>
+        <localized_retail_price>
+            <symbol>￥</symbol>
+            <localized_value>426.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_retail_price>
+        <shipping_time_string>21 - 28 days</shipping_time_string>
+        <color>null</color>
+        <is_fulfill_by_wlc>false</is_fulfill_by_wlc>
+        <inventory>4979</inventory>
+        <removed>false</removed>
+        <manufacturer_id>HAP0277-STL|INT</manufacturer_id>
+        <shipping_price_country_code>CN</shipping_price_country_code>
+        <localized_price_before_personal_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price_before_personal_price>
+        <price_before_personal_price>5</price_before_personal_price>
+        <original_shipping>2</original_shipping>
+        <min_fulfillment_time>1</min_fulfillment_time>
+    </variations>
+    <variations>
+        <max_shipping_time>28</max_shipping_time>
+        <is_c2c>false</is_c2c>
+        <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+        <shipping_before_personal_price>2.0</shipping_before_personal_price>
+        <original_price>5</original_price>
+        <is_fulfill_by_wish>false</is_fulfill_by_wish>
+        <sequence_id>0</sequence_id>
+        <size_ordering>5</size_ordering>
+        <is_self_serve_fulfill_by_wish>false</is_self_serve_fulfill_by_wish>
+        <shipping>2.0</shipping>
+        <min_delivery_time>1</min_delivery_time>
+        <min_time_to_door>21</min_time_to_door>
+        <variation_id>56f51df762ea8b662cf6b095</variation_id>
+        <max_delivery_time>4</max_delivery_time>
+        <enabled>true</enabled>
+        <max_time_to_door>28</max_time_to_door>
+        <min_shipping_time>21</min_shipping_time>
+        <max_fulfillment_time>3</max_fulfillment_time>
+        <new_with_tags>false</new_with_tags>
+        <retail_price>64</retail_price>
+        <size>XL</size>
+        <localized_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price>
+        <localized_shipping>
+            <symbol>￥</symbol>
+            <localized_value>14.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_shipping>
+        <price>5</price>
+        <localized_retail_price>
+            <symbol>￥</symbol>
+            <localized_value>426.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_retail_price>
+        <shipping_time_string>21 - 28 days</shipping_time_string>
+        <color>null</color>
+        <is_fulfill_by_wlc>false</is_fulfill_by_wlc>
+        <inventory>4989</inventory>
+        <removed>false</removed>
+        <manufacturer_id>HAP0277-STXL|INT</manufacturer_id>
+        <shipping_price_country_code>CN</shipping_price_country_code>
+        <localized_price_before_personal_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price_before_personal_price>
+        <price_before_personal_price>5</price_before_personal_price>
+        <original_shipping>2</original_shipping>
+        <min_fulfillment_time>1</min_fulfillment_time>
+    </variations>
+    <variations>
+        <max_shipping_time>28</max_shipping_time>
+        <is_c2c>false</is_c2c>
+        <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+        <shipping_before_personal_price>2.0</shipping_before_personal_price>
+        <original_price>5</original_price>
+        <is_fulfill_by_wish>false</is_fulfill_by_wish>
+        <sequence_id>0</sequence_id>
+        <size_ordering>6</size_ordering>
+        <is_self_serve_fulfill_by_wish>false</is_self_serve_fulfill_by_wish>
+        <shipping>2.0</shipping>
+        <min_delivery_time>1</min_delivery_time>
+        <min_time_to_door>21</min_time_to_door>
+        <variation_id>56f51df8dba34d2f34756c46</variation_id>
+        <max_delivery_time>4</max_delivery_time>
+        <enabled>true</enabled>
+        <max_time_to_door>28</max_time_to_door>
+        <min_shipping_time>21</min_shipping_time>
+        <max_fulfillment_time>3</max_fulfillment_time>
+        <new_with_tags>false</new_with_tags>
+        <retail_price>64</retail_price>
+        <size>XXL</size>
+        <localized_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price>
+        <localized_shipping>
+            <symbol>￥</symbol>
+            <localized_value>14.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_shipping>
+        <price>5</price>
+        <localized_retail_price>
+            <symbol>￥</symbol>
+            <localized_value>426.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_retail_price>
+        <shipping_time_string>21 - 28 days</shipping_time_string>
+        <color>null</color>
+        <is_fulfill_by_wlc>false</is_fulfill_by_wlc>
+        <inventory>4989</inventory>
+        <removed>false</removed>
+        <manufacturer_id>HAP0277-ST2L|INT</manufacturer_id>
+        <shipping_price_country_code>CN</shipping_price_country_code>
+        <localized_price_before_personal_price>
+            <symbol>￥</symbol>
+            <localized_value>34.0</localized_value>
+            <table_id>57aaed18eb31f91db4967680</table_id>
+            <currency_code>CNY</currency_code>
+        </localized_price_before_personal_price>
+        <price_before_personal_price>5</price_before_personal_price>
+        <original_shipping>2</original_shipping>
+        <min_fulfillment_time>1</min_fulfillment_time>
+    </variations>
+</commerce_product_info>
+<is_admin_user>false</is_admin_user>
+<num_contest_photos>9</num_contest_photos>
+<wish_guarantee>We guarantee a safe and secure shopping experience so you never have to worry.</wish_guarantee>
+<num_extra_photos>9</num_extra_photos>
+<description>Condition: 100%Brand New and high quality
+    Material:  Polyester
+    Colors: White&amp; Black
+    Size: S/M/L/XL
+    Quantity:1pcs
+    Conversion:1 inch=25.4mm or 1mm=0.0393inch
+    Pictures:Due to the difference between different monitors, the picture may not reflect the actual color of the item. We guarantee the style is the same as shown in the pictures, but not the same performance on different bodies as on the model. Thank you and happy purchase! INT</description>
+<value>64</value>
+<gender>female</gender>
+<external_url>http://www.wish.com/c/56f51df52fc9ed6ab4580ae5</external_url>
+<video>null</video>
+<orig_width>1001</orig_width>
+<small_picture>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-small.jpg?cache_buster=55b11a4ed0680f3c51a2be8f1fc44991</small_picture>
+<generation_time>2016-03-25T11:16:05Z</generation_time>
+<from_trusted_store>false</from_trusted_store>
+<extra_photo_urls>
+    <3>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-3-small.jpg</3>
+    <2>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-2-small.jpg</2>
+    <1>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-1-small.jpg</1>
+    <7>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-7-small.jpg</7>
+    <6>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-6-small.jpg</6>
+    <5>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-5-small.jpg</5>
+    <4>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-4-small.jpg</4>
+    <9>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-9-small.jpg</9>
+    <8>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-8-small.jpg</8>
+</extra_photo_urls>
+<product_rating>
+    <rating_class>star star-3-5</rating_class>
+    <rating_count>12.0</rating_count>
+    <rating>3.5833333333333335</rating>
+</product_rating>
+<is_expired>false</is_expired>
+<requires_review>false</requires_review>
+<original_link>null</original_link>
+<can_promo>true</can_promo>
+<num_won>0</num_won>
+<is_clean>true</is_clean>
+<first_rating_image_index>-1</first_rating_image_index>
+<is_content_reviewer>null</is_content_reviewer>
+<active_sweep>true</active_sweep>
+<top_ratings>
+    <id>576971ca301e2476c606a1bf</id>
+    <time>2016-06-21T16:56:42+00:00</time>
+    <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+    <user_id>5733b373944e8586f13d41a3</user_id>
+    <rating>4</rating>
+    <date>June 21, 2016</date>
+    <css_class>star star-4-0</css_class>
+    <comment>Looks great on granddaughter but was supposed to be for me, lol.</comment>
+    <user>
+        <id>5733b373944e8586f13d41a3</id>
+        <is_temporary>false</is_temporary>
+        <fb_uid>100006484132543</fb_uid>
+        <name>Phrajil Moonshadow</name>
+        <is_fb_user>false</is_fb_user>
+        <profile_pic_medium>https://contestimg.wish.com/api/image/fetch?profile_image_name=NTYwNWMxYmEyMWE4NjMxNzk0ZTk1NDUy_1398450030238.jpg&amp;w=100&amp;h=100</profile_pic_medium>
+        <short_name>Phrajil</short_name>
+        <profile_pic_large>https://contestimg.wish.com/api/image/fetch?profile_image_name=NTYwNWMxYmEyMWE4NjMxNzk0ZTk1NDUy_1398450030238.jpg&amp;w=200&amp;h=200</profile_pic_large>
+        <profile_pic_small>https://contestimg.wish.com/api/image/fetch?profile_image_name=NTYwNWMxYmEyMWE4NjMxNzk0ZTk1NDUy_1398450030238.jpg&amp;w=50&amp;h=50</profile_pic_small>
+    </user>
+    <size_choice>2</size_choice>
+    <transaction_id>5751e4d6d797dfdecafed33c</transaction_id>
+    <image_id>null</image_id>
+</top_ratings>
+<top_ratings>
+    <id>57690b43301e2476c6069b2d</id>
+    <time>2016-06-21T09:39:15+00:00</time>
+    <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+    <user_id>5750f56d37937f9a599170a0</user_id>
+    <rating>5</rating>
+    <date>June 21, 2016</date>
+    <css_class>star star-5-0</css_class>
+    <comment>Expected different material but it looks good !</comment>
+    <user>
+        <id>5750f56d37937f9a599170a0</id>
+        <is_temporary>false</is_temporary>
+        <fb_uid>100006517987800</fb_uid>
+        <name>Eartha Thomas</name>
+        <is_fb_user>false</is_fb_user>
+        <profile_pic_medium>https://contestimg.wish.com/api/image/fetch?profile_image_name=NTYwNWMxYmEyMWE4NjMxNzk0ZTk1NDUy_1398450030237.jpg&amp;w=100&amp;h=100</profile_pic_medium>
+        <short_name>Eartha</short_name>
+        <profile_pic_large>https://contestimg.wish.com/api/image/fetch?profile_image_name=NTYwNWMxYmEyMWE4NjMxNzk0ZTk1NDUy_1398450030237.jpg&amp;w=200&amp;h=200</profile_pic_large>
+        <profile_pic_small>https://contestimg.wish.com/api/image/fetch?profile_image_name=NTYwNWMxYmEyMWE4NjMxNzk0ZTk1NDUy_1398450030237.jpg&amp;w=50&amp;h=50</profile_pic_small>
+    </user>
+    <size_choice>1</size_choice>
+    <transaction_id>575108b95f474569e0791cde</transaction_id>
+    <image_id>null</image_id>
+</top_ratings>
+<extra_photo_cache_bust>null</extra_photo_cache_bust>
+<display_picture>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-medium.jpg?cache_buster=55b11a4ed0680f3c51a2be8f1fc44991</display_picture>
+<num_entered>0</num_entered>
+<localized_rebate_value>
+    <symbol>￥</symbol>
+    <localized_value>null</localized_value>
+    <table_id>57aaed18eb31f91db4967680</table_id>
+    <currency_code>CNY</currency_code>
+</localized_rebate_value>
+<id>56f51df52fc9ed6ab4580ae5</id>
+<localized_value>
+    <symbol>￥</symbol>
+    <localized_value>426.0</localized_value>
+    <table_id>57aaed18eb31f91db4967680</table_id>
+    <currency_code>CNY</currency_code>
+</localized_value>
+<name>Women Two Piece Set Print Wave Striped Sleeveless Tops+Short Skirts Excellent INT</name>
+<buy_link>null</buy_link>
+<cache_buster>55b11a4ed0680f3c51a2be8f1fc44991</cache_buster>
+<num_wishes>0</num_wishes>
+<aspect_ratio>1.0</aspect_ratio>
+<comment_count>0</comment_count>
+<tags>
+    <id>womensfashion</id>
+    <is_filter>false</is_filter>
+    <name>Women&apos;s Fashion</name>
+</tags>
+<tags>
+    <id>women</id>
+    <is_filter>false</is_filter>
+    <name>Women</name>
+</tags>
+<tags>
+    <id>casual</id>
+    <is_filter>false</is_filter>
+    <name>Casual</name>
+</tags>
+<tags>
+    <id>dres</id>
+    <is_filter>false</is_filter>
+    <name>Dress</name>
+</tags>
+<tags>
+    <id>sexy</id>
+    <is_filter>false</is_filter>
+    <name>sexy</name>
+</tags>
+<tags>
+    <id>mini</id>
+    <is_filter>false</is_filter>
+    <name>Mini</name>
+</tags>
+<tags>
+    <id>chiffon</id>
+    <is_filter>false</is_filter>
+    <name>chiffon</name>
+</tags>
+<tags>
+    <id>sleeveles</id>
+    <is_filter>false</is_filter>
+    <name>sleeveless</name>
+</tags>
+<tags>
+    <id>skirt</id>
+    <is_filter>false</is_filter>
+    <name>Skirts</name>
+</tags>
+<tags>
+    <id>short</id>
+    <is_filter>false</is_filter>
+    <name>Shorts</name>
+</tags>
+<tags>
+    <id>print</id>
+    <is_filter>false</is_filter>
+    <name>Print</name>
+</tags>
+<tags>
+    <id>striped</id>
+    <is_filter>false</is_filter>
+    <name>Striped</name>
+</tags>
+<merchant_tags>
+    <id>mini</id>
+    <is_filter>false</is_filter>
+    <name>Mini</name>
+</merchant_tags>
+<merchant_tags>
+    <id>short</id>
+    <is_filter>false</is_filter>
+    <name>Shorts</name>
+</merchant_tags>
+<merchant_tags>
+    <id>chiffon</id>
+    <is_filter>false</is_filter>
+    <name>chiffon</name>
+</merchant_tags>
+<merchant_tags>
+    <id>dres</id>
+    <is_filter>false</is_filter>
+    <name>Dress</name>
+</merchant_tags>
+<merchant_tags>
+    <id>womensfashion</id>
+    <is_filter>false</is_filter>
+    <name>Women&apos;s Fashion</name>
+</merchant_tags>
+<merchant_tags>
+    <id>sleeveles</id>
+    <is_filter>false</is_filter>
+    <name>sleeveless</name>
+</merchant_tags>
+<merchant_tags>
+    <id>sexy</id>
+    <is_filter>false</is_filter>
+    <name>sexy</name>
+</merchant_tags>
+<merchant_tags>
+    <id>skirt</id>
+    <is_filter>false</is_filter>
+    <name>Skirts</name>
+</merchant_tags>
+<merchant_tags>
+    <id>casual</id>
+    <is_filter>false</is_filter>
+    <name>Casual</name>
+</merchant_tags>
+<merchant_tags>
+    <id>women</id>
+    <is_filter>false</is_filter>
+    <name>Women</name>
+</merchant_tags>
+<source_country>null</source_country>
+<is_active>true</is_active>
+<is_concept>false</is_concept>
+<share_subject>Check out what I found on Wish!</share_subject>
+<contest_selected_picture>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-contest.jpg?cache_buster=55b11a4ed0680f3c51a2be8f1fc44991</contest_selected_picture>
+<share_message>I think you&apos;ll like Women Two Piece Set Print Wave Striped Sleeveless Tops+Short Skirts Excellent INT. Add it to your wishlist!
+    
+    http://www.wish.com/c/56f51df52fc9ed6ab4580ae5</share_message>
+<contest_page_picture>https://contestimg.wish.com/api/webimage/56f51df52fc9ed6ab4580ae5-large.jpg?cache_buster=55b11a4ed0680f3c51a2be8f1fc44991</contest_page_picture>
+<sizing_chart_url>https://www.wish.com/m/sizing_chart/56f51df52fc9ed6ab4580ae5</sizing_chart_url>
+<remarket_tag>
+    <id>sexy</id>
+    <name>sexy</name>
+</remarket_tag>
+<rating_size_summary>
+    <size_bars>
+        <ratio>0.07692307692307693</ratio>
+        <raw_value>4</raw_value>
+        <name>Too Small</name>
+    </size_bars>
+    <size_bars>
+        <ratio>0.8846153846153846</ratio>
+        <raw_value>46</raw_value>
+        <name>Just Right</name>
+    </size_bars>
+    <size_bars>
+        <ratio>0.038461538461538464</ratio>
+        <raw_value>2</raw_value>
+        <name>Too Large</name>
+    </size_bars>
+    <num_ratings>52</num_ratings>
+    <product_id>56f51df52fc9ed6ab4580ae5</product_id>
+    <subtitle>Based on 52 shopper reviews</subtitle>
+</rating_size_summary>
+<has_reward>false</has_reward>
+<true_tag_ids>53fe39ab0b642575c782056f</true_tag_ids>
+<is_deleted>false</is_deleted>
+<extra_photo_details>
+</extra_photo_details>
+<is_dirty>false</is_dirty>
+<num_bought>233</num_bought>
+<brand>null</brand>
+<upload_source>8</upload_source>
+<human_readable_url>women-two-piece-set-print-wave-striped-sleeveless-topsshort-skirts-excellent-int-56f51df52fc9ed6ab4580ae5</human_readable_url>
+<can_gift>true</can_gift>
+<fb_comment_url/>

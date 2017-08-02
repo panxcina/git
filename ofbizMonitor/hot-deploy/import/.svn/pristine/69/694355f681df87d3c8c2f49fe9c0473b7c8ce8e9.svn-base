@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of Import Component</title>
+    <description>None</description>
+    <copyright></copyright>
+    <version></version>
+    
+    <!-- Order Import -->
+    <entity entity-name="OrderImport" package-name="org.ofbiz.orderimport"
+        title="Entity for store the order from csv file">
+        <field name="orderImportId" type="id-ne"></field>
+        <field name="fileName" type="long-varchar"/>
+        <field name="fileLineNumber" type="fixed-point"></field>
+        <field name="orderId" type="id"></field>
+        <field name="productStoreId" type="id"></field>
+        <field name="userId" type="long-varchar"></field>
+        <field name="firstName" type="name"></field>
+        <field name="middleName" type="name"></field>
+        <field name="lastName" type="name"></field>
+        <field name="toName" type="name"></field>
+        <field name="countryCode" type="very-short"></field>
+        <field name="areaCode" type="very-short"></field>
+        <field name="contactNumber" type="short-varchar"></field>
+        <field name="emailAddress" type="long-varchar"></field>
+        <field name="address1" type="long-varchar"></field>
+        <field name="address2" type="long-varchar"></field>
+        <field name="city" type="name"></field>
+        <field name="stateProvinceGeoId" type="name"></field>
+        <field name="postalCode" type="short-varchar"></field>
+        <field name="countryGeoId" type="name"></field>
+        <field name="currencyUom" type="id"></field>
+        <field name="remainingSubTotal" type="currency-amount"></field>
+        <field name="shippingAmount" type="currency-amount"></field>
+        <field name="taxAmount" type="currency-amount"></field>
+        <field name="taxAdjustmentAmount" type="currency-amount"></field>
+        <field name="warrantyAmount" type="currency-amount"></field>
+        <field name="grandTotalAmount" type="currency-amount"></field>
+        <field name="paymentMethodTypeId" type="name"></field>
+        <field name="createDate" type="date-time"></field>
+        <field name="checkoutDate" type="date-time"></field>
+        <field name="paidOnDate" type="date-time"></field>
+        <field name="shippedOnDate" type="date-time"></field>
+        <field name="noteInfo" type="very-long"></field>
+        <field name="paypalTransactionId" type="id"></field>
+        <field name="productStoreShipMethId" type="name"></field>
+        <field name="cashOnDeliveryOption" type="name"></field>
+        <field name="externalOrderId" type="value"></field>
+        <field name="variationDetails" type="long-varchar"></field>
+        <field name="importedStatus" type="indicator"></field>
+        <field name="importedDescription" type="very-long"></field>
+        <prim-key field="orderImportId"/>
+    </entity>
+    <entity entity-name="OrderItemImport" package-name="org.ofbiz.orderimport"
+        title="Entity for store the order item from csv file">
+        <field name="orderImportId" type="id-ne"></field>
+        <field name="orderItemImportSeqId" type="id-ne"></field>
+        <field name="fileLineNumber" type="fixed-point"></field>
+        <field name="orderItemNumber" type="id-long-ne"></field>
+        <field name="productName" type="description"></field>
+        <field name="productId" type="id"></field>
+        <field name="quantity" type="fixed-point"></field>
+        <field name="unitPrice" type="currency-amount"></field>
+        <field name="saleDate" type="date-time"></field>
+        <field name="transactionId" type="value"></field>
+        <prim-key field="orderImportId"/>
+        <prim-key field="orderItemImportSeqId"/>
+        <relation type="many" fk-name="ORDIM_ORDITEMIM" rel-entity-name="OrderImport">
+            <key-map field-name="orderImportId"/>
+        </relation>
+    </entity>
+    <view-entity entity-name="OrderImportOrderItemImport" package-name="org.ofbiz.orderimport" title="OrderImport and OrderItemImport view entity">
+        <member-entity entity-alias="OI" entity-name="OrderImport"/>
+        <member-entity entity-alias="OIP" entity-name="OrderItemImport"/>
+        <alias-all entity-alias="OI"/>
+        <alias-all entity-alias="OIP">
+            <exclude field="fileLineNumber"/>
+        </alias-all>
+        <alias name="orderItemFileLineNumber" field="fileLineNumber" entity-alias="OIP"/>
+        <view-link entity-alias="OI" rel-entity-alias="OIP" rel-optional="true">
+            <key-map field-name="orderImportId"/>
+        </view-link>
+    </view-entity>
+    
+    <!-- Product Import -->
+    <entity entity-name="ProductImport" package-name="org.ofbiz.productimport"
+        title="Entity for storing the product from importing">
+        <field name="productImportId" type="id-ne"></field>
+        <!--<field name="productId" type="id-ne"></field>--><!-- comment cause only use the supplierProductId field to keep the supplier product’s ID (SKU) -->
+        <field name="productName" type="very-long"></field>
+        <field name="description" type="very-long"></field>
+        <field name="brandName" type="very-long"></field>
+        <field name="vendorName" type="very-long"></field>
+        <field name="supplierPartyId" type="id-ne"></field>
+        <field name="supplierProductId" type="long-varchar"></field>
+        <field name="longDescription" type="very-long"></field>
+        <field name="productVariation" type="very-long"></field>
+        <field name="manufacturer" type="very-long"></field>
+        <field name="model" type="very-long"></field>
+        <field name="ean" type="very-long"></field>
+        <field name="imageUrl" type="very-long"></field>
+        <field name="quantity" type="fixed-point"></field>
+        <field name="weight" type="fixed-point"></field>
+        <field name="internalReferenceCode" type="very-long"></field>
+        <field name="availability" type="very-long"></field>
+        <field name="ingramMicroPartNumber" type="very-long"></field>
+        <field name="manufacturersPartNumber" type="very-long"></field>
+        <field name="upcEanCode" type="very-long"></field>
+        <field name="availableToOrder" type="very-long"></field>
+        <field name="productOptions" type="very-long"></field>
+        
+        <!-- Price -->
+        <field name="price" type="currency-amount"></field>
+        <field name="priceAfterDiscount" type="currency-amount"></field>
+        <field name="specialPrice" type="currency-amount"></field>
+        <field name="standardDeliveryCosts" type="currency-amount"></field>
+        <field name="customerPrice" type="currency-amount"></field>
+        <field name="retailPrice" type="currency-amount"></field>
+        
+        <!-- Date Time -->
+        <field name="specialPriceStartDate" type="date-time"></field>
+        <field name="specialPriceEndDate" type="date-time"></field>
+        <field name="estimatedArrivalDate" type="date-time"></field>
+        
+        <field name="importedStatus" type="indicator"></field>
+        <field name="importedDescription" type="very-long"></field>
+        
+        <!-- others image url -->
+        <field name="altImageUrl" type="very-long"></field>
+        <prim-key field="productImportId"/>
+    </entity>
+    <view-entity entity-name="ProductCategorySupplier" package-name="org.ofbiz.productimport" title="Entity for product productCategory and supplier">
+        <member-entity entity-alias="PD" entity-name="Product"/>
+        <member-entity entity-alias="PDC" entity-name="ProductCategory"/>
+        <member-entity entity-alias="SUP" entity-name="SupplierProduct"/>
+        <alias-all entity-alias="PD">
+            <exclude field="introductionDate"/>
+            <exclude field="releaseDate"/>
+            <exclude field="supportDiscontinuationDate"/>
+            <exclude field="salesDiscontinuationDate"/>
+            <exclude field="salesDiscWhenNotAvail"/>
+            <exclude field="inventoryMessage"/>
+            <exclude field="requireInventory"/>
+            <exclude field="ratingTypeEnum"/>
+            <exclude field="returnable"/>
+            <exclude field="includeInPromotions"/>
+            <exclude field="isVirtual"/>
+            <exclude field="isVariant"/>
+            <exclude field="originGeoId"/>
+            <exclude field="billOfMaterialLevel"/>
+            <exclude field="reservMaxPersons"/>
+            <exclude field="reserv2ndPPPerc"/>
+            <exclude field="reservNthPPPerc"/>
+            <exclude field="requirementMethodEnumId"/>
+        </alias-all>
+        <alias-all entity-alias="PDC">
+            <exclude field="linkOneImageUrl"/>
+            <exclude field="linkTwoImageUrl"/>
+            <exclude field="showInSelect"/>
+        </alias-all>
+        <alias-all entity-alias="SUP"/>
+        <view-link entity-alias="PD" rel-entity-alias="PDC" rel-optional="true">
+            <key-map field-name="primaryProductCategoryId" rel-field-name="productCategoryId"/>
+        </view-link>
+        <view-link entity-alias="PD" rel-entity-alias="SUP">
+            <key-map field-name="productId" rel-field-name="productId"/>
+        </view-link>
+    </view-entity>
+</entitymodel>

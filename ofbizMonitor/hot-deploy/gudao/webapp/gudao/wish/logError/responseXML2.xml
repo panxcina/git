@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Response>
+<Code>0</Code>
+<Message></Message>
+<Data></Data>
+<Paging>
+<Previous>https://merchant.wish.com/api/v1/product/multi-get?start=500&amp;limit=500&amp;key=JHBia2RmMiQxMDAkTmliRW1MTzJsbkx1SGNQNGY0LlJNZyRIYUpJdTh6aHZoeWt6VFdSSmR0eWwxTkxVTEk%3D&amp;format=xml</Previous>
+</Paging>
+</Response>

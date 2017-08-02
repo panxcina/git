@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    
+    <Party partyId="yasin" partyTypeId="PERSON" statusId="PARTY_ENABLED"/>
+    <Party partyId="xtine" partyTypeId="PERSON" statusId="PARTY_ENABLED"/>
+    <Party partyId="anna" partyTypeId="PERSON" statusId="PARTY_ENABLED"/>
+    <Party partyId="adee" partyTypeId="PERSON" statusId="PARTY_ENABLED"/>
+    <Party partyId="admin" statusId="PARTY_DISABLED"/>
+    <Party partyId="POST" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <Party partyId="bellyanna" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="CNY" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="bellyanna" groupName="Bellyanna"/>
+    
+    <PartyRole partyId="POST" roleTypeId="CARRIER"/>
+    <PartyRole partyId="bellyanna" roleTypeId="INTERNAL_ORGANIZATIO"/>
+    <PartyRole partyId="bellyanna" roleTypeId="BILL_TO_CUSTOMER"/>
+    <PartyRole partyId="bellyanna" roleTypeId="BILL_FROM_VENDOR"/>
+    <PartyRole partyId="bellyanna" roleTypeId="_NA_"/>
+    
+    <Person firstName="Yasin" lastName="Lyyas" partyId="yasin" personalTitle="Mr."/>
+    <Person firstName="Christine" lastName="Ye" partyId="xtine" personalTitle="Mrs."/>
+    <Person firstName="Anna" lastName="Liu" partyId="anna" personalTitle="Mr."/>
+    <Person firstName="Dee" lastName="Pan" partyId="adee" personalTitle="Mrs."/>
+    
+    <!-- Party Login -->
+    <UserLogin userLoginId="admin" partyId="yasin" currentPassword="{SHA}8893a46b5d727ea6c935042613932ee4c61c810f" passwordHint="Middle long"/>
+    <UserLogin userLoginId="yasin.lyyas" partyId="yasin" currentPassword="{SHA}8893a46b5d727ea6c935042613932ee4c61c810f" passwordHint="Middle long"/>
+    <UserLogin userLoginId="christine.ye" partyId="xtine" currentPassword="{SHA}8893a46b5d727ea6c935042613932ee4c61c810f" passwordHint="Middle long"/>
+    <UserLogin userLoginId="liuyan" partyId="anna" currentPassword="{SHA}e2f04630cf6f4ca09cb195364d8dd879a965daf8" passwordHint=""/>
+    <UserLogin userLoginId="dee.pan" partyId="adee" currentPassword="{SHA}0ac4e1884fd03b12fb4e70fe958b43f80367689f" passwordHint=""/>
+    
+    <UserLoginSecurityGroup groupId="SUPER" userLoginId="yasin.lyyas" fromDate="2010-01-01 00:00:00"/>
+    <UserLoginSecurityGroup groupId="SUPER" userLoginId="christine.ye" fromDate="2010-01-01 00:00:00"/>
+    <UserLoginSecurityGroup groupId="EXECUTIVE" userLoginId="liuyan" fromDate="2010-01-01 00:00:00"/>
+    <UserLoginSecurityGroup groupId="REFUND" userLoginId="liuyan" fromDate="2010-01-01 00:00:00"/>
+    <UserLoginSecurityGroup groupId="EXECUTIVE" userLoginId="dee.pan" fromDate="2010-01-01 00:00:00"/>
+    <UserLoginSecurityGroup groupId="DATAMINING" userLoginId="dee.pan" fromDate="2010-01-01 00:00:00"/>
+    <UserLoginSecurityGroup groupId="REFUND" userLoginId="dee.pan" fromDate="2010-01-01 00:00:00"/>
+    
+    
+</entity-engine-xml>

@@ -1,0 +1,1158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<!--
+ Geo
+ GeoAssoc
+ EnumerationType
+ Enumeration
+ 
+ -->
+
+<entity-engine-xml>
+    <!-- Geo Group for YanWen Express -->
+    <Geo geoId="YW_EXPRESS" geoTypeId="GROUP" geoName="Destination countries shipped by YanWen Express" geoCode="YW_EXPRESS" abbreviation="YW_EXPRESS"/>
+    <GeoAssoc geoId="DEU" geoIdTo="YW_EXPRESS" geoAssocTypeId="GROUP_MEMBER"/>
+
+    <!-- Geo Group for EMS -->
+    <Geo geoId="EMS" geoTypeId="GROUP" geoName="Destination countries shipped by EMS" geoCode="EMS" abbreviation="EMS"/>
+    <GeoAssoc geoId="ARG" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="AUS" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="AUT" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BHR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BGD" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BLR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BEL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BWA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BRA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BGR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="BFA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="KHM" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="CAN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="CYM" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="TCD" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="COL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="COG" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="COD" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="HRV" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="CUB" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="CYP" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="CZE" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="DNK" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="DJI" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="EGY" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="EST" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="ETH" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="FIN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="FRA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GAB" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GHA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GRC" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GRL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GIN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GUY" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="HKG" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="HUN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="IND" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="IDN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="IRN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="IRL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="ISR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="ITA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="JPN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="JOR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="KAZ" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="KEN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PRK" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="KOR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="KWT" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="LAO" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="LVA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="LUX" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MAC" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MDG" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MYS" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MLI" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MLT" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MEX" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MNG" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MAR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MOZ" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MMR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="NPL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="NZL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="NGA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="NOR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="OMN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PAK" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PAN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PNG" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PER" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PHL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="POL" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PRT" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="QAT" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="ROU" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="RUS" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="RWA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="SAU" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="SEN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="SGP" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="ESP" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="LKA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="SWE" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="CHE" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="SYR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="TWN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="THA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="TUN" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="TUR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="UGA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="UKR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="ARE" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GBR" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="USA" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="VNM" geoIdTo="EMS" geoAssocTypeId="GROUP_MEMBER"/>
+
+    <!-- Geo Group for EUB-US -->
+    <Geo geoId="EUB_US" geoTypeId="GROUP" geoName="Destination countries shipped by EUB US" geoCode="EUB_US" abbreviation="EUB_US"/>
+    <GeoAssoc geoId="USA" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="APO/FPO" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="FSM" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="GUM" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="ASM" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PRI" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MHL" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="PLW" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="VIR" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    <GeoAssoc geoId="MNP" geoIdTo="EUB_US" geoAssocTypeId="GROUP_MEMBER"/>
+    
+    
+    <!-- EnumerationType -- -->
+    <EnumerationType enumTypeId="PROSTORE_EXSHIP" description="This type use be the parent type of ProductStoreShipMethId and external shipping service."/>
+    <EnumerationType enumTypeId="EXSHIP_belly_design" parentTypeId="PROSTORE_EXSHIP" description="belly_design"/>
+    <EnumerationType enumTypeId="EXSHIP_bellyanna-acc" parentTypeId="PROSTORE_EXSHIP" description="bellyanna-acc"/>
+    <EnumerationType enumTypeId="EXSHIP_bellyanna-de" parentTypeId="PROSTORE_EXSHIP" description="bellyanna-de"/>
+    <EnumerationType enumTypeId="EXSHIP_bellyanna-uk" parentTypeId="PROSTORE_EXSHIP" description="bellyanna-uk"/>
+    <!--<EnumerationType enumTypeId="EXSHIP_factoryport" parentTypeId="PROSTORE_EXSHIP" description="factoryport"/>-->
+    <EnumerationType enumTypeId="EXSHIP_i-tattoo" parentTypeId="PROSTORE_EXSHIP" description="i-tattoo"/>
+    <EnumerationType enumTypeId="EXSHIP_i.macho" parentTypeId="PROSTORE_EXSHIP" description="i.macho"/>
+    <EnumerationType enumTypeId="EXSHIP_queendesign" parentTypeId="PROSTORE_EXSHIP" description="queendesign"/>
+    <!--<EnumerationType enumTypeId="EXSHIP_tattoohits" parentTypeId="PROSTORE_EXSHIP" description="tattoohits"/>-->
+    <EnumerationType enumTypeId="EXSHIP_tattootalks-us" parentTypeId="PROSTORE_EXSHIP" description="tattootalks-us"/>
+    <EnumerationType enumTypeId="EXSHIP_you_young" parentTypeId="PROSTORE_EXSHIP" description="you_young"/>
+    <EnumerationType enumTypeId="EXSHIP_uk-needle" parentTypeId="PROSTORE_EXSHIP" description="uk-needle"/>
+    
+    <EnumerationType enumTypeId="EXSHIP_ali-bellyanna" parentTypeId="PROSTORE_EXSHIP" description="ali-bellyanna"/>
+    <EnumerationType enumTypeId="EXSHIP_ali-tattoo" parentTypeId="PROSTORE_EXSHIP" description="ali-tattoo"/>
+    <EnumerationType enumTypeId="EXSHIP_ali-deepan" parentTypeId="PROSTORE_EXSHIP" description="ali-deepan"/>
+    
+    
+    <!-- belly_design -->
+    <Enumeration enumId="BD_EXSHIP_MAP1" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="EMS"/>
+    <Enumeration enumId="BD_EXSHIP_MAP2" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP3" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BD_EXSHIP_MAP4" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP5" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP6" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP7" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="BD_EXSHIP_MAP8" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP9" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP10" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP11" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP12" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP13" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BD_EXSHIP_MAP14" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="BD_EXSHIP_MAP15" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="BD_EXSHIP_MAP16" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP17" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BD_EXSHIP_MAP18" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP19" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP20" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP21" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BD_EXSHIP_MAP22" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP23" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP24" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP25" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP26" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP27" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BD_EXSHIP_MAP28" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BD_EXSHIP_MAP29" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="BD_EXSHIP_MAP30" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP31" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BD_EXSHIP_MAP32" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP33" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP34" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP35" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BD_EXSHIP_MAP36" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP37" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP38" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP39" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP40" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP41" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BD_EXSHIP_MAP42" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BD_EXSHIP_MAP43" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="BD_EXSHIP_MAP44" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP45" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP46" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP47" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BD_EXSHIP_MAP48" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BD_EXSHIP_MAP49" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BD_EXSHIP_MAP50" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP51" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BD_EXSHIP_MAP52" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="BD_EXSHIP_MAP53" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="BD_EXSHIP_MAP54" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BD_EXSHIP_MAP55" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP56" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BD_EXSHIP_MAP57" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP58" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="BD_EXSHIP_MAP59" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP60" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BD_EXSHIP_MAP61" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP62" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BD_EXSHIP_MAP63" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BD_EXSHIP_MAP64" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BD_EXSHIP_MAP65" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BD_EXSHIP_MAP66" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BD_EXSHIP_MAP67" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="BD_EXSHIP_MAP68" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="BD_EXSHIP_MAP69" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BD_EXSHIP_MAP70" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP71" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BD_EXSHIP_MAP72" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BD_EXSHIP_MAP73" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="BD_EXSHIP_MAP74" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="BD_EXSHIP_MAP75" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP76" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP77" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP78" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP79" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP80" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BD_EXSHIP_MAP81" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP82" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP83" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP84" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BD_EXSHIP_MAP85" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BD_EXSHIP_MAP86" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP87" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP88" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP89" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="BD_EXSHIP_MAP90" enumTypeId="EXSHIP_belly_design" enumCode="9004" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BD_EXSHIP_MAP91" enumTypeId="EXSHIP_belly_design" enumCode="9003" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BD_EXSHIP_MAP92" enumTypeId="EXSHIP_belly_design" enumCode="9008" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BD_EXSHIP_MAP93" enumTypeId="EXSHIP_belly_design" enumCode="9006" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BD_EXSHIP_MAP94" enumTypeId="EXSHIP_belly_design" enumCode="9007" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    <!-- bellyanna-acc -->
+    <Enumeration enumId="BA_EXSHIP_MAP1" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="EMS"/>
+    <Enumeration enumId="BA_EXSHIP_MAP2" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP3" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BA_EXSHIP_MAP4" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP5" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP6" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP7" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="BA_EXSHIP_MAP8" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP9" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP10" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP11" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP12" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP13" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BA_EXSHIP_MAP14" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="BA_EXSHIP_MAP15" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="BA_EXSHIP_MAP16" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP17" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BA_EXSHIP_MAP18" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP19" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP20" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP21" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BA_EXSHIP_MAP22" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP23" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP24" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP25" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP26" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP27" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BA_EXSHIP_MAP28" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BA_EXSHIP_MAP29" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="BA_EXSHIP_MAP30" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP31" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BA_EXSHIP_MAP32" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP33" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP34" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP35" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BA_EXSHIP_MAP36" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP37" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP38" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP39" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP40" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP41" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BA_EXSHIP_MAP42" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BA_EXSHIP_MAP43" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="BA_EXSHIP_MAP44" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP45" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP46" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP47" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BA_EXSHIP_MAP48" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BA_EXSHIP_MAP49" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BA_EXSHIP_MAP50" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP51" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BA_EXSHIP_MAP52" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="BA_EXSHIP_MAP53" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="BA_EXSHIP_MAP54" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BA_EXSHIP_MAP55" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP56" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BA_EXSHIP_MAP57" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP58" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="BA_EXSHIP_MAP59" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP60" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BA_EXSHIP_MAP61" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP62" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BA_EXSHIP_MAP63" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BA_EXSHIP_MAP64" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BA_EXSHIP_MAP65" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BA_EXSHIP_MAP66" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BA_EXSHIP_MAP67" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="BA_EXSHIP_MAP68" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="BA_EXSHIP_MAP69" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BA_EXSHIP_MAP70" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP71" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BA_EXSHIP_MAP72" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BA_EXSHIP_MAP73" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="BA_EXSHIP_MAP74" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="BA_EXSHIP_MAP75" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP76" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP77" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP78" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP79" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP80" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BA_EXSHIP_MAP81" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP82" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP83" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP84" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BA_EXSHIP_MAP85" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BA_EXSHIP_MAP86" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP87" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP88" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP89" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="BA_EXSHIP_MAP90" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9028" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BA_EXSHIP_MAP91" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9027" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BA_EXSHIP_MAP92" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9032" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BA_EXSHIP_MAP93" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9030" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BA_EXSHIP_MAP94" enumTypeId="EXSHIP_bellyanna-acc" enumCode="9031" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- bellyanna-de -->
+    <Enumeration enumId="BADE_EXSHIP_MAP1" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="EMS"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP2" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP3" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP4" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP5" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP6" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP7" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP8" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP9" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP10" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP11" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP12" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP13" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP14" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP15" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP16" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP17" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP18" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP19" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP20" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP21" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP22" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP23" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP24" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP25" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP26" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP27" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP28" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP29" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP30" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP31" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP32" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP33" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP34" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP35" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP36" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP37" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP38" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP39" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP40" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP41" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP42" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP43" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP44" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP45" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP46" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP47" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP48" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP49" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP50" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP51" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP52" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP53" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP54" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP55" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP56" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP57" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP58" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP59" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP60" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP61" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP62" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP63" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP64" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP65" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP66" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP67" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP68" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP69" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP70" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP71" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP72" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP73" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP74" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP75" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP76" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP77" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP78" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP79" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP80" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP81" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP82" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP83" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP84" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP85" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP86" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP87" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP88" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP89" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP90" enumTypeId="EXSHIP_bellyanna-de" enumCode="9052" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP91" enumTypeId="EXSHIP_bellyanna-de" enumCode="9051" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP92" enumTypeId="EXSHIP_bellyanna-de" enumCode="9056" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP93" enumTypeId="EXSHIP_bellyanna-de" enumCode="9054" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BADE_EXSHIP_MAP94" enumTypeId="EXSHIP_bellyanna-de" enumCode="9055" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- bellyanna-uk -->
+    <Enumeration enumId="BAUK_EXSHIP_MAP1" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="EMS"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP2" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP3" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP4" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP5" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP6" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP7" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP8" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP9" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP10" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP11" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP12" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP13" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP14" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP15" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP16" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP17" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP18" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP19" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP20" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP21" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP22" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP23" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP24" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP25" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP26" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP27" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP28" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP29" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP30" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP31" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP32" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP33" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP34" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP35" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP36" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP37" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP38" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP39" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP40" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP41" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP42" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP43" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP44" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP45" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP46" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP47" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP48" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP49" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP50" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP51" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP52" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP53" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP54" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP55" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP56" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP57" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP58" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP59" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP60" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP61" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP62" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP63" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP64" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP65" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP66" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP67" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP68" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP69" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP70" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP71" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP72" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP73" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP74" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP75" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP76" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP77" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP78" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP79" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP80" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP81" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP82" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP83" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP84" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP85" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP86" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP87" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP88" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP89" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP90" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9076" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP91" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9075" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP92" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9080" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP93" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9078" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="BAUK_EXSHIP_MAP94" enumTypeId="EXSHIP_bellyanna-uk" enumCode="9079" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- i-tattoo -->
+    <Enumeration enumId="IT_EXSHIP_MAP1" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="EMS"/>
+    <Enumeration enumId="IT_EXSHIP_MAP2" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP3" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="IT_EXSHIP_MAP4" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP5" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP6" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP7" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="IT_EXSHIP_MAP8" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP9" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP10" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP11" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP12" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP13" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="IT_EXSHIP_MAP14" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="IT_EXSHIP_MAP15" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="IT_EXSHIP_MAP16" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP17" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="IT_EXSHIP_MAP18" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP19" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP20" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP21" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="IT_EXSHIP_MAP22" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP23" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP24" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP25" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP26" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP27" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="IT_EXSHIP_MAP28" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="IT_EXSHIP_MAP29" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="IT_EXSHIP_MAP30" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP31" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="IT_EXSHIP_MAP32" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP33" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP34" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP35" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="IT_EXSHIP_MAP36" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP37" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP38" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP39" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP40" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP41" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="IT_EXSHIP_MAP42" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="IT_EXSHIP_MAP43" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="IT_EXSHIP_MAP44" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP45" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP46" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP47" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="IT_EXSHIP_MAP48" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="IT_EXSHIP_MAP49" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="IT_EXSHIP_MAP50" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP51" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="IT_EXSHIP_MAP52" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="IT_EXSHIP_MAP53" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="IT_EXSHIP_MAP54" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="IT_EXSHIP_MAP55" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP56" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="IT_EXSHIP_MAP57" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP58" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="IT_EXSHIP_MAP59" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP60" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="IT_EXSHIP_MAP61" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP62" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="IT_EXSHIP_MAP63" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="IT_EXSHIP_MAP64" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="IT_EXSHIP_MAP65" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="IT_EXSHIP_MAP66" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="IT_EXSHIP_MAP67" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="IT_EXSHIP_MAP68" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="IT_EXSHIP_MAP69" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="IT_EXSHIP_MAP70" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP71" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="IT_EXSHIP_MAP72" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="IT_EXSHIP_MAP73" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="IT_EXSHIP_MAP74" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="IT_EXSHIP_MAP75" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP76" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP77" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP78" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP79" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP80" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="IT_EXSHIP_MAP81" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP82" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP83" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP84" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="IT_EXSHIP_MAP85" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="IT_EXSHIP_MAP86" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP87" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP88" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP89" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="IT_EXSHIP_MAP90" enumTypeId="EXSHIP_i-tattoo" enumCode="9100" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="IT_EXSHIP_MAP91" enumTypeId="EXSHIP_i-tattoo" enumCode="9099" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="IT_EXSHIP_MAP92" enumTypeId="EXSHIP_i-tattoo" enumCode="9104" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="IT_EXSHIP_MAP93" enumTypeId="EXSHIP_i-tattoo" enumCode="9102" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="IT_EXSHIP_MAP94" enumTypeId="EXSHIP_i-tattoo" enumCode="9103" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- i.macho -->
+    <Enumeration enumId="IM_EXSHIP_MAP1" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="EMS"/>
+    <Enumeration enumId="IM_EXSHIP_MAP2" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP3" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="IM_EXSHIP_MAP4" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP5" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP6" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP7" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="IM_EXSHIP_MAP8" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP9" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP10" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP11" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP12" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP13" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="IM_EXSHIP_MAP14" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="IM_EXSHIP_MAP15" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="IM_EXSHIP_MAP16" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP17" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="IM_EXSHIP_MAP18" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP19" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP20" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP21" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="IM_EXSHIP_MAP22" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP23" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP24" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP25" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP26" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP27" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="IM_EXSHIP_MAP28" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="IM_EXSHIP_MAP29" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="IM_EXSHIP_MAP30" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP31" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="IM_EXSHIP_MAP32" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP33" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP34" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP35" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="IM_EXSHIP_MAP36" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP37" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP38" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP39" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP40" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP41" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="IM_EXSHIP_MAP42" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="IM_EXSHIP_MAP43" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="IM_EXSHIP_MAP44" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP45" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP46" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP47" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="IM_EXSHIP_MAP48" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="IM_EXSHIP_MAP49" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="IM_EXSHIP_MAP50" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP51" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="IM_EXSHIP_MAP52" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="IM_EXSHIP_MAP53" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="IM_EXSHIP_MAP54" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="IM_EXSHIP_MAP55" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP56" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="IM_EXSHIP_MAP57" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP58" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="IM_EXSHIP_MAP59" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP60" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="IM_EXSHIP_MAP61" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP62" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="IM_EXSHIP_MAP63" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="IM_EXSHIP_MAP64" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="IM_EXSHIP_MAP65" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="IM_EXSHIP_MAP66" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="IM_EXSHIP_MAP67" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="IM_EXSHIP_MAP68" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="IM_EXSHIP_MAP69" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="IM_EXSHIP_MAP70" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP71" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="IM_EXSHIP_MAP72" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="IM_EXSHIP_MAP73" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="IM_EXSHIP_MAP74" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="IM_EXSHIP_MAP75" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP76" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP77" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP78" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP79" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP80" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="IM_EXSHIP_MAP81" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP82" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP83" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP84" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="IM_EXSHIP_MAP85" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="IM_EXSHIP_MAP86" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP87" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP88" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP89" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="IM_EXSHIP_MAP90" enumTypeId="EXSHIP_i.macho" enumCode="9124" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="IM_EXSHIP_MAP91" enumTypeId="EXSHIP_i.macho" enumCode="9123" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="IM_EXSHIP_MAP92" enumTypeId="EXSHIP_i.macho" enumCode="9128" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="IM_EXSHIP_MAP93" enumTypeId="EXSHIP_i.macho" enumCode="9126" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="IM_EXSHIP_MAP94" enumTypeId="EXSHIP_i.macho" enumCode="9127" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- queendesign -->
+    <Enumeration enumId="QD_EXSHIP_MAP1" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="EMS"/>
+    <Enumeration enumId="QD_EXSHIP_MAP2" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP3" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="QD_EXSHIP_MAP4" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP5" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP6" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP7" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="QD_EXSHIP_MAP8" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP9" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP10" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP11" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP12" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP13" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="QD_EXSHIP_MAP14" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="QD_EXSHIP_MAP15" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="QD_EXSHIP_MAP16" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP17" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="QD_EXSHIP_MAP18" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP19" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP20" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP21" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="QD_EXSHIP_MAP22" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP23" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP24" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP25" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP26" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP27" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="QD_EXSHIP_MAP28" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="QD_EXSHIP_MAP29" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="QD_EXSHIP_MAP30" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP31" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="QD_EXSHIP_MAP32" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP33" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP34" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP35" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="QD_EXSHIP_MAP36" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP37" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP38" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP39" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP40" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP41" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="QD_EXSHIP_MAP42" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="QD_EXSHIP_MAP43" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="QD_EXSHIP_MAP44" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP45" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP46" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP47" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="QD_EXSHIP_MAP48" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="QD_EXSHIP_MAP49" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="QD_EXSHIP_MAP50" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP51" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="QD_EXSHIP_MAP52" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="QD_EXSHIP_MAP53" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="QD_EXSHIP_MAP54" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="QD_EXSHIP_MAP55" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP56" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="QD_EXSHIP_MAP57" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP58" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="QD_EXSHIP_MAP59" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP60" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="QD_EXSHIP_MAP61" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP62" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="QD_EXSHIP_MAP63" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="QD_EXSHIP_MAP64" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="QD_EXSHIP_MAP65" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="QD_EXSHIP_MAP66" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="QD_EXSHIP_MAP67" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="QD_EXSHIP_MAP68" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="QD_EXSHIP_MAP69" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="QD_EXSHIP_MAP70" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP71" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="QD_EXSHIP_MAP72" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="QD_EXSHIP_MAP73" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="QD_EXSHIP_MAP74" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="QD_EXSHIP_MAP75" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP76" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP77" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP78" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP79" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP80" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="QD_EXSHIP_MAP81" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP82" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP83" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP84" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="QD_EXSHIP_MAP85" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="QD_EXSHIP_MAP86" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP87" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP88" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP89" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="QD_EXSHIP_MAP90" enumTypeId="EXSHIP_queendesign" enumCode="9148" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="QD_EXSHIP_MAP91" enumTypeId="EXSHIP_queendesign" enumCode="9147" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="QD_EXSHIP_MAP92" enumTypeId="EXSHIP_queendesign" enumCode="9152" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="QD_EXSHIP_MAP93" enumTypeId="EXSHIP_queendesign" enumCode="9150" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="QD_EXSHIP_MAP94" enumTypeId="EXSHIP_queendesign" enumCode="9151" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- tattootalks-us -->
+    <Enumeration enumId="TTUS_EXSHIP_MAP1" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="EMS"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP2" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP3" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP4" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP5" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP6" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP7" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP8" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP9" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP10" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP11" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP12" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP13" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP14" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP15" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP16" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP17" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP18" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP19" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP20" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP21" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP22" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP23" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP24" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP25" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP26" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP27" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP28" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP29" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP30" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP31" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP32" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP33" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP34" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP35" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP36" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP37" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP38" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP39" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP40" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP41" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP42" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP43" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP44" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP45" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP46" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP47" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP48" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP49" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP50" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP51" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP52" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP53" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP54" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP55" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP56" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP57" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP58" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP59" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP60" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP61" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP62" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP63" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP64" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP65" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP66" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP67" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP68" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP69" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP70" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP71" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP72" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP73" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP74" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP75" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP76" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP77" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP78" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP79" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP80" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP81" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP82" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP83" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP84" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP85" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP86" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP87" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP88" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP89" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP90" enumTypeId="EXSHIP_tattootalks-us" enumCode="9172" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP91" enumTypeId="EXSHIP_tattootalks-us" enumCode="9171" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP92" enumTypeId="EXSHIP_tattootalks-us" enumCode="9176" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP93" enumTypeId="EXSHIP_tattootalks-us" enumCode="9174" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="TTUS_EXSHIP_MAP94" enumTypeId="EXSHIP_tattootalks-us" enumCode="9175" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- you_young -->
+    <Enumeration enumId="YY_EXSHIP_MAP1" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="EMS"/>
+    <Enumeration enumId="YY_EXSHIP_MAP2" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP3" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="YY_EXSHIP_MAP4" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP5" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP6" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP7" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="YY_EXSHIP_MAP8" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP9" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP10" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP11" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP12" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP13" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="YY_EXSHIP_MAP14" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="YY_EXSHIP_MAP15" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="YY_EXSHIP_MAP16" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP17" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="YY_EXSHIP_MAP18" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP19" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP20" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP21" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="YY_EXSHIP_MAP22" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP23" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP24" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP25" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP26" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP27" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="YY_EXSHIP_MAP28" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="YY_EXSHIP_MAP29" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="YY_EXSHIP_MAP30" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP31" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="YY_EXSHIP_MAP32" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP33" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP34" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP35" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="YY_EXSHIP_MAP36" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP37" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP38" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP39" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP40" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP41" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="YY_EXSHIP_MAP42" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="YY_EXSHIP_MAP43" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="YY_EXSHIP_MAP44" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP45" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP46" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP47" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="YY_EXSHIP_MAP48" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="YY_EXSHIP_MAP49" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="YY_EXSHIP_MAP50" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP51" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="YY_EXSHIP_MAP52" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="YY_EXSHIP_MAP53" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="YY_EXSHIP_MAP54" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="YY_EXSHIP_MAP55" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP56" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="YY_EXSHIP_MAP57" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP58" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="YY_EXSHIP_MAP59" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP60" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="YY_EXSHIP_MAP61" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP62" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="YY_EXSHIP_MAP63" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="YY_EXSHIP_MAP64" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="YY_EXSHIP_MAP65" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="YY_EXSHIP_MAP66" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="YY_EXSHIP_MAP67" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="YY_EXSHIP_MAP68" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="YY_EXSHIP_MAP69" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="YY_EXSHIP_MAP70" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP71" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="YY_EXSHIP_MAP72" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="YY_EXSHIP_MAP73" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="YY_EXSHIP_MAP74" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="YY_EXSHIP_MAP75" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP76" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP77" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP78" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP79" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP80" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="YY_EXSHIP_MAP81" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP82" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP83" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP84" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="YY_EXSHIP_MAP85" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="YY_EXSHIP_MAP86" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP87" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP88" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP89" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="YY_EXSHIP_MAP90" enumTypeId="EXSHIP_you_young" enumCode="9196" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="YY_EXSHIP_MAP91" enumTypeId="EXSHIP_you_young" enumCode="9195" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="YY_EXSHIP_MAP92" enumTypeId="EXSHIP_you_young" enumCode="9200" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="YY_EXSHIP_MAP93" enumTypeId="EXSHIP_you_young" enumCode="9198" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="YY_EXSHIP_MAP94" enumTypeId="EXSHIP_you_young" enumCode="9199" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    <!-- UK-needle -->
+    <Enumeration enumId="UKN_EXSHIP_MAP1" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="EMS"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP2" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP3" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP4" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP5" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP6" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Express Int'l Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP7" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Express Int'l Versand"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP8" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP9" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP10" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP11" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Standard postage from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP12" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP13" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP14" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="USPS Parcel Post"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP15" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP16" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP17" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP18" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP19" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP20" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Express Int'l Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP21" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Express Int'l Versand"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP22" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP23" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP24" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP25" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP26" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP27" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP28" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="USPS Parcel Post"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP29" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="EMS"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP30" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Expedited delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP31" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Expedited Int'l Shipping"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP32" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Expedited Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP33" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Express Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP34" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Express Int'l Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP35" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Express Int'l Versand"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP36" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Express International Flat Rate Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP37" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Standard delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP38" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Standard Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP39" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Standard postage from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP40" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Standard Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP41" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="Standardversand aus dem Ausland"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP42" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="USPS Parcel Post"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP43" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP44" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP45" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP46" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Economy Int'l Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP47" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP48" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Economy Int'l Versand"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP49" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP50" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP51" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP52" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP53" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="ePacket delivery from China"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP54" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP55" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Standard Int'l Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP56" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP57" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP58" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="China Post Air Mail"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP59" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Economy delivery from outside AU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP60" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Economy Delivery from outside UK"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP61" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Economy Int'l Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP62" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Economy Int'l Shipping"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP63" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Economy Int'l Versand"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP64" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Economy Shipping from outside Canada"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP65" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Economy Shipping from outside US"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP66" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="EconomyShippingFromOutsideUS"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP67" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP68" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="ePacket delivery from China"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP69" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Sparversand aus dem Ausland"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP70" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Standard Int'l Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP71" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Standard Int'l Shipping"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP72" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="Standard International Flat Rate Postage"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP73" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="ePacketChina"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP74" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="ePacketChina"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP75" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="OtherInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP76" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="OtherInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP77" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="AU_StandardInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP78" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="AU_StandardInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP79" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP80" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="AU_EconomyDeliveryFromOutsideAU"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP81" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP82" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP83" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="AU_ExpeditedInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP84" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP85" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="UK_EconomyShippingFromOutside"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP86" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP87" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="UK_OtherCourierOrDeliveryInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP88" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="CA_StandardInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP89" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="CA_StandardInternational"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP90" enumTypeId="EXSHIP_uk-needle" enumCode="9340" sequenceId="EUB_US" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP91" enumTypeId="EXSHIP_uk-needle" enumCode="9339" sequenceId="" description="CA_EconomyShippingfromoutsideCanada"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP92" enumTypeId="EXSHIP_uk-needle" enumCode="9344" sequenceId="" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP93" enumTypeId="EXSHIP_uk-needle" enumCode="9342" sequenceId="EMS" description="StandardShippingFromOutsideUS"/>
+    <Enumeration enumId="UKN_EXSHIP_MAP94" enumTypeId="EXSHIP_uk-needle" enumCode="9343" sequenceId="YW_EXPRESS" description="StandardShippingFromOutsideUS"/>
+    
+    
+    <!-- ali-bellyanna -->
+    <Enumeration enumId="A_EXSHIP_MAP74" enumTypeId="EXSHIP_ali-bellyanna" enumCode="9219" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="A_EXSHIP_MAP75" enumTypeId="EXSHIP_ali-bellyanna" enumCode="9221" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="A_EXSHIP_MAP76" enumTypeId="EXSHIP_ali-bellyanna" enumCode="9219" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="A_EXSHIP_MAP77" enumTypeId="EXSHIP_ali-bellyanna" enumCode="9222" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="A_EXSHIP_MAP78" enumTypeId="EXSHIP_ali-bellyanna" enumCode="9224" sequenceId="" description="EMS"/>
+    
+    <!-- ali-tattoo -->
+    <Enumeration enumId="ATT_EXSHIP_MAP74" enumTypeId="EXSHIP_ali-tattoo" enumCode="9243" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="ATT_EXSHIP_MAP75" enumTypeId="EXSHIP_ali-tattoo" enumCode="9245" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="ATT_EXSHIP_MAP76" enumTypeId="EXSHIP_ali-tattoo" enumCode="9243" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="ATT_EXSHIP_MAP77" enumTypeId="EXSHIP_ali-tattoo" enumCode="9246" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="ATT_EXSHIP_MAP78" enumTypeId="EXSHIP_ali-tattoo" enumCode="9248" sequenceId="" description="EMS"/>
+    
+    <!-- ali-deepan -->
+    <Enumeration enumId="ADP_EXSHIP_MAP74" enumTypeId="EXSHIP_ali-deepan" enumCode="9267" sequenceId="" description="China Post Air Mail"/>
+    <Enumeration enumId="ADP_EXSHIP_MAP75" enumTypeId="EXSHIP_ali-deepan" enumCode="9269" sequenceId="EUB_US" description="ePacket"/>
+    <Enumeration enumId="ADP_EXSHIP_MAP76" enumTypeId="EXSHIP_ali-deepan" enumCode="9267" sequenceId="" description="ePacket"/>
+    <Enumeration enumId="ADP_EXSHIP_MAP77" enumTypeId="EXSHIP_ali-deepan" enumCode="9270" sequenceId="EMS" description="EMS"/>
+    <Enumeration enumId="ADP_EXSHIP_MAP78" enumTypeId="EXSHIP_ali-deepan" enumCode="9272" sequenceId="" description="EMS"/>
+    
+
+</entity-engine-xml>

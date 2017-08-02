@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+        <simple-method method-name="importNewOrderForImportAndMessage" short-description="Import New Order For Import And Message" use-transaction="false">
+            <if-not-empty field="parameters.productStoreId">
+                <field-to-result result-name="fileName" field="parameters.fileName"/>
+                <field-to-result result-name="productStoreId" field="parameters.productStoreId"/>
+                <if-not-empty field="parameters.orderImportId">
+                    <set field="importOrderCtx.productStoreId" from-field="parameters.productStoreId"/>
+                    <set field="importOrderCtx.orderImportId" from-field="parameters.orderImportId"/>
+                    <call-service service-name="importNewOrderFromCsv" in-map-name="importOrderCtx" include-user-login="true" break-on-error="false">
+                        <result-to-field result-name="errorMessageList"/>
+                        <result-to-field result-name="responseMessage"/>
+                    </call-service>
+                    <if-empty field="errorMessageList">
+                        <set field="orderImport.orderImportId" from-field="parameters.orderImportId"/>
+                        <set field="orderImport.importedStatus" value="Y"/>
+                        <set field="orderImport.importedDescription" value="Imported Successfully."/>
+                        <call-service service-name="updateOrderImport" in-map-name="orderImport"  break-on-error="false"/>
+                        <set field="showMsg" value="Imported [orderImportId : ${parameters.orderImportId}] Successful"/>
+                        <field-to-list list="eventMessageList" field="showMsg"/>
+                        <field-to-request field="eventMessageList"/>
+                        <else>
+                            <set field="orderImport.orderImportId" from-field="parameters.orderImportId"/>
+                            <set field="orderImport.importedStatus" value="N"/>
+                            <set field="orderImport.importedDescription" value="${errorMessageList}"/>
+                            <call-service service-name="updateOrderImport" in-map-name="orderImport" break-on-error="false" include-user-login="true"/>
+                            <field-to-request field="errorMessageList"/>
+                            <return response-code="error"/>
+                        </else>
+                    </if-empty>
+                </if-not-empty>
+            </if-not-empty>
+        </simple-method>
+        
+        <simple-method method-name="doUploadOrderCsvFile" short-description="">
+            
+            <call-class-method class-name="org.ofbiz.content.layout.LayoutWorker"
+                method-name="uploadImageAndParameters" ret-field="formInput">
+                <field field="request" type="javax.servlet.http.HttpServletRequest"/>
+                <string value="uploadedFile"/>
+            </call-class-method>
+            <set field="productStoreId" from-field="formInput.formInput.productStoreId"/>
+            <field-to-request field="productStoreId"/>
+            <if-empty field="formInput.formInput.productStoreId">
+                <set field="showMsg" value="Required productStoreId."/>
+                <field-to-list list="errorMessageList" field="showMsg"/>
+                <field-to-request field="errorMessageList"/>
+                <return response-code="error"/>
+            </if-empty>
+            <if-empty field="formInput.imageFileName">
+                <set field="showMsg" value="No file to upload."/>
+                <field-to-list list="errorMessageList" field="showMsg"/>
+                <field-to-request field="errorMessageList"/>
+                <return response-code="error"/>
+            </if-empty>
+            <if-compare operator="not-equals" value="text/csv" field="formInput.uploadMimeType">
+                <set field="showMsg" value="Incorrect file format .. CSV needed"/>
+                <field-to-list list="errorMessageList" field="showMsg"/>
+                <field-to-request field="errorMessageList"/>
+                <return response-code="error"/>
+            </if-compare>
+            <set field="csvCtx.uploadedFile" from-field="formInput.imageData"/>
+            <set field="csvCtx._uploadedFile_fileName" from-field="formInput.imageFileName"/>
+            <set field="csvCtx.productStoreId" from-field="formInput.formInput.productStoreId"/>
+            <call-service service-name="uploadOrderCsvFile" in-map-name="csvCtx" include-user-login="true">
+                <result-to-field result-name="errorMessageList"/>
+            </call-service>
+            <if-empty field="errorMessageList">
+                <set field="showMsg" value="Uploaded Successful."/>
+                <field-to-list list="eventMessageList" field="showMsg"/>
+                <field-to-request field="eventMessageList"/>
+            </if-empty>
+        </simple-method>
+        
+        <simple-method method-name="importMultiOrders" short-description="import Multi Orders" use-transaction="false">
+            <set field="productStoreId" from-field="parameters.productStoreId"/>
+            <field-to-result result-name="fileName" field="parameters.fileName"/>
+            <field-to-result result-name="productStoreId" field="parameters.productStoreId"/>
+            <entity-and list="orderImports" entity-name="OrderImport">
+                <field-map field-name="fileName" from-field="parameters.fileName"/>
+            </entity-and>
+            <set field="isError" value="false" type="Boolean"/>
+            <set field="successImport" type="BigDecimal" value="0"/>
+            
+            <if-not-empty field="orderImports">
+                <iterate entry="orderImport" list="orderImports">
+                    <if-compare operator="not-equals" value="Y" field="orderImport.importedStatus">
+                        <set field="importNewOrder.productStoreId" from-field="orderImport.productStoreId"/>
+                        <if-empty field="importNewOrder.productStoreId">
+                            <set field="importNewOrder.productStoreId" from-field="parameters.productStoreId"/>
+                        </if-empty>
+                        <set field="importNewOrder.orderImportId" from-field="orderImport.orderImportId"/>
+                        <call-service service-name="importNewOrderFromCsv" in-map-name="importNewOrder" include-user-login="true" break-on-error="false">
+                            <result-to-field result-name="errorMessageList"/>
+                        </call-service>
+                        <if-empty field="errorMessageList">
+                            <set field="orderImportValue.orderImportId" from-field="orderImport.orderImportId"/>
+                            <set field="orderImportValue.importedStatus" value="Y"/>
+                            <set field="orderImportValue.importedDescription" value="Imported Successfully."/>
+                            <call-service service-name="updateOrderImport" in-map-name="orderImportValue"/>
+                            <calculate field="successImport">
+                                <calcop operator="add" field="successImport">
+                                    <number value="1"/>
+                                </calcop>
+                            </calculate>
+                            <else>
+                                <set field="orderImportValue.orderImportId" from-field="orderImport.orderImportId"/>
+                                <set field="orderImportValue.importedStatus" value="N"/>
+                                <set field="orderImportValue.importedDescription" value="${errorMessageList}"/>
+                                <call-service service-name="updateOrderImport" in-map-name="orderImportValue" include-user-login="true" break-on-error="false"/>
+                                <set field="isError" value="true" type="Boolean"/>
+                                <set field="failMessage" value="Importation failed! Problem detected at orderImportId [${orderImport.orderImportId}], please fix and re-import."/>
+                                <field-to-list list="allErrorMessageList" field="failMessage"/>
+                            </else>
+                        </if-empty>
+                        <clear-field field="errorMessageList"/>
+                    </if-compare>
+                </iterate>
+            </if-not-empty>
+            <entity-one value-field="productStore" entity-name="ProductStore">
+                <field-map field-name="productStoreId" from-field="productStoreId"/>
+                <select-field field-name="storeName"/>
+            </entity-one>
+            <set field="importedResult" value="Successfully imported ${successImport} order(s) for ${productStore.storeName} (${productStoreId})"/>
+            <if-not-empty field="allErrorMessageList">
+                <field-to-request field="allErrorMessageList" request-name="errorMessageList"/>
+            </if-not-empty>
+            <if-compare operator="greater" value="0" field="successImport">
+                <field-to-list list="eventMessageList" field="importedResult"/>
+                <field-to-request field="eventMessageList"/>
+            </if-compare>
+        </simple-method>
+        
+        <simple-method method-name="importMultiInternalOrders" short-description="import Multi Orders" use-transaction="false">
+            <field-to-result result-name="fileName" field="parameters.fileName"/>
+            <entity-and list="orderImports" entity-name="OrderImport">
+                <field-map field-name="fileName" from-field="parameters.fileName"/>
+            </entity-and>
+            <set field="isError" value="false" type="Boolean"/>
+            <set field="successImport" type="BigDecimal" value="0"/>
+            
+            <if-not-empty field="orderImports">
+                <iterate entry="orderImport" list="orderImports">
+                    <if-compare operator="not-equals" value="Y" field="orderImport.importedStatus">
+                        <set field="importNewOrder.productStoreId" from-field="orderImport.productStoreId"/>
+                        <set field="importNewOrder.orderImportId" from-field="orderImport.orderImportId"/>
+                        <call-service service-name="importNewOrderFromCsv" in-map-name="importNewOrder" include-user-login="true" break-on-error="false">
+                            <result-to-field result-name="errorMessageList"/>
+                        </call-service>
+                        <if-empty field="errorMessageList">
+                            <set field="orderImportValue.orderImportId" from-field="orderImport.orderImportId"/>
+                            <set field="orderImportValue.importedStatus" value="Y"/>
+                            <set field="orderImportValue.importedDescription" value="Imported Successfully."/>
+                            <call-service service-name="updateOrderImport" in-map-name="orderImportValue"/>
+                            <calculate field="successImport">
+                                <calcop operator="add" field="successImport">
+                                    <number value="1"/>
+                                </calcop>
+                            </calculate>
+                            <else>
+                                <set field="orderImportValue.orderImportId" from-field="orderImport.orderImportId"/>
+                                <set field="orderImportValue.importedStatus" value="N"/>
+                                <set field="orderImportValue.importedDescription" value="${errorMessageList}"/>
+                                <call-service service-name="updateOrderImport" in-map-name="orderImportValue" include-user-login="true" break-on-error="false"/>
+                                <set field="isError" value="true" type="Boolean"/>
+                                <set field="failMessage" value="Importation failed! Problem detected at orderImportId [${orderImport.orderImportId}], please fix and re-import."/>
+                                <field-to-list list="allErrorMessageList" field="failMessage"/>
+                            </else>
+                        </if-empty>
+                        <clear-field field="errorMessageList"/>
+                    </if-compare>
+                </iterate>
+            </if-not-empty>
+            <entity-one value-field="productStore" entity-name="ProductStore">
+                <field-map field-name="productStoreId" from-field="productStoreId"/>
+                <select-field field-name="storeName"/>
+            </entity-one>
+            <set field="importedResult" value="Successfully imported ${successImport} order(s)"/>
+            <if-not-empty field="allErrorMessageList">
+                <field-to-request field="allErrorMessageList" request-name="errorMessageList"/>
+            </if-not-empty>
+            <if-compare operator="greater" value="0" field="successImport">
+                <field-to-list list="eventMessageList" field="importedResult"/>
+                <field-to-request field="eventMessageList"/>
+            </if-compare>
+        </simple-method>
+</simple-methods>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofbiz-component name="bellyanna"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-component.xsd">
+    <!-- define resource loaders; most common is to use the component resource loader -->
+    <resource-loader name="main" type="component"/>
+
+    <!-- place the config directory on the classpath to access configuration files -->
+    <classpath type="dir" location="config"/>
+    <classpath type="dir" location="dtd"/>
+
+    <!-- load single or multiple external libraries -->
+    <classpath type="jar" location="build/lib/*"/>
+    <classpath type="jar" location="lib/*"/>
+
+    <!-- entity resources: model(s), eca(s), group, and data definitions -->
+    <entity-resource type="model" reader-name="main" loader="main" location="entitydef/entitymodel.xml"/>
+    <!-- <entity-resource type="eca" reader-name="main" loader="main" location="entitydef/eecas.xml"/> -->
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaTypeData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaSecurityPermissionSeedData.xml"/>
+    <entity-resource type="data" reader-name="demo" loader="main" location="data/bellyannaSecurityGroupDemoData.xml"/>
+    <entity-resource type="data" reader-name="demo" loader="main" location="data/bellyannaDemoData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaPartySeedData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/epacketSeedData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaFacilitySeedData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/enumeration.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/ebayTypeSeedData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaSeedData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaProductStore.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaImportConf.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/bellyannaPaypalSeedData.xml"/>
+    <!--<entity-resource type="data" reader-name="seed" loader="main" location="data/DemoData.xml"/>-->
+
+    <!-- service resources: model(s), eca(s) and group definitions -->
+    <service-resource type="model" loader="main" location="servicedef/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/shipment/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/order/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/paypal/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/ebay/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/catalog/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/facility/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/bulk/services.xml"/>
+    
+    <service-resource type="eca" loader="main" location="servicedef/ebay/secas.xml"/>
+    <service-resource type="eca" loader="main" location="servicedef/facility/secas.xml"/>
+    <service-resource type="eca" loader="main" location="servicedef/order/secas.xml"/>
+    <service-resource type="eca" loader="main" location="servicedef/shipment/secas.xml"/>
+    <!--
+    <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
+    <service-resource type="group" loader="main" location="servicedef/groups.xml"/>
+    -->
+
+    <test-suite loader="main" location="testdef/bellyannaTests.xml"/>
+
+    <!-- web applications; will be mounted when using the embedded container -->
+    <webapp name="bellyanna"
+        title="bellyanna"
+        server="default-server"
+        location="webapp/bellyanna"
+        base-permission="OFBTOOLS,BELLYANNA"
+        mount-point="/bellyanna"/>
+</ofbiz-component>

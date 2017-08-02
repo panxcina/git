@@ -1,0 +1,26 @@
+2015-11-27 14:30:50.331: product Store ID: businessindustry, Codes : 4000: Unauthorized Request
+2015-11-27 14:31:50.448: product Store ID: businessindustry, Codes : 1018: This authorization code has already been redeemed.
+2015-11-27 14:33:01.392: product Store ID: businessindustry, Codes : 4000: Unauthorized Request
+2015-11-27 14:33:23.265: product Store ID: businessindustry, Codes : 1018: This authorization code has already been redeemed.
+2015-12-31 10:35:08.263: product Store ID: tomson, Codes : 1001: Required Param 'code' Missing
+2015-12-31 10:40:02.000: product Store ID: tomson, Codes : 1017: This authorization code has expired.
+2015-12-31 10:44:48.422: product Store ID: maomao226, Codes : 1001: Required Param 'code' Missing
+2016-05-11 15:31:21.677: product Store ID: lovelifettt, Codes : 1001: Required Param 'grant_type' Missing
+2016-05-11 19:03:21.150: product Store ID: healthbeauty, Codes : 1018: This authorization code has already been redeemed.
+2016-05-11 19:03:29.086: product Store ID: healthbeauty, Codes : 1001: Required Param 'grant_type' Missing
+2016-05-11 19:06:12.333: product Store ID: healthbeauty, Codes : 1001: Required Param 'grant_type' Missing
+2016-05-24 16:21:28.800: product Store ID: healthbeauty, Codes : 1017: This authorization code has expired.
+2016-05-24 16:22:06.289: product Store ID: healthbeauty, Codes : 1018: This authorization code has already been redeemed.
+2016-07-19 17:26:27.904: product Store ID: hacomeonbaby, Codes : 1017: This authorization code has expired.
+2016-07-19 17:32:33.323: product Store ID: hacomeonbaby, Codes : 1018: This authorization code has already been redeemed.
+2016-11-10 15:54:40.723: product Store ID: cestlamour, Codes : 2000: Merchant unable to access API due to account's status.
+2016-11-10 15:54:43.829: product Store ID: cestlamour, Codes : 2000: Merchant unable to access API due to account's status.
+2016-11-10 15:55:29.772: product Store ID: cestlamour, Codes : 2000: Merchant unable to access API due to account's status.
+2016-11-11 16:39:39.374: product Store ID: 365funshopping, Codes : 4000: No access token found or the app does not exist.
+2016-11-11 16:41:03.247: product Store ID: 365funshopping, Codes : 4000: No access token found or the app does not exist.
+2016-11-11 16:42:41.932: product Store ID: 365funshopping, Codes : 4000: No access token found or the app does not exist.
+2016-11-11 16:44:37.040: product Store ID: 365funshopping, Codes : 4000: No access token found or the app does not exist.
+2017-02-03 17:39:10.504: product Store ID: womanfashion, Codes : 4000: No access token found or the app does not exist.
+2017-02-03 17:40:03.915: product Store ID: womanfashion, Codes : 4000: No access token found or the app does not exist.
+2017-02-03 17:40:27.515: product Store ID: womanfashion, Codes : 1001: Required Param 'grant_type' Missing
+2017-02-03 17:44:54.921: product Store ID: womanfashion, Codes : 1018: This authorization code has already been redeemed.

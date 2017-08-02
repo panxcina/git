@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <property key="GudaoApplication">
+        <value xml:lang="en">Gudao Application</value>
+        <value xml:lang="zh">Gudao应用程序</value>
+    </property>
+    <property key="GudaoCompanyName">
+        <value xml:lang="en">OFBiz: Gudao</value>
+    </property>
+    <property key="GudaoCompanySubtitle">
+        <value xml:lang="en">Part of the Open For Business Family of Open Source Software</value>
+        <value xml:lang="it">Un modulo della famiglia di software open source Open For Business</value>
+        <value xml:lang="zh">开源软件OFBiz的组成部分</value>
+    </property>
+    <property key="GudaoViewPermissionError">
+        <value xml:lang="en">You are not allowed to view this page.</value>
+        <value xml:lang="zh">不允许你浏览这个页面。</value>
+    </property>
+    <property key="actualPrice">
+        <value xml:lang="en">Actual Price</value>
+        <value xml:lang="zh">实际成本</value>
+    </property>
+    <property key="actualWeight">
+        <value xml:lang="en">Actual Weight</value>
+        <value xml:lang="zh">实重</value>
+    </property>
+    <property key="amazonLink">
+        <value xml:lang="en">Amazon Link</value>
+        <value xml:lang="zh">Amazon链接</value>
+    </property>
+    <property key="amazonPicture">
+        <value xml:lang="en">Amazon Picture</value>
+        <value xml:lang="zh">AMA图片</value>
+    </property>
+    <property key="amazonStatusId">
+        <value xml:lang="en">Amazon Status ID</value>
+        <value xml:lang="zh">Amazon状态</value>
+    </property>
+    <property key="amazonUsPercentage">
+        <value xml:lang="en">Amazon%</value>
+        <value xml:lang="zh">Amazon%</value>
+    </property>
+    <property key="amazonUsPrice">
+        <value xml:lang="en">Amazon</value>
+        <value xml:lang="zh">Amazon</value>
+    </property>
+    <property key="backupEta">
+        <value xml:lang="en">Backup ETA</value>
+        <value xml:lang="zh">备用ETA</value>
+    </property>
+    <property key="backupMoIdentifier1">
+        <value xml:lang="en">Backup Identifier 1</value>
+        <value xml:lang="zh">备用起订量1-关联符</value>
+    </property>
+    <property key="backupMoIdentifier2">
+        <value xml:lang="en">Backup Identifier 2</value>
+        <value xml:lang="zh">备用起订量2-关联符</value>
+    </property>
+    <property key="backupMoIdentifier3">
+        <value xml:lang="en">Backup Identifier 3</value>
+        <value xml:lang="zh">备用起订量3-关联符</value>
+    </property>
+    <property key="backupMoQty1">
+        <value xml:lang="en">Backup Min Order Qty 1</value>
+        <value xml:lang="zh">备用起订量1-数量</value>
+    </property>
+    <property key="backupMoQty2">
+        <value xml:lang="en">Backup Min Order Qty 2</value>
+        <value xml:lang="zh">备用起订量2-数量</value>
+    </property>
+    <property key="backupMoQty3">
+        <value xml:lang="en">Backup Min Order Qty 3</value>
+        <value xml:lang="zh">备用起订量3-数量</value>
+    </property>
+    <property key="backupMoUnitPrice1">
+        <value xml:lang="en">Backup Min Order Unit Price 1</value>
+        <value xml:lang="zh">备用起订量1-成本</value>
+    </property>
+    <property key="backupMoUnitPrice2">
+        <value xml:lang="en">Backup Min Order Unit Price 2</value>
+        <value xml:lang="zh">备用起订量2-成本</value>
+    </property>
+    <property key="backupMoUnitPrice3">
+        <value xml:lang="en">Backup Min Order Unit Price 3</value>
+        <value xml:lang="zh">备用起订量3-成本</value>
+    </property>
+    <property key="backupSupplierId">
+        <value xml:lang="en">Backup Supplier</value>
+        <value xml:lang="zh">备用供应商</value>
+    </property>
+    <property key="backupSupplierLink">
+        <value xml:lang="en">Backup Supplier Link</value>
+        <value xml:lang="zh">备用采购链接</value>
+    </property>
+    <property key="categoryIdChild">
+        <value xml:lang="en">Children Category ID</value>
+        <value xml:lang="zh">产品小类</value>
+    </property>
+    <property key="categoryIdParent">
+        <value xml:lang="en">Parent Category ID</value>
+        <value xml:lang="zh">产品大类</value>
+    </property>
+    <property key="cdiscountStatusId">
+        <value xml:lang="en">Cdiscount Status ID</value>
+        <value xml:lang="zh">Cdiscount状态</value>
+    </property>
+    <property key="cdiscountUsPrice">
+        <value xml:lang="en">Cdiscount</value>
+        <value xml:lang="zh">Cdiscount</value>
+    </property>
+    <property key="ebayAuPercentage">
+        <value xml:lang="en">AU% (eBay)</value>
+        <value xml:lang="zh">AU% (eBay)</value>
+    </property>
+    <property key="ebayAuPrice">
+        <value xml:lang="en">AU (eBay)</value>
+        <value xml:lang="zh">AU (eBay)</value>
+    </property>
+    <property key="ebayCaPercentage">
+        <value xml:lang="en">CA% (eBay)</value>
+        <value xml:lang="zh">CA% (eBay)</value>
+    </property>
+    <property key="ebayCaPrice">
+        <value xml:lang="en">CA (eBay)</value>
+        <value xml:lang="zh">CA (eBay)</value>
+    </property>
+    <property key="ebayDePercentage">
+        <value xml:lang="en">DE% (eBay)</value>
+        <value xml:lang="zh">DE% (eBay)</value>
+    </property>
+    <property key="ebayDePrice">
+        <value xml:lang="en">DE (eBay)</value>
+        <value xml:lang="zh">DE (eBay)</value>
+    </property>
+    <property key="ebayFrPercentage">
+        <value xml:lang="en">FR% (eBay)</value>
+        <value xml:lang="zh">FR% (eBay)</value>
+    </property>
+    <property key="ebayFrPrice">
+        <value xml:lang="en">FR (eBay)</value>
+        <value xml:lang="zh">FR (eBay)</value>
+    </property>
+    <property key="ebayLink">
+        <value xml:lang="en">Ebay Link</value>
+        <value xml:lang="zh">eBay链接</value>
+    </property>
+    <property key="ebayPicture">
+        <value xml:lang="en">Ebay Picture</value>
+        <value xml:lang="zh">eBay图片</value>
+    </property>
+    <property key="ebayStatusId">
+        <value xml:lang="en">eBay Status ID</value>
+        <value xml:lang="zh">eBay状态</value>
+    </property>
+    <property key="ebayUkPercentage">
+        <value xml:lang="en">UK% (eBay)</value>
+        <value xml:lang="zh">UK% (eBay)</value>
+    </property>
+    <property key="ebayUkPrice">
+        <value xml:lang="en">UK (eBay)</value>
+        <value xml:lang="zh">UK (eBay)</value>
+    </property>
+    <property key="ebayUsPercentage">
+        <value xml:lang="en">CP%</value>
+        <value xml:lang="zh">CP%</value>
+    </property>
+    <property key="ebayUsPrice">
+        <value xml:lang="en">US (eBay)</value>
+        <value xml:lang="zh">US (eBay)</value>
+    </property>
+    <property key="eps">
+        <value xml:lang="en">EPS</value>
+        <value xml:lang="zh">EPS</value>
+    </property>
+    <property key="estimatedWeight">
+        <value xml:lang="en">Estimated Weight</value>
+        <value xml:lang="zh">估重</value>
+    </property>
+    <property key="eta">
+        <value xml:lang="en">ETA</value>
+        <value xml:lang="zh">ETA</value>
+    </property>
+    <property key="extraStockingDays">
+        <value xml:lang="en">Extra Stocking Days</value>
+        <value xml:lang="zh">采购天数</value>
+    </property>
+    <property key="finePicture">
+        <value xml:lang="en">Fine Picture</value>
+        <value xml:lang="zh">无印良品</value>
+    </property>
+    <property key="gms">
+        <value xml:lang="en">GMS</value>
+        <value xml:lang="zh">GMS</value>
+    </property>
+    <property key="identicalItemId">
+        <value xml:lang="en">Rival Item ID - Identical</value>
+        <value xml:lang="zh">相同对手</value>
+    </property>
+    <property key="imageLink">
+        <value xml:lang="en">Image Link</value>
+        <value xml:lang="zh">截图链接</value>
+    </property>
+    <property key="lazadaStatusId">
+        <value xml:lang="en">Lazada Status ID</value>
+        <value xml:lang="zh">Lazada状态</value>
+    </property>
+    <property key="listingInfo">
+        <value xml:lang="en">Listing Info</value>
+        <value xml:lang="zh">刊登信息</value>
+    </property>
+    <property key="listingNotes">
+        <value xml:lang="en">Listing Notes</value>
+        <value xml:lang="zh">销售备注</value>
+    </property>
+    <property key="minOrderDays">
+        <value xml:lang="en">Min Order Days</value>
+        <value xml:lang="zh">备货天数</value>
+    </property>
+    <property key="minOrderQuantity">
+        <value xml:lang="en">Min Order Qty</value>
+        <value xml:lang="zh">起订量</value>
+    </property>
+    <property key="moIdentifier1">
+        <value xml:lang="en">Identifier 1</value>
+        <value xml:lang="zh">起订量1-关联符</value>
+    </property>
+    <property key="moIdentifier2">
+        <value xml:lang="en">Identifier 2</value>
+        <value xml:lang="zh">起订量2-关联符</value>
+    </property>
+    <property key="moIdentifier3">
+        <value xml:lang="en">Identifier 3</value>
+        <value xml:lang="zh">起订量3-关联符</value>
+    </property>
+    <property key="moqIdentifier">
+        <value xml:lang="en">Identifier</value>
+        <value xml:lang="zh">起订量-关联符</value>
+    </property>
+    <property key="moQty">
+        <value xml:lang="en">Minimum Order Qty</value>
+        <value xml:lang="zh">起订量-数量</value>
+    </property>
+    <property key="moQty1">
+        <value xml:lang="en">Minimum Order Qty 1</value>
+        <value xml:lang="zh">起订量1-数量</value>
+    </property>
+    <property key="moQty2">
+        <value xml:lang="en">Minimum Order Qty 2</value>
+        <value xml:lang="zh">起订量2-数量</value>
+    </property>
+    <property key="moQty3">
+        <value xml:lang="en">Minimum Order Qty 3</value>
+        <value xml:lang="zh">起订量3-数量</value>
+    </property>
+    <property key="moqType">
+        <value xml:lang="en">Type</value>
+        <value xml:lang="zh">Type</value>
+    </property>
+    <property key="moqTypeMinPrice">
+        <value xml:lang="en">Min Price</value>
+        <value xml:lang="zh">起订量-金额</value>
+    </property>
+    <property key="moqTypeMinQty">
+        <value xml:lang="en">Min Quantity</value>
+        <value xml:lang="zh">起订量-数量</value>
+    </property>
+    <property key="motherSku">
+        <value xml:lang="en">Mother SKU</value>
+        <value xml:lang="zh">母SKU</value>
+    </property>
+    <property key="moUnitPrice">
+        <value xml:lang="en">Minimum Order Unit Price</value>
+        <value xml:lang="zh">起订量-成本</value>
+    </property>
+    <property key="moUnitPrice1">
+        <value xml:lang="en">Minimum Order Unit Price 1</value>
+        <value xml:lang="zh">起订量1-成本</value>
+    </property>
+    <property key="moUnitPrice2">
+        <value xml:lang="en">Minimum Order Unit Price 2</value>
+        <value xml:lang="zh">起订量2-成本</value>
+    </property>
+    <property key="moUnitPrice3">
+        <value xml:lang="en">Minimum Order Unit Price 3</value>
+        <value xml:lang="zh">起订量3-成本</value>
+    </property>
+    <property key="ownerGroup">
+        <value xml:lang="en">Owner Group</value>
+        <value xml:lang="zh">开发员</value>
+    </property>
+    <property key="platform">
+        <value xml:lang="en">Platform</value>
+        <value xml:lang="zh">适用平台</value>
+    </property>
+    <property key="platformStatus">
+        <value xml:lang="en">Platform Status</value>
+        <value xml:lang="zh">平台状态</value>
+    </property>
+    <property key="platformStatusList">
+        <value xml:lang="en">Platform Status List</value>
+        <value xml:lang="zh">平台状态允许值</value>
+    </property>
+    <property key="pmAvailableValueList">
+        <value xml:lang="en">PM Available Value List</value>
+        <value xml:lang="zh">PM各列允许值一览</value>
+    </property>
+    <property key="pmRules">
+        <value xml:lang="en">PM Rules</value>
+        <value xml:lang="zh">PM规则</value>
+    </property>
+    <property key="PmUpdate">
+        <value xml:lang="en">PM Update</value>
+        <value xml:lang="zh">PM 更新</value>
+    </property>
+    <property key="productGroup">
+        <value xml:lang="en">Product Group</value>
+        <value xml:lang="zh">分组</value>
+    </property>
+    <property key="productGroupList">
+        <value xml:lang="en">Product Group List</value>
+        <value xml:lang="zh">产品分组允许值</value>
+    </property>
+    <property key="productNameCn">
+        <value xml:lang="en">Product Name</value>
+        <value xml:lang="zh">品名</value>
+    </property>
+    <property key="productStatusList">
+        <value xml:lang="en">Product Status List</value>
+        <value xml:lang="zh">产品状态允许值</value>
+    </property>
+    <property key="productType">
+        <value xml:lang="en">Product Type</value>
+        <value xml:lang="zh">产品性质</value>
+    </property>
+    <property key="productTypeList">
+        <value xml:lang="en">Product Type List</value>
+        <value xml:lang="zh">产品性质允许值</value>
+    </property>
+    <property key="purchaser">
+        <value xml:lang="en">Purchaser</value>
+        <value xml:lang="zh">采购员</value>
+    </property>
+    <property key="purchasingNotes">
+        <value xml:lang="en">Purchasing Notes</value>
+        <value xml:lang="zh">采购备注</value>
+    </property>
+    <property key="readonly">
+        <value xml:lang="en">//Read-Only</value>
+        <value xml:lang="zh">//只读</value>
+    </property>
+    <property key="referenceLink">
+        <value xml:lang="en">Reference Link</value>
+        <value xml:lang="zh">参考链接</value>
+    </property>
+    <property key="risk">
+        <value xml:lang="en">Risk</value>
+        <value xml:lang="zh">侵权风险</value>
+    </property>
+    <property key="similarItemId">
+        <value xml:lang="en">Rival Item ID - Similar</value>
+        <value xml:lang="zh">相似对手</value>
+    </property>
+    <property key="smtLink">
+        <value xml:lang="en">SMT Link</value>
+        <value xml:lang="zh">SMT链接</value>
+    </property>
+    <property key="smtStatusId">
+        <value xml:lang="en">SMT Status ID</value>
+        <value xml:lang="zh">SMT状态</value>
+    </property>
+    <property key="smtUsPercentage">
+        <value xml:lang="en">SMT%</value>
+        <value xml:lang="zh">SMT%</value>
+    </property>
+    <property key="smtUsPrice">
+        <value xml:lang="en">SMT</value>
+        <value xml:lang="zh">SMT</value>
+    </property>
+    <property key="smtUsShippingMethod">
+        <value xml:lang="en">SMT Shipping Method</value>
+        <value xml:lang="zh">SMT发货方式</value>
+    </property>
+    <property key="sourcingDate">
+        <value xml:lang="en">Sourcing Date</value>
+        <value xml:lang="zh">开发日期</value>
+    </property>
+    <property key="statusId">
+        <value xml:lang="en">Status ID</value>
+        <value xml:lang="zh">状态</value>
+    </property>
+    <property key="supplierId">
+        <value xml:lang="en">Supplier</value>
+        <value xml:lang="zh">供应商</value>
+    </property>
+    <property key="supplierLink">
+        <value xml:lang="en">Supplier Link</value>
+        <value xml:lang="zh">采购链接</value>
+    </property>
+    <property key="supplierRank">
+        <value xml:lang="en">Supplier Rank</value>
+        <value xml:lang="zh">供应商排名</value>
+    </property>
+    <property key="upc">
+        <value xml:lang="en">UPC</value>
+        <value xml:lang="zh">UPC</value>
+    </property>
+    <property key="wishLink">
+        <value xml:lang="en">Wish Link</value>
+        <value xml:lang="zh">Wish链接</value>
+    </property>
+    <property key="wishStatusId">
+        <value xml:lang="en">Wish Status ID</value>
+        <value xml:lang="zh">Wish状态</value>
+    </property>
+    <property key="wishUsPercentage">
+        <value xml:lang="en">Wish%</value>
+        <value xml:lang="zh">Wish%</value>
+    </property>
+    <property key="wishUsPrice">
+        <value xml:lang="en">Wish</value>
+        <value xml:lang="zh">Wish</value>
+    </property>
+    <property key="wishUsShippingPrice">
+        <value xml:lang="en">Wish Shipping</value>
+        <value xml:lang="zh">Wish运费</value>
+    </property>
+    <property key="mainSupplierLink">
+        <value xml:lang="en">Supplier Link</value>
+        <value xml:lang="zh">供应商链接</value>
+    </property>
+    <property key="CommonPending">
+        <value xml:lang="en">Pending</value>
+        <value xml:lang="zh">待处理</value>
+    </property>
+    <property key="CommonInProgress">
+        <value xml:lang="en">In Progress</value>
+        <value xml:lang="zh">处理中</value>
+    </property>
+    <property key="CommonCompleted">
+        <value xml:lang="en">Completed</value>
+        <value xml:lang="zh">已完成</value>
+    </property>
+    <!-- <property key="Monday">
+        <value xml:lang="en">Monday</value>
+        <value xml:lang="zh">星期一</value>
+    </property>
+    <property key="Tuesday">
+        <value xml:lang="en">Tuesday</value>
+        <value xml:lang="zh">星期二</value>
+    </property>
+    <property key="Wednesday">
+        <value xml:lang="en">Wednesday</value>
+        <value xml:lang="zh">星期三</value>
+    </property>
+    <property key="Thursady">
+        <value xml:lang="en">Thursady</value>
+        <value xml:lang="zh">星期四</value>
+    </property>
+    <property key="Friday">
+        <value xml:lang="en">Friday</value>
+        <value xml:lang="zh">星期五</value>
+    </property>
+    <property key="Saturday">
+        <value xml:lang="en">Saturday</value>
+        <value xml:lang="zh">星期六</value>
+    </property>
+    <property key="Sunday">
+        <value xml:lang="en">Sunday</value>
+        <value xml:lang="zh">星期日</value>
+    </property> -->
+    <property key="startTime">
+        <!-- <value xml:lang="en">Start-of-Time</value> -->
+        <value xml:lang="en">Start Time</value>
+        <value xml:lang="zh">开始时间</value>
+    </property>
+    <property key="endTime">
+        <value xml:lang="en">End Time</value>
+        <value xml:lang="zh">结束时间</value>
+    </property>
+    <property key="BuyerPlatformID">
+        <value xml:lang="en">Buyer ID</value>
+        <value xml:lang="zh">买家平台ID</value>
+    </property>
+    <property key="PPTransactionID">
+        <value xml:lang="en">PP ID</value>
+        <value xml:lang="zh">PP交易ID</value>
+    </property>
+    <property key="TrackingNumber">
+        <value xml:lang="en">Tracking ID</value>
+        <value xml:lang="zh">跟踪号</value>
+    </property>
+    <property key="LogisticsModel">
+        <value xml:lang="en">Shipping method</value>
+        <value xml:lang="zh">物流方式</value>
+    </property>
+    <property key="phoneNumber">
+        <value xml:lang="en">Phone</value>
+        <value xml:lang="zh">电话号码</value>
+    </property>
+    <property key="orderNumber">
+        <value xml:lang="en">Order ID</value>
+        <value xml:lang="zh">订单编号</value>
+    </property>
+    <property key="consignee">
+        <value xml:lang="en">Recipient</value>
+        <value xml:lang="zh">收货人</value>
+    </property>
+    <property key="RecipientMailbox">
+        <value xml:lang="en">Email</value>
+        <value xml:lang="zh">收款人邮箱</value>
+    </property>
+    <property key="TransactionTime">
+        <value xml:lang="en">Transaction time (cn)</value>
+        <value xml:lang="zh">交易时间（中国）</value>
+    </property>
+    <property key="deliveryTime">
+        <value xml:lang="en">Shipping Time</value>
+        <value xml:lang="zh">发货时间</value>
+    </property>
+
+    <property key="search">
+        <value xml:lang="en">Search</value>
+        <value xml:lang="zh">查询</value>
+    </property>
+
+    <property key="TotalWeight">
+        <value xml:lang="en">Total Weight (kg)</value>
+        <value xml:lang="zh">总重量（千克）</value>
+    </property>
+    <property key="CourierCompany">
+        <value xml:lang="en">Shipping Company</value>
+        <value xml:lang="zh">快递公司</value>
+    </property>
+
+    <property key="Delay">
+        <value xml:lang="en">Delay (day)</value>
+        <value xml:lang="zh">延迟（天）</value>
+    </property>
+    <property key="sellerReferredToAs">
+        <value xml:lang="en">Seller Initial</value>
+        <value xml:lang="zh">卖家简称</value>
+    </property>
+    <property key="PayeeMailbox">
+        <value xml:lang="en">Payee's Email</value>
+        <value xml:lang="zh">收款人邮箱</value>
+    </property>
+    <property key="ConsigneeAddress">
+        <value xml:lang="en">Recipient's Address</value>
+        <value xml:lang="zh">收货人地址</value>
+    </property>
+    <property key="ReceivingCity">
+        <value xml:lang="en">Recipient City</value>
+        <value xml:lang="zh">收货城市</value>
+    </property>
+
+    <property key="StateOrProvince">
+        <value xml:lang="en">Recipient State Province</value>
+        <value xml:lang="zh">州或省</value>
+    </property>
+
+    <property key="CollectionPostcode">
+        <value xml:lang="en">Recipient Postcode</value>
+        <value xml:lang="zh">收货邮编</value>
+    </property>
+
+    <property key="CollectTheCountryCode">
+        <value xml:lang="en">Recipient Country Code</value>
+        <value xml:lang="zh">收货国家代码</value>
+    </property>
+    <property key="receivingCountry">
+        <value xml:lang="en">Recipient Country</value>
+        <value xml:lang="zh">收货国家名称</value>
+    </property>
+
+    <property key="ConsigneePhone">
+        <value xml:lang="en">Recipient Phone</value>
+        <value xml:lang="zh">收货人电话</value>
+    </property>
+
+    <property key="PaymentStatus">
+        <value xml:lang="en">Payment Status</value>
+        <value xml:lang="zh">支付状态</value>
+    </property>
+
+    <property key="ShopOrder">
+        <value xml:lang="en">Shop Order</value>
+        <value xml:lang="zh">店铺单号</value>
+    </property>
+
+    <property key="DespatchingPlatform">
+        <value xml:lang="en">Platform Shipping Flag</value>
+        <value xml:lang="zh">标记平台发货</value>
+    </property>
+
+    <property key="SellerPlatformID">
+        <value xml:lang="en">Seller Platform ID</value>
+        <value xml:lang="zh">卖家平台ID</value>
+    </property>
+
+    <property key="ConsigneeCountryCn">
+        <value xml:lang="en">Recipient Country (cn)</value>
+        <value xml:lang="zh">收货人国家中文</value>
+    </property>
+    <property key="deliveryStatus">
+        <value xml:lang="en">Shipping Status</value>
+        <value xml:lang="zh">发货状态</value>
+    </property>
+
+    <property key="orderStatus">
+        <value xml:lang="en">Order Status</value>
+        <value xml:lang="zh">订单状态</value>
+    </property>
+    <property key="PayerMailbox">
+        <value xml:lang="en">Payer's Email</value>
+        <value xml:lang="zh">付款人邮箱</value>
+    </property>
+
+    <property key="PaymentFirstName">
+        <value xml:lang="en">Payer First Name</value>
+        <value xml:lang="zh">付款人名</value>
+    </property>
+    <property key="PaymentLastName">
+        <value xml:lang="en">Payer Last Name</value>
+        <value xml:lang="zh">付款人姓</value>
+    </property>
+
+    <property key="CommodityInformation">
+        <value xml:lang="en">Product Information</value>
+        <value xml:lang="zh">商品信息</value>
+    </property>
+
+    <property key="PickingPerson">
+        <value xml:lang="en">Picker</value>
+        <value xml:lang="zh">拣货人</value>
+    </property>
+
+    <property key="OriginalPickingPerson">
+        <value xml:lang="en">Original Picker</value>
+        <value xml:lang="zh">原拣货人</value>
+    </property>
+
+    <property key="ReviewPerson">
+        <value xml:lang="en">Review Person</value>
+        <value xml:lang="zh">核单人</value>
+    </property>
+
+    <property key="ReviewOrderTime">
+        <value xml:lang="en">Order Review Time</value>
+        <value xml:lang="zh">核单时间</value>
+    </property>
+    <property key="WeighingTime">
+        <value xml:lang="en">Weighing Time</value>
+        <value xml:lang="zh">称重时间</value>
+    </property>
+
+    <property key="refundAmount">
+        <value xml:lang="en">Refund</value>
+        <value xml:lang="zh">退款金额</value>
+    </property>
+
+    <property key="RedirectionNumber">
+        <value xml:lang="en">Replacement ID</value>
+        <value xml:lang="zh">重寄单号</value>
+    </property>
+
+    <property key="CustomTag">
+        <value xml:lang="en">Custom Tag</value>
+        <value xml:lang="zh">自定义标签</value>
+    </property>
+    <property key="TypeOfPayment">
+        <value xml:lang="en">Payment Method</value>
+        <value xml:lang="zh">付款类型</value>
+    </property>
+
+    <property key="orderAmount">
+        <value xml:lang="en">Total Amount</value>
+        <value xml:lang="zh">订单金额</value>
+    </property>
+
+    <property key="TradingCurrencies">
+        <value xml:lang="en">Currency</value>
+        <value xml:lang="zh">交易币种</value>
+    </property>
+    <property key="StoreMode">
+        <value xml:lang="en">Store Shipping Method</value>
+        <value xml:lang="zh">店铺运输方式</value>
+    </property>
+    <property key="CourierFees">
+        <value xml:lang="en">Shipping Fees</value>
+        <value xml:lang="zh">快递费</value>
+    </property>
+    <property key="OperationLog">
+        <value xml:lang="en">Operation Log</value>
+        <value xml:lang="zh">操作日志</value>
+    </property>
+    <property key="OrderStatusTracking">
+        <value xml:lang="en">Order Status Tracking</value>
+        <value xml:lang="zh">订单状态跟踪</value>
+    </property>
+    <property key="OrderStatusTable">
+        <value xml:lang="en">Order Tracking Information</value>
+        <value xml:lang="zh">订单状态跟踪表</value>
+    </property>
+    <property key="MultipleSeparatedByCommas">
+        <value xml:lang="en">Multiple Separated By Commas</value>
+        <value xml:lang="zh">多个请用逗号隔开</value>
+    </property>
+
+
+
+
+
+
+
+
+</resource>

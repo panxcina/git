@@ -1,0 +1,1457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    <PartyIdentificationType partyIdentificationTypeId="WISH_API_KEY" description="WISH API Key"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" description="WISH authorization code"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_ACCESS_CODE" description="WISH access code"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_REFRESH_CODE" description="WISH refresh code"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_CLIENT_ID" description="WISH client ID"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_CLIENT_SECRET" description="WISH client secret"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_REDIRECT_URI" description="WISH redirect URI"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_EXPIRES_IN" description="WISH expires in"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_EXPIRY_TIME" description="WISH expiry time"/>
+    <PartyIdentificationType partyIdentificationTypeId="WISH_MERCHANT_USER_ID" description="WISH Merchant User Id"/>
+    <ProductStoreGroupType productStoreGroupTypeId="WISH_GROUP" description="Wish Group"/>
+    <ProductStoreGroup productStoreGroupId="WISH" productStoreGroupTypeId="WISH_GROUP" productStoreGroupName="Wish Group" description="Wish Group"/>
+    <Enumeration enumId="WISH_SALES_CHANNEL" enumTypeId="ORDER_SALES_CHANNEL" enumCode="WISH_CHANNEL" sequenceId="10" description="Wish Channel"/>
+    <RoleType roleTypeId="WISH_ACCOUNT" hasTable="N" description="Wish Account"/>
+    
+    
+    <Party partyId="wish_omega" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="wish_omega" groupName="wish_omega"/>
+    <PartyRole partyId="wish_omega" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="wish_omega" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkSG9NUTRweVRzaFpDcU5VYWc5QzY5dyRQOXByMmJ4ckhzTXRFUFlreEhBWFdMNG95THM="/>
+    <ProductStore productStoreId="wish_omega"
+    storeName="wish_omega"
+    title="wish_omega"
+    subtitle="wish_omega"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="wish_omega" roleTypeId="WISH_ACCOUNT" productStoreId="wish_omega" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    
+    <Party partyId="wish_delta" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="wish_delta" groupName="wish_delta"/>
+    <PartyRole partyId="wish_delta" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="wish_delta" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkTmliRW1MTzJsbkx1SGNQNGY0LlJNZyRIYUpJdTh6aHZoeWt6VFdSSmR0eWwxTkxVTEk="/>
+    <ProductStore productStoreId="wish_delta"
+    storeName="wish_delta"
+    title="wish_delta"
+    subtitle="wish_delta"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="wish_delta" roleTypeId="WISH_ACCOUNT" productStoreId="wish_delta" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    
+    <Party partyId="shoesbags" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="shoesbags" groupName="shoesbags"/>
+    <PartyRole partyId="shoesbags" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="shoesbags" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkRjZKMExnWEEuUDgvWi54ZHE5VzYxdyQvYmdOSXNFOVdNenA2S2QxQUJIR0ZDRGZUS3c="/>
+    <ProductStore productStoreId="shoesbags"
+    storeName="shoesbags"
+    title="shoesbags"
+    subtitle="shoesbags"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="shoesbags" roleTypeId="WISH_ACCOUNT" productStoreId="shoesbags" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    <Party partyId="wish-jewelries" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="wish-jewelries" groupName="wish-jewelries"/>
+    <PartyRole partyId="wish-jewelries" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkbXpQbVhFdEphWTNSR3FNMFJ1aGRxdyRpcU9GWmh2My9IdVJVUFliMm5RbXNzYlc1cE0="/>
+    <ProductStore productStoreId="wish-jewelries"
+    storeName="wish-jewelries"
+    title="wish-jewelries"
+    subtitle="wish-jewelries"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="wish-jewelries" roleTypeId="WISH_ACCOUNT" productStoreId="wish-jewelries" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    
+    
+    <Party partyId="healthbeauty" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="healthbeauty" groupName="HEALTH BEAUTY"/>
+    <PartyRole partyId="healthbeauty" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkZnkuRk1BYWc5TjY3dDFacURVSEl1USRSZ1dzdEluT2Z0Vy9yTXVHRXBmRW5ZNVRGN2c="/>
+    <ProductStore productStoreId="healthbeauty"
+    storeName="HEALTH BEAUTY"
+    title="HEALTH BEAUTY"
+    subtitle="HEALTH BEAUTY"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="healthbeauty" roleTypeId="WISH_ACCOUNT" productStoreId="healthbeauty" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    
+    <Party partyId="womanfashion" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="womanfashion" groupName="WOMAN FASHION"/>
+    <PartyRole partyId="womanfashion" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkbkJOaXpGa3I1ZHpiVzRzeEJzRFlXdyRYYklpbXExS3hPOTd1WmRTSW5pbTI5NTVjVUk="/>
+    <ProductStore productStoreId="womanfashion"
+    storeName="WOMAN FASHION"
+    title="WOMAN FASHION"
+    subtitle="WOMAN FASHION"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="womanfashion" roleTypeId="WISH_ACCOUNT" productStoreId="womanfashion" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    
+    
+    <Party partyId="homegarden" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="homegarden" groupName="HOME GARDEN"/>
+    <PartyRole partyId="homegarden" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="homegarden" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkQUNEa2ZNL1ptN01XQXVDYzg3NlhrZyQwZ3l0aU5Xb2RkUzlTRGJHRTUwLktwRmZwNmc="/>
+    <ProductStore productStoreId="homegarden"
+    storeName="HOME GARDEN"
+    title="HOME GARDEN"
+    subtitle="HOME GARDEN"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="homegarden" roleTypeId="WISH_ACCOUNT" productStoreId="homegarden" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    
+    
+    <Party partyId="manfashion" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="manfashion" groupName="MAN FASHION"/>
+    <PartyRole partyId="manfashion" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="manfashion" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkSi5UYzJ4dkRPQWNBSUlSd1RpbWxWQSRJZzlWRHF2a2dGMFFlL1c2dER3SzczVjBTbms="/>
+    <ProductStore productStoreId="manfashion"
+    storeName="MAN FASHION"
+    title="MAN FASHION"
+    subtitle="MAN FASHION"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="manfashion" roleTypeId="WISH_ACCOUNT" productStoreId="manfashion" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    
+    <Party partyId="businessindustry" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="businessindustry" groupName="BUSINESS INDUSTRY"/>
+    <PartyRole partyId="businessindustry" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkUDZmVTJ2c2Y0M3dQQVVDbzFmby9CdyQ0b2lTOXduV0dITFVNMi9ieFFzcHpqNk1jSE0="/>
+    <ProductStore productStoreId="businessindustry"
+    storeName="BUSINESS INDUSTRY"
+    title="BUSINESS INDUSTRY"
+    subtitle="BUSINESS INDUSTRY"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="businessindustry" roleTypeId="WISH_ACCOUNT" productStoreId="businessindustry" fromDate="2010-01-01 00:00:00.0"/>
+    
+    
+    <Party partyId="gudao-wish" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="gudao-wish" groupName="GUDAO WISH"/>
+    <PartyRole partyId="gudao-wish" roleTypeId="WISH_ACCOUNT"/>
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_API_KEY" idValue="JHBia2RmMiQxMDAkQldDTTBScWpGT0tja3pKR3FMWFcuZyRZRkVuQjFtNWdKa2JDaU1Fc05FcGcxRWRtLmM="/>
+    <ProductStore productStoreId="gudao-wish"
+    storeName="GUDAO WISH"
+    title="GUDAO WISH"
+    subtitle="6"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    oneInventoryFacility="Y"
+    isImmediatelyFulfilled="N"
+    checkInventory="Y"
+    requireInventory="N"
+    requirementMethodEnumId="PRODRQM_ATP"
+    reserveInventory="Y"
+    reserveOrderEnumId="INVRO_FIFO_REC"
+    balanceResOnOrderCreation="Y"
+    showOutOfStockProducts="Y"
+    viewCartOnAdd="N"
+    autoSaveCart="N"
+    addToCartReplaceUpsell="Y"
+    addToCartRemoveIncompat="Y"
+    showCheckoutGiftOptions="Y"
+    prodSearchExcludeVariants="N"
+    orderDecimalQuantity="N"
+    prorateShipping="Y"
+    reqShipAddrForDigItems="Y"
+    selectPaymentTypePerItem="N"
+    shipIfCaptureFails="Y"
+    splitPayPrefPerShpGrp="Y"
+    payToPartyId="gudao"
+    storeCreditAccountEnumId="FIN_ACCOUNT"
+    manualAuthIsCapture="Y"
+    retryFailedAuths="Y"
+    daysToCancelNonPay="15"
+    autoOrderCcTryExp="Y"
+    autoOrderCcTryOtherCards="Y"
+    autoOrderCcTryLaterNsf="Y"
+    storeCreditValidDays="30"
+    orderNumberPrefix="WSOM-"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    explodeOrderItems="N"
+    checkGcBalance="N"
+    autoInvoiceDigitalItems="Y"
+    autoApproveInvoice="Y"
+    autoApproveOrder="N"
+    reqReturnInventoryReceive="N"
+    defaultLocaleString="en_US"
+    defaultCurrencyUomId="USD"
+    headerApprovedStatus="ORDER_APPROVED"
+    itemApprovedStatus="ITEM_APPROVED"
+    digitalItemApprovedStatus="ITEM_APPROVED"
+    headerDeclinedStatus="ORDER_REJECTED"
+    itemDeclinedStatus="ITEM_REJECTED"
+    headerCancelStatus="ORDER_CANCELLED"
+    itemCancelStatus="ITEM_CANCELLED"
+    authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or contact customer service."
+    authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
+    authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email."
+    prorateTaxes="N"
+    showPricesWithVatTax="N"
+    showTaxIsExempt="N"
+    autoApproveReviews="N"
+    allowPassword="Y"
+    usePrimaryEmailUsername="N"
+    requireCustomerRole="Y"
+    enableAutoSuggestionList="N"
+    enableDigProdUpload="N"
+    />
+    <ProductStoreRole partyId="gudao-wish" roleTypeId="WISH_ACCOUNT" productStoreId="gudao-wish" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="wish_nicky" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="wish_nicky" groupName="WISH NICKY"/>
+    <PartyRole partyId="wish_nicky" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="wish_nicky"
+    storeName="WISH NICKY"
+    title="WISH NICKY"
+    subtitle="8"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="wish_nicky" roleTypeId="WISH_ACCOUNT" productStoreId="wish_nicky" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="magictomson" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="magictomson" groupName="magictomson"/>
+    <PartyRole partyId="magictomson" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="magictomson"
+    storeName="magictomson"
+    title="magictomson"
+    subtitle="9"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="magictomson" roleTypeId="WISH_ACCOUNT" productStoreId="magictomson" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="magictttt" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="magictttt" groupName="magictttt"/>
+    <PartyRole partyId="magictttt" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="magictttt"
+    storeName="magictttt"
+    title="magictttt"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="magictttt" roleTypeId="WISH_ACCOUNT" productStoreId="magictttt" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="lovelifettt" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="lovelifettt" groupName="lovelifettt"/>
+    <PartyRole partyId="lovelifettt" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="lovelifettt"
+    storeName="lovelifettt"
+    title="lovelifettt"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="lovelifettt" roleTypeId="WISH_ACCOUNT" productStoreId="lovelifettt" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="lovelifeloveyou" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="lovelifeloveyou" groupName="lovelifeloveyou"/>
+    <PartyRole partyId="lovelifeloveyou" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="lovelifeloveyou"
+    storeName="lovelifeloveyou"
+    title="lovelifeloveyou"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="lovelifeloveyou" roleTypeId="WISH_ACCOUNT" productStoreId="lovelifeloveyou" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="lovelifemore" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="lovelifemore" groupName="lovelifemore"/>
+    <PartyRole partyId="lovelifemore" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="lovelifemore"
+    storeName="lovelifemore"
+    title="lovelifemore"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="lovelifemore" roleTypeId="WISH_ACCOUNT" productStoreId="lovelifemore" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="nowinter" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="nowinter" groupName="nowinter"/>
+    <PartyRole partyId="nowinter" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="nowinter"
+    storeName="nowinter"
+    title="nowinter"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="nowinter" roleTypeId="WISH_ACCOUNT" productStoreId="nowinter" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="perfectttt" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="perfectttt" groupName="perfectttt"/>
+    <PartyRole partyId="perfectttt" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="perfectttt"
+    storeName="perfectttt"
+    title="perfectttt"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="perfectttt" roleTypeId="WISH_ACCOUNT" productStoreId="perfectttt" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="loveulife" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="loveulife" groupName="loveulife"/>
+    <PartyRole partyId="loveulife" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="loveulife"
+    storeName="loveulife"
+    title="loveulife"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="loveulife" roleTypeId="WISH_ACCOUNT" productStoreId="loveulife" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="beautifulmore66" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="beautifulmore66" groupName="beautifulmore66"/>
+    <PartyRole partyId="beautifulmore66" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="beautifulmore66"
+    storeName="beautifulmore66"
+    title="beautifulmore66"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="beautifulmore66" roleTypeId="WISH_ACCOUNT" productStoreId="beautifulmore66" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <Party partyId="bewithus" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="bewithus" groupName="bewithus"/>
+    <PartyRole partyId="bewithus" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="bewithus"
+    storeName="bewithus"
+    title="bewithus"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="bewithus" roleTypeId="WISH_ACCOUNT" productStoreId="bewithus" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5657f4ec437dbf127e0d1228"/>
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="12213082470c45d0a5a0a5bcc5f44502"/>
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="2f3227934712456cae9cb960d78d26a7"/>
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="fed8270ffcc14f768ce75db7942e2700"/>
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f84662490ddf491ab498ea2bfdef8ce0"/>
+    <PartyIdentification partyId="gudao-wish" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="53e18f8746188e305760c979"/>
+    
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5657f6873a698c0ca16ab64f"/>
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="d5a37b0bcab644beb1d8ad342a7f4053"/>
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="2777e8da08d84896bbb447bf5207fc2b"/>
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="59cd5b6defa94b8993fe6d2094638243"/>
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="6d921a0c2a474cf2abfa9f2fb053295b"/>
+    <PartyIdentification partyId="businessindustry" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="542a670d4f66d92eba599454"/>
+    
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5657f9c43a698c0cac6ab84c"/>
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="7d54087f31dc4624a8c0dc8f37c3334e"/>
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="7582547924af4597a619894f380a2a56"/>
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="29a628ae88c64f46888a1514c9b6a8ea"/>
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="e4b53d7d3e3e408bb84ac1656ffeef3d"/>
+    <PartyIdentification partyId="wish-jewelries" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="542a684af6d296753b3cd351"/>
+    
+    <PartyIdentification partyId="listart99" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5657fbc2437dbf12870d11c7"/>
+    <PartyIdentification partyId="listart99" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="80967c925a0a45b5a46ad687edcc2773"/>
+    <PartyIdentification partyId="listart99" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="listart99" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="a2b137f8166f409187b84e1cd883220c"/>
+    <PartyIdentification partyId="listart99" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="75c2edd6d0ac4b2fbc419a83c73619cd"/>
+    <PartyIdentification partyId="listart99" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="64840641d0904d17909bdae1124d3913"/>
+    <PartyIdentification partyId="listart99" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="5505c8d0b9cb3b09656fd6be"/>
+    
+    <PartyIdentification partyId="tianyuanwish" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5657fe0c3a698c0c906ab4ac"/>
+    <PartyIdentification partyId="tianyuanwish" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="9f45108e425c4ff0b1a6225314243510"/>
+    <PartyIdentification partyId="tianyuanwish" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="tianyuanwish" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="f0e9bd88179f43b99ebda67caf53476a"/>
+    <PartyIdentification partyId="tianyuanwish" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="35ceb90f7fdb40cb802f63648abd10cf"/>
+    <PartyIdentification partyId="tianyuanwish" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="ffd4f241f86544a89716f7e59d192596"/>
+    <PartyIdentification partyId="tianyuanwish" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="560a2830d385a317900a24ac"/>
+    
+    <PartyIdentification partyId="wish_960live" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5657ff8e5643ed12a0d3d914"/>
+    <PartyIdentification partyId="wish_960live" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="15e2f2b3a3e34ffe8829f764b98e5fc5"/>
+    <PartyIdentification partyId="wish_960live" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="wish_960live" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="39f881d796ec4b05b1b59c79b5548a85"/>
+    <PartyIdentification partyId="wish_960live" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="3d17524738dc42c489d9eed0c94c52da"/>
+    <PartyIdentification partyId="wish_960live" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="a1b2f78c58ff40e4b9c0b388112d2eff"/>
+    <PartyIdentification partyId="wish_960live" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="5577c24f405ff41d018736b5"/>
+    
+    <PartyIdentification partyId="wish_nicky" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="565801ccf0fd32129f0b0108"/>
+    <PartyIdentification partyId="wish_nicky" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="ca117da6f5274293a826da8015006e0c"/>
+    <PartyIdentification partyId="wish_nicky" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="wish_nicky" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="fe15b2c019c944f883b5ad7108e77edf"/>
+    <PartyIdentification partyId="wish_nicky" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2421403241684bea9d2a346f62919e22"/>
+    <PartyIdentification partyId="wish_nicky" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="e494a04c23c64823afc2270c3f9ac661"/>
+    <PartyIdentification partyId="wish_nicky" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="56555ecf3a698c5aade33da9"/>
+    
+    <PartyIdentification partyId="magictomson" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="56d7e49b3a698c6010eebde1"/>
+    <PartyIdentification partyId="magictomson" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="d4ad71bd95cf407c9bc2bc5bf2829bba"/>
+    <PartyIdentification partyId="magictomson" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="magictomson" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="b7351976acbb4f4180ac0e80b24bcb99"/>
+    <PartyIdentification partyId="magictomson" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="f8450cd1e5dc4bb7b8f5de028312cd38"/>
+    <PartyIdentification partyId="magictomson" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="ca7efa4de82e48d1a223e190eeeff6e4"/>
+    <PartyIdentification partyId="magictomson" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="56cad0388bd26e5e095e62ac"/>
+    
+    <PartyIdentification partyId="magictttt" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="56d7e756e7df39169e6e6ab8"/>
+    <PartyIdentification partyId="magictttt" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="f71e312a49b04b88b7354e27ba67316c"/>
+    <PartyIdentification partyId="magictttt" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="magictttt" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="ed90a8f39c70478f8bdc12cc01921864"/>
+    <PartyIdentification partyId="magictttt" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="a9ccce01f5204108930c8560b8d2c4e6"/>
+    <PartyIdentification partyId="magictttt" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="18ac7c0f1a1f4479a9b2b259eb80a16d"/>
+    <PartyIdentification partyId="magictttt" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="56cbe6aecaa89b3752f2c1f0"/>
+    
+    <PartyIdentification partyId="lovelifettt" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57232b366c7d675ba4dd1caa"/>
+    <PartyIdentification partyId="lovelifettt" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="4255dcee3c804bdb92763d85e49eb89f"/>
+    <PartyIdentification partyId="lovelifettt" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="lovelifettt" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="1ca99f49a905431f9810395de60bff32"/>
+    <PartyIdentification partyId="lovelifettt" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="49143f42a2f8470eb568a63857486b74"/>
+    <PartyIdentification partyId="lovelifettt" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="333e9e605e57465bad2bea6ca81636dc"/>
+    <PartyIdentification partyId="lovelifettt" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="570f4136c277d41a2a0ab8e5"/>
+    
+    <PartyIdentification partyId="lovelifeloveyou" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="572328573afab8066c1eeaa8"/>
+    <PartyIdentification partyId="lovelifeloveyou" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="c2a0fad05b8b44da8936d58a55cbe936"/>
+    <PartyIdentification partyId="lovelifeloveyou" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="lovelifeloveyou" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="a3d52a8586274e5db444550f5565ee20"/>
+    <PartyIdentification partyId="lovelifeloveyou" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="b1bbfe4b1db348c08cfcd1f423c3104c"/>
+    <PartyIdentification partyId="lovelifeloveyou" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="942f162039fd471bb4d36cc03fcc4ad3"/>
+    <PartyIdentification partyId="lovelifeloveyou" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="570f540091df4c58e5e491d0"/>
+    
+    <PartyIdentification partyId="lovelifemore" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57232f0ce09aa65efddfd64b"/>
+    <PartyIdentification partyId="lovelifemore" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="8108a9d51c364182b5a3d42fa69b2464"/>
+    <PartyIdentification partyId="lovelifemore" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="lovelifemore" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="474ee08f43224cc2988eed0328050c1c"/>
+    <PartyIdentification partyId="lovelifemore" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="d2faa5904f9b454aa8130219616dbde5"/>
+    <PartyIdentification partyId="lovelifemore" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="891c12f4a02a4f638211a4e677d31696"/>
+    <PartyIdentification partyId="lovelifemore" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="570f66608ecb845af4806810"/>
+    
+    <PartyIdentification partyId="nowinter" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="572337bddaacdb0523d466fe"/>
+    <PartyIdentification partyId="nowinter" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="025a9d342aec42d1a9bc32df9c295450"/>
+    <PartyIdentification partyId="nowinter" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="nowinter" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="8f259764e85f40a6aa50af9762d05333"/>
+    <PartyIdentification partyId="nowinter" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="f17e84ae9c7443ffae582d003ea6dbdc"/>
+    <PartyIdentification partyId="nowinter" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="4429c90a0ffa46629fe1ad983ac36d58"/>
+    <PartyIdentification partyId="nowinter" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="570f67b491df4c58e9e49395"/>
+    
+    <PartyIdentification partyId="perfectttt" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57232e61daacdb051ad46685"/>
+    <PartyIdentification partyId="perfectttt" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="fb6d09d05ac24b7bacce39196bf1c8d5"/>
+    <PartyIdentification partyId="perfectttt" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="perfectttt" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="08eb83814fad4fbf9fa333541b9b2191"/>
+    <PartyIdentification partyId="perfectttt" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="823801b17bde48a09f8c1da8c0bede3f"/>
+    <PartyIdentification partyId="perfectttt" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="0a6bf6f40e2f49cda508b06b69157ad6"/>
+    <PartyIdentification partyId="perfectttt" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="56e7e23d2d53db74f11db0e4"/>
+    
+    
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5723236661cace787ad16d79"/>
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="ee3c4ae36a9c4e3b9abd8ae86cd1f129"/>
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="dac70733c8d84da8a26e0ba48738a6f5"/>
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="26dae55b3e184506a3244bf413b3c7f0"/>
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="064ba0ab14b24d379732e41ab74993e7"/>
+    <PartyIdentification partyId="womanfashion" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="5427ad059719cd356322c916"/>
+    
+    
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57231fb4e178b71d7c1b6a3e"/>
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="7bf9b432f6554daea64fa3529990b390"/>
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="4dcb656ef3164d108abac448fda0fbd7"/>
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="38107ec1d98a4c6c9e40fe5961ae0352"/>
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="ee4c853aba7e45a29a6988da41589ded"/>
+    <PartyIdentification partyId="healthbeauty" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="542a64784f66d92ec359947f"/>
+    
+    
+    <PartyIdentification partyId="funshopping365" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="56849e07d8a1042b84e93fbb"/>
+    <PartyIdentification partyId="funshopping365" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="09b6fff9377d4fb8bd32c2f4acddf93e"/>
+    <PartyIdentification partyId="funshopping365" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="funshopping365" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="60e3277795024894a7b4dc7c3a758ead"/>
+    <PartyIdentification partyId="funshopping365" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="a9ccce01f5204108930c8560b8d2c4e6"/>
+    <PartyIdentification partyId="funshopping365" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="18ac7c0f1a1f4479a9b2b259eb80a16d"/>
+    <PartyIdentification partyId="funshopping365" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="56cbe6aecaa89b3752f2c1f0"/>
+    
+    <PartyIdentification partyId="loveulife" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441cff0b2da4594e042065"/>
+    <PartyIdentification partyId="loveulife" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="d2597e109b144c7eb120efe6797e84e2"/>
+    <PartyIdentification partyId="loveulife" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="loveulife" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="8913975b67b243b7b5447da4bb294fa9"/>
+    <PartyIdentification partyId="loveulife" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="fb3b5b24978f4ec8ba7220d4c6f54cf8"/>
+    <PartyIdentification partyId="loveulife" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="579ec891a62e40368eea7bc30a2bfaa7"/>
+    <PartyIdentification partyId="loveulife" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="5730315941edb3594d5936a5"/>
+    
+    
+    <PartyIdentification partyId="beautifulmore66" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="5723397d2f474b10073e8154"/>
+    <PartyIdentification partyId="beautifulmore66" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="c7e5ac648bd641cf88b8ff0d4d1a16df"/>
+    <PartyIdentification partyId="beautifulmore66" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="beautifulmore66" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="eb12386ec03c4736aebbba4bfb0922b1"/>
+    <PartyIdentification partyId="beautifulmore66" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="c16e7e6a8d1c43a8a6c16dc74a92f61d"/>
+    <PartyIdentification partyId="beautifulmore66" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="baedb2182bc2482297be6a5dbb25f54a"/>
+    <PartyIdentification partyId="beautifulmore66" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="5710885ccb5a6b59231694cf"/>
+    
+    
+    <PartyIdentification partyId="bewithus" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="bewithus" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="bewithus" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="bewithus" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="bewithus" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="bewithus" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="bewithus" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    
+    <Party partyId="ultraman" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="ultraman" groupName="ultraman"/>
+    <PartyRole partyId="ultraman" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="ultraman"
+    storeName="ultraman"
+    title="ultraman"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="ultraman" roleTypeId="WISH_ACCOUNT" productStoreId="ultraman" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="ultraman" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="578dd8439ad0d40ede164775"/>
+    <PartyIdentification partyId="ultraman" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="b71677a6efbc49a183df0b719901442a"/>
+    <PartyIdentification partyId="ultraman" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="ultraman" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="38434f42c4dd45aaa1bd76176e95ea3a"/>
+    <PartyIdentification partyId="ultraman" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="b9e5d268dd194aefa7f65eee0b2b1264"/>
+    <PartyIdentification partyId="ultraman" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="06243012c1184f76822df3f61caf49e9"/>
+    <PartyIdentification partyId="ultraman" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="5742bf5d17947059439591ba"/>
+    
+    
+    <Party partyId="lovemnalways" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="lovemnalways" groupName="lovemnalways"/>
+    <PartyRole partyId="lovemnalways" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="lovemnalways"
+    storeName="lovemnalways"
+    title="lovemnalways"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="lovemnalways" roleTypeId="WISH_ACCOUNT" productStoreId="lovemnalways" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="lovemnalways" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="578ddcd40c26c30ebadffda5"/>
+    <PartyIdentification partyId="lovemnalways" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="ba3fcb49f57a41899e348774c39e98a3"/>
+    <PartyIdentification partyId="lovemnalways" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="lovemnalways" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="b4c0003ea006477689b7193cf8782182"/>
+    <PartyIdentification partyId="lovemnalways" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="a87384daf76c4614bbdc9be56ca79111"/>
+    <PartyIdentification partyId="lovemnalways" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="73121911ee4a4332b457d57364613ace"/>
+    <PartyIdentification partyId="lovemnalways" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574fde71419f575cc18e1c62"/>
+    
+    
+    <Party partyId="travelmore" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="travelmore" groupName="travelmore"/>
+    <PartyRole partyId="travelmore" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="travelmore"
+    storeName="travelmore"
+    title="travelmore"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="travelmore" roleTypeId="WISH_ACCOUNT" productStoreId="travelmore" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="travelmore" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="578ddddba1dd410ecd4b282b"/>
+    <PartyIdentification partyId="travelmore" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="eea329fc6c0e492d87582d431da7bcc8"/>
+    <PartyIdentification partyId="travelmore" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="travelmore" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="9392ec9b86a848cfadd2801f0d842c06"/>
+    <PartyIdentification partyId="travelmore" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="d72905ef437f468f98c3f1ff2062cadf"/>
+    <PartyIdentification partyId="travelmore" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="8e5c4600dd434665bdcb8fe997b8678b"/>
+    <PartyIdentification partyId="travelmore" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="577df9da28d95d48d190a120"/>
+    
+    
+    <Party partyId="hacomeonbaby" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="hacomeonbaby" groupName="hacomeonbaby"/>
+    <PartyRole partyId="hacomeonbaby" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="hacomeonbaby"
+    storeName="hacomeonbaby"
+    title="hacomeonbaby"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="hacomeonbaby" roleTypeId="WISH_ACCOUNT" productStoreId="hacomeonbaby" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="hacomeonbaby" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="hacomeonbaby" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="hacomeonbaby" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="hacomeonbaby" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="hacomeonbaby" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="hacomeonbaby" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="hacomeonbaby" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="easylifeforyou" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="easylifeforyou" groupName="easylifeforyou"/>
+    <PartyRole partyId="easylifeforyou" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="easylifeforyou"
+    storeName="easylifeforyou"
+    title="easylifeforyou"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="easylifeforyou" roleTypeId="WISH_ACCOUNT" productStoreId="easylifeforyou" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="easylifeforyou" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="easylifeforyou" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="easylifeforyou" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="easylifeforyou" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="easylifeforyou" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="easylifeforyou" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="easylifeforyou" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="manifique" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="manifique" groupName="manifique"/>
+    <PartyRole partyId="manifique" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="manifique"
+    storeName="manifique"
+    title="manifique"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="manifique" roleTypeId="WISH_ACCOUNT" productStoreId="manifique" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="manifique" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="manifique" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="manifique" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="manifique" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="manifique" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="manifique" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="manifique" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="thelovelystore" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="thelovelystore" groupName="thelovelystore"/>
+    <PartyRole partyId="thelovelystore" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="thelovelystore"
+    storeName="thelovelystore"
+    title="thelovelystore"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="thelovelystore" roleTypeId="WISH_ACCOUNT" productStoreId="thelovelystore" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="thelovelystore" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="thelovelystore" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="thelovelystore" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="thelovelystore" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="thelovelystore" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="thelovelystore" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="thelovelystore" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="readmore" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="readmore" groupName="readmore"/>
+    <PartyRole partyId="readmore" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="readmore"
+    storeName="readmore"
+    title="readmore"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="readmore" roleTypeId="WISH_ACCOUNT" productStoreId="readmore" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="readmore" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="readmore" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="readmore" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="readmore" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="readmore" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="readmore" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="readmore" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="fitmore" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="fitmore" groupName="fitmore"/>
+    <PartyRole partyId="fitmore" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="fitmore"
+    storeName="fitmore"
+    title="fitmore"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="fitmore" roleTypeId="WISH_ACCOUNT" productStoreId="fitmore" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="fitmore" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="fitmore" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="fitmore" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="fitmore" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="fitmore" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="fitmore" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="fitmore" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="snowfiled" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="snowfiled" groupName="snowfiled"/>
+    <PartyRole partyId="snowfiled" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="snowfiled"
+    storeName="snowfiled"
+    title="snowfiled"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="snowfiled" roleTypeId="WISH_ACCOUNT" productStoreId="snowfiled" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="snowfiled" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="snowfiled" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="snowfiled" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="snowfiled" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="snowfiled" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="snowfiled" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="snowfiled" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="makeyoubetter" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="makeyoubetter" groupName="makeyoubetter"/>
+    <PartyRole partyId="makeyoubetter" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="makeyoubetter"
+    storeName="makeyoubetter"
+    title="makeyoubetter"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="makeyoubetter" roleTypeId="WISH_ACCOUNT" productStoreId="makeyoubetter" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="makeyoubetter" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="makeyoubetter" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="makeyoubetter" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="makeyoubetter" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="makeyoubetter" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="makeyoubetter" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="makeyoubetter" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="allofme" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="allofme" groupName="allofme"/>
+    <PartyRole partyId="allofme" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="allofme"
+    storeName="allofme"
+    title="allofme"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="allofme" roleTypeId="WISH_ACCOUNT" productStoreId="allofme" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="allofme" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="allofme" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="allofme" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="allofme" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="allofme" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="allofme" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="allofme" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+    <Party partyId="minason999" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="minason999" groupName="minason999"/>
+    <PartyRole partyId="minason999" roleTypeId="WISH_ACCOUNT"/>
+    <ProductStore productStoreId="minason999"
+    storeName="minason999"
+    title="minason999"
+    subtitle="10"
+    companyName="Gudao"
+    primaryStoreGroupId="WISH"
+    isDemoStore="N"
+    visualThemeId="EC_DEFAULT"
+    InventoryFacilityId="PDWarehouse"
+    defaultSalesChannelEnumId="WISH_SALES_CHANNEL"
+    />
+    <ProductStoreRole partyId="minason999" roleTypeId="WISH_ACCOUNT" productStoreId="minason999" fromDate="2010-01-01 00:00:00.0"/>
+    
+    <PartyIdentification partyId="minason999" partyIdentificationTypeId="WISH_CLIENT_ID" idValue="57441ed5939e4b596949451f"/>
+    <PartyIdentification partyId="minason999" partyIdentificationTypeId="WISH_CLIENT_SECRET" idValue="0daf6076dea5443bb4d569ae4bab2ff4"/>
+    <PartyIdentification partyId="minason999" partyIdentificationTypeId="WISH_REDIRECT_URI" idValue="https://merchant.wish.com"/>
+    <PartyIdentification partyId="minason999" partyIdentificationTypeId="WISH_AUTHORIZATION_CODE" idValue="6f96469995014e9b94b5a4b423246249"/>
+    <PartyIdentification partyId="minason999" partyIdentificationTypeId="WISH_ACCESS_CODE" idValue="2c013a560c9e4508a8ad5c98ef7f1f45"/>
+    <PartyIdentification partyId="minason999" partyIdentificationTypeId="WISH_REFRESH_CODE" idValue="f4b4ef238ae5405ea87cc4800261a644"/>
+    <PartyIdentification partyId="minason999" partyIdentificationTypeId="WISH_MERCHANT_USER_ID" idValue="574264d7a6b37c59504decbb"/>
+    
+    
+</entity-engine-xml>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>bellyanna Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="createProductEbaySetting" default-entity-name="ProductEbaySetting" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/catalog/CatalogServices.xml" invoke="createProductEbaySetting" auth="true">
+        <description>Create a ProductEbaySetting</description>
+        <permission-service service-name="productGenericPermission" main-action="CREATE"/>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="updateProductEbaySetting" default-entity-name="ProductEbaySetting" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/catalog/CatalogServices.xml" invoke="updateProductEbaySetting" auth="true">
+        <description>Update a ProductEbaySetting</description>
+        <permission-service service-name="productGenericPermission" main-action="UPDATE"/>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="deleteProductEbaySetting" default-entity-name="ProductEbaySetting" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/catalog/CatalogServices.xml" invoke="deleteProductEbaySetting" auth="true">
+        <description>Update a ProductEbaySetting</description>
+        <permission-service service-name="productGenericPermission" main-action="DELETE"/>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    <service name="createProductStoreEbaySetting" default-entity-name="ProductStoreEbaySetting" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/catalog/CatalogServices.xml" invoke="createProductStoreEbaySetting" auth="true">
+        <description>Create a ProductStoreEbaySetting</description>
+        <permission-service service-name="productGenericPermission" main-action="CREATE"/>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="updateProductStoreEbaySetting" default-entity-name="ProductStoreEbaySetting" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/catalog/CatalogServices.xml" invoke="updateProductStoreEbaySetting" auth="true">
+        <description>Update a ProductStoreEbaySetting</description>
+        <permission-service service-name="productGenericPermission" main-action="UPDATE"/>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="catalogTest" auth="true" engine="java" transaction-timeout="6000"
+        location="com.bellyanna.catalog.catalogService" invoke="catalogTest">
+        <description>Catalog Test Service</description>
+        <attribute name="facilityId" type="String" mode="IN" optional="false"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="fixInventoryReservation" auth="true" engine="java" transaction-timeout="6000"
+        location="com.bellyanna.catalog.catalogService" invoke="fixInventoryReservation">
+        <description>Fix Inventory Reservation</description>
+        <attribute name="facilityId" type="String" mode="IN" optional="false"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateProductPictureExternalSingle" auth="true" engine="java" transaction-timeout="360000"
+        location="com.bellyanna.catalog.catalogService" invoke="updateProductPictureExternal">
+        <description>Update Product Picture External</description>
+        <attribute name="productId" type="String" mode="IN" optional="false"/>
+        <attribute name="removeExisting" type="String" mode="IN" optional="true"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateProductPictureExternalBulk" auth="true" engine="java" transaction-timeout="360000"
+        location="com.bellyanna.catalog.catalogService" invoke="updateProductPictureExternalBulk" use-transaction="false">
+        <description>Update Product Picture External</description>
+        <attribute name="removeExisting" type="String" mode="IN" optional="true"/>
+        <!--<attribute name="productId" type="String" mode="IN" optional="false"/>-->
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="removeProductPictureExternal" engine="java"
+        location="com.bellyanna.catalog.catalogService" invoke="removeProductPictureExternal">
+        <description>Removes Product Picture External</description>
+        <attribute name="productId" type="String" mode="IN" optional="false"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateProductEbayDescription" engine="java"
+        location="com.bellyanna.catalog.catalogService" invoke="updateProductEbayDescription">
+        <description>Update Product eBay Description</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="productId" type="String" mode="IN" optional="false"/>
+        <attribute name="altenate" type="String" mode="IN" optional="true"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateProductEbayDescriptionBulk" engine="java"
+        location="com.bellyanna.catalog.catalogService" invoke="updateProductEbayDescriptionBulk">
+        <description>Update Product eBay Description</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="removeExisting" type="String" mode="IN" optional="true"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+</services>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-menu.xsd">
+    <menu name="MainAppBar" title="${uiLabelMap.bellyannaApplication}" extends="CommonAppBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="main" title="${uiLabelMap.CommonMain}"><link target="main"/></menu-item>
+        <menu-item name="eBay Module" title="eBay Module"><link target="ebayModule"></link></menu-item>
+        <menu-item name="Bulk Module" title="Bulk Module"><link target="bulkModule"></link></menu-item>
+    </menu>
+    
+    <menu name="EbayModuleBar" title=" " extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+    	<menu-item name="Most Watched Item" title="eBay Most Watched Item">
+        	<link target="ebayMostWatchedItem"></link>
+    	</menu-item>
+        <menu-item name="eBay Active Listing Quantity" title="eBay Active Listing">
+        	<link target="ebayActiveListing"></link>
+    	</menu-item>
+        <menu-item name="Product Listing Status" title="Product Listing Status">
+        	<link target="productListingStatus"></link>
+    	</menu-item>
+    </menu>
+    
+    <menu name="RefundTabBar" title=" " extends="CommonAppBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="processRefund" title="Process Refund">
+            <link target="refundList"/>
+        </menu-item>
+        <menu-item name="completedRefundList" title="Completed Refund List">
+            <link target=""/>
+        </menu-item>
+    </menu>
+    
+    <menu name="ImportSubTabBar" title=" " extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="bulkImport" title="Bulk Import">
+            <link target="bulkImport"/>
+        </menu-item>
+        <menu-item name="bulkUpdate" title="Bulk Update">
+            <link target="bulkUpdate"/>
+        </menu-item>
+    </menu>
+                
+</menus>

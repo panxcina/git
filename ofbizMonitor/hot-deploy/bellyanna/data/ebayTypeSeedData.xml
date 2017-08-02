@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+<!--
+ EbaySiteCode
+ HitCounterCodeType
+ BuyerPaymentMethodCodeType
+ RefundOptionsCodeType
+ ReturnsAcceptedCodeType
+ ReturnsWithinCodeType
+ ShipCostPaidByCodeType
+ ListingDurationCodeType
+ ListingTypeCodeType
+ GalleryTypeCodeType
+ PhotoDisplayCodeType
+ EndReasonCodeType
+ ShippingTypeCodeType
+ -->
+
+
+<EbaySiteCode ebaySiteId="2" ebayGlobalId="EBAY-ENCA" abbreviation="CA" ebaySiteName="Canada" ebaySite="Canada" language="en-CA" territory="CA" currency="CAD" siteUrl="http://www.ebay.ca"/>
+<EbaySiteCode ebaySiteId="3" ebayGlobalId="EBAY-GB" abbreviation="UK" ebaySiteName="United Kingdom" ebaySite="UK" language="en-GB" territory="GB" currency="GBP" siteUrl="http://www.ebay.co.uk"/>
+<EbaySiteCode ebaySiteId="15" ebayGlobalId="EBAY-AU" abbreviation="AU" ebaySiteName="Australia" ebaySite="Australia" language="en-AU" territory="AU" currency="AUD" siteUrl="http://www.ebay.com.au"/>
+<EbaySiteCode ebaySiteId="16" ebayGlobalId="EBAY-AT" abbreviation="AT" ebaySiteName="Austria" ebaySite="Austria" language="de-AT" territory="AT" currency="EUR" siteUrl="http://www.ebay.at"/>
+<EbaySiteCode ebaySiteId="23" ebayGlobalId="EBAY-FRBE" abbreviation="BEFR" ebaySiteName="Belgium (French)" ebaySite="Belgium_French" language="fr-BE" territory="BE" currency="EUR" siteUrl="http://www.ebay.be"/>
+<EbaySiteCode ebaySiteId="71" ebayGlobalId="EBAY-FR" abbreviation="FR" ebaySiteName="France" ebaySite="France" language="fr-FR" territory="FR" currency="EUR" siteUrl="http://www.ebay.fr"/>
+<EbaySiteCode ebaySiteId="77" ebayGlobalId="EBAY-DE" abbreviation="DE" ebaySiteName="Germany" ebaySite="Germany" language="en-DE" territory="DE" currency="EUR" siteUrl="http://www.ebay.de"/>
+<EbaySiteCode ebaySiteId="101" ebayGlobalId="EBAY-IT" abbreviation="IT" ebaySiteName="Italy" ebaySite="Italy" language="it-IT" territory="IT" currency="EUR" siteUrl="http://www.ebay.it"/>
+<EbaySiteCode ebaySiteId="123" ebayGlobalId="EBAY-NLBE" abbreviation="BENL" ebaySiteName="Belgium (Dutch)" ebaySite="Belgium_Dutch" language="nl-BE" territory="BE" currency="EUR" siteUrl="http://www.ebay.be"/>
+<EbaySiteCode ebaySiteId="146" ebayGlobalId="EBAY-NL" abbreviation="NL" ebaySiteName="Netherlands" ebaySite="Netherlands" language="nl-NL" territory="NL" currency="EUR" siteUrl="http://www.ebay.nl"/>
+<EbaySiteCode ebaySiteId="186" ebayGlobalId="EBAY-ES" abbreviation="ES" ebaySiteName="Spain" ebaySite="Spain" language="es-ES" territory="ES" currency="EUR" siteUrl="http://www.ebay.es"/>
+<EbaySiteCode ebaySiteId="193" ebayGlobalId="EBAY-CH" abbreviation="CH" ebaySiteName="Switzerland" ebaySite="Switzerland" language="de-CH" territory="CH" currency="CHF" siteUrl="http://www.ebay.ch"/>
+<EbaySiteCode ebaySiteId="201" ebayGlobalId="EBAY-HK" abbreviation="HK" ebaySiteName="Hong Kong" ebaySite="Hong Kong" language="zh-Hant" territory="HK" currency="HKD" siteUrl="http://www.ebay.com.hk"/>
+<EbaySiteCode ebaySiteId="203" ebayGlobalId="EBAY-IN" abbreviation="IN" ebaySiteName="India" ebaySite="India" language="en-IN" territory="IN" currency="INR" siteUrl="http://www.ebay.in"/>
+<EbaySiteCode ebaySiteId="205" ebayGlobalId="EBAY-IE" abbreviation="IE" ebaySiteName="Ireland" ebaySite="Ireland" language="en-IE" territory="IE" currency="EUR" siteUrl="http://www.ebay.ie"/>
+<EbaySiteCode ebaySiteId="207" ebayGlobalId="EBAY-MY" abbreviation="MY" ebaySiteName="Malaysia" ebaySite="Malaysia" language="en-MY" territory="MY" currency="MYR" siteUrl="http://www.ebay.com.my"/>
+<EbaySiteCode ebaySiteId="210" ebayGlobalId="EBAY-FRCA" abbreviation="CAFR" ebaySiteName="CanadaFrench" ebaySite="CanadaFrench" language="fr-CA" territory="CA" currency="CAD" siteUrl="http://www.cafr.ebay.ca"/>
+<EbaySiteCode ebaySiteId="211" ebayGlobalId="EBAY-PH" abbreviation="PH" ebaySiteName="Philippines" ebaySite="Philippines" language="en-PH" territory="PH" currency="PHP" siteUrl="http://www.ebay.ph"/>
+<EbaySiteCode ebaySiteId="212" ebayGlobalId="EBAY-PL" abbreviation="PL" ebaySiteName="Poland" ebaySite="Poland" language="pl-PL" territory="PL" currency="PLN" siteUrl="http://www.ebay.pl"/>
+<EbaySiteCode ebaySiteId="216" ebayGlobalId="EBAY-SG" abbreviation="SG" ebaySiteName="Singapore" ebaySite="Singapore" language="en-SG" territory="SG" currency="SGD" siteUrl="http://www.ebay.com.sg"/>
+<EbaySiteCode ebaySiteId="0" ebayGlobalId="EBAY-US" abbreviation="US" ebaySiteName="USA" ebaySite="US" language="en-US" territory="US" currency="USD" siteUrl="http://www.ebay.com"/>
+<EbaySiteCode ebaySiteId="100" ebayGlobalId="EBAY-MOTOR" abbreviation="MOTORS" ebaySiteName="eBay Motors" ebaySite="eBayMotors" language="en-US" territory="US" currency="USD" siteUrl="http://www.ebay.com"/>
+
+
+
+<HitCounterCodeType hitCounterCode="BasicStyle" shortDescription="BasicStyle" longDescription="A basic style hit counter."/>
+<HitCounterCodeType hitCounterCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use"/>
+<HitCounterCodeType hitCounterCode="GreenLED" shortDescription="GreenLED" longDescription="A green LED, computer-style hit counter (US only). Non-US sites will return errors if they use GreenLED as input, and should use RetroStyle instead."/>
+<HitCounterCodeType hitCounterCode="Hidden" shortDescription="Hidden" longDescription="A hidden hit counter (US only). The number of page views will only be available to the item's seller. For faster 'View Item' page loads, use HiddenStyle."/>
+<HitCounterCodeType hitCounterCode="HiddenStyle" shortDescription="HiddenStyle" longDescription="A hidden hit counter. The number of page views will only be available to the item's seller."/>
+<HitCounterCodeType hitCounterCode="HonestyStyle" shortDescription="HonestyStyle" longDescription="A basic style hit counter (US only). Non-US sites will return errors if they use HonestyStyle as input, and should use BasicStyle instead."/>
+<HitCounterCodeType hitCounterCode="NoHitCounter" shortDescription="NoHitCounter" longDescription="No hit counter. The number of page views will not be available."/>
+<HitCounterCodeType hitCounterCode="RetroStyle" shortDescription="RetroStyle" longDescription="A retro, computer-style hit counter."/>
+
+
+
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="AmEx" shortDescription="AmEx" longDescription="American Express. Not applicable to US/CA eBay Motors listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="CashInPerson" shortDescription="CashInPerson" longDescription="Cash-in-person option. Applicable only to US and Canada eBay Motors vehicles, (not the Parts and Accessories category)."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="CashOnPickup" shortDescription="CashOnPickup" longDescription="Payment on delivery. Not applicable to Real Estate or US/CA eBay Motors listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="CCAccepted" shortDescription="CCAccepted" longDescription="Credit card. Not applicable to Real Estate or US/CA eBay Motors listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="COD" shortDescription="COD" longDescription="Cash on delivery. This payment method is obsolete (ignored) for the US, US eBay Motors, UK, and Canada sites. See 'Field Differences for eBay Sites' in the eBay Web Services Guide for a list of sites that accept COD as a payment method. Not applicable to Real Estate listings. When revising an item (on sites that still support COD), you can add or change its value."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="CODPrePayDelivery" shortDescription="CODPrePayDelivery" longDescription="Reserved for future use."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="Diners" shortDescription="Diners" longDescription="This payment method can be added only if a seller has a IMCC payment gateway account and Diners Club card is selected in credit card preference. Currently Dines card is enabled for CyberSource Gateway sellers."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="Discover" shortDescription="Discover" longDescription="Discover card. Not applicable to US/CA eBay Motors listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="ELV" shortDescription="ELV" longDescription="Elektronisches Lastschriftverfahren (direct debit). Only applicable to the Express Germany site, which has been shut down."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="Escrow" shortDescription="Escrow" longDescription="Reserved for future use."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="IntegratedMerchantCreditCard" shortDescription="IntegratedMerchantCreditCard" longDescription="This payment method can be added only if a seller has a payment gateway account. You can use GetUser.User.SellerInfo.IntegratedMerchantCreditCardInfo to determine if a seller has a payment gateway account. If a seller successfully uses AddItem with IntegratedMerchantCreditCard, then for the resulting item, the IntegratedMerchantCreditCard value is a replacement for a credit-card payment method such as VisaMC. In such a case, the listing displays (to potential buyers) the credit cards that the seller specified in the seller's preferences for their payment gateway account (in My eBay). Additionally, a buyer's credit-card payment is integrated into eBay checkout."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="LoanCheck" shortDescription="LoanCheck" longDescription="Loan check option (applicable only to the US eBay Motors site, except in the Parts and Accessories category, and the eBay Canada site for motors)."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="MOCC" shortDescription="MOCC" longDescription="Money order/cashiers check. Not applicable to US/CA eBay Motors listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="Moneybookers" shortDescription="Moneybookers" longDescription="The Moneybookers payment method. For more information, see http://www.moneybookers.com/partners/us/ebay. Only applicable to the US site (and to the Parts and Accessories category of the US eBay Motors site)."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="MoneyXferAccepted" shortDescription="MoneyXferAccepted" longDescription="Direct transfer of money. Not applicable to US/CA eBay Motors listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="MoneyXferAcceptedInCheckout" shortDescription="MoneyXferAcceptedInCheckout" longDescription="If the seller has bank account information on file, and MoneyXferAcceptedInCheckout = true, then the bank account information will be displayed in Checkout. Applicable only to certain global eBay sites. See the 'International Differences Overview' in the eBay Web Services Guide."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="None" shortDescription="None" longDescription="No payment method specified. For example, no payment methods would be specified for Ad format listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="Other" shortDescription="Other" longDescription="Other forms of payment. Some custom methods are accepted by seller as the payment method in the transaction. Not applicable to US/CA eBay Motors listings (see PaymentSeeDescription instead)."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="OtherOnlinePayments" shortDescription="OtherOnlinePayments" longDescription="All other online payments. Not applicable to US/CA eBay Motors listings."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PaisaPayAccepted" shortDescription="PaisaPayAccepted" longDescription="PaisaPay (for India site only). This qualifies as a safe payment method and is required for all categories on the IN site."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PaisaPayEscrow" shortDescription="PaisaPayEscrow" longDescription="PaisaPayEscrow payment option. Applicable on selected categories on the India site only."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PaisaPayEscrowEMI" shortDescription="PaisaPayEscrowEMI" longDescription="PaisaPayEscrowEMI (Equal Monthly Installments) Payment option. Must be specified with PaisaPayEscrow. Applicable only to India site."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="Paymate" shortDescription="Paymate" longDescription="The Paymate payment method. This payment method is only accepted on the eBay Australia site. For more information on setting up Paymate as an accepted payment method on the eBay Australia site, see the Sell with Paymate on eBay.com.au help page."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PaymentSeeDescription" shortDescription="PaymentSeeDescription" longDescription="Payment instructions are contained in the item's description."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PayOnPickup" shortDescription="PayOnPickup" longDescription="PayOnPickup payment method. PayOnPickup is the same as CashOnPickup. For listings on the eBay US site, the user interface refers to this feature as Pay on pickup. In the user interface of your application, please refer to the feature as Pay on pickup so that the name in your user interface corresponds to the name on the eBay US site."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PayPal" shortDescription="PayPal" longDescription="PayPal is accepted as a payment method. This qualifies as a safe payment method. If true in listing requests, Item.PayPalEmailAddress must also be specified.
+
+If you don't pass PayPal in the listing request but the seller's eBay preferences are set to accept PayPal on all listings, eBay will add PayPal as a payment method for you in most cases, and we may return a warning.
+
+PayPal must be accepted when the seller requires immediate payment (Item.AutoPay) or offers other PayPal-based features, such as a finance offer (Item.FinanceOfferID). PayPal must be accepted for charity listings. PayPal must be accepted for event ticket listings when the venue is in New York state or Illinois, so that eBay can offer buyer protection (per state law). (For some applications, it may be simplest to use errors returned from VerifyAddItem to flag the PayPal requirement for New York and Illinois ticket listings.) PayPal must be accepted for US eBay Motors listings that require a deposit (and it will not be set automatically based on the seller's preferences). Conversely, if PayPal is specified for US eBay Motors listings, deposit attributes must be specified."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PersonalCheck" shortDescription="PersonalCheck" longDescription="Personal check."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PostalTransfer" shortDescription="PostalTransfer" longDescription="Reserved for future use."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="PrePayDelivery" shortDescription="PrePayDelivery" longDescription="Reserved for future use."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="ProPay" shortDescription="ProPay" longDescription="The ProPay payment method. US site only. For more information, see http://www.Propay.com/eBay."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="StandardPayment" shortDescription="StandardPayment" longDescription="Unless the buyer and seller agree to COD (Cash On Delivery) or POP (Pay on Pickup) as the form of payment for an order, StandardPayment is always the buyer payment method returned to the seller when the order is part of the new payment process on the German and Austrian sites."/>
+<BuyerPaymentMethodCodeType buyerPaymentMethodCode="VisaMC" shortDescription="VisaMC" longDescription="Visa/Mastercard. These qualify as safe payment methods. Not applicable to US/CA eBay Motors listings."/>
+
+
+
+<RefundOptionsCodeType refundOptionsCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use."/>
+<RefundOptionsCodeType refundOptionsCode="Exchange" shortDescription="Exchange" longDescription="This value indicates that the seller will exchange the returned item for another item. The seller should use the ReturnPolicy.Description field in the Add API call to explain how this will occur (such as whether the seller will send an identical item in place of the returned item)." note="This value is deprecated on the US site, and all listings attempting to use this value will be blocked."/>
+<RefundOptionsCodeType refundOptionsCode="MerchandiseCredit" shortDescription="MerchandiseCredit" longDescription="The seller will give the buyer a credit toward the purchase of another item. The seller should use the ReturnPolicy.Description field in the Add API call to explain how the buyer can redeem this credit." note="This value is deprecated on the US site, and all listings attempting to use this value will be blocked."/>
+<RefundOptionsCodeType refundOptionsCode="MoneyBack" shortDescription="MoneyBack" longDescription="This value indicates that the seller will refund the buyer the cost of the item, excluding shipping and handling costs and any restocking fee (US only).
+
+The seller should use the ReturnPolicy.Description field in the Add API call to explain how the refund will be handled (such as whether the refund will occur via PayPal)."/>
+<RefundOptionsCodeType refundOptionsCode="MoneyBackOrExchange" shortDescription="MoneyBackOrExchange" longDescription="This value indicates that the seller will refund the buyer the cost of the item, excluding shipping and handling costs and any restocking fee (US only), or the seller will exchange the returned item for another identical/similar item.
+
+The seller should use the ReturnPolicy.Description field in the Add API call to explain how the refund will be handled, such as whether the refund will occur via PayPal, or how the exchange will occur, such as whether the seller will send an identical item in place of the returned item." note="US sellers opted into eBay-managed returns, that are willing to refund buyers or offer an identical replacement item, should use the 'MoneyBackOrReplacement' value instead of 'MoneyBackOrExchange'."/>
+<RefundOptionsCodeType refundOptionsCode="MoneyBackOrReplacement" shortDescription="MoneyBackOrReplacement" longDescription="This value indicates that the seller will refund the buyer the cost of the item (excluding shipping and handling costs and any restocking fee) through eBay-managed returns, or the seller will replace the returned item with another identical item.
+
+The seller should use the ReturnPolicy.Description field in the Add API call to explain to buyer that are refunds and replacements will be handled through the eBay-managed returns process." note="This value is only available on the US site. US sellers opted into eBay-managed returns should use this value (and not 'MoneyBackOrExchange') if they are willing to refund buyers or offer an identical replacement item."/>
+
+
+
+<ReturnsAcceptedCodeType returnsAcceptedCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use."/>
+<ReturnsAcceptedCodeType returnsAcceptedCode="ReturnsAccepted" shortDescription="Returns Accepted" longDescription="The seller accepts returns, subject to other details specified in the policy."/>
+<ReturnsAcceptedCodeType returnsAcceptedCode="ReturnsNotAccepted" shortDescription="Returns Not Accepted" longDescription="The seller does not accept returns."/>
+
+
+
+<ReturnsWithinCodeType returnsWithinCode="CustomCode" shortDescription="CustomCode" longDescription="This value is reserved for internal or future use."/>
+<ReturnsWithinCodeType returnsWithinCode="Days_3" shortDescription="3 Days" longDescription="The seller specifies this value to enable a 3-day return policy. A buyer must return an item within three days after purchase in order to receive a refund or an exchange." note="This value is deprecated. Listings created or revised with this value will be blocked."/>
+<ReturnsWithinCodeType returnsWithinCode="Days_7" shortDescription="7 Days" longDescription="The seller specifies this value to enable a 7-day return policy. A buyer must return an item within seven days after purchase in order to receive a refund or an exchange." note="This value is deprecated. Listings created or revised with this value will be blocked."/>
+<ReturnsWithinCodeType returnsWithinCode="Days_10" shortDescription="10 Days" longDescription="The seller specifies this value to enable a 10-day return policy. A buyer must return an item within 10 days after purchase in order to receive a refund or an exchange." note="This value is deprecated. Listings created or revised with this value will be blocked."/>
+<ReturnsWithinCodeType returnsWithinCode="Days_14" shortDescription="14 Days" longDescription="The seller specifies this value to enable a 14-day return policy. A buyer must return an item within 14 days after purchase in order to receive a refund or an exchange."/>
+<ReturnsWithinCodeType returnsWithinCode="Days_30" shortDescription="30 Days" longDescription="The seller specifies this value to enable a 30-day return policy. A buyer must return an item within 30 days after purchase in order to receive a refund or an exchange."/>
+<ReturnsWithinCodeType returnsWithinCode="Days_60" shortDescription="60 Days" longDescription="The seller specifies this value to enable a 60-day return policy. A buyer must return an item within 60 days after purchase in order to receive a refund or an exchange."/>
+<ReturnsWithinCodeType returnsWithinCode="Months_1" shortDescription="1 Month" longDescription="The seller specifies this value to enable a one-month return policy. A buyer must return an item within one month after purchase in order to receive a refund or an exchange."/>
+
+
+
+<ShipCostPaidByCodeType shipCostPaidByCode="Buyer" shortDescription="Buyer" longDescription="This value indicates that the buyer is responsible for paying the return shipping cost."/>
+<ShipCostPaidByCodeType shipCostPaidByCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use."/>
+<ShipCostPaidByCodeType shipCostPaidByCode="EUBuyer_CancelRightsUnder40" shortDescription="EUBuyer_CancelRightsUnder40" longDescription="This value indicates that the buyer of an item on the German or Austrian site is responsible for paying the return shipping cost, unless the order exceeds 40 euros, in which case the seller would pay for the return shipping cost. This value is only supported on the DE and AT sites."/>
+<ShipCostPaidByCodeType shipCostPaidByCode="EUSeller_CancelRights" shortDescription="EUSeller_CancelRights" longDescription="This value indicates that the German or Austrian seller is responsible for paying the return shipping cost if the item price is more than 40 euros. If the item price is less than 40 euros, it is at the seller's discretion to impose the return shipping cost on the buyer, or to handle the return shipping cost themselves. If this value is set for the return policy, the buyer can send an order cancellation request via letter, e-mail, or fax, or simply return the item. This value is only supported on the DE and AT sites."/>
+<ShipCostPaidByCodeType shipCostPaidByCode="EUSeller_ReturnRights" shortDescription="EUSeller_ReturnRights" longDescription="This value indicates that the German or Austrian seller is responsible for paying the return shipping cost. If this value is set for the return policy, the buyer simply returns the item and the seller is automatically responsible for return shipping cost. This value is only supported on the DE and AT sites."/>
+<ShipCostPaidByCodeType shipCostPaidByCode="Seller" shortDescription="Seller" longDescription="This value indicates that the seller is responsible for paying the return shipping cost."/>
+
+
+
+<ListingDurationCodeType listingDurationCode="CustomCode" shortDescription="CustomCode" longDescription="This value is reserved for internal or future use."/>
+<ListingDurationCodeType listingDurationCode="Days_1" shortDescription="1 Day Duration" longDescription="This value is used to set the duration of the listing to one day. A one-day listing duration is typically only available to sellers with a Feedback score of 10 or higher, so sellers with a Feedback score of less than 10 may be restricted from using a one-day listing duration. The seller can call GetCategoryFeatures with ListingDurations included as a FeatureID value in the call request to see if the one-day listing duration is available.
+
+A one-day listing duration is generally applicable to an auction listing or to a Real Estate Classified Ad."/>
+<ListingDurationCodeType listingDurationCode="Days_3" shortDescription="3 Days Duration" longDescription="This value is used to set the duration of the listing to three days.
+
+A three-day listing duration is applicable to most listing types."/>
+<ListingDurationCodeType listingDurationCode="Days_5" shortDescription="5 Days Duration" longDescription="This value is used to set the duration of the listing to five days.
+
+A five-day listing duration is applicable to most listing types."/>
+<ListingDurationCodeType listingDurationCode="Days_7" shortDescription="7 Days Duration" longDescription="This value is used to set the duration of the listing to seven days.
+
+A seven-day listing duration is applicable to most listing types."/>
+<ListingDurationCodeType listingDurationCode="Days_10" shortDescription="10 Days Duration" longDescription="This value is used to set the duration of the listing to 10 days.
+
+A 10-day listing duration is applicable to most listing types."/>
+<ListingDurationCodeType listingDurationCode="Days_14" shortDescription="14 Days Duration" longDescription="This value is used to set the duration of the listing to 14 days.
+
+A 14-day listing duration is typically only applicable to Classified Ad listings in specific categories."/>
+<ListingDurationCodeType listingDurationCode="Days_21" shortDescription="21 Days Duration" longDescription="This value is used to set the duration of the listing to 21 days.
+
+A 21-day listing duration is typically only applicable to eBay Motors Local Market vehicle listings, a listing type that is only available to eBay Motors Dealers."/>
+<ListingDurationCodeType listingDurationCode="Days_30" shortDescription="30 Days Duration" longDescription="This value is used to set the duration of the listing to 30 days.
+
+A 30-day listing duration is typically available for fixed-price listing, Classified Ad listings, and Real Estate auction listings."/>
+<ListingDurationCodeType listingDurationCode="Days_60" shortDescription="60 Days Duration" longDescription="This value is used to set the duration of the listing to 60 days.
+
+A 60-day listing duration is typically only applicable to Classified Ad listings in specific categories."/>
+<ListingDurationCodeType listingDurationCode="Days_90" shortDescription="90 Days Duration" longDescription="This value is used to set the duration of the listing to 90 days.
+
+A 90-day listing duration is generally only applicable to a Real Estate Classified Ad."/>
+<ListingDurationCodeType listingDurationCode="Days_120" shortDescription="120 Days Duration" longDescription="This value is used to set the duration of the listing to 120 days.
+
+An 120-day listing duration is typically only applicable to Classified Ad listings in specific categories."/>
+<ListingDurationCodeType listingDurationCode="GTC" shortDescription="Good 'Til Cancelled" longDescription="This value is used to set the duration of the listing to Good 'Til Cancelled. This option is available for fixed-price and Classified Ad listings. Good 'Til Cancelled fixed-price listings will be relisted automatically every 30 days until all inventory is sold out (e.g., Item.Quantity=0 in a single-variation fixed-price listing, or all occurences of Item.Variations.Variation.Quantity=0 in a multi-variation fixed-price listing), or the seller ends the fixed-price listing."/>
+
+
+
+<ListingTypeCodeType listingTypeCode="AdType" shortDescription="Ad Type" longDescription="Advertisement to solicit inquiries on listings such as real estate. Permits no bidding on that item, service, or property. To express interest, a buyer fills in a contact form that eBay forwards to the the seller as a lead. This format does not enable buyers and sellers to transact online through eBay, and eBay Feedback is not available for ad format listings."/>
+<ListingTypeCodeType listingTypeCode="Auction" shortDescription="Auction (Dont use)" longDescription="An optional input parameter used with GetMyeBaySelling. When used in the request, returns items of competitive-bid auctions."/>
+<ListingTypeCodeType listingTypeCode="Chinese" shortDescription="Auction" longDescription="Single-quantity online auction format. A Chinese auction has a Quantity of 1. Buyers engage in competitive bidding, although Buy It Now may be offered as long as no bids have been placed. Online auctions are listed on eBay.com, and they are also listed in the seller's eBay Store if the seller is a Store owner."/>
+<ListingTypeCodeType listingTypeCode="FixedPriceItem" shortDescription="Fixed Price Auction / BIN" longDescription="A basic fixed-price item format. Bids do not occur. The quantity of items is one or more.
+
+Also known as Buy It Now Only on some sites (not to be confused with the BuyItNow option that is available for auctions).
+
+Sellers must meet certain feedback requirements and/or be ID Verified to use this format. See Minimum Feedback Requirements for Various Features in the Trading Web Services guide.
+
+Fixed-price listings are listed on eBay.com, and they are listed in the seller's eBay Store if the seller is a Store owner. Stores fixed price items will be treated as basic fixed-price items. Permitted durations of 30 days and GTC are now available for store and non-store subscribers (in addition to the existing durations of 3, 5, 7, and 10 days)."/>
+<ListingTypeCodeType listingTypeCode="Half" shortDescription="Half.com" longDescription="Half.com listing (item is listed on Half.com, not on eBay). You must be a registered Half.com seller to use this format."/>
+<ListingTypeCodeType listingTypeCode="LeadGeneration" shortDescription="Lead Generation Format" longDescription="Lead Generation format (advertisement-style listing to solicit inquiries or offers, no bidding or fixed price, listed on eBay)."/>
+<ListingTypeCodeType listingTypeCode="PersonalOffer" shortDescription="Second Chance Offers (Personal Offers)" longDescription="Second chance offer made to a non-winning bidder on an ended listing. A seller can make an offer to a non-winning bidder when either the winning bidder has failed to pay for an item or the seller has a duplicate of the item. A seller can create a Second Chance Offer immediately after a listing ends and up to 60 days after the end of the listing. eBay does not charge an Insertion Fee, but if the bidder accepts the offer, the regular Final Value Fee is charged. In the case of an Unpaid Item, the seller should ensure that everything has been done to resolve the issue with the winning bidder before sending a Second Chance Offer to another bidder. See the Unpaid Items Process for details. Make sure you're aware of other rules and restrictions surrounding Second Chance Offers. Use AddSecondChanceItem to submit Second Chance Offers. Listed on eBay, but does not appear when browsing or searching listings."/>
+<ListingTypeCodeType listingTypeCode="Shopping" shortDescription="Shopping.com" longDescription="Reserved for internal or future use. You can ignore Shopping.com items in your results."/>
+<ListingTypeCodeType listingTypeCode="Unknown" shortDescription="Unknown" longDescription="Unknown or undefined auction type. Applicable to user preferences and other informational use cases."/>
+
+
+
+<GalleryTypeCodeType galleryTypeCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use."/>
+<GalleryTypeCodeType galleryTypeCode="Featured" shortDescription="Featured" longDescription="Highlights the listing by randomly placing it at the top of the search results. When Featured is included in an item listing, the listing also automatically gets the Gallery and Plus functionality at no extra cost.
+
+'Gallery' and 'Plus' do not need to be specified separately in the listing." note="Sites That Support Featured: AT - Austria (site ID 16), BEFR - Belgium French localized (site ID 23), BENL - Belgium Dutch localized (site ID 123), CH - Switzerland (site ID 193), DE - Germany (site ID 77), IE - Ireland (site ID 205), ES - Spain (site ID 186), NL - Netherlands (site ID 146), and PL - Poland (site ID 212)."/>
+<GalleryTypeCodeType galleryTypeCode="Gallery" shortDescription="Gallery" longDescription="Gallery image is included in the search results. A Gallery image is an image that was uploaded and copied to EPS (eBay Picture Service). This copy is stored for a finite period (usually 30 days) until the image is associated with a listing. Once the image is associated with a listing, the period is extended to 90 days after the item's sale_end date and is extended again if the item is relisted or used in subsequent listings. As part of storing a copy, EPS also makes additional sizes available (thumbnail, main image, zoom layer, supersize popup, etc.), which are used by the various Gallery enhancements." note="Free Gallery Sites: The following sites automatically include Gallery at no cost: US and the Parts and Accessories Category on US Motors (site ID 0), CA (site ID 2), CAFR (site ID 210), ES (site ID 186), FR (site ID 71), IT (site ID 101), and NL (site ID 146)."/>
+<GalleryTypeCodeType galleryTypeCode="None" shortDescription="None" longDescription="No Gallery enhancement is selected and on sites where Gallery is not free, a camera icon image appears in search results.
+
+This is mainly useful for removing an existing Gallery setting when using RelistItem."/>
+<GalleryTypeCodeType galleryTypeCode="Plus" shortDescription="Plus" longDescription="Adds a Gallery Plus icon to the listing.
+
+When Plus is selected in a request that specifies at least two eBay Picture Services (EPS) hosted images (using ItemType.PictureDetailsType.PictureURL), the Gallery Plus feature automatically includes a Gallery Showcase of all the listing's images.
+
+The Gallery Showcase displays when hovering over or clicking on the listing's Gallery Plus icon in the search results. The Showcase window displays a large (400 px x 400 px) preview image which is usually the first specified PictureURL, as well as up to 11 (64 px x 64 px) selectable thumbnails for the remaining EPS images. Clicking on the preview image displays the item's listing page.
+
+If Plus is selected and the request includes only one EPS image or any self-hosted images, the listing includes a Gallery Plus icon that, when hovered over or clicked, displays a large (400 px x 400 px) preview image of the item. Clicking the image displays the View Item page for that listing.
+
+When using RelistItem or ReviseItem (item has no bids and more than 12 hours before the listing's end), Plus can be unselected in the request. However, the Plus fee will still apply if a previous request selected Plus. There is at most one Plus fee per listing.
+
+When 'Plus' is included in an item listing, the listing also automatically gets the Gallery functionality at no extra cost. 'Gallery' does not need to be specified separately in the listing.
+
+Listing images that are originally smaller than 400 px x 400 px are centered in the preview frame. Images that are originally larger than 400 px x 400 px are scaled down to 400 px on their longest side (maintaining their original aspect ratio).
+
+Not applicable to eBay Stores Inventory listings."/>
+
+
+
+<PhotoDisplayCodeType photoDisplayCode="None" shortDescription="None" longDescription="No special image display options. Valid for US Motors listings."/>
+<PhotoDisplayCodeType photoDisplayCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use."/>
+<PhotoDisplayCodeType photoDisplayCode="PicturePack" shortDescription="Picture Pack" longDescription="Increase the number of images displayed. This is only available for images hosted with eBay. See GetCategoryFeatures and the online Help (on the eBay site) for additional information.
+
+Picture Pack applies to all sites (including US Motors), except for NL (site ID 146). You can specify a minimum of one EPS picture, or no SuperSize-qualified EPS pictures in the request. For the NL site, PicturePack is replaced with SuperSize."/>
+<PhotoDisplayCodeType photoDisplayCode="SuperSize" shortDescription="Super Size" longDescription="Increase the size of each image and allow buyers to enlarge images further. Only available for site-hosted (EPS) images. Not valid for US Motors listings. For all sites that do not automatically upgrade SuperSize to PicturePack (see note below), specifying no SuperSize-qualified images is now accepted in the request." note="SuperSize is automatically upgraded to PicturePack for the same SuperSize fee on the US Motors Parts and Accessories Category and US (site ID 0) and CA (site ID 2) and CAFR (site ID 210). This upgrade applies only to EPS images."/>
+<PhotoDisplayCodeType photoDisplayCode="SuperSizePictureShow" shortDescription="Super Size Picture Show" longDescription="This is valid for US Motors listing only. For other listings, use SuperSize."/>
+
+
+
+<EndReasonCodeType endReasonCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for internal or future use."/>
+<EndReasonCodeType endReasonCode="Incorrect" shortDescription="Incorrect" longDescription="The start price or reserve price is incorrect."/>
+<EndReasonCodeType endReasonCode="LostOrBroken" shortDescription="LostOrBroken" longDescription="The item was lost or broken."/>
+<EndReasonCodeType endReasonCode="NotAvailable" shortDescription="NotAvailable" longDescription="The item is no longer available for sale."/>
+<EndReasonCodeType endReasonCode="OtherListingError" shortDescription="OtherListingError" longDescription="The listing contained an error (other than start price or reserve price)."/>
+<EndReasonCodeType endReasonCode="SellToHighBidder" shortDescription="SellToHighBidder" longDescription="Seller want to sell the listing to the high bidder. A seller can end a listing in order to seller to the current high bidder when the listing has qualifying bids (i.e., there is a current high bid that, when applicable, meets the minimum reserve price) and there is more than 12 hours before the listing ends.
+: In the last 12 hours of an item listing, you cannot end an item early if it has bids."/>
+<EndReasonCodeType endReasonCode="Sold" shortDescription="Sold" longDescription="The vehicle was sold. Applies to local classified listings for vehicles only."/>
+
+
+
+<ShippingTypeCodeType shippingTypeCode="Calculated" shortDescription="Calculated" longDescription="Calculated shipping model: the cost of shipping is determined in large part by the seller-offered and buyer-selected shipping service. The seller might assess an additional fee via PackagingHandlingCosts."/>
+<ShippingTypeCodeType shippingTypeCode="CalculatedDomesticFlatInternational" shortDescription="CalculatedDomesticFlatInternational" longDescription="The seller specified one or more calculated domestic shipping services and one or more flat international shipping services."/>
+<ShippingTypeCodeType shippingTypeCode="CustomCode" shortDescription="CustomCode" longDescription="Reserved for future use."/>
+<ShippingTypeCodeType shippingTypeCode="Flat" shortDescription="Flat" longDescription="Flat shipping model: the seller establishes the cost of shipping and cost of shipping insurance, regardless of what any buyer-selected shipping service might charge the seller."/>
+<ShippingTypeCodeType shippingTypeCode="FlatDomesticCalculatedInternational" shortDescription="FlatDomesticCalculatedInternational" longDescription="The seller specified one or more flat domestic shipping services and one or more calculated international shipping services."/>
+<ShippingTypeCodeType shippingTypeCode="Free" shortDescription="Free" longDescription="Free shipping. This field is output-only so if you want to use AddItem to specify a free Shipping Cost, specify 0 in Item.ShippingDetails.ShippingServiceOptions.ShippingServiceCost."/>
+<ShippingTypeCodeType shippingTypeCode="Freight" shortDescription="Freight" longDescription="Freight shipping model. Available only for US domestic shipping. The cost of shipping is determined by a third party, FreightQuote.com, based on the item location (zip code). " note=" Currently, Freight can be specified only on input via eBay Web site, not via API."/>
+<ShippingTypeCodeType shippingTypeCode="FreightFlat" shortDescription="FreightFlat" longDescription="Freight shipping model: freight shipping may be used when flat or calculated shipping cannot be used due to the greater weight of the item. " note="Currently, FreightFlat is available only for the US, UK, AU, CA and CAFR sites, and only for domestic shipping. On the US site, FreightFlat applies to shipping with carriers that are not affiliated with eBay. For details about freight shipping, see 'Specifying Freight Shipping' in the Shipping chapter of the User's Guide."/>
+<ShippingTypeCodeType shippingTypeCode="NotSpecified" shortDescription="NotSpecified" longDescription="The seller did not specify the shipping type."/>
+
+
+
+</entity-engine-xml>

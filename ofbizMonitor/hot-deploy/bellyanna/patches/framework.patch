@@ -1,0 +1,113 @@
+Index: framework/start/src/org/ofbiz/base/start/start.properties
+===================================================================
+--- framework/start/src/org/ofbiz/base/start/start.properties	(revision 1465283)
++++ framework/start/src/org/ofbiz/base/start/start.properties	(working copy)
+@@ -73,4 +73,4 @@
+ ofbiz.locale.default=en
+ 
+ # -- The default time zone for this OFBiz instance.
+-#ofbiz.timeZone.default=GMT
++ofbiz.timeZone.default=CST
+Index: framework/base/config/debug.properties
+===================================================================
+--- framework/base/config/debug.properties	(revision 1465283)
++++ framework/base/config/debug.properties	(working copy)
+@@ -30,8 +30,8 @@
+ # These top level switches are used before calling Log4J, or if Log4J is not used
+ print.verbose=false
+ print.timing=true
+-print.info=true
++print.info=false
+ print.important=true
+-print.warning=true
++print.warning=false
+ print.error=true
+ print.fatal=true
+Index: framework/entity/config/entityengine.xml
+===================================================================
+--- framework/entity/config/entityengine.xml	(revision 1465283)
++++ framework/entity/config/entityengine.xml	(working copy)
+@@ -485,9 +485,9 @@
+         <read-data reader-name="ext-demo"/>
+         <inline-jdbc
+                 jdbc-driver="org.postgresql.Driver"
+-                jdbc-uri="jdbc:postgresql://127.0.0.1/ofbiz"
+-                jdbc-username="ofbiz"
+-                jdbc-password="ofbiz"
++                jdbc-uri="jdbc:postgresql://127.0.0.1/testdatabase"
++                jdbc-username="postgres"
++                jdbc-password="postgres"
+                 isolation-level="ReadCommitted"
+                 pool-minsize="2"
+                 pool-maxsize="250"
+Index: framework/entity/fieldtype/fieldtypederby.xml
+===================================================================
+--- framework/entity/fieldtype/fieldtypederby.xml	(revision 1465283)
++++ framework/entity/fieldtype/fieldtypederby.xml	(working copy)
+@@ -36,8 +36,8 @@
+     <field-type-def type="floating-point" sql-type="DOUBLE" java-type="Double"/>
+     <field-type-def type="numeric" sql-type="NUMERIC(20,0)" java-type="Long"/>
+ 
+-    <field-type-def type="id" sql-type="VARCHAR(20)" java-type="String"/>
+-    <field-type-def type="id-long" sql-type="VARCHAR(60)" java-type="String"/>
++    <field-type-def type="id" sql-type="VARCHAR(30)" java-type="String"/>
++    <field-type-def type="id-long" sql-type="VARCHAR(90)" java-type="String"/>
+     <field-type-def type="id-vlong" sql-type="VARCHAR(255)" java-type="String"/>
+ 
+     <field-type-def type="indicator" sql-type="CHAR(1)" java-type="String"/>
+@@ -56,8 +56,8 @@
+     <field-type-def type="credit-card-date" sql-type="VARCHAR(20)" java-type="String"/>
+     <field-type-def type="email" sql-type="VARCHAR(255)" java-type="String"/>
+     <field-type-def type="url" sql-type="VARCHAR(255)" java-type="String"/>
+-    <field-type-def type="id-ne" sql-type="VARCHAR(20)" java-type="String"/>
+-    <field-type-def type="id-long-ne" sql-type="VARCHAR(60)" java-type="String"/>
++    <field-type-def type="id-ne" sql-type="VARCHAR(30)" java-type="String"/>
++    <field-type-def type="id-long-ne" sql-type="VARCHAR(90)" java-type="String"/>
+     <field-type-def type="id-vlong-ne" sql-type="VARCHAR(255)" java-type="String"/>
+     <field-type-def type="tel-number" sql-type="VARCHAR(60)" java-type="String"/>
+ </fieldtypemodel>
+Index: framework/entity/fieldtype/fieldtypepostgres.xml
+===================================================================
+--- framework/entity/fieldtype/fieldtypepostgres.xml	(revision 1465283)
++++ framework/entity/fieldtype/fieldtypepostgres.xml	(working copy)
+@@ -36,8 +36,8 @@
+     <field-type-def type="floating-point" sql-type="FLOAT8" java-type="Double"/>
+     <field-type-def type="numeric" sql-type="NUMERIC(20,0)" java-type="Long"/>
+ 
+-    <field-type-def type="id" sql-type="VARCHAR(20)" java-type="String"/>
+-    <field-type-def type="id-long" sql-type="VARCHAR(60)" java-type="String"/>
++    <field-type-def type="id" sql-type="VARCHAR(30)" java-type="String"/>
++    <field-type-def type="id-long" sql-type="VARCHAR(90)" java-type="String"/>
+     <field-type-def type="id-vlong" sql-type="VARCHAR(255)" java-type="String"/>
+ 
+     <field-type-def type="indicator" sql-type="CHAR(1)" sql-type-alias="BPCHAR" java-type="String"/>
+@@ -56,8 +56,8 @@
+     <field-type-def type="credit-card-date" sql-type="VARCHAR(20)" java-type="String"/>
+     <field-type-def type="email" sql-type="VARCHAR(255)" java-type="String"/>
+     <field-type-def type="url" sql-type="VARCHAR(255)" java-type="String"/>
+-    <field-type-def type="id-ne" sql-type="VARCHAR(20)" java-type="String"/>
+-    <field-type-def type="id-long-ne" sql-type="VARCHAR(60)" java-type="String"/>
++    <field-type-def type="id-ne" sql-type="VARCHAR(30)" java-type="String"/>
++    <field-type-def type="id-long-ne" sql-type="VARCHAR(90)" java-type="String"/>
+     <field-type-def type="id-vlong-ne" sql-type="VARCHAR(255)" java-type="String"/>
+     <field-type-def type="tel-number" sql-type="VARCHAR(60)" java-type="String"/>
+ </fieldtypemodel>
+Index: framework/webapp/config/fop.xconf
+===================================================================
+--- framework/webapp/config/fop.xconf	(revision 1465283)
++++ framework/webapp/config/fop.xconf	(working copy)
+@@ -95,6 +95,14 @@
+           <font-triplet name="ArialMT" style="normal" weight="bold"/>
+         </font>
+         -->
++        <font metrics-url="SimHei.xml" kerning="yes" embed-url="SimHei.ttf">
++            <font-triplet name="SimHei" style="normal" weight="normal"/>
++            <font-triplet name="SimHei" style="normal" weight="bold"/>
++        </font>
++        <font metrics-url="Quivira.xml" kerning="yes" embed-url="Quivira.ttf">
++            <font-triplet name="Quivira" style="normal" weight="normal"/>
++            <font-triplet name="Quivira" style="normal" weight="bold"/>
++        </font>
+       </fonts>
+ 
+       <!-- This option lets you specify additional options on an XML handler -->

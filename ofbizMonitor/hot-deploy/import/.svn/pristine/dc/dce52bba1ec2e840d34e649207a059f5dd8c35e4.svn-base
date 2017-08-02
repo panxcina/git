@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+
+    <simple-method method-name="testImportProductsFromDevilwear" short-description="Test import products from Devilwear." login-required="false">
+        <entity-one value-field="userLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="importProductsFromDevilwearInMap.userLogin" from-field="userLogin"/>
+        <call-service service-name="importProductsFromDevilwear" in-map-name="importProductsFromDevilwearInMap"/>
+    </simple-method>
+    <simple-method method-name="testImportProductsFromPuckator" short-description="Test import products from Puckator." login-required="false">
+        <entity-one value-field="userLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="importProductsFromPuckatorInMap.userLogin" from-field="userLogin"/>
+        <set field="importProductsFromPuckatorInMap.email" value=""/>
+        <set field="importProductsFromPuckatorInMap.password" value=""/>
+        <set field="importProductsFromPuckatorInMap.action" value=""/>
+        <call-service service-name="importProductsFromPuckator" in-map-name="importProductsFromPuckatorInMap"/>
+    </simple-method>
+    <simple-method method-name="testImportProductsFromFancyDressDropship" short-description="Test import products from Fancy Dress Dropship." login-required="false">
+        <entity-one value-field="userLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="importProductsFromPuckatorInMap.userLogin" from-field="userLogin"/>
+        <set field="importProductsFromPuckatorInMap.email" value=""/>
+        <call-service service-name="importProductsFromFancyDressDropship" in-map-name="importProductsFromPuckatorInMap"/>
+    </simple-method>
+    <simple-method method-name="testImportProductsFromPixmaniaPro" short-description="Test import products from Pixmania Pro." login-required="false">
+        <entity-one value-field="userLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="importProductsFromPuckatorInMap.userLogin" from-field="userLogin"/>
+        <call-service service-name="importProductsFromPixmaniaPro" in-map-name="importProductsFromPuckatorInMap"/>
+    </simple-method>
+    <simple-method method-name="testImportProductsFromIngramMicro" short-description="Test import products from Ingram Micro." login-required="false">
+        <entity-one value-field="userLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="importProductsFromIngramMicroInMap.userLogin" from-field="userLogin"/>
+        <!-- change feedUrl to your as you want -->
+        <call-service service-name="importProductsFromIngramMicro" in-map-name="importProductsFromIngramMicroInMap"/>
+    </simple-method>
+    <simple-method method-name="testGetProductInfoFromIceCat" short-description="Test get product information from IceCat." login-required="false">
+        <entity-one value-field="userLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="getProductInfoFromIceCatInMap.userLogin" from-field="userLogin"/>
+        <set field="getProductInfoFromIceCatInMap.eanUpc" value=""/>
+        <set field="getProductInfoFromIceCatInMap.lang" value="en"/>
+        <call-service service-name="getProductInfoFromIceCat" in-map-name="getProductInfoFromIceCatInMap">
+            <result-to-field result-name="id"/>
+            <result-to-field result-name="prodId"/>
+            <result-to-field result-name="name"/>
+            <result-to-field result-name="title"/>
+            <result-to-field result-name="quality"/>
+            <result-to-field result-name="releaseDate"/>
+            <result-to-field result-name="highPic"/>
+            <result-to-field result-name="highPicSize"/>
+            <result-to-field result-name="highPicWidth"/>
+            <result-to-field result-name="highPicHeight"/>
+            <result-to-field result-name="lowPic"/>
+            <result-to-field result-name="lowPicSize"/>
+            <result-to-field result-name="lowPicWidth"/>
+            <result-to-field result-name="lowPicHeight"/>
+            <result-to-field result-name="thumbPic"/>
+            <result-to-field result-name="thumbPicSize"/>
+        </call-service>
+        <assert><not><if-empty field="id"></if-empty></not></assert>
+        <assert><not><if-empty field="prodId"></if-empty></not></assert>
+        <assert><not><if-empty field="name"></if-empty></not></assert>
+        <assert><not><if-empty field="title"></if-empty></not></assert>
+        <assert><not><if-empty field="quality"></if-empty></not></assert>
+        <assert><not><if-empty field="releaseDate"></if-empty></not></assert>
+        <assert><not><if-empty field="highPic"></if-empty></not></assert>
+        <assert><not><if-empty field="highPicSize"></if-empty></not></assert>
+        <assert><not><if-empty field="highPicWidth"></if-empty></not></assert>
+        <assert><not><if-empty field="highPicHeight"></if-empty></not></assert>
+        <assert><not><if-empty field="lowPic"></if-empty></not></assert>
+        <assert><not><if-empty field="lowPicSize"></if-empty></not></assert>
+        <assert><not><if-empty field="lowPicWidth"></if-empty></not></assert>
+        <assert><not><if-empty field="lowPicHeight"></if-empty></not></assert>
+        <assert><not><if-empty field="thumbPic"></if-empty></not></assert>
+        <assert><not><if-empty field="thumbPicSize"></if-empty></not></assert>
+    </simple-method>
+    <simple-method method-name="testGetProductReviewsFromIceCat" short-description="Test get product reviews from IceCat." login-required="false">
+        <entity-one value-field="userLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="getProductReviewsFromIceCatInMap.userLogin" from-field="userLogin"/>
+        <set field="getProductReviewsFromIceCatInMap.productId" value=""/>
+        <set field="getProductReviewsFromIceCatInMap.lang" value=""/>
+        <call-service service-name="getProductReviewsFromIceCat" in-map-name="getProductReviewsFromIceCatInMap">
+            <result-to-field result-name="reviewList"/>
+        </call-service>
+        <iterate entry="reviewMap" list="reviewList">
+            <log level="info" message="Review: ${reviewMap}"/>
+        </iterate>
+    </simple-method>
+</simple-methods>

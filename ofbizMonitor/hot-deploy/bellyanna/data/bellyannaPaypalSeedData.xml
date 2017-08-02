@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<entity-engine-xml>
+    <PartyIdentificationType partyIdentificationTypeId="PP_ACCOUNT" description="PayPal API Account"/>
+    <PartyIdentificationType partyIdentificationTypeId="PP_USERNAME" description="PayPal API Username"/>
+    <PartyIdentificationType partyIdentificationTypeId="PP_PASSWORD" description="PayPal API Password"/>
+    <PartyIdentificationType partyIdentificationTypeId="PP_SIGNATURE" description="PayPal API Signature"/>
+    
+    <RoleType roleTypeId="PAYPAL_ACCOUNT" hasTable="N" description="PayPal Account"/>
+    
+    <Party partyId="tattooshows" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="tattooshows" groupName="tattooshows@gmail.com"/>
+    <PartyRole partyId="tattooshows" roleTypeId="PAYPAL_ACCOUNT"/>
+    <PartyIdentification partyId="tattooshows" partyIdentificationTypeId="PP_ACCOUNT" idValue="tattooshows@gmail.com"/>
+    <PartyIdentification partyId="tattooshows" partyIdentificationTypeId="PP_USERNAME" idValue="tattooshows_api1.gmail.com"/>
+    <PartyIdentification partyId="tattooshows" partyIdentificationTypeId="PP_PASSWORD" idValue="PADHYHJ2JTYDB6WQ"/>
+    <PartyIdentification partyId="tattooshows" partyIdentificationTypeId="PP_SIGNATURE" idValue="AFcWxV21C7fd0v3bYYYRCpSSRl31A08ift6YtNicPVxZb-hH2wCNGhKO"/>
+    
+    <Party partyId="dee.pan" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="dee.pan" groupName="dee.pan@live.cn"/>
+    <PartyRole partyId="dee.pan" roleTypeId="PAYPAL_ACCOUNT"/>
+    <PartyIdentification partyId="dee.pan" partyIdentificationTypeId="PP_ACCOUNT" idValue="dee.pan@live.cn"/>
+    <PartyIdentification partyId="dee.pan" partyIdentificationTypeId="PP_USERNAME" idValue="dee.pan_api1.live.cn"/>
+    <PartyIdentification partyId="dee.pan" partyIdentificationTypeId="PP_PASSWORD" idValue="S2W682RQ58GJUZP2"/>
+    <PartyIdentification partyId="dee.pan" partyIdentificationTypeId="PP_SIGNATURE" idValue="AFcWxV21C7fd0v3bYYYRCpSSRl31A6k6vmrjIUUGRzpUG8r3TjOVCaAp"/>
+	
+    <Party partyId="liuyan19840106" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="liuyan19840106" groupName="liuyan19840106@hotmail.com"/>
+    <PartyRole partyId="liuyan19840106" roleTypeId="PAYPAL_ACCOUNT"/>
+    <PartyIdentification partyId="liuyan19840106" partyIdentificationTypeId="PP_ACCOUNT" idValue="liuyan19840106@hotmail.com"/>
+    <PartyIdentification partyId="liuyan19840106" partyIdentificationTypeId="PP_USERNAME" idValue="liuyan19840106_api1.hotmail.com"/>
+    <PartyIdentification partyId="liuyan19840106" partyIdentificationTypeId="PP_PASSWORD" idValue="S89Z7NCYU6CHXA3H"/>
+    <PartyIdentification partyId="liuyan19840106" partyIdentificationTypeId="PP_SIGNATURE" idValue="AFcWxV21C7fd0v3bYYYRCpSSRl31AGZWm9X9F8mVwnL0.KBZs843f8MN"/>
+    
+    <Party partyId="testpaypal" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="testpaypal" groupName="yasin_1282027653_biz@hotmail.com"/>
+    <PartyRole partyId="testpaypal" roleTypeId="PAYPAL_ACCOUNT"/>
+    <PartyIdentification partyId="testpaypal" partyIdentificationTypeId="PP_ACCOUNT" idValue="yasin_1282027653_biz@hotmail.com"/>
+    <PartyIdentification partyId="testpaypal" partyIdentificationTypeId="PP_USERNAME" idValue="yasin_1282027653_biz_api1.hotmail.com"/>
+    <PartyIdentification partyId="testpaypal" partyIdentificationTypeId="PP_PASSWORD" idValue="1282027664"/>
+    <PartyIdentification partyId="testpaypal" partyIdentificationTypeId="PP_SIGNATURE" idValue="ATXM6w.qf8vnF-OgaAF617x.OzONAG1.vsaXhXIxOivQJYc2qs3BjlBy"/>
+    
+    <!--<Party partyId="" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="" groupName=""/>
+    <PartyRole partyId="" roleTypeId="PAYPAL_ACCOUNT"/>
+    <PartyIdentification partyId="" partyIdentificationTypeId="PP_ACCOUNT" idValue="TODO"/>
+    <PartyIdentification partyId="" partyIdentificationTypeId="PP_USERNAME" idValue="TODO"/>
+    <PartyIdentification partyId="" partyIdentificationTypeId="PP_PASSWORD" idValue="TODO"/>
+    <PartyIdentification partyId="" partyIdentificationTypeId="PP_SIGNATURE" idValue="TODO"/>-->
+    
+    <ProductStoreRole partyId="tattooshows" roleTypeId="PAYPAL_ACCOUNT" productStoreId="belly_design" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="tattooshows" roleTypeId="PAYPAL_ACCOUNT" productStoreId="you_young" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="tattooshows" roleTypeId="PAYPAL_ACCOUNT" productStoreId="bellyanna-de" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="tattooshows" roleTypeId="PAYPAL_ACCOUNT" productStoreId="bellyanna-uk" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="dee.pan" roleTypeId="PAYPAL_ACCOUNT" productStoreId="bellyanna-acc" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="dee.pan" roleTypeId="PAYPAL_ACCOUNT" productStoreId="queendesign" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="dee.pan" roleTypeId="PAYPAL_ACCOUNT" productStoreId="tattootalks-us" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="liuyan19840106" roleTypeId="PAYPAL_ACCOUNT" productStoreId="kraken-bag" fromDate="2010-01-01 00:00:00.0"/>
+    <ProductStoreRole partyId="dee.pan" roleTypeId="PAYPAL_ACCOUNT" productStoreId="i.macho" fromDate="2010-01-01 00:00:00.0"/>
+
+    <!-- REFUND status -->
+	<StatusType description="Refund" hasTable="N" parentTypeId=""
+    statusTypeId="REFUND_STATUS" />
+	<StatusItem description="Pending" sequenceId="01"
+    statusCode="PENDING" statusId="REFUND_PENDING" statusTypeId="REFUND_STATUS" />
+	<StatusItem description="Completed" sequenceId="10"
+    statusCode="COMPLETED" statusId="REFUND_COMPLETED" statusTypeId="REFUND_STATUS" />
+	<StatusItem description="Rejected" sequenceId="20"
+    statusCode="REJECTED" statusId="REFUND_REJECTED" statusTypeId="REFUND_STATUS" />
+    
+	<StatusValidChange condition="" statusId="REFUND_PENDING"
+    statusIdTo="REFUND_COMPLETED" transitionName="Process Refund" />
+	<StatusValidChange condition="" statusId="REFUND_PENDING"
+    statusIdTo="REFUND_REJECTED" transitionName="Process Refund" />
+    
+    <!-- Refund Email Template -->
+    <!--<EbayEmailTemplate emailTemplateId="10020" emailTemplateName="Refund processed notification" emailTemplateTypeId="Refund" language="en" subject="Refund notification from $sellerUserId">
+        <content>
+            <![CDATA[Thank you very much for your recent purchase from us. This is an automated message to inform you that we have processed a refund of $currencyCode $amount back to your PayPal account with PayPal unique refund transaction ID $refundTransactionId . Please confirm that the money has been refunded back to your PayPal account. We apologize again for any inconveniences caused so far. Please feel free to write back to us again anytime. Thank you very much.
+                
+                Best wishes from Shanghai
+                
+                $sellerUserId]]>
+        </content>
+    </EbayEmailTemplate>
+    
+    <SecurityPermission description="Process refund operations in the Order Component." permissionId="REFUND_ADMIN"/>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="REFUND_ADMIN"/>
+    <SecurityGroup groupId="REFUNDADMIN" description="Refund Admin Group, has permission to process refund"/>
+    <SecurityGroupPermission groupId="REFUNDADMIN" permissionId="REFUND_ADMIN"/>-->
+</entity-engine-xml>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>Importation Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <!-- Order Import -->
+    <service name="createOrderImport" default-entity-name="OrderImport" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="createOrderImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="updateOrderImport" default-entity-name="OrderImport" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="updateOrderImport" auth="true">
+        <auto-attributes include="pk" mode="INOUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <attribute name="productStoreId" mode="INOUT" optional="true" type="String"/>
+    </service>
+    <service name="deleteOrderImport" default-entity-name="OrderImport" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="deleteOrderImport" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="importMultiOrders" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="importMultiOrders" auth="true" use-transaction="false">
+        <description>Import multiple orders from temporary entity to OFBiz</description>
+        <attribute name="productStoreId" mode="INOUT" type="String" optional="false"/>
+        <attribute name="fileName" mode="INOUT" type="String" optional="false"/>
+    </service>
+    
+    <service name="uploadOrderCsvFile" engine="java"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="uploadOrderCsvFile" auth="true">
+        <implements service="uploadFileInterface"/>
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="csvType" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    <service name="createOrderItemImport" default-entity-name="OrderItemImport" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="createOrderItemImport" auth="true" >
+        <attribute name="orderImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="orderItemImportSeqId" mode="IN" optional="true" type="String"></attribute>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="importNewOrderFromCsv" engine="simple"
+    	location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="importNewOrderFromCsv" auth="true" >
+        <attribute name="orderImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="productStoreId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    <service name="updateOrderItemImport" default-entity-name="OrderItemImport" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="updateOrderItemImport">
+        <auto-attributes include="pk" mode="IN" optional="false"></auto-attributes>
+        <auto-attributes include="nonpk" mode="IN" optional="true"></auto-attributes>
+    </service>
+    <service name="importMultipleOrders" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="importMultipleOrders" auth="true" use-transaction="false">
+        <attribute name="orderImportId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="productStoreId" mode="INOUT" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="INOUT" optional="false" type="String"></attribute>
+    </service>
+    <service name="deleteFileOrderImport" engine="java"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="deleteFileOrderImport" auth="true">
+        <attribute name="productStoreId" mode="INOUT" optional="false" type="String"></attribute>
+        <attribute name="fileName" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    <service name="deleteFileOrderImportBulk" engine="java"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="deleteFileOrderImportBulk" auth="true" require-new-transaction="false">
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="doDeleteOrderImportAndFile" engine="java"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="doDeleteOrderImportAndFile" auth="true">
+        <attribute name="filePath" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    <service name="createProductStoreShippingEnum" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="createProductStoreShippingEnum" auth="true" use-transaction="false">
+        <attribute name="enumCode" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="enumTypeId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="description" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="sequenceId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    <service name="updateProductStoreShippingEnum" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="updateProductStoreShippingEnum" auth="true" use-transaction="false">
+        <attribute name="enumId" mode="IN" type="String" optional="false"></attribute>
+        <attribute name="enumCode" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="enumTypeId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="description" mode="IN" optional="true" type="String"></attribute>
+        <attribute name="sequenceId" mode="IN" optional="true" type="String"></attribute>
+    </service>
+    <service name="addNewPaymentMethodMapping" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="addNewPaymentMethodMapping" auth="true" use-transaction="false">
+        <attribute name="paymentMethodTypeId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="externalPaymentMethod" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="enumTypeId" mode="IN" optional="false" type="String"></attribute>
+        <attribute name="description" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    <service name="reserveInventoryApprovedOrder" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="reserveInventoryApprovedOrder">
+        <description>Reserve Inventory when order approved</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"></attribute>
+    </service>
+    <service name="reserveStoreInventoryApprovedOrder" engine="simple"
+        location="component://import/script/org/ofbiz/orderimport/OrderImportServices.xml" invoke="reserveStoreInventoryApprovedOrder">
+        <description>Reserve Inventory in a Product Store when order approved</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"></attribute>
+        <attribute name="productId" type="String" mode="IN" optional="false"></attribute>
+        <attribute name="quantity" type="BigDecimal" mode="IN" optional="false"></attribute>
+        <attribute name="orderId" type="String" mode="IN" optional="false"></attribute>
+        <attribute name="orderItemSeqId" type="String" mode="IN" optional="false"></attribute>
+        <attribute name="shipGroupSeqId" type="String" mode="IN" optional="false"></attribute>
+        <attribute name="quantityNotReserved" type="BigDecimal" mode="OUT" optional="true"></attribute>
+    </service>
+    
+    <!-- Order Export -->
+    <service name="exportOrderCsvFile" engine="java"
+        location="org.ofbiz.orderexport.OrderExportServices" invoke="exportOrderCsvFile" auth="true" use-transaction="false">
+        <attribute name="startDate" mode="IN" type="Timestamp" optional="false"></attribute>
+        <attribute name="fileName" mode="IN" type="String" optional="true"></attribute>
+     </service>
+    <service name="doUploadInternalOrderCsvFile" engine="java"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="doUploadInternalOrderCsvFile" auth="true" use-transaction="false">
+        <implements service="uploadFileInterface"/>
+     </service>
+    <service name="deleteExportFile" engine="java"
+        location="org.ofbiz.orderexport.OrderExportServices" invoke="deleteExportFile" auth="true" use-transaction="false">
+        <attribute name="filePath" mode="IN" type="String" optional="false"></attribute>
+     </service>
+    
+    <!-- Product Import -->
+    <service name="createProductImport" default-entity-name="ProductImport" engine="entity-auto" invoke="create" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <override name="productName" allow-html="any"/>
+        <override name="description" allow-html="any"/>
+        <override name="longDescription" allow-html="any"/>
+        <override name="productVariation" allow-html="any"/>
+        <override name="manufacturer" allow-html="any"/>
+        <override name="model" allow-html="any"/>
+        <override name="imageUrl" allow-html="any"/>
+        <override name="importedDescription" allow-html="any"/>
+    </service>
+    <service name="updateProductImport" default-entity-name="ProductImport" engine="entity-auto" invoke="update" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="true"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <override name="productName" allow-html="any"/>
+        <override name="description" allow-html="any"/>
+        <override name="longDescription" allow-html="any"/>
+        <override name="productVariation" allow-html="any"/>
+        <override name="manufacturer" allow-html="any"/>
+        <override name="model" allow-html="any"/>
+        <override name="imageUrl" allow-html="any"/>
+        <override name="importedDescription" allow-html="any"/>
+    </service>
+    <service name="deleteProductImport" default-entity-name="ProductImport" engine="entity-auto" invoke="delete" auth="true">
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    <service name="importProductsFromDevilwear" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="importProductsFromDevilwear" auth="true" use-transaction="false">
+        <description>Import products from Devilwear</description>
+    </service>
+    <service name="importProductsFromPuckator" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="importProductsFromPuckator" auth="true" use-transaction="false">
+        <description>Import products from Puckator</description>
+        <attribute name="email" mode="IN" type="String" optional="false"/>
+        <attribute name="password" mode="IN" type="String" optional="false"/>
+        <attribute name="action" mode="IN" type="String" optional="false"/>
+    </service>
+    <service name="importProductsFromFancyDressDropship" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="importProductsFromFancyDressDropship" auth="true" use-transaction="false">
+        <description>Import products from Fancy Dress Dropship</description>
+        <attribute name="email" mode="IN" type="String" optional="false"/>
+    </service>
+    <service name="importProductsFromPixmaniaPro" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="importProductsFromPixmaniaPro" auth="true" use-transaction="false">
+        <description>Import products from Pixmania Pro</description>
+    </service>
+    <service name="importProductsFromIngramMicro" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="importProductsFromIngramMicro" auth="true" use-transaction="false">
+        <description>Import products from Ingram Micro</description>
+    </service>
+    <service name="importProductsFromBlitzSport" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="importProductsFromBlitzSport" auth="true" use-transaction="false">
+        <description>Import products from Ingram Micro</description>
+    </service>
+    <service name="getProductInfoFromIceCat" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="getProductInfoFromIceCat" auth="true">
+        <description>get product information from IceCat</description>
+        <attribute name="eanUpc" mode="IN" type="String" optional="false"/>
+        <attribute name="lang" mode="IN" type="String" optional="false"/>
+        <attribute name="id" mode="OUT" type="String" optional="true"/>
+        <attribute name="prodId" mode="OUT" type="String" optional="true"/>
+        <attribute name="name" mode="OUT" type="String" optional="true"/>
+        <attribute name="title" mode="OUT" type="String" optional="true"/>
+        <attribute name="quality" mode="OUT" type="String" optional="true"/>
+        <attribute name="releaseDate" mode="OUT" type="java.sql.Date" optional="true"/>
+        
+        <attribute name="highPic" mode="OUT" type="String" optional="true"/>
+        <attribute name="highPicSize" mode="OUT" type="Long" optional="true"/>
+        <attribute name="highPicWidth" mode="OUT" type="Integer" optional="true"/>
+        <attribute name="highPicHeight" mode="OUT" type="Integer" optional="true"/>
+        <attribute name="lowPic" mode="OUT" type="String" optional="true"/>
+        <attribute name="lowPicSize" mode="OUT" type="Long" optional="true"/>
+        <attribute name="lowPicWidth" mode="OUT" type="Integer" optional="true"/>
+        <attribute name="lowPicHeight" mode="OUT" type="Integer" optional="true"/>
+        <attribute name="thumbPic" mode="OUT" type="String" optional="true"/>
+        <attribute name="thumbPicSize" mode="OUT" type="Long" optional="true"/>
+        
+        <attribute name="categoryName" mode="OUT" type="String" optional="true"/>
+        <attribute name="shortSummaryDescription" mode="OUT" type="String" optional="true"/>
+        <attribute name="longSummaryDescription" mode="OUT" type="String" optional="true"/>
+        <attribute name="supplierName" mode="OUT" type="String" optional="true"/>
+        <attribute name="categoryFeatureGroups" mode="OUT" type="List" optional="true"/>
+        <attribute name="eanCodes" mode="OUT" type="List" optional="true"/>
+        <attribute name="productDescritpion" mode="OUT" type="Map" optional="true"/>
+        <attribute name="productFeatures" mode="OUT" type="List" optional="true"/>
+        <attribute name="productPictures" mode="OUT" type="List" optional="true"/>
+        <attribute name="multimediaObject" mode="OUT" type="Map" optional="true"/>
+        <attribute name="productRelateds" mode="OUT" type="List" optional="true"/>
+    </service>
+    <service name="getProductReviewsFromIceCat" engine="java" default-entity-name="Product"
+            location="org.ofbiz.productimport.ProductImportServices" invoke="getProductReviewsFromIceCat" auth="true">
+        <description>get product reviews from IceCat</description>
+        <attribute name="productId" mode="IN" type="String" optional="false"/>
+        <attribute name="lang" mode="IN" type="String" optional="false"/>
+        <attribute name="reviewList" mode="OUT" type="List" optional="false"/>
+    </service>
+    <service name="syncProductsWithIceCat" engine="simple" default-entity-name="Product"
+            location="component://import/script/org/ofbiz/productimport/ProductImportServices.xml" invoke="syncProductsWithIceCat" auth="true" use-transaction="false">
+        <description>Sync products with IceCat</description>
+    </service>
+    <service name="importProductToOfbiz" engine="simple"
+        location="component://import/script/org/ofbiz/productimport/ProductImportServices.xml" invoke="importProductToOfbiz" auth="true" use-transaction="false">
+        <attribute name="supplierPartyId" mode="IN" optional="false" type="String"></attribute>
+    </service>
+    
+    <service name="importOrderFromEbayApi" auth="true" engine="java" transaction-timeout="360000"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="importOrderFromEbayApi">
+        <description>Import Order from eBay API</description>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="autoImportOrderFromEbayApi" auth="true" engine="java" transaction-timeout="720000"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="autoImportOrderFromEbayApi">
+        <description>Auto Import Order from eBay API for all Accounts</description>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="setEbayStatusShipped" auth="true" engine="java" transaction-timeout="360000"
+        location="org.ofbiz.orderimport.OrderImportServices" invoke="setEbayStatusShipped">
+        <description>Set eBay Status Shipped</description>
+        <!--<attribute name="userLogin" type="String" mode="IN" optional="true"/>-->
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+    </service>
+</services>
+

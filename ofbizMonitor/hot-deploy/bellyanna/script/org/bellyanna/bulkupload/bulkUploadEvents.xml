@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+        <simple-method method-name="doUploadProductXlsFile" short-description=""><call-class-method class-name="org.ofbiz.content.layout.LayoutWorker"
+            method-name="uploadImageAndParameters" ret-field="formInput">
+            <field field="request" type="javax.servlet.http.HttpServletRequest"/>
+            <string value="uploadedFile"/>
+        </call-class-method>
+        <set field="importFormId" from-field="formInput.formInput.importFormId"/>
+        <field-to-request field="importFormId"/>
+        <if-empty field="formInput.formInput.importFormId">
+            <set field="showMsg" value="Please Choose Bulk Import Type"/>
+            <field-to-list list="errorMessageList" field="showMsg"/>
+            <field-to-request field="errorMessageList"/>
+            <return response-code="error"/>
+        </if-empty>
+        <if-empty field="formInput.imageFileName">
+            <set field="showMsg" value="No file to upload."/>
+            <field-to-list list="errorMessageList" field="showMsg"/>
+            <field-to-request field="errorMessageList"/>
+            <return response-code="error"/>
+        </if-empty>
+        <set field="csvCtx.uploadedFile" from-field="formInput.imageData"/>
+        <set field="csvCtx._uploadedFile_fileName" from-field="formInput.imageFileName"/>
+        <set field="csvCtx.importFormId" from-field="formInput.formInput.importFormId"/>
+        <call-service service-name="uploadProductXlsFile" in-map-name="csvCtx" include-user-login="true">
+            <result-to-field result-name="errorMessageList"/>
+        </call-service>
+        <if-empty field="errorMessageList">
+            <set field="showMsg" value="Uploaded Successful."/>
+            <field-to-list list="eventMessageList" field="showMsg"/>
+            <field-to-request field="eventMessageList"/>
+        </if-empty>
+        </simple-method>    <!-- doUploadProductXlsFile -->
+        
+        <simple-method method-name="doUploadProductUpdateXlsFile" short-description="">
+            <call-class-method class-name="org.ofbiz.content.layout.LayoutWorker"
+                method-name="uploadImageAndParameters" ret-field="formInput">
+                <field field="request" type="javax.servlet.http.HttpServletRequest"/>
+                <string value="uploadedFile"/>
+            </call-class-method>
+            <set field="updateFormId" from-field="formInput.formInput.updateFormId"/>
+            <field-to-request field="updateFormId"/>
+            <if-empty field="formInput.formInput.updateFormId">
+                <set field="showMsg" value="Please Choose Bulk Update Type"/>
+                <field-to-list list="errorMessageList" field="showMsg"/>
+                <field-to-request field="errorMessageList"/>
+                <return response-code="error"/>
+            </if-empty>
+            <if-empty field="formInput.imageFileName">
+                <set field="showMsg" value="No file to upload."/>
+                <field-to-list list="errorMessageList" field="showMsg"/>
+                <field-to-request field="errorMessageList"/>
+                <return response-code="error"/>
+            </if-empty>
+            <set field="csvCtx.uploadedFile" from-field="formInput.imageData"/>
+            <set field="csvCtx._uploadedFile_fileName" from-field="formInput.imageFileName"/>
+            <set field="csvCtx.updateFormId" from-field="formInput.formInput.updateFormId"/>
+            <call-service service-name="uploadProductXlsFile" in-map-name="csvCtx" include-user-login="true">
+                <result-to-field result-name="errorMessageList"/>
+            </call-service>
+            <if-empty field="errorMessageList">
+                <set field="showMsg" value="Uploaded Successful."/>
+                <field-to-list list="eventMessageList" field="showMsg"/>
+                <field-to-request field="eventMessageList"/>
+            </if-empty>
+        </simple-method>    <!-- doUploadProductUpdateXlsFile -->
+        
+        <simple-method method-name="createProductImport" short-description="Create Product Import">
+            <make-value value-field="newEntity" entity-name="ProductImport"/>
+            <if-empty field="parameters.productId">
+                <add-error error-list-name="_error_message_list_">
+                    <fail-message message="empty Product ID, check SKU record field in csv file line number ${parameters.fileLineNumber}"/>
+                </add-error>
+            </if-empty>
+            <if-empty field="parameters.fileName">
+                <add-error error-list-name="_error_message_list_">
+                    <fail-message message="empty FILE_NAME in csv file line number ${parameters.fileLineNumber}"/>
+                </add-error>
+            </if-empty>
+            <if-empty field="_error_message_list_">
+                <set-pk-fields map="parameters" value-field="newEntity"/>
+                <set-nonpk-fields map="parameters" value-field="newEntity"/>
+                <create-value value-field="newEntity"/>
+                <check-errors error-code="error"/>
+                <else>
+                    <add-error error-list-name="errorMessageList">
+                        <fail-message message="ERROR: ${_error_message_list_} on ${parameters.productId}"/>
+                    </add-error>
+                    <check-errors error-list-name="errorMessageList" error-code="error"/>
+                </else>
+            </if-empty>
+        </simple-method> <!-- createProductImport -->
+        
+        <simple-method method-name="importMultiProducts" short-description="import Multi Products" use-transaction="false">
+            <set field="importFormId" from-field="parameters.importFormId"/>
+            <field-to-result result-name="fileName" field="parameters.fileName"/>
+            <field-to-result result-name="importFormId" field="parameters.importFormId"/>
+            <entity-and list="productImports" entity-name="ProductImport">
+                <field-map field-name="fileName" from-field="parameters.fileName"/>
+            </entity-and>
+            <set field="isError" value="false" type="Boolean"/>
+            <set field="successImport" type="BigDecimal" value="0"/>
+            
+            <if-not-empty field="productImports">
+                <iterate entry="productImport" list="productImports">
+                    <if-compare operator="not-equals" value="Y" field="productImport.importedStatus">
+                        <set field="importNewProduct.importFormId" from-field="productImport.importFormId"/>
+                        <if-empty field="importNewProduct.importFormId">
+                            <set field="importNewProduct.importFormId" from-field="parameters.importFormId"/>
+                        </if-empty>
+                        <set field="importNewProduct.productImportId" from-field="productImport.productImportId"/>
+                        <call-service service-name="importNewProductFromCsv" in-map-name="importNewProduct" include-user-login="true" break-on-error="false">
+                            <result-to-field result-name="errorMessageList"/>
+                        </call-service>
+                        <if-empty field="errorMessageList">
+                            <set field="productImportValue.productImportId" from-field="productImport.productImportId"/>
+                            <set field="productImportValue.importedStatus" value="Y"/>
+                            <set field="productImportValue.importedDescription" value="Imported Successfully."/>
+                            <call-service service-name="updateProductImport" in-map-name="productImportValue"/>
+                            <calculate field="successImport">
+                                <calcop operator="add" field="successImport">
+                                    <number value="1"/>
+                                </calcop>
+                            </calculate>
+                            <else>
+                                <set field="productImportValue.productImportId" from-field="productImport.productImportId"/>
+                                <set field="productImportValue.importedStatus" value="N"/>
+                                <set field="productImportValue.importedDescription" value="${groovy:org.ofbiz.orderimport.OrderImportServices.convertMessage(errorMessageList)}"/>
+                                <call-service service-name="updateProductImport" in-map-name="productImportValue" include-user-login="true" break-on-error="false"/>
+                                <set field="isError" value="true" type="Boolean"/>
+                                <set field="failMessage" value="Importation failed! Problem detected at productImportId [${productImport.productImportId}], please fix and re-import."/>
+                                <field-to-list list="allErrorMessageList" field="failMessage"/>
+                            </else>
+                        </if-empty>
+                        <clear-field field="errorMessageList"/>
+                    </if-compare>
+                </iterate>
+            </if-not-empty>
+            <set field="importedResult" value="Successfully imported ${successImport} product(s)"/>
+            <if-not-empty field="allErrorMessageList">
+                <field-to-request field="allErrorMessageList" request-name="errorMessageList"/>
+            </if-not-empty>
+            <if-compare operator="greater" value="0" field="successImport">
+                <field-to-list list="eventMessageList" field="importedResult"/>
+                <field-to-request field="eventMessageList"/>
+            </if-compare>
+        </simple-method>    <!-- importMultiProducts -->
+        
+        <simple-method method-name="importNewProductFromCsv" short-description="">
+            <set field="importFormId" from-field="parameters.importFormId"/>
+            <if-empty field="importFormId">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Required importFormId [productImportId : ${productImport.productImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-empty>
+            <entity-one value-field="productImport" entity-name="ProductImport">
+                <field-map field-name="productImportId" from-field="parameters.productImportId"/>
+            </entity-one>
+            <if-compare operator="equals" value="Y" field="productImport.importedStatus">
+                <return/>
+            </if-compare>
+            <entity-one value-field="productCheck" entity-name="Product">
+                <field-map field-name="productId" from-field="productImport.productId"/>
+            </entity-one>
+            <if-empty field="productImport.internalName">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Product Internal Name is missing - [productImportId : ${productImport.productImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-empty>
+            <if-empty field="productImport.declaredNameCn">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="DeclaredNameCn is missing - DeclaredNameCn and DeclaredNameEn are required [productImportId : ${productImport.productImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-empty>
+            <if-empty field="productImport.declaredNameEn">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="DeclaredNameEn is missing - DeclaredNameCn and DeclaredNameEn are required [productImportId : ${productImport.productImportId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-empty>
+            <if-empty field="productImport.productTypeId">
+                <set field="productImport.productTypeId" value="FINISHED_GOOD"/>
+            </if-empty>
+            <if-empty field="productImport.facilityId">
+                <set field="productImport.facilityId" value="PDWarehouse"/>
+            </if-empty>
+            
+            <if-not-empty field="productCheck">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="This product [${productImport.productId}] already exists. Please use bulk change module"/>
+                </add-error>
+                <else>
+                    <!-- create product - START -->
+                    <set field="productCtx.productId" from-field="productImport.productId"/>
+                    <set field="productCtx.internalName" from-field="productImport.internalName"/>
+                    <set field="productCtx.productTypeId" from-field="productImport.productTypeId"/>
+                    <set field="productCtx.facilityId" from-field="productImport.facilityId"/>
+                    <set field="productCtx.weight" from-field="productImport.weight" type="BigDecimal"/>
+                    <set field="productCtx.declaredNameCn" from-field="productImport.declaredNameCn"/>
+                    <set field="productCtx.declaredNameEn" from-field="productImport.declaredNameEn"/>
+                    <set field="productCtx.isVirtual" from-field="productImport.isVirtual"/>
+                    <set field="productCtx.isVariant" from-field="productImport.isVariant"/>
+                    <set field="productCtx.virtualVariantMethodEnum" from-field="productImport.virtualVariantMethodEnum"/>
+                    <set field="productCtx.requirementMethodEnumId" from-field="productImport.requirementMethodEnumId"/>
+                    
+                    <if-not-empty field="productCtx.productId">
+                        <call-service service-name="createProduct" in-map-name="productCtx" include-user-login="true" break-on-error="false">
+                            <result-to-field result-name="resultProductId" field="productId"/>
+                        </call-service>
+                        
+                        <!-- create location - START -->
+                        <set field="locationSeqId" from-field="productImport.locationCode"/>
+                        <if-empty field="locationSeqId">
+                            <set field="locationSeqId" value="NoLocation"/>
+                        </if-empty>
+                        <entity-one value-field="facilityLocation" entity-name="FacilityLocation">
+                            <field-map field-name="facilityId" from-field="productImport.facilityId"/>
+                            <field-map field-name="locationSeqId" from-field="locationSeqId"/>
+                        </entity-one>
+                        <if-empty field="facilityLocation">
+                            <add-error error-list-name="errorMessageList">
+                                <fail-message message="Invalid location Code. Location Code ${locationSeqId} set for [${productImport.productId}] does not exist in database."/>
+                            </add-error>
+                            <return/>
+                        </if-empty>
+                        <set field="locationCtx.facilityId" from-field="productImport.facilityId"/>
+                        <set field="locationCtx.locationSeqId" from-field="locationSeqId"/>
+                        <set field="locationCtx.productId" from-field="productImport.productId"/>
+                        <call-service service-name="createProductFacilityLocation" in-map-name="locationCtx" include-user-login="true" break-on-error="false"/>
+                        <!-- create location - END -->
+                        
+                        <!--create product price - START -->
+                        <now-timestamp field="nowDate"/>
+                        <set field="usd" from-field="productImport.priceUsd" type="BigDecimal"/>
+                        <set field="aud" from-field="productImport.priceAud" type="BigDecimal"/>
+                        <set field="eur" from-field="productImport.priceEur" type="BigDecimal"/>
+                        <set field="gbp" from-field="productImport.priceGbp" type="BigDecimal"/>
+                        <set field="cad" from-field="productImport.priceCad" type="BigDecimal"/>
+                        <if-empty field="usd">
+                            <set field="usd" value="1" type="BigDecimal"/>
+                        </if-empty>
+                        <if-empty field="aud">
+                            <set field="aud" value="1" type="BigDecimal"/>
+                        </if-empty>
+                        <if-empty field="eur">
+                            <set field="eur" value="1" type="BigDecimal"/>
+                        </if-empty>
+                        <if-empty field="gbp">
+                            <set field="gbp" value="1" type="BigDecimal"/>
+                        </if-empty>
+                        <if-empty field="cad">
+                            <set field="cad" value="1" type="BigDecimal"/>
+                        </if-empty>
+                        
+                        <set field="usdCtx.productId" from-field="productImport.productId"/>
+                        <set field="usdCtx.currencyUomId" value="USD"/>
+                        <set field="usdCtx.price" from-field="usd"/>
+                        <set field="usdCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="usdCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="usdCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="usdCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="createProductPrice" in-map-name="usdCtx" include-user-login="true" break-on-error="false"/>
+                        
+                        <set field="audCtx.productId" from-field="productImport.productId"/>
+                        <set field="audCtx.currencyUomId" value="AUD"/>
+                        <set field="audCtx.price" from-field="aud"/>
+                        <set field="audCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="audCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="audCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="audCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="createProductPrice" in-map-name="audCtx" include-user-login="true" break-on-error="false"/>
+                        
+                        <set field="eurCtx.productId" from-field="productImport.productId"/>
+                        <set field="eurCtx.currencyUomId" value="EUR"/>
+                        <set field="eurCtx.price" from-field="eur"/>
+                        <set field="eurCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="eurCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="eurCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="eurCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="createProductPrice" in-map-name="eurCtx" include-user-login="true" break-on-error="false"/>
+                        
+                        <set field="gbpCtx.productId" from-field="productImport.productId"/>
+                        <set field="gbpCtx.currencyUomId" value="GBP"/>
+                        <set field="gbpCtx.price" from-field="gbp"/>
+                        <set field="gbpCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="gbpCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="gbpCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="gbpCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="createProductPrice" in-map-name="gbpCtx" include-user-login="true" break-on-error="false"/>
+                        
+                        <set field="cadCtx.productId" from-field="productImport.productId"/>
+                        <set field="cadCtx.currencyUomId" value="CAD"/>
+                        <set field="cadCtx.price" from-field="cad"/>
+                        <set field="cadCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="cadCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="cadCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="cadCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="createProductPrice" in-map-name="cadCtx" include-user-login="true" break-on-error="false"/>
+                        
+                        <else>
+                            <add-error error-list-name="errorMessageList">
+                                <fail-message message="ProductId is empty. Not updating anything."/>
+                            </add-error>
+                            <return/>
+                        </else>
+                    </if-not-empty>
+                    <!-- create product - END -->
+                </else>
+            </if-not-empty>
+            <!--<log level="error" message="${errorMessageList}"/>-->
+            <if-empty field="errorMessageList">
+                <set field="productImportValue.productImportId" from-field="productImport.productImportId"/>
+                <set field="productImportValue.importedStatus" value="Y"/>
+                <call-service service-name="updateProductImport" in-map-name="productImportValue"/>
+                <else>
+                    <set field="productImportValue.productImportId" from-field="productImport.productImportId"/>
+                    <set field="productImportValue.importedDescription" value="${groovy:org.ofbiz.orderimport.OrderImportServices.convertMessage(errorMessageList)}"/>
+                    <call-service service-name="updateProductImport" in-map-name="productImportValue"/>
+                </else>
+            </if-empty>
+            <!--create product price - END -->
+        </simple-method>    <!-- importNewProductFromCsv -->
+        
+        <simple-method method-name="updateProductImport" short-description="Update ProductImport">
+            <entity-one entity-name="ProductImport" value-field="productImport" auto-field-map="true"/>
+            <check-errors/>
+            <set-nonpk-fields map="parameters" value-field="productImport" set-if-null="false"/>
+            <store-value value-field="productImport"/>
+            <check-errors/>
+            <field-to-result field="productImport.productImportId" result-name="productImportId"/>
+            <field-to-result field="productImport.importFormId" result-name="importFormId"/>
+        </simple-method>    <!-- updateProductImport -->
+        
+        <simple-method method-name="importNewProductForImportAndMessage" short-description="Import New Product For Import And Message" use-transaction="false">
+            <if-not-empty field="parameters.importFormId">
+                <field-to-result result-name="fileName" field="parameters.fileName"/>
+                <field-to-result result-name="importFormId" field="parameters.importFormId"/>
+                <if-not-empty field="parameters.productImportId">
+                    <set field="import.importFormId" from-field="parameters.importFormId"/>
+                    <set field="import.productImportId" from-field="parameters.productImportId"/>
+                    <call-service service-name="importNewProductFromCsv" in-map-name="import" include-user-login="true" break-on-error="false">
+                        <result-to-field result-name="errorMessageList"/>
+                        <result-to-field result-name="responseMessage"/>
+                    </call-service>
+                    <if-empty field="errorMessageList">
+                        <set field="productImport.productImportId" from-field="parameters.productImportId"/>
+                        <set field="productImport.importedStatus" value="Y"/>
+                        <set field="productImport.importedDescription" value="Imported Successfully."/>
+                        <call-service service-name="updateProductImport" in-map-name="productImport"  break-on-error="false"/>
+                        <set field="showMsg" value="Imported [productImportId : ${parameters.productImportId}] Successful"/>
+                        <field-to-list list="eventMessageList" field="showMsg"/>
+                        <field-to-request field="eventMessageList"/>
+                        <else>
+                            <set field="productImport.productImportId" from-field="parameters.productImportId"/>
+                            <set field="productImport.importedStatus" value="N"/>
+                            <set field="productImport.importedDescription" value="${groovy:org.ofbiz.orderimport.OrderImportServices.convertMessage(errorMessageList)}"/>
+                            <call-service service-name="updateProductImport" in-map-name="productImport" break-on-error="false" include-user-login="true"/>
+                            <field-to-request field="errorMessageList"/>
+                            <return response-code="error"/>
+                        </else>
+                    </if-empty>
+                </if-not-empty>
+            </if-not-empty>
+        </simple-method>    <!-- importNewProductForImportAndMessage -->
+        
+        <simple-method method-name="deleteProductImport" short-description="Delete ProductImport">
+            <!--<entity-and list="orderItemImports" entity-name="OrderItemImport">
+                <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+            </entity-and>
+            <check-errors/>
+            <iterate entry="orderItemImport" list="orderItemImports">
+                <remove-value value-field="orderItemImport"/>
+                <check-errors/>
+            </iterate>-->
+            <entity-one entity-name="ProductImport" value-field="productImport" auto-field-map="true"/>
+            <check-errors/>
+            <remove-value value-field="productImport"/>
+            <check-errors/>
+        </simple-method>    <!-- deleteProductImport -->
+        
+        <simple-method method-name="updateProductIntoBulkProductUpdate" short-description="Update Product into Bulk Product Update" use-transaction="false">
+            <if-not-empty field="parameters.updateFormId">
+                <field-to-result result-name="fileName" field="parameters.fileName"/>
+                <field-to-result result-name="updateFormId" field="parameters.updateFormId"/>
+                <field-to-result result-name="productUpdateId" field="parameters.productUpdateId"/>
+                <if-not-empty field="parameters.productUpdateId">
+                    <set field="update.updateFormId" from-field="parameters.updateFormId"/>
+                    <set field="update.productUpdateId" from-field="parameters.productUpdateId"/>
+                    <entity-one value-field="bulkProductUpdate" entity-name="BulkProductUpdate">
+                        <field-map field-name="productUpdateId" from-field="parameters.productUpdateId"/>
+                    </entity-one>
+                    <set field="update.productId" from-field="bulkProductUpdate.productId"/>
+                    <call-service service-name="importProductUpdateFromCsv" in-map-name="update" include-user-login="true" break-on-error="false">
+                        <result-to-field result-name="errorMessageList"/>
+                        <result-to-field result-name="responseMessage"/>
+                    </call-service>
+                    <if-empty field="errorMessageList">
+                        <set field="productUpdate.productUpdateId" from-field="parameters.productUpdateId"/>
+                        <set field="productUpdate.updatedStatus" value="Y"/>
+                        <set field="productUpdate.updatedDescription" value="Updated Successfully."/>
+                        <call-service service-name="updateBulkProductUpdate" in-map-name="productUpdate"  break-on-error="false"/>
+                        <set field="showMsg" value="Updated [productUpdateId : ${parameters.productUpdateId}] Successful"/>
+                        <field-to-list list="eventMessageList" field="showMsg"/>
+                        <field-to-request field="eventMessageList"/>
+                        <else>
+                            <set field="productUpdate.productUpdateId" from-field="parameters.productUpdateId"/>
+                            <set field="productUpdate.updatedStatus" value="N"/>
+                            <set field="productUpdate.updatedDescription" value="${groovy:org.ofbiz.orderimport.OrderImportServices.convertMessage(errorMessageList)}"/>
+                            <call-service service-name="updateBulkProductUpdate" in-map-name="productUpdate" break-on-error="false" include-user-login="true"/>
+                            <field-to-request field="errorMessageList"/>
+                            <return response-code="error"/>
+                        </else>
+                    </if-empty>
+                </if-not-empty>
+            </if-not-empty>
+        </simple-method>    <!-- updateProductIntoBulkProductUpdate -->
+        
+        <simple-method method-name="updateBulkProductUpdate" short-description="Update Bulk Product Update">
+            <entity-one entity-name="BulkProductUpdate" value-field="bulkProductUpdate" auto-field-map="true"/>
+            <check-errors/>
+            <set-nonpk-fields map="parameters" value-field="bulkProductUpdate" set-if-null="false"/>
+            <store-value value-field="bulkProductUpdate"/>
+            <check-errors/>
+            <field-to-result field="bulkProductUpdate.productUpdateId" result-name="productUpdateId"/>
+            <field-to-result field="bulkProductUpdate.updateFormId" result-name="updateFormId"/>
+        </simple-method>    <!-- updateBulkProductUpdate -->
+        
+        <simple-method method-name="updateMultiProducts" short-description="update Multi Products" use-transaction="false">
+            <set field="updateFormId" from-field="parameters.updateFormId"/>
+            
+            <entity-and list="bulkProductUpdates" entity-name="BulkProductUpdate">
+                <field-map field-name="fileName" from-field="parameters.fileName"/>
+            </entity-and>
+            <set field="isError" value="false" type="Boolean"/>
+            <set field="successImport" type="BigDecimal" value="0"/>
+            
+            <if-not-empty field="bulkProductUpdates">
+                <iterate entry="bulkProductUpdate" list="bulkProductUpdates">
+                    <if-compare operator="not-equals" value="Y" field="bulkProductUpdate.updatedStatus">
+                        <set field="updateProductMap.updateFormId" from-field="bulkProductUpdate.updateFormId"/>
+                        <if-empty field="updateProductMap.updateFormId">
+                            <set field="updateProductMap.updateFormId" from-field="parameters.updateFormId"/>
+                        </if-empty>
+                        <set field="updateProductMap.productUpdateId" from-field="bulkProductUpdate.productUpdateId"/>
+                        <set field="updateProductMap.productId" from-field="bulkProductUpdate.productId"/>
+                        <call-service service-name="importProductUpdateFromCsv" in-map-name="updateProductMap" include-user-login="true" break-on-error="false">
+                            <result-to-field result-name="errorMessageList"/>
+                        </call-service>
+                        <if-empty field="errorMessageList">
+                            <set field="productUpdate.productUpdateId" from-field="bulkProductUpdate.productUpdateId"/>
+                            <set field="productUpdate.updatedStatus" value="Y"/>
+                            <set field="productUpdate.updatedDescription" value="Updated Successfully."/>
+                            <call-service service-name="updateBulkProductUpdate" in-map-name="productUpdate"/>
+                            <calculate field="successImport">
+                                <calcop operator="add" field="successImport">
+                                    <number value="1"/>
+                                </calcop>
+                            </calculate>
+                            <else>
+                                <set field="productUpdate.productUpdateId" from-field="bulkProductUpdate.productUpdateId"/>
+                                <set field="productUpdate.updatedStatus" value="N"/>
+                                <set field="productUpdate.updatedDescription" value="${groovy:org.ofbiz.orderimport.OrderImportServices.convertMessage(errorMessageList)}"/>
+                                <call-service service-name="updateBulkProductUpdate" in-map-name="productUpdate" include-user-login="true" break-on-error="false"/>
+                                <set field="isError" value="true" type="Boolean"/>
+                                <set field="failMessage" value="Update failed! Problem detected at productUpdateId [${bulkProductUpdate.productUpdateId}], please fix and re-import."/>
+                                <field-to-list list="allErrorMessageList" field="failMessage"/>
+                            </else>
+                        </if-empty>
+                        <clear-field field="errorMessageList"/>
+                    </if-compare>
+                </iterate>
+            </if-not-empty>
+            <set field="importedResult" value="Successfully updated ${successImport} product(s)"/>
+            <if-not-empty field="allErrorMessageList">
+                <field-to-request field="allErrorMessageList" request-name="errorMessageList"/>
+            <else>
+                <set field="adjustQty.fileName" from-field="parameters.fileName"/>
+                <call-service service-name="discontinueAdjustEbayQuantity" in-map-name="adjustQty" include-user-login="true" break-on-error="false"/>
+            </else>
+            </if-not-empty>
+            <if-compare operator="greater" value="0" field="successImport">
+                <field-to-list list="eventMessageList" field="importedResult"/>
+                <field-to-request field="eventMessageList"/>
+            </if-compare>
+            <field-to-result result-name="fileName" field="parameters.fileName"/>
+            <field-to-result result-name="updateFormId" field="parameters.updateFormId"/>
+        </simple-method>    <!-- updateMultiProducts -->
+        
+        <simple-method method-name="importProductUpdateFromCsv" short-description="">
+            <set field="updateFormId" from-field="parameters.updateFormId"/>
+            <if-empty field="updateFormId">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="Required updateFormId [productUpdateId : ${parameters.productUpdateId}]"/>
+                </add-error>
+                <return response-code="error"/>
+            </if-empty>
+            <entity-one value-field="bulkProductUpdate" entity-name="BulkProductUpdate">
+                <field-map field-name="productUpdateId" from-field="parameters.productUpdateId"/>
+            </entity-one>
+            <if-compare operator="equals" value="Y" field="bulkProductUpdate.updatedStatus">
+                <return/>
+            </if-compare>
+            <entity-one value-field="productCheck" entity-name="Product">
+                <field-map field-name="productId" from-field="bulkProductUpdate.productId"/>
+            </entity-one>
+            
+            <if-empty field="productCheck">
+                <add-error error-list-name="errorMessageList">
+                    <fail-message message="This product [${bulkProductUpdate.productId}] does not exists. Please use bulk import module"/>
+                </add-error>
+                <else>  <!-- if productId is not empty - START -->
+                    <now-timestamp field="nowDate"/>
+                    
+                    
+                    <!-- update product - START -->
+                    <set-nonpk-fields map="parameters" value-field="productCheck"/>
+                    
+                    <if-not-empty field="bulkProductUpdate.internalName">
+                        <set field="productCheck.internalName" from-field="bulkProductUpdate.internalName"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.productTypeId">
+                        <set field="productCheck.productTypeId" from-field="bulkProductUpdate.productTypeId"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.facilityId">
+                        <set field="productCheck.facilityId" from-field="bulkProductUpdate.facilityId"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.weight">
+                        <set field="productCheck.weight" from-field="bulkProductUpdate.weight" type="BigDecimal"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.declaredNameCn">
+                        <set field="productCheck.declaredNameCn" from-field="bulkProductUpdate.declaredNameCn"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.declaredNameEn">
+                        <set field="productCheck.declaredNameEn" from-field="bulkProductUpdate.declaredNameEn"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.isVirtual">
+                        <set field="productCheck.isVirtual" from-field="bulkProductUpdate.isVirtual"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.isVariant">
+                        <set field="productCheck.isVariant" from-field="bulkProductUpdate.isVariant"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.virtualVariantMethodEnum">
+                        <set field="productCheck.virtualVariantMethodEnum" from-field="bulkProductUpdate.virtualVariantMethodEnum"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.requirementMethodEnumId">
+                        <set field="productCtx.requirementMethodEnumId" from-field="bulkProductUpdate.requirementMethodEnumId"/>
+                    </if-not-empty>
+                    
+                    <if-not-empty field="bulkProductUpdate.setDiscontinue">
+                        <if-compare operator="equals" value="Y" field="bulkProductUpdate.setDiscontinue">
+                            <set field="productCheck.salesDiscontinuationDate" from-field="nowDate"/>
+                            <!-- TODO - run the adjust quantity to 0 on ebay -->
+                        </if-compare>
+                    </if-not-empty>
+                    
+                    <now-timestamp field="productCheck.lastModifiedDate"/>
+                    <set from-field="userLogin.userLoginId" field="productCheck.lastModifiedByUserLogin"/>
+                    <store-value value-field="productCheck"/>
+                    
+                    <!--<call-service service-name="updateProduct" in-map-name="productCtx" include-user-login="true" break-on-error="false"/>-->
+                    <!-- update product - END -->
+                    <!-- update location - START -->
+                    <set field="locationSeqId" from-field="bulkProductUpdate.locationCode"/>
+                    <if-not-empty field="locationSeqId">
+                        <entity-one value-field="facilityLocation" entity-name="FacilityLocation">
+                            <field-map field-name="facilityId" from-field="bulkProductUpdate.facilityId"/>
+                            <field-map field-name="locationSeqId" from-field="locationSeqId"/>
+                        </entity-one>
+                        <if-empty field="facilityLocation">
+                            <add-error error-list-name="errorMessageList">
+                                <fail-message message="Invalid location Code. Location Code ${locationSeqId} set for [${bulkProductUpdate.productId}] does not exist in database."/>
+                            </add-error>
+                            <return/>
+                        </if-empty>
+                        <set field="locationCtx.facilityId" from-field="bulkProductUpdate.facilityId"/>
+                        <set field="locationCtx.locationSeqId" from-field="locationSeqId"/>
+                        <set field="locationCtx.productId" from-field="bulkProductUpdate.productId"/>
+                        <call-service service-name="updateProductFacilityLocation" in-map-name="locationCtx" include-user-login="true" break-on-error="false"/>
+                    </if-not-empty>
+                    
+                    <!-- update location - END -->
+                    
+                    <!--update product price - START -->
+                    
+                    <set field="usd" from-field="bulkProductUpdate.priceUsd" type="BigDecimal"/>
+                    <set field="aud" from-field="bulkProductUpdate.priceAud" type="BigDecimal"/>
+                    <set field="eur" from-field="bulkProductUpdate.priceEur" type="BigDecimal"/>
+                    <set field="gbp" from-field="bulkProductUpdate.priceGbp" type="BigDecimal"/>
+                    <set field="cad" from-field="bulkProductUpdate.priceCad" type="BigDecimal"/>
+                    <if-not-empty field="usd">
+                        <set field="usdCtx.productId" from-field="bulkProductUpdate.productId"/>
+                        <set field="usdCtx.currencyUomId" value="USD"/>
+                        <set field="usdCtx.price" from-field="usd"/>
+                        <set field="usdCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="usdCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="usdCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="usdCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="updateProductPrice" in-map-name="usdCtx" include-user-login="true" break-on-error="false"/>
+                    </if-not-empty>
+                    <if-not-empty field="aud">
+                        <set field="audCtx.productId" from-field="bulkProductUpdate.productId"/>
+                        <set field="audCtx.currencyUomId" value="AUD"/>
+                        <set field="audCtx.price" from-field="aud"/>
+                        <set field="audCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="audCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="audCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="audCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="updateProductPrice" in-map-name="audCtx" include-user-login="true" break-on-error="false"/>
+                    </if-not-empty>
+                    <if-not-empty field="eur">
+                        <set field="eurCtx.productId" from-field="bulkProductUpdate.productId"/>
+                        <set field="eurCtx.currencyUomId" value="EUR"/>
+                        <set field="eurCtx.price" from-field="eur"/>
+                        <set field="eurCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="eurCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="eurCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="eurCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="updateProductPrice" in-map-name="eurCtx" include-user-login="true" break-on-error="false"/>
+                    </if-not-empty>
+                    <if-not-empty field="gbp">
+                        <set field="gbpCtx.productId" from-field="bulkProductUpdate.productId"/>
+                        <set field="gbpCtx.currencyUomId" value="GBP"/>
+                        <set field="gbpCtx.price" from-field="gbp"/>
+                        <set field="gbpCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="gbpCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="gbpCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="gbpCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="updateProductPrice" in-map-name="gbpCtx" include-user-login="true" break-on-error="false"/>
+                    </if-not-empty>
+                    <if-not-empty field="cad">
+                        <set field="cadCtx.productId" from-field="bulkProductUpdate.productId"/>
+                        <set field="cadCtx.currencyUomId" value="CAD"/>
+                        <set field="cadCtx.price" from-field="cad"/>
+                        <set field="cadCtx.productPricePurposeId" value="PURCHASE"/>
+                        <set field="cadCtx.productPriceTypeId" value="DEFAULT_PRICE"/>
+                        <set field="cadCtx.productStoreGroupId" value="EBAY"/>
+                        <set field="cadCtx.fromDate" from-field="nowDate"/>
+                        <call-service service-name="updateProductPrice" in-map-name="cadCtx" include-user-login="true" break-on-error="false"/>
+                    </if-not-empty>
+                    <!--update product price - END -->
+                    
+                    <!-- Discontinue? run adjust quantity to 0 on ebay - START -->
+                    <!--<if-not-empty field="bulkProductUpdate.setDiscontinue">
+                        <if-compare operator="equals" value="Y" field="bulkProductUpdate.setDiscontinue">
+                            <set field="adjustQty.productUpdateId" from-field="bulkProductUpdate.productUpdateId"/>
+                            <call-service service-name="discontinueAdjustEbayQuantity" in-map-name="adjustQty" include-user-login="true" break-on-error="false"/>
+                        </if-compare>
+                    </if-not-empty>-->
+                    <!-- Discontinue? run adjust quantity to 0 on ebay - END -->
+                </else> <!-- if productId is not empty - END -->
+            </if-empty>
+            <!--<log level="error" message="${errorMessageList}"/>-->
+            <if-empty field="errorMessageList">
+                <set field="productUpdate.productUpdateId" from-field="bulkProductUpdate.productUpdateId"/>
+                <set field="productUpdate.updatedStatus" value="Y"/>
+                <call-service service-name="updateBulkProductUpdate" in-map-name="productUpdate"/>
+                <else>
+                    <set field="productUpdate.productUpdateId" from-field="bulkProductUpdate.productUpdateId"/>
+                    <set field="productUpdate.updatedDescription" value="${groovy:org.ofbiz.orderimport.OrderImportServices.convertMessage(errorMessageList)}"/>
+                    <call-service service-name="updateBulkProductUpdate" in-map-name="productUpdate"/>
+                </else>
+            </if-empty>
+            <!--create product price - END -->
+        </simple-method>    <!-- importProductUpdateFromCsv -->
+        
+        <simple-method method-name="createBulkProductUpdate" short-description="Create Bulk Product Update">
+            <make-value value-field="newEntity" entity-name="BulkProductUpdate"/>
+            <if-empty field="parameters.productId">
+                <add-error error-list-name="_error_message_list_">
+                    <fail-message message="empty Product ID, check SKU record field in csv file line number ${parameters.fileLineNumber}"/>
+                </add-error>
+            </if-empty>
+            <if-empty field="parameters.fileName">
+                <add-error error-list-name="_error_message_list_">
+                    <fail-message message="empty FILE_NAME in csv file line number ${parameters.fileLineNumber}"/>
+                </add-error>
+            </if-empty>
+            <if-empty field="_error_message_list_">
+                <set-pk-fields map="parameters" value-field="newEntity"/>
+                <set-nonpk-fields map="parameters" value-field="newEntity"/>
+                <create-value value-field="newEntity"/>
+                <check-errors error-code="error"/>
+                <else>
+                    <add-error error-list-name="errorMessageList">
+                        <fail-message message="ERROR: ${_error_message_list_} on ${parameters.productId}"/>
+                    </add-error>
+                    <check-errors error-list-name="errorMessageList" error-code="error"/>
+                </else>
+            </if-empty>
+        </simple-method> <!-- createBulkProductUpdate -->
+        
+        <simple-method method-name="deleteBulkProductUpdate" short-description="Delete BulkProductUpdate">
+            <!--<entity-and list="orderItemImports" entity-name="OrderItemImport">
+             <field-map field-name="orderImportId" from-field="parameters.orderImportId"/>
+             </entity-and>
+             <check-errors/>
+             <iterate entry="orderItemImport" list="orderItemImports">
+             <remove-value value-field="orderItemImport"/>
+             <check-errors/>
+             </iterate>-->
+            <entity-one entity-name="BulkProductUpdate" value-field="bulkProductUpdate" auto-field-map="true"/>
+            <check-errors/>
+            <remove-value value-field="bulkProductUpdate"/>
+            <check-errors/>
+        </simple-method>    <!-- deleteBulkProductUpdate -->
+
+</simple-methods>

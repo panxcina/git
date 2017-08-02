@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+    <simple-method method-name="importProductToOfbiz" short-description="import product import to product" use-transaction="false">
+        <!-- product import -->
+        
+        <transaction-begin began-transaction-name="beganTransaction"/>
+        <!-- get the latest product imports -->
+        <entity-condition list="latestProductImports" entity-name="ProductImport">
+            <order-by field-name="-createdStamp"/>
+            <limit-range size="1" start="0"/>
+        </entity-condition>
+        <set field="latestCreatedStamp" from-field="latestProductImports[0].createdStamp"/>
+        <call-class-method method-name="getDefault" class-name="java.util.TimeZone" ret-field="timeZone"/>
+        <call-class-method method-name="getDefault" class-name="java.util.Locale" ret-field="locale"/>
+        <call-class-method method-name="getDayStart" class-name="org.ofbiz.base.util.UtilDateTime" ret-field="latestDayStart">
+            <field field="latestCreatedStamp" type="java.sql.Timestamp"/>
+            <field field="timeZone" type="java.util.TimeZone"/>
+            <field field="locale" type="java.util.Locale"/>
+        </call-class-method>
+        
+        <!--<entity-count count-field="countId" entity-name="ProductImport">
+            <condition-expr field-name="supplierPartyId" from-field="parameters.supplierPartyId"/>
+        </entity-count>-->
+        <entity-condition list="productlist" entity-name="ProductImport">
+            <condition-list combine="and">
+                <condition-expr field-name="supplierPartyId" from-field="parameters.supplierPartyId"/>
+                <condition-expr field-name="createdStamp" operator="greater-equals" from-field="latestDayStart"/>
+            </condition-list>
+        </entity-condition>
+        
+        <!-- expire supplier product in the feed -->
+        <call-bsh><![CDATA[
+            import java.util.List;
+            import org.ofbiz.entity.util.EntityUtil;
+            import org.ofbiz.base.util.Debug;
+            
+            List feedSupplierProductIds = EntityUtil.getFieldListFromEntityList(productlist, "supplierProductId", true);
+            parameters.put("feedSupplierProductIds", feedSupplierProductIds);
+        ]]></call-bsh>
+        <set field="feedSupplierProductIds" from-field="parameters.feedSupplierProductIds"/>
+        <entity-condition list="expiredSupplierProducts" entity-name="SupplierProduct">
+            <condition-list combine="and">
+                <condition-expr field-name="partyId" from-field="parameters.supplierPartyId"/>
+                <condition-expr field-name="supplierProductId" operator="not-in" from-field="feedSupplierProductIds"/>
+            </condition-list>
+        </entity-condition>
+        <iterate entry="expiredSupplierProduct" list="expiredSupplierProducts">
+            <now-timestamp field="expiredSupplierProduct.availableThruDate"/>
+            <store-value value-field="expiredSupplierProduct"/>
+        </iterate>
+        <transaction-commit began-transaction-name="beganTransaction"/>
+        
+        <transaction-begin began-transaction-name="beganTransaction"/>
+        <set field="sequenceNum" value="1" type="Long"/>
+        <iterate entry="productimport" list="productlist">
+            <!-- product -->
+            <!-- create -->
+            <entity-and list="supplierProduct" entity-name="SupplierProduct">
+                <field-map field-name="supplierProductId" from-field="productimport.supplierProductId"/>
+                <field-map field-name="partyId" from-field="parameters.supplierPartyId"/>
+            </entity-and>
+            <filter-list-by-date list="supplierProduct" to-list="supplierProduct" from-field-name="availableFromDate" thru-field-name="availableThruDate"/>
+            <if-not-empty field="supplierProduct">
+               <make-value value-field="product" entity-name="Product"/>
+               <set field="product.productId" from-field="supplierProduct[0].productId"/>
+               <set field="product.productName" from-field="productimport.productName" set-if-empty="true"/>
+               <!--<set field="product.description" from-field="productimport.description" set-if-empty="true"/>
+               <set field="product.longDescription" from-field="productimport.longDescription" set-if-empty="true"/>-->
+               <!-- vendor name -->
+               <if-not-empty field="productimport.manufacturer">
+                  <set field="productimport.vendorName" from-field="productimport.manufacturer"/>
+               </if-not-empty>
+               <if-not-empty field="productimport.vendorName">
+                   <call-object-method obj-field="productimport.vendorName" method-name="toLowerCase" ret-field="productimport.vendorName"/>
+                   <set field="productimport.brandName" from-field="productimport.vendorName"/>
+               </if-not-empty>
+               <set field="product.brandName" from-field="productimport.brandName" set-if-empty="true"/>
+               <set field="product.originalImageUrl" from-field="productimport.imageUrl" set-if-empty="true"/>
+               <set field="product.weight" from-field="productimport.weight" set-if-empty="true"/>
+               <set field="product.quantityIncluded" from-field="productimport.quantity" set-if-empty="true"/>
+               <if-not-empty field="productimport.availability">
+                   <set field="product.inventoryMessage" from-field="productimport.availability"/>
+               </if-not-empty>
+               <store-value value-field="product"/>
+            <else>
+               <make-value value-field="product" entity-name="Product"/>
+               <sequenced-id sequence-name="Product" field="product.productId"/>
+               <set field="productIds" from-field="product.productId"/>
+               <set field="product.productName" from-field="productimport.productName" set-if-empty="true"/>
+               <!--<set field="product.description" from-field="productimport.description" set-if-empty="true"/>
+               <set field="product.longDescription" from-field="productimport.longDescription" set-if-empty="true"/>-->
+               <!-- vendor name -->
+               <if-not-empty field="productimport.manufacturer">
+                  <set field="productimport.vendorName" from-field="productimport.manufacturer"/>
+               </if-not-empty>
+               <if-not-empty field="productimport.vendorName">
+                   <call-object-method obj-field="productimport.vendorName" method-name="toLowerCase" ret-field="productimport.vendorName"/>
+                   <set field="productimport.brandName" from-field="productimport.vendorName"/>
+               </if-not-empty>
+               <set field="product.brandName" from-field="productimport.brandName" set-if-empty="true"/>
+               <set field="product.originalImageUrl" from-field="productimport.imageUrl" set-if-empty="true"/>
+               <set field="product.weight" from-field="productimport.weight" set-if-empty="true"/>
+               <set field="product.quantityIncluded" from-field="productimport.quantity" set-if-empty="true"/>
+               <if-not-empty field="productimport.availability">
+                   <set field="product.inventoryMessage" from-field="productimport.availability"/>
+               </if-not-empty>
+               <create-value value-field="product"/>
+            </else>
+            </if-not-empty>
+            
+            <!-- product price -->
+            <!-- UOM : create field for another conditions-->
+            <set field="currencyUomId" value="USD"/>
+            <now-timestamp field="now"/>
+            <!-- create -->
+            <make-value value-field="productprice" entity-name="ProductPrice"/>
+            <set field="productprice.productId" from-field="product.productId" set-if-empty="false"/>
+            <set field="productprice.productPricePurposeId" value="PURCHASE"/>
+            <set field="productprice.currencyUomId" from-field="currencyUomId" set-if-empty="true"/>
+            <set field="productprice.productStoreGroupId" value="_NA_"/>
+            <set field="productprice.fromDate" from-field="productimport.specialPriceStartDate" default-value="${now}" type="Timestamp"/>
+            <set field="productprice.thruDate" from-field="productimport.specialPriceEndDate" set-if-empty="true" type="Timestamp"/>
+            <!-- price and customer price-->
+            <!--<if-not-empty field="productimport.customerPrice">
+                <set field="productimport.price" from-field="productimport.customerPrice"/>
+            </if-not-empty>
+            <if-not-empty field="productimport.price">
+               <set field="productprice.productPriceTypeId" value="DEFAULT_PRICE"/>
+               <set field="productprice.price" from-field="productimport.price" set-if-empty="true"/>
+               <create-value value-field="productprice" or-store="false"/>
+            </if-not-empty>-->
+            <!-- special price -->
+            <if-not-empty field="productimport.specialPrice">
+               <set field="productprice.productPriceTypeId" value="SPECIAL_PROMO_PRICE"/>
+               <set field="productprice.price" from-field="productimport.specialPrice" set-if-empty="true"/>
+               <create-value value-field="productprice" or-store="true"/>
+            </if-not-empty>
+            <!-- price after discount -->
+            <if-not-empty field="productimport.priceAfterDiscount">
+               <set field="productprice.productPriceTypeId" value="PROMO_PRICE"/>
+               <set field="productprice.price" from-field="productimport.priceAfterDiscount" set-if-empty="true"/>
+               <create-value value-field="productprice" or-store="true"/>
+            </if-not-empty>
+            <!-- retail price -->
+            <if-not-empty field="productimport.retailPrice">
+               <set field="productprice.productPriceTypeId" value="AVERAGE_COST"/>
+               <set field="productprice.price" from-field="productimport.retailPrice" set-if-empty="true"/>
+               <create-value value-field="productprice" or-store="true"/>
+            </if-not-empty>
+
+            <!-- product feature -->
+            <!-- create product feature-->
+            <if-not-empty field="productimport.productVariation">
+                <make-value value-field="productfeature" entity-name="ProductFeature"/>
+                <sequenced-id sequence-name="ProductFeature" field="productfeature.productFeatureId"/>
+                <set field="productfeature.description" from-field="productimport.productVariation"/>
+                <set field="productfeature.productFeatureTypeId" value="COLOR"/>
+                <create-value value-field="productfeature" or-store="true"/>
+                
+                 <!-- create product feature appl -->
+                <make-value value-field="productfeatureAppl" entity-name="ProductFeatureAppl"/>
+                <set field="productfeatureAppl.productId" from-field="product.productId"/>
+                <set field="productfeatureAppl.productFeatureId" from-field="productfeature.productFeatureId"/>
+                <set field="productfeatureAppl.productFeatureApplTypeId" value="SELECTABLE_FEATURE"/>
+                <set field="productfeatureAppl.fromDate" from-field="now"/>
+                <create-value value-field="productfeatureAppl" or-store="true"/>
+            </if-not-empty>
+            
+            <!-- product option -->
+            <if-not-empty field="productimport.productOptions">
+                <call-class-method method-name="split" class-name="org.ofbiz.base.util.StringUtil" ret-field="options">
+                    <field field="productimport.productOptions" type="String"/>
+                    <string value="|"/>
+                </call-class-method>
+                <iterate entry="option" list="options">
+                    <make-value value-field="productfeature" entity-name="ProductFeature"/>
+                    <sequenced-id sequence-name="ProductFeature" field="productfeature.productFeatureId"/>
+                    <set field="productfeature.description" from-field="option"/>
+                    <set field="productfeature.productFeatureTypeId" value="COLOR"/>
+                    <create-value value-field="productfeature" or-store="true"/>
+                    
+                    <make-value value-field="productfeatureAppl" entity-name="ProductFeatureAppl"/>
+                    <set field="productfeatureAppl.productId" from-field="product.productId"/>
+                    <set field="productfeatureAppl.productFeatureId" from-field="productfeature.productFeatureId"/>
+                    <set field="productfeatureAppl.productFeatureApplTypeId" value="SELECTABLE_FEATURE"/>
+                    <set field="productfeatureAppl.fromDate" from-field="now"/>
+                    <create-value value-field="productfeature" or-store="true"/>
+                </iterate>
+            </if-not-empty>
+            
+            <!-- GoodIdentification -->
+            <make-value value-field="goodIdentification" entity-name="GoodIdentification"/>
+            <set field="goodIdentification.productId" from-field="product.productId"/>
+            <!-- type filter -->
+            <if-not-empty field="productimport.model">
+               <set field="goodIdentification.goodIdentificationTypeId" value="MANUFACTURER_ID_NO"/>
+               <set field="goodIdentification.idValue" from-field="productimport.model"/>
+               <create-value value-field="goodIdentification" or-store="true"/>
+            </if-not-empty>
+            <if-not-empty field="productimport.ean">
+               <set field="goodIdentification.goodIdentificationTypeId" value="EAN"/>
+               <set field="goodIdentification.idValue" from-field="productimport.ean"/>
+               <create-value value-field="goodIdentification" or-store="true"/>
+            </if-not-empty>
+            
+            <!-- product content for product name, description, long description -->
+            <!-- create -->
+            <if-not-empty field="productimport.productName">
+              <set field="productContentTypeId" value="PRODUCT_NAME"/>
+              <set field="textData" from-field="productimport.productName"/>
+              <call-simple-method method-name="createProductImportProductContent"/>
+            </if-not-empty>
+            <if-not-empty field="productimport.description">
+              <set field="productContentTypeId" value="DESCRIPTION"/>
+              <set field="textData" from-field="productimport.description"/>
+              <call-simple-method method-name="createProductImportProductContent"/>
+            </if-not-empty>
+            <if-not-empty field="productimport.longDescription">
+              <set field="productContentTypeId" value="LONG_DESCRIPTION"/>
+              <set field="textData" from-field="productimport.longDescription"/>
+              <call-simple-method method-name="createProductImportProductContent"/>
+            </if-not-empty>
+            
+            <!-- product attribute -->
+            <!-- create -->
+            <make-value value-field="productAttribute" entity-name="ProductAttribute"/>
+            <set field="productAttribute.productId" from-field="product.productId"/>
+            <if-not-empty field="productimport.internalReferenceCode">
+                <call-object-method obj-field="productimport.internalReferenceCode" method-name="toUpperCase" ret-field="productimport.internalReferenceCode"/>
+                <!--<set field="productAttribute.productId" from-field="productId"/>-->
+                <set field="productAttribute.attrName" from-field="productimport.internalReferenceCode"/>
+                <create-value value-field="productAttribute" or-store="true"/>
+            </if-not-empty>
+            <if-not-empty field="productimport.ingramMicroPartNumber">
+                <call-object-method obj-field="productimport.ingramMicroPartNumber" method-name="toUpperCase" ret-field="productimport.ingramMicroPartNumber"/>
+                <set field="productAttribute.attrName" from-field="productimport.ingramMicroPartNumber"/>
+                <create-value value-field="productAttribute" or-store="true"/>
+            </if-not-empty>
+            <if-not-empty field="productimport.manufacturersPartNumber">
+                <call-object-method obj-field="productimport.manufacturersPartNumber" method-name="toUpperCase" ret-field="productimport.manufacturersPartNumber"/>
+                <set field="productAttribute.attrName" from-field="productimport.manufacturersPartNumber"/>
+                <create-value value-field="productAttribute" or-store="true"/>
+            </if-not-empty>
+            
+            <!-- supplier product -->
+            <!-- <if-not-empty field="productimport.supplierProductId"> -->
+            <if-not-empty field="parameters.supplierPartyId">
+                <set field="minimumOrderQuantity" value="0" type="BigDecimal"/>
+                <!-- create -->
+                <make-value value-field="supplierproduct" entity-name="SupplierProduct"/>
+                <set field="supplierproduct.productId" from-field="product.productId" set-if-empty="false"/>
+                <set field="supplierproduct.partyId" from-field="parameters.supplierPartyId" set-if-empty="false"/>
+                <set field="supplierproduct.availableFromDate" from-field="now"/>
+                <set field="supplierproduct.minimumOrderQuantity" from-field="minimumOrderQuantity"/>
+                <set field="supplierproduct.currencyUomId" from-field="currencyUomId"/>
+                <set field="supplierproduct.supplierProductId" from-field="productimport.supplierProductId"/>
+                <!-- price , customer price , price after discount-->
+                <if-not-empty field="productimport.customerPrice">
+                    <set field="productimport.price" from-field="productimport.customerPrice"/>
+                </if-not-empty>
+                <if-not-empty field="productimport.priceAfterDiscount">
+                    <set field="productimport.price" from-field="productimport.priceAfterDiscount"/>
+                </if-not-empty>
+                <if-not-empty field="productimport.price">
+                   <set field="supplierproduct.lastPrice" from-field="productimport.price" set-if-empty="true"/>
+                </if-not-empty>
+                <create-value value-field="supplierproduct" or-store="true"/>
+            </if-not-empty>
+            <!-- image content -->
+            <if-not-empty field="productimport.imageUrl">
+                <call-simple-method method-name="createProductImportProductContentImage"/>
+            </if-not-empty>
+            
+            <!-- check transaction -->
+            <set field="shouldCommit" value="${groovy:sequenceNum % 5 == 0}" type="Boolean"/>
+            <if-compare field="shouldCommit" operator="equals" value="true" type="Boolean">
+                <transaction-commit began-transaction-name="beganTransaction"/>
+                <transaction-begin began-transaction-name="beganTransaction"/>
+            </if-compare>
+            <set field="sequenceNum" value="${groovy: sequenceNum + 1;}" type="Long"/>
+        </iterate>
+        <transaction-commit began-transaction-name="beganTransaction"/>
+    </simple-method>
+    <simple-method method-name="createProductImportProductContent" short-description="product content for product import">
+         <!-- dataresource -->
+         <make-value value-field="dataResource" entity-name="DataResource"/>
+         <sequenced-id sequence-name="DataResource" field="dataResource.dataResourceId"/>
+         <set field="dataResource.dataResourceTypeId" value="ELECTRONIC_TEXT"/>
+         <set field="dataResource.localeString" value="en"/>
+         <create-value value-field="dataResource" or-store="true"/>
+         
+         <!-- electronictext -->
+         <make-value value-field="electronicText" entity-name="ElectronicText"/>
+         <set field="electronicText.dataResourceId" from-field="dataResource.dataResourceId"/>
+         <set field="electronicText.textData" from-field="textData"/>
+         <create-value value-field="electronicText" or-store="true"/>
+         
+         <!-- content -->
+         <make-value value-field="content" entity-name="Content"/>
+         <sequenced-id sequence-name="Content" field="content.contentId"/>
+         <set field="content.contentTypeId" value="DOCUMENT"/>
+         <set field="content.localeString" value="en"/>
+         <set field="content.dataResourceId" from-field="dataResource.dataResourceId"/>
+         <create-value value-field="content" or-store="true"/>
+         
+         <!-- productcontent -->
+         <make-value value-field="productContent" entity-name="ProductContent"/>
+         <set field="productContent.productId" from-field="product.productId"/>
+         <set field="productContent.contentId" from-field="content.contentId"/>
+         <set field="productContent.productContentTypeId" from-field="productContentTypeId"/>
+         <set field="productContent.fromDate" from-field="now"/>
+         <create-value value-field="productContent" or-store="true"/>
+    </simple-method>
+    <simple-method method-name="createProductImportProductContentImage" short-description="product content for product import image">
+         <call-class-method method-name="downloadImage" class-name="org.ofbiz.productimport.ProductImportServiceHelper" ret-field="mergeUrl">
+             <field field="productimport.imageUrl" type="String"/>
+             <field field="product.productId" type="String"/>
+         </call-class-method>
+         <log level="info" message="======== return image management url : ${mergeUrl}"></log>
+         <!-- dataresource -->
+         <make-value value-field="dataResource" entity-name="DataResource"/>
+         <sequenced-id sequence-name="DataResource" field="dataResource.dataResourceId"/>
+         <set field="dataResource.dataResourceTypeId" value="IMAGE_OBJECT"/>
+         <set field="dataResource.dataTemplateTypeId" value="NONE"/>
+         <set field="dataResource.statusId" value="CTNT_IN_PROGRESS"/>
+         <set field="dash" value="${groovy: productimport.imageUrl.lastIndexOf(&quot;/&quot;)}" type="Integer"/>
+         <call-object-method method-name="length" obj-field="productimport.imageUrl" ret-field="imageLen"/>
+         <to-string field="productimport.imageUrl"/>
+            <call-object-method method-name="substring" obj-field="productimport.imageUrl" ret-field="imageName">
+                <field field="dash" type="int"/>
+                <field field="imageLen" type="int"/>
+            </call-object-method>
+         <set field="dataResource.dataResourceName" from-field="imageName"/>
+         <set field="dataResource.mimeTypeId" value="image/jpeg"/>
+         <set field="dataResource.objectInfo" from-field="mergeUrl"/>
+         <set field="dataResource.isPublic" value="Y"/>
+         <set field="dataResource.localeString" value="en"/>
+         <create-value value-field="dataResource" or-store="true"/>
+         
+         <!-- content -->
+         <make-value value-field="content" entity-name="Content"/>
+         <sequenced-id sequence-name="Content" field="content.contentId"/>
+         <set field="content.contentTypeId" value="DOCUMENT"/>
+         <set field="content.localeString" value="en"/>
+         <set field="content.dataResourceId" from-field="dataResource.dataResourceId"/>
+         <create-value value-field="content" or-store="true"/>
+         
+         <!-- productcontent -->
+         <make-value value-field="productContent" entity-name="ProductContent"/>
+         <set field="productContent.productId" from-field="product.productId"/>
+         <set field="productContent.contentId" from-field="content.contentId"/>
+         <set field="productContent.productContentTypeId" value="IMAGE"/>
+         <set field="productContent.fromDate" from-field="now"/>
+         <log level="info" message="======== return product ID : ${product.productId}"></log>
+         <create-value value-field="productContent" or-store="true"/>
+    </simple-method>
+    <simple-method method-name="syncProductsWithIceCat" short-description="Sync products with IceCat" use-transaction="false">
+        <transaction-begin began-transaction-name="beganTransaction"/>
+        <property-to-field resource="productimport" property="icecat.defaultLang" field="defaultLang"/>
+        <entity-and list="goodIdentifications" entity-name="GoodIdentification">
+            <field-map field-name="goodIdentificationTypeId" value="EAN"/>
+        </entity-and>
+        <set field="sequenceNum" value="1" type="Long"/>
+        <iterate entry="goodIdentification" list="goodIdentifications">
+            <set field="parameters.productId" from-field="goodIdentification.productId"/>
+            <set field="parameters.eanUpc" from-field="goodIdentification.idValue"/>
+            <set field="parameters.lang" from-field="defaultLang"/>
+            <call-simple-method method-name="syncProductWithIceCatInline"/>
+            
+            <!-- check transaction -->
+            <set field="shouldCommit" value="${groovy:sequenceNum % 5 == 0}" type="Boolean"/>
+            <if-compare field="shouldCommit" operator="equals" value="true" type="Boolean">
+                <transaction-commit began-transaction-name="beganTransaction"/>
+                <transaction-begin began-transaction-name="beganTransaction"/>
+            </if-compare>
+            <set field="sequenceNum" value="${groovy: sequenceNum + 1;}" type="Long"/>
+        </iterate>
+        <transaction-commit began-transaction-name="beganTransaction"/>
+    </simple-method>
+    <simple-method method-name="syncProductWithIceCatInline" short-description="Sync product with IceCat" use-transaction="false">
+        <property-to-field resource="productimport" property="icecat.productStoreId" field="productStoreId"/>
+        <set field="productId" from-field="parameters.productId"/>
+        <set field="getProductInfoFromIceCatInMap.eanUpc" from-field="parameters.eanUpc"/>
+        <set field="getProductInfoFromIceCatInMap.lang" from-field="parameters.lang"/>
+        <call-service service-name="getProductInfoFromIceCat" in-map-name="getProductInfoFromIceCatInMap" break-on-error="false" require-new-transaction="true" transaction-timeout="100000">
+            <result-to-field result-name="prodId"/>
+            <result-to-field result-name="name"/>
+            <result-to-field result-name="title"/>
+            <result-to-field result-name="quality"/>
+            <result-to-field result-name="releaseDate"/>
+            <result-to-field result-name="highPic"/>
+            <result-to-field result-name="highPicSize"/>
+            <result-to-field result-name="highPicWidth"/>
+            <result-to-field result-name="highPicHeight"/>
+            <result-to-field result-name="lowPic"/>
+            <result-to-field result-name="lowPicSize"/>
+            <result-to-field result-name="lowPicWidth"/>
+            <result-to-field result-name="lowPicHeight"/>
+            <result-to-field result-name="thumbPic"/>
+            <result-to-field result-name="thumbPicSize"/>
+            <result-to-field result-name="categoryName"/>
+            <result-to-field result-name="shortSummaryDescription"/>
+            <result-to-field result-name="longSummaryDescription"/>
+            <result-to-field result-name="supplierName"/>
+            <result-to-field result-name="categoryFeatureGroups"/>
+            <result-to-field result-name="eanCodes"/>
+            <result-to-field result-name="productDescritpion"/>
+            <result-to-field result-name="productFeatures"/>
+            <result-to-field result-name="productPictures"/>
+            <result-to-field result-name="multimediaObject"/>
+            <result-to-field result-name="productRelateds"/>
+            <result-to-field result-name="errorMessage"/>
+            <result-to-field result-name="errorMessageList"/>
+        </call-service>
+        
+        <!-- if imported product exists -->
+        <if-not-empty field="prodId">
+            <set field="getProductReviewsFromIceCatInMap.productId" from-field="prodId"/>
+            <set field="getProductReviewsFromIceCatInMap.lang" from-field="parameters.lang"/>
+            <call-service service-name="getProductReviewsFromIceCat" in-map-name="getProductReviewsFromIceCatInMap" break-on-error="false" require-new-transaction="true" transaction-timeout="100000">
+                <result-to-field result-name="reviewList"/>
+            </call-service>
+        </if-not-empty>
+        
+        <set field="icecatDescription" value="Name: ${name}"/>
+        <set field="icecatDescription" value="${icecatDescription} Title: ${title}"/>
+        <set field="icecatDescription" value="${icecatDescription} Category: ${categoryName}"/>
+        <set field="icecatDescription" value="${icecatDescription} Short Summary Description: ${shortSummaryDescription}"/>
+        <set field="icecatDescription" value="${icecatDescription} Long Summary Description: ${longSummaryDescription}"/>
+        <set field="icecatDescription" value="${icecatDescription} Release Date: ${releaseDate}"/>
+            
+        <!-- category feature group -->
+        <!--
+        <iterate entry="categoryFeatureGroup" list="categoryFeatureGroups">
+        </iterate>
+        -->
+        
+        <!-- EAN code -->
+        <set field="icecatDescription" value="${icecatDescription} EAN:"/>
+        <iterate entry="eanCode" list="eanCodes">
+            <set field="icecatDescription" value="${icecatDescription} - ${eanCode}"/>
+        </iterate>
+        
+        <!-- product description -->
+        <set field="icecatDescription" value="${icecatDescription} Description:"/>
+        <iterate entry="productDescriptionEntry" list="productDescritpion">
+            <set field="icecatDescription" value="${icecatDescription} - ${productDescriptionEntry.ShortDesc} ${productDescriptionEntry.LongDesc}"/>
+        </iterate>
+        
+        <!-- product feature -->
+        <set field="icecatDescription" value="${icecatDescription} Feature:"/>
+        <iterate entry="productFeature" list="productFeatures">
+            <set field="icecatDescription" value="${icecatDescription} - ${productFeature.productFeatureName}"/>
+        </iterate>
+        
+        <!-- update product's long description -->
+        <entity-one value-field="product" entity-name="Product">
+            <field-map field-name="productId"/>
+        </entity-one>
+        <set field="product.longDescription" from-field="icecatDescription"/>
+        <store-value value-field="product"/>
+        
+        <!-- review -->
+        <iterate entry="reviewEntry" list="reviewList">
+            <!-- create/update product review -->
+            <make-value value-field="productReview" entity-name="ProductReview"/>
+            <set field="productReview.productReviewId" from-field="reviewEntry.id"/>
+            <set field="productReview.productStoreId" from-field="productStoreId"/>
+            <set field="productReview.productId" from-field="productId"/>
+            <set field="productReview.productReview" from-field="reviewEntry.value"/>
+            <set field="productReview.productRating" from-field="reviewEntry.score" type="BigDecimal"/>
+            <set field="productReview.postedDateTime" from-field="reviewEntry.dateAdded" type="Timestamp"/>
+            <create-value value-field="productReview" or-store="true"/>
+        </iterate>
+    </simple-method>
+</simple-methods>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>bellyanna Services for eBay related</description>
+    <vendor></vendor>
+    <version>1.0</version>
+    
+    <!-- common - START-->
+    <service name="discontinueAdjustEbayQuantity" auth="true" engine="java" transaction-timeout="360000"
+        location="com.bellyanna.ebay.common" invoke="discontinueAdjustEbayQuantity">
+        <description>Adjust eBay Quantity to 0 for discontinued product</description>
+        <attribute name="fileName" type="String" mode="IN" optional="true"/>
+        <attribute name="productUpdateId" type="String" mode="IN" optional="true"/>
+    </service>
+    <service name="checkDiscontinuedListingOnEbay" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.ebay.common" invoke="checkDiscontinuedListingOnEbay">
+        <description>Check Listing for Discontinued Products</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
+    </service>
+    <!-- common - END -->
+    
+    <!-- eBayTradingAPI - START -->
+    <!-- eBayTradingAPI - update eBay Active Listing -->
+    <service name="updateEbayActiveListing" auth="true" engine="java" use-transaction="false" transaction-timeout="720000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="updateEbayActiveListing">
+        <description>Update eBay Active Listing via eBay Trading API GetSellerList</description>
+        <attribute name="productStoreId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="pageNumber" type="String" mode="IN" optional="true"/>
+        <attribute name="removeExisting" type="String" mode="IN" optional="true"/>
+        <attribute name="productStoreGroup" type="String" mode="INOUT" optional="true"/>
+        <attribute name="continuousMode" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="TradingApiVerifyUpdateListing" auth="true" engine="java" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="verifyUpdateListing">
+        <description>Verify Update eBay Active Listing via eBay Trading API GetSellerList</description>
+        <attribute name="productStoreGroup" type="String" mode="IN" optional="true"/>
+        <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
+        <!-- <attribute name="productStoreId" type="String" mode="OUT" optional="true"/> -->
+    </service>
+
+    <!-- eBayTradingAPI - get Seller List -->
+    <service name="TradingApiGetSellerList" auth="true" engine="java" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="getSellerList">
+        <description>eBay Trading API - Get Seller List</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="pageNumber" type="String" mode="IN" optional="true"/>
+        <attribute name="productStoreId" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - update eBay Active Listing Item Specifics -->
+    <service name="updateEbayActiveListingItemSpecifics" auth="true" engine="java" transaction-timeout="360000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="updateEbayActiveListingItemSpecifics">
+        <description>eBay Trading API - Get Item (update eBay Active Listing Item Specifics)</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - add out of stock control -->
+    <service name="addOutOfStockControl" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="addOutOfStockControl">
+        <description>eBay Trading API - Get eBay Store Category</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - Complete Sale -->
+    <service name="TradingApiCompleteSale" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="completeSale">
+        <description>eBay Trading API - Complete Sale</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="eBayItemId" type="String" mode="IN" optional="false"/>
+		<attribute name="eBayTransactionId" type="String" mode="IN" optional="false"/>
+		<attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - addMemberMessageAAQToPartnerRequest -->
+    <service name="TradingApiAddMemberMessageAAQToPartnerRequest" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="addMemberMessageAAQToPartnerRequest">
+        <description>eBay Trading API - add Member Message AAQ To Partner Request</description>
+        <!--<attribute name="orderId" type="String" mode="IN" optional="false"/>-->
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="eBayItemId" type="String" mode="IN" optional="false"/>
+        <attribute name="eBayUserId" type="String" mode="IN" optional="false"/>
+        <attribute name="questionType" type="String" mode="IN" optional="false"/>
+        <attribute name="messageSubject" type="String" mode="IN" optional="false"/>
+        <attribute name="messageBody" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - updateEbayListingQuantity -->
+    <service name="updateEbayListingQuantity" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="updateEbayListingQuantity">
+        <description>eBay Trading API - updateEbayListingQuantity</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - updateEbayListingQuantitySingle -->
+    <service name="updateEbayListingQuantitySingle" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="updateEbayListingQuantitySingle">
+        <description>eBay Trading API - update Ebay Listing Quantity Single</description>
+        <attribute name="itemId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - EndEbayActiveListingSingle -->
+    <service name="TradingApiEndEbayActiveListingSingle" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="EndEbayActiveListingSingle">
+        <description>eBay Trading API - End Ebay Active Listing Single</description>
+        <attribute name="itemId" type="String" mode="IN" optional="false"/>
+        <attribute name="ebayErrorMessage" type="String" mode="OUT" optional="true"/>
+    </service>
+    
+    <!-- eBayTradingAPI - EndEbayActiveListingMulti -->
+    <service name="TradingApiEndEbayActiveListingMulti" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="EndEbayActiveListingMulti">
+        <description>eBay Trading API - End Ebay Active Listing Multi</description>
+        <attribute name="itemIdList" type="List" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- eBayTradingAPI - RelistActiveListingSingle -->
+    <service name="TradingApiRelistEbayActiveListingSingle" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="relistActiveListingSingle">
+        <description>eBay Trading API - Relist Ebay Active Listing Single</description>
+        <attribute name="itemId" type="String" mode="IN" optional="false"/>
+        <attribute name="newItemId" type="String" mode="OUT" optional="true"/>
+        <attribute name="ebayErrorMessage" type="String" mode="OUT" optional="true"/>
+    </service>
+    
+    <!-- eBay TradingAPI - tempBulkSendEbayMessage -->
+    <service name="tempBulkSendEbayMessage" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="tempBulkSendEbayMessage">
+        <description>eBay Trading API - tempBulkSendEbayMessage</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <!--<attribute name="postingAdsId" type="String" mode="IN" optional="false"/>-->
+    </service>
+    <!-- eBayTradingAPI - END -->
+    
+    
+	<!-- eBayMerchandisingAPI - START -->
+    <!-- eBayMerchandisingAPI - ebayGetMostWatchedItems -->
+    <service name="ebayGetMostWatchedItems" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayMerchandisingAPI" invoke="getMostWatchedItems">
+        <description>eBay Merchandising API - Get eBay Category</description>
+        <attribute name="categoryId" type="String" mode="IN" optional="false"/>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    <!-- eBayMerchandisingAPI - END -->
+    
+    
+    <service name="JackyRelist" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="relistActiveListingSingleJacky">
+        <description>eBay Trading API - Relist Ebay Active Listing Single</description>
+        <attribute name="itemId" type="String" mode="IN" optional="false"/>
+        <attribute name="newItemId" type="String" mode="OUT" optional="true"/>
+        <attribute name="ebayErrorMessage" type="String" mode="OUT" optional="true"/>
+    </service>
+    
+    <service name="smartRelistJacky" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="smartRelistJacky">
+        <description>eBay Trading API - Relist Ebay Active Listing Single</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="changeEbayShippingBulk" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="changeEbayShippingBulk">
+        <description>eBay Trading API - Relist Ebay Active Listing Single</description>
+    </service>
+    
+    <service name="changeEbayShippingSingle" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="changeEbayShippingSingle">
+        <description>eBay Trading API - Relist Ebay Active Listing Single</description>
+        <attribute name="itemId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="changeEbayPriceBulk" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="changeEbayPriceBulk">
+        <description>eBay Trading API - Change eBay Price Bulk</description>
+    </service>
+    
+    <service name="TradingApiSetPromotionalSaleDetailsOneTime" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="setPromotionalSaleDetailsOneTime">
+        <description>eBay Trading API - set Promotional Sale Details One Time</description>
+        <attribute name="storeName" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="TradingApiUpdateEbayOrderItem" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="updateEbayOrderItem">
+        <description>eBay Trading API - update Ebay Order Item</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="pageNumber" type="String" mode="IN" optional="true"/>
+        <attribute name="numberOfDays" type="String" mode="IN" optional="false"/>
+        <attribute name="continuousMode" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="gudaoAddEbayQuantity" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="gudaoAddEbayQuantity">
+        <description>eBay Trading API - add Ebay Quantity</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="itemId" type="String" mode="IN" optional="false"/>
+        <attribute name="variationSku" type="String" mode="IN" optional="true"/>
+        <attribute name="quantity" type="BigDecimal" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="TradingApiUpdateEbayOrderItemAddQty" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="updateEbayOrderItemAddQty">
+        <description>eBay Trading API - update Ebay Order Item and add Qty</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="TradingApiVerifyUpdateEbayOrderItem" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="verifyUpdateEbayOrderItem">
+        <description>eBay Trading API - verify update Ebay Order Item</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="TradingApiPrepareAutoMarkdownSingle" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="prepareAutoMarkdownSingle">
+        <description>eBay Trading API - PrepareAutoMarkdownSingle</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="productStoreId" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <service name="TradingApiAutoMarkdownSingle" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="autoMarkdownSingle">
+        <description>eBay Trading API - autoMarkdownSingle</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="TradingApiUpdateMarkdownHistory" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="updateMarkdownHistory">
+        <description>eBay Trading API - updateMarkdownHistory</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="TradingApiGetListingSoldUnsoldXDays" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="getListingSoldUnsoldXDays">
+        <description>eBay Trading API - getListingUnsoldXDays</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="unsoldDay" type="String" mode="IN" optional="false"/>
+        <attribute name="unsoldItemIdList" type="List" mode="OUT" optional="false"/>
+        <attribute name="soldItemIdList" type="List" mode="OUT" optional="false"/>
+    </service>
+    
+    <service name="autoScheduleJob" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="autoScheduleJob">
+        <description>eBay Trading API - autoScheduleJob</description>
+        <attribute name="serviceName" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="autoScheduleJobDetail" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="autoScheduleJobDetail">
+        <description>eBay Trading API - autoScheduleJobDetail</description>
+        <attribute name="serviceName" type="String" mode="IN" optional="false"/>
+        <attribute name="startTime" type="String" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="changeEbayPaypal" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="changeEbayPaypal">
+        <description>eBay Trading API - Change eBay PayPal</description>
+    </service>
+    
+    <service name="rivalListingMonitor" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="rivalListingMonitor">
+        <description>eBay Trading API - rivalListingMonitor</description>
+        <attribute name="itemId" type="String" mode="IN" optional="true"/>
+        <attribute name="clearData" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <!-- eBay Resolution Case - START -->
+    <!-- eBay Resolution Case API - getUserCases -->
+    <service name="ResolutionCaseApiGetUserCases" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayResolutionCaseAPI" invoke="getUserCases">
+        <description>eBay Resolution Case API - Get User Cases</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
+        <attribute name="lastXDays" type="Integer" mode="IN" optional="true"/>
+    </service>
+    <service name="ResolutionCaseApiIssueRefund" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.ebay.eBayResolutionCaseAPI" invoke="issueRefund">
+        <description>eBay Resolution Case API - Issue Refund</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="caseId" type="String" mode="IN" optional="false"/>
+    </service>
+    <!-- eBay Resolution Case - END -->
+    
+    <!-- eBay PostOrder - START -->
+    <!-- eBay Issue Refund -->
+    <!--<service name="PostOrderApiIssueRefund" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.ebay.eBayPostOrderAPI" invoke="issueRefund">
+        <description>eBay Post Order API - Issue Refund</description>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="caseId" type="String" mode="IN" optional="false"/>
+    </service>-->
+    <!-- eBay PostOrder - END -->
+    
+    <service name="changeEbayPriceSingle" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="changeEbayPriceSingle">
+        <description>eBay Trading API - Change eBay Price Bulk</description>
+        <attribute name="itemId" type="String" mode="IN" optional="false"/>
+        <attribute name="varSeq" type="List" mode="IN" optional="false"/>
+        <attribute name="price" type="List" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="changeEbayTemp" auth="true" engine="java" transaction-timeout="720000" use-transaction="false"
+        location="com.bellyanna.ebay.eBayTradingAPI" invoke="changeEbayTemp">
+        <description>eBay Trading API - Change eBay Price Bulk</description>
+    </service>
+	
+</services>

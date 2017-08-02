@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_ACCESS_KEY_ID" description="AMAZON access Key ID"/>
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_SECRET_ACCESS_KEY" description="AMAZON secret access key"/>
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_APP_NAME" description="AMAZON app name"/>
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_APP_VERSION" description="AMAZON app version"/>
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_SERVICE_URL" description="AMAZON service URL"/>
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_MERCHANT_ID" description="AMAZON merchant ID"/>
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_MARKETPLACE_ID" description="AMAZON marketplace ID"/>
+    <PartyIdentificationType partyIdentificationTypeId="AMAZON_SELLER_DEV_AUTH_TOKEN" description="AMAZON sellerDevAuthToken"/>
+    <ProductStoreGroupType productStoreGroupTypeId="AMAZON_GROUP" description="Amazon Group"/>
+    <ProductStoreGroup productStoreGroupId="AMAZON" productStoreGroupTypeId="AMAZON_GROUP" productStoreGroupName="Amazon Group" description="Amazon Group"/>
+    <Enumeration enumId="AMAZON_SALES_CHANNEL" enumTypeId="ORDER_SALES_CHANNEL" enumCode="AMAZON_CHANNEL" sequenceId="11" description="Amazon Channel"/>
+    <RoleType roleTypeId="AMAZON_ACCOUNT" hasTable="N" description="Amazon Account"/>
+    
+    
+</entity-engine-xml>

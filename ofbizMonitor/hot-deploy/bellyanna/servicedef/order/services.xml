@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>bellyanna Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="sendToBeShippedEbayMessage" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.order.orderService" invoke="sendToBeShippedEbayMessage">
+        <description>send To Be Shipped List Ebay Message</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="ebayUserId" type="String" mode="IN" optional="false"/>
+        <attribute name="productStoreId" type="String" mode="IN" optional="false"/>
+        <attribute name="emailTemplateName" type="String" mode="IN" optional="false"/>
+        <attribute name="ebayItemId" type="String" mode="IN" optional="true"/>
+        <!--<attribute name="trackingNumber" type="String" mode="OUT" optional="false"/>-->
+    </service>
+    
+    <service name="copyOrderItemAttribute" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.order.orderService" invoke="copyOrderItemAttribute">
+        <description>Copy Order Item Attribute</description>
+        <attribute name="orderIdTo" type="String" mode="IN" optional="false"/>
+        <attribute name="orderIdFrom" type="String" mode="IN" optional="false"/>
+        <attribute name="orderItemSeqIdTo" type="String" mode="IN" optional="true"/>
+        <attribute name="orderItemSeqIdFrom" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateEpacketTrackingStatus" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.order.orderService" invoke="updateEpacketTrackingStatus">
+        <description>Auto Update ePacket Tracking Status</description>
+        <attribute name="lastXDays" type="Integer" mode="IN" optional="true"/>
+        <attribute name="toLastXDays" type="Integer" mode="IN" optional="true"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="sendEpacketFeedbackMessage" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.order.orderService" invoke="sendEpacketFeedbackMessage">
+        <description>Send Message Asking for Feedback (ePacket)</description>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <service name="updateOrderAttribute" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.order.orderService" invoke="updateOrderAttribute">
+        <description>Update Order Attribute</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="attrName" type="String" mode="IN" optional="false"/>
+        <attribute name="attrValue" type="String" mode="IN" optional="true"/>
+        <attribute name="userLogin" type="String" mode="IN" optional="true"/>
+    </service>
+
+    <service name="updateEbayOrderItemFeedback" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.order.orderService" invoke="updateEbayOrderItemFeedback">
+        <description>eBay Trading API - Get Feedback</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+    </service>
+    <service name="updateEbayOrderFeedback" auth="true" engine="java" transaction-timeout="720000"
+        location="com.bellyanna.order.orderService" invoke="updateEbayOrderFeedback">
+        <description>eBay Trading API - Get Feedback</description>
+        <attribute name="lastXDays" type="Integer" mode="IN" optional="false"/>
+        <attribute name="toLastXDays" type="Integer" mode="IN" optional="false"/>
+        <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
+    </service>
+    
+    <!-- Order Refund - START -->
+    <service name="createOrderRefund" default-entity-name="Refund" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/order/OrderServices.xml" invoke="createOrderRefund" auth="true">
+        <description>Create Order Refund</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="paypalEmailAddress" type="String" mode="IN" optional="false"/>
+        <attribute name="paypalTransactionId" type="String" mode="IN" optional="false"/>
+        <attribute name="refundPaypalTransId" type="String" mode="IN" optional="true"/>
+        <attribute name="paymentMethodTypeId" type="String" mode="IN" optional="true"/>
+        <attribute name="fullRefund" type="String" mode="IN" optional="false"/>
+        <attribute name="amount" type="java.math.BigDecimal" mode="IN" optional="true"/>
+        <attribute name="currencyUomId" type="String" mode="IN" optional="true"/>
+        <attribute name="statusId" type="String" mode="IN" optional="false"/>
+        <attribute name="reasonCode" mode="IN" type="String" optional="false"/>
+        <attribute name="reason" mode="IN" type="String" optional="true"/>
+        <attribute name="refundId" type="String" mode="OUT" optional="false"/>
+    </service>
+    
+    <service name="updateOrderRefund" default-entity-name="Refund" engine="simple"
+        location="component://bellyanna/script/org/bellyanna/order/OrderServices.xml" invoke="updateOrderRefund" auth="true">
+        <description>Update Order Refund</description>
+        <auto-attributes mode="IN" optional="false" include="pk"/>
+        <auto-attributes mode="IN" optional="true" include="nonpk"/>
+    </service>
+    <!-- Order Refund - END -->
+    
+</services>

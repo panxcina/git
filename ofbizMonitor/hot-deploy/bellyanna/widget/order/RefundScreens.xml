@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+
+<screen name="editOrderRefund">
+    <section>
+        <actions>
+            <set field="headerItem" value="orderentry"/>
+            <set field="titleProperty" value="Create Refund"/>
+            <script location="component://bellyanna/webapp/order/WEB-INF/actions/order/EditOrderRefund.groovy"/>
+        </actions>
+        <widgets>
+            <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                <decorator-section name="body">
+                    <container>
+                        <label style="h1" text="Refund Record for Order ${requestParameters.orderId }"/>
+                    </container>
+                    <platform-specific><html><html-template location="component://bellyanna/webapp/order/EditOrderRefund.ftl"/></html></platform-specific>
+                </decorator-section>
+            </decorator-screen>
+        </widgets>
+    </section>
+</screen>
+
+        <screen name="refundList">
+                <section>
+                        <actions>
+                                <set field="titleProperty" value="Refund List"/>
+                                <set field="headerItem" value="refundList"/>
+                                <script location="component://bellyanna/webapp/order/WEB-INF/actions/order/ListOrderRefund.groovy"/>
+                            </actions>
+                        <widgets>
+                                <include-menu name="RefundTabBar" location="component://bellyanna/widget/bellyannaMenus.xml"/>
+                                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                                        <decorator-section name="body">
+                                                <container>
+                                                        <label style="h1" text="Refund List"/>
+                                                    </container>
+                                                <include-form name="ListRefunds" location="component://bellyanna/widget/order/OrderForms.xml"/>
+                                                <platform-specific>
+                                                        <html><html-template location="component://bellyanna/webapp/order/refundList.ftl"/></html>
+                                                    </platform-specific>
+                                            </decorator-section>
+                                    </decorator-screen>
+                            </widgets>
+                    </section>
+            </screen>
+    
+        <screen name="createOrderRefundSuccess">
+                <section>
+                        <actions>
+                                <set field="titleProperty" value="OrderLookupOrder"/>
+                                <set field="headerItem" value="refundList"/>
+                            </actions>
+                        <widgets>
+                                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                                        <decorator-section name="body">
+                                                <container>
+                                                        <label style="h1" text="Refund List"/>
+                                                    </container>
+                                                <platform-specific>
+                                                        <html><html-template location="component://bellyanna/webapp/order/createOrderRefundSuccess.ftl"/></html>
+                                                    </platform-specific>
+                                            </decorator-section>
+                                    </decorator-screen>
+                            </widgets>
+                    </section>
+            </screen>
+</screens>

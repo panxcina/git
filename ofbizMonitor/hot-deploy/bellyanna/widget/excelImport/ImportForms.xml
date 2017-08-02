@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <form name="importOrder" type="upload" target="doUploadOrderCsvFile">
+        <field name="productStoreId" title="ProductStoreId">
+            <display-entity entity-name="ProductStore" key-field-name="productStoreId" description="${productStoreId} - [${storeName}]">
+                <sub-hyperlink target="importOrder" description="[change]" target-type="inter-app"/>
+            </display-entity>
+        </field>
+        <field name="uploadedFile"><file size="50"/></field>
+        <field name="csvType">
+        	<radio no-current-selected-key="ebay">
+        		<option key="ebay" description="Ebay orders"/>
+        		<option key="magento" description="Magento orders"/>
+        	</radio>
+        </field>
+        <field name="submit" title="Upload"><submit/></field>
+    </form>
+    
+    <form name="listOrderImport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="importOrder"> 
+        <actions>
+            <script location="component://import/webapp/import/WEB-INF/actions/ListFilesInDirectory.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name"><display/></field>
+        <field name="path"><display/></field>
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimport"><display/></field>
+        <field name="viewOrderImport" title="" widget-style="buttontext">
+            <hyperlink target="viewOrderImport" description="View Orders" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productStoreId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <field name="deleteFileOrderImport" title="" widget-style="buttontext">
+            <hyperlink target="deleteFileOrderImport" description="Clear Temporary Data and File" also-hidden="false" confirmation-message="Are you sure to delete this record?">
+                <parameter param-name="productStoreId"/>
+                <parameter param-name="fileName" from-field="path"/>
+            </hyperlink>
+        </field>
+    </form>
+
+    <form name="selectProductStore" type="single" header-row-style="header-row" default-table-style="basic-table">
+        <field name="productStoreId" event="onChange" action="javascript:
+            document.selectProductStore.action='importOrder'; 
+            document.selectProductStore.submit();">
+            <drop-down allow-empty="true">
+            	<!--<option key="XXXX" description="eBay - XXX"/>
+            	<option key="XXXX" description="Website XXX"/>-->
+                <entity-options entity-name="ProductStore" description="${productStoreId} - [${storeName}]" key-field-name="productStoreId"/>
+            </drop-down>
+        </field>
+    </form>
+
+    <form name="viewOrderImport" type="list" list-name="orderImportOrderItemImports" use-row-submit="true" target="importMultipleOrders" 
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="300" paginate-target="viewOrderImport">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="createOrder" title=" " widget-style="buttontext" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="importNewOrderForImportAndMessage" description="Import" also-hidden="false">
+                <parameter param-name="productStoreId" from-field="productStoreId"/>
+                <parameter param-name="fileName" from-field="fileName"></parameter>
+                <parameter param-name="orderImportId"/>
+            </hyperlink>
+        </field>
+        <field name="editOrder" title=" " widget-style="buttontext" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="editTemporaryOrder" description="Edit" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="orderImportId"/>
+                <parameter param-name="productStoreId"/>
+                <parameter param-name="fileName"/>
+                <parameter param-name="imported"/>
+            </hyperlink>
+        </field>
+        <!-- OrderImport entity fields -->
+        <field name="orderImportId" title="Order Import Id" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="fileLineNumber" title="File Line Number" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="orderId" title="Order Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="orderId" title="Order Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;Y&quot;));}" widget-style="buttontext">
+            <hyperlink target="/ordermgr/control/orderview" description="${orderId}" target-type="inter-app" target-window="blank">
+                <parameter param-name="orderId"/>
+            </hyperlink>
+        </field>
+        <field name="productStoreId" title="Product Store Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="userId" title="User Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="firstName" title="First Name" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="middleName" title="Middle Name"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="lastName" title="Last Name"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="toName" title="To Name"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="countryCode" title="Country Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="areaCode" title="Area Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="countryCode" title="Country Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="contactNumber" title="Contact Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="emailAddress" title="Email Address"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="address1" title="Address1"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="address2" title="Address2"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="city" title="City"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="stateProvinceGeoId" title="State Province Geo Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="postalCode" title="Postal Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="countryGeoId" title="Country Geo Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="currencyUom" title="Currency Uom"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="remainingSubTotal" title="Remaining Sub Total"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="shippingAmount" title="Shipping Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="taxAmount" title="Tax Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="taxAdjustmentAmount" title="Tax Adjustment Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="warrantyAmount" title="Warranty Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="grandTotalAmount" title="Grand Total Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="paymentMethodTypeId" title="Payment Method Type Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="createDate" title="Create Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="checkoutDate" title="Checkout Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="paidOnDate" title="Paid On Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="shippedOnDate" title="Shipped On Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="noteInfo" title="Note Info"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="paypalTransactionId" title="Paypal Transaction Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="productStoreShipMethId" title="ProductStore ShipMeth Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="cashOnDeliveryOption" title="Cash On Delivery Option"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="externalOrderId" title="External Order Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="variationDetails" title="Variation Details"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="importedStatus" title="Imported"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="importedDescription" title="Message"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+       
+        <!-- OrterItemImporot entity fields -->
+        <field name="dummy" title=" " position="2"><display/></field>
+        <field name="dummy1" title=" " position="2"><display/></field>
+        <field name="dummy2" title=" " position="2"><display/></field>
+        <field name="orderItemImportSeqId" title="Order Item Import Seq Id" position="2"><display/></field>
+        <field name="orderItemFileLineNumber" title="File Line Number" position="2"><display/></field>
+        <field name="orderItemNumber" title="Order Item Number" position="2"><display/></field>
+        <field name="productName" title="Product Name" position="2"><display/></field>
+        <field name="productId" title="Product Id" position="2"><display/></field>
+        <field name="quantity" title="Quantity" position="2"><display/></field>
+        <field name="unitPrice" title="Unit Price" position="2"><display/></field>
+        <field name="saleDate" title="Sale Date" position="2"><display/></field>
+        <field name="transactionId" title="Transaction Id" position="2"><display/></field>
+    </form>
+    <form name="importMultiOrders" type="single" target="importMultiOrders">
+        <field name="productStoreId"><hidden value="${productStoreId}"/></field>
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="submit" title="Import All Orders to OFBiz"><submit></submit></field>
+    </form>
+    <form name="editTemporaryOrder" type="single" target="updateOrderImport" default-entity-name="OrderImport">
+        <auto-fields-entity entity-name="OrderImport" map-name="orderImport"/>
+        <field name="orderImportId"><display/></field>
+        <field name="fileName"><display/></field>
+        <field name="fileLineNumber"><display/></field>
+        <field name="countryGeoId">
+            <drop-down>
+                <entity-options key-field-name="geoId" description="${geoName} - [${geoId}]" entity-name="Geo">
+                    <entity-constraint name="geoTypeId" value="COUNTRY"/>
+                    <entity-order-by field-name="geoName"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="currencyUom">
+            <drop-down>
+                <entity-options key-field-name="uomId" description="${description} - [${uomId}]" entity-name="Uom">
+                    <entity-constraint name="uomTypeId" value="CURRENCY_MEASURE"/>
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="paymentMethodTypeId">
+            <drop-down>
+                <entity-options key-field-name="paymentMethodTypeId" description="${description} - [${paymentMethodTypeId}]" entity-name="PaymentMethodType">
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="productStoreShipMethId">
+            <drop-down>
+                <entity-options description="${productStoreShipMethId} - ${description} - ${shipmentMethodTypeId} - [${partyId}]" key-field-name="productStoreShipMethId" entity-name="ProductStoreShipmentMethView">
+                    <entity-constraint name="productStoreId" value="${productStoreId}"/>
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="importedStatus"><display/></field>
+        <field name="importedDescription"><display/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    <form name="editTemporaryOrderItem" type="list" target="updateOrderItemImport" default-entity-name="OrderItemImport" list-name="orderItemImports"
+        use-row-submit="true" header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="50">
+        <auto-fields-entity entity-name="OrderItemImport"/>
+        <field name="productStoreId"><hidden></hidden></field>
+        <field name="fileName"><hidden></hidden></field>
+        <field name="productId"><lookup target-form-name="LookupProduct"/></field>
+        <field name="orderImportId"><display/></field>
+        <field name="orderItemImportSeqId"><display/></field>
+        <field name="fileLineNumber"><display/></field>
+        <field name="submit"><submit></submit></field>
+    </form>
+    <form name="shippingMethodList" type="list" target="" title="" list-name="enumerations"
+        odd-row-style="alternate-row" default-table-style="basic-table">
+        <actions>
+            <entity-and entity-name="Enumeration" list="enumerations">
+                <field-map field-name="enumTypeId" value="PROSTORE_EXSHIP"/>
+                <field-map field-name="enumCode" from-field="productStoreId"/>
+            </entity-and>
+        </actions>
+        <row-actions>
+            <entity-one entity-name="ProductStoreShipmentMeth" value-field="productStoreShipmentMeth">
+                <field-map field-name="productStoreShipMethId" value="${enumId}"/>
+            </entity-one>
+            <entity-one entity-name="ShipmentMethodType" value-field="shipmentMethodType">
+                <field-map field-name="shipmentMethodTypeId" from-field="productStoreShipmentMeth.shipmentMethodTypeId"/>
+            </entity-one>
+        </row-actions>
+        <field name="productStoreId"><display description="${productStoreShipmentMeth.productStoreId}"/></field>
+        <field name="shipmentMethodTypeId" title="Ofbiz Shipping Method"><display description="${shipmentMethodType.description} - [${productStoreShipmentMeth.shipmentMethodTypeId}]"/></field>
+        <field name="description" title="External Shipping Method"><display/></field>
+    </form>
+    
+    <form name="shippingMethodEdit" type="multi" target="updateProductStoreShippingEnum" title="" list-name="enumerations"
+        odd-row-style="alternate-row" default-table-style="basic-table" view-size="50">
+        <actions>
+            <entity-and entity-name="EnumerationType" list="enumerationTypes">
+                <field-map field-name="description" from-field="productStoreId"/>
+                <field-map field-name="parentTypeId" value="PROSTORE_EXSHIP"/>
+            </entity-and>
+            <set field="enumParentType" from-field="enumerationTypes[0].enumTypeId"/>
+            <entity-and entity-name="Enumeration" list="enumerations">
+                <field-map field-name="enumTypeId" from-field="enumParentType"/>
+            </entity-and>
+        </actions>
+        <field name="enumId"><hidden value="${enumId}"/></field>
+        <field name="productStoreId" title="ProductStoreId">
+            <display-entity entity-name="ProductStore" key-field-name="productStoreId" description="${storeName}">
+                <sub-hyperlink target="/catalog/control/EditProductStore" description="[${productStoreId}]" target-type="inter-app">
+                    <parameter param-name="productStoreId"/>
+                </sub-hyperlink>
+            </display-entity>
+        </field>
+        <field name="enumCode" title="Ofbiz ProductStore Shipping Method">
+            <drop-down>
+                <entity-options description="${productStoreShipMethId} - ${description} - ${shipmentMethodTypeId} - [${partyId}]" key-field-name="productStoreShipMethId" entity-name="ProductStoreShipmentMethView">
+                    <entity-constraint name="productStoreId" value="${productStoreId}"/>
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="enumTypeId" ><hidden value="${enumParentType}"/></field>
+        <field name="description" title="External Shipping Method"><text size="50" default-value="${description}"></text></field>
+        <field name="sequenceId" title="Inclusive Countries">
+   	       <drop-down>
+   	       		<option key="" description=""/>
+                <entity-options description="${geoId} - ${geoName} [${geoTypeId}]" key-field-name="geoId" entity-name="Geo">
+                    <entity-constraint name="geoTypeId" value="COUNTRY"/>
+                    <entity-order-by field-name="geoId"/>
+                </entity-options>
+                <entity-options description="${geoId} - ${geoName} [${geoTypeId}]" key-field-name="geoId" entity-name="Geo">
+                    <entity-constraint name="geoTypeId" value="GROUP"/>
+                    <entity-order-by field-name="geoId"/>
+                </entity-options>
+            </drop-down>
+        </field>        
+        <field name="delete" widget-style="buttontext">
+            <hyperlink target="deleteEnumeration" description="Delete" also-hidden="false" request-confirmation="true" confirmation-message="Are you sure to delete this record">
+                <parameter param-name="enumId"/>
+            </hyperlink>
+        </field>
+        <field name="submit" title="Update"><submit></submit></field>
+        <sort-order>
+            <sort-field name="productStoreId"/>
+            <sort-field name="enumCode"/>
+            <sort-field name="description"/>
+        </sort-order>
+    </form>
+    <form name="addNewShippingMethod" type="single" target="createProductStoreShippingEnum" >
+        <actions>
+            <entity-and entity-name="EnumerationType" list="enumerationTypes">
+                <field-map field-name="description" from-field="productStoreId"/>
+                <field-map field-name="parentTypeId" value="PROSTORE_EXSHIP"/>
+            </entity-and>
+            <set field="enumParentType" from-field="enumerationTypes[0].enumTypeId"/>
+        </actions>
+        <field name="productStoreId"><hidden/></field>
+        <field name="enumTypeId"><hidden value="${enumParentType}"/></field>
+        <field name="enumCode" title="Ofbiz ProductStore Shipping Method">
+            <drop-down>
+                <entity-options description="${productStoreShipMethId} - ${description} - ${shipmentMethodTypeId} - [${partyId}]" key-field-name="productStoreShipMethId" entity-name="ProductStoreShipmentMethView">
+                    <entity-constraint name="productStoreId" value="${productStoreId}"/>
+                    <entity-order-by field-name="productStoreShipMethId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="description" title="External Shipping Service"><text size="100"/></field>
+        <field name="sequenceId" title="Inclusive Countries">
+   	       <drop-down>
+   	       		<option key="" description=""/>
+                <entity-options description="${geoId} - ${geoName} [${geoTypeId}]" key-field-name="geoId" entity-name="Geo">
+                    <entity-constraint name="geoTypeId" value="COUNTRY"/>
+                    <entity-order-by field-name="geoId"/>
+                </entity-options>
+                <entity-options description="${geoId} - ${geoName} [${geoTypeId}]" key-field-name="geoId" entity-name="Geo">
+                    <entity-constraint name="geoTypeId" value="GROUP"/>
+                    <entity-order-by field-name="geoId"/>
+                </entity-options>
+            </drop-down>
+        </field>   
+         <field name="submit" title="Create"><submit></submit></field>
+    </form>
+    <form name="addNewPaymentMethod" type="single" target="addNewPaymentMethodMapping" >
+        <field name="enumTypeId"><hidden value="PAYMENT_MAP"/></field>
+        <field name="paymentMethodTypeId" title="Ofbiz Payment Method Type Id" required-field="true">
+            <drop-down>
+                <entity-options description="${description}" entity-name="PaymentMethodType" key-field-name="paymentMethodTypeId">
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="externalPaymentMethod" title="External Shipping Service" required-field="true"><text size="100"/></field>
+        <field name="description" required-field="true"><textarea/></field>
+         <field name="submit" title="Create"><submit></submit></field>
+    </form>
+    <form name="paymentMethodMappingEdit" type="multi" target="updateEnumeration" title="" list-name="enumerations"
+        odd-row-style="alternate-row" default-table-style="basic-table" view-size="50">
+        <actions>
+            <entity-and entity-name="Enumeration" list="enumerations">
+                <field-map field-name="enumTypeId" value="PAYMENT_MAP"/>
+            </entity-and>
+        </actions>
+        <auto-fields-service service-name="updateEnumeration"/>
+        
+        <field name="enumId" title="Ofbiz Payment Method"><display description="${enumId}"/></field>
+        <field name="enumTypeId" ><hidden value="PAYMENT_MAP"/></field>
+        <field name="sequenceId"><hidden/></field>
+        <field name="description" title="Description"><text/></field>
+        <field name="enumCode" title="External Shipping Method"><text size="60" default-value="${enumCode}"></text></field>
+        
+        <field name="delete" widget-style="buttontext">
+            <hyperlink target="deleteEnumeration" description="Delete" also-hidden="false">
+                <parameter param-name="enumId"/>
+            </hyperlink>
+        </field>
+        <field name="submit" title="Update"><submit></submit></field>
+    </form>
+
+    <form name="importInternalOrder" type="upload" target="doUploadInternalOrderCsvFile">
+        <field name="uploadedFile"><file size="50"/></field>
+        <field name="submit" title="Upload"><submit/></field>
+    </form>
+    <form name="listInternalOrderImport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table" view-size="10" paginate-target="importOrder"> 
+        <actions>
+            <script location="component://import/webapp/import/WEB-INF/actions/ListOrderImportFile.groovy"/>
+        </actions>
+        <field name="uploadDate" title="Uploaded Date"><display/></field>
+        <field name="name"><display/></field>
+        <field name="path"><display/></field>
+        <field name="allRecords"><display/></field>
+        <field name="importedRecords" title="Imported"><display/></field>
+        <field name="unImportRecords" title="Unimport"><display/></field>
+        <field name="viewOrderImport" title="" widget-style="buttontext">
+            <hyperlink target="viewInternalOrderImport" description="View Orders" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="productStoreId"/>
+                <parameter param-name="fileName" from-field="path"/>
+                <parameter param-name="name"/>
+            </hyperlink>
+        </field>
+        <field name="deleteFileOrderImport" title="" widget-style="buttontext">
+            <hyperlink target="doDeleteOrderImportAndFile" description="Clear Temporary Data and File" also-hidden="false" confirmation-message="Are you sure to delete this record?">
+                <parameter param-name="filePath" from-field="path"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="viewInternalOrderImport" type="list" list-name="orderImportOrderItemImports" use-row-submit="true" target="importMultipleOrders" 
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar" odd-row-style="alternate-row" view-size="50" paginate-target="viewInternalOrderImport">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="createOrder" title=" " widget-style="buttontext" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="importNewOrderForImportAndMessage" description="Import" also-hidden="false">
+                <parameter param-name="productStoreId" from-field="productStoreId"/>
+                <parameter param-name="fileName" from-field="fileName"></parameter>
+                <parameter param-name="orderImportId"/>
+            </hyperlink>
+        </field>
+        <field name="editOrder" title=" " widget-style="buttontext" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);
+            if (prev == null) prev = &quot;allowFirst&quot;;
+            return new Boolean(prev!=null&amp;&amp;!(prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}">
+            <hyperlink target="editTemporaryOrder" description="Edit" also-hidden="false" link-type="hidden-form">
+                <parameter param-name="orderImportId"/>
+                <parameter param-name="productStoreId"/>
+                <parameter param-name="fileName"/>
+                <parameter param-name="imported"/>
+            </hyperlink>
+        </field>
+        <!-- OrderImport entity fields -->
+        <field name="orderImportId" title="Order Import Id" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="fileLineNumber" title="File Line Number" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="orderId" title="Order Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;N&quot;));}"><display/></field>
+        <field name="orderId" title="Order Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId))&amp;&amp;importedStatus.equals(&quot;Y&quot;));}" widget-style="buttontext">
+            <hyperlink target="/ordermgr/control/orderview" description="${orderId}" target-type="inter-app" target-window="blank">
+                <parameter param-name="orderId"/>
+            </hyperlink>
+        </field>
+        <field name="productStoreId" title="Product Store Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="userId" title="User Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="firstName" title="First Name" position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="middleName" title="Middle Name"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="lastName" title="Last Name"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="toName" title="To Name"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="countryCode" title="Country Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="areaCode" title="Area Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="countryCode" title="Country Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="contactNumber" title="Contact Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="emailAddress" title="Email Address"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="address1" title="Address1"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="address2" title="Address2"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="city" title="City"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="stateProvinceGeoId" title="State Province Geo Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="postalCode" title="Postal Code"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="countryGeoId" title="Country Geo Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="currencyUom" title="Currency Uom"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="remainingSubTotal" title="Remaining Sub Total"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="shippingAmount" title="Shipping Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="taxAmount" title="Tax Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="taxAdjustmentAmount" title="Tax Adjustment Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="warrantyAmount" title="Warranty Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="grandTotalAmount" title="Grand Total Amount"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="paymentMethodTypeId" title="Payment Method Type Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="createDate" title="Create Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="checkoutDate" title="Checkout Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="paidOnDate" title="Paid On Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="shippedOnDate" title="Shipped On Date"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="noteInfo" title="Note Info"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="paypalTransactionId" title="Paypal Transaction Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="productStoreShipMethId" title="ProductStore ShipMeth Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="cashOnDeliveryOption" title="Cash On Delivery Option"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="externalOrderId" title="External Order Id"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="variationDetails" title="Variation Details"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="importedStatus" title="Imported"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+        <field name="importedDescription" title="Message"  position="1" use-when="${bsh:String prev=(String)previousItem.get(&quot;orderImportId&quot;);return new Boolean(!(prev!=null&amp;&amp;prev.equals(orderImportId)));}"><display/></field>
+       
+        <!-- OrterItemImporot entity fields -->
+        <field name="dummy" title=" " position="2"><display/></field>
+        <field name="dummy1" title=" " position="2"><display/></field>
+        <field name="dummy2" title=" " position="2"><display/></field>
+        <field name="orderItemImportSeqId" title="Order Item Import Seq Id" position="2"><display/></field>
+        <field name="orderItemFileLineNumber" title="File Line Number" position="2"><display/></field>
+        <field name="orderItemNumber" title="Order Item Number" position="2"><display/></field>
+        <field name="productName" title="Product Name" position="2"><display/></field>
+        <field name="productId" title="Product Id" position="2"><display/></field>
+        <field name="quantity" title="Quantity" position="2"><display/></field>
+        <field name="unitPrice" title="Unit Price" position="2"><display/></field>
+        <field name="saleDate" title="Sale Date" position="2"><display/></field>
+        <field name="transactionId" title="Transaction Id" position="2"><display/></field>
+    </form>
+    <form name="importMultiInternalOrders" type="single" target="importMultiOrders">
+        <field name="fileName"><hidden value="${fileName}"/></field>
+        <field name="submit" title="Import All Orders to OFBiz"><submit></submit></field>
+    </form>
+    <!-- Product Import -->
+    <form name="findProductImport" type="single" list-name="" target="findImportProduct" title="" header-row-style="header-row" default-table-style="basic-table">
+        <field name="noConditionFind"><hidden value="Y"/><!-- if this isn't there then with all fields empty no query will be done --></field>
+        <field name="productId"><text-find/></field>
+        <field name="internalName" title="Product Name"><text-find/></field>
+        <field name="partyId" title="Supplier">
+            <drop-down allow-empty="true">
+                <entity-options entity-name="PartyGroup" description="${groupName} - [${partyId}]" key-field-name="partyId"/>
+            </drop-down>
+        </field>
+        <field name="category" title="Category">
+            <drop-down allow-empty="false">
+                <option key="${uiLabelMap.CommonAny}" description=" "/>
+                <option key="Y" description="${uiLabelMap.CommonY}"/>
+                <option key="N" description="${uiLabelMap.CommonN}"/>
+            </drop-down>
+        </field>
+        <field name="picture" title="Picture">
+            <drop-down allow-empty="false">
+                <option key="${uiLabelMap.CommonAny}" description=" "/>
+                <option key="Y" description="${uiLabelMap.CommonY}"/>
+                <option key="N" description="${uiLabelMap.CommonN}"/>
+            </drop-down>
+        </field>
+        <field name="discontinue" title="Discontinue">
+            <drop-down allow-empty="false">
+                <option key="${uiLabelMap.CommonAny}" description=" "/>
+                <option key="Y" description="${uiLabelMap.CommonY}"/>
+                <option key="N" description="${uiLabelMap.CommonN}"/>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
+            <submit button-type="button"/>
+        </field>
+    </form>
+    <form name="listProductImport" list-name="productLists" target="" title="" type="list" paginate-target="findImportProduct"
+        odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2">
+        <field name="productId"><display/>
+<!--            <hyperlink also-hidden="false" description="${productId}" target="EditCategory">-->
+<!--                <parameter param-name="productId"/>-->
+<!--            </hyperlink>-->
+        </field>
+        <field name="partyId"><display/></field>
+        <field name="internalName" title="Product Name"><display/></field>
+        <field name="description"><display/></field>
+        <field name="supplierProductId"><display/></field>
+        <field name="availableFromDate"><display/></field>
+        <field name="availableThruDate"><display/></field>
+    </form>
+</forms>
+

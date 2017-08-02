@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="SANDBOX_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="SANDBOX_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="SANDBOX_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="SANDBOX_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="SANDBOX_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="SANDBOX_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="SANDBOX_ADMIN"/>
+</entity-engine-xml>

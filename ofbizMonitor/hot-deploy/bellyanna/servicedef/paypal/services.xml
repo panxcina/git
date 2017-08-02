@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>bellyanna Services for PayPal related</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <!-- doRefund -->
+    <service name="doPaypalRefund" auth="true" engine="java" transaction-timeout="3000"
+        location="com.bellyanna.paypal.paypalServices" invoke="doPaypalRefund">
+        <description>Do PayPal Refund</description>
+        <attribute name="refundId" type="String" mode="IN" optional="false"/>
+        <!--<attribute name="trackingNumber" type="String" mode="OUT" optional="false"/>-->
+    </service>
+
+</services>

@@ -1,0 +1,330 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+package org.ofbiz.orderimport;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import javolution.util.FastList;
+import javolution.util.FastMap;
+
+import org.ofbiz.base.util.Debug;
+import org.ofbiz.base.util.UtilMisc;
+import org.ofbiz.base.util.UtilValidate;
+import org.ofbiz.entity.Delegator;
+import org.ofbiz.entity.GenericDelegator;
+import org.ofbiz.entity.GenericEntity;
+import org.ofbiz.entity.GenericEntityException;
+import org.ofbiz.entity.GenericValue;
+import org.ofbiz.entity.util.EntityUtil;
+import org.ofbiz.service.LocalDispatcher;
+import org.ofbiz.service.ServiceUtil;
+
+import com.csvreader.CsvReader;
+
+public class OrderImportEvents {
+    public static final String module = OrderImportEvents.class.getName();
+    
+    public static String loadFileToImport(HttpServletRequest request, HttpServletResponse response) {
+        GenericDelegator delegator = (GenericDelegator) request.getAttribute("delegator");
+        
+        if (UtilValidate.isEmpty(request.getParameter("dataResourceId")) ||  UtilValidate.isEmpty(request.getParameter("contentId"))) {
+            request.setAttribute("_ERROR_MESSAGE_", "Required dataResourceId to load  file into ofbiz temporary entity.");
+            return "error";
+        }
+        String dataResourceId = request.getParameter("dataResourceId");
+        String mimeTypeId = request.getParameter("mimeTypeId");
+        try {
+            GenericValue dataResource = delegator.findByPrimaryKey("DataResource", UtilMisc.toMap("dataResourceId", dataResourceId));
+            if (UtilValidate.isNotEmpty(dataResource.getString("objectInfo"))) {
+                if ("text/csv".equals(mimeTypeId)) {
+                    List<GenericValue> contents = delegator.findByAnd("Content", UtilMisc.toMap("dataResourceId", dataResourceId, "contentTypeId", "IM_ORDER"));
+                    GenericEntity content = EntityUtil.getFirst(contents);
+                    request.setAttribute("fileName", content.get("contentName").toString());
+                    readDataFromCsv(request, dataResource.getString("objectInfo"));
+                }
+            }
+        } catch (Exception e) {
+            request.setAttribute("_ERROR_MESSAGE_", e.getMessage());
+            return "error";
+        }
+        
+        return "success";
+    }
+    
+    public static String readDataFromCsv(HttpServletRequest request, String filePath) {
+        Map<String, Object> result = ServiceUtil.returnSuccess();
+        List<String> errorList = FastList.newInstance();
+        LocalDispatcher dispatcher = (LocalDispatcher) request.getAttribute("dispatcher");
+        Delegator delegator = (Delegator) request.getAttribute("delegator");
+        HttpSession session = request.getSession();
+        String fileName = request.getAttribute("fileName").toString();
+        GenericValue userLogin = (GenericValue) session.getAttribute("userLogin");
+        //String productStoreId = request.getParameter("productStoreId");
+        try {
+            String orderNumberProfix = null;
+            GenericValue productStore = delegator.findByPrimaryKey("ProductStore", UtilMisc.toMap("productStoreId", "9000"));
+            if (UtilValidate.isNotEmpty(productStore.get("orderNumberPrefix"))) {
+                orderNumberProfix = productStore.getString("orderNumberPrefix");
+            }
+            CsvReader csv = new CsvReader(filePath);
+            if (UtilValidate.isNotEmpty(csv)) {
+                csv.readHeaders();
+                while (csv.readRecord()) {
+                    Map<String, Object> orderImportCtx = FastMap.newInstance();
+                    if (csv.getCurrentRecord() > 1) {
+                        String newOrderImportId = delegator.getNextSeqId("OrderImport");
+                        orderImportCtx.put("orderImportId", newOrderImportId);
+                        
+                        List<GenericValue> orderImport = delegator.findByAnd("OrderImport", UtilMisc.toMap("orderId", orderNumberProfix + csv.get(0)));
+                        if (orderImport.size() > 0) {
+                        	Map<String, Object> createOrderItem = doCreateOrderItemImport(dispatcher, userLogin, fileName, orderNumberProfix + csv.get(0), csv);
+                        	continue;
+                        }
+                        orderImportCtx.put("orderId", orderNumberProfix + csv.get(0));
+                        
+                        orderImportCtx.put("userId", csv.get(1));
+                        orderImportCtx.put("filename", fileName);
+                        Map<String, Object> nameMap = FastMap.newInstance();
+                        if (UtilValidate.isNotEmpty(csv.get(2))) {
+                            nameMap = splitBuyerFullName(csv.get(2));
+                        }
+                        orderImportCtx.put("toName", csv.get(2));
+                        orderImportCtx.put("firstName", (nameMap.get("firstName") != null) ? nameMap.get("firstName").toString() : null);
+                        orderImportCtx.put("middleName", (nameMap.get("middleName") != null) ? nameMap.get("middleName").toString() : null);
+                        orderImportCtx.put("lastName", (nameMap.get("lastName") != null) ? nameMap.get("lastName").toString() : null);
+                        
+                        Map<String, Object> telecomNumber = splitPhoneNumber(csv.get(3));
+                        orderImportCtx.put("countryCode", (telecomNumber.get("countryCode") != null) ? telecomNumber.get("countryCode") : null);
+                        orderImportCtx.put("areaCode", (telecomNumber.get("areaCode") != null) ? telecomNumber.get("areaCode").toString() : null);
+                        orderImportCtx.put("contactNumber", (telecomNumber.get("contactNumber") != null) ? telecomNumber.get("contactNumber").toString() : null);
+                        
+                        orderImportCtx.put("emailAddress", csv.get(4));
+                        orderImportCtx.put("address1", csv.get(5));
+                        orderImportCtx.put("address2", csv.get(6));
+                        orderImportCtx.put("city", csv.get(7));
+                        orderImportCtx.put("stateProvinceGeoId", getGeoId(delegator, csv.get(8), "STATE"));
+                        orderImportCtx.put("postalCode", csv.get(9));
+                        orderImportCtx.put("countryGeoId", getGeoId(delegator, csv.get(10), "COUNTRY"));
+                       
+                        orderImportCtx.put("orderItemNumber", csv.get(11));
+                        orderImportCtx.put("productName", csv.get(12));
+                        orderImportCtx.put("productId", csv.get(13));
+                        orderImportCtx.put("quantity", new BigDecimal((csv.get(14))));
+                        orderImportCtx.put("currencyUom", getCurrencyUom(csv.get(15)));
+                        orderImportCtx.put("remainingSubTotal", getPrice(csv.get(15)));
+                        orderImportCtx.put("shippingAmount", getPrice(csv.get(16)));
+                        orderImportCtx.put("taxAmount", getPrice(csv.get(17)));
+                        orderImportCtx.put("taxAdjustmentAmount", getPrice(csv.get(18)));
+                        orderImportCtx.put("warrantyAmount", getPrice(csv.get(19)));
+                        orderImportCtx.put("grandTotalAmount", getPrice(csv.get(20)));
+                        orderImportCtx.put("paymentMethodTypeId", getPaymentMethodTypeId(delegator, csv.get(21)));
+                        orderImportCtx.put("createDate", getTimestamp(csv.get(22)));
+                        orderImportCtx.put("checkoutDate", getTimestamp(csv.get(23)));
+                        orderImportCtx.put("paidOnDate", getTimestamp(csv.get(24)));
+                        orderImportCtx.put("shippedOnDate", getTimestamp(csv.get(25)));
+                        orderImportCtx.put("feedbackLeft", csv.get(26));
+                        orderImportCtx.put("feedbackReceived", csv.get(27));
+                        orderImportCtx.put("noteInfo", csv.get(28));
+                        orderImportCtx.put("paypalTransactionId", csv.get(29));
+                        orderImportCtx.put("shipmentMethodTypeId", getShipmentMethodId(delegator, csv.get(30)));
+                        orderImportCtx.put("cashOnDeliveryOption", csv.get(31));
+                        orderImportCtx.put("transactionId", csv.get(32));
+                        orderImportCtx.put("externalOrderId", csv.get(33));
+                        orderImportCtx.put("variationDetails", csv.get(34));
+                        orderImportCtx.put("imported", "N");
+                        orderImportCtx.put("message", null);
+                        orderImportCtx.put("userLogin", userLogin);
+                        try {
+                            result = dispatcher.runSync("createOrderImport", orderImportCtx);
+                            if(ServiceUtil.isError(result)){
+                            	errorList.add(ServiceUtil.getErrorMessage(result));
+                            }
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                        	Debug.logError(e.getMessage(), module);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+        	Debug.logError(e.getMessage() + errorList, module);
+            request.setAttribute("_ERROR_MESSAGE_", "" + errorList);
+            return "error";
+        }
+        return "success";
+    }
+
+    private static Map<String, Object> splitBuyerFullName(String buyerFullName){
+        String[] name = buyerFullName.split(" ");
+        Map<String, Object> nameMap =  FastMap.newInstance();
+        if (name.length == 2) {
+            nameMap.put("firstName", name[0].trim());
+            nameMap.put("middleName", null);
+            nameMap.put("lastName", name[1].trim());
+        } else if (name.length == 3) {
+            nameMap.put("firstName", name[0].trim());
+            nameMap.put("middleName", name[1].trim());
+            nameMap.put("lastName", name[2].trim());
+        } else {
+            nameMap.put("firstName", buyerFullName);
+            nameMap.put("middleName", null);
+            nameMap.put("lastName", null);
+        }
+        return nameMap;
+    }
+
+    private static Timestamp getTimestamp(String dateStr) {
+        
+        String newDate = dateStr.replace("/", "-");
+        if (UtilValidate.isEmpty(newDate)) {
+            return null;
+        }
+        Timestamp result = null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yy");
+            Date toDate = dateFormat.parse(newDate);
+            result = new Timestamp(toDate.getTime());
+        } catch (Exception e) {
+            return null;
+        }
+        
+        return result; 
+    }
+
+    private static String getShipmentMethodId(Delegator delegator, String shippmentName) {
+        String shipmentMethodId = null;
+        try {
+            List<GenericValue> shipmentMethods = delegator.findByAnd("ShipmentMethodType", UtilMisc.toMap("description", shippmentName));
+        if (shipmentMethods.size() > 0) {
+            GenericValue shipmentMethod = EntityUtil.getFirst(shipmentMethods);
+            shipmentMethodId = shipmentMethod.getString("shipmentMethodId");
+        }
+        } catch (Exception e) {
+            return "error";
+        }
+        return shipmentMethodId;
+    }
+
+    private static String getPaymentMethodTypeId(Delegator delegator, String paymentMethodStr) throws GenericEntityException {
+        String paymentMethodTypeId = null;
+        List<GenericValue> paymentMethods = delegator.findByAnd("PaymentMethodType", UtilMisc.toMap("description", paymentMethodStr));
+        if (paymentMethods.size() > 0) {
+            GenericValue paymentMethod = EntityUtil.getFirst(paymentMethods);
+            paymentMethodTypeId = paymentMethod.getString("paymentMethodTypeId");
+        }
+        return paymentMethodTypeId;
+    }
+
+    private static String getCurrencyUom(String priceStr) {
+        String currency = null;
+        if (priceStr.startsWith("$")) {
+                currency = "USD";
+        } else if (priceStr.contains(" ")) {
+            String[] arr = priceStr.split(" ");
+            currency = arr[0];
+        } else {
+            currency = null;
+        }
+        return currency;
+    }
+
+    private static BigDecimal getPrice(String price) {
+        BigDecimal result = BigDecimal.ZERO;
+        if (price.startsWith("$")) {
+            result = new BigDecimal(price.substring(1));
+        } else if (price.contains(" ")) {
+            String[] arr = price.split(" ");
+            result = new BigDecimal(arr[1]);
+        } else {
+            result = BigDecimal.ZERO;
+        }
+        return result;
+    }
+
+    private static String getGeoId(Delegator delegator, String countryName, String geoType) {
+        String countryGeoId = null;
+        try {
+            List<GenericValue> countryGeoList = delegator.findByAnd("Geo", UtilMisc.toMap("geoName", countryName.trim(), "geoTypeId", geoType));
+            if (countryGeoList.size() > 0) {
+                GenericValue geo = EntityUtil.getFirst(countryGeoList);
+                countryGeoId = geo.getString("geoId");
+            }
+        } catch (Exception e) {
+            return "error";
+        }
+        return countryGeoId;
+    }
+
+    private static Map<String, Object> splitPhoneNumber(String phoneNumber){
+        Map<String, Object> phoneMap =  FastMap.newInstance();
+        String countryCode = null;
+        String areaCode = null;
+        String contactNumber = null;
+        if(phoneNumber.indexOf("+") == 0){
+            countryCode = phoneNumber.substring(0, phoneNumber.indexOf("("));
+            areaCode = phoneNumber.substring(phoneNumber.indexOf("(") + 1, phoneNumber.indexOf(")"));
+            contactNumber = phoneNumber.substring(phoneNumber.indexOf(")") + 1).trim();
+        } else if(phoneNumber.indexOf("(") == 0){
+            areaCode = phoneNumber.substring(1, phoneNumber.indexOf(")"));
+            contactNumber = phoneNumber.substring(phoneNumber.indexOf(")") +1).trim();
+        } else {
+            contactNumber = phoneNumber;
+        }
+        phoneMap.put("countryCode", countryCode);
+        phoneMap.put("areaCode", areaCode);
+        phoneMap.put("contactNumber", contactNumber);
+        return phoneMap;
+    }
+    
+    private static Map<String, Object> doCreateOrderItemImport(LocalDispatcher dispatcher, GenericValue userLogin,String fileName, String orderId, CsvReader csv) {
+        Map<String, Object> result = null;
+        try {
+            Map<String, Object> orderItemImport = FastMap.newInstance();
+            orderItemImport.put("fileName", fileName);
+            orderItemImport.put("orderId", orderId);
+            orderItemImport.put("orderItemNumber", csv.get(11));
+            orderItemImport.put("productName", csv.get(12));
+            orderItemImport.put("productId", csv.get(13));
+            orderItemImport.put("quantity", new BigDecimal((csv.get(14))));
+            orderItemImport.put("currencyUom", getCurrencyUom(csv.get(15)));
+            orderItemImport.put("remainingSubTotal", getPrice(csv.get(15)));
+            orderItemImport.put("createDate", getTimestamp(csv.get(22)));
+            orderItemImport.put("feedbackLeft",  csv.get(26));
+            orderItemImport.put("transactionId", csv.get(32));
+            orderItemImport.put("externalOrderId", csv.get(33));
+            orderItemImport.put("imported", "N");
+            orderItemImport.put("message", null);
+            orderItemImport.put("userLogin", userLogin);
+            result = dispatcher.runSync("createOrderItemImport", orderItemImport);
+        } catch (Exception e) {
+            ServiceUtil.returnError(e.getMessage());
+        }
+        return result;
+    }
+}
